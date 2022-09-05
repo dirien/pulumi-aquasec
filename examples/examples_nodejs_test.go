@@ -14,9 +14,17 @@ func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions()
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"@pulumi/foo",
+			"@pulumiverse/aquasec",
 		},
 	})
 
 	return baseJS
+}
+
+func TestImageScanTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "image", "ts"),
+		})
+	integration.ProgramTest(t, &test)
 }

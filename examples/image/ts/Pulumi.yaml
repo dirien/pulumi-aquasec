@@ -1,0 +1,3 @@
+name: aqua
+description: A minimal Aquasec Pulumi program
+runtime: nodejs
