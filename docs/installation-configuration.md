@@ -8,7 +8,7 @@ layout: installation
 
 The Pulumi Aquasec provider is available as a package in all Pulumi languages:
 
-* JavaScript/TypeScript: [`@pulumiserve/pulumi-aquasec`](https://www.npmjs.com/package/@pulumiverse/aquasec)
+* JavaScript/TypeScript: [`@pulumiverse/aquasec`](https://www.npmjs.com/package/@pulumiverse/aquasec)
 * Python: [`pulumiverse_aquasec`](https://pypi.org/project/pulumiverse-aquasec/)
 * Go: [`github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec`](https://pkg.go.dev/github.com/pulumiverse/pulumi-aquasec/sdk)
 * .NET: [`Pulumiverse.Aquasec`](https://www.nuget.org/packages/Pulumiverse.Aquasec)
