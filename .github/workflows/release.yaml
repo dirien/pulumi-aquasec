@@ -38,7 +38,7 @@ jobs:
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@bfdd3570ce990073878bf10f6b2d79082de49492 # tag=v3.3.0
+        uses: actions/setup-go@268d8c0ca0432bb2cf416faae41297df9d262d7f # tag=v3.3.0
         with:
           go-version: ${{matrix.goversion}}
       - name: Install pulumictl
@@ -67,7 +67,7 @@ jobs:
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install Go
-        uses: actions/setup-go@bfdd3570ce990073878bf10f6b2d79082de49492 # tag=v3.3.0
+        uses: actions/setup-go@268d8c0ca0432bb2cf416faae41297df9d262d7f # tag=v3.3.0
         with:
           go-version: ${{ matrix.goversion }}
       - name: Install pulumictl
