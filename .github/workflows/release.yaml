@@ -3,6 +3,10 @@ on:
   push:
     tags:
       - v*.*.*
+
+permissions:
+  contents: write
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
