@@ -39,7 +39,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostRuntimePolicyResult> InvokeAsync(GetHostRuntimePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostRuntimePolicyResult>("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args ?? new GetHostRuntimePolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostRuntimePolicyResult>("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args ?? new GetHostRuntimePolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -68,7 +68,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostRuntimePolicyResult> Invoke(GetHostRuntimePolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostRuntimePolicyResult>("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args ?? new GetHostRuntimePolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostRuntimePolicyResult>("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args ?? new GetHostRuntimePolicyInvokeArgs(), options.WithDefaults());
     }
 
 

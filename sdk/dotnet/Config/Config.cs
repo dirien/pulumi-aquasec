@@ -30,7 +30,7 @@ namespace Pulumiverse.Aquasec
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("aquasec");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("aquasec");
 
         private static readonly __Value<string?> _aquaUrl = new __Value<string?>(() => __config.Get("aquaUrl"));
         /// <summary>

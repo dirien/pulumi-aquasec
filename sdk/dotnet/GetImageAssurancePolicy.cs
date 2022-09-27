@@ -13,10 +13,10 @@ namespace Pulumiverse.Aquasec
     public static class GetImageAssurancePolicy
     {
         public static Task<GetImageAssurancePolicyResult> InvokeAsync(GetImageAssurancePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetImageAssurancePolicyResult>("aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy", args ?? new GetImageAssurancePolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageAssurancePolicyResult>("aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy", args ?? new GetImageAssurancePolicyArgs(), options.WithDefaults());
 
         public static Output<GetImageAssurancePolicyResult> Invoke(GetImageAssurancePolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetImageAssurancePolicyResult>("aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy", args ?? new GetImageAssurancePolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageAssurancePolicyResult>("aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy", args ?? new GetImageAssurancePolicyInvokeArgs(), options.WithDefaults());
     }
 
 

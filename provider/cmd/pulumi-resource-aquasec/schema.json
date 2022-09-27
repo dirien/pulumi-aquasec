@@ -9019,6 +9019,7 @@
                 "enforcerImageName",
                 "gatewayAddress",
                 "gatewayName",
+                "gateways",
                 "groupId",
                 "highVulns",
                 "hostOs",
@@ -9027,6 +9028,7 @@
                 "installCommand",
                 "kubeBenchImageName",
                 "lastUpdate",
+                "logicalName",
                 "lowVulns",
                 "medVulns",
                 "microEnforcerImageName",
@@ -14009,9 +14011,17 @@
                     "type": "integer",
                     "description": "Maximum number of repositories to pull every day, defaults to 100\n"
                 },
+                "autoPullRescan": {
+                    "type": "boolean",
+                    "description": "Whether to automatically pull and rescan images from the registry on creation and daily\n"
+                },
                 "autoPullTime": {
                     "type": "string",
                     "description": "The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00\n"
+                },
+                "imageCreationDateCondition": {
+                    "type": "string",
+                    "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                 },
                 "lastUpdated": {
                     "type": "string",
@@ -14031,6 +14041,14 @@
                         "type": "string"
                     },
                     "description": "List of possible prefixes to image names pulled from the registry\n"
+                },
+                "pullImageAge": {
+                    "type": "string",
+                    "description": "When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = \"image_age\"`\n"
+                },
+                "pullImageCount": {
+                    "type": "integer",
+                    "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = \"image_count\"`\n"
                 },
                 "scannerNames": {
                     "type": "array",
@@ -14058,9 +14076,12 @@
             },
             "required": [
                 "author",
+                "imageCreationDateCondition",
                 "lastUpdated",
                 "name",
                 "prefixes",
+                "pullImageAge",
+                "pullImageCount",
                 "scannerType",
                 "type",
                 "url"
@@ -14082,9 +14103,17 @@
                     "type": "integer",
                     "description": "Maximum number of repositories to pull every day, defaults to 100\n"
                 },
+                "autoPullRescan": {
+                    "type": "boolean",
+                    "description": "Whether to automatically pull and rescan images from the registry on creation and daily\n"
+                },
                 "autoPullTime": {
                     "type": "string",
                     "description": "The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00\n"
+                },
+                "imageCreationDateCondition": {
+                    "type": "string",
+                    "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                 },
                 "lastUpdated": {
                     "type": "string",
@@ -14105,6 +14134,14 @@
                         "type": "string"
                     },
                     "description": "List of possible prefixes to image names pulled from the registry\n"
+                },
+                "pullImageAge": {
+                    "type": "string",
+                    "description": "When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = \"image_age\"`\n"
+                },
+                "pullImageCount": {
+                    "type": "integer",
+                    "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = \"image_count\"`\n"
                 },
                 "scannerNames": {
                     "type": "array",
@@ -14152,9 +14189,17 @@
                         "type": "integer",
                         "description": "Maximum number of repositories to pull every day, defaults to 100\n"
                     },
+                    "autoPullRescan": {
+                        "type": "boolean",
+                        "description": "Whether to automatically pull and rescan images from the registry on creation and daily\n"
+                    },
                     "autoPullTime": {
                         "type": "string",
                         "description": "The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00\n"
+                    },
+                    "imageCreationDateCondition": {
+                        "type": "string",
+                        "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                     },
                     "lastUpdated": {
                         "type": "string",
@@ -14175,6 +14220,14 @@
                             "type": "string"
                         },
                         "description": "List of possible prefixes to image names pulled from the registry\n"
+                    },
+                    "pullImageAge": {
+                        "type": "string",
+                        "description": "When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = \"image_age\"`\n"
+                    },
+                    "pullImageCount": {
+                        "type": "integer",
+                        "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = \"image_count\"`\n"
                     },
                     "scannerNames": {
                         "type": "array",
@@ -18002,15 +18055,32 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getIntegrationRegistry.\n",
                 "properties": {
+                    "autoPullRescan": {
+                        "type": "boolean",
+                        "description": "Whether to automatically pull and rescan images from the registry on creation and daily\n"
+                    },
+                    "imageCreationDateCondition": {
+                        "type": "string",
+                        "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces\n"
+                    },
+                    "pullImageAge": {
+                        "type": "string",
+                        "description": "When auto pull image enabled, sets maximum age of auto pulled images\n"
+                    },
+                    "pullImageCount": {
+                        "type": "integer",
+                        "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.\n"
                     },
                     "scannerNames": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of scanner names\n"
                     },
                     "scannerType": {
                         "type": "string",
@@ -18037,6 +18107,10 @@
                         "type": "integer",
                         "description": "Maximum number of repositories to pull every day, defaults to 100\n"
                     },
+                    "autoPullRescan": {
+                        "type": "boolean",
+                        "description": "Whether to automatically pull and rescan images from the registry on creation and daily\n"
+                    },
                     "autoPullTime": {
                         "type": "string",
                         "description": "The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00\n"
@@ -18044,6 +18118,10 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "imageCreationDateCondition": {
+                        "type": "string",
+                        "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                     },
                     "name": {
                         "type": "string",
@@ -18060,11 +18138,20 @@
                         },
                         "description": "List of possible prefixes to image names pulled from the registry\n"
                     },
+                    "pullImageAge": {
+                        "type": "string",
+                        "description": "When auto pull image enabled, sets maximum age of auto pulled images\n"
+                    },
+                    "pullImageCount": {
+                        "type": "integer",
+                        "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.\n"
+                    },
                     "scannerNames": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of scanner names\n"
                     },
                     "scannerType": {
                         "type": "string",
@@ -18089,9 +18176,12 @@
                     "autoPullInterval",
                     "autoPullMax",
                     "autoPullTime",
+                    "imageCreationDateCondition",
                     "name",
                     "password",
                     "prefixes",
+                    "pullImageAge",
+                    "pullImageCount",
                     "type",
                     "url",
                     "username",

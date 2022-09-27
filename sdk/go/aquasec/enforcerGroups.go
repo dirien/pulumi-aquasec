@@ -166,7 +166,7 @@ type EnforcerGroups struct {
 	// The last date and time the batch token was updated in UNIX time.
 	LastUpdate pulumi.IntOutput `pulumi:"lastUpdate"`
 	// Name for the batch install record.
-	LogicalName pulumi.StringPtrOutput `pulumi:"logicalName"`
+	LogicalName pulumi.StringOutput `pulumi:"logicalName"`
 	// Number of low vulnerabilities in the enforcers that in this enforcer group.
 	LowVulns pulumi.IntOutput `pulumi:"lowVulns"`
 	// Number of medium vulnerabilities in the enforcers that in this enforcer group.
@@ -997,8 +997,8 @@ func (o EnforcerGroupsOutput) LastUpdate() pulumi.IntOutput {
 }
 
 // Name for the batch install record.
-func (o EnforcerGroupsOutput) LogicalName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnforcerGroups) pulumi.StringPtrOutput { return v.LogicalName }).(pulumi.StringPtrOutput)
+func (o EnforcerGroupsOutput) LogicalName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnforcerGroups) pulumi.StringOutput { return v.LogicalName }).(pulumi.StringOutput)
 }
 
 // Number of low vulnerabilities in the enforcers that in this enforcer group.

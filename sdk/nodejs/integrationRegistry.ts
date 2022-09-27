@@ -49,9 +49,17 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      */
     public readonly autoPullMax!: pulumi.Output<number | undefined>;
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     */
+    public readonly autoPullRescan!: pulumi.Output<boolean | undefined>;
+    /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     public readonly autoPullTime!: pulumi.Output<string | undefined>;
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to 'none'
+     */
+    public readonly imageCreationDateCondition!: pulumi.Output<string>;
     /**
      * The last time the registry was modified in UNIX time
      */
@@ -68,6 +76,14 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      * List of possible prefixes to image names pulled from the registry
      */
     public readonly prefixes!: pulumi.Output<string[]>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+     */
+    public readonly pullImageAge!: pulumi.Output<string>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+     */
+    public readonly pullImageCount!: pulumi.Output<number>;
     /**
      * List of scanner names
      */
@@ -106,11 +122,15 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["autoPull"] = state ? state.autoPull : undefined;
             resourceInputs["autoPullInterval"] = state ? state.autoPullInterval : undefined;
             resourceInputs["autoPullMax"] = state ? state.autoPullMax : undefined;
+            resourceInputs["autoPullRescan"] = state ? state.autoPullRescan : undefined;
             resourceInputs["autoPullTime"] = state ? state.autoPullTime : undefined;
+            resourceInputs["imageCreationDateCondition"] = state ? state.imageCreationDateCondition : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["prefixes"] = state ? state.prefixes : undefined;
+            resourceInputs["pullImageAge"] = state ? state.pullImageAge : undefined;
+            resourceInputs["pullImageCount"] = state ? state.pullImageCount : undefined;
             resourceInputs["scannerNames"] = state ? state.scannerNames : undefined;
             resourceInputs["scannerType"] = state ? state.scannerType : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -125,11 +145,15 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["autoPull"] = args ? args.autoPull : undefined;
             resourceInputs["autoPullInterval"] = args ? args.autoPullInterval : undefined;
             resourceInputs["autoPullMax"] = args ? args.autoPullMax : undefined;
+            resourceInputs["autoPullRescan"] = args ? args.autoPullRescan : undefined;
             resourceInputs["autoPullTime"] = args ? args.autoPullTime : undefined;
+            resourceInputs["imageCreationDateCondition"] = args ? args.imageCreationDateCondition : undefined;
             resourceInputs["lastUpdated"] = args ? args.lastUpdated : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["prefixes"] = args ? args.prefixes : undefined;
+            resourceInputs["pullImageAge"] = args ? args.pullImageAge : undefined;
+            resourceInputs["pullImageCount"] = args ? args.pullImageCount : undefined;
             resourceInputs["scannerNames"] = args ? args.scannerNames : undefined;
             resourceInputs["scannerType"] = args ? args.scannerType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -162,9 +186,17 @@ export interface IntegrationRegistryState {
      */
     autoPullMax?: pulumi.Input<number>;
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     */
+    autoPullRescan?: pulumi.Input<boolean>;
+    /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     autoPullTime?: pulumi.Input<string>;
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to 'none'
+     */
+    imageCreationDateCondition?: pulumi.Input<string>;
     /**
      * The last time the registry was modified in UNIX time
      */
@@ -181,6 +213,14 @@ export interface IntegrationRegistryState {
      * List of possible prefixes to image names pulled from the registry
      */
     prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+     */
+    pullImageAge?: pulumi.Input<string>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+     */
+    pullImageCount?: pulumi.Input<number>;
     /**
      * List of scanner names
      */
@@ -224,9 +264,17 @@ export interface IntegrationRegistryArgs {
      */
     autoPullMax?: pulumi.Input<number>;
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     */
+    autoPullRescan?: pulumi.Input<boolean>;
+    /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     autoPullTime?: pulumi.Input<string>;
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to 'none'
+     */
+    imageCreationDateCondition?: pulumi.Input<string>;
     /**
      * The last time the registry was modified in UNIX time
      */
@@ -243,6 +291,14 @@ export interface IntegrationRegistryArgs {
      * List of possible prefixes to image names pulled from the registry
      */
     prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+     */
+    pullImageAge?: pulumi.Input<string>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+     */
+    pullImageCount?: pulumi.Input<number>;
     /**
      * List of scanner names
      */

@@ -13,10 +13,10 @@ namespace Pulumiverse.Aquasec
     public static class GetHostAssurancePolic
     {
         public static Task<GetHostAssurancePolicResult> InvokeAsync(GetHostAssurancePolicArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetHostAssurancePolicResult>("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", args ?? new GetHostAssurancePolicArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostAssurancePolicResult>("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", args ?? new GetHostAssurancePolicArgs(), options.WithDefaults());
 
         public static Output<GetHostAssurancePolicResult> Invoke(GetHostAssurancePolicInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetHostAssurancePolicResult>("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", args ?? new GetHostAssurancePolicInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostAssurancePolicResult>("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", args ?? new GetHostAssurancePolicInvokeArgs(), options.WithDefaults());
     }
 
 

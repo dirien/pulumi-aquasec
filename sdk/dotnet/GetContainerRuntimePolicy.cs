@@ -39,7 +39,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRuntimePolicyResult> InvokeAsync(GetContainerRuntimePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetContainerRuntimePolicyResult>("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args ?? new GetContainerRuntimePolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRuntimePolicyResult>("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args ?? new GetContainerRuntimePolicyArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -68,7 +68,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRuntimePolicyResult> Invoke(GetContainerRuntimePolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetContainerRuntimePolicyResult>("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args ?? new GetContainerRuntimePolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetContainerRuntimePolicyResult>("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args ?? new GetContainerRuntimePolicyInvokeArgs(), options.WithDefaults());
     }
 
 

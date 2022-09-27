@@ -11,7 +11,11 @@ export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: 
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", {
+        "autoPullRescan": args.autoPullRescan,
+        "imageCreationDateCondition": args.imageCreationDateCondition,
         "name": args.name,
+        "pullImageAge": args.pullImageAge,
+        "pullImageCount": args.pullImageCount,
         "scannerNames": args.scannerNames,
         "scannerType": args.scannerType,
     }, opts);
@@ -22,9 +26,28 @@ export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: 
  */
 export interface GetIntegrationRegistryArgs {
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     */
+    autoPullRescan?: boolean;
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to 'none'
+     */
+    imageCreationDateCondition?: string;
+    /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     name: string;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images
+     */
+    pullImageAge?: string;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+     */
+    pullImageCount?: number;
+    /**
+     * List of scanner names
+     */
     scannerNames?: string[];
     /**
      * Scanner type
@@ -49,6 +72,10 @@ export interface GetIntegrationRegistryResult {
      */
     readonly autoPullMax: number;
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     */
+    readonly autoPullRescan?: boolean;
+    /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     readonly autoPullTime: string;
@@ -56,6 +83,10 @@ export interface GetIntegrationRegistryResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to 'none'
+     */
+    readonly imageCreationDateCondition: string;
     /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
@@ -68,6 +99,17 @@ export interface GetIntegrationRegistryResult {
      * List of possible prefixes to image names pulled from the registry
      */
     readonly prefixes: string[];
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images
+     */
+    readonly pullImageAge: string;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+     */
+    readonly pullImageCount: number;
+    /**
+     * List of scanner names
+     */
     readonly scannerNames?: string[];
     /**
      * Scanner type
@@ -96,9 +138,28 @@ export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputA
  */
 export interface GetIntegrationRegistryOutputArgs {
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     */
+    autoPullRescan?: pulumi.Input<boolean>;
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to 'none'
+     */
+    imageCreationDateCondition?: pulumi.Input<string>;
+    /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     name: pulumi.Input<string>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images
+     */
+    pullImageAge?: pulumi.Input<string>;
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+     */
+    pullImageCount?: pulumi.Input<number>;
+    /**
+     * List of scanner names
+     */
     scannerNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Scanner type

@@ -79,6 +79,21 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     * 
+     */
+    @Import(name="autoPullRescan")
+    private @Nullable Output<Boolean> autoPullRescan;
+
+    /**
+     * @return Whether to automatically pull and rescan images from the registry on creation and daily
+     * 
+     */
+    public Optional<Output<Boolean>> autoPullRescan() {
+        return Optional.ofNullable(this.autoPullRescan);
+    }
+
+    /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      * 
      */
@@ -91,6 +106,21 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> autoPullTime() {
         return Optional.ofNullable(this.autoPullTime);
+    }
+
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+     * 
+     */
+    @Import(name="imageCreationDateCondition")
+    private @Nullable Output<String> imageCreationDateCondition;
+
+    /**
+     * @return Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+     * 
+     */
+    public Optional<Output<String>> imageCreationDateCondition() {
+        return Optional.ofNullable(this.imageCreationDateCondition);
     }
 
     /**
@@ -151,6 +181,36 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<List<String>>> prefixes() {
         return Optional.ofNullable(this.prefixes);
+    }
+
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
+     * 
+     */
+    @Import(name="pullImageAge")
+    private @Nullable Output<String> pullImageAge;
+
+    /**
+     * @return When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
+     * 
+     */
+    public Optional<Output<String>> pullImageAge() {
+        return Optional.ofNullable(this.pullImageAge);
+    }
+
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
+     * 
+     */
+    @Import(name="pullImageCount")
+    private @Nullable Output<Integer> pullImageCount;
+
+    /**
+     * @return When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
+     * 
+     */
+    public Optional<Output<Integer>> pullImageCount() {
+        return Optional.ofNullable(this.pullImageCount);
     }
 
     /**
@@ -235,11 +295,15 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
         this.autoPull = $.autoPull;
         this.autoPullInterval = $.autoPullInterval;
         this.autoPullMax = $.autoPullMax;
+        this.autoPullRescan = $.autoPullRescan;
         this.autoPullTime = $.autoPullTime;
+        this.imageCreationDateCondition = $.imageCreationDateCondition;
         this.lastUpdated = $.lastUpdated;
         this.name = $.name;
         this.password = $.password;
         this.prefixes = $.prefixes;
+        this.pullImageAge = $.pullImageAge;
+        this.pullImageCount = $.pullImageCount;
         this.scannerNames = $.scannerNames;
         this.scannerType = $.scannerType;
         this.type = $.type;
@@ -350,6 +414,27 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPullRescan(@Nullable Output<Boolean> autoPullRescan) {
+            $.autoPullRescan = autoPullRescan;
+            return this;
+        }
+
+        /**
+         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPullRescan(Boolean autoPullRescan) {
+            return autoPullRescan(Output.of(autoPullRescan));
+        }
+
+        /**
          * @param autoPullTime The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
          * 
          * @return builder
@@ -368,6 +453,27 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
          */
         public Builder autoPullTime(String autoPullTime) {
             return autoPullTime(Output.of(autoPullTime));
+        }
+
+        /**
+         * @param imageCreationDateCondition Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageCreationDateCondition(@Nullable Output<String> imageCreationDateCondition) {
+            $.imageCreationDateCondition = imageCreationDateCondition;
+            return this;
+        }
+
+        /**
+         * @param imageCreationDateCondition Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageCreationDateCondition(String imageCreationDateCondition) {
+            return imageCreationDateCondition(Output.of(imageCreationDateCondition));
         }
 
         /**
@@ -462,6 +568,48 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
          */
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
+        }
+
+        /**
+         * @param pullImageAge When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageAge(@Nullable Output<String> pullImageAge) {
+            $.pullImageAge = pullImageAge;
+            return this;
+        }
+
+        /**
+         * @param pullImageAge When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageAge(String pullImageAge) {
+            return pullImageAge(Output.of(pullImageAge));
+        }
+
+        /**
+         * @param pullImageCount When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageCount(@Nullable Output<Integer> pullImageCount) {
+            $.pullImageCount = pullImageCount;
+            return this;
+        }
+
+        /**
+         * @param pullImageCount When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageCount(Integer pullImageCount) {
+            return pullImageCount(Output.of(pullImageCount));
         }
 
         /**
