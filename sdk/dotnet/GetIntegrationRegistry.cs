@@ -13,23 +13,51 @@ namespace Pulumiverse.Aquasec
     public static class GetIntegrationRegistry
     {
         public static Task<GetIntegrationRegistryResult> InvokeAsync(GetIntegrationRegistryArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationRegistryResult>("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", args ?? new GetIntegrationRegistryArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationRegistryResult>("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", args ?? new GetIntegrationRegistryArgs(), options.WithDefaults());
 
         public static Output<GetIntegrationRegistryResult> Invoke(GetIntegrationRegistryInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetIntegrationRegistryResult>("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", args ?? new GetIntegrationRegistryInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetIntegrationRegistryResult>("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", args ?? new GetIntegrationRegistryInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetIntegrationRegistryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Whether to automatically pull and rescan images from the registry on creation and daily
+        /// </summary>
+        [Input("autoPullRescan")]
+        public bool? AutoPullRescan { get; set; }
+
+        /// <summary>
+        /// Additional condition for pulling and rescanning images, Defaults to 'none'
+        /// </summary>
+        [Input("imageCreationDateCondition")]
+        public string? ImageCreationDateCondition { get; set; }
+
+        /// <summary>
         /// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images
+        /// </summary>
+        [Input("pullImageAge")]
+        public string? PullImageAge { get; set; }
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+        /// </summary>
+        [Input("pullImageCount")]
+        public int? PullImageCount { get; set; }
+
         [Input("scannerNames")]
         private List<string>? _scannerNames;
+
+        /// <summary>
+        /// List of scanner names
+        /// </summary>
         public List<string> ScannerNames
         {
             get => _scannerNames ?? (_scannerNames = new List<string>());
@@ -51,13 +79,41 @@ namespace Pulumiverse.Aquasec
     public sealed class GetIntegrationRegistryInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Whether to automatically pull and rescan images from the registry on creation and daily
+        /// </summary>
+        [Input("autoPullRescan")]
+        public Input<bool>? AutoPullRescan { get; set; }
+
+        /// <summary>
+        /// Additional condition for pulling and rescanning images, Defaults to 'none'
+        /// </summary>
+        [Input("imageCreationDateCondition")]
+        public Input<string>? ImageCreationDateCondition { get; set; }
+
+        /// <summary>
         /// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images
+        /// </summary>
+        [Input("pullImageAge")]
+        public Input<string>? PullImageAge { get; set; }
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+        /// </summary>
+        [Input("pullImageCount")]
+        public Input<int>? PullImageCount { get; set; }
+
         [Input("scannerNames")]
         private InputList<string>? _scannerNames;
+
+        /// <summary>
+        /// List of scanner names
+        /// </summary>
         public InputList<string> ScannerNames
         {
             get => _scannerNames ?? (_scannerNames = new InputList<string>());
@@ -93,6 +149,10 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly int AutoPullMax;
         /// <summary>
+        /// Whether to automatically pull and rescan images from the registry on creation and daily
+        /// </summary>
+        public readonly bool? AutoPullRescan;
+        /// <summary>
         /// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         /// </summary>
         public readonly string AutoPullTime;
@@ -100,6 +160,10 @@ namespace Pulumiverse.Aquasec
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Additional condition for pulling and rescanning images, Defaults to 'none'
+        /// </summary>
+        public readonly string ImageCreationDateCondition;
         /// <summary>
         /// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         /// </summary>
@@ -112,6 +176,17 @@ namespace Pulumiverse.Aquasec
         /// List of possible prefixes to image names pulled from the registry
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images
+        /// </summary>
+        public readonly string PullImageAge;
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+        /// </summary>
+        public readonly int PullImageCount;
+        /// <summary>
+        /// List of scanner names
+        /// </summary>
         public readonly ImmutableArray<string> ScannerNames;
         /// <summary>
         /// Scanner type
@@ -138,15 +213,23 @@ namespace Pulumiverse.Aquasec
 
             int autoPullMax,
 
+            bool? autoPullRescan,
+
             string autoPullTime,
 
             string id,
+
+            string imageCreationDateCondition,
 
             string name,
 
             string password,
 
             ImmutableArray<string> prefixes,
+
+            string pullImageAge,
+
+            int pullImageCount,
 
             ImmutableArray<string> scannerNames,
 
@@ -161,11 +244,15 @@ namespace Pulumiverse.Aquasec
             AutoPull = autoPull;
             AutoPullInterval = autoPullInterval;
             AutoPullMax = autoPullMax;
+            AutoPullRescan = autoPullRescan;
             AutoPullTime = autoPullTime;
             Id = id;
+            ImageCreationDateCondition = imageCreationDateCondition;
             Name = name;
             Password = password;
             Prefixes = prefixes;
+            PullImageAge = pullImageAge;
+            PullImageCount = pullImageCount;
             ScannerNames = scannerNames;
             ScannerType = scannerType;
             Type = type;

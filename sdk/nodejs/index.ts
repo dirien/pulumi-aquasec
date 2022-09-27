@@ -5,43 +5,185 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./applicationScope";
-export * from "./containerRuntimePolicy";
-export * from "./enforcerGroups";
-export * from "./firewallPolicy";
-export * from "./functionAssurancePolicy";
-export * from "./functionRuntimePolicy";
-export * from "./getApplicationScope";
-export * from "./getContainerRuntimePolicy";
-export * from "./getEnforcerGroups";
-export * from "./getFirewallPolicy";
-export * from "./getFunctionAssurancePolicy";
-export * from "./getFunctionRuntimePolicy";
-export * from "./getGateways";
-export * from "./getGroups";
-export * from "./getHostAssurancePolic";
-export * from "./getHostRuntimePolicy";
-export * from "./getImage";
-export * from "./getImageAssurancePolicy";
-export * from "./getIntegrationRegistry";
-export * from "./getPermissionsSets";
-export * from "./getRoles";
-export * from "./getService";
-export * from "./getUsers";
-export * from "./getUsersSaas";
-export * from "./group";
-export * from "./hostAssurancePolic";
-export * from "./hostRuntimePolicy";
-export * from "./image";
-export * from "./imageAssurancePolicy";
-export * from "./integrationRegistry";
-export * from "./notificationSlack";
-export * from "./permissionsSets";
-export * from "./provider";
-export * from "./role";
-export * from "./service";
-export * from "./user";
-export * from "./userSaas";
+export { ApplicationScopeArgs, ApplicationScopeState } from "./applicationScope";
+export type ApplicationScope = import("./applicationScope").ApplicationScope;
+export const ApplicationScope: typeof import("./applicationScope").ApplicationScope = null as any;
+
+export { ContainerRuntimePolicyArgs, ContainerRuntimePolicyState } from "./containerRuntimePolicy";
+export type ContainerRuntimePolicy = import("./containerRuntimePolicy").ContainerRuntimePolicy;
+export const ContainerRuntimePolicy: typeof import("./containerRuntimePolicy").ContainerRuntimePolicy = null as any;
+
+export { EnforcerGroupsArgs, EnforcerGroupsState } from "./enforcerGroups";
+export type EnforcerGroups = import("./enforcerGroups").EnforcerGroups;
+export const EnforcerGroups: typeof import("./enforcerGroups").EnforcerGroups = null as any;
+
+export { FirewallPolicyArgs, FirewallPolicyState } from "./firewallPolicy";
+export type FirewallPolicy = import("./firewallPolicy").FirewallPolicy;
+export const FirewallPolicy: typeof import("./firewallPolicy").FirewallPolicy = null as any;
+
+export { FunctionAssurancePolicyArgs, FunctionAssurancePolicyState } from "./functionAssurancePolicy";
+export type FunctionAssurancePolicy = import("./functionAssurancePolicy").FunctionAssurancePolicy;
+export const FunctionAssurancePolicy: typeof import("./functionAssurancePolicy").FunctionAssurancePolicy = null as any;
+
+export { FunctionRuntimePolicyArgs, FunctionRuntimePolicyState } from "./functionRuntimePolicy";
+export type FunctionRuntimePolicy = import("./functionRuntimePolicy").FunctionRuntimePolicy;
+export const FunctionRuntimePolicy: typeof import("./functionRuntimePolicy").FunctionRuntimePolicy = null as any;
+
+export { GetApplicationScopeArgs, GetApplicationScopeResult, GetApplicationScopeOutputArgs } from "./getApplicationScope";
+export const getApplicationScope: typeof import("./getApplicationScope").getApplicationScope = null as any;
+export const getApplicationScopeOutput: typeof import("./getApplicationScope").getApplicationScopeOutput = null as any;
+
+export { GetContainerRuntimePolicyArgs, GetContainerRuntimePolicyResult, GetContainerRuntimePolicyOutputArgs } from "./getContainerRuntimePolicy";
+export const getContainerRuntimePolicy: typeof import("./getContainerRuntimePolicy").getContainerRuntimePolicy = null as any;
+export const getContainerRuntimePolicyOutput: typeof import("./getContainerRuntimePolicy").getContainerRuntimePolicyOutput = null as any;
+
+export { GetEnforcerGroupsArgs, GetEnforcerGroupsResult, GetEnforcerGroupsOutputArgs } from "./getEnforcerGroups";
+export const getEnforcerGroups: typeof import("./getEnforcerGroups").getEnforcerGroups = null as any;
+export const getEnforcerGroupsOutput: typeof import("./getEnforcerGroups").getEnforcerGroupsOutput = null as any;
+
+export { GetFirewallPolicyArgs, GetFirewallPolicyResult, GetFirewallPolicyOutputArgs } from "./getFirewallPolicy";
+export const getFirewallPolicy: typeof import("./getFirewallPolicy").getFirewallPolicy = null as any;
+export const getFirewallPolicyOutput: typeof import("./getFirewallPolicy").getFirewallPolicyOutput = null as any;
+
+export { GetFunctionAssurancePolicyArgs, GetFunctionAssurancePolicyResult, GetFunctionAssurancePolicyOutputArgs } from "./getFunctionAssurancePolicy";
+export const getFunctionAssurancePolicy: typeof import("./getFunctionAssurancePolicy").getFunctionAssurancePolicy = null as any;
+export const getFunctionAssurancePolicyOutput: typeof import("./getFunctionAssurancePolicy").getFunctionAssurancePolicyOutput = null as any;
+
+export { GetFunctionRuntimePolicyArgs, GetFunctionRuntimePolicyResult, GetFunctionRuntimePolicyOutputArgs } from "./getFunctionRuntimePolicy";
+export const getFunctionRuntimePolicy: typeof import("./getFunctionRuntimePolicy").getFunctionRuntimePolicy = null as any;
+export const getFunctionRuntimePolicyOutput: typeof import("./getFunctionRuntimePolicy").getFunctionRuntimePolicyOutput = null as any;
+
+export { GetGatewaysResult } from "./getGateways";
+export const getGateways: typeof import("./getGateways").getGateways = null as any;
+
+export { GetGroupsResult } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+
+export { GetHostAssurancePolicArgs, GetHostAssurancePolicResult, GetHostAssurancePolicOutputArgs } from "./getHostAssurancePolic";
+export const getHostAssurancePolic: typeof import("./getHostAssurancePolic").getHostAssurancePolic = null as any;
+export const getHostAssurancePolicOutput: typeof import("./getHostAssurancePolic").getHostAssurancePolicOutput = null as any;
+
+export { GetHostRuntimePolicyArgs, GetHostRuntimePolicyResult, GetHostRuntimePolicyOutputArgs } from "./getHostRuntimePolicy";
+export const getHostRuntimePolicy: typeof import("./getHostRuntimePolicy").getHostRuntimePolicy = null as any;
+export const getHostRuntimePolicyOutput: typeof import("./getHostRuntimePolicy").getHostRuntimePolicyOutput = null as any;
+
+export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
+export const getImage: typeof import("./getImage").getImage = null as any;
+export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
+
+export { GetImageAssurancePolicyArgs, GetImageAssurancePolicyResult, GetImageAssurancePolicyOutputArgs } from "./getImageAssurancePolicy";
+export const getImageAssurancePolicy: typeof import("./getImageAssurancePolicy").getImageAssurancePolicy = null as any;
+export const getImageAssurancePolicyOutput: typeof import("./getImageAssurancePolicy").getImageAssurancePolicyOutput = null as any;
+
+export { GetIntegrationRegistryArgs, GetIntegrationRegistryResult, GetIntegrationRegistryOutputArgs } from "./getIntegrationRegistry";
+export const getIntegrationRegistry: typeof import("./getIntegrationRegistry").getIntegrationRegistry = null as any;
+export const getIntegrationRegistryOutput: typeof import("./getIntegrationRegistry").getIntegrationRegistryOutput = null as any;
+
+export { GetPermissionsSetsResult } from "./getPermissionsSets";
+export const getPermissionsSets: typeof import("./getPermissionsSets").getPermissionsSets = null as any;
+
+export { GetRolesResult } from "./getRoles";
+export const getRoles: typeof import("./getRoles").getRoles = null as any;
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+
+export { GetUsersResult } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+
+export { GetUsersSaasResult } from "./getUsersSaas";
+export const getUsersSaas: typeof import("./getUsersSaas").getUsersSaas = null as any;
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+
+export { HostAssurancePolicArgs, HostAssurancePolicState } from "./hostAssurancePolic";
+export type HostAssurancePolic = import("./hostAssurancePolic").HostAssurancePolic;
+export const HostAssurancePolic: typeof import("./hostAssurancePolic").HostAssurancePolic = null as any;
+
+export { HostRuntimePolicyArgs, HostRuntimePolicyState } from "./hostRuntimePolicy";
+export type HostRuntimePolicy = import("./hostRuntimePolicy").HostRuntimePolicy;
+export const HostRuntimePolicy: typeof import("./hostRuntimePolicy").HostRuntimePolicy = null as any;
+
+export { ImageArgs, ImageState } from "./image";
+export type Image = import("./image").Image;
+export const Image: typeof import("./image").Image = null as any;
+
+export { ImageAssurancePolicyArgs, ImageAssurancePolicyState } from "./imageAssurancePolicy";
+export type ImageAssurancePolicy = import("./imageAssurancePolicy").ImageAssurancePolicy;
+export const ImageAssurancePolicy: typeof import("./imageAssurancePolicy").ImageAssurancePolicy = null as any;
+
+export { IntegrationRegistryArgs, IntegrationRegistryState } from "./integrationRegistry";
+export type IntegrationRegistry = import("./integrationRegistry").IntegrationRegistry;
+export const IntegrationRegistry: typeof import("./integrationRegistry").IntegrationRegistry = null as any;
+
+export { NotificationSlackArgs, NotificationSlackState } from "./notificationSlack";
+export type NotificationSlack = import("./notificationSlack").NotificationSlack;
+export const NotificationSlack: typeof import("./notificationSlack").NotificationSlack = null as any;
+
+export { PermissionsSetsArgs, PermissionsSetsState } from "./permissionsSets";
+export type PermissionsSets = import("./permissionsSets").PermissionsSets;
+export const PermissionsSets: typeof import("./permissionsSets").PermissionsSets = null as any;
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+
+export { RoleArgs, RoleState } from "./role";
+export type Role = import("./role").Role;
+export const Role: typeof import("./role").Role = null as any;
+
+export { ServiceArgs, ServiceState } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+
+export { UserSaasArgs, UserSaasState } from "./userSaas";
+export type UserSaas = import("./userSaas").UserSaas;
+export const UserSaas: typeof import("./userSaas").UserSaas = null as any;
+
+utilities.lazyLoad(exports, ["ApplicationScope"], () => require("./applicationScope"));
+utilities.lazyLoad(exports, ["ContainerRuntimePolicy"], () => require("./containerRuntimePolicy"));
+utilities.lazyLoad(exports, ["EnforcerGroups"], () => require("./enforcerGroups"));
+utilities.lazyLoad(exports, ["FirewallPolicy"], () => require("./firewallPolicy"));
+utilities.lazyLoad(exports, ["FunctionAssurancePolicy"], () => require("./functionAssurancePolicy"));
+utilities.lazyLoad(exports, ["FunctionRuntimePolicy"], () => require("./functionRuntimePolicy"));
+utilities.lazyLoad(exports, ["getApplicationScope","getApplicationScopeOutput"], () => require("./getApplicationScope"));
+utilities.lazyLoad(exports, ["getContainerRuntimePolicy","getContainerRuntimePolicyOutput"], () => require("./getContainerRuntimePolicy"));
+utilities.lazyLoad(exports, ["getEnforcerGroups","getEnforcerGroupsOutput"], () => require("./getEnforcerGroups"));
+utilities.lazyLoad(exports, ["getFirewallPolicy","getFirewallPolicyOutput"], () => require("./getFirewallPolicy"));
+utilities.lazyLoad(exports, ["getFunctionAssurancePolicy","getFunctionAssurancePolicyOutput"], () => require("./getFunctionAssurancePolicy"));
+utilities.lazyLoad(exports, ["getFunctionRuntimePolicy","getFunctionRuntimePolicyOutput"], () => require("./getFunctionRuntimePolicy"));
+utilities.lazyLoad(exports, ["getGateways"], () => require("./getGateways"));
+utilities.lazyLoad(exports, ["getGroups"], () => require("./getGroups"));
+utilities.lazyLoad(exports, ["getHostAssurancePolic","getHostAssurancePolicOutput"], () => require("./getHostAssurancePolic"));
+utilities.lazyLoad(exports, ["getHostRuntimePolicy","getHostRuntimePolicyOutput"], () => require("./getHostRuntimePolicy"));
+utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
+utilities.lazyLoad(exports, ["getImageAssurancePolicy","getImageAssurancePolicyOutput"], () => require("./getImageAssurancePolicy"));
+utilities.lazyLoad(exports, ["getIntegrationRegistry","getIntegrationRegistryOutput"], () => require("./getIntegrationRegistry"));
+utilities.lazyLoad(exports, ["getPermissionsSets"], () => require("./getPermissionsSets"));
+utilities.lazyLoad(exports, ["getRoles"], () => require("./getRoles"));
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+utilities.lazyLoad(exports, ["getUsers"], () => require("./getUsers"));
+utilities.lazyLoad(exports, ["getUsersSaas"], () => require("./getUsersSaas"));
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+utilities.lazyLoad(exports, ["HostAssurancePolic"], () => require("./hostAssurancePolic"));
+utilities.lazyLoad(exports, ["HostRuntimePolicy"], () => require("./hostRuntimePolicy"));
+utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+utilities.lazyLoad(exports, ["ImageAssurancePolicy"], () => require("./imageAssurancePolicy"));
+utilities.lazyLoad(exports, ["IntegrationRegistry"], () => require("./integrationRegistry"));
+utilities.lazyLoad(exports, ["NotificationSlack"], () => require("./notificationSlack"));
+utilities.lazyLoad(exports, ["PermissionsSets"], () => require("./permissionsSets"));
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+utilities.lazyLoad(exports, ["UserSaas"], () => require("./userSaas"));
 
 // Export sub-modules:
 import * as config from "./config";
@@ -51,26 +193,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { ApplicationScope } from "./applicationScope";
-import { ContainerRuntimePolicy } from "./containerRuntimePolicy";
-import { EnforcerGroups } from "./enforcerGroups";
-import { FirewallPolicy } from "./firewallPolicy";
-import { FunctionAssurancePolicy } from "./functionAssurancePolicy";
-import { FunctionRuntimePolicy } from "./functionRuntimePolicy";
-import { Group } from "./group";
-import { HostAssurancePolic } from "./hostAssurancePolic";
-import { HostRuntimePolicy } from "./hostRuntimePolicy";
-import { Image } from "./image";
-import { ImageAssurancePolicy } from "./imageAssurancePolicy";
-import { IntegrationRegistry } from "./integrationRegistry";
-import { NotificationSlack } from "./notificationSlack";
-import { PermissionsSets } from "./permissionsSets";
-import { Role } from "./role";
-import { Service } from "./service";
-import { User } from "./user";
-import { UserSaas } from "./userSaas";
 
 const _module = {
     version: utilities.getVersion(),
@@ -135,9 +257,6 @@ pulumi.runtime.registerResourceModule("aquasec", "index/role", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/service", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/user", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/userSaas", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("aquasec", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

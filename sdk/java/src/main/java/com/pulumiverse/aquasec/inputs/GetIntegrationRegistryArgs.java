@@ -5,6 +5,8 @@ package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,6 +17,36 @@ import javax.annotation.Nullable;
 public final class GetIntegrationRegistryArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetIntegrationRegistryArgs Empty = new GetIntegrationRegistryArgs();
+
+    /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     * 
+     */
+    @Import(name="autoPullRescan")
+    private @Nullable Output<Boolean> autoPullRescan;
+
+    /**
+     * @return Whether to automatically pull and rescan images from the registry on creation and daily
+     * 
+     */
+    public Optional<Output<Boolean>> autoPullRescan() {
+        return Optional.ofNullable(this.autoPullRescan);
+    }
+
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+     * 
+     */
+    @Import(name="imageCreationDateCondition")
+    private @Nullable Output<String> imageCreationDateCondition;
+
+    /**
+     * @return Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+     * 
+     */
+    public Optional<Output<String>> imageCreationDateCondition() {
+        return Optional.ofNullable(this.imageCreationDateCondition);
+    }
 
     /**
      * The name of the registry; string, required - this will be treated as the registry&#39;s ID, so choose a simple alphanumerical name without special signs and spaces
@@ -31,9 +63,47 @@ public final class GetIntegrationRegistryArgs extends com.pulumi.resources.Invok
         return this.name;
     }
 
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images
+     * 
+     */
+    @Import(name="pullImageAge")
+    private @Nullable Output<String> pullImageAge;
+
+    /**
+     * @return When auto pull image enabled, sets maximum age of auto pulled images
+     * 
+     */
+    public Optional<Output<String>> pullImageAge() {
+        return Optional.ofNullable(this.pullImageAge);
+    }
+
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+     * 
+     */
+    @Import(name="pullImageCount")
+    private @Nullable Output<Integer> pullImageCount;
+
+    /**
+     * @return When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+     * 
+     */
+    public Optional<Output<Integer>> pullImageCount() {
+        return Optional.ofNullable(this.pullImageCount);
+    }
+
+    /**
+     * List of scanner names
+     * 
+     */
     @Import(name="scannerNames")
     private @Nullable Output<List<String>> scannerNames;
 
+    /**
+     * @return List of scanner names
+     * 
+     */
     public Optional<Output<List<String>>> scannerNames() {
         return Optional.ofNullable(this.scannerNames);
     }
@@ -56,7 +126,11 @@ public final class GetIntegrationRegistryArgs extends com.pulumi.resources.Invok
     private GetIntegrationRegistryArgs() {}
 
     private GetIntegrationRegistryArgs(GetIntegrationRegistryArgs $) {
+        this.autoPullRescan = $.autoPullRescan;
+        this.imageCreationDateCondition = $.imageCreationDateCondition;
         this.name = $.name;
+        this.pullImageAge = $.pullImageAge;
+        this.pullImageCount = $.pullImageCount;
         this.scannerNames = $.scannerNames;
         this.scannerType = $.scannerType;
     }
@@ -80,6 +154,48 @@ public final class GetIntegrationRegistryArgs extends com.pulumi.resources.Invok
         }
 
         /**
+         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPullRescan(@Nullable Output<Boolean> autoPullRescan) {
+            $.autoPullRescan = autoPullRescan;
+            return this;
+        }
+
+        /**
+         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoPullRescan(Boolean autoPullRescan) {
+            return autoPullRescan(Output.of(autoPullRescan));
+        }
+
+        /**
+         * @param imageCreationDateCondition Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageCreationDateCondition(@Nullable Output<String> imageCreationDateCondition) {
+            $.imageCreationDateCondition = imageCreationDateCondition;
+            return this;
+        }
+
+        /**
+         * @param imageCreationDateCondition Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageCreationDateCondition(String imageCreationDateCondition) {
+            return imageCreationDateCondition(Output.of(imageCreationDateCondition));
+        }
+
+        /**
          * @param name The name of the registry; string, required - this will be treated as the registry&#39;s ID, so choose a simple alphanumerical name without special signs and spaces
          * 
          * @return builder
@@ -100,15 +216,75 @@ public final class GetIntegrationRegistryArgs extends com.pulumi.resources.Invok
             return name(Output.of(name));
         }
 
+        /**
+         * @param pullImageAge When auto pull image enabled, sets maximum age of auto pulled images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageAge(@Nullable Output<String> pullImageAge) {
+            $.pullImageAge = pullImageAge;
+            return this;
+        }
+
+        /**
+         * @param pullImageAge When auto pull image enabled, sets maximum age of auto pulled images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageAge(String pullImageAge) {
+            return pullImageAge(Output.of(pullImageAge));
+        }
+
+        /**
+         * @param pullImageCount When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageCount(@Nullable Output<Integer> pullImageCount) {
+            $.pullImageCount = pullImageCount;
+            return this;
+        }
+
+        /**
+         * @param pullImageCount When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pullImageCount(Integer pullImageCount) {
+            return pullImageCount(Output.of(pullImageCount));
+        }
+
+        /**
+         * @param scannerNames List of scanner names
+         * 
+         * @return builder
+         * 
+         */
         public Builder scannerNames(@Nullable Output<List<String>> scannerNames) {
             $.scannerNames = scannerNames;
             return this;
         }
 
+        /**
+         * @param scannerNames List of scanner names
+         * 
+         * @return builder
+         * 
+         */
         public Builder scannerNames(List<String> scannerNames) {
             return scannerNames(Output.of(scannerNames));
         }
 
+        /**
+         * @param scannerNames List of scanner names
+         * 
+         * @return builder
+         * 
+         */
         public Builder scannerNames(String... scannerNames) {
             return scannerNames(List.of(scannerNames));
         }

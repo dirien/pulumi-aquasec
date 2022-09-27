@@ -327,7 +327,7 @@ namespace Pulumiverse.Aquasec
         /// Name for the batch install record.
         /// </summary>
         [Output("logicalName")]
-        public Output<string?> LogicalName { get; private set; } = null!;
+        public Output<string> LogicalName { get; private set; } = null!;
 
         /// <summary>
         /// Number of low vulnerabilities in the enforcers that in this enforcer group.

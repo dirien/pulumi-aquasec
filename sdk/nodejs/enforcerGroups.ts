@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -204,7 +205,7 @@ export class EnforcerGroups extends pulumi.CustomResource {
     /**
      * List of Aqua gateway IDs for the Enforcers.
      */
-    public readonly gateways!: pulumi.Output<string[] | undefined>;
+    public readonly gateways!: pulumi.Output<string[]>;
     /**
      * The ID of the Enforcer group.
      */
@@ -269,7 +270,7 @@ export class EnforcerGroups extends pulumi.CustomResource {
     /**
      * Name for the batch install record.
      */
-    public readonly logicalName!: pulumi.Output<string | undefined>;
+    public readonly logicalName!: pulumi.Output<string>;
     /**
      * Number of low vulnerabilities in the enforcers that in this enforcer group.
      */

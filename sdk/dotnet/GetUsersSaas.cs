@@ -38,7 +38,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersSaasResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersSaasResult>("aquasec:index/getUsersSaas:getUsersSaas", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersSaasResult>("aquasec:index/getUsersSaas:getUsersSaas", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -76,6 +76,20 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoPullMax);
     }
     /**
+     * Whether to automatically pull and rescan images from the registry on creation and daily
+     * 
+     */
+    @Export(name="autoPullRescan", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> autoPullRescan;
+
+    /**
+     * @return Whether to automatically pull and rescan images from the registry on creation and daily
+     * 
+     */
+    public Output<Optional<Boolean>> autoPullRescan() {
+        return Codegen.optional(this.autoPullRescan);
+    }
+    /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      * 
      */
@@ -88,6 +102,20 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> autoPullTime() {
         return Codegen.optional(this.autoPullTime);
+    }
+    /**
+     * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+     * 
+     */
+    @Export(name="imageCreationDateCondition", type=String.class, parameters={})
+    private Output<String> imageCreationDateCondition;
+
+    /**
+     * @return Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
+     * 
+     */
+    public Output<String> imageCreationDateCondition() {
+        return this.imageCreationDateCondition;
     }
     /**
      * The last time the registry was modified in UNIX time
@@ -144,6 +172,34 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> prefixes() {
         return this.prefixes;
+    }
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
+     * 
+     */
+    @Export(name="pullImageAge", type=String.class, parameters={})
+    private Output<String> pullImageAge;
+
+    /**
+     * @return When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
+     * 
+     */
+    public Output<String> pullImageAge() {
+        return this.pullImageAge;
+    }
+    /**
+     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
+     * 
+     */
+    @Export(name="pullImageCount", type=Integer.class, parameters={})
+    private Output<Integer> pullImageCount;
+
+    /**
+     * @return When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
+     * 
+     */
+    public Output<Integer> pullImageCount() {
+        return this.pullImageCount;
     }
     /**
      * List of scanner names

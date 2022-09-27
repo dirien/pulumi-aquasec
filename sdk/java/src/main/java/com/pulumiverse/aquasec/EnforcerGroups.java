@@ -450,14 +450,14 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gateways", type=List.class, parameters={String.class})
-    private Output</* @Nullable */ List<String>> gateways;
+    private Output<List<String>> gateways;
 
     /**
      * @return List of Aqua gateway IDs for the Enforcers.
      * 
      */
-    public Output<Optional<List<String>>> gateways() {
-        return Codegen.optional(this.gateways);
+    public Output<List<String>> gateways() {
+        return this.gateways;
     }
     /**
      * The ID of the Enforcer group.
@@ -676,14 +676,14 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="logicalName", type=String.class, parameters={})
-    private Output</* @Nullable */ String> logicalName;
+    private Output<String> logicalName;
 
     /**
      * @return Name for the batch install record.
      * 
      */
-    public Output<Optional<String>> logicalName() {
-        return Codegen.optional(this.logicalName);
+    public Output<String> logicalName() {
+        return this.logicalName;
     }
     /**
      * Number of low vulnerabilities in the enforcers that in this enforcer group.

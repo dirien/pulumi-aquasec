@@ -46,7 +46,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetPermissionsSetsResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsSetsResult>("aquasec:index/getPermissionsSets:getPermissionsSets", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsSetsResult>("aquasec:index/getPermissionsSets:getPermissionsSets", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

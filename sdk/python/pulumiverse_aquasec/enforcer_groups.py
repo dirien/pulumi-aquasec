@@ -2452,7 +2452,7 @@ class EnforcerGroups(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def gateways(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def gateways(self) -> pulumi.Output[Sequence[str]]:
         """
         List of Aqua gateway IDs for the Enforcers.
         """
@@ -2581,7 +2581,7 @@ class EnforcerGroups(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logicalName")
-    def logical_name(self) -> pulumi.Output[Optional[str]]:
+    def logical_name(self) -> pulumi.Output[str]:
         """
         Name for the batch install record.
         """

@@ -22,8 +22,12 @@ type IntegrationRegistry struct {
 	AutoPullInterval pulumi.IntPtrOutput `pulumi:"autoPullInterval"`
 	// Maximum number of repositories to pull every day, defaults to 100
 	AutoPullMax pulumi.IntPtrOutput `pulumi:"autoPullMax"`
+	// Whether to automatically pull and rescan images from the registry on creation and daily
+	AutoPullRescan pulumi.BoolPtrOutput `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime pulumi.StringPtrOutput `pulumi:"autoPullTime"`
+	// Additional condition for pulling and rescanning images, Defaults to 'none'
+	ImageCreationDateCondition pulumi.StringOutput `pulumi:"imageCreationDateCondition"`
 	// The last time the registry was modified in UNIX time
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -32,6 +36,10 @@ type IntegrationRegistry struct {
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// List of possible prefixes to image names pulled from the registry
 	Prefixes pulumi.StringArrayOutput `pulumi:"prefixes"`
+	// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+	PullImageAge pulumi.StringOutput `pulumi:"pullImageAge"`
+	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+	PullImageCount pulumi.IntOutput `pulumi:"pullImageCount"`
 	// List of scanner names
 	ScannerNames pulumi.StringArrayOutput `pulumi:"scannerNames"`
 	// The Scanner type
@@ -85,8 +93,12 @@ type integrationRegistryState struct {
 	AutoPullInterval *int `pulumi:"autoPullInterval"`
 	// Maximum number of repositories to pull every day, defaults to 100
 	AutoPullMax *int `pulumi:"autoPullMax"`
+	// Whether to automatically pull and rescan images from the registry on creation and daily
+	AutoPullRescan *bool `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime *string `pulumi:"autoPullTime"`
+	// Additional condition for pulling and rescanning images, Defaults to 'none'
+	ImageCreationDateCondition *string `pulumi:"imageCreationDateCondition"`
 	// The last time the registry was modified in UNIX time
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -95,6 +107,10 @@ type integrationRegistryState struct {
 	Password *string `pulumi:"password"`
 	// List of possible prefixes to image names pulled from the registry
 	Prefixes []string `pulumi:"prefixes"`
+	// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+	PullImageAge *string `pulumi:"pullImageAge"`
+	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+	PullImageCount *int `pulumi:"pullImageCount"`
 	// List of scanner names
 	ScannerNames []string `pulumi:"scannerNames"`
 	// The Scanner type
@@ -116,8 +132,12 @@ type IntegrationRegistryState struct {
 	AutoPullInterval pulumi.IntPtrInput
 	// Maximum number of repositories to pull every day, defaults to 100
 	AutoPullMax pulumi.IntPtrInput
+	// Whether to automatically pull and rescan images from the registry on creation and daily
+	AutoPullRescan pulumi.BoolPtrInput
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime pulumi.StringPtrInput
+	// Additional condition for pulling and rescanning images, Defaults to 'none'
+	ImageCreationDateCondition pulumi.StringPtrInput
 	// The last time the registry was modified in UNIX time
 	LastUpdated pulumi.StringPtrInput
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -126,6 +146,10 @@ type IntegrationRegistryState struct {
 	Password pulumi.StringPtrInput
 	// List of possible prefixes to image names pulled from the registry
 	Prefixes pulumi.StringArrayInput
+	// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+	PullImageAge pulumi.StringPtrInput
+	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+	PullImageCount pulumi.IntPtrInput
 	// List of scanner names
 	ScannerNames pulumi.StringArrayInput
 	// The Scanner type
@@ -151,8 +175,12 @@ type integrationRegistryArgs struct {
 	AutoPullInterval *int `pulumi:"autoPullInterval"`
 	// Maximum number of repositories to pull every day, defaults to 100
 	AutoPullMax *int `pulumi:"autoPullMax"`
+	// Whether to automatically pull and rescan images from the registry on creation and daily
+	AutoPullRescan *bool `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime *string `pulumi:"autoPullTime"`
+	// Additional condition for pulling and rescanning images, Defaults to 'none'
+	ImageCreationDateCondition *string `pulumi:"imageCreationDateCondition"`
 	// The last time the registry was modified in UNIX time
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -161,6 +189,10 @@ type integrationRegistryArgs struct {
 	Password *string `pulumi:"password"`
 	// List of possible prefixes to image names pulled from the registry
 	Prefixes []string `pulumi:"prefixes"`
+	// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+	PullImageAge *string `pulumi:"pullImageAge"`
+	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+	PullImageCount *int `pulumi:"pullImageCount"`
 	// List of scanner names
 	ScannerNames []string `pulumi:"scannerNames"`
 	// The Scanner type
@@ -183,8 +215,12 @@ type IntegrationRegistryArgs struct {
 	AutoPullInterval pulumi.IntPtrInput
 	// Maximum number of repositories to pull every day, defaults to 100
 	AutoPullMax pulumi.IntPtrInput
+	// Whether to automatically pull and rescan images from the registry on creation and daily
+	AutoPullRescan pulumi.BoolPtrInput
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime pulumi.StringPtrInput
+	// Additional condition for pulling and rescanning images, Defaults to 'none'
+	ImageCreationDateCondition pulumi.StringPtrInput
 	// The last time the registry was modified in UNIX time
 	LastUpdated pulumi.StringPtrInput
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -193,6 +229,10 @@ type IntegrationRegistryArgs struct {
 	Password pulumi.StringPtrInput
 	// List of possible prefixes to image names pulled from the registry
 	Prefixes pulumi.StringArrayInput
+	// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+	PullImageAge pulumi.StringPtrInput
+	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+	PullImageCount pulumi.IntPtrInput
 	// List of scanner names
 	ScannerNames pulumi.StringArrayInput
 	// The Scanner type
@@ -312,9 +352,19 @@ func (o IntegrationRegistryOutput) AutoPullMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.IntPtrOutput { return v.AutoPullMax }).(pulumi.IntPtrOutput)
 }
 
+// Whether to automatically pull and rescan images from the registry on creation and daily
+func (o IntegrationRegistryOutput) AutoPullRescan() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) pulumi.BoolPtrOutput { return v.AutoPullRescan }).(pulumi.BoolPtrOutput)
+}
+
 // The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 func (o IntegrationRegistryOutput) AutoPullTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringPtrOutput { return v.AutoPullTime }).(pulumi.StringPtrOutput)
+}
+
+// Additional condition for pulling and rescanning images, Defaults to 'none'
+func (o IntegrationRegistryOutput) ImageCreationDateCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringOutput { return v.ImageCreationDateCondition }).(pulumi.StringOutput)
 }
 
 // The last time the registry was modified in UNIX time
@@ -335,6 +385,16 @@ func (o IntegrationRegistryOutput) Password() pulumi.StringPtrOutput {
 // List of possible prefixes to image names pulled from the registry
 func (o IntegrationRegistryOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringArrayOutput { return v.Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `imageCreationDateCondition = "imageAge"`
+func (o IntegrationRegistryOutput) PullImageAge() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringOutput { return v.PullImageAge }).(pulumi.StringOutput)
+}
+
+// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
+func (o IntegrationRegistryOutput) PullImageCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) pulumi.IntOutput { return v.PullImageCount }).(pulumi.IntOutput)
 }
 
 // List of scanner names

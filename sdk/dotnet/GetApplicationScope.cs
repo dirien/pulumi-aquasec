@@ -39,7 +39,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationScopeResult> InvokeAsync(GetApplicationScopeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationScopeResult>("aquasec:index/getApplicationScope:getApplicationScope", args ?? new GetApplicationScopeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationScopeResult>("aquasec:index/getApplicationScope:getApplicationScope", args ?? new GetApplicationScopeArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -68,7 +68,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationScopeResult> Invoke(GetApplicationScopeInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationScopeResult>("aquasec:index/getApplicationScope:getApplicationScope", args ?? new GetApplicationScopeInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationScopeResult>("aquasec:index/getApplicationScope:getApplicationScope", args ?? new GetApplicationScopeInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -1,4 +1,4 @@
-# Foo Resource Provider
+# Aquasec Resource Provider
 
 The Aquasec Resource Provider lets you manage [Aquasec](https://www.aquasec.com/) resources.
 

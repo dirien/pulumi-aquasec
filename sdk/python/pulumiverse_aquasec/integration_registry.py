@@ -19,11 +19,15 @@ class IntegrationRegistryArgs:
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
+                 auto_pull_rescan: Optional[pulumi.Input[bool]] = None,
                  auto_pull_time: Optional[pulumi.Input[str]] = None,
+                 image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pull_image_age: Optional[pulumi.Input[str]] = None,
+                 pull_image_count: Optional[pulumi.Input[int]] = None,
                  scanner_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scanner_type: Optional[pulumi.Input[str]] = None,
                  url: Optional[pulumi.Input[str]] = None,
@@ -35,11 +39,15 @@ class IntegrationRegistryArgs:
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
+        :param pulumi.Input[bool] auto_pull_rescan: Whether to automatically pull and rescan images from the registry on creation and daily
         :param pulumi.Input[str] auto_pull_time: The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
+        :param pulumi.Input[str] image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
         :param pulumi.Input[str] last_updated: The last time the registry was modified in UNIX time
         :param pulumi.Input[str] name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         :param pulumi.Input[str] password: The password for registry authentication
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: List of possible prefixes to image names pulled from the registry
+        :param pulumi.Input[str] pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        :param pulumi.Input[int] pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
         :param pulumi.Input[str] url: The URL, address or region of the registry
@@ -54,8 +62,12 @@ class IntegrationRegistryArgs:
             pulumi.set(__self__, "auto_pull_interval", auto_pull_interval)
         if auto_pull_max is not None:
             pulumi.set(__self__, "auto_pull_max", auto_pull_max)
+        if auto_pull_rescan is not None:
+            pulumi.set(__self__, "auto_pull_rescan", auto_pull_rescan)
         if auto_pull_time is not None:
             pulumi.set(__self__, "auto_pull_time", auto_pull_time)
+        if image_creation_date_condition is not None:
+            pulumi.set(__self__, "image_creation_date_condition", image_creation_date_condition)
         if last_updated is not None:
             pulumi.set(__self__, "last_updated", last_updated)
         if name is not None:
@@ -64,6 +76,10 @@ class IntegrationRegistryArgs:
             pulumi.set(__self__, "password", password)
         if prefixes is not None:
             pulumi.set(__self__, "prefixes", prefixes)
+        if pull_image_age is not None:
+            pulumi.set(__self__, "pull_image_age", pull_image_age)
+        if pull_image_count is not None:
+            pulumi.set(__self__, "pull_image_count", pull_image_count)
         if scanner_names is not None:
             pulumi.set(__self__, "scanner_names", scanner_names)
         if scanner_type is not None:
@@ -134,6 +150,18 @@ class IntegrationRegistryArgs:
         pulumi.set(self, "auto_pull_max", value)
 
     @property
+    @pulumi.getter(name="autoPullRescan")
+    def auto_pull_rescan(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically pull and rescan images from the registry on creation and daily
+        """
+        return pulumi.get(self, "auto_pull_rescan")
+
+    @auto_pull_rescan.setter
+    def auto_pull_rescan(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pull_rescan", value)
+
+    @property
     @pulumi.getter(name="autoPullTime")
     def auto_pull_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -144,6 +172,18 @@ class IntegrationRegistryArgs:
     @auto_pull_time.setter
     def auto_pull_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_pull_time", value)
+
+    @property
+    @pulumi.getter(name="imageCreationDateCondition")
+    def image_creation_date_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional condition for pulling and rescanning images, Defaults to 'none'
+        """
+        return pulumi.get(self, "image_creation_date_condition")
+
+    @image_creation_date_condition.setter
+    def image_creation_date_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_creation_date_condition", value)
 
     @property
     @pulumi.getter(name="lastUpdated")
@@ -192,6 +232,30 @@ class IntegrationRegistryArgs:
     @prefixes.setter
     def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter(name="pullImageAge")
+    def pull_image_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        """
+        return pulumi.get(self, "pull_image_age")
+
+    @pull_image_age.setter
+    def pull_image_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pull_image_age", value)
+
+    @property
+    @pulumi.getter(name="pullImageCount")
+    def pull_image_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
+        """
+        return pulumi.get(self, "pull_image_count")
+
+    @pull_image_count.setter
+    def pull_image_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pull_image_count", value)
 
     @property
     @pulumi.getter(name="scannerNames")
@@ -249,11 +313,15 @@ class _IntegrationRegistryState:
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
+                 auto_pull_rescan: Optional[pulumi.Input[bool]] = None,
                  auto_pull_time: Optional[pulumi.Input[str]] = None,
+                 image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pull_image_age: Optional[pulumi.Input[str]] = None,
+                 pull_image_count: Optional[pulumi.Input[int]] = None,
                  scanner_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scanner_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -265,11 +333,15 @@ class _IntegrationRegistryState:
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
+        :param pulumi.Input[bool] auto_pull_rescan: Whether to automatically pull and rescan images from the registry on creation and daily
         :param pulumi.Input[str] auto_pull_time: The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
+        :param pulumi.Input[str] image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
         :param pulumi.Input[str] last_updated: The last time the registry was modified in UNIX time
         :param pulumi.Input[str] name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         :param pulumi.Input[str] password: The password for registry authentication
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: List of possible prefixes to image names pulled from the registry
+        :param pulumi.Input[str] pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        :param pulumi.Input[int] pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
         :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
@@ -284,8 +356,12 @@ class _IntegrationRegistryState:
             pulumi.set(__self__, "auto_pull_interval", auto_pull_interval)
         if auto_pull_max is not None:
             pulumi.set(__self__, "auto_pull_max", auto_pull_max)
+        if auto_pull_rescan is not None:
+            pulumi.set(__self__, "auto_pull_rescan", auto_pull_rescan)
         if auto_pull_time is not None:
             pulumi.set(__self__, "auto_pull_time", auto_pull_time)
+        if image_creation_date_condition is not None:
+            pulumi.set(__self__, "image_creation_date_condition", image_creation_date_condition)
         if last_updated is not None:
             pulumi.set(__self__, "last_updated", last_updated)
         if name is not None:
@@ -294,6 +370,10 @@ class _IntegrationRegistryState:
             pulumi.set(__self__, "password", password)
         if prefixes is not None:
             pulumi.set(__self__, "prefixes", prefixes)
+        if pull_image_age is not None:
+            pulumi.set(__self__, "pull_image_age", pull_image_age)
+        if pull_image_count is not None:
+            pulumi.set(__self__, "pull_image_count", pull_image_count)
         if scanner_names is not None:
             pulumi.set(__self__, "scanner_names", scanner_names)
         if scanner_type is not None:
@@ -354,6 +434,18 @@ class _IntegrationRegistryState:
         pulumi.set(self, "auto_pull_max", value)
 
     @property
+    @pulumi.getter(name="autoPullRescan")
+    def auto_pull_rescan(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to automatically pull and rescan images from the registry on creation and daily
+        """
+        return pulumi.get(self, "auto_pull_rescan")
+
+    @auto_pull_rescan.setter
+    def auto_pull_rescan(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_pull_rescan", value)
+
+    @property
     @pulumi.getter(name="autoPullTime")
     def auto_pull_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -364,6 +456,18 @@ class _IntegrationRegistryState:
     @auto_pull_time.setter
     def auto_pull_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auto_pull_time", value)
+
+    @property
+    @pulumi.getter(name="imageCreationDateCondition")
+    def image_creation_date_condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional condition for pulling and rescanning images, Defaults to 'none'
+        """
+        return pulumi.get(self, "image_creation_date_condition")
+
+    @image_creation_date_condition.setter
+    def image_creation_date_condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_creation_date_condition", value)
 
     @property
     @pulumi.getter(name="lastUpdated")
@@ -412,6 +516,30 @@ class _IntegrationRegistryState:
     @prefixes.setter
     def prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "prefixes", value)
+
+    @property
+    @pulumi.getter(name="pullImageAge")
+    def pull_image_age(self) -> Optional[pulumi.Input[str]]:
+        """
+        When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        """
+        return pulumi.get(self, "pull_image_age")
+
+    @pull_image_age.setter
+    def pull_image_age(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pull_image_age", value)
+
+    @property
+    @pulumi.getter(name="pullImageCount")
+    def pull_image_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
+        """
+        return pulumi.get(self, "pull_image_count")
+
+    @pull_image_count.setter
+    def pull_image_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pull_image_count", value)
 
     @property
     @pulumi.getter(name="scannerNames")
@@ -483,11 +611,15 @@ class IntegrationRegistry(pulumi.CustomResource):
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
+                 auto_pull_rescan: Optional[pulumi.Input[bool]] = None,
                  auto_pull_time: Optional[pulumi.Input[str]] = None,
+                 image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pull_image_age: Optional[pulumi.Input[str]] = None,
+                 pull_image_count: Optional[pulumi.Input[int]] = None,
                  scanner_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scanner_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -502,11 +634,15 @@ class IntegrationRegistry(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
+        :param pulumi.Input[bool] auto_pull_rescan: Whether to automatically pull and rescan images from the registry on creation and daily
         :param pulumi.Input[str] auto_pull_time: The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
+        :param pulumi.Input[str] image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
         :param pulumi.Input[str] last_updated: The last time the registry was modified in UNIX time
         :param pulumi.Input[str] name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         :param pulumi.Input[str] password: The password for registry authentication
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: List of possible prefixes to image names pulled from the registry
+        :param pulumi.Input[str] pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        :param pulumi.Input[int] pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
         :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
@@ -540,11 +676,15 @@ class IntegrationRegistry(pulumi.CustomResource):
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
+                 auto_pull_rescan: Optional[pulumi.Input[bool]] = None,
                  auto_pull_time: Optional[pulumi.Input[str]] = None,
+                 image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 pull_image_age: Optional[pulumi.Input[str]] = None,
+                 pull_image_count: Optional[pulumi.Input[int]] = None,
                  scanner_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scanner_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -563,11 +703,15 @@ class IntegrationRegistry(pulumi.CustomResource):
             __props__.__dict__["auto_pull"] = auto_pull
             __props__.__dict__["auto_pull_interval"] = auto_pull_interval
             __props__.__dict__["auto_pull_max"] = auto_pull_max
+            __props__.__dict__["auto_pull_rescan"] = auto_pull_rescan
             __props__.__dict__["auto_pull_time"] = auto_pull_time
+            __props__.__dict__["image_creation_date_condition"] = image_creation_date_condition
             __props__.__dict__["last_updated"] = last_updated
             __props__.__dict__["name"] = name
             __props__.__dict__["password"] = password
             __props__.__dict__["prefixes"] = prefixes
+            __props__.__dict__["pull_image_age"] = pull_image_age
+            __props__.__dict__["pull_image_count"] = pull_image_count
             __props__.__dict__["scanner_names"] = scanner_names
             __props__.__dict__["scanner_type"] = scanner_type
             if type is None and not opts.urn:
@@ -589,11 +733,15 @@ class IntegrationRegistry(pulumi.CustomResource):
             auto_pull: Optional[pulumi.Input[bool]] = None,
             auto_pull_interval: Optional[pulumi.Input[int]] = None,
             auto_pull_max: Optional[pulumi.Input[int]] = None,
+            auto_pull_rescan: Optional[pulumi.Input[bool]] = None,
             auto_pull_time: Optional[pulumi.Input[str]] = None,
+            image_creation_date_condition: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
             prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            pull_image_age: Optional[pulumi.Input[str]] = None,
+            pull_image_count: Optional[pulumi.Input[int]] = None,
             scanner_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             scanner_type: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -610,11 +758,15 @@ class IntegrationRegistry(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
+        :param pulumi.Input[bool] auto_pull_rescan: Whether to automatically pull and rescan images from the registry on creation and daily
         :param pulumi.Input[str] auto_pull_time: The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
+        :param pulumi.Input[str] image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
         :param pulumi.Input[str] last_updated: The last time the registry was modified in UNIX time
         :param pulumi.Input[str] name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         :param pulumi.Input[str] password: The password for registry authentication
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: List of possible prefixes to image names pulled from the registry
+        :param pulumi.Input[str] pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        :param pulumi.Input[int] pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
         :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
@@ -629,11 +781,15 @@ class IntegrationRegistry(pulumi.CustomResource):
         __props__.__dict__["auto_pull"] = auto_pull
         __props__.__dict__["auto_pull_interval"] = auto_pull_interval
         __props__.__dict__["auto_pull_max"] = auto_pull_max
+        __props__.__dict__["auto_pull_rescan"] = auto_pull_rescan
         __props__.__dict__["auto_pull_time"] = auto_pull_time
+        __props__.__dict__["image_creation_date_condition"] = image_creation_date_condition
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["name"] = name
         __props__.__dict__["password"] = password
         __props__.__dict__["prefixes"] = prefixes
+        __props__.__dict__["pull_image_age"] = pull_image_age
+        __props__.__dict__["pull_image_count"] = pull_image_count
         __props__.__dict__["scanner_names"] = scanner_names
         __props__.__dict__["scanner_type"] = scanner_type
         __props__.__dict__["type"] = type
@@ -674,12 +830,28 @@ class IntegrationRegistry(pulumi.CustomResource):
         return pulumi.get(self, "auto_pull_max")
 
     @property
+    @pulumi.getter(name="autoPullRescan")
+    def auto_pull_rescan(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to automatically pull and rescan images from the registry on creation and daily
+        """
+        return pulumi.get(self, "auto_pull_rescan")
+
+    @property
     @pulumi.getter(name="autoPullTime")
     def auto_pull_time(self) -> pulumi.Output[Optional[str]]:
         """
         The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         """
         return pulumi.get(self, "auto_pull_time")
+
+    @property
+    @pulumi.getter(name="imageCreationDateCondition")
+    def image_creation_date_condition(self) -> pulumi.Output[str]:
+        """
+        Additional condition for pulling and rescanning images, Defaults to 'none'
+        """
+        return pulumi.get(self, "image_creation_date_condition")
 
     @property
     @pulumi.getter(name="lastUpdated")
@@ -712,6 +884,22 @@ class IntegrationRegistry(pulumi.CustomResource):
         List of possible prefixes to image names pulled from the registry
         """
         return pulumi.get(self, "prefixes")
+
+    @property
+    @pulumi.getter(name="pullImageAge")
+    def pull_image_age(self) -> pulumi.Output[str]:
+        """
+        When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        """
+        return pulumi.get(self, "pull_image_age")
+
+    @property
+    @pulumi.getter(name="pullImageCount")
+    def pull_image_count(self) -> pulumi.Output[int]:
+        """
+        When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
+        """
+        return pulumi.get(self, "pull_image_count")
 
     @property
     @pulumi.getter(name="scannerNames")

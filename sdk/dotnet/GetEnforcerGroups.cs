@@ -39,7 +39,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnforcerGroupsResult> InvokeAsync(GetEnforcerGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// {{% examples %}}
@@ -68,7 +68,7 @@ namespace Pulumiverse.Aquasec
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnforcerGroupsResult> Invoke(GetEnforcerGroupsInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

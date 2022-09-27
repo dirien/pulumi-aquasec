@@ -13,10 +13,10 @@ namespace Pulumiverse.Aquasec
     public static class GetFunctionAssurancePolicy
     {
         public static Task<GetFunctionAssurancePolicyResult> InvokeAsync(GetFunctionAssurancePolicyArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFunctionAssurancePolicyResult>("aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy", args ?? new GetFunctionAssurancePolicyArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFunctionAssurancePolicyResult>("aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy", args ?? new GetFunctionAssurancePolicyArgs(), options.WithDefaults());
 
         public static Output<GetFunctionAssurancePolicyResult> Invoke(GetFunctionAssurancePolicyInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFunctionAssurancePolicyResult>("aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy", args ?? new GetFunctionAssurancePolicyInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFunctionAssurancePolicyResult>("aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy", args ?? new GetFunctionAssurancePolicyInvokeArgs(), options.WithDefaults());
     }
 
 

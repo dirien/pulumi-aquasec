@@ -38,10 +38,22 @@ namespace Pulumiverse.Aquasec
         public Output<int?> AutoPullMax { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to automatically pull and rescan images from the registry on creation and daily
+        /// </summary>
+        [Output("autoPullRescan")]
+        public Output<bool?> AutoPullRescan { get; private set; } = null!;
+
+        /// <summary>
         /// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         /// </summary>
         [Output("autoPullTime")]
         public Output<string?> AutoPullTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Additional condition for pulling and rescanning images, Defaults to 'none'
+        /// </summary>
+        [Output("imageCreationDateCondition")]
+        public Output<string> ImageCreationDateCondition { get; private set; } = null!;
 
         /// <summary>
         /// The last time the registry was modified in UNIX time
@@ -66,6 +78,18 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("prefixes")]
         public Output<ImmutableArray<string>> Prefixes { get; private set; } = null!;
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        /// </summary>
+        [Output("pullImageAge")]
+        public Output<string> PullImageAge { get; private set; } = null!;
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
+        /// </summary>
+        [Output("pullImageCount")]
+        public Output<int> PullImageCount { get; private set; } = null!;
 
         /// <summary>
         /// List of scanner names
@@ -169,10 +193,22 @@ namespace Pulumiverse.Aquasec
         public Input<int>? AutoPullMax { get; set; }
 
         /// <summary>
+        /// Whether to automatically pull and rescan images from the registry on creation and daily
+        /// </summary>
+        [Input("autoPullRescan")]
+        public Input<bool>? AutoPullRescan { get; set; }
+
+        /// <summary>
         /// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         /// </summary>
         [Input("autoPullTime")]
         public Input<string>? AutoPullTime { get; set; }
+
+        /// <summary>
+        /// Additional condition for pulling and rescanning images, Defaults to 'none'
+        /// </summary>
+        [Input("imageCreationDateCondition")]
+        public Input<string>? ImageCreationDateCondition { get; set; }
 
         /// <summary>
         /// The last time the registry was modified in UNIX time
@@ -203,6 +239,18 @@ namespace Pulumiverse.Aquasec
             get => _prefixes ?? (_prefixes = new InputList<string>());
             set => _prefixes = value;
         }
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        /// </summary>
+        [Input("pullImageAge")]
+        public Input<string>? PullImageAge { get; set; }
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
+        /// </summary>
+        [Input("pullImageCount")]
+        public Input<int>? PullImageCount { get; set; }
 
         [Input("scannerNames")]
         private InputList<string>? _scannerNames;
@@ -273,10 +321,22 @@ namespace Pulumiverse.Aquasec
         public Input<int>? AutoPullMax { get; set; }
 
         /// <summary>
+        /// Whether to automatically pull and rescan images from the registry on creation and daily
+        /// </summary>
+        [Input("autoPullRescan")]
+        public Input<bool>? AutoPullRescan { get; set; }
+
+        /// <summary>
         /// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         /// </summary>
         [Input("autoPullTime")]
         public Input<string>? AutoPullTime { get; set; }
+
+        /// <summary>
+        /// Additional condition for pulling and rescanning images, Defaults to 'none'
+        /// </summary>
+        [Input("imageCreationDateCondition")]
+        public Input<string>? ImageCreationDateCondition { get; set; }
 
         /// <summary>
         /// The last time the registry was modified in UNIX time
@@ -307,6 +367,18 @@ namespace Pulumiverse.Aquasec
             get => _prefixes ?? (_prefixes = new InputList<string>());
             set => _prefixes = value;
         }
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = "image_age"`
+        /// </summary>
+        [Input("pullImageAge")]
+        public Input<string>? PullImageAge { get; set; }
+
+        /// <summary>
+        /// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = "image_count"`
+        /// </summary>
+        [Input("pullImageCount")]
+        public Input<int>? PullImageCount { get; set; }
 
         [Input("scannerNames")]
         private InputList<string>? _scannerNames;
