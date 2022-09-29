@@ -16,8 +16,8 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-aquasec/sdk/go/aquasec"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
 //
 // )
 //
