@@ -165,6 +165,10 @@ namespace Pulumiverse.Aquasec
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-aquasec",
+                AdditionalSecretOutputs =
+                {
+                    "honeypotSecretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -272,11 +276,21 @@ namespace Pulumiverse.Aquasec
             set => _honeypotApplyOns = value;
         }
 
+        [Input("honeypotSecretKey")]
+        private Input<string>? _honeypotSecretKey;
+
         /// <summary>
         /// Honeypot User Password (Secret Key)
         /// </summary>
-        [Input("honeypotSecretKey")]
-        public Input<string>? HoneypotSecretKey { get; set; }
+        public Input<string>? HoneypotSecretKey
+        {
+            get => _honeypotSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _honeypotSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Serverless application name
@@ -406,11 +420,21 @@ namespace Pulumiverse.Aquasec
             set => _honeypotApplyOns = value;
         }
 
+        [Input("honeypotSecretKey")]
+        private Input<string>? _honeypotSecretKey;
+
         /// <summary>
         /// Honeypot User Password (Secret Key)
         /// </summary>
-        [Input("honeypotSecretKey")]
-        public Input<string>? HoneypotSecretKey { get; set; }
+        public Input<string>? HoneypotSecretKey
+        {
+            get => _honeypotSecretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _honeypotSecretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Serverless application name

@@ -18,31 +18,29 @@ class ServiceArgs:
     def __init__(__self__, *,
                  application_scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  policies: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 scope_expression: pulumi.Input[str],
-                 scope_variables: pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]],
                  target: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
                  monitoring: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[int]] = None):
+                 priority: Optional[pulumi.Input[int]] = None,
+                 scope_expression: Optional[pulumi.Input[str]] = None,
+                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The service's policies; an array of container firewall policy names.
-        :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]] scope_variables: List of scope attributes.
         :param pulumi.Input[str] target: Type of the workload. container or host.
         :param pulumi.Input[str] description: A textual description of the service record; maximum 500 characters.
         :param pulumi.Input[bool] enforce: Enforcement status of the service.
         :param pulumi.Input[bool] monitoring: Indicates if monitoring is enabled or not
         :param pulumi.Input[str] name: The name of the service. It is recommended not to use whitespace characters in the name.
         :param pulumi.Input[int] priority: Rules priority, must be between 1-100.
+        :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]] scope_variables: List of scope attributes.
         """
         pulumi.set(__self__, "application_scopes", application_scopes)
         pulumi.set(__self__, "policies", policies)
-        pulumi.set(__self__, "scope_expression", scope_expression)
-        pulumi.set(__self__, "scope_variables", scope_variables)
         pulumi.set(__self__, "target", target)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -54,6 +52,10 @@ class ServiceArgs:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if scope_expression is not None:
+            pulumi.set(__self__, "scope_expression", scope_expression)
+        if scope_variables is not None:
+            pulumi.set(__self__, "scope_variables", scope_variables)
 
     @property
     @pulumi.getter(name="applicationScopes")
@@ -78,30 +80,6 @@ class ServiceArgs:
     @policies.setter
     def policies(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "policies", value)
-
-    @property
-    @pulumi.getter(name="scopeExpression")
-    def scope_expression(self) -> pulumi.Input[str]:
-        """
-        Logical expression of how to compute the dependency of the scope variables.
-        """
-        return pulumi.get(self, "scope_expression")
-
-    @scope_expression.setter
-    def scope_expression(self, value: pulumi.Input[str]):
-        pulumi.set(self, "scope_expression", value)
-
-    @property
-    @pulumi.getter(name="scopeVariables")
-    def scope_variables(self) -> pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]]:
-        """
-        List of scope attributes.
-        """
-        return pulumi.get(self, "scope_variables")
-
-    @scope_variables.setter
-    def scope_variables(self, value: pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]]):
-        pulumi.set(self, "scope_variables", value)
 
     @property
     @pulumi.getter
@@ -174,6 +152,30 @@ class ServiceArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="scopeExpression")
+    def scope_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Logical expression of how to compute the dependency of the scope variables.
+        """
+        return pulumi.get(self, "scope_expression")
+
+    @scope_expression.setter
+    def scope_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_expression", value)
+
+    @property
+    @pulumi.getter(name="scopeVariables")
+    def scope_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]]]:
+        """
+        List of scope attributes.
+        """
+        return pulumi.get(self, "scope_variables")
+
+    @scope_variables.setter
+    def scope_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]]]):
+        pulumi.set(self, "scope_variables", value)
 
 
 @pulumi.input_type
@@ -668,11 +670,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError("Missing required property 'policies'")
             __props__.__dict__["policies"] = policies
             __props__.__dict__["priority"] = priority
-            if scope_expression is None and not opts.urn:
-                raise TypeError("Missing required property 'scope_expression'")
             __props__.__dict__["scope_expression"] = scope_expression
-            if scope_variables is None and not opts.urn:
-                raise TypeError("Missing required property 'scope_variables'")
             __props__.__dict__["scope_variables"] = scope_variables
             if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
@@ -897,7 +895,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scopeExpression")
-    def scope_expression(self) -> pulumi.Output[str]:
+    def scope_expression(self) -> pulumi.Output[Optional[str]]:
         """
         Logical expression of how to compute the dependency of the scope variables.
         """
@@ -905,7 +903,7 @@ class Service(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scopeVariables")
-    def scope_variables(self) -> pulumi.Output[Sequence['outputs.ServiceScopeVariable']]:
+    def scope_variables(self) -> pulumi.Output[Optional[Sequence['outputs.ServiceScopeVariable']]]:
         """
         List of scope attributes.
         """

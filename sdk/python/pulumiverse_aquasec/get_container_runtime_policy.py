@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetContainerRuntimePolicyResult',
@@ -22,7 +23,7 @@ class GetContainerRuntimePolicyResult:
     """
     A collection of values returned by getContainerRuntimePolicy.
     """
-    def __init__(__self__, allowed_executables=None, allowed_registries=None, application_scopes=None, audit_all_network_activity=None, audit_all_processes_activity=None, audit_full_command_arguments=None, author=None, block_access_host_network=None, block_adding_capabilities=None, block_container_exec=None, block_cryptocurrency_mining=None, block_fileless_exec=None, block_low_port_binding=None, block_non_compliant_images=None, block_non_compliant_workloads=None, block_non_k8s_containers=None, block_privileged_containers=None, block_reverse_shell=None, block_root_user=None, block_unregistered_images=None, block_use_ipc_namespace=None, block_use_pid_namespace=None, block_use_user_namespace=None, block_use_uts_namespace=None, blocked_capabilities=None, blocked_executables=None, blocked_files=None, blocked_inbound_ports=None, blocked_outbound_ports=None, blocked_packages=None, blocked_volumes=None, container_exec_allowed_processes=None, description=None, enable_drift_prevention=None, enable_fork_guard=None, enable_ip_reputation_security=None, enable_port_scan_detection=None, enabled=None, enforce=None, enforce_after_days=None, exceptional_readonly_files_and_directories=None, file_integrity_monitorings=None, fork_guard_process_limit=None, id=None, limit_new_privileges=None, monitor_system_time_changes=None, name=None, readonly_files_and_directories=None, reverse_shell_allowed_ips=None, reverse_shell_allowed_processes=None, scope_expression=None, scope_variables=None):
+    def __init__(__self__, allowed_executables=None, allowed_registries=None, application_scopes=None, audit_all_network_activity=None, audit_all_processes_activity=None, audit_full_command_arguments=None, author=None, block_access_host_network=None, block_adding_capabilities=None, block_container_exec=None, block_cryptocurrency_mining=None, block_fileless_exec=None, block_low_port_binding=None, block_non_compliant_images=None, block_non_compliant_workloads=None, block_non_k8s_containers=None, block_privileged_containers=None, block_reverse_shell=None, block_root_user=None, block_unregistered_images=None, block_use_ipc_namespace=None, block_use_pid_namespace=None, block_use_user_namespace=None, block_use_uts_namespace=None, blocked_capabilities=None, blocked_executables=None, blocked_files=None, blocked_inbound_ports=None, blocked_outbound_ports=None, blocked_packages=None, blocked_volumes=None, container_exec_allowed_processes=None, description=None, enable_drift_prevention=None, enable_fork_guard=None, enable_ip_reputation_security=None, enable_port_scan_detection=None, enabled=None, enforce=None, enforce_after_days=None, exceptional_readonly_files_and_directories=None, file_integrity_monitorings=None, fork_guard_process_limit=None, id=None, limit_new_privileges=None, malware_scan_options=None, monitor_system_time_changes=None, name=None, readonly_files_and_directories=None, reverse_shell_allowed_ips=None, reverse_shell_allowed_processes=None, scope_expression=None, scope_variables=None):
         if allowed_executables and not isinstance(allowed_executables, list):
             raise TypeError("Expected argument 'allowed_executables' to be a list")
         pulumi.set(__self__, "allowed_executables", allowed_executables)
@@ -158,6 +159,9 @@ class GetContainerRuntimePolicyResult:
         if limit_new_privileges and not isinstance(limit_new_privileges, bool):
             raise TypeError("Expected argument 'limit_new_privileges' to be a bool")
         pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
+        if malware_scan_options and not isinstance(malware_scan_options, dict):
+            raise TypeError("Expected argument 'malware_scan_options' to be a dict")
+        pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_time_changes and not isinstance(monitor_system_time_changes, bool):
             raise TypeError("Expected argument 'monitor_system_time_changes' to be a bool")
         pulumi.set(__self__, "monitor_system_time_changes", monitor_system_time_changes)
@@ -541,6 +545,14 @@ class GetContainerRuntimePolicyResult:
         return pulumi.get(self, "limit_new_privileges")
 
     @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional['outputs.GetContainerRuntimePolicyMalwareScanOptionsResult']:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @property
     @pulumi.getter(name="monitorSystemTimeChanges")
     def monitor_system_time_changes(self) -> bool:
         """
@@ -648,6 +660,7 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             fork_guard_process_limit=self.fork_guard_process_limit,
             id=self.id,
             limit_new_privileges=self.limit_new_privileges,
+            malware_scan_options=self.malware_scan_options,
             monitor_system_time_changes=self.monitor_system_time_changes,
             name=self.name,
             readonly_files_and_directories=self.readonly_files_and_directories,
@@ -657,7 +670,8 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             scope_variables=self.scope_variables)
 
 
-def get_container_runtime_policy(name: Optional[str] = None,
+def get_container_runtime_policy(malware_scan_options: Optional[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
+                                 name: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRuntimePolicyResult:
     """
     ## Example Usage
@@ -671,9 +685,11 @@ def get_container_runtime_policy(name: Optional[str] = None,
     ```
 
 
+    :param pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
     :param str name: Name of the container runtime policy
     """
     __args__ = dict()
+    __args__['malwareScanOptions'] = malware_scan_options
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy', __args__, opts=opts, typ=GetContainerRuntimePolicyResult).value
@@ -724,6 +740,7 @@ def get_container_runtime_policy(name: Optional[str] = None,
         fork_guard_process_limit=__ret__.fork_guard_process_limit,
         id=__ret__.id,
         limit_new_privileges=__ret__.limit_new_privileges,
+        malware_scan_options=__ret__.malware_scan_options,
         monitor_system_time_changes=__ret__.monitor_system_time_changes,
         name=__ret__.name,
         readonly_files_and_directories=__ret__.readonly_files_and_directories,
@@ -734,7 +751,8 @@ def get_container_runtime_policy(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_container_runtime_policy)
-def get_container_runtime_policy_output(name: Optional[pulumi.Input[str]] = None,
+def get_container_runtime_policy_output(malware_scan_options: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs']]]] = None,
+                                        name: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRuntimePolicyResult]:
     """
     ## Example Usage
@@ -748,6 +766,7 @@ def get_container_runtime_policy_output(name: Optional[pulumi.Input[str]] = None
     ```
 
 
+    :param pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
     :param str name: Name of the container runtime policy
     """
     ...

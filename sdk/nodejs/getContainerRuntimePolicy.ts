@@ -26,6 +26,7 @@ export function getContainerRuntimePolicy(args: GetContainerRuntimePolicyArgs, o
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", {
+        "malwareScanOptions": args.malwareScanOptions,
         "name": args.name,
     }, opts);
 }
@@ -34,6 +35,10 @@ export function getContainerRuntimePolicy(args: GetContainerRuntimePolicyArgs, o
  * A collection of arguments for invoking getContainerRuntimePolicy.
  */
 export interface GetContainerRuntimePolicyArgs {
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: inputs.GetContainerRuntimePolicyMalwareScanOptions;
     /**
      * Name of the container runtime policy
      */
@@ -225,6 +230,10 @@ export interface GetContainerRuntimePolicyResult {
      */
     readonly limitNewPrivileges: boolean;
     /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    readonly malwareScanOptions?: outputs.GetContainerRuntimePolicyMalwareScanOptions;
+    /**
      * If true, system time changes will be monitored.
      */
     readonly monitorSystemTimeChanges: boolean;
@@ -262,6 +271,10 @@ export function getContainerRuntimePolicyOutput(args: GetContainerRuntimePolicyO
  * A collection of arguments for invoking getContainerRuntimePolicy.
  */
 export interface GetContainerRuntimePolicyOutputArgs {
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<inputs.GetContainerRuntimePolicyMalwareScanOptionsArgs>;
     /**
      * Name of the container runtime policy
      */

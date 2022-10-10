@@ -6,9 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface ApplicationScopeCategory {
+    /**
+     * An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+     */
     artifacts?: outputs.ApplicationScopeCategoryArtifact[];
     entityScopes?: outputs.ApplicationScopeCategoryEntityScope[];
+    /**
+     * An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+     */
     infrastructures?: outputs.ApplicationScopeCategoryInfrastructure[];
+    /**
+     * A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+     */
     workloads?: outputs.ApplicationScopeCategoryWorkload[];
 }
 
@@ -166,11 +175,34 @@ export interface ContainerRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers?: string[];
 }
 
+export interface ContainerRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+}
+
 export interface ContainerRuntimePolicyScopeVariable {
     /**
      * Class of supported scope.
      */
     attribute: string;
+    /**
+     * Name assigned to the attribute.
+     */
+    name?: string;
     /**
      * Value assigned to the attribute.
      */
@@ -317,6 +349,10 @@ export interface FunctionRuntimePolicyScopeVariable {
      */
     attribute: string;
     /**
+     * Name assigned to the attribute.
+     */
+    name?: string;
+    /**
      * Value assigned to the attribute.
      */
     value: string;
@@ -450,8 +486,31 @@ export interface GetContainerRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers: string[];
 }
 
+export interface GetContainerRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+}
+
 export interface GetContainerRuntimePolicyScopeVariable {
     attribute: string;
+    /**
+     * Name of the container runtime policy
+     */
+    name: string;
     value: string;
 }
 
@@ -573,6 +632,10 @@ export interface GetFunctionAssurancePolicyTrustedBaseImage {
 
 export interface GetFunctionRuntimePolicyScopeVariable {
     attribute: string;
+    /**
+     * Name of the function runtime policy
+     */
+    name: string;
     value: string;
 }
 
@@ -683,8 +746,31 @@ export interface GetHostRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers: string[];
 }
 
+export interface GetHostRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+    /**
+     * List of directories to be protected.
+     */
+    includeDirectories?: string[];
+}
+
 export interface GetHostRuntimePolicyScopeVariable {
     attribute: string;
+    /**
+     * Name of the host runtime policy
+     */
+    name: string;
     value: string;
 }
 
@@ -907,6 +993,79 @@ export interface GetImageVulnerability {
     vendorUrl: string;
 }
 
+export interface GetKubernetesAssurancePolicyAutoScanTime {
+    iteration: number;
+    iterationType: string;
+    time: string;
+    weekDays: string[];
+}
+
+export interface GetKubernetesAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
+    author: string;
+    description: string;
+    engine: string;
+    lastModified: number;
+    name: string;
+    path: string;
+    readOnly: boolean;
+    scriptId: string;
+    severity: string;
+    snippet: string;
+}
+
+export interface GetKubernetesAssurancePolicyForbiddenLabel {
+    key: string;
+    value: string;
+}
+
+export interface GetKubernetesAssurancePolicyPackagesBlackList {
+    arch: string;
+    display: string;
+    epoch: string;
+    format: string;
+    license: string;
+    name: string;
+    release: string;
+    version: string;
+    versionRange: string;
+}
+
+export interface GetKubernetesAssurancePolicyPackagesWhiteList {
+    arch: string;
+    display: string;
+    epoch: string;
+    format: string;
+    license: string;
+    name: string;
+    release: string;
+    version: string;
+    versionRange: string;
+}
+
+export interface GetKubernetesAssurancePolicyRequiredLabel {
+    key: string;
+    value: string;
+}
+
+export interface GetKubernetesAssurancePolicyScope {
+    expression: string;
+    variables?: outputs.GetKubernetesAssurancePolicyScopeVariable[];
+}
+
+export interface GetKubernetesAssurancePolicyScopeVariable {
+    attribute: string;
+    name: string;
+    value: string;
+}
+
+export interface GetKubernetesAssurancePolicyTrustedBaseImage {
+    imagename: string;
+    registry: string;
+}
+
 export interface GetPermissionsSetsPermissionsSet {
     actions: string[];
     author: string;
@@ -915,6 +1074,29 @@ export interface GetPermissionsSetsPermissionsSet {
     name: string;
     uiAccess: boolean;
     updatedAt: string;
+}
+
+export interface GetRolesMappingOauth2 {
+    roleMapping: {[key: string]: string};
+}
+
+export interface GetRolesMappingOpenid {
+    roleMapping: {[key: string]: string};
+}
+
+export interface GetRolesMappingSaasRolesMapping {
+    accountId: number;
+    created: string;
+    cspRole: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    samlGroups: string[];
+}
+
+export interface GetRolesMappingSaml {
+    roleMapping: {[key: string]: string};
 }
 
 export interface GetRolesRole {
@@ -927,6 +1109,10 @@ export interface GetRolesRole {
 
 export interface GetServiceScopeVariable {
     attribute: string;
+    /**
+     * The name of the service. It is recommended not to use whitespace characters in the name.
+     */
+    name: string;
     value: string;
 }
 
@@ -981,14 +1167,14 @@ export interface GetUsersUser {
     userId: string;
 }
 
-export interface HostAssurancePolicAutoScanTime {
+export interface HostAssurancePolicyAutoScanTime {
     iteration: number;
     iterationType?: string;
     time?: string;
     weekDays: string[];
 }
 
-export interface HostAssurancePolicCustomCheck {
+export interface HostAssurancePolicyCustomCheck {
     /**
      * Name of user account that created the policy.
      */
@@ -1004,12 +1190,12 @@ export interface HostAssurancePolicCustomCheck {
     snippet?: string;
 }
 
-export interface HostAssurancePolicForbiddenLabel {
+export interface HostAssurancePolicyForbiddenLabel {
     key?: string;
     value?: string;
 }
 
-export interface HostAssurancePolicPackagesBlackList {
+export interface HostAssurancePolicyPackagesBlackList {
     arch?: string;
     display?: string;
     epoch?: string;
@@ -1021,7 +1207,7 @@ export interface HostAssurancePolicPackagesBlackList {
     versionRange?: string;
 }
 
-export interface HostAssurancePolicPackagesWhiteList {
+export interface HostAssurancePolicyPackagesWhiteList {
     arch?: string;
     display?: string;
     epoch?: string;
@@ -1033,23 +1219,23 @@ export interface HostAssurancePolicPackagesWhiteList {
     versionRange?: string;
 }
 
-export interface HostAssurancePolicRequiredLabel {
+export interface HostAssurancePolicyRequiredLabel {
     key?: string;
     value?: string;
 }
 
-export interface HostAssurancePolicScope {
+export interface HostAssurancePolicyScope {
     expression: string;
-    variables?: outputs.HostAssurancePolicScopeVariable[];
+    variables?: outputs.HostAssurancePolicyScopeVariable[];
 }
 
-export interface HostAssurancePolicScopeVariable {
+export interface HostAssurancePolicyScopeVariable {
     attribute: string;
     name?: string;
     value: string;
 }
 
-export interface HostAssurancePolicTrustedBaseImage {
+export interface HostAssurancePolicyTrustedBaseImage {
     imagename?: string;
     registry?: string;
 }
@@ -1101,11 +1287,34 @@ export interface HostRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers?: string[];
 }
 
+export interface HostRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+}
+
 export interface HostRuntimePolicyScopeVariable {
     /**
      * Class of supported scope.
      */
     attribute: string;
+    /**
+     * Name assigned to the attribute.
+     */
+    name?: string;
     /**
      * Value assigned to the attribute.
      */
@@ -1382,15 +1591,118 @@ export interface ImageVulnerability {
     vendorUrl: string;
 }
 
+export interface IntegrationRegistryOption {
+    option?: string;
+    value?: string;
+}
+
+export interface KubernetesAssurancePolicyAutoScanTime {
+    iteration: number;
+    iterationType?: string;
+    time?: string;
+    weekDays: string[];
+}
+
+export interface KubernetesAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
+    author?: string;
+    description?: string;
+    engine?: string;
+    lastModified?: number;
+    name?: string;
+    path?: string;
+    readOnly?: boolean;
+    scriptId?: string;
+    severity?: string;
+    snippet?: string;
+}
+
+export interface KubernetesAssurancePolicyForbiddenLabel {
+    key?: string;
+    value?: string;
+}
+
+export interface KubernetesAssurancePolicyPackagesBlackList {
+    arch?: string;
+    display?: string;
+    epoch?: string;
+    format?: string;
+    license?: string;
+    name?: string;
+    release?: string;
+    version?: string;
+    versionRange?: string;
+}
+
+export interface KubernetesAssurancePolicyPackagesWhiteList {
+    arch?: string;
+    display?: string;
+    epoch?: string;
+    format?: string;
+    license?: string;
+    name?: string;
+    release?: string;
+    version?: string;
+    versionRange?: string;
+}
+
+export interface KubernetesAssurancePolicyRequiredLabel {
+    key?: string;
+    value?: string;
+}
+
+export interface KubernetesAssurancePolicyScope {
+    expression: string;
+    variables?: outputs.KubernetesAssurancePolicyScopeVariable[];
+}
+
+export interface KubernetesAssurancePolicyScopeVariable {
+    attribute: string;
+    name?: string;
+    value: string;
+}
+
+export interface KubernetesAssurancePolicyTrustedBaseImage {
+    imagename?: string;
+    registry?: string;
+}
+
+export interface RoleMappingOauth2 {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: {[key: string]: string};
+}
+
+export interface RoleMappingOpenid {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: {[key: string]: string};
+}
+
+export interface RoleMappingSaml {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: {[key: string]: string};
+}
+
 export interface ServiceScopeVariable {
     /**
      * Class of supported scope.
      */
-    attribute: string;
+    attribute?: string;
+    /**
+     * Name assigned to the attribute.
+     */
+    name?: string;
     /**
      * Value assigned to the attribute.
      */
-    value: string;
+    value?: string;
 }
 
 export interface UserSaasGroup {
@@ -1407,4 +1719,3 @@ export interface UserSaasLogin {
     ipAddress: string;
     userId: number;
 }
-

@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ServiceScopeVariableArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,36 +19,52 @@ public final class ServiceScopeVariableArgs extends com.pulumi.resources.Resourc
      * Class of supported scope.
      * 
      */
-    @Import(name="attribute", required=true)
-    private Output<String> attribute;
+    @Import(name="attribute")
+    private @Nullable Output<String> attribute;
 
     /**
      * @return Class of supported scope.
      * 
      */
-    public Output<String> attribute() {
-        return this.attribute;
+    public Optional<Output<String>> attribute() {
+        return Optional.ofNullable(this.attribute);
+    }
+
+    /**
+     * Name assigned to the attribute.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name assigned to the attribute.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
      * Value assigned to the attribute.
      * 
      */
-    @Import(name="value", required=true)
-    private Output<String> value;
+    @Import(name="value")
+    private @Nullable Output<String> value;
 
     /**
      * @return Value assigned to the attribute.
      * 
      */
-    public Output<String> value() {
-        return this.value;
+    public Optional<Output<String>> value() {
+        return Optional.ofNullable(this.value);
     }
 
     private ServiceScopeVariableArgs() {}
 
     private ServiceScopeVariableArgs(ServiceScopeVariableArgs $) {
         this.attribute = $.attribute;
+        this.name = $.name;
         this.value = $.value;
     }
 
@@ -74,7 +92,7 @@ public final class ServiceScopeVariableArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder attribute(Output<String> attribute) {
+        public Builder attribute(@Nullable Output<String> attribute) {
             $.attribute = attribute;
             return this;
         }
@@ -90,12 +108,33 @@ public final class ServiceScopeVariableArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param name Name assigned to the attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name assigned to the attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
+        }
+
+        /**
          * @param value Value assigned to the attribute.
          * 
          * @return builder
          * 
          */
-        public Builder value(Output<String> value) {
+        public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
@@ -111,8 +150,6 @@ public final class ServiceScopeVariableArgs extends com.pulumi.resources.Resourc
         }
 
         public ServiceScopeVariableArgs build() {
-            $.attribute = Objects.requireNonNull($.attribute, "expected parameter 'attribute' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
             return $;
         }
     }

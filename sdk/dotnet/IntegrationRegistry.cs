@@ -67,6 +67,9 @@ namespace Pulumiverse.Aquasec
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("options")]
+        public Output<ImmutableArray<Outputs.IntegrationRegistryOption>> Options { get; private set; } = null!;
+
         /// <summary>
         /// The password for registry authentication
         /// </summary>
@@ -222,6 +225,14 @@ namespace Pulumiverse.Aquasec
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("options")]
+        private InputList<Inputs.IntegrationRegistryOptionArgs>? _options;
+        public InputList<Inputs.IntegrationRegistryOptionArgs> Options
+        {
+            get => _options ?? (_options = new InputList<Inputs.IntegrationRegistryOptionArgs>());
+            set => _options = value;
+        }
+
         /// <summary>
         /// The password for registry authentication
         /// </summary>
@@ -349,6 +360,14 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("options")]
+        private InputList<Inputs.IntegrationRegistryOptionGetArgs>? _options;
+        public InputList<Inputs.IntegrationRegistryOptionGetArgs> Options
+        {
+            get => _options ?? (_options = new InputList<Inputs.IntegrationRegistryOptionGetArgs>());
+            set => _options = value;
+        }
 
         /// <summary>
         /// The password for registry authentication

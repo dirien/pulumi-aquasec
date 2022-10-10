@@ -59,6 +59,7 @@ class ContainerRuntimePolicyArgs:
                  file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 malware_scan_options: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -111,6 +112,7 @@ class ContainerRuntimePolicyArgs:
         :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
+        :param pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[str] name: Name of the container runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
@@ -205,6 +207,8 @@ class ContainerRuntimePolicyArgs:
             pulumi.set(__self__, "fork_guard_process_limit", fork_guard_process_limit)
         if limit_new_privileges is not None:
             pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
+        if malware_scan_options is not None:
+            pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_time_changes is not None:
             pulumi.set(__self__, "monitor_system_time_changes", monitor_system_time_changes)
         if name is not None:
@@ -737,6 +741,18 @@ class ContainerRuntimePolicyArgs:
         pulumi.set(self, "limit_new_privileges", value)
 
     @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @malware_scan_options.setter
+    def malware_scan_options(self, value: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]):
+        pulumi.set(self, "malware_scan_options", value)
+
+    @property
     @pulumi.getter(name="monitorSystemTimeChanges")
     def monitor_system_time_changes(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -868,6 +884,7 @@ class _ContainerRuntimePolicyState:
                  file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 malware_scan_options: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -921,6 +938,7 @@ class _ContainerRuntimePolicyState:
         :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
+        :param pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[str] name: Name of the container runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
@@ -1017,6 +1035,8 @@ class _ContainerRuntimePolicyState:
             pulumi.set(__self__, "fork_guard_process_limit", fork_guard_process_limit)
         if limit_new_privileges is not None:
             pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
+        if malware_scan_options is not None:
+            pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_time_changes is not None:
             pulumi.set(__self__, "monitor_system_time_changes", monitor_system_time_changes)
         if name is not None:
@@ -1561,6 +1581,18 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "limit_new_privileges", value)
 
     @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @malware_scan_options.setter
+    def malware_scan_options(self, value: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]):
+        pulumi.set(self, "malware_scan_options", value)
+
+    @property
     @pulumi.getter(name="monitorSystemTimeChanges")
     def monitor_system_time_changes(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1693,6 +1725,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1855,6 +1888,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
+        :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[str] name: Name of the container runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
@@ -2036,6 +2070,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2095,6 +2130,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
             __props__.__dict__["fork_guard_process_limit"] = fork_guard_process_limit
             __props__.__dict__["limit_new_privileges"] = limit_new_privileges
+            __props__.__dict__["malware_scan_options"] = malware_scan_options
             __props__.__dict__["monitor_system_time_changes"] = monitor_system_time_changes
             __props__.__dict__["name"] = name
             __props__.__dict__["readonly_files_and_directories"] = readonly_files_and_directories
@@ -2157,6 +2193,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
             fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
             limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+            malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
             monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2215,6 +2252,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
+        :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[str] name: Name of the container runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
@@ -2271,6 +2309,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
         __props__.__dict__["fork_guard_process_limit"] = fork_guard_process_limit
         __props__.__dict__["limit_new_privileges"] = limit_new_privileges
+        __props__.__dict__["malware_scan_options"] = malware_scan_options
         __props__.__dict__["monitor_system_time_changes"] = monitor_system_time_changes
         __props__.__dict__["name"] = name
         __props__.__dict__["readonly_files_and_directories"] = readonly_files_and_directories
@@ -2631,6 +2670,14 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         """
         return pulumi.get(self, "limit_new_privileges")
+
+    @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> pulumi.Output[Optional['outputs.ContainerRuntimePolicyMalwareScanOptions']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
 
     @property
     @pulumi.getter(name="monitorSystemTimeChanges")

@@ -33,6 +33,7 @@ __all__ = [
     'ApplicationScopeCategoryWorkloadOArgs',
     'ApplicationScopeCategoryWorkloadOVariableArgs',
     'ContainerRuntimePolicyFileIntegrityMonitoringArgs',
+    'ContainerRuntimePolicyMalwareScanOptionsArgs',
     'ContainerRuntimePolicyScopeVariableArgs',
     'EnforcerGroupsCommandArgs',
     'EnforcerGroupsOrchestratorArgs',
@@ -48,16 +49,17 @@ __all__ = [
     'FunctionAssurancePolicyScopeVariableArgs',
     'FunctionAssurancePolicyTrustedBaseImageArgs',
     'FunctionRuntimePolicyScopeVariableArgs',
-    'HostAssurancePolicAutoScanTimeArgs',
-    'HostAssurancePolicCustomCheckArgs',
-    'HostAssurancePolicForbiddenLabelArgs',
-    'HostAssurancePolicPackagesBlackListArgs',
-    'HostAssurancePolicPackagesWhiteListArgs',
-    'HostAssurancePolicRequiredLabelArgs',
-    'HostAssurancePolicScopeArgs',
-    'HostAssurancePolicScopeVariableArgs',
-    'HostAssurancePolicTrustedBaseImageArgs',
+    'HostAssurancePolicyAutoScanTimeArgs',
+    'HostAssurancePolicyCustomCheckArgs',
+    'HostAssurancePolicyForbiddenLabelArgs',
+    'HostAssurancePolicyPackagesBlackListArgs',
+    'HostAssurancePolicyPackagesWhiteListArgs',
+    'HostAssurancePolicyRequiredLabelArgs',
+    'HostAssurancePolicyScopeArgs',
+    'HostAssurancePolicyScopeVariableArgs',
+    'HostAssurancePolicyTrustedBaseImageArgs',
     'HostRuntimePolicyFileIntegrityMonitoringArgs',
+    'HostRuntimePolicyMalwareScanOptionsArgs',
     'HostRuntimePolicyScopeVariableArgs',
     'HostRuntimePolicyWindowsRegistryMonitoringArgs',
     'HostRuntimePolicyWindowsRegistryProtectionArgs',
@@ -73,6 +75,19 @@ __all__ = [
     'ImageAssurancePolicyTrustedBaseImageArgs',
     'ImageHistoryArgs',
     'ImageVulnerabilityArgs',
+    'IntegrationRegistryOptionArgs',
+    'KubernetesAssurancePolicyAutoScanTimeArgs',
+    'KubernetesAssurancePolicyCustomCheckArgs',
+    'KubernetesAssurancePolicyForbiddenLabelArgs',
+    'KubernetesAssurancePolicyPackagesBlackListArgs',
+    'KubernetesAssurancePolicyPackagesWhiteListArgs',
+    'KubernetesAssurancePolicyRequiredLabelArgs',
+    'KubernetesAssurancePolicyScopeArgs',
+    'KubernetesAssurancePolicyScopeVariableArgs',
+    'KubernetesAssurancePolicyTrustedBaseImageArgs',
+    'RoleMappingOauth2Args',
+    'RoleMappingOpenidArgs',
+    'RoleMappingSamlArgs',
     'ServiceScopeVariableArgs',
     'UserSaasGroupArgs',
     'UserSaasLoginArgs',
@@ -98,7 +113,9 @@ __all__ = [
     'GetApplicationScopeCategoryWorkloadKuberneteVariableArgs',
     'GetApplicationScopeCategoryWorkloadOArgs',
     'GetApplicationScopeCategoryWorkloadOVariableArgs',
+    'GetContainerRuntimePolicyMalwareScanOptionsArgs',
     'GetFirewallPolicyOutboundNetworkArgs',
+    'GetHostRuntimePolicyMalwareScanOptionsArgs',
 ]
 
 @pulumi.input_type
@@ -108,6 +125,11 @@ class ApplicationScopeCategoryArgs:
                  entity_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryEntityScopeArgs']]]] = None,
                  infrastructures: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryInfrastructureArgs']]]] = None,
                  workloads: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryWorkloadArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryArtifactArgs']]] artifacts: An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryInfrastructureArgs']]] infrastructures: An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryWorkloadArgs']]] workloads: A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+        """
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
         if entity_scopes is not None:
@@ -120,6 +142,9 @@ class ApplicationScopeCategoryArgs:
     @property
     @pulumi.getter
     def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryArtifactArgs']]]]:
+        """
+        An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+        """
         return pulumi.get(self, "artifacts")
 
     @artifacts.setter
@@ -138,6 +163,9 @@ class ApplicationScopeCategoryArgs:
     @property
     @pulumi.getter
     def infrastructures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryInfrastructureArgs']]]]:
+        """
+        An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+        """
         return pulumi.get(self, "infrastructures")
 
     @infrastructures.setter
@@ -147,6 +175,9 @@ class ApplicationScopeCategoryArgs:
     @property
     @pulumi.getter
     def workloads(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScopeCategoryWorkloadArgs']]]]:
+        """
+        A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+        """
         return pulumi.get(self, "workloads")
 
     @workloads.setter
@@ -971,16 +1002,91 @@ class ContainerRuntimePolicyFileIntegrityMonitoringArgs:
 
 
 @pulumi.input_type
+class ContainerRuntimePolicyMalwareScanOptionsArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 exclude_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] action: Set Action, Defaults to 'Alert' when empty
+        :param pulumi.Input[bool] enabled: Defines if enabled or not
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_directories: List of registry paths to be excluded from being protected.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_processes: List of registry processes to be excluded from being protected.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_directories is not None:
+            pulumi.set(__self__, "exclude_directories", exclude_directories)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set Action, Defaults to 'Alert' when empty
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if enabled or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="excludeDirectories")
+    def exclude_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_directories")
+
+    @exclude_directories.setter
+    def exclude_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_directories", value)
+
+    @property
+    @pulumi.getter(name="excludeProcesses")
+    def exclude_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_processes")
+
+    @exclude_processes.setter
+    def exclude_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_processes", value)
+
+
+@pulumi.input_type
 class ContainerRuntimePolicyScopeVariableArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] attribute: Class of supported scope.
         :param pulumi.Input[str] value: Value assigned to the attribute.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "value", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1005,6 +1111,18 @@ class ContainerRuntimePolicyScopeVariableArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name assigned to the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -1834,13 +1952,17 @@ class FunctionAssurancePolicyTrustedBaseImageArgs:
 class FunctionRuntimePolicyScopeVariableArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] attribute: Class of supported scope.
         :param pulumi.Input[str] value: Value assigned to the attribute.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "value", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -1866,9 +1988,21 @@ class FunctionRuntimePolicyScopeVariableArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name assigned to the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
 
 @pulumi.input_type
-class HostAssurancePolicAutoScanTimeArgs:
+class HostAssurancePolicyAutoScanTimeArgs:
     def __init__(__self__, *,
                  iteration: Optional[pulumi.Input[int]] = None,
                  iteration_type: Optional[pulumi.Input[str]] = None,
@@ -1921,7 +2055,7 @@ class HostAssurancePolicAutoScanTimeArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicCustomCheckArgs:
+class HostAssurancePolicyCustomCheckArgs:
     def __init__(__self__, *,
                  author: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -2052,7 +2186,7 @@ class HostAssurancePolicCustomCheckArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicForbiddenLabelArgs:
+class HostAssurancePolicyForbiddenLabelArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -2081,7 +2215,7 @@ class HostAssurancePolicForbiddenLabelArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicPackagesBlackListArgs:
+class HostAssurancePolicyPackagesBlackListArgs:
     def __init__(__self__, *,
                  arch: Optional[pulumi.Input[str]] = None,
                  display: Optional[pulumi.Input[str]] = None,
@@ -2194,7 +2328,7 @@ class HostAssurancePolicPackagesBlackListArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicPackagesWhiteListArgs:
+class HostAssurancePolicyPackagesWhiteListArgs:
     def __init__(__self__, *,
                  arch: Optional[pulumi.Input[str]] = None,
                  display: Optional[pulumi.Input[str]] = None,
@@ -2307,7 +2441,7 @@ class HostAssurancePolicPackagesWhiteListArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicRequiredLabelArgs:
+class HostAssurancePolicyRequiredLabelArgs:
     def __init__(__self__, *,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
@@ -2336,10 +2470,10 @@ class HostAssurancePolicRequiredLabelArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicScopeArgs:
+class HostAssurancePolicyScopeArgs:
     def __init__(__self__, *,
                  expression: Optional[pulumi.Input[str]] = None,
-                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['HostAssurancePolicScopeVariableArgs']]]] = None):
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['HostAssurancePolicyScopeVariableArgs']]]] = None):
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
         if variables is not None:
@@ -2356,16 +2490,16 @@ class HostAssurancePolicScopeArgs:
 
     @property
     @pulumi.getter
-    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostAssurancePolicScopeVariableArgs']]]]:
+    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostAssurancePolicyScopeVariableArgs']]]]:
         return pulumi.get(self, "variables")
 
     @variables.setter
-    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostAssurancePolicScopeVariableArgs']]]]):
+    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostAssurancePolicyScopeVariableArgs']]]]):
         pulumi.set(self, "variables", value)
 
 
 @pulumi.input_type
-class HostAssurancePolicScopeVariableArgs:
+class HostAssurancePolicyScopeVariableArgs:
     def __init__(__self__, *,
                  attribute: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -2406,7 +2540,7 @@ class HostAssurancePolicScopeVariableArgs:
 
 
 @pulumi.input_type
-class HostAssurancePolicTrustedBaseImageArgs:
+class HostAssurancePolicyTrustedBaseImageArgs:
     def __init__(__self__, *,
                  imagename: Optional[pulumi.Input[str]] = None,
                  registry: Optional[pulumi.Input[str]] = None):
@@ -2618,16 +2752,91 @@ class HostRuntimePolicyFileIntegrityMonitoringArgs:
 
 
 @pulumi.input_type
+class HostRuntimePolicyMalwareScanOptionsArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 exclude_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exclude_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] action: Set Action, Defaults to 'Alert' when empty
+        :param pulumi.Input[bool] enabled: Defines if enabled or not
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_directories: List of registry paths to be excluded from being protected.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_processes: List of registry processes to be excluded from being protected.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_directories is not None:
+            pulumi.set(__self__, "exclude_directories", exclude_directories)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Set Action, Defaults to 'Alert' when empty
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if enabled or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="excludeDirectories")
+    def exclude_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_directories")
+
+    @exclude_directories.setter
+    def exclude_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_directories", value)
+
+    @property
+    @pulumi.getter(name="excludeProcesses")
+    def exclude_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_processes")
+
+    @exclude_processes.setter
+    def exclude_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_processes", value)
+
+
+@pulumi.input_type
 class HostRuntimePolicyScopeVariableArgs:
     def __init__(__self__, *,
                  attribute: pulumi.Input[str],
-                 value: pulumi.Input[str]):
+                 value: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] attribute: Class of supported scope.
         :param pulumi.Input[str] value: Value assigned to the attribute.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "value", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -2652,6 +2861,18 @@ class HostRuntimePolicyScopeVariableArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name assigned to the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -4513,39 +4734,719 @@ class ImageVulnerabilityArgs:
 
 
 @pulumi.input_type
-class ServiceScopeVariableArgs:
+class IntegrationRegistryOptionArgs:
     def __init__(__self__, *,
-                 attribute: pulumi.Input[str],
-                 value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] attribute: Class of supported scope.
-        :param pulumi.Input[str] value: Value assigned to the attribute.
-        """
-        pulumi.set(__self__, "attribute", attribute)
-        pulumi.set(__self__, "value", value)
+                 option: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if option is not None:
+            pulumi.set(__self__, "option", option)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def attribute(self) -> pulumi.Input[str]:
+    def option(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "option")
+
+    @option.setter
+    def option(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "option", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyAutoScanTimeArgs:
+    def __init__(__self__, *,
+                 iteration: Optional[pulumi.Input[int]] = None,
+                 iteration_type: Optional[pulumi.Input[str]] = None,
+                 time: Optional[pulumi.Input[str]] = None,
+                 week_days: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        if iteration is not None:
+            pulumi.set(__self__, "iteration", iteration)
+        if iteration_type is not None:
+            pulumi.set(__self__, "iteration_type", iteration_type)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+        if week_days is not None:
+            pulumi.set(__self__, "week_days", week_days)
+
+    @property
+    @pulumi.getter
+    def iteration(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "iteration")
+
+    @iteration.setter
+    def iteration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "iteration", value)
+
+    @property
+    @pulumi.getter(name="iterationType")
+    def iteration_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iteration_type")
+
+    @iteration_type.setter
+    def iteration_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iteration_type", value)
+
+    @property
+    @pulumi.getter
+    def time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "time")
+
+    @time.setter
+    def time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time", value)
+
+    @property
+    @pulumi.getter(name="weekDays")
+    def week_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "week_days")
+
+    @week_days.setter
+    def week_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "week_days", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyCustomCheckArgs:
+    def __init__(__self__, *,
+                 author: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 engine: Optional[pulumi.Input[str]] = None,
+                 last_modified: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 script_id: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
+                 snippet: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] author: Name of user account that created the policy.
+        """
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
+        if last_modified is not None:
+            pulumi.set(__self__, "last_modified", last_modified)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if script_id is not None:
+            pulumi.set(__self__, "script_id", script_id)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if snippet is not None:
+            pulumi.set(__self__, "snippet", snippet)
+
+    @property
+    @pulumi.getter
+    def author(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of user account that created the policy.
+        """
+        return pulumi.get(self, "author")
+
+    @author.setter
+    def author(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "engine")
+
+    @engine.setter
+    def engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "engine", value)
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "last_modified")
+
+    @last_modified.setter
+    def last_modified(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "last_modified", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="scriptId")
+    def script_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "script_id")
+
+    @script_id.setter
+    def script_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_id", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "severity", value)
+
+    @property
+    @pulumi.getter
+    def snippet(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "snippet")
+
+    @snippet.setter
+    def snippet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snippet", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyForbiddenLabelArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyPackagesBlackListArgs:
+    def __init__(__self__, *,
+                 arch: Optional[pulumi.Input[str]] = None,
+                 display: Optional[pulumi.Input[str]] = None,
+                 epoch: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 release: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 version_range: Optional[pulumi.Input[str]] = None):
+        if arch is not None:
+            pulumi.set(__self__, "arch", arch)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if epoch is not None:
+            pulumi.set(__self__, "epoch", epoch)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if release is not None:
+            pulumi.set(__self__, "release", release)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if version_range is not None:
+            pulumi.set(__self__, "version_range", version_range)
+
+    @property
+    @pulumi.getter
+    def arch(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arch")
+
+    @arch.setter
+    def arch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arch", value)
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display", value)
+
+    @property
+    @pulumi.getter
+    def epoch(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "epoch")
+
+    @epoch.setter
+    def epoch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "epoch", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def release(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "release")
+
+    @release.setter
+    def release(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="versionRange")
+    def version_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version_range")
+
+    @version_range.setter
+    def version_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_range", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyPackagesWhiteListArgs:
+    def __init__(__self__, *,
+                 arch: Optional[pulumi.Input[str]] = None,
+                 display: Optional[pulumi.Input[str]] = None,
+                 epoch: Optional[pulumi.Input[str]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 release: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 version_range: Optional[pulumi.Input[str]] = None):
+        if arch is not None:
+            pulumi.set(__self__, "arch", arch)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if epoch is not None:
+            pulumi.set(__self__, "epoch", epoch)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if release is not None:
+            pulumi.set(__self__, "release", release)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if version_range is not None:
+            pulumi.set(__self__, "version_range", version_range)
+
+    @property
+    @pulumi.getter
+    def arch(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "arch")
+
+    @arch.setter
+    def arch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arch", value)
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "display")
+
+    @display.setter
+    def display(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display", value)
+
+    @property
+    @pulumi.getter
+    def epoch(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "epoch")
+
+    @epoch.setter
+    def epoch(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "epoch", value)
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "format", value)
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def release(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "release")
+
+    @release.setter
+    def release(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "release", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="versionRange")
+    def version_range(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version_range")
+
+    @version_range.setter
+    def version_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version_range", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyRequiredLabelArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyScopeArgs:
+    def __init__(__self__, *,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 variables: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAssurancePolicyScopeVariableArgs']]]] = None):
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAssurancePolicyScopeVariableArgs']]]]:
+        return pulumi.get(self, "variables")
+
+    @variables.setter
+    def variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAssurancePolicyScopeVariableArgs']]]]):
+        pulumi.set(self, "variables", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyScopeVariableArgs:
+    def __init__(__self__, *,
+                 attribute: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "attribute")
+
+    @attribute.setter
+    def attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "attribute", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class KubernetesAssurancePolicyTrustedBaseImageArgs:
+    def __init__(__self__, *,
+                 imagename: Optional[pulumi.Input[str]] = None,
+                 registry: Optional[pulumi.Input[str]] = None):
+        if imagename is not None:
+            pulumi.set(__self__, "imagename", imagename)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+
+    @property
+    @pulumi.getter
+    def imagename(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "imagename")
+
+    @imagename.setter
+    def imagename(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "imagename", value)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry", value)
+
+
+@pulumi.input_type
+class RoleMappingOauth2Args:
+    def __init__(__self__, *,
+                 role_mapping: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        pulumi.set(__self__, "role_mapping", role_mapping)
+
+    @property
+    @pulumi.getter(name="roleMapping")
+    def role_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        return pulumi.get(self, "role_mapping")
+
+    @role_mapping.setter
+    def role_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "role_mapping", value)
+
+
+@pulumi.input_type
+class RoleMappingOpenidArgs:
+    def __init__(__self__, *,
+                 role_mapping: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        pulumi.set(__self__, "role_mapping", role_mapping)
+
+    @property
+    @pulumi.getter(name="roleMapping")
+    def role_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        return pulumi.get(self, "role_mapping")
+
+    @role_mapping.setter
+    def role_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "role_mapping", value)
+
+
+@pulumi.input_type
+class RoleMappingSamlArgs:
+    def __init__(__self__, *,
+                 role_mapping: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        pulumi.set(__self__, "role_mapping", role_mapping)
+
+    @property
+    @pulumi.getter(name="roleMapping")
+    def role_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        return pulumi.get(self, "role_mapping")
+
+    @role_mapping.setter
+    def role_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "role_mapping", value)
+
+
+@pulumi.input_type
+class ServiceScopeVariableArgs:
+    def __init__(__self__, *,
+                 attribute: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] attribute: Class of supported scope.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] value: Value assigned to the attribute.
+        """
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[pulumi.Input[str]]:
         """
         Class of supported scope.
         """
         return pulumi.get(self, "attribute")
 
     @attribute.setter
-    def attribute(self, value: pulumi.Input[str]):
+    def attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "attribute", value)
 
     @property
     @pulumi.getter
-    def value(self) -> pulumi.Input[str]:
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name assigned to the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
         """
         Value assigned to the attribute.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: pulumi.Input[str]):
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
@@ -5306,6 +6207,77 @@ class GetApplicationScopeCategoryWorkloadOVariableArgs:
 
 
 @pulumi.input_type
+class GetContainerRuntimePolicyMalwareScanOptionsArgs:
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exclude_directories: Optional[Sequence[str]] = None,
+                 exclude_processes: Optional[Sequence[str]] = None):
+        """
+        :param str action: Set Action, Defaults to 'Alert' when empty
+        :param bool enabled: Defines if enabled or not
+        :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
+        :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_directories is not None:
+            pulumi.set(__self__, "exclude_directories", exclude_directories)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        Set Action, Defaults to 'Alert' when empty
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Defines if enabled or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="excludeDirectories")
+    def exclude_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_directories")
+
+    @exclude_directories.setter
+    def exclude_directories(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "exclude_directories", value)
+
+    @property
+    @pulumi.getter(name="excludeProcesses")
+    def exclude_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_processes")
+
+    @exclude_processes.setter
+    def exclude_processes(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "exclude_processes", value)
+
+
+@pulumi.input_type
 class GetFirewallPolicyOutboundNetworkArgs:
     def __init__(__self__, *,
                  allow: bool,
@@ -5370,5 +6342,76 @@ class GetFirewallPolicyOutboundNetworkArgs:
     @resource_type.setter
     def resource_type(self, value: str):
         pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class GetHostRuntimePolicyMalwareScanOptionsArgs:
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exclude_processes: Optional[Sequence[str]] = None,
+                 include_directories: Optional[Sequence[str]] = None):
+        """
+        :param str action: Set Action, Defaults to 'Alert' when empty
+        :param bool enabled: Defines if enabled or not
+        :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] include_directories: List of directories to be protected.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if include_directories is not None:
+            pulumi.set(__self__, "include_directories", include_directories)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        Set Action, Defaults to 'Alert' when empty
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Defines if enabled or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="excludeProcesses")
+    def exclude_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_processes")
+
+    @exclude_processes.setter
+    def exclude_processes(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "exclude_processes", value)
+
+    @property
+    @pulumi.getter(name="includeDirectories")
+    def include_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of directories to be protected.
+        """
+        return pulumi.get(self, "include_directories")
+
+    @include_directories.setter
+    def include_directories(self, value: Optional[Sequence[str]]):
+        pulumi.set(self, "include_directories", value)
 
 

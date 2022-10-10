@@ -72,6 +72,11 @@ namespace Pulumiverse.Aquasec
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/pulumiverse/pulumi-aquasec",
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "username",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -102,19 +107,39 @@ namespace Pulumiverse.Aquasec
         [Input("configPath")]
         public Input<string>? ConfigPath { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`
         /// environment variable.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("username")]
+        private Input<string>? _username;
 
         /// <summary>
         /// This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`
         /// environment variable.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can

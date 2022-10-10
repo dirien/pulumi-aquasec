@@ -257,6 +257,12 @@ namespace Pulumiverse.Aquasec
         public Output<Outputs.HostRuntimePolicyFileIntegrityMonitoring?> FileIntegrityMonitoring { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Output("malwareScanOptions")]
+        public Output<Outputs.HostRuntimePolicyMalwareScanOptions?> MalwareScanOptions { get; private set; } = null!;
+
+        /// <summary>
         /// If true, system log will be monitored.
         /// </summary>
         [Output("monitorSystemLogIntegrity")]
@@ -488,6 +494,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("fileIntegrityMonitoring")]
         public Input<Inputs.HostRuntimePolicyFileIntegrityMonitoringArgs>? FileIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.HostRuntimePolicyMalwareScanOptionsArgs>? MalwareScanOptions { get; set; }
 
         /// <summary>
         /// If true, system log will be monitored.
@@ -724,6 +736,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("fileIntegrityMonitoring")]
         public Input<Inputs.HostRuntimePolicyFileIntegrityMonitoringGetArgs>? FileIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.HostRuntimePolicyMalwareScanOptionsGetArgs>? MalwareScanOptions { get; set; }
 
         /// <summary>
         /// If true, system log will be monitored.

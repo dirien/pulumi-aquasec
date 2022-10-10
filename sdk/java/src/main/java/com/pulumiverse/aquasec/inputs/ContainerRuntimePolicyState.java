@@ -6,6 +6,7 @@ package com.pulumiverse.aquasec.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumiverse.aquasec.inputs.ContainerRuntimePolicyFileIntegrityMonitoringArgs;
+import com.pulumiverse.aquasec.inputs.ContainerRuntimePolicyMalwareScanOptionsArgs;
 import com.pulumiverse.aquasec.inputs.ContainerRuntimePolicyScopeVariableArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -681,6 +682,21 @@ public final class ContainerRuntimePolicyState extends com.pulumi.resources.Reso
     }
 
     /**
+     * Configuration for Real-Time Malware Protection.
+     * 
+     */
+    @Import(name="malwareScanOptions")
+    private @Nullable Output<ContainerRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions;
+
+    /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Optional<Output<ContainerRuntimePolicyMalwareScanOptionsArgs>> malwareScanOptions() {
+        return Optional.ofNullable(this.malwareScanOptions);
+    }
+
+    /**
      * If true, system time changes will be monitored.
      * 
      */
@@ -832,6 +848,7 @@ public final class ContainerRuntimePolicyState extends com.pulumi.resources.Reso
         this.fileIntegrityMonitoring = $.fileIntegrityMonitoring;
         this.forkGuardProcessLimit = $.forkGuardProcessLimit;
         this.limitNewPrivileges = $.limitNewPrivileges;
+        this.malwareScanOptions = $.malwareScanOptions;
         this.monitorSystemTimeChanges = $.monitorSystemTimeChanges;
         this.name = $.name;
         this.readonlyFilesAndDirectories = $.readonlyFilesAndDirectories;
@@ -1901,6 +1918,27 @@ public final class ContainerRuntimePolicyState extends com.pulumi.resources.Reso
          */
         public Builder limitNewPrivileges(Boolean limitNewPrivileges) {
             return limitNewPrivileges(Output.of(limitNewPrivileges));
+        }
+
+        /**
+         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder malwareScanOptions(@Nullable Output<ContainerRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions) {
+            $.malwareScanOptions = malwareScanOptions;
+            return this;
+        }
+
+        /**
+         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder malwareScanOptions(ContainerRuntimePolicyMalwareScanOptionsArgs malwareScanOptions) {
+            return malwareScanOptions(Output.of(malwareScanOptions));
         }
 
         /**

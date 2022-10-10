@@ -26,6 +26,7 @@ export function getHostRuntimePolicy(args: GetHostRuntimePolicyArgs, opts?: pulu
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", {
+        "malwareScanOptions": args.malwareScanOptions,
         "name": args.name,
     }, opts);
 }
@@ -34,6 +35,10 @@ export function getHostRuntimePolicy(args: GetHostRuntimePolicyArgs, opts?: pulu
  * A collection of arguments for invoking getHostRuntimePolicy.
  */
 export interface GetHostRuntimePolicyArgs {
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: inputs.GetHostRuntimePolicyMalwareScanOptions;
     /**
      * Name of the host runtime policy
      */
@@ -113,6 +118,10 @@ export interface GetHostRuntimePolicyResult {
      */
     readonly id: string;
     /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    readonly malwareScanOptions?: outputs.GetHostRuntimePolicyMalwareScanOptions;
+    /**
      * If true, system log will be monitored.
      */
     readonly monitorSystemLogIntegrity: boolean;
@@ -178,6 +187,10 @@ export function getHostRuntimePolicyOutput(args: GetHostRuntimePolicyOutputArgs,
  * A collection of arguments for invoking getHostRuntimePolicy.
  */
 export interface GetHostRuntimePolicyOutputArgs {
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<inputs.GetHostRuntimePolicyMalwareScanOptionsArgs>;
     /**
      * Name of the host runtime policy
      */

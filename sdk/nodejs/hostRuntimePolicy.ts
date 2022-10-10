@@ -165,6 +165,10 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly fileIntegrityMonitoring!: pulumi.Output<outputs.HostRuntimePolicyFileIntegrityMonitoring | undefined>;
     /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    public readonly malwareScanOptions!: pulumi.Output<outputs.HostRuntimePolicyMalwareScanOptions | undefined>;
+    /**
      * If true, system log will be monitored.
      */
     public readonly monitorSystemLogIntegrity!: pulumi.Output<boolean | undefined>;
@@ -250,6 +254,7 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["enforce"] = state ? state.enforce : undefined;
             resourceInputs["enforceAfterDays"] = state ? state.enforceAfterDays : undefined;
             resourceInputs["fileIntegrityMonitoring"] = state ? state.fileIntegrityMonitoring : undefined;
+            resourceInputs["malwareScanOptions"] = state ? state.malwareScanOptions : undefined;
             resourceInputs["monitorSystemLogIntegrity"] = state ? state.monitorSystemLogIntegrity : undefined;
             resourceInputs["monitorSystemTimeChanges"] = state ? state.monitorSystemTimeChanges : undefined;
             resourceInputs["monitorWindowsServices"] = state ? state.monitorWindowsServices : undefined;
@@ -281,6 +286,7 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["enforce"] = args ? args.enforce : undefined;
             resourceInputs["enforceAfterDays"] = args ? args.enforceAfterDays : undefined;
             resourceInputs["fileIntegrityMonitoring"] = args ? args.fileIntegrityMonitoring : undefined;
+            resourceInputs["malwareScanOptions"] = args ? args.malwareScanOptions : undefined;
             resourceInputs["monitorSystemLogIntegrity"] = args ? args.monitorSystemLogIntegrity : undefined;
             resourceInputs["monitorSystemTimeChanges"] = args ? args.monitorSystemTimeChanges : undefined;
             resourceInputs["monitorWindowsServices"] = args ? args.monitorWindowsServices : undefined;
@@ -370,6 +376,10 @@ export interface HostRuntimePolicyState {
      * Configuration for file integrity monitoring.
      */
     fileIntegrityMonitoring?: pulumi.Input<inputs.HostRuntimePolicyFileIntegrityMonitoring>;
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<inputs.HostRuntimePolicyMalwareScanOptions>;
     /**
      * If true, system log will be monitored.
      */
@@ -492,6 +502,10 @@ export interface HostRuntimePolicyArgs {
      * Configuration for file integrity monitoring.
      */
     fileIntegrityMonitoring?: pulumi.Input<inputs.HostRuntimePolicyFileIntegrityMonitoring>;
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<inputs.HostRuntimePolicyMalwareScanOptions>;
     /**
      * If true, system log will be monitored.
      */

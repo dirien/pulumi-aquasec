@@ -10,9 +10,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-func LookupHostAssurancePolic(ctx *pulumi.Context, args *LookupHostAssurancePolicArgs, opts ...pulumi.InvokeOption) (*LookupHostAssurancePolicResult, error) {
+func GetHostAssurancePolic(ctx *pulumi.Context, args *GetHostAssurancePolicArgs, opts ...pulumi.InvokeOption) (*GetHostAssurancePolicResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
-	var rv LookupHostAssurancePolicResult
+	var rv GetHostAssurancePolicResult
 	err := ctx.Invoke("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -21,14 +21,14 @@ func LookupHostAssurancePolic(ctx *pulumi.Context, args *LookupHostAssurancePoli
 }
 
 // A collection of arguments for invoking getHostAssurancePolic.
-type LookupHostAssurancePolicArgs struct {
+type GetHostAssurancePolicArgs struct {
 	// Indicates that policy should ignore cases that do not have a known fix.
 	MaximumScoreExcludeNoFix *bool  `pulumi:"maximumScoreExcludeNoFix"`
 	Name                     string `pulumi:"name"`
 }
 
 // A collection of values returned by getHostAssurancePolic.
-type LookupHostAssurancePolicResult struct {
+type GetHostAssurancePolicResult struct {
 	// List of explicitly allowed images.
 	AllowedImages     []string `pulumi:"allowedImages"`
 	ApplicationScopes []string `pulumi:"applicationScopes"`
@@ -148,393 +148,393 @@ type LookupHostAssurancePolicResult struct {
 	WhitelistedLicensesEnabled bool `pulumi:"whitelistedLicensesEnabled"`
 }
 
-func LookupHostAssurancePolicOutput(ctx *pulumi.Context, args LookupHostAssurancePolicOutputArgs, opts ...pulumi.InvokeOption) LookupHostAssurancePolicResultOutput {
+func GetHostAssurancePolicOutput(ctx *pulumi.Context, args GetHostAssurancePolicOutputArgs, opts ...pulumi.InvokeOption) GetHostAssurancePolicResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (LookupHostAssurancePolicResult, error) {
-			args := v.(LookupHostAssurancePolicArgs)
-			r, err := LookupHostAssurancePolic(ctx, &args, opts...)
-			var s LookupHostAssurancePolicResult
+		ApplyT(func(v interface{}) (GetHostAssurancePolicResult, error) {
+			args := v.(GetHostAssurancePolicArgs)
+			r, err := GetHostAssurancePolic(ctx, &args, opts...)
+			var s GetHostAssurancePolicResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(LookupHostAssurancePolicResultOutput)
+		}).(GetHostAssurancePolicResultOutput)
 }
 
 // A collection of arguments for invoking getHostAssurancePolic.
-type LookupHostAssurancePolicOutputArgs struct {
+type GetHostAssurancePolicOutputArgs struct {
 	// Indicates that policy should ignore cases that do not have a known fix.
 	MaximumScoreExcludeNoFix pulumi.BoolPtrInput `pulumi:"maximumScoreExcludeNoFix"`
 	Name                     pulumi.StringInput  `pulumi:"name"`
 }
 
-func (LookupHostAssurancePolicOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupHostAssurancePolicArgs)(nil)).Elem()
+func (GetHostAssurancePolicOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getHostAssurancePolic.
-type LookupHostAssurancePolicResultOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicResultOutput struct{ *pulumi.OutputState }
 
-func (LookupHostAssurancePolicResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LookupHostAssurancePolicResult)(nil)).Elem()
+func (GetHostAssurancePolicResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicResult)(nil)).Elem()
 }
 
-func (o LookupHostAssurancePolicResultOutput) ToLookupHostAssurancePolicResultOutput() LookupHostAssurancePolicResultOutput {
+func (o GetHostAssurancePolicResultOutput) ToGetHostAssurancePolicResultOutput() GetHostAssurancePolicResultOutput {
 	return o
 }
 
-func (o LookupHostAssurancePolicResultOutput) ToLookupHostAssurancePolicResultOutputWithContext(ctx context.Context) LookupHostAssurancePolicResultOutput {
+func (o GetHostAssurancePolicResultOutput) ToGetHostAssurancePolicResultOutputWithContext(ctx context.Context) GetHostAssurancePolicResultOutput {
 	return o
 }
 
 // List of explicitly allowed images.
-func (o LookupHostAssurancePolicResultOutput) AllowedImages() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.AllowedImages }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) AllowedImages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.AllowedImages }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ApplicationScopes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) ApplicationScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
 }
 
 // What type of assurance policy is described.
-func (o LookupHostAssurancePolicResultOutput) AssuranceType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.AssuranceType }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) AssuranceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.AssuranceType }).(pulumi.StringOutput)
 }
 
 // Indicates if auditing for failures.
-func (o LookupHostAssurancePolicResultOutput) AuditOnFailure() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.AuditOnFailure }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) AuditOnFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.AuditOnFailure }).(pulumi.BoolOutput)
 }
 
 // Name of user account that created the policy.
-func (o LookupHostAssurancePolicResultOutput) Author() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.Author }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.Author }).(pulumi.StringOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) AutoScanConfigured() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.AutoScanConfigured }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) AutoScanConfigured() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.AutoScanConfigured }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) AutoScanEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.AutoScanEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) AutoScanEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.AutoScanEnabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) AutoScanTimes() GetHostAssurancePolicAutoScanTimeArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicAutoScanTime { return v.AutoScanTimes }).(GetHostAssurancePolicAutoScanTimeArrayOutput)
+func (o GetHostAssurancePolicResultOutput) AutoScanTimes() GetHostAssurancePolicAutoScanTimeArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicAutoScanTime { return v.AutoScanTimes }).(GetHostAssurancePolicAutoScanTimeArrayOutput)
 }
 
 // List of function's forbidden permissions.
-func (o LookupHostAssurancePolicResultOutput) BlacklistPermissions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.BlacklistPermissions }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) BlacklistPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.BlacklistPermissions }).(pulumi.StringArrayOutput)
 }
 
 // Indicates if blacklist permissions is relevant.
-func (o LookupHostAssurancePolicResultOutput) BlacklistPermissionsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.BlacklistPermissionsEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) BlacklistPermissionsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.BlacklistPermissionsEnabled }).(pulumi.BoolOutput)
 }
 
 // List of blacklisted licenses.
-func (o LookupHostAssurancePolicResultOutput) BlacklistedLicenses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.BlacklistedLicenses }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) BlacklistedLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.BlacklistedLicenses }).(pulumi.StringArrayOutput)
 }
 
 // Lndicates if license blacklist is relevant.
-func (o LookupHostAssurancePolicResultOutput) BlacklistedLicensesEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.BlacklistedLicensesEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) BlacklistedLicensesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.BlacklistedLicensesEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates if failed images are blocked.
-func (o LookupHostAssurancePolicResultOutput) BlockFailed() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.BlockFailed }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) BlockFailed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.BlockFailed }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ControlExcludeNoFix() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ControlExcludeNoFix }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ControlExcludeNoFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ControlExcludeNoFix }).(pulumi.BoolOutput)
 }
 
 // List of Custom user scripts for checks.
-func (o LookupHostAssurancePolicResultOutput) CustomChecks() GetHostAssurancePolicCustomCheckArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicCustomCheck { return v.CustomChecks }).(GetHostAssurancePolicCustomCheckArrayOutput)
+func (o GetHostAssurancePolicResultOutput) CustomChecks() GetHostAssurancePolicCustomCheckArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicCustomCheck { return v.CustomChecks }).(GetHostAssurancePolicCustomCheckArrayOutput)
 }
 
 // Indicates if scanning should include custom checks.
-func (o LookupHostAssurancePolicResultOutput) CustomChecksEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.CustomChecksEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) CustomChecksEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.CustomChecksEnabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) CustomSeverityEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.CustomSeverityEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) CustomSeverityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.CustomSeverityEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates if cves blacklist is relevant.
-func (o LookupHostAssurancePolicResultOutput) CvesBlackListEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.CvesBlackListEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) CvesBlackListEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.CvesBlackListEnabled }).(pulumi.BoolOutput)
 }
 
 // List of cves blacklisted items.
-func (o LookupHostAssurancePolicResultOutput) CvesBlackLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.CvesBlackLists }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) CvesBlackLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.CvesBlackLists }).(pulumi.StringArrayOutput)
 }
 
 // Indicates if cves whitelist is relevant.
-func (o LookupHostAssurancePolicResultOutput) CvesWhiteListEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.CvesWhiteListEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) CvesWhiteListEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.CvesWhiteListEnabled }).(pulumi.BoolOutput)
 }
 
 // List of cves whitelisted licenses
-func (o LookupHostAssurancePolicResultOutput) CvesWhiteLists() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.CvesWhiteLists }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) CvesWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.CvesWhiteLists }).(pulumi.StringArrayOutput)
 }
 
 // Identifier of the cvss severity.
-func (o LookupHostAssurancePolicResultOutput) CvssSeverity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.CvssSeverity }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) CvssSeverity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.CvssSeverity }).(pulumi.StringOutput)
 }
 
 // Indicates if the cvss severity is scanned.
-func (o LookupHostAssurancePolicResultOutput) CvssSeverityEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.CvssSeverityEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) CvssSeverityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.CvssSeverityEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates that policy should ignore cvss cases that do not have a known fix.
-func (o LookupHostAssurancePolicResultOutput) CvssSeverityExcludeNoFix() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.CvssSeverityExcludeNoFix }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) CvssSeverityExcludeNoFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.CvssSeverityExcludeNoFix }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.Description }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Indicates if malware should block the image.
-func (o LookupHostAssurancePolicResultOutput) DisallowMalware() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.DisallowMalware }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) DisallowMalware() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.DisallowMalware }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) DockerCisEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.DockerCisEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) DockerCisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.DockerCisEnabled }).(pulumi.BoolOutput)
 }
 
 // Name of the container image.
-func (o LookupHostAssurancePolicResultOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.Domain }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) DomainName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.DomainName }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) DtaEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.DtaEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) DtaEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.DtaEnabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) DtaSeverity() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.DtaSeverity }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) DtaSeverity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.DtaSeverity }).(pulumi.StringOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.Enabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) Enforce() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.Enforce }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.Enforce }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) EnforceAfterDays() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) int { return v.EnforceAfterDays }).(pulumi.IntOutput)
+func (o GetHostAssurancePolicResultOutput) EnforceAfterDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) int { return v.EnforceAfterDays }).(pulumi.IntOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) EnforceExcessivePermissions() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.EnforceExcessivePermissions }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) EnforceExcessivePermissions() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.EnforceExcessivePermissions }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ExceptionalMonitoredMalwarePaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.ExceptionalMonitoredMalwarePaths }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) ExceptionalMonitoredMalwarePaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.ExceptionalMonitoredMalwarePaths }).(pulumi.StringArrayOutput)
 }
 
 // Indicates if cicd failures will fail the image.
-func (o LookupHostAssurancePolicResultOutput) FailCicd() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.FailCicd }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) FailCicd() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.FailCicd }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ForbiddenLabels() GetHostAssurancePolicForbiddenLabelArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicForbiddenLabel { return v.ForbiddenLabels }).(GetHostAssurancePolicForbiddenLabelArrayOutput)
+func (o GetHostAssurancePolicResultOutput) ForbiddenLabels() GetHostAssurancePolicForbiddenLabelArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicForbiddenLabel { return v.ForbiddenLabels }).(GetHostAssurancePolicForbiddenLabelArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ForbiddenLabelsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ForbiddenLabelsEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ForbiddenLabelsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ForbiddenLabelsEnabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ForceMicroenforcer() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ForceMicroenforcer }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ForceMicroenforcer() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ForceMicroenforcer }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) FunctionIntegrityEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.FunctionIntegrityEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) FunctionIntegrityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.FunctionIntegrityEnabled }).(pulumi.BoolOutput)
 }
 
 // The ID of this resource.
-func (o LookupHostAssurancePolicResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.Id }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) IgnoreRecentlyPublishedVln() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.IgnoreRecentlyPublishedVln }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) IgnoreRecentlyPublishedVln() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.IgnoreRecentlyPublishedVln }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) IgnoreRecentlyPublishedVlnPeriod() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) int { return v.IgnoreRecentlyPublishedVlnPeriod }).(pulumi.IntOutput)
+func (o GetHostAssurancePolicResultOutput) IgnoreRecentlyPublishedVlnPeriod() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) int { return v.IgnoreRecentlyPublishedVlnPeriod }).(pulumi.IntOutput)
 }
 
 // Indicates if risk resources are ignored.
-func (o LookupHostAssurancePolicResultOutput) IgnoreRiskResourcesEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.IgnoreRiskResourcesEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) IgnoreRiskResourcesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.IgnoreRiskResourcesEnabled }).(pulumi.BoolOutput)
 }
 
 // List of ignored risk resources.
-func (o LookupHostAssurancePolicResultOutput) IgnoredRiskResources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.IgnoredRiskResources }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) IgnoredRiskResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.IgnoredRiskResources }).(pulumi.StringArrayOutput)
 }
 
 // List of images.
-func (o LookupHostAssurancePolicResultOutput) Images() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.Images }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) Images() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) KubeCisEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.KubeCisEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) KubeCisEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.KubeCisEnabled }).(pulumi.BoolOutput)
 }
 
 // List of labels.
-func (o LookupHostAssurancePolicResultOutput) Labels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.Labels }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) Labels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.Labels }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) MalwareAction() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.MalwareAction }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) MalwareAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.MalwareAction }).(pulumi.StringOutput)
 }
 
 // Value of allowed maximum score.
-func (o LookupHostAssurancePolicResultOutput) MaximumScore() pulumi.Float64Output {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) float64 { return v.MaximumScore }).(pulumi.Float64Output)
+func (o GetHostAssurancePolicResultOutput) MaximumScore() pulumi.Float64Output {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) float64 { return v.MaximumScore }).(pulumi.Float64Output)
 }
 
 // Indicates if exceeding the maximum score is scanned.
-func (o LookupHostAssurancePolicResultOutput) MaximumScoreEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.MaximumScoreEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) MaximumScoreEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.MaximumScoreEnabled }).(pulumi.BoolOutput)
 }
 
 // Indicates that policy should ignore cases that do not have a known fix.
-func (o LookupHostAssurancePolicResultOutput) MaximumScoreExcludeNoFix() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) *bool { return v.MaximumScoreExcludeNoFix }).(pulumi.BoolPtrOutput)
+func (o GetHostAssurancePolicResultOutput) MaximumScoreExcludeNoFix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) *bool { return v.MaximumScoreExcludeNoFix }).(pulumi.BoolPtrOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) MonitoredMalwarePaths() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.MonitoredMalwarePaths }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) MonitoredMalwarePaths() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.MonitoredMalwarePaths }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.Name }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Indicates if raise a warning for images that should only be run as root.
-func (o LookupHostAssurancePolicResultOutput) OnlyNoneRootUsers() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.OnlyNoneRootUsers }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) OnlyNoneRootUsers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.OnlyNoneRootUsers }).(pulumi.BoolOutput)
 }
 
 // Indicates if packages blacklist is relevant.
-func (o LookupHostAssurancePolicResultOutput) PackagesBlackListEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.PackagesBlackListEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) PackagesBlackListEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.PackagesBlackListEnabled }).(pulumi.BoolOutput)
 }
 
 // List of backlisted images.
-func (o LookupHostAssurancePolicResultOutput) PackagesBlackLists() GetHostAssurancePolicPackagesBlackListArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicPackagesBlackList {
+func (o GetHostAssurancePolicResultOutput) PackagesBlackLists() GetHostAssurancePolicPackagesBlackListArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicPackagesBlackList {
 		return v.PackagesBlackLists
 	}).(GetHostAssurancePolicPackagesBlackListArrayOutput)
 }
 
 // Indicates if packages whitelist is relevant.
-func (o LookupHostAssurancePolicResultOutput) PackagesWhiteListEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.PackagesWhiteListEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) PackagesWhiteListEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.PackagesWhiteListEnabled }).(pulumi.BoolOutput)
 }
 
 // List of whitelisted images.
-func (o LookupHostAssurancePolicResultOutput) PackagesWhiteLists() GetHostAssurancePolicPackagesWhiteListArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicPackagesWhiteList {
+func (o GetHostAssurancePolicResultOutput) PackagesWhiteLists() GetHostAssurancePolicPackagesWhiteListArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicPackagesWhiteList {
 		return v.PackagesWhiteLists
 	}).(GetHostAssurancePolicPackagesWhiteListArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) PartialResultsImageFail() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.PartialResultsImageFail }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) PartialResultsImageFail() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.PartialResultsImageFail }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ReadOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
 // List of registries.
-func (o LookupHostAssurancePolicResultOutput) Registries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.Registries }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) Registries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.Registries }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) Registry() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) string { return v.Registry }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicResultOutput) Registry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) string { return v.Registry }).(pulumi.StringOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) RequiredLabels() GetHostAssurancePolicRequiredLabelArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicRequiredLabel { return v.RequiredLabels }).(GetHostAssurancePolicRequiredLabelArrayOutput)
+func (o GetHostAssurancePolicResultOutput) RequiredLabels() GetHostAssurancePolicRequiredLabelArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicRequiredLabel { return v.RequiredLabels }).(GetHostAssurancePolicRequiredLabelArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) RequiredLabelsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.RequiredLabelsEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) RequiredLabelsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.RequiredLabelsEnabled }).(pulumi.BoolOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) ScanNfsMounts() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ScanNfsMounts }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ScanNfsMounts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ScanNfsMounts }).(pulumi.BoolOutput)
 }
 
 // Indicates if scan should include sensitive data in the image.
-func (o LookupHostAssurancePolicResultOutput) ScanSensitiveData() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ScanSensitiveData }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ScanSensitiveData() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ScanSensitiveData }).(pulumi.BoolOutput)
 }
 
 // Indicates if scanning should include scap.
-func (o LookupHostAssurancePolicResultOutput) ScapEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.ScapEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) ScapEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.ScapEnabled }).(pulumi.BoolOutput)
 }
 
 // List of SCAP user scripts for checks.
-func (o LookupHostAssurancePolicResultOutput) ScapFiles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.ScapFiles }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) ScapFiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.ScapFiles }).(pulumi.StringArrayOutput)
 }
 
-func (o LookupHostAssurancePolicResultOutput) Scopes() GetHostAssurancePolicScopeArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicScope { return v.Scopes }).(GetHostAssurancePolicScopeArrayOutput)
+func (o GetHostAssurancePolicResultOutput) Scopes() GetHostAssurancePolicScopeArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicScope { return v.Scopes }).(GetHostAssurancePolicScopeArrayOutput)
 }
 
 // List of trusted images.
-func (o LookupHostAssurancePolicResultOutput) TrustedBaseImages() GetHostAssurancePolicTrustedBaseImageArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []GetHostAssurancePolicTrustedBaseImage {
+func (o GetHostAssurancePolicResultOutput) TrustedBaseImages() GetHostAssurancePolicTrustedBaseImageArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []GetHostAssurancePolicTrustedBaseImage {
 		return v.TrustedBaseImages
 	}).(GetHostAssurancePolicTrustedBaseImageArrayOutput)
 }
 
 // Indicates if list of trusted base images is relevant.
-func (o LookupHostAssurancePolicResultOutput) TrustedBaseImagesEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.TrustedBaseImagesEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) TrustedBaseImagesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.TrustedBaseImagesEnabled }).(pulumi.BoolOutput)
 }
 
 // List of whitelisted licenses.
-func (o LookupHostAssurancePolicResultOutput) WhitelistedLicenses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) []string { return v.WhitelistedLicenses }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicResultOutput) WhitelistedLicenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) []string { return v.WhitelistedLicenses }).(pulumi.StringArrayOutput)
 }
 
 // Indicates if license blacklist is relevant.
-func (o LookupHostAssurancePolicResultOutput) WhitelistedLicensesEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostAssurancePolicResult) bool { return v.WhitelistedLicensesEnabled }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicResultOutput) WhitelistedLicensesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicResult) bool { return v.WhitelistedLicensesEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(LookupHostAssurancePolicResultOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicResultOutput{})
 }

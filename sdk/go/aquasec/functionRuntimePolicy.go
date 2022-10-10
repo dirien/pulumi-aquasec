@@ -91,6 +91,13 @@ func NewFunctionRuntimePolicy(ctx *pulumi.Context,
 		args = &FunctionRuntimePolicyArgs{}
 	}
 
+	if args.HoneypotSecretKey != nil {
+		args.HoneypotSecretKey = pulumi.ToSecret(args.HoneypotSecretKey).(pulumi.StringPtrOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"honeypotSecretKey",
+	})
+	opts = append(opts, secrets)
 	opts = pkgResourceDefaultOpts(opts)
 	var resource FunctionRuntimePolicy
 	err := ctx.RegisterResource("aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy", name, args, &resource, opts...)

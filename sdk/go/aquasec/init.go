@@ -34,8 +34,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FunctionRuntimePolicy{}
 	case "aquasec:index/group:Group":
 		r = &Group{}
-	case "aquasec:index/hostAssurancePolic:HostAssurancePolic":
-		r = &HostAssurancePolic{}
+	case "aquasec:index/hostAssurancePolicy:HostAssurancePolicy":
+		r = &HostAssurancePolicy{}
 	case "aquasec:index/hostRuntimePolicy:HostRuntimePolicy":
 		r = &HostRuntimePolicy{}
 	case "aquasec:index/image:Image":
@@ -44,12 +44,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ImageAssurancePolicy{}
 	case "aquasec:index/integrationRegistry:IntegrationRegistry":
 		r = &IntegrationRegistry{}
+	case "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy":
+		r = &KubernetesAssurancePolicy{}
 	case "aquasec:index/notificationSlack:NotificationSlack":
 		r = &NotificationSlack{}
 	case "aquasec:index/permissionsSets:PermissionsSets":
 		r = &PermissionsSets{}
 	case "aquasec:index/role:Role":
 		r = &Role{}
+	case "aquasec:index/roleMapping:RoleMapping":
+		r = &RoleMapping{}
+	case "aquasec:index/roleMappingSaas:RoleMappingSaas":
+		r = &RoleMappingSaas{}
 	case "aquasec:index/service:Service":
 		r = &Service{}
 	case "aquasec:index/user:User":
@@ -121,7 +127,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aquasec",
-		"index/hostAssurancePolic",
+		"index/hostAssurancePolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -146,6 +152,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aquasec",
+		"index/kubernetesAssurancePolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
 		"index/notificationSlack",
 		&module{version},
 	)
@@ -157,6 +168,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aquasec",
 		"index/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
+		"index/roleMapping",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
+		"index/roleMappingSaas",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

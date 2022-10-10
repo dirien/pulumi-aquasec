@@ -95,7 +95,7 @@ namespace Pulumiverse.Aquasec
         /// Logical expression of how to compute the dependency of the scope variables.
         /// </summary>
         [Output("scopeExpression")]
-        public Output<string> ScopeExpression { get; private set; } = null!;
+        public Output<string?> ScopeExpression { get; private set; } = null!;
 
         /// <summary>
         /// List of scope attributes.
@@ -267,10 +267,10 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
         /// </summary>
-        [Input("scopeExpression", required: true)]
-        public Input<string> ScopeExpression { get; set; } = null!;
+        [Input("scopeExpression")]
+        public Input<string>? ScopeExpression { get; set; }
 
-        [Input("scopeVariables", required: true)]
+        [Input("scopeVariables")]
         private InputList<Inputs.ServiceScopeVariableArgs>? _scopeVariables;
 
         /// <summary>

@@ -14,9 +14,18 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class ApplicationScopeCategory
     {
+        /// <summary>
+        /// An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryArtifact> Artifacts;
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryEntityScope> EntityScopes;
+        /// <summary>
+        /// An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryInfrastructure> Infrastructures;
+        /// <summary>
+        /// A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryWorkload> Workloads;
 
         [OutputConstructor]

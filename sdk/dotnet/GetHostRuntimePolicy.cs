@@ -75,6 +75,12 @@ namespace Pulumiverse.Aquasec
     public sealed class GetHostRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Inputs.GetHostRuntimePolicyMalwareScanOptionsArgs? MalwareScanOptions { get; set; }
+
+        /// <summary>
         /// Name of the host runtime policy
         /// </summary>
         [Input("name", required: true)]
@@ -88,6 +94,12 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetHostRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.GetHostRuntimePolicyMalwareScanOptionsInputArgs>? MalwareScanOptions { get; set; }
+
         /// <summary>
         /// Name of the host runtime policy
         /// </summary>
@@ -172,6 +184,10 @@ namespace Pulumiverse.Aquasec
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        public readonly Outputs.GetHostRuntimePolicyMalwareScanOptionsResult? MalwareScanOptions;
         /// <summary>
         /// If true, system log will be monitored.
         /// </summary>
@@ -265,6 +281,8 @@ namespace Pulumiverse.Aquasec
 
             string id,
 
+            Outputs.GetHostRuntimePolicyMalwareScanOptionsResult? malwareScanOptions,
+
             bool monitorSystemLogIntegrity,
 
             bool monitorSystemTimeChanges,
@@ -310,6 +328,7 @@ namespace Pulumiverse.Aquasec
             EnforceAfterDays = enforceAfterDays;
             FileIntegrityMonitorings = fileIntegrityMonitorings;
             Id = id;
+            MalwareScanOptions = malwareScanOptions;
             MonitorSystemLogIntegrity = monitorSystemLogIntegrity;
             MonitorSystemTimeChanges = monitorSystemTimeChanges;
             MonitorWindowsServices = monitorWindowsServices;

@@ -128,30 +128,30 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    @Import(name="scopeExpression", required=true)
-    private Output<String> scopeExpression;
+    @Import(name="scopeExpression")
+    private @Nullable Output<String> scopeExpression;
 
     /**
      * @return Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    public Output<String> scopeExpression() {
-        return this.scopeExpression;
+    public Optional<Output<String>> scopeExpression() {
+        return Optional.ofNullable(this.scopeExpression);
     }
 
     /**
      * List of scope attributes.
      * 
      */
-    @Import(name="scopeVariables", required=true)
-    private Output<List<ServiceScopeVariableArgs>> scopeVariables;
+    @Import(name="scopeVariables")
+    private @Nullable Output<List<ServiceScopeVariableArgs>> scopeVariables;
 
     /**
      * @return List of scope attributes.
      * 
      */
-    public Output<List<ServiceScopeVariableArgs>> scopeVariables() {
-        return this.scopeVariables;
+    public Optional<Output<List<ServiceScopeVariableArgs>>> scopeVariables() {
+        return Optional.ofNullable(this.scopeVariables);
     }
 
     /**
@@ -375,7 +375,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder scopeExpression(Output<String> scopeExpression) {
+        public Builder scopeExpression(@Nullable Output<String> scopeExpression) {
             $.scopeExpression = scopeExpression;
             return this;
         }
@@ -396,7 +396,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder scopeVariables(Output<List<ServiceScopeVariableArgs>> scopeVariables) {
+        public Builder scopeVariables(@Nullable Output<List<ServiceScopeVariableArgs>> scopeVariables) {
             $.scopeVariables = scopeVariables;
             return this;
         }
@@ -445,8 +445,6 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         public ServiceArgs build() {
             $.applicationScopes = Objects.requireNonNull($.applicationScopes, "expected parameter 'applicationScopes' to be non-null");
             $.policies = Objects.requireNonNull($.policies, "expected parameter 'policies' to be non-null");
-            $.scopeExpression = Objects.requireNonNull($.scopeExpression, "expected parameter 'scopeExpression' to be non-null");
-            $.scopeVariables = Objects.requireNonNull($.scopeVariables, "expected parameter 'scopeVariables' to be non-null");
             $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
             return $;
         }

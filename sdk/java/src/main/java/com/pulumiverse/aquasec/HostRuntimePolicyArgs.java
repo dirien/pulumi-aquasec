@@ -6,6 +6,7 @@ package com.pulumiverse.aquasec;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumiverse.aquasec.inputs.HostRuntimePolicyFileIntegrityMonitoringArgs;
+import com.pulumiverse.aquasec.inputs.HostRuntimePolicyMalwareScanOptionsArgs;
 import com.pulumiverse.aquasec.inputs.HostRuntimePolicyScopeVariableArgs;
 import com.pulumiverse.aquasec.inputs.HostRuntimePolicyWindowsRegistryMonitoringArgs;
 import com.pulumiverse.aquasec.inputs.HostRuntimePolicyWindowsRegistryProtectionArgs;
@@ -248,6 +249,21 @@ public final class HostRuntimePolicyArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Configuration for Real-Time Malware Protection.
+     * 
+     */
+    @Import(name="malwareScanOptions")
+    private @Nullable Output<HostRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions;
+
+    /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Optional<Output<HostRuntimePolicyMalwareScanOptionsArgs>> malwareScanOptions() {
+        return Optional.ofNullable(this.malwareScanOptions);
+    }
+
+    /**
      * If true, system log will be monitored.
      * 
      */
@@ -475,6 +491,7 @@ public final class HostRuntimePolicyArgs extends com.pulumi.resources.ResourceAr
         this.enforce = $.enforce;
         this.enforceAfterDays = $.enforceAfterDays;
         this.fileIntegrityMonitoring = $.fileIntegrityMonitoring;
+        this.malwareScanOptions = $.malwareScanOptions;
         this.monitorSystemLogIntegrity = $.monitorSystemLogIntegrity;
         this.monitorSystemTimeChanges = $.monitorSystemTimeChanges;
         this.monitorWindowsServices = $.monitorWindowsServices;
@@ -842,6 +859,27 @@ public final class HostRuntimePolicyArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder fileIntegrityMonitoring(HostRuntimePolicyFileIntegrityMonitoringArgs fileIntegrityMonitoring) {
             return fileIntegrityMonitoring(Output.of(fileIntegrityMonitoring));
+        }
+
+        /**
+         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder malwareScanOptions(@Nullable Output<HostRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions) {
+            $.malwareScanOptions = malwareScanOptions;
+            return this;
+        }
+
+        /**
+         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder malwareScanOptions(HostRuntimePolicyMalwareScanOptionsArgs malwareScanOptions) {
+            return malwareScanOptions(Output.of(malwareScanOptions));
         }
 
         /**

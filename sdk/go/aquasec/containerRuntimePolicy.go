@@ -236,6 +236,8 @@ type ContainerRuntimePolicy struct {
 	ForkGuardProcessLimit pulumi.IntPtrOutput `pulumi:"forkGuardProcessLimit"`
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges pulumi.BoolPtrOutput `pulumi:"limitNewPrivileges"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions ContainerRuntimePolicyMalwareScanOptionsPtrOutput `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrOutput `pulumi:"monitorSystemTimeChanges"`
 	// Name of the container runtime policy
@@ -370,6 +372,8 @@ type containerRuntimePolicyState struct {
 	ForkGuardProcessLimit *int `pulumi:"forkGuardProcessLimit"`
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges *bool `pulumi:"limitNewPrivileges"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions *ContainerRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
 	// Name of the container runtime policy
@@ -475,6 +479,8 @@ type ContainerRuntimePolicyState struct {
 	ForkGuardProcessLimit pulumi.IntPtrInput
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges pulumi.BoolPtrInput
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions ContainerRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
 	// Name of the container runtime policy
@@ -582,6 +588,8 @@ type containerRuntimePolicyArgs struct {
 	ForkGuardProcessLimit *int `pulumi:"forkGuardProcessLimit"`
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges *bool `pulumi:"limitNewPrivileges"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions *ContainerRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
 	// Name of the container runtime policy
@@ -686,6 +694,8 @@ type ContainerRuntimePolicyArgs struct {
 	ForkGuardProcessLimit pulumi.IntPtrInput
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges pulumi.BoolPtrInput
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions ContainerRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
 	// Name of the container runtime policy
@@ -1011,6 +1021,13 @@ func (o ContainerRuntimePolicyOutput) ForkGuardProcessLimit() pulumi.IntPtrOutpu
 // If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 func (o ContainerRuntimePolicyOutput) LimitNewPrivileges() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerRuntimePolicy) pulumi.BoolPtrOutput { return v.LimitNewPrivileges }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for Real-Time Malware Protection.
+func (o ContainerRuntimePolicyOutput) MalwareScanOptions() ContainerRuntimePolicyMalwareScanOptionsPtrOutput {
+	return o.ApplyT(func(v *ContainerRuntimePolicy) ContainerRuntimePolicyMalwareScanOptionsPtrOutput {
+		return v.MalwareScanOptions
+	}).(ContainerRuntimePolicyMalwareScanOptionsPtrOutput)
 }
 
 // If true, system time changes will be monitored.

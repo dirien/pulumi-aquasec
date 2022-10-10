@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ContainerRuntimePolicyScopeVariableArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,6 +31,21 @@ public final class ContainerRuntimePolicyScopeVariableArgs extends com.pulumi.re
     }
 
     /**
+     * Name assigned to the attribute.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name assigned to the attribute.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Value assigned to the attribute.
      * 
      */
@@ -47,6 +64,7 @@ public final class ContainerRuntimePolicyScopeVariableArgs extends com.pulumi.re
 
     private ContainerRuntimePolicyScopeVariableArgs(ContainerRuntimePolicyScopeVariableArgs $) {
         this.attribute = $.attribute;
+        this.name = $.name;
         this.value = $.value;
     }
 
@@ -87,6 +105,27 @@ public final class ContainerRuntimePolicyScopeVariableArgs extends com.pulumi.re
          */
         public Builder attribute(String attribute) {
             return attribute(Output.of(attribute));
+        }
+
+        /**
+         * @param name Name assigned to the attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name assigned to the attribute.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

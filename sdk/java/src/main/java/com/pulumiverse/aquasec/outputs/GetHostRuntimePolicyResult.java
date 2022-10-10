@@ -5,6 +5,7 @@ package com.pulumiverse.aquasec.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyFileIntegrityMonitoring;
+import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyMalwareScanOptions;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyScopeVariable;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyWindowsRegistryMonitoring;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyWindowsRegistryProtection;
@@ -13,6 +14,8 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostRuntimePolicyResult {
@@ -101,6 +104,11 @@ public final class GetHostRuntimePolicyResult {
      * 
      */
     private final String id;
+    /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    private final @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions;
     /**
      * @return If true, system log will be monitored.
      * 
@@ -191,6 +199,7 @@ public final class GetHostRuntimePolicyResult {
         @CustomType.Parameter("enforceAfterDays") Integer enforceAfterDays,
         @CustomType.Parameter("fileIntegrityMonitorings") List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings,
         @CustomType.Parameter("id") String id,
+        @CustomType.Parameter("malwareScanOptions") @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions,
         @CustomType.Parameter("monitorSystemLogIntegrity") Boolean monitorSystemLogIntegrity,
         @CustomType.Parameter("monitorSystemTimeChanges") Boolean monitorSystemTimeChanges,
         @CustomType.Parameter("monitorWindowsServices") Boolean monitorWindowsServices,
@@ -222,6 +231,7 @@ public final class GetHostRuntimePolicyResult {
         this.enforceAfterDays = enforceAfterDays;
         this.fileIntegrityMonitorings = fileIntegrityMonitorings;
         this.id = id;
+        this.malwareScanOptions = malwareScanOptions;
         this.monitorSystemLogIntegrity = monitorSystemLogIntegrity;
         this.monitorSystemTimeChanges = monitorSystemTimeChanges;
         this.monitorWindowsServices = monitorWindowsServices;
@@ -358,6 +368,13 @@ public final class GetHostRuntimePolicyResult {
         return this.id;
     }
     /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Optional<GetHostRuntimePolicyMalwareScanOptions> malwareScanOptions() {
+        return Optional.ofNullable(this.malwareScanOptions);
+    }
+    /**
      * @return If true, system log will be monitored.
      * 
      */
@@ -482,6 +499,7 @@ public final class GetHostRuntimePolicyResult {
         private Integer enforceAfterDays;
         private List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
         private String id;
+        private @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions;
         private Boolean monitorSystemLogIntegrity;
         private Boolean monitorSystemTimeChanges;
         private Boolean monitorWindowsServices;
@@ -520,6 +538,7 @@ public final class GetHostRuntimePolicyResult {
     	      this.enforceAfterDays = defaults.enforceAfterDays;
     	      this.fileIntegrityMonitorings = defaults.fileIntegrityMonitorings;
     	      this.id = defaults.id;
+    	      this.malwareScanOptions = defaults.malwareScanOptions;
     	      this.monitorSystemLogIntegrity = defaults.monitorSystemLogIntegrity;
     	      this.monitorSystemTimeChanges = defaults.monitorSystemTimeChanges;
     	      this.monitorWindowsServices = defaults.monitorWindowsServices;
@@ -613,6 +632,10 @@ public final class GetHostRuntimePolicyResult {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        public Builder malwareScanOptions(@Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions) {
+            this.malwareScanOptions = malwareScanOptions;
+            return this;
+        }
         public Builder monitorSystemLogIntegrity(Boolean monitorSystemLogIntegrity) {
             this.monitorSystemLogIntegrity = Objects.requireNonNull(monitorSystemLogIntegrity);
             return this;
@@ -693,7 +716,7 @@ public final class GetHostRuntimePolicyResult {
         public Builder windowsRegistryProtections(GetHostRuntimePolicyWindowsRegistryProtection... windowsRegistryProtections) {
             return windowsRegistryProtections(List.of(windowsRegistryProtections));
         }        public GetHostRuntimePolicyResult build() {
-            return new GetHostRuntimePolicyResult(applicationScopes, auditAllOsUserActivity, auditBruteForceLogin, auditFullCommandArguments, auditHostFailedLoginEvents, auditHostSuccessfulLoginEvents, auditUserAccountManagement, author, blockCryptocurrencyMining, blockedFiles, description, enableIpReputationSecurity, enabled, enforce, enforceAfterDays, fileIntegrityMonitorings, id, monitorSystemLogIntegrity, monitorSystemTimeChanges, monitorWindowsServices, name, osGroupsAlloweds, osGroupsBlockeds, osUsersAlloweds, osUsersBlockeds, packageBlocks, portScanningDetection, scopeExpression, scopeVariables, windowsRegistryMonitorings, windowsRegistryProtections);
+            return new GetHostRuntimePolicyResult(applicationScopes, auditAllOsUserActivity, auditBruteForceLogin, auditFullCommandArguments, auditHostFailedLoginEvents, auditHostSuccessfulLoginEvents, auditUserAccountManagement, author, blockCryptocurrencyMining, blockedFiles, description, enableIpReputationSecurity, enabled, enforce, enforceAfterDays, fileIntegrityMonitorings, id, malwareScanOptions, monitorSystemLogIntegrity, monitorSystemTimeChanges, monitorWindowsServices, name, osGroupsAlloweds, osGroupsBlockeds, osUsersAlloweds, osUsersBlockeds, packageBlocks, portScanningDetection, scopeExpression, scopeVariables, windowsRegistryMonitorings, windowsRegistryProtections);
         }
     }
 }

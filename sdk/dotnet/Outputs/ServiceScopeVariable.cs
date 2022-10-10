@@ -17,19 +17,26 @@ namespace Pulumiverse.Aquasec.Outputs
         /// <summary>
         /// Class of supported scope.
         /// </summary>
-        public readonly string Attribute;
+        public readonly string? Attribute;
+        /// <summary>
+        /// Name assigned to the attribute.
+        /// </summary>
+        public readonly string? Name;
         /// <summary>
         /// Value assigned to the attribute.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private ServiceScopeVariable(
-            string attribute,
+            string? attribute,
 
-            string value)
+            string? name,
+
+            string? value)
         {
             Attribute = attribute;
+            Name = name;
             Value = value;
         }
     }

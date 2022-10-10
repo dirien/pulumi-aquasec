@@ -202,9 +202,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["aqua_url"] = aqua_url
             __props__.__dict__["ca_certificate_path"] = ca_certificate_path
             __props__.__dict__["config_path"] = config_path
-            __props__.__dict__["password"] = password
-            __props__.__dict__["username"] = username
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["username"] = None if username is None else pulumi.Output.secret(username)
             __props__.__dict__["verify_tls"] = pulumi.Output.from_input(verify_tls).apply(pulumi.runtime.to_json) if verify_tls is not None else None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "username"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'aquasec',
             resource_name,

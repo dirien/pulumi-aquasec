@@ -15,15 +15,22 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class GetServiceScopeVariableResult
     {
         public readonly string Attribute;
+        /// <summary>
+        /// The name of the service. It is recommended not to use whitespace characters in the name.
+        /// </summary>
+        public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
         private GetServiceScopeVariableResult(
             string attribute,
 
+            string name,
+
             string value)
         {
             Attribute = attribute;
+            Name = name;
             Value = value;
         }
     }

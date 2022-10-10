@@ -321,6 +321,10 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly limitNewPrivileges!: pulumi.Output<boolean | undefined>;
     /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    public readonly malwareScanOptions!: pulumi.Output<outputs.ContainerRuntimePolicyMalwareScanOptions | undefined>;
+    /**
      * If true, system time changes will be monitored.
      */
     public readonly monitorSystemTimeChanges!: pulumi.Output<boolean | undefined>;
@@ -406,6 +410,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["fileIntegrityMonitoring"] = state ? state.fileIntegrityMonitoring : undefined;
             resourceInputs["forkGuardProcessLimit"] = state ? state.forkGuardProcessLimit : undefined;
             resourceInputs["limitNewPrivileges"] = state ? state.limitNewPrivileges : undefined;
+            resourceInputs["malwareScanOptions"] = state ? state.malwareScanOptions : undefined;
             resourceInputs["monitorSystemTimeChanges"] = state ? state.monitorSystemTimeChanges : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["readonlyFilesAndDirectories"] = state ? state.readonlyFilesAndDirectories : undefined;
@@ -458,6 +463,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["fileIntegrityMonitoring"] = args ? args.fileIntegrityMonitoring : undefined;
             resourceInputs["forkGuardProcessLimit"] = args ? args.forkGuardProcessLimit : undefined;
             resourceInputs["limitNewPrivileges"] = args ? args.limitNewPrivileges : undefined;
+            resourceInputs["malwareScanOptions"] = args ? args.malwareScanOptions : undefined;
             resourceInputs["monitorSystemTimeChanges"] = args ? args.monitorSystemTimeChanges : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["readonlyFilesAndDirectories"] = args ? args.readonlyFilesAndDirectories : undefined;
@@ -652,6 +658,10 @@ export interface ContainerRuntimePolicyState {
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      */
     limitNewPrivileges?: pulumi.Input<boolean>;
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<inputs.ContainerRuntimePolicyMalwareScanOptions>;
     /**
      * If true, system time changes will be monitored.
      */
@@ -858,6 +868,10 @@ export interface ContainerRuntimePolicyArgs {
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      */
     limitNewPrivileges?: pulumi.Input<boolean>;
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<inputs.ContainerRuntimePolicyMalwareScanOptions>;
     /**
      * If true, system time changes will be monitored.
      */
