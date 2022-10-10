@@ -31,6 +31,7 @@ class HostRuntimePolicyArgs:
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input['HostRuntimePolicyFileIntegrityMonitoringArgs']] = None,
+                 malware_scan_options: Optional[pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs']] = None,
                  monitor_system_log_integrity: Optional[pulumi.Input[bool]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  monitor_windows_services: Optional[pulumi.Input[bool]] = None,
@@ -62,6 +63,7 @@ class HostRuntimePolicyArgs:
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input['HostRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
+        :param pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
@@ -107,6 +109,8 @@ class HostRuntimePolicyArgs:
             pulumi.set(__self__, "enforce_after_days", enforce_after_days)
         if file_integrity_monitoring is not None:
             pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
+        if malware_scan_options is not None:
+            pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_log_integrity is not None:
             pulumi.set(__self__, "monitor_system_log_integrity", monitor_system_log_integrity)
         if monitor_system_time_changes is not None:
@@ -317,6 +321,18 @@ class HostRuntimePolicyArgs:
         pulumi.set(self, "file_integrity_monitoring", value)
 
     @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional[pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @malware_scan_options.setter
+    def malware_scan_options(self, value: Optional[pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs']]):
+        pulumi.set(self, "malware_scan_options", value)
+
+    @property
     @pulumi.getter(name="monitorSystemLogIntegrity")
     def monitor_system_log_integrity(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -504,6 +520,7 @@ class _HostRuntimePolicyState:
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input['HostRuntimePolicyFileIntegrityMonitoringArgs']] = None,
+                 malware_scan_options: Optional[pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs']] = None,
                  monitor_system_log_integrity: Optional[pulumi.Input[bool]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  monitor_windows_services: Optional[pulumi.Input[bool]] = None,
@@ -536,6 +553,7 @@ class _HostRuntimePolicyState:
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input['HostRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
+        :param pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
@@ -583,6 +601,8 @@ class _HostRuntimePolicyState:
             pulumi.set(__self__, "enforce_after_days", enforce_after_days)
         if file_integrity_monitoring is not None:
             pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
+        if malware_scan_options is not None:
+            pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_log_integrity is not None:
             pulumi.set(__self__, "monitor_system_log_integrity", monitor_system_log_integrity)
         if monitor_system_time_changes is not None:
@@ -805,6 +825,18 @@ class _HostRuntimePolicyState:
         pulumi.set(self, "file_integrity_monitoring", value)
 
     @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional[pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @malware_scan_options.setter
+    def malware_scan_options(self, value: Optional[pulumi.Input['HostRuntimePolicyMalwareScanOptionsArgs']]):
+        pulumi.set(self, "malware_scan_options", value)
+
+    @property
     @pulumi.getter(name="monitorSystemLogIntegrity")
     def monitor_system_log_integrity(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -993,6 +1025,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
+                 malware_scan_options: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyMalwareScanOptionsArgs']]] = None,
                  monitor_system_log_integrity: Optional[pulumi.Input[bool]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  monitor_windows_services: Optional[pulumi.Input[bool]] = None,
@@ -1090,6 +1123,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[pulumi.InputType['HostRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
+        :param pulumi.Input[pulumi.InputType['HostRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
@@ -1206,6 +1240,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
+                 malware_scan_options: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyMalwareScanOptionsArgs']]] = None,
                  monitor_system_log_integrity: Optional[pulumi.Input[bool]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  monitor_windows_services: Optional[pulumi.Input[bool]] = None,
@@ -1244,6 +1279,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
             __props__.__dict__["enforce"] = enforce
             __props__.__dict__["enforce_after_days"] = enforce_after_days
             __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
+            __props__.__dict__["malware_scan_options"] = malware_scan_options
             __props__.__dict__["monitor_system_log_integrity"] = monitor_system_log_integrity
             __props__.__dict__["monitor_system_time_changes"] = monitor_system_time_changes
             __props__.__dict__["monitor_windows_services"] = monitor_windows_services
@@ -1285,6 +1321,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
             enforce: Optional[pulumi.Input[bool]] = None,
             enforce_after_days: Optional[pulumi.Input[int]] = None,
             file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
+            malware_scan_options: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyMalwareScanOptionsArgs']]] = None,
             monitor_system_log_integrity: Optional[pulumi.Input[bool]] = None,
             monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
             monitor_windows_services: Optional[pulumi.Input[bool]] = None,
@@ -1322,6 +1359,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[pulumi.InputType['HostRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
+        :param pulumi.Input[pulumi.InputType['HostRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
@@ -1357,6 +1395,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         __props__.__dict__["enforce"] = enforce
         __props__.__dict__["enforce_after_days"] = enforce_after_days
         __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
+        __props__.__dict__["malware_scan_options"] = malware_scan_options
         __props__.__dict__["monitor_system_log_integrity"] = monitor_system_log_integrity
         __props__.__dict__["monitor_system_time_changes"] = monitor_system_time_changes
         __props__.__dict__["monitor_windows_services"] = monitor_windows_services
@@ -1500,6 +1539,14 @@ class HostRuntimePolicy(pulumi.CustomResource):
         Configuration for file integrity monitoring.
         """
         return pulumi.get(self, "file_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> pulumi.Output[Optional['outputs.HostRuntimePolicyMalwareScanOptions']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
 
     @property
     @pulumi.getter(name="monitorSystemLogIntegrity")

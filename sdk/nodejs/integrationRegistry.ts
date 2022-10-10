@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export class IntegrationRegistry extends pulumi.CustomResource {
@@ -68,6 +70,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly options!: pulumi.Output<outputs.IntegrationRegistryOption[] | undefined>;
     /**
      * The password for registry authentication
      */
@@ -127,6 +130,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["imageCreationDateCondition"] = state ? state.imageCreationDateCondition : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["prefixes"] = state ? state.prefixes : undefined;
             resourceInputs["pullImageAge"] = state ? state.pullImageAge : undefined;
@@ -150,6 +154,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["imageCreationDateCondition"] = args ? args.imageCreationDateCondition : undefined;
             resourceInputs["lastUpdated"] = args ? args.lastUpdated : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["prefixes"] = args ? args.prefixes : undefined;
             resourceInputs["pullImageAge"] = args ? args.pullImageAge : undefined;
@@ -205,6 +210,7 @@ export interface IntegrationRegistryState {
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     name?: pulumi.Input<string>;
+    options?: pulumi.Input<pulumi.Input<inputs.IntegrationRegistryOption>[]>;
     /**
      * The password for registry authentication
      */
@@ -283,6 +289,7 @@ export interface IntegrationRegistryArgs {
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     name?: pulumi.Input<string>;
+    options?: pulumi.Input<pulumi.Input<inputs.IntegrationRegistryOption>[]>;
     /**
      * The password for registry authentication
      */

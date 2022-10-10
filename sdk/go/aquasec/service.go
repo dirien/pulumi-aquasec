@@ -41,7 +41,7 @@ type Service struct {
 	// Rules priority, must be between 1-100.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
 	// Logical expression of how to compute the dependency of the scope variables.
-	ScopeExpression pulumi.StringOutput `pulumi:"scopeExpression"`
+	ScopeExpression pulumi.StringPtrOutput `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables ServiceScopeVariableArrayOutput `pulumi:"scopeVariables"`
 	// Type of the workload. container or host.
@@ -78,12 +78,6 @@ func NewService(ctx *pulumi.Context,
 	}
 	if args.Policies == nil {
 		return nil, errors.New("invalid value for required argument 'Policies'")
-	}
-	if args.ScopeExpression == nil {
-		return nil, errors.New("invalid value for required argument 'ScopeExpression'")
-	}
-	if args.ScopeVariables == nil {
-		return nil, errors.New("invalid value for required argument 'ScopeVariables'")
 	}
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
@@ -236,7 +230,7 @@ type serviceArgs struct {
 	// Rules priority, must be between 1-100.
 	Priority *int `pulumi:"priority"`
 	// Logical expression of how to compute the dependency of the scope variables.
-	ScopeExpression string `pulumi:"scopeExpression"`
+	ScopeExpression *string `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables []ServiceScopeVariable `pulumi:"scopeVariables"`
 	// Type of the workload. container or host.
@@ -260,7 +254,7 @@ type ServiceArgs struct {
 	// Rules priority, must be between 1-100.
 	Priority pulumi.IntPtrInput
 	// Logical expression of how to compute the dependency of the scope variables.
-	ScopeExpression pulumi.StringInput
+	ScopeExpression pulumi.StringPtrInput
 	// List of scope attributes.
 	ScopeVariables ServiceScopeVariableArrayInput
 	// Type of the workload. container or host.
@@ -420,8 +414,8 @@ func (o ServiceOutput) Priority() pulumi.IntPtrOutput {
 }
 
 // Logical expression of how to compute the dependency of the scope variables.
-func (o ServiceOutput) ScopeExpression() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ScopeExpression }).(pulumi.StringOutput)
+func (o ServiceOutput) ScopeExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.ScopeExpression }).(pulumi.StringPtrOutput)
 }
 
 // List of scope attributes.

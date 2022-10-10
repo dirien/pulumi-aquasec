@@ -665,12 +665,14 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
             __props__.__dict__["enforce"] = enforce
             __props__.__dict__["honeypot_access_key"] = honeypot_access_key
             __props__.__dict__["honeypot_apply_ons"] = honeypot_apply_ons
-            __props__.__dict__["honeypot_secret_key"] = honeypot_secret_key
+            __props__.__dict__["honeypot_secret_key"] = None if honeypot_secret_key is None else pulumi.Output.secret(honeypot_secret_key)
             __props__.__dict__["honeypot_serverless_app_name"] = honeypot_serverless_app_name
             __props__.__dict__["name"] = name
             __props__.__dict__["scope_expression"] = scope_expression
             __props__.__dict__["scope_variables"] = scope_variables
             __props__.__dict__["author"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["honeypotSecretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(FunctionRuntimePolicy, __self__).__init__(
             'aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy',
             resource_name,

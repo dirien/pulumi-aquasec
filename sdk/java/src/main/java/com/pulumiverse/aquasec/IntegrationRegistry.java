@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumiverse.aquasec.IntegrationRegistryArgs;
 import com.pulumiverse.aquasec.Utilities;
 import com.pulumiverse.aquasec.inputs.IntegrationRegistryState;
+import com.pulumiverse.aquasec.outputs.IntegrationRegistryOption;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -144,6 +145,12 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="options", type=List.class, parameters={IntegrationRegistryOption.class})
+    private Output</* @Nullable */ List<IntegrationRegistryOption>> options;
+
+    public Output<Optional<List<IntegrationRegistryOption>>> options() {
+        return Codegen.optional(this.options);
     }
     /**
      * The password for registry authentication

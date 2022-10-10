@@ -11,6 +11,7 @@ import com.pulumiverse.aquasec.ContainerRuntimePolicyArgs;
 import com.pulumiverse.aquasec.Utilities;
 import com.pulumiverse.aquasec.inputs.ContainerRuntimePolicyState;
 import com.pulumiverse.aquasec.outputs.ContainerRuntimePolicyFileIntegrityMonitoring;
+import com.pulumiverse.aquasec.outputs.ContainerRuntimePolicyMalwareScanOptions;
 import com.pulumiverse.aquasec.outputs.ContainerRuntimePolicyScopeVariable;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -753,6 +754,20 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      */
     public Output<Optional<Boolean>> limitNewPrivileges() {
         return Codegen.optional(this.limitNewPrivileges);
+    }
+    /**
+     * Configuration for Real-Time Malware Protection.
+     * 
+     */
+    @Export(name="malwareScanOptions", type=ContainerRuntimePolicyMalwareScanOptions.class, parameters={})
+    private Output</* @Nullable */ ContainerRuntimePolicyMalwareScanOptions> malwareScanOptions;
+
+    /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Output<Optional<ContainerRuntimePolicyMalwareScanOptions>> malwareScanOptions() {
+        return Codegen.optional(this.malwareScanOptions);
     }
     /**
      * If true, system time changes will be monitored.

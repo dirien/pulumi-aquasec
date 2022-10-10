@@ -15,6 +15,10 @@ namespace Pulumiverse.Aquasec.Inputs
     {
         [Input("artifacts")]
         private InputList<Inputs.ApplicationScopeCategoryArtifactGetArgs>? _artifacts;
+
+        /// <summary>
+        /// An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+        /// </summary>
         public InputList<Inputs.ApplicationScopeCategoryArtifactGetArgs> Artifacts
         {
             get => _artifacts ?? (_artifacts = new InputList<Inputs.ApplicationScopeCategoryArtifactGetArgs>());
@@ -31,6 +35,10 @@ namespace Pulumiverse.Aquasec.Inputs
 
         [Input("infrastructures")]
         private InputList<Inputs.ApplicationScopeCategoryInfrastructureGetArgs>? _infrastructures;
+
+        /// <summary>
+        /// An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+        /// </summary>
         public InputList<Inputs.ApplicationScopeCategoryInfrastructureGetArgs> Infrastructures
         {
             get => _infrastructures ?? (_infrastructures = new InputList<Inputs.ApplicationScopeCategoryInfrastructureGetArgs>());
@@ -39,6 +47,10 @@ namespace Pulumiverse.Aquasec.Inputs
 
         [Input("workloads")]
         private InputList<Inputs.ApplicationScopeCategoryWorkloadGetArgs>? _workloads;
+
+        /// <summary>
+        /// A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+        /// </summary>
         public InputList<Inputs.ApplicationScopeCategoryWorkloadGetArgs> Workloads
         {
             get => _workloads ?? (_workloads = new InputList<Inputs.ApplicationScopeCategoryWorkloadGetArgs>());

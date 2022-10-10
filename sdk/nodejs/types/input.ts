@@ -6,9 +6,18 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface ApplicationScopeCategory {
+    /**
+     * An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+     */
     artifacts?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryArtifact>[]>;
     entityScopes?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryEntityScope>[]>;
+    /**
+     * An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+     */
     infrastructures?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryInfrastructure>[]>;
+    /**
+     * A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+     */
     workloads?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryWorkload>[]>;
 }
 
@@ -166,11 +175,34 @@ export interface ContainerRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ContainerRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ContainerRuntimePolicyScopeVariable {
     /**
      * Class of supported scope.
      */
     attribute: pulumi.Input<string>;
+    /**
+     * Name assigned to the attribute.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Value assigned to the attribute.
      */
@@ -317,16 +349,13 @@ export interface FunctionRuntimePolicyScopeVariable {
      */
     attribute: pulumi.Input<string>;
     /**
+     * Name assigned to the attribute.
+     */
+    name?: pulumi.Input<string>;
+    /**
      * Value assigned to the attribute.
      */
     value: pulumi.Input<string>;
-}
-
-export interface GetApplicationScopeCategory {
-    artifacts?: inputs.GetApplicationScopeCategoryArtifact[];
-    entityScopes?: inputs.GetApplicationScopeCategoryEntityScope[];
-    infrastructures?: inputs.GetApplicationScopeCategoryInfrastructure[];
-    workloads?: inputs.GetApplicationScopeCategoryWorkload[];
 }
 
 export interface GetApplicationScopeCategoryArgs {
@@ -336,16 +365,23 @@ export interface GetApplicationScopeCategoryArgs {
     workloads?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadArgs>[]>;
 }
 
-export interface GetApplicationScopeCategoryArtifact {
-    cfs?: inputs.GetApplicationScopeCategoryArtifactCf[];
-    functions?: inputs.GetApplicationScopeCategoryArtifactFunction[];
-    images?: inputs.GetApplicationScopeCategoryArtifactImage[];
+export interface GetApplicationScopeCategory {
+    artifacts?: inputs.GetApplicationScopeCategoryArtifact[];
+    entityScopes?: inputs.GetApplicationScopeCategoryEntityScope[];
+    infrastructures?: inputs.GetApplicationScopeCategoryInfrastructure[];
+    workloads?: inputs.GetApplicationScopeCategoryWorkload[];
 }
 
 export interface GetApplicationScopeCategoryArtifactArgs {
     cfs?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArtifactCfArgs>[]>;
     functions?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArtifactFunctionArgs>[]>;
     images?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArtifactImageArgs>[]>;
+}
+
+export interface GetApplicationScopeCategoryArtifact {
+    cfs?: inputs.GetApplicationScopeCategoryArtifactCf[];
+    functions?: inputs.GetApplicationScopeCategoryArtifactFunction[];
+    images?: inputs.GetApplicationScopeCategoryArtifactImage[];
 }
 
 export interface GetApplicationScopeCategoryArtifactCfArgs {
@@ -358,24 +394,24 @@ export interface GetApplicationScopeCategoryArtifactCf {
     variables?: inputs.GetApplicationScopeCategoryArtifactCfVariable[];
 }
 
-export interface GetApplicationScopeCategoryArtifactCfVariableArgs {
-    attribute?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-}
-
 export interface GetApplicationScopeCategoryArtifactCfVariable {
     attribute?: string;
     value?: string;
 }
 
-export interface GetApplicationScopeCategoryArtifactFunctionArgs {
-    expression?: pulumi.Input<string>;
-    variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArtifactFunctionVariableArgs>[]>;
+export interface GetApplicationScopeCategoryArtifactCfVariableArgs {
+    attribute?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetApplicationScopeCategoryArtifactFunction {
     expression?: string;
     variables?: inputs.GetApplicationScopeCategoryArtifactFunctionVariable[];
+}
+
+export interface GetApplicationScopeCategoryArtifactFunctionArgs {
+    expression?: pulumi.Input<string>;
+    variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArtifactFunctionVariableArgs>[]>;
 }
 
 export interface GetApplicationScopeCategoryArtifactFunctionVariableArgs {
@@ -398,14 +434,14 @@ export interface GetApplicationScopeCategoryArtifactImageArgs {
     variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArtifactImageVariableArgs>[]>;
 }
 
-export interface GetApplicationScopeCategoryArtifactImageVariableArgs {
-    attribute?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-}
-
 export interface GetApplicationScopeCategoryArtifactImageVariable {
     attribute?: string;
     value?: string;
+}
+
+export interface GetApplicationScopeCategoryArtifactImageVariableArgs {
+    attribute?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetApplicationScopeCategoryEntityScope {
@@ -458,14 +494,14 @@ export interface GetApplicationScopeCategoryInfrastructureKuberneteVariable {
     value?: string;
 }
 
-export interface GetApplicationScopeCategoryInfrastructureOArgs {
-    expression?: pulumi.Input<string>;
-    variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryInfrastructureOVariableArgs>[]>;
-}
-
 export interface GetApplicationScopeCategoryInfrastructureO {
     expression?: string;
     variables?: inputs.GetApplicationScopeCategoryInfrastructureOVariable[];
+}
+
+export interface GetApplicationScopeCategoryInfrastructureOArgs {
+    expression?: pulumi.Input<string>;
+    variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryInfrastructureOVariableArgs>[]>;
 }
 
 export interface GetApplicationScopeCategoryInfrastructureOVariable {
@@ -478,16 +514,16 @@ export interface GetApplicationScopeCategoryInfrastructureOVariableArgs {
     value?: pulumi.Input<string>;
 }
 
-export interface GetApplicationScopeCategoryWorkloadArgs {
-    cfs?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadCfArgs>[]>;
-    kubernetes?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadKuberneteArgs>[]>;
-    os?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadOArgs>[]>;
-}
-
 export interface GetApplicationScopeCategoryWorkload {
     cfs?: inputs.GetApplicationScopeCategoryWorkloadCf[];
     kubernetes?: inputs.GetApplicationScopeCategoryWorkloadKubernete[];
     os?: inputs.GetApplicationScopeCategoryWorkloadO[];
+}
+
+export interface GetApplicationScopeCategoryWorkloadArgs {
+    cfs?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadCfArgs>[]>;
+    kubernetes?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadKuberneteArgs>[]>;
+    os?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadOArgs>[]>;
 }
 
 export interface GetApplicationScopeCategoryWorkloadCfArgs {
@@ -520,14 +556,14 @@ export interface GetApplicationScopeCategoryWorkloadKuberneteArgs {
     variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadKuberneteVariableArgs>[]>;
 }
 
-export interface GetApplicationScopeCategoryWorkloadKuberneteVariableArgs {
-    attribute?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-}
-
 export interface GetApplicationScopeCategoryWorkloadKuberneteVariable {
     attribute?: string;
     value?: string;
+}
+
+export interface GetApplicationScopeCategoryWorkloadKuberneteVariableArgs {
+    attribute?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface GetApplicationScopeCategoryWorkloadO {
@@ -540,33 +576,52 @@ export interface GetApplicationScopeCategoryWorkloadOArgs {
     variables?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryWorkloadOVariableArgs>[]>;
 }
 
-export interface GetApplicationScopeCategoryWorkloadOVariable {
-    attribute?: string;
-    value?: string;
-}
-
 export interface GetApplicationScopeCategoryWorkloadOVariableArgs {
     attribute?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
 }
 
-export interface GetFirewallPolicyOutboundNetworkArgs {
+export interface GetApplicationScopeCategoryWorkloadOVariable {
+    attribute?: string;
+    value?: string;
+}
+
+export interface GetContainerRuntimePolicyMalwareScanOptionsArgs {
     /**
-     * Indicates whether the specified resources are allowed to receive data or requests.
+     * Set Action, Defaults to 'Alert' when empty
      */
-    allow?: pulumi.Input<boolean>;
+    action?: pulumi.Input<string>;
     /**
-     * Range of ports affected by firewall.
+     * Defines if enabled or not
      */
-    portRange?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
-     * Information of the resource.
+     * List of registry paths to be excluded from being protected.
      */
-    resource?: pulumi.Input<string>;
+    excludeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of the resource.
+     * List of registry processes to be excluded from being protected.
      */
-    resourceType?: pulumi.Input<string>;
+    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetContainerRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
 }
 
 export interface GetFirewallPolicyOutboundNetwork {
@@ -588,14 +643,71 @@ export interface GetFirewallPolicyOutboundNetwork {
     resourceType?: string;
 }
 
-export interface HostAssurancePolicAutoScanTime {
+export interface GetFirewallPolicyOutboundNetworkArgs {
+    /**
+     * Indicates whether the specified resources are allowed to receive data or requests.
+     */
+    allow?: pulumi.Input<boolean>;
+    /**
+     * Range of ports affected by firewall.
+     */
+    portRange?: pulumi.Input<string>;
+    /**
+     * Information of the resource.
+     */
+    resource?: pulumi.Input<string>;
+    /**
+     * Type of the resource.
+     */
+    resourceType?: pulumi.Input<string>;
+}
+
+export interface GetHostRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+    /**
+     * List of directories to be protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface GetHostRuntimePolicyMalwareScanOptionsArgs {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of directories to be protected.
+     */
+    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostAssurancePolicyAutoScanTime {
     iteration?: pulumi.Input<number>;
     iterationType?: pulumi.Input<string>;
     time?: pulumi.Input<string>;
     weekDays?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface HostAssurancePolicCustomCheck {
+export interface HostAssurancePolicyCustomCheck {
     /**
      * Name of user account that created the policy.
      */
@@ -611,12 +723,12 @@ export interface HostAssurancePolicCustomCheck {
     snippet?: pulumi.Input<string>;
 }
 
-export interface HostAssurancePolicForbiddenLabel {
+export interface HostAssurancePolicyForbiddenLabel {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
 }
 
-export interface HostAssurancePolicPackagesBlackList {
+export interface HostAssurancePolicyPackagesBlackList {
     arch?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
     epoch?: pulumi.Input<string>;
@@ -628,7 +740,7 @@ export interface HostAssurancePolicPackagesBlackList {
     versionRange?: pulumi.Input<string>;
 }
 
-export interface HostAssurancePolicPackagesWhiteList {
+export interface HostAssurancePolicyPackagesWhiteList {
     arch?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
     epoch?: pulumi.Input<string>;
@@ -640,23 +752,23 @@ export interface HostAssurancePolicPackagesWhiteList {
     versionRange?: pulumi.Input<string>;
 }
 
-export interface HostAssurancePolicRequiredLabel {
+export interface HostAssurancePolicyRequiredLabel {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
 }
 
-export interface HostAssurancePolicScope {
+export interface HostAssurancePolicyScope {
     expression?: pulumi.Input<string>;
-    variables?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicScopeVariable>[]>;
+    variables?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyScopeVariable>[]>;
 }
 
-export interface HostAssurancePolicScopeVariable {
+export interface HostAssurancePolicyScopeVariable {
     attribute?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
 }
 
-export interface HostAssurancePolicTrustedBaseImage {
+export interface HostAssurancePolicyTrustedBaseImage {
     imagename?: pulumi.Input<string>;
     registry?: pulumi.Input<string>;
 }
@@ -708,11 +820,34 @@ export interface HostRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface HostRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface HostRuntimePolicyScopeVariable {
     /**
      * Class of supported scope.
      */
     attribute: pulumi.Input<string>;
+    /**
+     * Name assigned to the attribute.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Value assigned to the attribute.
      */
@@ -989,15 +1124,118 @@ export interface ImageVulnerability {
     vendorUrl?: pulumi.Input<string>;
 }
 
+export interface IntegrationRegistryOption {
+    option?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyAutoScanTime {
+    iteration?: pulumi.Input<number>;
+    iterationType?: pulumi.Input<string>;
+    time?: pulumi.Input<string>;
+    weekDays?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface KubernetesAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
+    author?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
+    readOnly?: pulumi.Input<boolean>;
+    scriptId?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
+    snippet?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyForbiddenLabel {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyPackagesBlackList {
+    arch?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    epoch?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    release?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    versionRange?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyPackagesWhiteList {
+    arch?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    epoch?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    release?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    versionRange?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyRequiredLabel {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyScope {
+    expression?: pulumi.Input<string>;
+    variables?: pulumi.Input<pulumi.Input<inputs.KubernetesAssurancePolicyScopeVariable>[]>;
+}
+
+export interface KubernetesAssurancePolicyScopeVariable {
+    attribute?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyTrustedBaseImage {
+    imagename?: pulumi.Input<string>;
+    registry?: pulumi.Input<string>;
+}
+
+export interface RoleMappingOauth2 {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface RoleMappingOpenid {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
+export interface RoleMappingSaml {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface ServiceScopeVariable {
     /**
      * Class of supported scope.
      */
-    attribute: pulumi.Input<string>;
+    attribute?: pulumi.Input<string>;
+    /**
+     * Name assigned to the attribute.
+     */
+    name?: pulumi.Input<string>;
     /**
      * Value assigned to the attribute.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface UserSaasGroup {
@@ -1014,3 +1252,4 @@ export interface UserSaasLogin {
     ipAddress?: pulumi.Input<string>;
     userId?: pulumi.Input<number>;
 }
+

@@ -207,28 +207,28 @@ public class Service extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scopeExpression", type=String.class, parameters={})
-    private Output<String> scopeExpression;
+    private Output</* @Nullable */ String> scopeExpression;
 
     /**
      * @return Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    public Output<String> scopeExpression() {
-        return this.scopeExpression;
+    public Output<Optional<String>> scopeExpression() {
+        return Codegen.optional(this.scopeExpression);
     }
     /**
      * List of scope attributes.
      * 
      */
     @Export(name="scopeVariables", type=List.class, parameters={ServiceScopeVariable.class})
-    private Output<List<ServiceScopeVariable>> scopeVariables;
+    private Output</* @Nullable */ List<ServiceScopeVariable>> scopeVariables;
 
     /**
      * @return List of scope attributes.
      * 
      */
-    public Output<List<ServiceScopeVariable>> scopeVariables() {
-        return this.scopeVariables;
+    public Output<Optional<List<ServiceScopeVariable>>> scopeVariables() {
+        return Codegen.optional(this.scopeVariables);
     }
     /**
      * Type of the workload. container or host.

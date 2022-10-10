@@ -24,21 +24,28 @@ from .get_host_runtime_policy import *
 from .get_image import *
 from .get_image_assurance_policy import *
 from .get_integration_registry import *
+from .get_integration_state import *
+from .get_kubernetes_assurance_policy import *
 from .get_permissions_sets import *
 from .get_roles import *
+from .get_roles_mapping import *
+from .get_roles_mapping_saas import *
 from .get_service import *
 from .get_users import *
 from .get_users_saas import *
 from .group import *
-from .host_assurance_polic import *
+from .host_assurance_policy import *
 from .host_runtime_policy import *
 from .image import *
 from .image_assurance_policy import *
 from .integration_registry import *
+from .kubernetes_assurance_policy import *
 from .notification_slack import *
 from .permissions_sets import *
 from .provider import *
 from .role import *
+from .role_mapping import *
+from .role_mapping_saas import *
 from .service import *
 from .user import *
 from .user_saas import *
@@ -113,10 +120,10 @@ _utilities.register(
  },
  {
   "pkg": "aquasec",
-  "mod": "index/hostAssurancePolic",
+  "mod": "index/hostAssurancePolicy",
   "fqn": "pulumiverse_aquasec",
   "classes": {
-   "aquasec:index/hostAssurancePolic:HostAssurancePolic": "HostAssurancePolic"
+   "aquasec:index/hostAssurancePolicy:HostAssurancePolicy": "HostAssurancePolicy"
   }
  },
  {
@@ -153,6 +160,14 @@ _utilities.register(
  },
  {
   "pkg": "aquasec",
+  "mod": "index/kubernetesAssurancePolicy",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy": "KubernetesAssurancePolicy"
+  }
+ },
+ {
+  "pkg": "aquasec",
   "mod": "index/notificationSlack",
   "fqn": "pulumiverse_aquasec",
   "classes": {
@@ -173,6 +188,22 @@ _utilities.register(
   "fqn": "pulumiverse_aquasec",
   "classes": {
    "aquasec:index/role:Role": "Role"
+  }
+ },
+ {
+  "pkg": "aquasec",
+  "mod": "index/roleMapping",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/roleMapping:RoleMapping": "RoleMapping"
+  }
+ },
+ {
+  "pkg": "aquasec",
+  "mod": "index/roleMappingSaas",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/roleMappingSaas:RoleMappingSaas": "RoleMappingSaas"
   }
  },
  {

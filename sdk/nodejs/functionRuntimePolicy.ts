@@ -164,7 +164,7 @@ export class FunctionRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["enforce"] = args ? args.enforce : undefined;
             resourceInputs["honeypotAccessKey"] = args ? args.honeypotAccessKey : undefined;
             resourceInputs["honeypotApplyOns"] = args ? args.honeypotApplyOns : undefined;
-            resourceInputs["honeypotSecretKey"] = args ? args.honeypotSecretKey : undefined;
+            resourceInputs["honeypotSecretKey"] = args?.honeypotSecretKey ? pulumi.secret(args.honeypotSecretKey) : undefined;
             resourceInputs["honeypotServerlessAppName"] = args ? args.honeypotServerlessAppName : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["scopeExpression"] = args ? args.scopeExpression : undefined;
@@ -172,6 +172,8 @@ export class FunctionRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["author"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["honeypotSecretKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(FunctionRuntimePolicy.__pulumiType, name, resourceInputs, opts);
     }
 }

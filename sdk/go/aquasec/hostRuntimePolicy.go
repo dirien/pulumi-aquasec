@@ -172,6 +172,8 @@ type HostRuntimePolicy struct {
 	EnforceAfterDays pulumi.IntPtrOutput `pulumi:"enforceAfterDays"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringPtrOutput `pulumi:"fileIntegrityMonitoring"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsPtrOutput `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity pulumi.BoolPtrOutput `pulumi:"monitorSystemLogIntegrity"`
 	// If true, system time changes will be monitored.
@@ -264,6 +266,8 @@ type hostRuntimePolicyState struct {
 	EnforceAfterDays *int `pulumi:"enforceAfterDays"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring *HostRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitoring"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions *HostRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity *bool `pulumi:"monitorSystemLogIntegrity"`
 	// If true, system time changes will be monitored.
@@ -327,6 +331,8 @@ type HostRuntimePolicyState struct {
 	EnforceAfterDays pulumi.IntPtrInput
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringPtrInput
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity pulumi.BoolPtrInput
 	// If true, system time changes will be monitored.
@@ -392,6 +398,8 @@ type hostRuntimePolicyArgs struct {
 	EnforceAfterDays *int `pulumi:"enforceAfterDays"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring *HostRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitoring"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions *HostRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity *bool `pulumi:"monitorSystemLogIntegrity"`
 	// If true, system time changes will be monitored.
@@ -454,6 +462,8 @@ type HostRuntimePolicyArgs struct {
 	EnforceAfterDays pulumi.IntPtrInput
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringPtrInput
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity pulumi.BoolPtrInput
 	// If true, system time changes will be monitored.
@@ -651,6 +661,11 @@ func (o HostRuntimePolicyOutput) FileIntegrityMonitoring() HostRuntimePolicyFile
 	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyFileIntegrityMonitoringPtrOutput {
 		return v.FileIntegrityMonitoring
 	}).(HostRuntimePolicyFileIntegrityMonitoringPtrOutput)
+}
+
+// Configuration for Real-Time Malware Protection.
+func (o HostRuntimePolicyOutput) MalwareScanOptions() HostRuntimePolicyMalwareScanOptionsPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyMalwareScanOptionsPtrOutput { return v.MalwareScanOptions }).(HostRuntimePolicyMalwareScanOptionsPtrOutput)
 }
 
 // If true, system log will be monitored.

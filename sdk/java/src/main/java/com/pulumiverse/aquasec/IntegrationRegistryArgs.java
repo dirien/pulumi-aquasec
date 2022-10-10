@@ -5,6 +5,7 @@ package com.pulumiverse.aquasec;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumiverse.aquasec.inputs.IntegrationRegistryOptionArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -151,6 +152,13 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="options")
+    private @Nullable Output<List<IntegrationRegistryOptionArgs>> options;
+
+    public Optional<Output<List<IntegrationRegistryOptionArgs>>> options() {
+        return Optional.ofNullable(this.options);
     }
 
     /**
@@ -300,6 +308,7 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
         this.imageCreationDateCondition = $.imageCreationDateCondition;
         this.lastUpdated = $.lastUpdated;
         this.name = $.name;
+        this.options = $.options;
         this.password = $.password;
         this.prefixes = $.prefixes;
         this.pullImageAge = $.pullImageAge;
@@ -516,6 +525,19 @@ public final class IntegrationRegistryArgs extends com.pulumi.resources.Resource
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder options(@Nullable Output<List<IntegrationRegistryOptionArgs>> options) {
+            $.options = options;
+            return this;
+        }
+
+        public Builder options(List<IntegrationRegistryOptionArgs> options) {
+            return options(Output.of(options));
+        }
+
+        public Builder options(IntegrationRegistryOptionArgs... options) {
+            return options(List.of(options));
         }
 
         /**

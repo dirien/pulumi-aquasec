@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['IntegrationRegistryArgs', 'IntegrationRegistry']
 
@@ -24,6 +26,7 @@ class IntegrationRegistryArgs:
                  image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryOptionArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pull_image_age: Optional[pulumi.Input[str]] = None,
@@ -72,6 +75,8 @@ class IntegrationRegistryArgs:
             pulumi.set(__self__, "last_updated", last_updated)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if prefixes is not None:
@@ -211,6 +216,15 @@ class IntegrationRegistryArgs:
 
     @property
     @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryOptionArgs']]]]:
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryOptionArgs']]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password for registry authentication
@@ -318,6 +332,7 @@ class _IntegrationRegistryState:
                  image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryOptionArgs']]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pull_image_age: Optional[pulumi.Input[str]] = None,
@@ -366,6 +381,8 @@ class _IntegrationRegistryState:
             pulumi.set(__self__, "last_updated", last_updated)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if prefixes is not None:
@@ -495,6 +512,15 @@ class _IntegrationRegistryState:
 
     @property
     @pulumi.getter
+    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryOptionArgs']]]]:
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryOptionArgs']]]]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password for registry authentication
@@ -616,6 +642,7 @@ class IntegrationRegistry(pulumi.CustomResource):
                  image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationRegistryOptionArgs']]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pull_image_age: Optional[pulumi.Input[str]] = None,
@@ -681,6 +708,7 @@ class IntegrationRegistry(pulumi.CustomResource):
                  image_creation_date_condition: Optional[pulumi.Input[str]] = None,
                  last_updated: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationRegistryOptionArgs']]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pull_image_age: Optional[pulumi.Input[str]] = None,
@@ -708,6 +736,7 @@ class IntegrationRegistry(pulumi.CustomResource):
             __props__.__dict__["image_creation_date_condition"] = image_creation_date_condition
             __props__.__dict__["last_updated"] = last_updated
             __props__.__dict__["name"] = name
+            __props__.__dict__["options"] = options
             __props__.__dict__["password"] = password
             __props__.__dict__["prefixes"] = prefixes
             __props__.__dict__["pull_image_age"] = pull_image_age
@@ -738,6 +767,7 @@ class IntegrationRegistry(pulumi.CustomResource):
             image_creation_date_condition: Optional[pulumi.Input[str]] = None,
             last_updated: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationRegistryOptionArgs']]]]] = None,
             password: Optional[pulumi.Input[str]] = None,
             prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             pull_image_age: Optional[pulumi.Input[str]] = None,
@@ -786,6 +816,7 @@ class IntegrationRegistry(pulumi.CustomResource):
         __props__.__dict__["image_creation_date_condition"] = image_creation_date_condition
         __props__.__dict__["last_updated"] = last_updated
         __props__.__dict__["name"] = name
+        __props__.__dict__["options"] = options
         __props__.__dict__["password"] = password
         __props__.__dict__["prefixes"] = prefixes
         __props__.__dict__["pull_image_age"] = pull_image_age
@@ -868,6 +899,11 @@ class IntegrationRegistry(pulumi.CustomResource):
         The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def options(self) -> pulumi.Output[Optional[Sequence['outputs.IntegrationRegistryOption']]]:
+        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter

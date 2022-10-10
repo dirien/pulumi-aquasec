@@ -427,6 +427,12 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> LimitNewPrivileges { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Output("malwareScanOptions")]
+        public Output<Outputs.ContainerRuntimePolicyMalwareScanOptions?> MalwareScanOptions { get; private set; } = null!;
+
+        /// <summary>
         /// If true, system time changes will be monitored.
         /// </summary>
         [Output("monitorSystemTimeChanges")]
@@ -846,6 +852,12 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? LimitNewPrivileges { get; set; }
 
         /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.ContainerRuntimePolicyMalwareScanOptionsArgs>? MalwareScanOptions { get; set; }
+
+        /// <summary>
         /// If true, system time changes will be monitored.
         /// </summary>
         [Input("monitorSystemTimeChanges")]
@@ -1254,6 +1266,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("limitNewPrivileges")]
         public Input<bool>? LimitNewPrivileges { get; set; }
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.ContainerRuntimePolicyMalwareScanOptionsGetArgs>? MalwareScanOptions { get; set; }
 
         /// <summary>
         /// If true, system time changes will be monitored.

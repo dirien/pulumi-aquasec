@@ -5,12 +5,15 @@ package com.pulumiverse.aquasec.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyFileIntegrityMonitoring;
+import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyMalwareScanOptions;
 import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyScopeVariable;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetContainerRuntimePolicyResult {
@@ -240,6 +243,11 @@ public final class GetContainerRuntimePolicyResult {
      */
     private final Boolean limitNewPrivileges;
     /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    private final @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions;
+    /**
      * @return If true, system time changes will be monitored.
      * 
      */
@@ -322,6 +330,7 @@ public final class GetContainerRuntimePolicyResult {
         @CustomType.Parameter("forkGuardProcessLimit") Integer forkGuardProcessLimit,
         @CustomType.Parameter("id") String id,
         @CustomType.Parameter("limitNewPrivileges") Boolean limitNewPrivileges,
+        @CustomType.Parameter("malwareScanOptions") @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions,
         @CustomType.Parameter("monitorSystemTimeChanges") Boolean monitorSystemTimeChanges,
         @CustomType.Parameter("name") String name,
         @CustomType.Parameter("readonlyFilesAndDirectories") List<String> readonlyFilesAndDirectories,
@@ -374,6 +383,7 @@ public final class GetContainerRuntimePolicyResult {
         this.forkGuardProcessLimit = forkGuardProcessLimit;
         this.id = id;
         this.limitNewPrivileges = limitNewPrivileges;
+        this.malwareScanOptions = malwareScanOptions;
         this.monitorSystemTimeChanges = monitorSystemTimeChanges;
         this.name = name;
         this.readonlyFilesAndDirectories = readonlyFilesAndDirectories;
@@ -699,6 +709,13 @@ public final class GetContainerRuntimePolicyResult {
         return this.limitNewPrivileges;
     }
     /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Optional<GetContainerRuntimePolicyMalwareScanOptions> malwareScanOptions() {
+        return Optional.ofNullable(this.malwareScanOptions);
+    }
+    /**
      * @return If true, system time changes will be monitored.
      * 
      */
@@ -802,6 +819,7 @@ public final class GetContainerRuntimePolicyResult {
         private Integer forkGuardProcessLimit;
         private String id;
         private Boolean limitNewPrivileges;
+        private @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions;
         private Boolean monitorSystemTimeChanges;
         private String name;
         private List<String> readonlyFilesAndDirectories;
@@ -861,6 +879,7 @@ public final class GetContainerRuntimePolicyResult {
     	      this.forkGuardProcessLimit = defaults.forkGuardProcessLimit;
     	      this.id = defaults.id;
     	      this.limitNewPrivileges = defaults.limitNewPrivileges;
+    	      this.malwareScanOptions = defaults.malwareScanOptions;
     	      this.monitorSystemTimeChanges = defaults.monitorSystemTimeChanges;
     	      this.name = defaults.name;
     	      this.readonlyFilesAndDirectories = defaults.readonlyFilesAndDirectories;
@@ -1089,6 +1108,10 @@ public final class GetContainerRuntimePolicyResult {
             this.limitNewPrivileges = Objects.requireNonNull(limitNewPrivileges);
             return this;
         }
+        public Builder malwareScanOptions(@Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions) {
+            this.malwareScanOptions = malwareScanOptions;
+            return this;
+        }
         public Builder monitorSystemTimeChanges(Boolean monitorSystemTimeChanges) {
             this.monitorSystemTimeChanges = Objects.requireNonNull(monitorSystemTimeChanges);
             return this;
@@ -1129,7 +1152,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder scopeVariables(GetContainerRuntimePolicyScopeVariable... scopeVariables) {
             return scopeVariables(List.of(scopeVariables));
         }        public GetContainerRuntimePolicyResult build() {
-            return new GetContainerRuntimePolicyResult(allowedExecutables, allowedRegistries, applicationScopes, auditAllNetworkActivity, auditAllProcessesActivity, auditFullCommandArguments, author, blockAccessHostNetwork, blockAddingCapabilities, blockContainerExec, blockCryptocurrencyMining, blockFilelessExec, blockLowPortBinding, blockNonCompliantImages, blockNonCompliantWorkloads, blockNonK8sContainers, blockPrivilegedContainers, blockReverseShell, blockRootUser, blockUnregisteredImages, blockUseIpcNamespace, blockUsePidNamespace, blockUseUserNamespace, blockUseUtsNamespace, blockedCapabilities, blockedExecutables, blockedFiles, blockedInboundPorts, blockedOutboundPorts, blockedPackages, blockedVolumes, containerExecAllowedProcesses, description, enableDriftPrevention, enableForkGuard, enableIpReputationSecurity, enablePortScanDetection, enabled, enforce, enforceAfterDays, exceptionalReadonlyFilesAndDirectories, fileIntegrityMonitorings, forkGuardProcessLimit, id, limitNewPrivileges, monitorSystemTimeChanges, name, readonlyFilesAndDirectories, reverseShellAllowedIps, reverseShellAllowedProcesses, scopeExpression, scopeVariables);
+            return new GetContainerRuntimePolicyResult(allowedExecutables, allowedRegistries, applicationScopes, auditAllNetworkActivity, auditAllProcessesActivity, auditFullCommandArguments, author, blockAccessHostNetwork, blockAddingCapabilities, blockContainerExec, blockCryptocurrencyMining, blockFilelessExec, blockLowPortBinding, blockNonCompliantImages, blockNonCompliantWorkloads, blockNonK8sContainers, blockPrivilegedContainers, blockReverseShell, blockRootUser, blockUnregisteredImages, blockUseIpcNamespace, blockUsePidNamespace, blockUseUserNamespace, blockUseUtsNamespace, blockedCapabilities, blockedExecutables, blockedFiles, blockedInboundPorts, blockedOutboundPorts, blockedPackages, blockedVolumes, containerExecAllowedProcesses, description, enableDriftPrevention, enableForkGuard, enableIpReputationSecurity, enablePortScanDetection, enabled, enforce, enforceAfterDays, exceptionalReadonlyFilesAndDirectories, fileIntegrityMonitorings, forkGuardProcessLimit, id, limitNewPrivileges, malwareScanOptions, monitorSystemTimeChanges, name, readonlyFilesAndDirectories, reverseShellAllowedIps, reverseShellAllowedProcesses, scopeExpression, scopeVariables);
         }
     }
 }

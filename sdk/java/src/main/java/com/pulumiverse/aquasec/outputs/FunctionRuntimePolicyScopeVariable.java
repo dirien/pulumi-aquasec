@@ -6,6 +6,8 @@ package com.pulumiverse.aquasec.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionRuntimePolicyScopeVariable {
@@ -15,6 +17,11 @@ public final class FunctionRuntimePolicyScopeVariable {
      */
     private final String attribute;
     /**
+     * @return Name assigned to the attribute.
+     * 
+     */
+    private final @Nullable String name;
+    /**
      * @return Value assigned to the attribute.
      * 
      */
@@ -23,8 +30,10 @@ public final class FunctionRuntimePolicyScopeVariable {
     @CustomType.Constructor
     private FunctionRuntimePolicyScopeVariable(
         @CustomType.Parameter("attribute") String attribute,
+        @CustomType.Parameter("name") @Nullable String name,
         @CustomType.Parameter("value") String value) {
         this.attribute = attribute;
+        this.name = name;
         this.value = value;
     }
 
@@ -34,6 +43,13 @@ public final class FunctionRuntimePolicyScopeVariable {
      */
     public String attribute() {
         return this.attribute;
+    }
+    /**
+     * @return Name assigned to the attribute.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Value assigned to the attribute.
@@ -53,6 +69,7 @@ public final class FunctionRuntimePolicyScopeVariable {
 
     public static final class Builder {
         private String attribute;
+        private @Nullable String name;
         private String value;
 
         public Builder() {
@@ -62,6 +79,7 @@ public final class FunctionRuntimePolicyScopeVariable {
         public Builder(FunctionRuntimePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
+    	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
@@ -69,11 +87,15 @@ public final class FunctionRuntimePolicyScopeVariable {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        public Builder name(@Nullable String name) {
+            this.name = name;
+            return this;
+        }
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
         }        public FunctionRuntimePolicyScopeVariable build() {
-            return new FunctionRuntimePolicyScopeVariable(attribute, value);
+            return new FunctionRuntimePolicyScopeVariable(attribute, name, value);
         }
     }
 }

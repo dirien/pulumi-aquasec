@@ -74,11 +74,13 @@
             },
             "password": {
                 "type": "string",
-                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n"
+                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n",
+                "secret": true
             },
             "username": {
                 "type": "string",
-                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n"
+                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n",
+                "secret": true
             },
             "verifyTls": {
                 "type": "boolean",
@@ -94,6 +96,7 @@
                     "items": {
                         "$ref": "#/types/aquasec:index/ApplicationScopeCategoryArtifact:ApplicationScopeCategoryArtifact"
                     },
+                    "description": "An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -116,6 +119,7 @@
                     "items": {
                         "$ref": "#/types/aquasec:index/ApplicationScopeCategoryInfrastructure:ApplicationScopeCategoryInfrastructure"
                     },
+                    "description": "An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -127,6 +131,7 @@
                     "items": {
                         "$ref": "#/types/aquasec:index/ApplicationScopeCategoryWorkload:ApplicationScopeCategoryWorkload"
                     },
+                    "description": "A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -766,11 +771,67 @@
             },
             "type": "object"
         },
+        "aquasec:index/ContainerRuntimePolicyMalwareScanOptions:ContainerRuntimePolicyMalwareScanOptions": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Set Action, Defaults to 'Alert' when empty\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if enabled or not\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry paths to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeProcesses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry processes to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aquasec:index/ContainerRuntimePolicyScopeVariable:ContainerRuntimePolicyScopeVariable": {
             "properties": {
                 "attribute": {
                     "type": "string",
                     "description": "Class of supported scope.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name assigned to the attribute.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1422,6 +1483,15 @@
                         }
                     }
                 },
+                "name": {
+                    "type": "string",
+                    "description": "Name assigned to the attribute.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "value": {
                     "type": "string",
                     "description": "Value assigned to the attribute.\n",
@@ -1438,7 +1508,7 @@
                 "value"
             ]
         },
-        "aquasec:index/HostAssurancePolicAutoScanTime:HostAssurancePolicAutoScanTime": {
+        "aquasec:index/HostAssurancePolicyAutoScanTime:HostAssurancePolicyAutoScanTime": {
             "properties": {
                 "iteration": {
                     "type": "integer",
@@ -1486,7 +1556,7 @@
                 }
             }
         },
-        "aquasec:index/HostAssurancePolicCustomCheck:HostAssurancePolicCustomCheck": {
+        "aquasec:index/HostAssurancePolicyCustomCheck:HostAssurancePolicyCustomCheck": {
             "properties": {
                 "author": {
                     "type": "string",
@@ -1572,7 +1642,7 @@
             },
             "type": "object"
         },
-        "aquasec:index/HostAssurancePolicForbiddenLabel:HostAssurancePolicForbiddenLabel": {
+        "aquasec:index/HostAssurancePolicyForbiddenLabel:HostAssurancePolicyForbiddenLabel": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -1593,7 +1663,7 @@
             },
             "type": "object"
         },
-        "aquasec:index/HostAssurancePolicPackagesBlackList:HostAssurancePolicPackagesBlackList": {
+        "aquasec:index/HostAssurancePolicyPackagesBlackList:HostAssurancePolicyPackagesBlackList": {
             "properties": {
                 "arch": {
                     "type": "string",
@@ -1670,7 +1740,7 @@
             },
             "type": "object"
         },
-        "aquasec:index/HostAssurancePolicPackagesWhiteList:HostAssurancePolicPackagesWhiteList": {
+        "aquasec:index/HostAssurancePolicyPackagesWhiteList:HostAssurancePolicyPackagesWhiteList": {
             "properties": {
                 "arch": {
                     "type": "string",
@@ -1747,7 +1817,7 @@
             },
             "type": "object"
         },
-        "aquasec:index/HostAssurancePolicRequiredLabel:HostAssurancePolicRequiredLabel": {
+        "aquasec:index/HostAssurancePolicyRequiredLabel:HostAssurancePolicyRequiredLabel": {
             "properties": {
                 "key": {
                     "type": "string",
@@ -1768,7 +1838,7 @@
             },
             "type": "object"
         },
-        "aquasec:index/HostAssurancePolicScope:HostAssurancePolicScope": {
+        "aquasec:index/HostAssurancePolicyScope:HostAssurancePolicyScope": {
             "properties": {
                 "expression": {
                     "type": "string",
@@ -1781,7 +1851,7 @@
                 "variables": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicScopeVariable:HostAssurancePolicScopeVariable"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyScopeVariable:HostAssurancePolicyScopeVariable"
                     },
                     "language": {
                         "python": {
@@ -1799,7 +1869,7 @@
                 }
             }
         },
-        "aquasec:index/HostAssurancePolicScopeVariable:HostAssurancePolicScopeVariable": {
+        "aquasec:index/HostAssurancePolicyScopeVariable:HostAssurancePolicyScopeVariable": {
             "properties": {
                 "attribute": {
                     "type": "string",
@@ -1836,7 +1906,7 @@
                 }
             }
         },
-        "aquasec:index/HostAssurancePolicTrustedBaseImage:HostAssurancePolicTrustedBaseImage": {
+        "aquasec:index/HostAssurancePolicyTrustedBaseImage:HostAssurancePolicyTrustedBaseImage": {
             "properties": {
                 "imagename": {
                     "type": "string",
@@ -1979,11 +2049,67 @@
             },
             "type": "object"
         },
+        "aquasec:index/HostRuntimePolicyMalwareScanOptions:HostRuntimePolicyMalwareScanOptions": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Set Action, Defaults to 'Alert' when empty\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if enabled or not\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry paths to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeProcesses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry processes to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aquasec:index/HostRuntimePolicyScopeVariable:HostRuntimePolicyScopeVariable": {
             "properties": {
                 "attribute": {
                     "type": "string",
                     "description": "Class of supported scope.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name assigned to the attribute.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3374,11 +3500,523 @@
                 }
             }
         },
+        "aquasec:index/IntegrationRegistryOption:IntegrationRegistryOption": {
+            "properties": {
+                "option": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/KubernetesAssurancePolicyAutoScanTime:KubernetesAssurancePolicyAutoScanTime": {
+            "properties": {
+                "iteration": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "iterationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "time": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "weekDays": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "iteration",
+                        "weekDays"
+                    ]
+                }
+            }
+        },
+        "aquasec:index/KubernetesAssurancePolicyCustomCheck:KubernetesAssurancePolicyCustomCheck": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "description": "Name of user account that created the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "engine": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastModified": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scriptId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "severity": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snippet": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/KubernetesAssurancePolicyForbiddenLabel:KubernetesAssurancePolicyForbiddenLabel": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/KubernetesAssurancePolicyPackagesBlackList:KubernetesAssurancePolicyPackagesBlackList": {
+            "properties": {
+                "arch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "display": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "epoch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "license": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "release": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionRange": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/KubernetesAssurancePolicyPackagesWhiteList:KubernetesAssurancePolicyPackagesWhiteList": {
+            "properties": {
+                "arch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "display": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "epoch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "license": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "release": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionRange": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/KubernetesAssurancePolicyRequiredLabel:KubernetesAssurancePolicyRequiredLabel": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/KubernetesAssurancePolicyScope:KubernetesAssurancePolicyScope": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "variables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyScopeVariable:KubernetesAssurancePolicyScopeVariable"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "expression"
+                    ]
+                }
+            }
+        },
+        "aquasec:index/KubernetesAssurancePolicyScopeVariable:KubernetesAssurancePolicyScopeVariable": {
+            "properties": {
+                "attribute": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "attribute",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "aquasec:index/KubernetesAssurancePolicyTrustedBaseImage:KubernetesAssurancePolicyTrustedBaseImage": {
+            "properties": {
+                "imagename": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "registry": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/RoleMappingOauth2:RoleMappingOauth2": {
+            "properties": {
+                "roleMapping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Role Mapping is used to define the IdP role that the user will assume in Aqua\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "roleMapping"
+            ]
+        },
+        "aquasec:index/RoleMappingOpenid:RoleMappingOpenid": {
+            "properties": {
+                "roleMapping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Role Mapping is used to define the IdP role that the user will assume in Aqua\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "roleMapping"
+            ]
+        },
+        "aquasec:index/RoleMappingSaml:RoleMappingSaml": {
+            "properties": {
+                "roleMapping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Role Mapping is used to define the IdP role that the user will assume in Aqua\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    },
+                    "willReplaceOnChanges": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "roleMapping"
+            ]
+        },
         "aquasec:index/ServiceScopeVariable:ServiceScopeVariable": {
             "properties": {
                 "attribute": {
                     "type": "string",
                     "description": "Class of supported scope.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name assigned to the attribute.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3395,11 +4033,7 @@
                     }
                 }
             },
-            "type": "object",
-            "required": [
-                "attribute",
-                "value"
-            ]
+            "type": "object"
         },
         "aquasec:index/UserSaasGroup:UserSaasGroup": {
             "properties": {
@@ -4293,10 +4927,66 @@
                 }
             }
         },
+        "aquasec:index/getContainerRuntimePolicyMalwareScanOptions:getContainerRuntimePolicyMalwareScanOptions": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Set Action, Defaults to 'Alert' when empty\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if enabled or not\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry paths to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeProcesses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry processes to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aquasec:index/getContainerRuntimePolicyScopeVariable:getContainerRuntimePolicyScopeVariable": {
             "properties": {
                 "attribute": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the container runtime policy\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4315,6 +5005,7 @@
             "type": "object",
             "required": [
                 "attribute",
+                "name",
                 "value"
             ],
             "language": {
@@ -5031,6 +5722,15 @@
                         }
                     }
                 },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the function runtime policy\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "value": {
                     "type": "string",
                     "language": {
@@ -5043,6 +5743,7 @@
             "type": "object",
             "required": [
                 "attribute",
+                "name",
                 "value"
             ],
             "language": {
@@ -5805,10 +6506,66 @@
                 }
             }
         },
+        "aquasec:index/getHostRuntimePolicyMalwareScanOptions:getHostRuntimePolicyMalwareScanOptions": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Set Action, Defaults to 'Alert' when empty\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if enabled or not\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludeProcesses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registry processes to be excluded from being protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeDirectories": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of directories to be protected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "aquasec:index/getHostRuntimePolicyScopeVariable:getHostRuntimePolicyScopeVariable": {
             "properties": {
                 "attribute": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the host runtime policy\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5827,6 +6584,7 @@
             "type": "object",
             "required": [
                 "attribute",
+                "name",
                 "value"
             ],
             "language": {
@@ -7302,6 +8060,507 @@
                 }
             }
         },
+        "aquasec:index/getKubernetesAssurancePolicyAutoScanTime:getKubernetesAssurancePolicyAutoScanTime": {
+            "properties": {
+                "iteration": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "iterationType": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "time": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "weekDays": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "iteration",
+                "iterationType",
+                "time",
+                "weekDays"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyCustomCheck:getKubernetesAssurancePolicyCustomCheck": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "description": "Name of user account that created the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "engine": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastModified": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "readOnly": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scriptId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "severity": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "snippet": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "description",
+                "engine",
+                "lastModified",
+                "name",
+                "path",
+                "readOnly",
+                "scriptId",
+                "severity",
+                "snippet"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyForbiddenLabel:getKubernetesAssurancePolicyForbiddenLabel": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyPackagesBlackList:getKubernetesAssurancePolicyPackagesBlackList": {
+            "properties": {
+                "arch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "display": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "epoch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "license": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "release": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionRange": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "arch",
+                "display",
+                "epoch",
+                "format",
+                "license",
+                "name",
+                "release",
+                "version",
+                "versionRange"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyPackagesWhiteList:getKubernetesAssurancePolicyPackagesWhiteList": {
+            "properties": {
+                "arch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "display": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "epoch": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "format": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "license": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "release": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "versionRange": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "arch",
+                "display",
+                "epoch",
+                "format",
+                "license",
+                "name",
+                "release",
+                "version",
+                "versionRange"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyRequiredLabel:getKubernetesAssurancePolicyRequiredLabel": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyScope:getKubernetesAssurancePolicyScope": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "variables": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyScopeVariable:getKubernetesAssurancePolicyScopeVariable"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "expression"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyScopeVariable:getKubernetesAssurancePolicyScopeVariable": {
+            "properties": {
+                "attribute": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "attribute",
+                "name",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicyTrustedBaseImage:getKubernetesAssurancePolicyTrustedBaseImage": {
+            "properties": {
+                "imagename": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "registry": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "imagename",
+                "registry"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aquasec:index/getPermissionsSetsPermissionsSet:getPermissionsSetsPermissionsSet": {
             "properties": {
                 "actions": {
@@ -7380,6 +8639,139 @@
                 }
             }
         },
+        "aquasec:index/getRolesMappingOauth2:getRolesMappingOauth2": {
+            "properties": {
+                "roleMapping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "roleMapping"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getRolesMappingOpenid:getRolesMappingOpenid": {
+            "properties": {
+                "roleMapping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "roleMapping"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getRolesMappingSaasRolesMapping:getRolesMappingSaasRolesMapping": {
+            "properties": {
+                "accountId": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "created": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cspRole": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "samlGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountId",
+                "created",
+                "cspRole",
+                "id",
+                "samlGroups"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getRolesMappingSaml:getRolesMappingSaml": {
+            "properties": {
+                "roleMapping": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "roleMapping"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aquasec:index/getRolesRole:getRolesRole": {
             "properties": {
                 "description": {
@@ -7450,6 +8842,15 @@
                         }
                     }
                 },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the service. It is recommended not to use whitespace characters in the name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "value": {
                     "type": "string",
                     "language": {
@@ -7462,6 +8863,7 @@
             "type": "object",
             "required": [
                 "attribute",
+                "name",
                 "value"
             ],
             "language": {
@@ -7847,11 +9249,13 @@
             },
             "password": {
                 "type": "string",
-                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n"
+                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n",
+                "secret": true
             },
             "username": {
                 "type": "string",
-                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n"
+                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n",
+                "secret": true
             },
             "verifyTls": {
                 "type": "boolean",
@@ -7873,11 +9277,13 @@
             },
             "password": {
                 "type": "string",
-                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n"
+                "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n",
+                "secret": true
             },
             "username": {
                 "type": "string",
-                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n"
+                "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n",
+                "secret": true
             },
             "verifyTls": {
                 "type": "boolean",
@@ -8185,6 +9591,10 @@
                     "type": "boolean",
                     "description": "If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)\n"
                 },
+                "malwareScanOptions": {
+                    "$ref": "#/types/aquasec:index/ContainerRuntimePolicyMalwareScanOptions:ContainerRuntimePolicyMalwareScanOptions",
+                    "description": "Configuration for Real-Time Malware Protection.\n"
+                },
                 "monitorSystemTimeChanges": {
                     "type": "boolean",
                     "description": "If true, system time changes will be monitored.\n"
@@ -8442,6 +9852,10 @@
                     "type": "boolean",
                     "description": "If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)\n"
                 },
+                "malwareScanOptions": {
+                    "$ref": "#/types/aquasec:index/ContainerRuntimePolicyMalwareScanOptions:ContainerRuntimePolicyMalwareScanOptions",
+                    "description": "Configuration for Real-Time Malware Protection.\n"
+                },
                 "monitorSystemTimeChanges": {
                     "type": "boolean",
                     "description": "If true, system time changes will be monitored.\n"
@@ -8698,6 +10112,10 @@
                     "limitNewPrivileges": {
                         "type": "boolean",
                         "description": "If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)\n"
+                    },
+                    "malwareScanOptions": {
+                        "$ref": "#/types/aquasec:index/ContainerRuntimePolicyMalwareScanOptions:ContainerRuntimePolicyMalwareScanOptions",
+                        "description": "Configuration for Real-Time Malware Protection.\n"
                     },
                     "monitorSystemTimeChanges": {
                         "type": "boolean",
@@ -10727,7 +12145,8 @@
                 },
                 "honeypotSecretKey": {
                     "type": "string",
-                    "description": "Honeypot User Password (Secret Key)\n"
+                    "description": "Honeypot User Password (Secret Key)\n",
+                    "secret": true
                 },
                 "honeypotServerlessAppName": {
                     "type": "string",
@@ -10811,7 +12230,8 @@
                 },
                 "honeypotSecretKey": {
                     "type": "string",
-                    "description": "Honeypot User Password (Secret Key)\n"
+                    "description": "Honeypot User Password (Secret Key)\n",
+                    "secret": true
                 },
                 "honeypotServerlessAppName": {
                     "type": "string",
@@ -10895,7 +12315,8 @@
                     },
                     "honeypotSecretKey": {
                         "type": "string",
-                        "description": "Honeypot User Password (Secret Key)\n"
+                        "description": "Honeypot User Password (Secret Key)\n",
+                        "secret": true
                     },
                     "honeypotServerlessAppName": {
                         "type": "string",
@@ -10968,7 +12389,7 @@
                 "type": "object"
             }
         },
-        "aquasec:index/hostAssurancePolic:HostAssurancePolic": {
+        "aquasec:index/hostAssurancePolicy:HostAssurancePolicy": {
             "properties": {
                 "allowedImages": {
                     "type": "array",
@@ -11004,7 +12425,7 @@
                 "autoScanTimes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicAutoScanTime:HostAssurancePolicAutoScanTime"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyAutoScanTime:HostAssurancePolicyAutoScanTime"
                     }
                 },
                 "blacklistPermissions": {
@@ -11039,7 +12460,7 @@
                 "customChecks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicCustomCheck:HostAssurancePolicCustomCheck"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyCustomCheck:HostAssurancePolicyCustomCheck"
                     },
                     "description": "List of Custom user scripts for checks.\n"
                 },
@@ -11132,7 +12553,7 @@
                 "forbiddenLabels": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicForbiddenLabel:HostAssurancePolicForbiddenLabel"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyForbiddenLabel:HostAssurancePolicyForbiddenLabel"
                     }
                 },
                 "forbiddenLabelsEnabled": {
@@ -11213,7 +12634,7 @@
                 "packagesBlackLists": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicPackagesBlackList:HostAssurancePolicPackagesBlackList"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyPackagesBlackList:HostAssurancePolicyPackagesBlackList"
                     },
                     "description": "List of backlisted images.\n"
                 },
@@ -11224,7 +12645,7 @@
                 "packagesWhiteLists": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicPackagesWhiteList:HostAssurancePolicPackagesWhiteList"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyPackagesWhiteList:HostAssurancePolicyPackagesWhiteList"
                     },
                     "description": "List of whitelisted images.\n"
                 },
@@ -11247,7 +12668,7 @@
                 "requiredLabels": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicRequiredLabel:HostAssurancePolicRequiredLabel"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyRequiredLabel:HostAssurancePolicyRequiredLabel"
                     }
                 },
                 "requiredLabelsEnabled": {
@@ -11274,13 +12695,13 @@
                 "scopes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicScope:HostAssurancePolicScope"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyScope:HostAssurancePolicyScope"
                     }
                 },
                 "trustedBaseImages": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicTrustedBaseImage:HostAssurancePolicTrustedBaseImage"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyTrustedBaseImage:HostAssurancePolicyTrustedBaseImage"
                     },
                     "description": "List of trusted images.\n"
                 },
@@ -11339,7 +12760,7 @@
                 "autoScanTimes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicAutoScanTime:HostAssurancePolicAutoScanTime"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyAutoScanTime:HostAssurancePolicyAutoScanTime"
                     }
                 },
                 "blacklistPermissions": {
@@ -11374,7 +12795,7 @@
                 "customChecks": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicCustomCheck:HostAssurancePolicCustomCheck"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyCustomCheck:HostAssurancePolicyCustomCheck"
                     },
                     "description": "List of Custom user scripts for checks.\n"
                 },
@@ -11467,7 +12888,7 @@
                 "forbiddenLabels": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicForbiddenLabel:HostAssurancePolicForbiddenLabel"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyForbiddenLabel:HostAssurancePolicyForbiddenLabel"
                     }
                 },
                 "forbiddenLabelsEnabled": {
@@ -11546,7 +12967,7 @@
                 "packagesBlackLists": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicPackagesBlackList:HostAssurancePolicPackagesBlackList"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyPackagesBlackList:HostAssurancePolicyPackagesBlackList"
                     },
                     "description": "List of backlisted images.\n"
                 },
@@ -11557,7 +12978,7 @@
                 "packagesWhiteLists": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicPackagesWhiteList:HostAssurancePolicPackagesWhiteList"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyPackagesWhiteList:HostAssurancePolicyPackagesWhiteList"
                     },
                     "description": "List of whitelisted images.\n"
                 },
@@ -11580,7 +13001,7 @@
                 "requiredLabels": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicRequiredLabel:HostAssurancePolicRequiredLabel"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyRequiredLabel:HostAssurancePolicyRequiredLabel"
                     }
                 },
                 "requiredLabelsEnabled": {
@@ -11607,13 +13028,13 @@
                 "scopes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicScope:HostAssurancePolicScope"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyScope:HostAssurancePolicyScope"
                     }
                 },
                 "trustedBaseImages": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/aquasec:index/HostAssurancePolicTrustedBaseImage:HostAssurancePolicTrustedBaseImage"
+                        "$ref": "#/types/aquasec:index/HostAssurancePolicyTrustedBaseImage:HostAssurancePolicyTrustedBaseImage"
                     },
                     "description": "List of trusted images.\n"
                 },
@@ -11637,7 +13058,7 @@
                 "applicationScopes"
             ],
             "stateInputs": {
-                "description": "Input properties used for looking up and filtering HostAssurancePolic resources.\n",
+                "description": "Input properties used for looking up and filtering HostAssurancePolicy resources.\n",
                 "properties": {
                     "allowedImages": {
                         "type": "array",
@@ -11673,7 +13094,7 @@
                     "autoScanTimes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicAutoScanTime:HostAssurancePolicAutoScanTime"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyAutoScanTime:HostAssurancePolicyAutoScanTime"
                         }
                     },
                     "blacklistPermissions": {
@@ -11708,7 +13129,7 @@
                     "customChecks": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicCustomCheck:HostAssurancePolicCustomCheck"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyCustomCheck:HostAssurancePolicyCustomCheck"
                         },
                         "description": "List of Custom user scripts for checks.\n"
                     },
@@ -11801,7 +13222,7 @@
                     "forbiddenLabels": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicForbiddenLabel:HostAssurancePolicForbiddenLabel"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyForbiddenLabel:HostAssurancePolicyForbiddenLabel"
                         }
                     },
                     "forbiddenLabelsEnabled": {
@@ -11883,7 +13304,7 @@
                     "packagesBlackLists": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicPackagesBlackList:HostAssurancePolicPackagesBlackList"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyPackagesBlackList:HostAssurancePolicyPackagesBlackList"
                         },
                         "description": "List of backlisted images.\n"
                     },
@@ -11894,7 +13315,7 @@
                     "packagesWhiteLists": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicPackagesWhiteList:HostAssurancePolicPackagesWhiteList"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyPackagesWhiteList:HostAssurancePolicyPackagesWhiteList"
                         },
                         "description": "List of whitelisted images.\n"
                     },
@@ -11917,7 +13338,7 @@
                     "requiredLabels": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicRequiredLabel:HostAssurancePolicRequiredLabel"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyRequiredLabel:HostAssurancePolicyRequiredLabel"
                         }
                     },
                     "requiredLabelsEnabled": {
@@ -11944,13 +13365,13 @@
                     "scopes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicScope:HostAssurancePolicScope"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyScope:HostAssurancePolicyScope"
                         }
                     },
                     "trustedBaseImages": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/HostAssurancePolicTrustedBaseImage:HostAssurancePolicTrustedBaseImage"
+                            "$ref": "#/types/aquasec:index/HostAssurancePolicyTrustedBaseImage:HostAssurancePolicyTrustedBaseImage"
                         },
                         "description": "List of trusted images.\n"
                     },
@@ -12045,6 +13466,10 @@
                 "fileIntegrityMonitoring": {
                     "$ref": "#/types/aquasec:index/HostRuntimePolicyFileIntegrityMonitoring:HostRuntimePolicyFileIntegrityMonitoring",
                     "description": "Configuration for file integrity monitoring.\n"
+                },
+                "malwareScanOptions": {
+                    "$ref": "#/types/aquasec:index/HostRuntimePolicyMalwareScanOptions:HostRuntimePolicyMalwareScanOptions",
+                    "description": "Configuration for Real-Time Malware Protection.\n"
                 },
                 "monitorSystemLogIntegrity": {
                     "type": "boolean",
@@ -12195,6 +13620,10 @@
                     "$ref": "#/types/aquasec:index/HostRuntimePolicyFileIntegrityMonitoring:HostRuntimePolicyFileIntegrityMonitoring",
                     "description": "Configuration for file integrity monitoring.\n"
                 },
+                "malwareScanOptions": {
+                    "$ref": "#/types/aquasec:index/HostRuntimePolicyMalwareScanOptions:HostRuntimePolicyMalwareScanOptions",
+                    "description": "Configuration for Real-Time Malware Protection.\n"
+                },
                 "monitorSystemLogIntegrity": {
                     "type": "boolean",
                     "description": "If true, system log will be monitored.\n"
@@ -12343,6 +13772,10 @@
                     "fileIntegrityMonitoring": {
                         "$ref": "#/types/aquasec:index/HostRuntimePolicyFileIntegrityMonitoring:HostRuntimePolicyFileIntegrityMonitoring",
                         "description": "Configuration for file integrity monitoring.\n"
+                    },
+                    "malwareScanOptions": {
+                        "$ref": "#/types/aquasec:index/HostRuntimePolicyMalwareScanOptions:HostRuntimePolicyMalwareScanOptions",
+                        "description": "Configuration for Real-Time Malware Protection.\n"
                     },
                     "monitorSystemLogIntegrity": {
                         "type": "boolean",
@@ -14031,6 +15464,12 @@
                     "type": "string",
                     "description": "The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces\n"
                 },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/IntegrationRegistryOption:IntegrationRegistryOption"
+                    }
+                },
                 "password": {
                     "type": "string",
                     "description": "The password for registry authentication\n"
@@ -14124,6 +15563,12 @@
                     "description": "The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces\n",
                     "willReplaceOnChanges": true
                 },
+                "options": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/IntegrationRegistryOption:IntegrationRegistryOption"
+                    }
+                },
                 "password": {
                     "type": "string",
                     "description": "The password for registry authentication\n"
@@ -14210,6 +15655,12 @@
                         "description": "The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces\n",
                         "willReplaceOnChanges": true
                     },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/IntegrationRegistryOption:IntegrationRegistryOption"
+                        }
+                    },
                     "password": {
                         "type": "string",
                         "description": "The password for registry authentication\n"
@@ -14251,6 +15702,1020 @@
                     "username": {
                         "type": "string",
                         "description": "The username for registry authentication.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy": {
+            "properties": {
+                "allowedImages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of explicitly allowed images.\n"
+                },
+                "applicationScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "assuranceType": {
+                    "type": "string",
+                    "description": "What type of assurance policy is described.\n"
+                },
+                "auditOnFailure": {
+                    "type": "boolean",
+                    "description": "Indicates if auditing for failures.\n"
+                },
+                "author": {
+                    "type": "string",
+                    "description": "Name of user account that created the policy.\n"
+                },
+                "autoScanConfigured": {
+                    "type": "boolean"
+                },
+                "autoScanEnabled": {
+                    "type": "boolean"
+                },
+                "autoScanTimes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyAutoScanTime:KubernetesAssurancePolicyAutoScanTime"
+                    }
+                },
+                "blacklistPermissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of function's forbidden permissions.\n"
+                },
+                "blacklistPermissionsEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if blacklist permissions is relevant.\n"
+                },
+                "blacklistedLicenses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of blacklisted licenses.\n"
+                },
+                "blacklistedLicensesEnabled": {
+                    "type": "boolean",
+                    "description": "Lndicates if license blacklist is relevant.\n"
+                },
+                "blockFailed": {
+                    "type": "boolean",
+                    "description": "Indicates if failed images are blocked.\n"
+                },
+                "controlExcludeNoFix": {
+                    "type": "boolean"
+                },
+                "customChecks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyCustomCheck:KubernetesAssurancePolicyCustomCheck"
+                    },
+                    "description": "List of Custom user scripts for checks.\n"
+                },
+                "customChecksEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if scanning should include custom checks.\n"
+                },
+                "customSeverityEnabled": {
+                    "type": "boolean"
+                },
+                "cvesBlackListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if cves blacklist is relevant.\n"
+                },
+                "cvesBlackLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cves blacklisted items.\n"
+                },
+                "cvesWhiteListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if cves whitelist is relevant.\n"
+                },
+                "cvesWhiteLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cves whitelisted licenses\n"
+                },
+                "cvssSeverity": {
+                    "type": "string",
+                    "description": "Identifier of the cvss severity.\n"
+                },
+                "cvssSeverityEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the cvss severity is scanned.\n"
+                },
+                "cvssSeverityExcludeNoFix": {
+                    "type": "boolean",
+                    "description": "Indicates that policy should ignore cvss cases that do not have a known fix.\n"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "disallowMalware": {
+                    "type": "boolean",
+                    "description": "Indicates if malware should block the image.\n"
+                },
+                "dockerCisEnabled": {
+                    "type": "boolean"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Name of the container image.\n"
+                },
+                "domainName": {
+                    "type": "string"
+                },
+                "dtaEnabled": {
+                    "type": "boolean"
+                },
+                "dtaSeverity": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "enforce": {
+                    "type": "boolean"
+                },
+                "enforceAfterDays": {
+                    "type": "integer"
+                },
+                "enforceExcessivePermissions": {
+                    "type": "boolean"
+                },
+                "exceptionalMonitoredMalwarePaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "forbiddenLabels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyForbiddenLabel:KubernetesAssurancePolicyForbiddenLabel"
+                    }
+                },
+                "forbiddenLabelsEnabled": {
+                    "type": "boolean"
+                },
+                "forceMicroenforcer": {
+                    "type": "boolean"
+                },
+                "functionIntegrityEnabled": {
+                    "type": "boolean"
+                },
+                "ignoreRecentlyPublishedVln": {
+                    "type": "boolean"
+                },
+                "ignoreRecentlyPublishedVlnPeriod": {
+                    "type": "integer"
+                },
+                "ignoreRiskResourcesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if risk resources are ignored.\n"
+                },
+                "ignoredRiskResources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of ignored risk resources.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of images.\n"
+                },
+                "kubeCisEnabled": {
+                    "type": "boolean"
+                },
+                "kubernetesControlsNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of kubernetes control names and available kubernetes controls are: 'Access to host IPC namespace', 'Access to host PID', 'Access to host network', 'Access to host ports', 'All container images must start with a GCR domain', 'All container images must start with an ECR domain', 'All container images must start with the *.azurecr.io domain', 'CPU not limited', 'CPU requests not specified', 'Can elevate its own privileges', 'ConfigMap with secrets', 'ConfigMap with sensitive content', 'Container images from public registries used', 'Default capabilitiessome containers do not drop all', 'Default capabilitiessome containers do not drop any', 'Delete pod logs', 'Exec into Pods', 'Image tag :latest used', 'Manage EKS IAM Auth ConfigMap', 'Manage Kubernetes RBAC resources', 'Manage Kubernetes networking', 'Manage Kubernetes workloads and pods', 'Manage all resources', 'Manage all resources at the namespace', 'Manage configmaps', 'Manage namespace secrets', 'Manage secrets', 'Manage webhookconfigurations', 'Manages /etc/hosts', 'Memory not limited', 'Memory requests not specified', 'Non-core volume types used.', 'Non-default /proc masks set', 'Privileged', 'Root file system is not read-only', 'Runs as root user', 'Runs with GID \u003c= 10000', 'Runs with UID \u003c= 10000', 'Runs with a root primary or supplementary GID', 'Runtime/Default AppArmor profile not set', 'Runtime/Default Seccomp profile not set', 'SELinux custom options set', 'SYS_ADMIN capability added', 'Seccomp policies disabled', 'Service with External IP', 'Specific capabilities added', 'Unsafe sysctl options set', 'User with admin access', 'Workloads in the default namespace', 'hostPath volume mounted with docker.sock', 'hostPath volumes mounted'\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of labels.\n"
+                },
+                "malwareAction": {
+                    "type": "string"
+                },
+                "maximumScore": {
+                    "type": "number",
+                    "description": "Value of allowed maximum score.\n"
+                },
+                "maximumScoreEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if exceeding the maximum score is scanned.\n"
+                },
+                "maximumScoreExcludeNoFix": {
+                    "type": "boolean",
+                    "description": "Indicates that policy should ignore cases that do not have a known fix.\n"
+                },
+                "monitoredMalwarePaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "onlyNoneRootUsers": {
+                    "type": "boolean",
+                    "description": "Indicates if raise a warning for images that should only be run as root.\n"
+                },
+                "packagesBlackListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if packages blacklist is relevant.\n"
+                },
+                "packagesBlackLists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyPackagesBlackList:KubernetesAssurancePolicyPackagesBlackList"
+                    },
+                    "description": "List of backlisted images.\n"
+                },
+                "packagesWhiteListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if packages whitelist is relevant.\n"
+                },
+                "packagesWhiteLists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyPackagesWhiteList:KubernetesAssurancePolicyPackagesWhiteList"
+                    },
+                    "description": "List of whitelisted images.\n"
+                },
+                "partialResultsImageFail": {
+                    "type": "boolean"
+                },
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "registries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registries.\n"
+                },
+                "registry": {
+                    "type": "string"
+                },
+                "requiredLabels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyRequiredLabel:KubernetesAssurancePolicyRequiredLabel"
+                    }
+                },
+                "requiredLabelsEnabled": {
+                    "type": "boolean"
+                },
+                "scanNfsMounts": {
+                    "type": "boolean"
+                },
+                "scanSensitiveData": {
+                    "type": "boolean",
+                    "description": "Indicates if scan should include sensitive data in the image.\n"
+                },
+                "scapEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if scanning should include scap.\n"
+                },
+                "scapFiles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of SCAP user scripts for checks.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyScope:KubernetesAssurancePolicyScope"
+                    }
+                },
+                "trustedBaseImages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyTrustedBaseImage:KubernetesAssurancePolicyTrustedBaseImage"
+                    },
+                    "description": "List of trusted images.\n"
+                },
+                "trustedBaseImagesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if list of trusted base images is relevant.\n"
+                },
+                "whitelistedLicenses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of whitelisted licenses.\n"
+                },
+                "whitelistedLicensesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if license blacklist is relevant.\n"
+                }
+            },
+            "required": [
+                "applicationScopes",
+                "author",
+                "autoScanTimes",
+                "ignoreRecentlyPublishedVlnPeriod",
+                "name",
+                "scopes"
+            ],
+            "inputProperties": {
+                "allowedImages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of explicitly allowed images.\n"
+                },
+                "applicationScopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "assuranceType": {
+                    "type": "string",
+                    "description": "What type of assurance policy is described.\n"
+                },
+                "auditOnFailure": {
+                    "type": "boolean",
+                    "description": "Indicates if auditing for failures.\n"
+                },
+                "autoScanConfigured": {
+                    "type": "boolean"
+                },
+                "autoScanEnabled": {
+                    "type": "boolean"
+                },
+                "autoScanTimes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyAutoScanTime:KubernetesAssurancePolicyAutoScanTime"
+                    }
+                },
+                "blacklistPermissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of function's forbidden permissions.\n"
+                },
+                "blacklistPermissionsEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if blacklist permissions is relevant.\n"
+                },
+                "blacklistedLicenses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of blacklisted licenses.\n"
+                },
+                "blacklistedLicensesEnabled": {
+                    "type": "boolean",
+                    "description": "Lndicates if license blacklist is relevant.\n"
+                },
+                "blockFailed": {
+                    "type": "boolean",
+                    "description": "Indicates if failed images are blocked.\n"
+                },
+                "controlExcludeNoFix": {
+                    "type": "boolean"
+                },
+                "customChecks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyCustomCheck:KubernetesAssurancePolicyCustomCheck"
+                    },
+                    "description": "List of Custom user scripts for checks.\n"
+                },
+                "customChecksEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if scanning should include custom checks.\n"
+                },
+                "customSeverityEnabled": {
+                    "type": "boolean"
+                },
+                "cvesBlackListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if cves blacklist is relevant.\n"
+                },
+                "cvesBlackLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cves blacklisted items.\n"
+                },
+                "cvesWhiteListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if cves whitelist is relevant.\n"
+                },
+                "cvesWhiteLists": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cves whitelisted licenses\n"
+                },
+                "cvssSeverity": {
+                    "type": "string",
+                    "description": "Identifier of the cvss severity.\n"
+                },
+                "cvssSeverityEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if the cvss severity is scanned.\n"
+                },
+                "cvssSeverityExcludeNoFix": {
+                    "type": "boolean",
+                    "description": "Indicates that policy should ignore cvss cases that do not have a known fix.\n"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "disallowMalware": {
+                    "type": "boolean",
+                    "description": "Indicates if malware should block the image.\n"
+                },
+                "dockerCisEnabled": {
+                    "type": "boolean"
+                },
+                "domain": {
+                    "type": "string",
+                    "description": "Name of the container image.\n"
+                },
+                "domainName": {
+                    "type": "string"
+                },
+                "dtaEnabled": {
+                    "type": "boolean"
+                },
+                "dtaSeverity": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "enforce": {
+                    "type": "boolean"
+                },
+                "enforceAfterDays": {
+                    "type": "integer"
+                },
+                "enforceExcessivePermissions": {
+                    "type": "boolean"
+                },
+                "exceptionalMonitoredMalwarePaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "forbiddenLabels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyForbiddenLabel:KubernetesAssurancePolicyForbiddenLabel"
+                    }
+                },
+                "forbiddenLabelsEnabled": {
+                    "type": "boolean"
+                },
+                "forceMicroenforcer": {
+                    "type": "boolean"
+                },
+                "functionIntegrityEnabled": {
+                    "type": "boolean"
+                },
+                "ignoreRecentlyPublishedVln": {
+                    "type": "boolean"
+                },
+                "ignoreRiskResourcesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if risk resources are ignored.\n"
+                },
+                "ignoredRiskResources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of ignored risk resources.\n"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of images.\n"
+                },
+                "kubeCisEnabled": {
+                    "type": "boolean"
+                },
+                "kubernetesControlsNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of kubernetes control names and available kubernetes controls are: 'Access to host IPC namespace', 'Access to host PID', 'Access to host network', 'Access to host ports', 'All container images must start with a GCR domain', 'All container images must start with an ECR domain', 'All container images must start with the *.azurecr.io domain', 'CPU not limited', 'CPU requests not specified', 'Can elevate its own privileges', 'ConfigMap with secrets', 'ConfigMap with sensitive content', 'Container images from public registries used', 'Default capabilitiessome containers do not drop all', 'Default capabilitiessome containers do not drop any', 'Delete pod logs', 'Exec into Pods', 'Image tag :latest used', 'Manage EKS IAM Auth ConfigMap', 'Manage Kubernetes RBAC resources', 'Manage Kubernetes networking', 'Manage Kubernetes workloads and pods', 'Manage all resources', 'Manage all resources at the namespace', 'Manage configmaps', 'Manage namespace secrets', 'Manage secrets', 'Manage webhookconfigurations', 'Manages /etc/hosts', 'Memory not limited', 'Memory requests not specified', 'Non-core volume types used.', 'Non-default /proc masks set', 'Privileged', 'Root file system is not read-only', 'Runs as root user', 'Runs with GID \u003c= 10000', 'Runs with UID \u003c= 10000', 'Runs with a root primary or supplementary GID', 'Runtime/Default AppArmor profile not set', 'Runtime/Default Seccomp profile not set', 'SELinux custom options set', 'SYS_ADMIN capability added', 'Seccomp policies disabled', 'Service with External IP', 'Specific capabilities added', 'Unsafe sysctl options set', 'User with admin access', 'Workloads in the default namespace', 'hostPath volume mounted with docker.sock', 'hostPath volumes mounted'\n"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of labels.\n"
+                },
+                "malwareAction": {
+                    "type": "string"
+                },
+                "maximumScore": {
+                    "type": "number",
+                    "description": "Value of allowed maximum score.\n"
+                },
+                "maximumScoreEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if exceeding the maximum score is scanned.\n"
+                },
+                "maximumScoreExcludeNoFix": {
+                    "type": "boolean",
+                    "description": "Indicates that policy should ignore cases that do not have a known fix.\n"
+                },
+                "monitoredMalwarePaths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "onlyNoneRootUsers": {
+                    "type": "boolean",
+                    "description": "Indicates if raise a warning for images that should only be run as root.\n"
+                },
+                "packagesBlackListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if packages blacklist is relevant.\n"
+                },
+                "packagesBlackLists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyPackagesBlackList:KubernetesAssurancePolicyPackagesBlackList"
+                    },
+                    "description": "List of backlisted images.\n"
+                },
+                "packagesWhiteListEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if packages whitelist is relevant.\n"
+                },
+                "packagesWhiteLists": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyPackagesWhiteList:KubernetesAssurancePolicyPackagesWhiteList"
+                    },
+                    "description": "List of whitelisted images.\n"
+                },
+                "partialResultsImageFail": {
+                    "type": "boolean"
+                },
+                "readOnly": {
+                    "type": "boolean"
+                },
+                "registries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of registries.\n"
+                },
+                "registry": {
+                    "type": "string"
+                },
+                "requiredLabels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyRequiredLabel:KubernetesAssurancePolicyRequiredLabel"
+                    }
+                },
+                "requiredLabelsEnabled": {
+                    "type": "boolean"
+                },
+                "scanNfsMounts": {
+                    "type": "boolean"
+                },
+                "scanSensitiveData": {
+                    "type": "boolean",
+                    "description": "Indicates if scan should include sensitive data in the image.\n"
+                },
+                "scapEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if scanning should include scap.\n"
+                },
+                "scapFiles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of SCAP user scripts for checks.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyScope:KubernetesAssurancePolicyScope"
+                    }
+                },
+                "trustedBaseImages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyTrustedBaseImage:KubernetesAssurancePolicyTrustedBaseImage"
+                    },
+                    "description": "List of trusted images.\n"
+                },
+                "trustedBaseImagesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if list of trusted base images is relevant.\n"
+                },
+                "whitelistedLicenses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of whitelisted licenses.\n"
+                },
+                "whitelistedLicensesEnabled": {
+                    "type": "boolean",
+                    "description": "Indicates if license blacklist is relevant.\n"
+                }
+            },
+            "requiredInputs": [
+                "applicationScopes"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KubernetesAssurancePolicy resources.\n",
+                "properties": {
+                    "allowedImages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of explicitly allowed images.\n"
+                    },
+                    "applicationScopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "assuranceType": {
+                        "type": "string",
+                        "description": "What type of assurance policy is described.\n"
+                    },
+                    "auditOnFailure": {
+                        "type": "boolean",
+                        "description": "Indicates if auditing for failures.\n"
+                    },
+                    "author": {
+                        "type": "string",
+                        "description": "Name of user account that created the policy.\n"
+                    },
+                    "autoScanConfigured": {
+                        "type": "boolean"
+                    },
+                    "autoScanEnabled": {
+                        "type": "boolean"
+                    },
+                    "autoScanTimes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyAutoScanTime:KubernetesAssurancePolicyAutoScanTime"
+                        }
+                    },
+                    "blacklistPermissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of function's forbidden permissions.\n"
+                    },
+                    "blacklistPermissionsEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if blacklist permissions is relevant.\n"
+                    },
+                    "blacklistedLicenses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of blacklisted licenses.\n"
+                    },
+                    "blacklistedLicensesEnabled": {
+                        "type": "boolean",
+                        "description": "Lndicates if license blacklist is relevant.\n"
+                    },
+                    "blockFailed": {
+                        "type": "boolean",
+                        "description": "Indicates if failed images are blocked.\n"
+                    },
+                    "controlExcludeNoFix": {
+                        "type": "boolean"
+                    },
+                    "customChecks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyCustomCheck:KubernetesAssurancePolicyCustomCheck"
+                        },
+                        "description": "List of Custom user scripts for checks.\n"
+                    },
+                    "customChecksEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if scanning should include custom checks.\n"
+                    },
+                    "customSeverityEnabled": {
+                        "type": "boolean"
+                    },
+                    "cvesBlackListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if cves blacklist is relevant.\n"
+                    },
+                    "cvesBlackLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of cves blacklisted items.\n"
+                    },
+                    "cvesWhiteListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if cves whitelist is relevant.\n"
+                    },
+                    "cvesWhiteLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of cves whitelisted licenses\n"
+                    },
+                    "cvssSeverity": {
+                        "type": "string",
+                        "description": "Identifier of the cvss severity.\n"
+                    },
+                    "cvssSeverityEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if the cvss severity is scanned.\n"
+                    },
+                    "cvssSeverityExcludeNoFix": {
+                        "type": "boolean",
+                        "description": "Indicates that policy should ignore cvss cases that do not have a known fix.\n"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "disallowMalware": {
+                        "type": "boolean",
+                        "description": "Indicates if malware should block the image.\n"
+                    },
+                    "dockerCisEnabled": {
+                        "type": "boolean"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Name of the container image.\n"
+                    },
+                    "domainName": {
+                        "type": "string"
+                    },
+                    "dtaEnabled": {
+                        "type": "boolean"
+                    },
+                    "dtaSeverity": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "enforce": {
+                        "type": "boolean"
+                    },
+                    "enforceAfterDays": {
+                        "type": "integer"
+                    },
+                    "enforceExcessivePermissions": {
+                        "type": "boolean"
+                    },
+                    "exceptionalMonitoredMalwarePaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "forbiddenLabels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyForbiddenLabel:KubernetesAssurancePolicyForbiddenLabel"
+                        }
+                    },
+                    "forbiddenLabelsEnabled": {
+                        "type": "boolean"
+                    },
+                    "forceMicroenforcer": {
+                        "type": "boolean"
+                    },
+                    "functionIntegrityEnabled": {
+                        "type": "boolean"
+                    },
+                    "ignoreRecentlyPublishedVln": {
+                        "type": "boolean"
+                    },
+                    "ignoreRecentlyPublishedVlnPeriod": {
+                        "type": "integer"
+                    },
+                    "ignoreRiskResourcesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if risk resources are ignored.\n"
+                    },
+                    "ignoredRiskResources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of ignored risk resources.\n"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of images.\n"
+                    },
+                    "kubeCisEnabled": {
+                        "type": "boolean"
+                    },
+                    "kubernetesControlsNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of kubernetes control names and available kubernetes controls are: 'Access to host IPC namespace', 'Access to host PID', 'Access to host network', 'Access to host ports', 'All container images must start with a GCR domain', 'All container images must start with an ECR domain', 'All container images must start with the *.azurecr.io domain', 'CPU not limited', 'CPU requests not specified', 'Can elevate its own privileges', 'ConfigMap with secrets', 'ConfigMap with sensitive content', 'Container images from public registries used', 'Default capabilitiessome containers do not drop all', 'Default capabilitiessome containers do not drop any', 'Delete pod logs', 'Exec into Pods', 'Image tag :latest used', 'Manage EKS IAM Auth ConfigMap', 'Manage Kubernetes RBAC resources', 'Manage Kubernetes networking', 'Manage Kubernetes workloads and pods', 'Manage all resources', 'Manage all resources at the namespace', 'Manage configmaps', 'Manage namespace secrets', 'Manage secrets', 'Manage webhookconfigurations', 'Manages /etc/hosts', 'Memory not limited', 'Memory requests not specified', 'Non-core volume types used.', 'Non-default /proc masks set', 'Privileged', 'Root file system is not read-only', 'Runs as root user', 'Runs with GID \u003c= 10000', 'Runs with UID \u003c= 10000', 'Runs with a root primary or supplementary GID', 'Runtime/Default AppArmor profile not set', 'Runtime/Default Seccomp profile not set', 'SELinux custom options set', 'SYS_ADMIN capability added', 'Seccomp policies disabled', 'Service with External IP', 'Specific capabilities added', 'Unsafe sysctl options set', 'User with admin access', 'Workloads in the default namespace', 'hostPath volume mounted with docker.sock', 'hostPath volumes mounted'\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of labels.\n"
+                    },
+                    "malwareAction": {
+                        "type": "string"
+                    },
+                    "maximumScore": {
+                        "type": "number",
+                        "description": "Value of allowed maximum score.\n"
+                    },
+                    "maximumScoreEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if exceeding the maximum score is scanned.\n"
+                    },
+                    "maximumScoreExcludeNoFix": {
+                        "type": "boolean",
+                        "description": "Indicates that policy should ignore cases that do not have a known fix.\n"
+                    },
+                    "monitoredMalwarePaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "onlyNoneRootUsers": {
+                        "type": "boolean",
+                        "description": "Indicates if raise a warning for images that should only be run as root.\n"
+                    },
+                    "packagesBlackListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if packages blacklist is relevant.\n"
+                    },
+                    "packagesBlackLists": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyPackagesBlackList:KubernetesAssurancePolicyPackagesBlackList"
+                        },
+                        "description": "List of backlisted images.\n"
+                    },
+                    "packagesWhiteListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if packages whitelist is relevant.\n"
+                    },
+                    "packagesWhiteLists": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyPackagesWhiteList:KubernetesAssurancePolicyPackagesWhiteList"
+                        },
+                        "description": "List of whitelisted images.\n"
+                    },
+                    "partialResultsImageFail": {
+                        "type": "boolean"
+                    },
+                    "readOnly": {
+                        "type": "boolean"
+                    },
+                    "registries": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of registries.\n"
+                    },
+                    "registry": {
+                        "type": "string"
+                    },
+                    "requiredLabels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyRequiredLabel:KubernetesAssurancePolicyRequiredLabel"
+                        }
+                    },
+                    "requiredLabelsEnabled": {
+                        "type": "boolean"
+                    },
+                    "scanNfsMounts": {
+                        "type": "boolean"
+                    },
+                    "scanSensitiveData": {
+                        "type": "boolean",
+                        "description": "Indicates if scan should include sensitive data in the image.\n"
+                    },
+                    "scapEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if scanning should include scap.\n"
+                    },
+                    "scapFiles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of SCAP user scripts for checks.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyScope:KubernetesAssurancePolicyScope"
+                        }
+                    },
+                    "trustedBaseImages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/KubernetesAssurancePolicyTrustedBaseImage:KubernetesAssurancePolicyTrustedBaseImage"
+                        },
+                        "description": "List of trusted images.\n"
+                    },
+                    "trustedBaseImagesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if list of trusted base images is relevant.\n"
+                    },
+                    "whitelistedLicenses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of whitelisted licenses.\n"
+                    },
+                    "whitelistedLicensesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if license blacklist is relevant.\n"
                     }
                 },
                 "type": "object"
@@ -14582,6 +17047,126 @@
                 "type": "object"
             }
         },
+        "aquasec:index/roleMapping:RoleMapping": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumiverse/aquasec\";\n\nconst roleMappingRoleMapping = new aquasec.RoleMapping(\"roleMappingRoleMapping\", {saml: {\n    roleMapping: {\n        Administrator: \"group1\",\n    },\n}});\nexport const roleMapping = roleMappingRoleMapping;\n```\n```python\nimport pulumi\nimport pulumiverse_aquasec as aquasec\n\nrole_mapping_role_mapping = aquasec.RoleMapping(\"roleMappingRoleMapping\", saml=aquasec.RoleMappingSamlArgs(\n    role_mapping={\n        \"Administrator\": \"group1\",\n    },\n))\npulumi.export(\"roleMapping\", role_mapping_role_mapping)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aquasec = Pulumiverse.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var roleMappingRoleMapping = new Aquasec.RoleMapping(\"roleMappingRoleMapping\", new()\n    {\n        Saml = new Aquasec.Inputs.RoleMappingSamlArgs\n        {\n            RoleMapping = \n            {\n                { \"Administrator\", \"group1\" },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"roleMapping\"] = roleMappingRoleMapping,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\troleMappingRoleMapping, err := aquasec.NewRoleMapping(ctx, \"roleMappingRoleMapping\", \u0026aquasec.RoleMappingArgs{\n\t\t\tSaml: \u0026RoleMappingSamlArgs{\n\t\t\t\tRoleMapping: pulumi.StringMap{\n\t\t\t\t\t\"Administrator\": pulumi.String(\"group1\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"roleMapping\", roleMappingRoleMapping)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.RoleMapping;\nimport com.pulumi.aquasec.RoleMappingArgs;\nimport com.pulumi.aquasec.inputs.RoleMappingSamlArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var roleMappingRoleMapping = new RoleMapping(\"roleMappingRoleMapping\", RoleMappingArgs.builder()        \n            .saml(RoleMappingSamlArgs.builder()\n                .roleMapping(Map.of(\"Administrator\", \"group1\"))\n                .build())\n            .build());\n\n        ctx.export(\"roleMapping\", roleMappingRoleMapping);\n    }\n}\n```\n```yaml\nresources:\n  roleMappingRoleMapping:\n    type: aquasec:RoleMapping\n    properties:\n      saml:\n        roleMapping:\n          Administrator: group1\noutputs:\n  roleMapping: ${roleMappingRoleMapping}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "oauth2": {
+                    "$ref": "#/types/aquasec:index/RoleMappingOauth2:RoleMappingOauth2",
+                    "description": "Oauth2 Authentication\n"
+                },
+                "openid": {
+                    "$ref": "#/types/aquasec:index/RoleMappingOpenid:RoleMappingOpenid",
+                    "description": "OpenId Authentication\n"
+                },
+                "saml": {
+                    "$ref": "#/types/aquasec:index/RoleMappingSaml:RoleMappingSaml",
+                    "description": "SAML Authentication\n"
+                }
+            },
+            "inputProperties": {
+                "oauth2": {
+                    "$ref": "#/types/aquasec:index/RoleMappingOauth2:RoleMappingOauth2",
+                    "description": "Oauth2 Authentication\n"
+                },
+                "openid": {
+                    "$ref": "#/types/aquasec:index/RoleMappingOpenid:RoleMappingOpenid",
+                    "description": "OpenId Authentication\n"
+                },
+                "saml": {
+                    "$ref": "#/types/aquasec:index/RoleMappingSaml:RoleMappingSaml",
+                    "description": "SAML Authentication\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RoleMapping resources.\n",
+                "properties": {
+                    "oauth2": {
+                        "$ref": "#/types/aquasec:index/RoleMappingOauth2:RoleMappingOauth2",
+                        "description": "Oauth2 Authentication\n"
+                    },
+                    "openid": {
+                        "$ref": "#/types/aquasec:index/RoleMappingOpenid:RoleMappingOpenid",
+                        "description": "OpenId Authentication\n"
+                    },
+                    "saml": {
+                        "$ref": "#/types/aquasec:index/RoleMappingSaml:RoleMappingSaml",
+                        "description": "SAML Authentication\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aquasec:index/roleMappingSaas:RoleMappingSaas": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumiverse/aquasec\";\n\nconst rolesMappingSaasRoleMappingSaas = new aquasec.RoleMappingSaas(\"rolesMappingSaasRoleMappingSaas\", {\n    samlGroups: [\n        \"group1\",\n        \"group2\",\n    ],\n    cspRole: \"Administrator\",\n});\nexport const rolesMappingSaas = rolesMappingSaasRoleMappingSaas;\n```\n```python\nimport pulumi\nimport pulumiverse_aquasec as aquasec\n\nroles_mapping_saas_role_mapping_saas = aquasec.RoleMappingSaas(\"rolesMappingSaasRoleMappingSaas\",\n    saml_groups=[\n        \"group1\",\n        \"group2\",\n    ],\n    csp_role=\"Administrator\")\npulumi.export(\"rolesMappingSaas\", roles_mapping_saas_role_mapping_saas)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aquasec = Pulumiverse.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rolesMappingSaasRoleMappingSaas = new Aquasec.RoleMappingSaas(\"rolesMappingSaasRoleMappingSaas\", new()\n    {\n        SamlGroups = new[]\n        {\n            \"group1\",\n            \"group2\",\n        },\n        CspRole = \"Administrator\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"rolesMappingSaas\"] = rolesMappingSaasRoleMappingSaas,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trolesMappingSaasRoleMappingSaas, err := aquasec.NewRoleMappingSaas(ctx, \"rolesMappingSaasRoleMappingSaas\", \u0026aquasec.RoleMappingSaasArgs{\n\t\t\tSamlGroups: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"group1\"),\n\t\t\t\tpulumi.String(\"group2\"),\n\t\t\t},\n\t\t\tCspRole: pulumi.String(\"Administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"rolesMappingSaas\", rolesMappingSaasRoleMappingSaas)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.RoleMappingSaas;\nimport com.pulumi.aquasec.RoleMappingSaasArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var rolesMappingSaasRoleMappingSaas = new RoleMappingSaas(\"rolesMappingSaasRoleMappingSaas\", RoleMappingSaasArgs.builder()        \n            .samlGroups(            \n                \"group1\",\n                \"group2\")\n            .cspRole(\"Administrator\")\n            .build());\n\n        ctx.export(\"rolesMappingSaas\", rolesMappingSaasRoleMappingSaas);\n    }\n}\n```\n```yaml\nresources:\n  rolesMappingSaasRoleMappingSaas:\n    type: aquasec:RoleMappingSaas\n    properties:\n      samlGroups:\n        - group1\n        - group2\n      cspRole: Administrator\noutputs:\n  rolesMappingSaas: ${rolesMappingSaasRoleMappingSaas}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "accountId": {
+                    "type": "integer"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "cspRole": {
+                    "type": "string"
+                },
+                "roleMappingId": {
+                    "type": "integer"
+                },
+                "samlGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "accountId",
+                "created",
+                "cspRole",
+                "roleMappingId",
+                "samlGroups"
+            ],
+            "inputProperties": {
+                "cspRole": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "samlGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "cspRole",
+                "samlGroups"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering RoleMappingSaas resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "integer"
+                    },
+                    "created": {
+                        "type": "string"
+                    },
+                    "cspRole": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "roleMappingId": {
+                        "type": "integer"
+                    },
+                    "samlGroups": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aquasec:index/service:Service": {
             "properties": {
                 "applicationScopes": {
@@ -14704,8 +17289,6 @@
                 "name",
                 "notEvaluatedCount",
                 "policies",
-                "scopeExpression",
-                "scopeVariables",
                 "target",
                 "unregisteredCount",
                 "vulnerabilitiesHigh",
@@ -14772,8 +17355,6 @@
             "requiredInputs": [
                 "applicationScopes",
                 "policies",
-                "scopeExpression",
-                "scopeVariables",
                 "target"
             ],
             "stateInputs": {
@@ -15287,6 +17868,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getContainerRuntimePolicy.\n",
                 "properties": {
+                    "malwareScanOptions": {
+                        "$ref": "#/types/aquasec:index/getContainerRuntimePolicyMalwareScanOptions:getContainerRuntimePolicyMalwareScanOptions",
+                        "description": "Configuration for Real-Time Malware Protection.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the container runtime policy\n"
@@ -15518,6 +18103,10 @@
                     "limitNewPrivileges": {
                         "type": "boolean",
                         "description": "If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)\n"
+                    },
+                    "malwareScanOptions": {
+                        "$ref": "#/types/aquasec:index/getContainerRuntimePolicyMalwareScanOptions:getContainerRuntimePolicyMalwareScanOptions",
+                        "description": "Configuration for Real-Time Malware Protection.\n"
                     },
                     "monitorSystemTimeChanges": {
                         "type": "boolean",
@@ -16569,7 +19158,8 @@
                     },
                     "honeypotSecretKey": {
                         "type": "string",
-                        "description": "Honeypot User Password (Secret Key)\n"
+                        "description": "Honeypot User Password (Secret Key)\n",
+                        "secret": true
                     },
                     "honeypotServerlessAppName": {
                         "type": "string",
@@ -17102,6 +19692,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getHostRuntimePolicy.\n",
                 "properties": {
+                    "malwareScanOptions": {
+                        "$ref": "#/types/aquasec:index/getHostRuntimePolicyMalwareScanOptions:getHostRuntimePolicyMalwareScanOptions",
+                        "description": "Configuration for Real-Time Malware Protection.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the host runtime policy\n"
@@ -17191,6 +19785,10 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "malwareScanOptions": {
+                        "$ref": "#/types/aquasec:index/getHostRuntimePolicyMalwareScanOptions:getHostRuntimePolicyMalwareScanOptions",
+                        "description": "Configuration for Real-Time Malware Protection.\n"
                     },
                     "monitorSystemLogIntegrity": {
                         "type": "boolean",
@@ -18189,6 +20787,484 @@
                 ]
             }
         },
+        "aquasec:index/getIntegrationState:getIntegrationState": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumi/aquasec\";\n\nconst integrationState = aquasec.getIntegrationState({});\nexport const aquasecIntegrationState = integrationState;\n```\n```python\nimport pulumi\nimport pulumi_aquasec as aquasec\n\nintegration_state = aquasec.get_integration_state()\npulumi.export(\"aquasecIntegrationState\", integration_state)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aquasec = Pulumi.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var integrationState = Aquasec.GetIntegrationState.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"aquasecIntegrationState\"] = integrationState.Apply(getIntegrationStateResult =\u003e getIntegrationStateResult),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tintegrationState, err := aquasec.GetIntegrationState(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"aquasecIntegrationState\", integrationState)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.AquasecFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var integrationState = AquasecFunctions.getIntegrationState();\n\n        ctx.export(\"aquasecIntegrationState\", integrationState.applyValue(getIntegrationStateResult -\u003e getIntegrationStateResult));\n    }\n}\n```\n```yaml\nvariables:\n  integrationState:\n    Fn::Invoke:\n      Function: aquasec:getIntegrationState\n      Arguments: {}\noutputs:\n  aquasecIntegrationState: ${integrationState}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getIntegrationState.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "oidcSettings": {
+                        "type": "boolean",
+                        "description": "OIDCSettings enabled status\n"
+                    },
+                    "openidSettings": {
+                        "type": "boolean",
+                        "description": "OpenIdSettings enabled status\n"
+                    },
+                    "samlSettings": {
+                        "type": "boolean",
+                        "description": "SAMLSettings enabled status\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "oidcSettings",
+                    "openidSettings",
+                    "samlSettings",
+                    "id"
+                ]
+            }
+        },
+        "aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getKubernetesAssurancePolicy.\n",
+                "properties": {
+                    "kubernetesControlsNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of kubernetes control names\n"
+                    },
+                    "maximumScoreExcludeNoFix": {
+                        "type": "boolean",
+                        "description": "Indicates that policy should ignore cases that do not have a known fix.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKubernetesAssurancePolicy.\n",
+                "properties": {
+                    "allowedImages": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of explicitly allowed images.\n"
+                    },
+                    "applicationScopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "assuranceType": {
+                        "type": "string",
+                        "description": "What type of assurance policy is described.\n"
+                    },
+                    "auditOnFailure": {
+                        "type": "boolean",
+                        "description": "Indicates if auditing for failures.\n"
+                    },
+                    "author": {
+                        "type": "string",
+                        "description": "Name of user account that created the policy.\n"
+                    },
+                    "autoScanConfigured": {
+                        "type": "boolean"
+                    },
+                    "autoScanEnabled": {
+                        "type": "boolean"
+                    },
+                    "autoScanTimes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyAutoScanTime:getKubernetesAssurancePolicyAutoScanTime"
+                        }
+                    },
+                    "blacklistPermissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of function's forbidden permissions.\n"
+                    },
+                    "blacklistPermissionsEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if blacklist permissions is relevant.\n"
+                    },
+                    "blacklistedLicenses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of blacklisted licenses.\n"
+                    },
+                    "blacklistedLicensesEnabled": {
+                        "type": "boolean",
+                        "description": "Lndicates if license blacklist is relevant.\n"
+                    },
+                    "blockFailed": {
+                        "type": "boolean",
+                        "description": "Indicates if failed images are blocked.\n"
+                    },
+                    "controlExcludeNoFix": {
+                        "type": "boolean"
+                    },
+                    "customChecks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyCustomCheck:getKubernetesAssurancePolicyCustomCheck"
+                        },
+                        "description": "List of Custom user scripts for checks.\n"
+                    },
+                    "customChecksEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if scanning should include custom checks.\n"
+                    },
+                    "customSeverityEnabled": {
+                        "type": "boolean"
+                    },
+                    "cvesBlackListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if cves blacklist is relevant.\n"
+                    },
+                    "cvesBlackLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of cves blacklisted items.\n"
+                    },
+                    "cvesWhiteListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if cves whitelist is relevant.\n"
+                    },
+                    "cvesWhiteLists": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of cves whitelisted licenses\n"
+                    },
+                    "cvssSeverity": {
+                        "type": "string",
+                        "description": "Identifier of the cvss severity.\n"
+                    },
+                    "cvssSeverityEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if the cvss severity is scanned.\n"
+                    },
+                    "cvssSeverityExcludeNoFix": {
+                        "type": "boolean",
+                        "description": "Indicates that policy should ignore cvss cases that do not have a known fix.\n"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "disallowMalware": {
+                        "type": "boolean",
+                        "description": "Indicates if malware should block the image.\n"
+                    },
+                    "dockerCisEnabled": {
+                        "type": "boolean"
+                    },
+                    "domain": {
+                        "type": "string",
+                        "description": "Name of the container image.\n"
+                    },
+                    "domainName": {
+                        "type": "string"
+                    },
+                    "dtaEnabled": {
+                        "type": "boolean"
+                    },
+                    "dtaSeverity": {
+                        "type": "string"
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "enforce": {
+                        "type": "boolean"
+                    },
+                    "enforceAfterDays": {
+                        "type": "integer"
+                    },
+                    "enforceExcessivePermissions": {
+                        "type": "boolean"
+                    },
+                    "exceptionalMonitoredMalwarePaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "failCicd": {
+                        "type": "boolean",
+                        "description": "Indicates if cicd failures will fail the image.\n"
+                    },
+                    "forbiddenLabels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyForbiddenLabel:getKubernetesAssurancePolicyForbiddenLabel"
+                        }
+                    },
+                    "forbiddenLabelsEnabled": {
+                        "type": "boolean"
+                    },
+                    "forceMicroenforcer": {
+                        "type": "boolean"
+                    },
+                    "functionIntegrityEnabled": {
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of this resource.\n"
+                    },
+                    "ignoreRecentlyPublishedVln": {
+                        "type": "boolean"
+                    },
+                    "ignoreRecentlyPublishedVlnPeriod": {
+                        "type": "integer"
+                    },
+                    "ignoreRiskResourcesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if risk resources are ignored.\n"
+                    },
+                    "ignoredRiskResources": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of ignored risk resources.\n"
+                    },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of images.\n"
+                    },
+                    "kubeCisEnabled": {
+                        "type": "boolean"
+                    },
+                    "kubernetesControlsNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of kubernetes control names\n"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of labels.\n"
+                    },
+                    "malwareAction": {
+                        "type": "string"
+                    },
+                    "maximumScore": {
+                        "type": "number",
+                        "description": "Value of allowed maximum score.\n"
+                    },
+                    "maximumScoreEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if exceeding the maximum score is scanned.\n"
+                    },
+                    "maximumScoreExcludeNoFix": {
+                        "type": "boolean",
+                        "description": "Indicates that policy should ignore cases that do not have a known fix.\n"
+                    },
+                    "monitoredMalwarePaths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "onlyNoneRootUsers": {
+                        "type": "boolean",
+                        "description": "Indicates if raise a warning for images that should only be run as root.\n"
+                    },
+                    "packagesBlackListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if packages blacklist is relevant.\n"
+                    },
+                    "packagesBlackLists": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyPackagesBlackList:getKubernetesAssurancePolicyPackagesBlackList"
+                        },
+                        "description": "List of backlisted images.\n"
+                    },
+                    "packagesWhiteListEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if packages whitelist is relevant.\n"
+                    },
+                    "packagesWhiteLists": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyPackagesWhiteList:getKubernetesAssurancePolicyPackagesWhiteList"
+                        },
+                        "description": "List of whitelisted images.\n"
+                    },
+                    "partialResultsImageFail": {
+                        "type": "boolean"
+                    },
+                    "readOnly": {
+                        "type": "boolean"
+                    },
+                    "registries": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of registries.\n"
+                    },
+                    "registry": {
+                        "type": "string"
+                    },
+                    "requiredLabels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyRequiredLabel:getKubernetesAssurancePolicyRequiredLabel"
+                        }
+                    },
+                    "requiredLabelsEnabled": {
+                        "type": "boolean"
+                    },
+                    "scanNfsMounts": {
+                        "type": "boolean"
+                    },
+                    "scanSensitiveData": {
+                        "type": "boolean",
+                        "description": "Indicates if scan should include sensitive data in the image.\n"
+                    },
+                    "scapEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if scanning should include scap.\n"
+                    },
+                    "scapFiles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of SCAP user scripts for checks.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyScope:getKubernetesAssurancePolicyScope"
+                        }
+                    },
+                    "trustedBaseImages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getKubernetesAssurancePolicyTrustedBaseImage:getKubernetesAssurancePolicyTrustedBaseImage"
+                        },
+                        "description": "List of trusted images.\n"
+                    },
+                    "trustedBaseImagesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if list of trusted base images is relevant.\n"
+                    },
+                    "whitelistedLicenses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of whitelisted licenses.\n"
+                    },
+                    "whitelistedLicensesEnabled": {
+                        "type": "boolean",
+                        "description": "Indicates if license blacklist is relevant.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "allowedImages",
+                    "applicationScopes",
+                    "assuranceType",
+                    "auditOnFailure",
+                    "author",
+                    "autoScanConfigured",
+                    "autoScanEnabled",
+                    "autoScanTimes",
+                    "blacklistPermissions",
+                    "blacklistPermissionsEnabled",
+                    "blacklistedLicenses",
+                    "blacklistedLicensesEnabled",
+                    "blockFailed",
+                    "controlExcludeNoFix",
+                    "customChecks",
+                    "customChecksEnabled",
+                    "customSeverityEnabled",
+                    "cvesBlackLists",
+                    "cvesBlackListEnabled",
+                    "cvesWhiteLists",
+                    "cvesWhiteListEnabled",
+                    "cvssSeverity",
+                    "cvssSeverityEnabled",
+                    "cvssSeverityExcludeNoFix",
+                    "description",
+                    "disallowMalware",
+                    "dockerCisEnabled",
+                    "domain",
+                    "domainName",
+                    "dtaEnabled",
+                    "dtaSeverity",
+                    "enabled",
+                    "enforce",
+                    "enforceAfterDays",
+                    "enforceExcessivePermissions",
+                    "exceptionalMonitoredMalwarePaths",
+                    "failCicd",
+                    "forbiddenLabels",
+                    "forbiddenLabelsEnabled",
+                    "forceMicroenforcer",
+                    "functionIntegrityEnabled",
+                    "id",
+                    "ignoreRecentlyPublishedVln",
+                    "ignoreRecentlyPublishedVlnPeriod",
+                    "ignoreRiskResourcesEnabled",
+                    "ignoredRiskResources",
+                    "images",
+                    "kubeCisEnabled",
+                    "labels",
+                    "malwareAction",
+                    "maximumScore",
+                    "maximumScoreEnabled",
+                    "monitoredMalwarePaths",
+                    "name",
+                    "onlyNoneRootUsers",
+                    "packagesBlackLists",
+                    "packagesBlackListEnabled",
+                    "packagesWhiteLists",
+                    "packagesWhiteListEnabled",
+                    "partialResultsImageFail",
+                    "readOnly",
+                    "registries",
+                    "registry",
+                    "requiredLabels",
+                    "requiredLabelsEnabled",
+                    "scanNfsMounts",
+                    "scanSensitiveData",
+                    "scapEnabled",
+                    "scapFiles",
+                    "scopes",
+                    "trustedBaseImages",
+                    "trustedBaseImagesEnabled",
+                    "whitelistedLicenses",
+                    "whitelistedLicensesEnabled"
+                ]
+            }
+        },
         "aquasec:index/getPermissionsSets:getPermissionsSets": {
             "description": "The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumi/aquasec\";\n\nconst testpermissionsset = aquasec.getPermissionsSets({});\nexport const permissionsSets = testpermissionsset;\nexport const permissionsSetsNames = [testpermissionsset].map(__item =\u003e [__item.then(obj =\u003e obj.permissionsSets)].map(__item =\u003e __item?.name));\n```\n```python\nimport pulumi\nimport pulumi_aquasec as aquasec\n\ntestpermissionsset = aquasec.get_permissions_sets()\npulumi.export(\"permissionsSets\", testpermissionsset)\npulumi.export(\"permissionsSetsNames\", [[__item.name for __item in [__item.permissions_sets]] for __item in [testpermissionsset]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aquasec = Pulumi.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testpermissionsset = Aquasec.GetPermissionsSets.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"permissionsSets\"] = testpermissionsset.Apply(getPermissionsSetsResult =\u003e getPermissionsSetsResult),\n        [\"permissionsSetsNames\"] = new[]\n        {\n            testpermissionsset.Apply(getPermissionsSetsResult =\u003e getPermissionsSetsResult),\n        }.Select(__item =\u003e new[]\n        {\n            __item.Apply(obj =\u003e obj.PermissionsSets),\n        }.Select(__item =\u003e __item?.Name).ToList()).ToList(),\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.AquasecFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var testpermissionsset = AquasecFunctions.getPermissionsSets();\n\n        ctx.export(\"permissionsSets\", testpermissionsset.applyValue(getPermissionsSetsResult -\u003e getPermissionsSetsResult));\n        ctx.export(\"permissionsSetsNames\", testpermissionsset.applyValue(getPermissionsSetsResult -\u003e getPermissionsSetsResult).stream().map(element -\u003e element.permissionsSets().stream().map(element -\u003e element.name()).collect(toList())).collect(toList()));\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
@@ -18231,6 +21307,69 @@
                 "type": "object",
                 "required": [
                     "roles",
+                    "id"
+                ]
+            }
+        },
+        "aquasec:index/getRolesMapping:getRolesMapping": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumi/aquasec\";\n\nconst rolesMapping = aquasec.getRolesMapping({});\nexport const roleMappingAll = rolesMapping;\nexport const roleMappingSaml = rolesMapping.then(rolesMapping =\u003e rolesMapping.samls);\n```\n```python\nimport pulumi\nimport pulumi_aquasec as aquasec\n\nroles_mapping = aquasec.get_roles_mapping()\npulumi.export(\"roleMappingAll\", roles_mapping)\npulumi.export(\"roleMappingSaml\", roles_mapping.samls)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aquasec = Pulumi.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rolesMapping = Aquasec.GetRolesMapping.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"roleMappingAll\"] = rolesMapping.Apply(getRolesMappingResult =\u003e getRolesMappingResult),\n        [\"roleMappingSaml\"] = rolesMapping.Apply(getRolesMappingResult =\u003e getRolesMappingResult.Samls),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trolesMapping, err := aquasec.GetRolesMapping(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"roleMappingAll\", rolesMapping)\n\t\tctx.Export(\"roleMappingSaml\", rolesMapping.Samls)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.AquasecFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rolesMapping = AquasecFunctions.getRolesMapping();\n\n        ctx.export(\"roleMappingAll\", rolesMapping.applyValue(getRolesMappingResult -\u003e getRolesMappingResult));\n        ctx.export(\"roleMappingSaml\", rolesMapping.applyValue(getRolesMappingResult -\u003e getRolesMappingResult.samls()));\n    }\n}\n```\n```yaml\nvariables:\n  rolesMapping:\n    Fn::Invoke:\n      Function: aquasec:getRolesMapping\n      Arguments: {}\noutputs:\n  roleMappingAll: ${rolesMapping}\n  roleMappingSaml: ${rolesMapping.samls}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getRolesMapping.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "oauth2s": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getRolesMappingOauth2:getRolesMappingOauth2"
+                        },
+                        "description": "Oauth2 Authentication\n"
+                    },
+                    "openids": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getRolesMappingOpenid:getRolesMappingOpenid"
+                        },
+                        "description": "OpenId Authentication\n"
+                    },
+                    "samls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getRolesMappingSaml:getRolesMappingSaml"
+                        },
+                        "description": "SAML Authentication\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "oauth2s",
+                    "openids",
+                    "samls",
+                    "id"
+                ]
+            }
+        },
+        "aquasec:index/getRolesMappingSaas:getRolesMappingSaas": {
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumi/aquasec\";\n\nconst rolesMappingSaas = aquasec.getRolesMappingSaas({});\nexport const roleMapping = rolesMappingSaas.then(rolesMappingSaas =\u003e rolesMappingSaas.rolesMappings);\n```\n```python\nimport pulumi\nimport pulumi_aquasec as aquasec\n\nroles_mapping_saas = aquasec.get_roles_mapping_saas()\npulumi.export(\"roleMapping\", roles_mapping_saas.roles_mappings)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aquasec = Pulumi.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var rolesMappingSaas = Aquasec.GetRolesMappingSaas.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"roleMapping\"] = rolesMappingSaas.Apply(getRolesMappingSaasResult =\u003e getRolesMappingSaasResult.RolesMappings),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\trolesMappingSaas, err := aquasec.GetRolesMappingSaas(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"roleMapping\", rolesMappingSaas.RolesMappings)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.AquasecFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();\n\n        ctx.export(\"roleMapping\", rolesMappingSaas.applyValue(getRolesMappingSaasResult -\u003e getRolesMappingSaasResult.rolesMappings()));\n    }\n}\n```\n```yaml\nvariables:\n  rolesMappingSaas:\n    Fn::Invoke:\n      Function: aquasec:getRolesMappingSaas\n      Arguments: {}\noutputs:\n  roleMapping: ${rolesMappingSaas.rolesMappings}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getRolesMappingSaas.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "rolesMappings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getRolesMappingSaasRolesMapping:getRolesMappingSaasRolesMapping"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "rolesMappings",
                     "id"
                 ]
             }

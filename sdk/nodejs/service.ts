@@ -89,11 +89,11 @@ export class Service extends pulumi.CustomResource {
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
-    public readonly scopeExpression!: pulumi.Output<string>;
+    public readonly scopeExpression!: pulumi.Output<string | undefined>;
     /**
      * List of scope attributes.
      */
-    public readonly scopeVariables!: pulumi.Output<outputs.ServiceScopeVariable[]>;
+    public readonly scopeVariables!: pulumi.Output<outputs.ServiceScopeVariable[] | undefined>;
     /**
      * Type of the workload. container or host.
      */
@@ -180,12 +180,6 @@ export class Service extends pulumi.CustomResource {
             }
             if ((!args || args.policies === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
-            }
-            if ((!args || args.scopeExpression === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'scopeExpression'");
-            }
-            if ((!args || args.scopeVariables === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'scopeVariables'");
             }
             if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
@@ -362,11 +356,11 @@ export interface ServiceArgs {
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
-    scopeExpression: pulumi.Input<string>;
+    scopeExpression?: pulumi.Input<string>;
     /**
      * List of scope attributes.
      */
-    scopeVariables: pulumi.Input<pulumi.Input<inputs.ServiceScopeVariable>[]>;
+    scopeVariables?: pulumi.Input<pulumi.Input<inputs.ServiceScopeVariable>[]>;
     /**
      * Type of the workload. container or host.
      */

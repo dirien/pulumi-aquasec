@@ -10,18 +10,32 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceScopeVariable {
     private final String attribute;
+    /**
+     * @return The name of the service. It is recommended not to use whitespace characters in the name.
+     * 
+     */
+    private final String name;
     private final String value;
 
     @CustomType.Constructor
     private GetServiceScopeVariable(
         @CustomType.Parameter("attribute") String attribute,
+        @CustomType.Parameter("name") String name,
         @CustomType.Parameter("value") String value) {
         this.attribute = attribute;
+        this.name = name;
         this.value = value;
     }
 
     public String attribute() {
         return this.attribute;
+    }
+    /**
+     * @return The name of the service. It is recommended not to use whitespace characters in the name.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
     public String value() {
         return this.value;
@@ -37,6 +51,7 @@ public final class GetServiceScopeVariable {
 
     public static final class Builder {
         private String attribute;
+        private String name;
         private String value;
 
         public Builder() {
@@ -46,6 +61,7 @@ public final class GetServiceScopeVariable {
         public Builder(GetServiceScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
+    	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
@@ -53,11 +69,15 @@ public final class GetServiceScopeVariable {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
+            return this;
+        }
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
         }        public GetServiceScopeVariable build() {
-            return new GetServiceScopeVariable(attribute, value);
+            return new GetServiceScopeVariable(attribute, name, value);
         }
     }
 }

@@ -11,6 +11,7 @@ import com.pulumiverse.aquasec.HostRuntimePolicyArgs;
 import com.pulumiverse.aquasec.Utilities;
 import com.pulumiverse.aquasec.inputs.HostRuntimePolicyState;
 import com.pulumiverse.aquasec.outputs.HostRuntimePolicyFileIntegrityMonitoring;
+import com.pulumiverse.aquasec.outputs.HostRuntimePolicyMalwareScanOptions;
 import com.pulumiverse.aquasec.outputs.HostRuntimePolicyScopeVariable;
 import com.pulumiverse.aquasec.outputs.HostRuntimePolicyWindowsRegistryMonitoring;
 import com.pulumiverse.aquasec.outputs.HostRuntimePolicyWindowsRegistryProtection;
@@ -335,6 +336,20 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<HostRuntimePolicyFileIntegrityMonitoring>> fileIntegrityMonitoring() {
         return Codegen.optional(this.fileIntegrityMonitoring);
+    }
+    /**
+     * Configuration for Real-Time Malware Protection.
+     * 
+     */
+    @Export(name="malwareScanOptions", type=HostRuntimePolicyMalwareScanOptions.class, parameters={})
+    private Output</* @Nullable */ HostRuntimePolicyMalwareScanOptions> malwareScanOptions;
+
+    /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Output<Optional<HostRuntimePolicyMalwareScanOptions>> malwareScanOptions() {
+        return Codegen.optional(this.malwareScanOptions);
     }
     /**
      * If true, system log will be monitored.

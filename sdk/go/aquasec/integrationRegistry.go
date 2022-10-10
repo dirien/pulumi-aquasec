@@ -31,7 +31,8 @@ type IntegrationRegistry struct {
 	// The last time the registry was modified in UNIX time
 	LastUpdated pulumi.StringOutput `pulumi:"lastUpdated"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name    pulumi.StringOutput                  `pulumi:"name"`
+	Options IntegrationRegistryOptionArrayOutput `pulumi:"options"`
 	// The password for registry authentication
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// List of possible prefixes to image names pulled from the registry
@@ -102,7 +103,8 @@ type integrationRegistryState struct {
 	// The last time the registry was modified in UNIX time
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name *string `pulumi:"name"`
+	Name    *string                     `pulumi:"name"`
+	Options []IntegrationRegistryOption `pulumi:"options"`
 	// The password for registry authentication
 	Password *string `pulumi:"password"`
 	// List of possible prefixes to image names pulled from the registry
@@ -141,7 +143,8 @@ type IntegrationRegistryState struct {
 	// The last time the registry was modified in UNIX time
 	LastUpdated pulumi.StringPtrInput
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Options IntegrationRegistryOptionArrayInput
 	// The password for registry authentication
 	Password pulumi.StringPtrInput
 	// List of possible prefixes to image names pulled from the registry
@@ -184,7 +187,8 @@ type integrationRegistryArgs struct {
 	// The last time the registry was modified in UNIX time
 	LastUpdated *string `pulumi:"lastUpdated"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name *string `pulumi:"name"`
+	Name    *string                     `pulumi:"name"`
+	Options []IntegrationRegistryOption `pulumi:"options"`
 	// The password for registry authentication
 	Password *string `pulumi:"password"`
 	// List of possible prefixes to image names pulled from the registry
@@ -224,7 +228,8 @@ type IntegrationRegistryArgs struct {
 	// The last time the registry was modified in UNIX time
 	LastUpdated pulumi.StringPtrInput
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name pulumi.StringPtrInput
+	Name    pulumi.StringPtrInput
+	Options IntegrationRegistryOptionArrayInput
 	// The password for registry authentication
 	Password pulumi.StringPtrInput
 	// List of possible prefixes to image names pulled from the registry
@@ -375,6 +380,10 @@ func (o IntegrationRegistryOutput) LastUpdated() pulumi.StringOutput {
 // The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
 func (o IntegrationRegistryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o IntegrationRegistryOutput) Options() IntegrationRegistryOptionArrayOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) IntegrationRegistryOptionArrayOutput { return v.Options }).(IntegrationRegistryOptionArrayOutput)
 }
 
 // The password for registry authentication

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetHostRuntimePolicyResult',
@@ -22,7 +23,7 @@ class GetHostRuntimePolicyResult:
     """
     A collection of values returned by getHostRuntimePolicy.
     """
-    def __init__(__self__, application_scopes=None, audit_all_os_user_activity=None, audit_brute_force_login=None, audit_full_command_arguments=None, audit_host_failed_login_events=None, audit_host_successful_login_events=None, audit_user_account_management=None, author=None, block_cryptocurrency_mining=None, blocked_files=None, description=None, enable_ip_reputation_security=None, enabled=None, enforce=None, enforce_after_days=None, file_integrity_monitorings=None, id=None, monitor_system_log_integrity=None, monitor_system_time_changes=None, monitor_windows_services=None, name=None, os_groups_alloweds=None, os_groups_blockeds=None, os_users_alloweds=None, os_users_blockeds=None, package_blocks=None, port_scanning_detection=None, scope_expression=None, scope_variables=None, windows_registry_monitorings=None, windows_registry_protections=None):
+    def __init__(__self__, application_scopes=None, audit_all_os_user_activity=None, audit_brute_force_login=None, audit_full_command_arguments=None, audit_host_failed_login_events=None, audit_host_successful_login_events=None, audit_user_account_management=None, author=None, block_cryptocurrency_mining=None, blocked_files=None, description=None, enable_ip_reputation_security=None, enabled=None, enforce=None, enforce_after_days=None, file_integrity_monitorings=None, id=None, malware_scan_options=None, monitor_system_log_integrity=None, monitor_system_time_changes=None, monitor_windows_services=None, name=None, os_groups_alloweds=None, os_groups_blockeds=None, os_users_alloweds=None, os_users_blockeds=None, package_blocks=None, port_scanning_detection=None, scope_expression=None, scope_variables=None, windows_registry_monitorings=None, windows_registry_protections=None):
         if application_scopes and not isinstance(application_scopes, list):
             raise TypeError("Expected argument 'application_scopes' to be a list")
         pulumi.set(__self__, "application_scopes", application_scopes)
@@ -74,6 +75,9 @@ class GetHostRuntimePolicyResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if malware_scan_options and not isinstance(malware_scan_options, dict):
+            raise TypeError("Expected argument 'malware_scan_options' to be a dict")
+        pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_log_integrity and not isinstance(monitor_system_log_integrity, bool):
             raise TypeError("Expected argument 'monitor_system_log_integrity' to be a bool")
         pulumi.set(__self__, "monitor_system_log_integrity", monitor_system_log_integrity)
@@ -254,6 +258,14 @@ class GetHostRuntimePolicyResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional['outputs.GetHostRuntimePolicyMalwareScanOptionsResult']:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @property
     @pulumi.getter(name="monitorSystemLogIntegrity")
     def monitor_system_log_integrity(self) -> bool:
         """
@@ -389,6 +401,7 @@ class AwaitableGetHostRuntimePolicyResult(GetHostRuntimePolicyResult):
             enforce_after_days=self.enforce_after_days,
             file_integrity_monitorings=self.file_integrity_monitorings,
             id=self.id,
+            malware_scan_options=self.malware_scan_options,
             monitor_system_log_integrity=self.monitor_system_log_integrity,
             monitor_system_time_changes=self.monitor_system_time_changes,
             monitor_windows_services=self.monitor_windows_services,
@@ -405,7 +418,8 @@ class AwaitableGetHostRuntimePolicyResult(GetHostRuntimePolicyResult):
             windows_registry_protections=self.windows_registry_protections)
 
 
-def get_host_runtime_policy(name: Optional[str] = None,
+def get_host_runtime_policy(malware_scan_options: Optional[pulumi.InputType['GetHostRuntimePolicyMalwareScanOptionsArgs']] = None,
+                            name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostRuntimePolicyResult:
     """
     ## Example Usage
@@ -419,9 +433,11 @@ def get_host_runtime_policy(name: Optional[str] = None,
     ```
 
 
+    :param pulumi.InputType['GetHostRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
     :param str name: Name of the host runtime policy
     """
     __args__ = dict()
+    __args__['malwareScanOptions'] = malware_scan_options
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy', __args__, opts=opts, typ=GetHostRuntimePolicyResult).value
@@ -444,6 +460,7 @@ def get_host_runtime_policy(name: Optional[str] = None,
         enforce_after_days=__ret__.enforce_after_days,
         file_integrity_monitorings=__ret__.file_integrity_monitorings,
         id=__ret__.id,
+        malware_scan_options=__ret__.malware_scan_options,
         monitor_system_log_integrity=__ret__.monitor_system_log_integrity,
         monitor_system_time_changes=__ret__.monitor_system_time_changes,
         monitor_windows_services=__ret__.monitor_windows_services,
@@ -461,7 +478,8 @@ def get_host_runtime_policy(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_host_runtime_policy)
-def get_host_runtime_policy_output(name: Optional[pulumi.Input[str]] = None,
+def get_host_runtime_policy_output(malware_scan_options: Optional[pulumi.Input[Optional[pulumi.InputType['GetHostRuntimePolicyMalwareScanOptionsArgs']]]] = None,
+                                   name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostRuntimePolicyResult]:
     """
     ## Example Usage
@@ -475,6 +493,7 @@ def get_host_runtime_policy_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param pulumi.InputType['GetHostRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
     :param str name: Name of the host runtime policy
     """
     ...

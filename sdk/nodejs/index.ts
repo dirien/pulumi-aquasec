@@ -79,11 +79,24 @@ export { GetIntegrationRegistryArgs, GetIntegrationRegistryResult, GetIntegratio
 export const getIntegrationRegistry: typeof import("./getIntegrationRegistry").getIntegrationRegistry = null as any;
 export const getIntegrationRegistryOutput: typeof import("./getIntegrationRegistry").getIntegrationRegistryOutput = null as any;
 
+export { GetIntegrationStateResult } from "./getIntegrationState";
+export const getIntegrationState: typeof import("./getIntegrationState").getIntegrationState = null as any;
+
+export { GetKubernetesAssurancePolicyArgs, GetKubernetesAssurancePolicyResult, GetKubernetesAssurancePolicyOutputArgs } from "./getKubernetesAssurancePolicy";
+export const getKubernetesAssurancePolicy: typeof import("./getKubernetesAssurancePolicy").getKubernetesAssurancePolicy = null as any;
+export const getKubernetesAssurancePolicyOutput: typeof import("./getKubernetesAssurancePolicy").getKubernetesAssurancePolicyOutput = null as any;
+
 export { GetPermissionsSetsResult } from "./getPermissionsSets";
 export const getPermissionsSets: typeof import("./getPermissionsSets").getPermissionsSets = null as any;
 
 export { GetRolesResult } from "./getRoles";
 export const getRoles: typeof import("./getRoles").getRoles = null as any;
+
+export { GetRolesMappingResult } from "./getRolesMapping";
+export const getRolesMapping: typeof import("./getRolesMapping").getRolesMapping = null as any;
+
+export { GetRolesMappingSaasResult } from "./getRolesMappingSaas";
+export const getRolesMappingSaas: typeof import("./getRolesMappingSaas").getRolesMappingSaas = null as any;
 
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
@@ -99,9 +112,9 @@ export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 
-export { HostAssurancePolicArgs, HostAssurancePolicState } from "./hostAssurancePolic";
-export type HostAssurancePolic = import("./hostAssurancePolic").HostAssurancePolic;
-export const HostAssurancePolic: typeof import("./hostAssurancePolic").HostAssurancePolic = null as any;
+export { HostAssurancePolicyArgs, HostAssurancePolicyState } from "./hostAssurancePolicy";
+export type HostAssurancePolicy = import("./hostAssurancePolicy").HostAssurancePolicy;
+export const HostAssurancePolicy: typeof import("./hostAssurancePolicy").HostAssurancePolicy = null as any;
 
 export { HostRuntimePolicyArgs, HostRuntimePolicyState } from "./hostRuntimePolicy";
 export type HostRuntimePolicy = import("./hostRuntimePolicy").HostRuntimePolicy;
@@ -119,6 +132,10 @@ export { IntegrationRegistryArgs, IntegrationRegistryState } from "./integration
 export type IntegrationRegistry = import("./integrationRegistry").IntegrationRegistry;
 export const IntegrationRegistry: typeof import("./integrationRegistry").IntegrationRegistry = null as any;
 
+export { KubernetesAssurancePolicyArgs, KubernetesAssurancePolicyState } from "./kubernetesAssurancePolicy";
+export type KubernetesAssurancePolicy = import("./kubernetesAssurancePolicy").KubernetesAssurancePolicy;
+export const KubernetesAssurancePolicy: typeof import("./kubernetesAssurancePolicy").KubernetesAssurancePolicy = null as any;
+
 export { NotificationSlackArgs, NotificationSlackState } from "./notificationSlack";
 export type NotificationSlack = import("./notificationSlack").NotificationSlack;
 export const NotificationSlack: typeof import("./notificationSlack").NotificationSlack = null as any;
@@ -134,6 +151,14 @@ export const Provider: typeof import("./provider").Provider = null as any;
 export { RoleArgs, RoleState } from "./role";
 export type Role = import("./role").Role;
 export const Role: typeof import("./role").Role = null as any;
+
+export { RoleMappingArgs, RoleMappingState } from "./roleMapping";
+export type RoleMapping = import("./roleMapping").RoleMapping;
+export const RoleMapping: typeof import("./roleMapping").RoleMapping = null as any;
+
+export { RoleMappingSaasArgs, RoleMappingSaasState } from "./roleMappingSaas";
+export type RoleMappingSaas = import("./roleMappingSaas").RoleMappingSaas;
+export const RoleMappingSaas: typeof import("./roleMappingSaas").RoleMappingSaas = null as any;
 
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
@@ -166,21 +191,28 @@ utilities.lazyLoad(exports, ["getHostRuntimePolicy","getHostRuntimePolicyOutput"
 utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
 utilities.lazyLoad(exports, ["getImageAssurancePolicy","getImageAssurancePolicyOutput"], () => require("./getImageAssurancePolicy"));
 utilities.lazyLoad(exports, ["getIntegrationRegistry","getIntegrationRegistryOutput"], () => require("./getIntegrationRegistry"));
+utilities.lazyLoad(exports, ["getIntegrationState"], () => require("./getIntegrationState"));
+utilities.lazyLoad(exports, ["getKubernetesAssurancePolicy","getKubernetesAssurancePolicyOutput"], () => require("./getKubernetesAssurancePolicy"));
 utilities.lazyLoad(exports, ["getPermissionsSets"], () => require("./getPermissionsSets"));
 utilities.lazyLoad(exports, ["getRoles"], () => require("./getRoles"));
+utilities.lazyLoad(exports, ["getRolesMapping"], () => require("./getRolesMapping"));
+utilities.lazyLoad(exports, ["getRolesMappingSaas"], () => require("./getRolesMappingSaas"));
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 utilities.lazyLoad(exports, ["getUsers"], () => require("./getUsers"));
 utilities.lazyLoad(exports, ["getUsersSaas"], () => require("./getUsersSaas"));
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
-utilities.lazyLoad(exports, ["HostAssurancePolic"], () => require("./hostAssurancePolic"));
+utilities.lazyLoad(exports, ["HostAssurancePolicy"], () => require("./hostAssurancePolicy"));
 utilities.lazyLoad(exports, ["HostRuntimePolicy"], () => require("./hostRuntimePolicy"));
 utilities.lazyLoad(exports, ["Image"], () => require("./image"));
 utilities.lazyLoad(exports, ["ImageAssurancePolicy"], () => require("./imageAssurancePolicy"));
 utilities.lazyLoad(exports, ["IntegrationRegistry"], () => require("./integrationRegistry"));
+utilities.lazyLoad(exports, ["KubernetesAssurancePolicy"], () => require("./kubernetesAssurancePolicy"));
 utilities.lazyLoad(exports, ["NotificationSlack"], () => require("./notificationSlack"));
 utilities.lazyLoad(exports, ["PermissionsSets"], () => require("./permissionsSets"));
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
+utilities.lazyLoad(exports, ["RoleMapping"], () => require("./roleMapping"));
+utilities.lazyLoad(exports, ["RoleMappingSaas"], () => require("./roleMappingSaas"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 utilities.lazyLoad(exports, ["UserSaas"], () => require("./userSaas"));
@@ -212,8 +244,8 @@ const _module = {
                 return new FunctionRuntimePolicy(name, <any>undefined, { urn })
             case "aquasec:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "aquasec:index/hostAssurancePolic:HostAssurancePolic":
-                return new HostAssurancePolic(name, <any>undefined, { urn })
+            case "aquasec:index/hostAssurancePolicy:HostAssurancePolicy":
+                return new HostAssurancePolicy(name, <any>undefined, { urn })
             case "aquasec:index/hostRuntimePolicy:HostRuntimePolicy":
                 return new HostRuntimePolicy(name, <any>undefined, { urn })
             case "aquasec:index/image:Image":
@@ -222,12 +254,18 @@ const _module = {
                 return new ImageAssurancePolicy(name, <any>undefined, { urn })
             case "aquasec:index/integrationRegistry:IntegrationRegistry":
                 return new IntegrationRegistry(name, <any>undefined, { urn })
+            case "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy":
+                return new KubernetesAssurancePolicy(name, <any>undefined, { urn })
             case "aquasec:index/notificationSlack:NotificationSlack":
                 return new NotificationSlack(name, <any>undefined, { urn })
             case "aquasec:index/permissionsSets:PermissionsSets":
                 return new PermissionsSets(name, <any>undefined, { urn })
             case "aquasec:index/role:Role":
                 return new Role(name, <any>undefined, { urn })
+            case "aquasec:index/roleMapping:RoleMapping":
+                return new RoleMapping(name, <any>undefined, { urn })
+            case "aquasec:index/roleMappingSaas:RoleMappingSaas":
+                return new RoleMappingSaas(name, <any>undefined, { urn })
             case "aquasec:index/service:Service":
                 return new Service(name, <any>undefined, { urn })
             case "aquasec:index/user:User":
@@ -246,14 +284,17 @@ pulumi.runtime.registerResourceModule("aquasec", "index/firewallPolicy", _module
 pulumi.runtime.registerResourceModule("aquasec", "index/functionAssurancePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/functionRuntimePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/group", _module)
-pulumi.runtime.registerResourceModule("aquasec", "index/hostAssurancePolic", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/hostAssurancePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/hostRuntimePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/image", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/imageAssurancePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/integrationRegistry", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/kubernetesAssurancePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/notificationSlack", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/permissionsSets", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/role", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/roleMapping", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/roleMappingSaas", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/service", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/user", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/userSaas", _module)

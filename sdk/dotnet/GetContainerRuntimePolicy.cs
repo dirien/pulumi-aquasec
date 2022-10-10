@@ -75,6 +75,12 @@ namespace Pulumiverse.Aquasec
     public sealed class GetContainerRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Inputs.GetContainerRuntimePolicyMalwareScanOptionsArgs? MalwareScanOptions { get; set; }
+
+        /// <summary>
         /// Name of the container runtime policy
         /// </summary>
         [Input("name", required: true)]
@@ -88,6 +94,12 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetContainerRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.GetContainerRuntimePolicyMalwareScanOptionsInputArgs>? MalwareScanOptions { get; set; }
+
         /// <summary>
         /// Name of the container runtime policy
         /// </summary>
@@ -285,6 +297,10 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly bool LimitNewPrivileges;
         /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        public readonly Outputs.GetContainerRuntimePolicyMalwareScanOptionsResult? MalwareScanOptions;
+        /// <summary>
         /// If true, system time changes will be monitored.
         /// </summary>
         public readonly bool MonitorSystemTimeChanges;
@@ -405,6 +421,8 @@ namespace Pulumiverse.Aquasec
 
             bool limitNewPrivileges,
 
+            Outputs.GetContainerRuntimePolicyMalwareScanOptionsResult? malwareScanOptions,
+
             bool monitorSystemTimeChanges,
 
             string name,
@@ -464,6 +482,7 @@ namespace Pulumiverse.Aquasec
             ForkGuardProcessLimit = forkGuardProcessLimit;
             Id = id;
             LimitNewPrivileges = limitNewPrivileges;
+            MalwareScanOptions = malwareScanOptions;
             MonitorSystemTimeChanges = monitorSystemTimeChanges;
             Name = name;
             ReadonlyFilesAndDirectories = readonlyFilesAndDirectories;

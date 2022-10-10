@@ -4,13 +4,31 @@
 package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumiverse.aquasec.inputs.GetContainerRuntimePolicyMalwareScanOptions;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetContainerRuntimePolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetContainerRuntimePolicyPlainArgs Empty = new GetContainerRuntimePolicyPlainArgs();
+
+    /**
+     * Configuration for Real-Time Malware Protection.
+     * 
+     */
+    @Import(name="malwareScanOptions")
+    private @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions;
+
+    /**
+     * @return Configuration for Real-Time Malware Protection.
+     * 
+     */
+    public Optional<GetContainerRuntimePolicyMalwareScanOptions> malwareScanOptions() {
+        return Optional.ofNullable(this.malwareScanOptions);
+    }
 
     /**
      * Name of the container runtime policy
@@ -30,6 +48,7 @@ public final class GetContainerRuntimePolicyPlainArgs extends com.pulumi.resourc
     private GetContainerRuntimePolicyPlainArgs() {}
 
     private GetContainerRuntimePolicyPlainArgs(GetContainerRuntimePolicyPlainArgs $) {
+        this.malwareScanOptions = $.malwareScanOptions;
         this.name = $.name;
     }
 
@@ -49,6 +68,17 @@ public final class GetContainerRuntimePolicyPlainArgs extends com.pulumi.resourc
 
         public Builder(GetContainerRuntimePolicyPlainArgs defaults) {
             $ = new GetContainerRuntimePolicyPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder malwareScanOptions(@Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions) {
+            $.malwareScanOptions = malwareScanOptions;
+            return this;
         }
 
         /**

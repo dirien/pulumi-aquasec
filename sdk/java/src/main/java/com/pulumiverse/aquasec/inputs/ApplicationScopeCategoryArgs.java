@@ -19,9 +19,17 @@ public final class ApplicationScopeCategoryArgs extends com.pulumi.resources.Res
 
     public static final ApplicationScopeCategoryArgs Empty = new ApplicationScopeCategoryArgs();
 
+    /**
+     * An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+     * 
+     */
     @Import(name="artifacts")
     private @Nullable Output<List<ApplicationScopeCategoryArtifactArgs>> artifacts;
 
+    /**
+     * @return An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+     * 
+     */
     public Optional<Output<List<ApplicationScopeCategoryArtifactArgs>>> artifacts() {
         return Optional.ofNullable(this.artifacts);
     }
@@ -33,16 +41,32 @@ public final class ApplicationScopeCategoryArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.entityScopes);
     }
 
+    /**
+     * An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+     * 
+     */
     @Import(name="infrastructures")
     private @Nullable Output<List<ApplicationScopeCategoryInfrastructureArgs>> infrastructures;
 
+    /**
+     * @return An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+     * 
+     */
     public Optional<Output<List<ApplicationScopeCategoryInfrastructureArgs>>> infrastructures() {
         return Optional.ofNullable(this.infrastructures);
     }
 
+    /**
+     * A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+     * 
+     */
     @Import(name="workloads")
     private @Nullable Output<List<ApplicationScopeCategoryWorkloadArgs>> workloads;
 
+    /**
+     * @return A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+     * 
+     */
     public Optional<Output<List<ApplicationScopeCategoryWorkloadArgs>>> workloads() {
         return Optional.ofNullable(this.workloads);
     }
@@ -74,15 +98,33 @@ public final class ApplicationScopeCategoryArgs extends com.pulumi.resources.Res
             $ = new ApplicationScopeCategoryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param artifacts An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder artifacts(@Nullable Output<List<ApplicationScopeCategoryArtifactArgs>> artifacts) {
             $.artifacts = artifacts;
             return this;
         }
 
+        /**
+         * @param artifacts An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder artifacts(List<ApplicationScopeCategoryArtifactArgs> artifacts) {
             return artifacts(Output.of(artifacts));
         }
 
+        /**
+         * @param artifacts An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder artifacts(ApplicationScopeCategoryArtifactArgs... artifacts) {
             return artifacts(List.of(artifacts));
         }
@@ -100,28 +142,64 @@ public final class ApplicationScopeCategoryArgs extends com.pulumi.resources.Res
             return entityScopes(List.of(entityScopes));
         }
 
+        /**
+         * @param infrastructures An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infrastructures(@Nullable Output<List<ApplicationScopeCategoryInfrastructureArgs>> infrastructures) {
             $.infrastructures = infrastructures;
             return this;
         }
 
+        /**
+         * @param infrastructures An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infrastructures(List<ApplicationScopeCategoryInfrastructureArgs> infrastructures) {
             return infrastructures(Output.of(infrastructures));
         }
 
+        /**
+         * @param infrastructures An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder infrastructures(ApplicationScopeCategoryInfrastructureArgs... infrastructures) {
             return infrastructures(List.of(infrastructures));
         }
 
+        /**
+         * @param workloads A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloads(@Nullable Output<List<ApplicationScopeCategoryWorkloadArgs>> workloads) {
             $.workloads = workloads;
             return this;
         }
 
+        /**
+         * @param workloads A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloads(List<ApplicationScopeCategoryWorkloadArgs> workloads) {
             return workloads(Output.of(workloads));
         }
 
+        /**
+         * @param workloads A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
+         * 
+         * @return builder
+         * 
+         */
         public Builder workloads(ApplicationScopeCategoryWorkloadArgs... workloads) {
             return workloads(List.of(workloads));
         }

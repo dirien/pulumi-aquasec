@@ -6,6 +6,8 @@ package com.pulumiverse.aquasec.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceScopeVariable {
@@ -13,18 +15,25 @@ public final class ServiceScopeVariable {
      * @return Class of supported scope.
      * 
      */
-    private final String attribute;
+    private final @Nullable String attribute;
+    /**
+     * @return Name assigned to the attribute.
+     * 
+     */
+    private final @Nullable String name;
     /**
      * @return Value assigned to the attribute.
      * 
      */
-    private final String value;
+    private final @Nullable String value;
 
     @CustomType.Constructor
     private ServiceScopeVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("value") String value) {
+        @CustomType.Parameter("attribute") @Nullable String attribute,
+        @CustomType.Parameter("name") @Nullable String name,
+        @CustomType.Parameter("value") @Nullable String value) {
         this.attribute = attribute;
+        this.name = name;
         this.value = value;
     }
 
@@ -32,15 +41,22 @@ public final class ServiceScopeVariable {
      * @return Class of supported scope.
      * 
      */
-    public String attribute() {
-        return this.attribute;
+    public Optional<String> attribute() {
+        return Optional.ofNullable(this.attribute);
+    }
+    /**
+     * @return Name assigned to the attribute.
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Value assigned to the attribute.
      * 
      */
-    public String value() {
-        return this.value;
+    public Optional<String> value() {
+        return Optional.ofNullable(this.value);
     }
 
     public static Builder builder() {
@@ -52,8 +68,9 @@ public final class ServiceScopeVariable {
     }
 
     public static final class Builder {
-        private String attribute;
-        private String value;
+        private @Nullable String attribute;
+        private @Nullable String name;
+        private @Nullable String value;
 
         public Builder() {
     	      // Empty
@@ -62,18 +79,23 @@ public final class ServiceScopeVariable {
         public Builder(ServiceScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
+    	      this.name = defaults.name;
     	      this.value = defaults.value;
         }
 
-        public Builder attribute(String attribute) {
-            this.attribute = Objects.requireNonNull(attribute);
+        public Builder attribute(@Nullable String attribute) {
+            this.attribute = attribute;
             return this;
         }
-        public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+        public Builder name(@Nullable String name) {
+            this.name = name;
+            return this;
+        }
+        public Builder value(@Nullable String value) {
+            this.value = value;
             return this;
         }        public ServiceScopeVariable build() {
-            return new ServiceScopeVariable(attribute, value);
+            return new ServiceScopeVariable(attribute, name, value);
         }
     }
 }

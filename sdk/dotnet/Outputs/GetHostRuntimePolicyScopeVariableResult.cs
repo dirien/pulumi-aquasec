@@ -15,15 +15,22 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class GetHostRuntimePolicyScopeVariableResult
     {
         public readonly string Attribute;
+        /// <summary>
+        /// Name of the host runtime policy
+        /// </summary>
+        public readonly string Name;
         public readonly string Value;
 
         [OutputConstructor]
         private GetHostRuntimePolicyScopeVariableResult(
             string attribute,
 
+            string name,
+
             string value)
         {
             Attribute = attribute;
+            Name = name;
             Value = value;
         }
     }

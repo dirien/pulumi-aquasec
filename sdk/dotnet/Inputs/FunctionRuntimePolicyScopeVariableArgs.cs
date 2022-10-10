@@ -20,6 +20,12 @@ namespace Pulumiverse.Aquasec.Inputs
         public Input<string> Attribute { get; set; } = null!;
 
         /// <summary>
+        /// Name assigned to the attribute.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
         /// Value assigned to the attribute.
         /// </summary>
         [Input("value", required: true)]

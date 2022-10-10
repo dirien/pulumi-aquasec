@@ -64,11 +64,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["aquaUrl"] = args ? args.aquaUrl : undefined;
             resourceInputs["caCertificatePath"] = args ? args.caCertificatePath : undefined;
             resourceInputs["configPath"] = args ? args.configPath : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
             resourceInputs["verifyTls"] = pulumi.output(args ? args.verifyTls : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "username"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }

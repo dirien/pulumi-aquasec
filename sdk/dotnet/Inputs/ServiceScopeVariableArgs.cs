@@ -16,14 +16,20 @@ namespace Pulumiverse.Aquasec.Inputs
         /// <summary>
         /// Class of supported scope.
         /// </summary>
-        [Input("attribute", required: true)]
-        public Input<string> Attribute { get; set; } = null!;
+        [Input("attribute")]
+        public Input<string>? Attribute { get; set; }
+
+        /// <summary>
+        /// Name assigned to the attribute.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Value assigned to the attribute.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public ServiceScopeVariableArgs()
         {
