@@ -36,7 +36,7 @@ namespace Pulumiverse.Aquasec
     ///         NetworkProtection = true,
     ///         Orchestrators = new[]
     ///         {
-    ///             ,
+    ///             null,
     ///         },
     ///         RiskExplorerAutoDiscovery = true,
     ///         SyncHostImages = true,

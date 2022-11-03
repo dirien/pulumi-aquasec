@@ -21,8 +21,8 @@ import com.pulumiverse.aquasec.inputs.GetFunctionAssurancePolicyArgs;
 import com.pulumiverse.aquasec.inputs.GetFunctionAssurancePolicyPlainArgs;
 import com.pulumiverse.aquasec.inputs.GetFunctionRuntimePolicyArgs;
 import com.pulumiverse.aquasec.inputs.GetFunctionRuntimePolicyPlainArgs;
-import com.pulumiverse.aquasec.inputs.GetHostAssurancePolicArgs;
-import com.pulumiverse.aquasec.inputs.GetHostAssurancePolicPlainArgs;
+import com.pulumiverse.aquasec.inputs.GetHostAssurancePolicyArgs;
+import com.pulumiverse.aquasec.inputs.GetHostAssurancePolicyPlainArgs;
 import com.pulumiverse.aquasec.inputs.GetHostRuntimePolicyArgs;
 import com.pulumiverse.aquasec.inputs.GetHostRuntimePolicyPlainArgs;
 import com.pulumiverse.aquasec.inputs.GetImageArgs;
@@ -43,7 +43,7 @@ import com.pulumiverse.aquasec.outputs.GetFunctionAssurancePolicyResult;
 import com.pulumiverse.aquasec.outputs.GetFunctionRuntimePolicyResult;
 import com.pulumiverse.aquasec.outputs.GetGatewaysResult;
 import com.pulumiverse.aquasec.outputs.GetGroupsResult;
-import com.pulumiverse.aquasec.outputs.GetHostAssurancePolicResult;
+import com.pulumiverse.aquasec.outputs.GetHostAssurancePolicyResult;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyResult;
 import com.pulumiverse.aquasec.outputs.GetImageAssurancePolicyResult;
 import com.pulumiverse.aquasec.outputs.GetImageResult;
@@ -663,80 +663,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testgateway = AquasecFunctions.getGateways();
-     * 
-     *         ctx.export(&#34;gatewayData&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult));
-     *         ctx.export(&#34;gatewayName&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
-     *         ctx.export(&#34;gatewayStatus&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].status()));
-     *         ctx.export(&#34;gatewayDescription&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].description()));
-     *         ctx.export(&#34;gatewayVersion&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].version()));
-     *         ctx.export(&#34;gatewayHostname&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].hostname()));
-     *         ctx.export(&#34;gatewayGrpcAddress&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].grpcAddress()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGatewaysResult> getGateways() {
         return getGateways(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testgateway = AquasecFunctions.getGateways();
-     * 
-     *         ctx.export(&#34;gatewayData&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult));
-     *         ctx.export(&#34;gatewayName&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
-     *         ctx.export(&#34;gatewayStatus&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].status()));
-     *         ctx.export(&#34;gatewayDescription&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].description()));
-     *         ctx.export(&#34;gatewayVersion&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].version()));
-     *         ctx.export(&#34;gatewayHostname&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].hostname()));
-     *         ctx.export(&#34;gatewayGrpcAddress&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].grpcAddress()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain() {
@@ -745,80 +677,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testgateway = AquasecFunctions.getGateways();
-     * 
-     *         ctx.export(&#34;gatewayData&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult));
-     *         ctx.export(&#34;gatewayName&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
-     *         ctx.export(&#34;gatewayStatus&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].status()));
-     *         ctx.export(&#34;gatewayDescription&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].description()));
-     *         ctx.export(&#34;gatewayVersion&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].version()));
-     *         ctx.export(&#34;gatewayHostname&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].hostname()));
-     *         ctx.export(&#34;gatewayGrpcAddress&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].grpcAddress()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGatewaysResult> getGateways(InvokeArgs args) {
         return getGateways(args, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testgateway = AquasecFunctions.getGateways();
-     * 
-     *         ctx.export(&#34;gatewayData&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult));
-     *         ctx.export(&#34;gatewayName&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
-     *         ctx.export(&#34;gatewayStatus&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].status()));
-     *         ctx.export(&#34;gatewayDescription&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].description()));
-     *         ctx.export(&#34;gatewayVersion&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].version()));
-     *         ctx.export(&#34;gatewayHostname&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].hostname()));
-     *         ctx.export(&#34;gatewayGrpcAddress&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].grpcAddress()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(InvokeArgs args) {
@@ -827,80 +691,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testgateway = AquasecFunctions.getGateways();
-     * 
-     *         ctx.export(&#34;gatewayData&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult));
-     *         ctx.export(&#34;gatewayName&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
-     *         ctx.export(&#34;gatewayStatus&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].status()));
-     *         ctx.export(&#34;gatewayDescription&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].description()));
-     *         ctx.export(&#34;gatewayVersion&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].version()));
-     *         ctx.export(&#34;gatewayHostname&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].hostname()));
-     *         ctx.export(&#34;gatewayGrpcAddress&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].grpcAddress()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGatewaysResult> getGateways(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getGateways:getGateways", TypeShape.of(GetGatewaysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testgateway = AquasecFunctions.getGateways();
-     * 
-     *         ctx.export(&#34;gatewayData&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult));
-     *         ctx.export(&#34;gatewayName&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].id()));
-     *         ctx.export(&#34;gatewayStatus&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].status()));
-     *         ctx.export(&#34;gatewayDescription&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].description()));
-     *         ctx.export(&#34;gatewayVersion&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].version()));
-     *         ctx.export(&#34;gatewayHostname&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].hostname()));
-     *         ctx.export(&#34;gatewayGrpcAddress&#34;, testgateway.applyValue(getGatewaysResult -&gt; getGatewaysResult.gateways()[0].grpcAddress()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGatewaysResult> getGatewaysPlain(InvokeArgs args, InvokeOptions options) {
@@ -909,68 +705,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = AquasecFunctions.getGroups();
-     * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGroupsResult> getGroups() {
         return getGroups(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = AquasecFunctions.getGroups();
-     * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain() {
@@ -979,68 +719,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = AquasecFunctions.getGroups();
-     * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGroupsResult> getGroups(InvokeArgs args) {
         return getGroups(args, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = AquasecFunctions.getGroups();
-     * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(InvokeArgs args) {
@@ -1049,34 +733,6 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = AquasecFunctions.getGroups();
-     * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetGroupsResult> getGroups(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
@@ -1084,49 +740,21 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var groups = AquasecFunctions.getGroups();
-     * 
-     *         ctx.export(&#34;firstGroupName&#34;, groups.applyValue(getGroupsResult -&gt; getGroupsResult.groups()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetHostAssurancePolicResult> getHostAssurancePolic(GetHostAssurancePolicArgs args) {
-        return getHostAssurancePolic(args, InvokeOptions.Empty);
+    public static Output<GetHostAssurancePolicyResult> getHostAssurancePolicy(GetHostAssurancePolicyArgs args) {
+        return getHostAssurancePolicy(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetHostAssurancePolicResult> getHostAssurancePolicPlain(GetHostAssurancePolicPlainArgs args) {
-        return getHostAssurancePolicPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetHostAssurancePolicyResult> getHostAssurancePolicyPlain(GetHostAssurancePolicyPlainArgs args) {
+        return getHostAssurancePolicyPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetHostAssurancePolicResult> getHostAssurancePolic(GetHostAssurancePolicArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", TypeShape.of(GetHostAssurancePolicResult.class), args, Utilities.withVersion(options));
+    public static Output<GetHostAssurancePolicyResult> getHostAssurancePolicy(GetHostAssurancePolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy", TypeShape.of(GetHostAssurancePolicyResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetHostAssurancePolicResult> getHostAssurancePolicPlain(GetHostAssurancePolicPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("aquasec:index/getHostAssurancePolic:getHostAssurancePolic", TypeShape.of(GetHostAssurancePolicResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetHostAssurancePolicyResult> getHostAssurancePolicyPlain(GetHostAssurancePolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy", TypeShape.of(GetHostAssurancePolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage
@@ -1308,201 +936,21 @@ public final class AquasecFunctions {
     public static CompletableFuture<GetIntegrationRegistryResult> getIntegrationRegistryPlain(GetIntegrationRegistryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", TypeShape.of(GetIntegrationRegistryResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrationState = AquasecFunctions.getIntegrationState();
-     * 
-     *         ctx.export(&#34;aquasecIntegrationState&#34;, integrationState.applyValue(getIntegrationStateResult -&gt; getIntegrationStateResult));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetIntegrationStateResult> getIntegrationState() {
         return getIntegrationState(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrationState = AquasecFunctions.getIntegrationState();
-     * 
-     *         ctx.export(&#34;aquasecIntegrationState&#34;, integrationState.applyValue(getIntegrationStateResult -&gt; getIntegrationStateResult));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetIntegrationStateResult> getIntegrationStatePlain() {
         return getIntegrationStatePlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrationState = AquasecFunctions.getIntegrationState();
-     * 
-     *         ctx.export(&#34;aquasecIntegrationState&#34;, integrationState.applyValue(getIntegrationStateResult -&gt; getIntegrationStateResult));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetIntegrationStateResult> getIntegrationState(InvokeArgs args) {
         return getIntegrationState(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrationState = AquasecFunctions.getIntegrationState();
-     * 
-     *         ctx.export(&#34;aquasecIntegrationState&#34;, integrationState.applyValue(getIntegrationStateResult -&gt; getIntegrationStateResult));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetIntegrationStateResult> getIntegrationStatePlain(InvokeArgs args) {
         return getIntegrationStatePlain(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrationState = AquasecFunctions.getIntegrationState();
-     * 
-     *         ctx.export(&#34;aquasecIntegrationState&#34;, integrationState.applyValue(getIntegrationStateResult -&gt; getIntegrationStateResult));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetIntegrationStateResult> getIntegrationState(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getIntegrationState:getIntegrationState", TypeShape.of(GetIntegrationStateResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var integrationState = AquasecFunctions.getIntegrationState();
-     * 
-     *         ctx.export(&#34;aquasecIntegrationState&#34;, integrationState.applyValue(getIntegrationStateResult -&gt; getIntegrationStateResult));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetIntegrationStateResult> getIntegrationStatePlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getIntegrationState:getIntegrationState", TypeShape.of(GetIntegrationStateResult.class), args, Utilities.withVersion(options));
     }
@@ -1521,70 +969,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testpermissionsset = AquasecFunctions.getPermissionsSets();
-     * 
-     *         ctx.export(&#34;permissionsSets&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult));
-     *         ctx.export(&#34;permissionsSetsNames&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult).stream().map(element -&gt; element.permissionsSets().stream().map(element -&gt; element.name()).collect(toList())).collect(toList()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetPermissionsSetsResult> getPermissionsSets() {
         return getPermissionsSets(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testpermissionsset = AquasecFunctions.getPermissionsSets();
-     * 
-     *         ctx.export(&#34;permissionsSets&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult));
-     *         ctx.export(&#34;permissionsSetsNames&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult).stream().map(element -&gt; element.permissionsSets().stream().map(element -&gt; element.name()).collect(toList())).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetPermissionsSetsResult> getPermissionsSetsPlain() {
@@ -1593,70 +983,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testpermissionsset = AquasecFunctions.getPermissionsSets();
-     * 
-     *         ctx.export(&#34;permissionsSets&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult));
-     *         ctx.export(&#34;permissionsSetsNames&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult).stream().map(element -&gt; element.permissionsSets().stream().map(element -&gt; element.name()).collect(toList())).collect(toList()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetPermissionsSetsResult> getPermissionsSets(InvokeArgs args) {
         return getPermissionsSets(args, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testpermissionsset = AquasecFunctions.getPermissionsSets();
-     * 
-     *         ctx.export(&#34;permissionsSets&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult));
-     *         ctx.export(&#34;permissionsSetsNames&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult).stream().map(element -&gt; element.permissionsSets().stream().map(element -&gt; element.name()).collect(toList())).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetPermissionsSetsResult> getPermissionsSetsPlain(InvokeArgs args) {
@@ -1665,70 +997,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testpermissionsset = AquasecFunctions.getPermissionsSets();
-     * 
-     *         ctx.export(&#34;permissionsSets&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult));
-     *         ctx.export(&#34;permissionsSetsNames&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult).stream().map(element -&gt; element.permissionsSets().stream().map(element -&gt; element.name()).collect(toList())).collect(toList()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetPermissionsSetsResult> getPermissionsSets(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getPermissionsSets:getPermissionsSets", TypeShape.of(GetPermissionsSetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var testpermissionsset = AquasecFunctions.getPermissionsSets();
-     * 
-     *         ctx.export(&#34;permissionsSets&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult));
-     *         ctx.export(&#34;permissionsSetsNames&#34;, testpermissionsset.applyValue(getPermissionsSetsResult -&gt; getPermissionsSetsResult).stream().map(element -&gt; element.permissionsSets().stream().map(element -&gt; element.name()).collect(toList())).collect(toList()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetPermissionsSetsResult> getPermissionsSetsPlain(InvokeArgs args, InvokeOptions options) {
@@ -1737,68 +1011,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var roles = AquasecFunctions.getRoles();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, roles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0]));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetRolesResult> getRoles() {
         return getRoles(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var roles = AquasecFunctions.getRoles();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, roles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0]));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain() {
@@ -1807,68 +1025,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var roles = AquasecFunctions.getRoles();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, roles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0]));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetRolesResult> getRoles(InvokeArgs args) {
         return getRoles(args, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var roles = AquasecFunctions.getRoles();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, roles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0]));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(InvokeArgs args) {
@@ -1877,34 +1039,6 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var roles = AquasecFunctions.getRoles();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, roles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0]));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetRolesResult> getRoles(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
@@ -1912,437 +1046,43 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var roles = AquasecFunctions.getRoles();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, roles.applyValue(getRolesResult -&gt; getRolesResult.roles()[0]));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static CompletableFuture<GetRolesResult> getRolesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getRoles:getRoles", TypeShape.of(GetRolesResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMapping = AquasecFunctions.getRolesMapping();
-     * 
-     *         ctx.export(&#34;roleMappingAll&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult));
-     *         ctx.export(&#34;roleMappingSaml&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult.samls()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetRolesMappingResult> getRolesMapping() {
         return getRolesMapping(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMapping = AquasecFunctions.getRolesMapping();
-     * 
-     *         ctx.export(&#34;roleMappingAll&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult));
-     *         ctx.export(&#34;roleMappingSaml&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult.samls()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetRolesMappingResult> getRolesMappingPlain() {
         return getRolesMappingPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMapping = AquasecFunctions.getRolesMapping();
-     * 
-     *         ctx.export(&#34;roleMappingAll&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult));
-     *         ctx.export(&#34;roleMappingSaml&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult.samls()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetRolesMappingResult> getRolesMapping(InvokeArgs args) {
         return getRolesMapping(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMapping = AquasecFunctions.getRolesMapping();
-     * 
-     *         ctx.export(&#34;roleMappingAll&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult));
-     *         ctx.export(&#34;roleMappingSaml&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult.samls()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetRolesMappingResult> getRolesMappingPlain(InvokeArgs args) {
         return getRolesMappingPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMapping = AquasecFunctions.getRolesMapping();
-     * 
-     *         ctx.export(&#34;roleMappingAll&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult));
-     *         ctx.export(&#34;roleMappingSaml&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult.samls()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetRolesMappingResult> getRolesMapping(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getRolesMapping:getRolesMapping", TypeShape.of(GetRolesMappingResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMapping = AquasecFunctions.getRolesMapping();
-     * 
-     *         ctx.export(&#34;roleMappingAll&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult));
-     *         ctx.export(&#34;roleMappingSaml&#34;, rolesMapping.applyValue(getRolesMappingResult -&gt; getRolesMappingResult.samls()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetRolesMappingResult> getRolesMappingPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getRolesMapping:getRolesMapping", TypeShape.of(GetRolesMappingResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();
-     * 
-     *         ctx.export(&#34;roleMapping&#34;, rolesMappingSaas.applyValue(getRolesMappingSaasResult -&gt; getRolesMappingSaasResult.rolesMappings()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetRolesMappingSaasResult> getRolesMappingSaas() {
         return getRolesMappingSaas(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();
-     * 
-     *         ctx.export(&#34;roleMapping&#34;, rolesMappingSaas.applyValue(getRolesMappingSaasResult -&gt; getRolesMappingSaasResult.rolesMappings()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetRolesMappingSaasResult> getRolesMappingSaasPlain() {
         return getRolesMappingSaasPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();
-     * 
-     *         ctx.export(&#34;roleMapping&#34;, rolesMappingSaas.applyValue(getRolesMappingSaasResult -&gt; getRolesMappingSaasResult.rolesMappings()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetRolesMappingSaasResult> getRolesMappingSaas(InvokeArgs args) {
         return getRolesMappingSaas(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();
-     * 
-     *         ctx.export(&#34;roleMapping&#34;, rolesMappingSaas.applyValue(getRolesMappingSaasResult -&gt; getRolesMappingSaasResult.rolesMappings()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetRolesMappingSaasResult> getRolesMappingSaasPlain(InvokeArgs args) {
         return getRolesMappingSaasPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();
-     * 
-     *         ctx.export(&#34;roleMapping&#34;, rolesMappingSaas.applyValue(getRolesMappingSaasResult -&gt; getRolesMappingSaasResult.rolesMappings()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetRolesMappingSaasResult> getRolesMappingSaas(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getRolesMappingSaas:getRolesMappingSaas", TypeShape.of(GetRolesMappingSaasResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var rolesMappingSaas = AquasecFunctions.getRolesMappingSaas();
-     * 
-     *         ctx.export(&#34;roleMapping&#34;, rolesMappingSaas.applyValue(getRolesMappingSaasResult -&gt; getRolesMappingSaasResult.rolesMappings()));
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetRolesMappingSaasResult> getRolesMappingSaasPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getRolesMappingSaas:getRolesMappingSaas", TypeShape.of(GetRolesMappingSaasResult.class), args, Utilities.withVersion(options));
     }
@@ -2361,68 +1101,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.users()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersResult> getUsers() {
         return getUsers(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.users()[0].name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain() {
@@ -2431,68 +1115,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.users()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersResult> getUsers(InvokeArgs args) {
         return getUsers(args, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.users()[0].name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(InvokeArgs args) {
@@ -2501,68 +1129,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.users()[0].name()));
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersResult> getUsers(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getUsers:getUsers", TypeShape.of(GetUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserName&#34;, users.applyValue(getUsersResult -&gt; getUsersResult.users()[0].name()));
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersResult> getUsersPlain(InvokeArgs args, InvokeOptions options) {
@@ -2571,68 +1143,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserEmail&#34;, data.aquasec_users_saas().users().users()[0].email());
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersSaasResult> getUsersSaas() {
         return getUsersSaas(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserEmail&#34;, data.aquasec_users_saas().users().users()[0].email());
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersSaasResult> getUsersSaasPlain() {
@@ -2641,68 +1157,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserEmail&#34;, data.aquasec_users_saas().users().users()[0].email());
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersSaasResult> getUsersSaas(InvokeArgs args) {
         return getUsersSaas(args, InvokeOptions.Empty);
     }
     /**
      * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserEmail&#34;, data.aquasec_users_saas().users().users()[0].email());
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersSaasResult> getUsersSaasPlain(InvokeArgs args) {
@@ -2711,68 +1171,12 @@ public final class AquasecFunctions {
     /**
      * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
      * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserEmail&#34;, data.aquasec_users_saas().users().users()[0].email());
-     *     }
-     * }
-     * ```
-     * 
      */
     public static Output<GetUsersSaasResult> getUsersSaas(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aquasec:index/getUsersSaas:getUsersSaas", TypeShape.of(GetUsersSaasResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aquasec.AquasecFunctions;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var users = AquasecFunctions.getUsers();
-     * 
-     *         ctx.export(&#34;firstUserEmail&#34;, data.aquasec_users_saas().users().users()[0].email());
-     *     }
-     * }
-     * ```
      * 
      */
     public static CompletableFuture<GetUsersSaasResult> getUsersSaasPlain(InvokeArgs args, InvokeOptions options) {

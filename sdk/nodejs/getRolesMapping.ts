@@ -6,18 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
- *
- * const rolesMapping = aquasec.getRolesMapping({});
- * export const roleMappingAll = rolesMapping;
- * export const roleMappingSaml = rolesMapping.then(rolesMapping => rolesMapping.samls);
- * ```
- */
 export function getRolesMapping(opts?: pulumi.InvokeOptions): Promise<GetRolesMappingResult> {
     if (!opts) {
         opts = {}

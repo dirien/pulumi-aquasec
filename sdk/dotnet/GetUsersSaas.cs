@@ -14,28 +14,6 @@ namespace Pulumiverse.Aquasec
     {
         /// <summary>
         /// The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Aquasec = Pulumi.Aquasec;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var users = Aquasec.GetUsers.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["firstUserEmail"] = data.Aquasec_users_saas.Users.Users[0].Email,
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersSaasResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersSaasResult>("aquasec:index/getUsersSaas:getUsersSaas", InvokeArgs.Empty, options.WithDefaults());

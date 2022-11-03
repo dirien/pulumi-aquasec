@@ -19,7 +19,7 @@ from .get_function_assurance_policy import *
 from .get_function_runtime_policy import *
 from .get_gateways import *
 from .get_groups import *
-from .get_host_assurance_polic import *
+from .get_host_assurance_policy import *
 from .get_host_runtime_policy import *
 from .get_image import *
 from .get_image_assurance_policy import *

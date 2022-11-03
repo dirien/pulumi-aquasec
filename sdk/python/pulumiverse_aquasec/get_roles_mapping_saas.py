@@ -55,15 +55,7 @@ class AwaitableGetRolesMappingSaasResult(GetRolesMappingSaasResult):
 
 def get_roles_mapping_saas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesMappingSaasResult:
     """
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aquasec as aquasec
-
-    roles_mapping_saas = aquasec.get_roles_mapping_saas()
-    pulumi.export("roleMapping", roles_mapping_saas.roles_mappings)
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

@@ -141,7 +141,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aquasec_function_runtime_policy": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFunctionRuntimePolicy")},
 			"aquasec_gateways":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGateways")},
 			"aquasec_groups":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
-			"aquasec_host_assurance_policy":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostAssurancePolic")},
+			"aquasec_host_assurance_policy":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostAssurancePolicy")},
 			"aquasec_host_runtime_policy":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostRuntimePolicy")},
 			"aquasec_image":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getImage")},
 			"aquasec_image_assurance_policy": {
