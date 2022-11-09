@@ -659,14 +659,14 @@ export interface GetGroupsGroup {
     name: string;
 }
 
-export interface GetHostAssurancePolicAutoScanTime {
+export interface GetHostAssurancePolicyAutoScanTime {
     iteration: number;
     iterationType: string;
     time: string;
     weekDays: string[];
 }
 
-export interface GetHostAssurancePolicCustomCheck {
+export interface GetHostAssurancePolicyCustomCheck {
     /**
      * Name of user account that created the policy.
      */
@@ -682,12 +682,12 @@ export interface GetHostAssurancePolicCustomCheck {
     snippet: string;
 }
 
-export interface GetHostAssurancePolicForbiddenLabel {
+export interface GetHostAssurancePolicyForbiddenLabel {
     key: string;
     value: string;
 }
 
-export interface GetHostAssurancePolicPackagesBlackList {
+export interface GetHostAssurancePolicyPackagesBlackList {
     arch: string;
     display: string;
     epoch: string;
@@ -699,7 +699,7 @@ export interface GetHostAssurancePolicPackagesBlackList {
     versionRange: string;
 }
 
-export interface GetHostAssurancePolicPackagesWhiteList {
+export interface GetHostAssurancePolicyPackagesWhiteList {
     arch: string;
     display: string;
     epoch: string;
@@ -711,23 +711,23 @@ export interface GetHostAssurancePolicPackagesWhiteList {
     versionRange: string;
 }
 
-export interface GetHostAssurancePolicRequiredLabel {
+export interface GetHostAssurancePolicyRequiredLabel {
     key: string;
     value: string;
 }
 
-export interface GetHostAssurancePolicScope {
+export interface GetHostAssurancePolicyScope {
     expression: string;
-    variables?: outputs.GetHostAssurancePolicScopeVariable[];
+    variables?: outputs.GetHostAssurancePolicyScopeVariable[];
 }
 
-export interface GetHostAssurancePolicScopeVariable {
+export interface GetHostAssurancePolicyScopeVariable {
     attribute: string;
     name: string;
     value: string;
 }
 
-export interface GetHostAssurancePolicTrustedBaseImage {
+export interface GetHostAssurancePolicyTrustedBaseImage {
     imagename: string;
     registry: string;
 }
@@ -1719,3 +1719,4 @@ export interface UserSaasLogin {
     ipAddress: string;
     userId: number;
 }
+

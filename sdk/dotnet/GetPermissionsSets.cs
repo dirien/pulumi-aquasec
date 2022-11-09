@@ -14,36 +14,6 @@ namespace Pulumiverse.Aquasec
     {
         /// <summary>
         /// The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Aquasec = Pulumi.Aquasec;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var testpermissionsset = Aquasec.GetPermissionsSets.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["permissionsSets"] = testpermissionsset.Apply(getPermissionsSetsResult =&gt; getPermissionsSetsResult),
-        ///         ["permissionsSetsNames"] = new[]
-        ///         {
-        ///             testpermissionsset.Apply(getPermissionsSetsResult =&gt; getPermissionsSetsResult),
-        ///         }.Select(__item =&gt; new[]
-        ///         {
-        ///             __item.Apply(obj =&gt; obj.PermissionsSets),
-        ///         }.Select(__item =&gt; __item?.Name).ToList()).ToList(),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetPermissionsSetsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPermissionsSetsResult>("aquasec:index/getPermissionsSets:getPermissionsSets", InvokeArgs.Empty, options.WithDefaults());

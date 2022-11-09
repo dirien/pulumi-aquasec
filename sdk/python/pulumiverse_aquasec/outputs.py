@@ -133,15 +133,15 @@ __all__ = [
     'GetFunctionRuntimePolicyScopeVariableResult',
     'GetGatewaysGatewayResult',
     'GetGroupsGroupResult',
-    'GetHostAssurancePolicAutoScanTimeResult',
-    'GetHostAssurancePolicCustomCheckResult',
-    'GetHostAssurancePolicForbiddenLabelResult',
-    'GetHostAssurancePolicPackagesBlackListResult',
-    'GetHostAssurancePolicPackagesWhiteListResult',
-    'GetHostAssurancePolicRequiredLabelResult',
-    'GetHostAssurancePolicScopeResult',
-    'GetHostAssurancePolicScopeVariableResult',
-    'GetHostAssurancePolicTrustedBaseImageResult',
+    'GetHostAssurancePolicyAutoScanTimeResult',
+    'GetHostAssurancePolicyCustomCheckResult',
+    'GetHostAssurancePolicyForbiddenLabelResult',
+    'GetHostAssurancePolicyPackagesBlackListResult',
+    'GetHostAssurancePolicyPackagesWhiteListResult',
+    'GetHostAssurancePolicyRequiredLabelResult',
+    'GetHostAssurancePolicyScopeResult',
+    'GetHostAssurancePolicyScopeVariableResult',
+    'GetHostAssurancePolicyTrustedBaseImageResult',
     'GetHostRuntimePolicyFileIntegrityMonitoringResult',
     'GetHostRuntimePolicyMalwareScanOptionsResult',
     'GetHostRuntimePolicyScopeVariableResult',
@@ -6145,7 +6145,7 @@ class GetGroupsGroupResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicAutoScanTimeResult(dict):
+class GetHostAssurancePolicyAutoScanTimeResult(dict):
     def __init__(__self__, *,
                  iteration: int,
                  iteration_type: str,
@@ -6178,7 +6178,7 @@ class GetHostAssurancePolicAutoScanTimeResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicCustomCheckResult(dict):
+class GetHostAssurancePolicyCustomCheckResult(dict):
     def __init__(__self__, *,
                  author: str,
                  description: str,
@@ -6259,7 +6259,7 @@ class GetHostAssurancePolicCustomCheckResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicForbiddenLabelResult(dict):
+class GetHostAssurancePolicyForbiddenLabelResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
@@ -6278,7 +6278,7 @@ class GetHostAssurancePolicForbiddenLabelResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicPackagesBlackListResult(dict):
+class GetHostAssurancePolicyPackagesBlackListResult(dict):
     def __init__(__self__, *,
                  arch: str,
                  display: str,
@@ -6346,7 +6346,7 @@ class GetHostAssurancePolicPackagesBlackListResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicPackagesWhiteListResult(dict):
+class GetHostAssurancePolicyPackagesWhiteListResult(dict):
     def __init__(__self__, *,
                  arch: str,
                  display: str,
@@ -6414,7 +6414,7 @@ class GetHostAssurancePolicPackagesWhiteListResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicRequiredLabelResult(dict):
+class GetHostAssurancePolicyRequiredLabelResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
@@ -6433,10 +6433,10 @@ class GetHostAssurancePolicRequiredLabelResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicScopeResult(dict):
+class GetHostAssurancePolicyScopeResult(dict):
     def __init__(__self__, *,
                  expression: str,
-                 variables: Optional[Sequence['outputs.GetHostAssurancePolicScopeVariableResult']] = None):
+                 variables: Optional[Sequence['outputs.GetHostAssurancePolicyScopeVariableResult']] = None):
         pulumi.set(__self__, "expression", expression)
         if variables is not None:
             pulumi.set(__self__, "variables", variables)
@@ -6448,12 +6448,12 @@ class GetHostAssurancePolicScopeResult(dict):
 
     @property
     @pulumi.getter
-    def variables(self) -> Optional[Sequence['outputs.GetHostAssurancePolicScopeVariableResult']]:
+    def variables(self) -> Optional[Sequence['outputs.GetHostAssurancePolicyScopeVariableResult']]:
         return pulumi.get(self, "variables")
 
 
 @pulumi.output_type
-class GetHostAssurancePolicScopeVariableResult(dict):
+class GetHostAssurancePolicyScopeVariableResult(dict):
     def __init__(__self__, *,
                  attribute: str,
                  name: str,
@@ -6479,7 +6479,7 @@ class GetHostAssurancePolicScopeVariableResult(dict):
 
 
 @pulumi.output_type
-class GetHostAssurancePolicTrustedBaseImageResult(dict):
+class GetHostAssurancePolicyTrustedBaseImageResult(dict):
     def __init__(__self__, *,
                  imagename: str,
                  registry: str):

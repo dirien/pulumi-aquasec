@@ -56,16 +56,6 @@ class AwaitableGetUsersResult(GetUsersResult):
 def get_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     The data source `get_users` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aquasec as aquasec
-
-    users = aquasec.get_users()
-    pulumi.export("firstUserName", users.users[0].name)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

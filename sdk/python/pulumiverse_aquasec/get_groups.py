@@ -56,16 +56,6 @@ class AwaitableGetGroupsResult(GetGroupsResult):
 def get_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
     The data source `get_groups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aquasec as aquasec
-
-    groups = aquasec.get_groups()
-    pulumi.export("firstGroupName", groups.groups[0].name)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

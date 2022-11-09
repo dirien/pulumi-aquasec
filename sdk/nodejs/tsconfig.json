@@ -29,7 +29,7 @@
         "getFunctionRuntimePolicy.ts",
         "getGateways.ts",
         "getGroups.ts",
-        "getHostAssurancePolic.ts",
+        "getHostAssurancePolicy.ts",
         "getHostRuntimePolicy.ts",
         "getImage.ts",
         "getImageAssurancePolicy.ts",

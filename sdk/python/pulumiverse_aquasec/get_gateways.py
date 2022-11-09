@@ -59,22 +59,6 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
 def get_gateways(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewaysResult:
     """
     The data source `get_gateways` provides a method to query all gateways within the Aqua
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_aquasec as aquasec
-
-    testgateway = aquasec.get_gateways()
-    pulumi.export("gatewayData", testgateway)
-    pulumi.export("gatewayName", testgateway.gateways[0].id)
-    pulumi.export("gatewayStatus", testgateway.gateways[0].status)
-    pulumi.export("gatewayDescription", testgateway.gateways[0].description)
-    pulumi.export("gatewayVersion", testgateway.gateways[0].version)
-    pulumi.export("gatewayHostname", testgateway.gateways[0].hostname)
-    pulumi.export("gatewayGrpcAddress", testgateway.gateways[0].grpc_address)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

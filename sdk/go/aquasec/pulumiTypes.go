@@ -15096,119 +15096,119 @@ func (o GetGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetGroupsGroupOutput
 	}).(GetGroupsGroupOutput)
 }
 
-type GetHostAssurancePolicAutoScanTime struct {
+type GetHostAssurancePolicyAutoScanTime struct {
 	Iteration     int      `pulumi:"iteration"`
 	IterationType string   `pulumi:"iterationType"`
 	Time          string   `pulumi:"time"`
 	WeekDays      []string `pulumi:"weekDays"`
 }
 
-// GetHostAssurancePolicAutoScanTimeInput is an input type that accepts GetHostAssurancePolicAutoScanTimeArgs and GetHostAssurancePolicAutoScanTimeOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicAutoScanTimeInput` via:
+// GetHostAssurancePolicyAutoScanTimeInput is an input type that accepts GetHostAssurancePolicyAutoScanTimeArgs and GetHostAssurancePolicyAutoScanTimeOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyAutoScanTimeInput` via:
 //
-//	GetHostAssurancePolicAutoScanTimeArgs{...}
-type GetHostAssurancePolicAutoScanTimeInput interface {
+//	GetHostAssurancePolicyAutoScanTimeArgs{...}
+type GetHostAssurancePolicyAutoScanTimeInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicAutoScanTimeOutput() GetHostAssurancePolicAutoScanTimeOutput
-	ToGetHostAssurancePolicAutoScanTimeOutputWithContext(context.Context) GetHostAssurancePolicAutoScanTimeOutput
+	ToGetHostAssurancePolicyAutoScanTimeOutput() GetHostAssurancePolicyAutoScanTimeOutput
+	ToGetHostAssurancePolicyAutoScanTimeOutputWithContext(context.Context) GetHostAssurancePolicyAutoScanTimeOutput
 }
 
-type GetHostAssurancePolicAutoScanTimeArgs struct {
+type GetHostAssurancePolicyAutoScanTimeArgs struct {
 	Iteration     pulumi.IntInput         `pulumi:"iteration"`
 	IterationType pulumi.StringInput      `pulumi:"iterationType"`
 	Time          pulumi.StringInput      `pulumi:"time"`
 	WeekDays      pulumi.StringArrayInput `pulumi:"weekDays"`
 }
 
-func (GetHostAssurancePolicAutoScanTimeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicAutoScanTime)(nil)).Elem()
+func (GetHostAssurancePolicyAutoScanTimeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyAutoScanTime)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicAutoScanTimeArgs) ToGetHostAssurancePolicAutoScanTimeOutput() GetHostAssurancePolicAutoScanTimeOutput {
-	return i.ToGetHostAssurancePolicAutoScanTimeOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyAutoScanTimeArgs) ToGetHostAssurancePolicyAutoScanTimeOutput() GetHostAssurancePolicyAutoScanTimeOutput {
+	return i.ToGetHostAssurancePolicyAutoScanTimeOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicAutoScanTimeArgs) ToGetHostAssurancePolicAutoScanTimeOutputWithContext(ctx context.Context) GetHostAssurancePolicAutoScanTimeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicAutoScanTimeOutput)
+func (i GetHostAssurancePolicyAutoScanTimeArgs) ToGetHostAssurancePolicyAutoScanTimeOutputWithContext(ctx context.Context) GetHostAssurancePolicyAutoScanTimeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyAutoScanTimeOutput)
 }
 
-// GetHostAssurancePolicAutoScanTimeArrayInput is an input type that accepts GetHostAssurancePolicAutoScanTimeArray and GetHostAssurancePolicAutoScanTimeArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicAutoScanTimeArrayInput` via:
+// GetHostAssurancePolicyAutoScanTimeArrayInput is an input type that accepts GetHostAssurancePolicyAutoScanTimeArray and GetHostAssurancePolicyAutoScanTimeArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyAutoScanTimeArrayInput` via:
 //
-//	GetHostAssurancePolicAutoScanTimeArray{ GetHostAssurancePolicAutoScanTimeArgs{...} }
-type GetHostAssurancePolicAutoScanTimeArrayInput interface {
+//	GetHostAssurancePolicyAutoScanTimeArray{ GetHostAssurancePolicyAutoScanTimeArgs{...} }
+type GetHostAssurancePolicyAutoScanTimeArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicAutoScanTimeArrayOutput() GetHostAssurancePolicAutoScanTimeArrayOutput
-	ToGetHostAssurancePolicAutoScanTimeArrayOutputWithContext(context.Context) GetHostAssurancePolicAutoScanTimeArrayOutput
+	ToGetHostAssurancePolicyAutoScanTimeArrayOutput() GetHostAssurancePolicyAutoScanTimeArrayOutput
+	ToGetHostAssurancePolicyAutoScanTimeArrayOutputWithContext(context.Context) GetHostAssurancePolicyAutoScanTimeArrayOutput
 }
 
-type GetHostAssurancePolicAutoScanTimeArray []GetHostAssurancePolicAutoScanTimeInput
+type GetHostAssurancePolicyAutoScanTimeArray []GetHostAssurancePolicyAutoScanTimeInput
 
-func (GetHostAssurancePolicAutoScanTimeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicAutoScanTime)(nil)).Elem()
+func (GetHostAssurancePolicyAutoScanTimeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyAutoScanTime)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicAutoScanTimeArray) ToGetHostAssurancePolicAutoScanTimeArrayOutput() GetHostAssurancePolicAutoScanTimeArrayOutput {
-	return i.ToGetHostAssurancePolicAutoScanTimeArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyAutoScanTimeArray) ToGetHostAssurancePolicyAutoScanTimeArrayOutput() GetHostAssurancePolicyAutoScanTimeArrayOutput {
+	return i.ToGetHostAssurancePolicyAutoScanTimeArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicAutoScanTimeArray) ToGetHostAssurancePolicAutoScanTimeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicAutoScanTimeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicAutoScanTimeArrayOutput)
+func (i GetHostAssurancePolicyAutoScanTimeArray) ToGetHostAssurancePolicyAutoScanTimeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyAutoScanTimeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyAutoScanTimeArrayOutput)
 }
 
-type GetHostAssurancePolicAutoScanTimeOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyAutoScanTimeOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicAutoScanTimeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicAutoScanTime)(nil)).Elem()
+func (GetHostAssurancePolicyAutoScanTimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyAutoScanTime)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicAutoScanTimeOutput) ToGetHostAssurancePolicAutoScanTimeOutput() GetHostAssurancePolicAutoScanTimeOutput {
+func (o GetHostAssurancePolicyAutoScanTimeOutput) ToGetHostAssurancePolicyAutoScanTimeOutput() GetHostAssurancePolicyAutoScanTimeOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicAutoScanTimeOutput) ToGetHostAssurancePolicAutoScanTimeOutputWithContext(ctx context.Context) GetHostAssurancePolicAutoScanTimeOutput {
+func (o GetHostAssurancePolicyAutoScanTimeOutput) ToGetHostAssurancePolicyAutoScanTimeOutputWithContext(ctx context.Context) GetHostAssurancePolicyAutoScanTimeOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicAutoScanTimeOutput) Iteration() pulumi.IntOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicAutoScanTime) int { return v.Iteration }).(pulumi.IntOutput)
+func (o GetHostAssurancePolicyAutoScanTimeOutput) Iteration() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyAutoScanTime) int { return v.Iteration }).(pulumi.IntOutput)
 }
 
-func (o GetHostAssurancePolicAutoScanTimeOutput) IterationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicAutoScanTime) string { return v.IterationType }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyAutoScanTimeOutput) IterationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyAutoScanTime) string { return v.IterationType }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicAutoScanTimeOutput) Time() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicAutoScanTime) string { return v.Time }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyAutoScanTimeOutput) Time() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyAutoScanTime) string { return v.Time }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicAutoScanTimeOutput) WeekDays() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicAutoScanTime) []string { return v.WeekDays }).(pulumi.StringArrayOutput)
+func (o GetHostAssurancePolicyAutoScanTimeOutput) WeekDays() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyAutoScanTime) []string { return v.WeekDays }).(pulumi.StringArrayOutput)
 }
 
-type GetHostAssurancePolicAutoScanTimeArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyAutoScanTimeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicAutoScanTimeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicAutoScanTime)(nil)).Elem()
+func (GetHostAssurancePolicyAutoScanTimeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyAutoScanTime)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicAutoScanTimeArrayOutput) ToGetHostAssurancePolicAutoScanTimeArrayOutput() GetHostAssurancePolicAutoScanTimeArrayOutput {
+func (o GetHostAssurancePolicyAutoScanTimeArrayOutput) ToGetHostAssurancePolicyAutoScanTimeArrayOutput() GetHostAssurancePolicyAutoScanTimeArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicAutoScanTimeArrayOutput) ToGetHostAssurancePolicAutoScanTimeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicAutoScanTimeArrayOutput {
+func (o GetHostAssurancePolicyAutoScanTimeArrayOutput) ToGetHostAssurancePolicyAutoScanTimeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyAutoScanTimeArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicAutoScanTimeArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicAutoScanTimeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicAutoScanTime {
-		return vs[0].([]GetHostAssurancePolicAutoScanTime)[vs[1].(int)]
-	}).(GetHostAssurancePolicAutoScanTimeOutput)
+func (o GetHostAssurancePolicyAutoScanTimeArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyAutoScanTimeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyAutoScanTime {
+		return vs[0].([]GetHostAssurancePolicyAutoScanTime)[vs[1].(int)]
+	}).(GetHostAssurancePolicyAutoScanTimeOutput)
 }
 
-type GetHostAssurancePolicCustomCheck struct {
+type GetHostAssurancePolicyCustomCheck struct {
 	// Name of user account that created the policy.
 	Author       string `pulumi:"author"`
 	Description  string `pulumi:"description"`
@@ -15222,18 +15222,18 @@ type GetHostAssurancePolicCustomCheck struct {
 	Snippet      string `pulumi:"snippet"`
 }
 
-// GetHostAssurancePolicCustomCheckInput is an input type that accepts GetHostAssurancePolicCustomCheckArgs and GetHostAssurancePolicCustomCheckOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicCustomCheckInput` via:
+// GetHostAssurancePolicyCustomCheckInput is an input type that accepts GetHostAssurancePolicyCustomCheckArgs and GetHostAssurancePolicyCustomCheckOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyCustomCheckInput` via:
 //
-//	GetHostAssurancePolicCustomCheckArgs{...}
-type GetHostAssurancePolicCustomCheckInput interface {
+//	GetHostAssurancePolicyCustomCheckArgs{...}
+type GetHostAssurancePolicyCustomCheckInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicCustomCheckOutput() GetHostAssurancePolicCustomCheckOutput
-	ToGetHostAssurancePolicCustomCheckOutputWithContext(context.Context) GetHostAssurancePolicCustomCheckOutput
+	ToGetHostAssurancePolicyCustomCheckOutput() GetHostAssurancePolicyCustomCheckOutput
+	ToGetHostAssurancePolicyCustomCheckOutputWithContext(context.Context) GetHostAssurancePolicyCustomCheckOutput
 }
 
-type GetHostAssurancePolicCustomCheckArgs struct {
+type GetHostAssurancePolicyCustomCheckArgs struct {
 	// Name of user account that created the policy.
 	Author       pulumi.StringInput `pulumi:"author"`
 	Description  pulumi.StringInput `pulumi:"description"`
@@ -15247,219 +15247,219 @@ type GetHostAssurancePolicCustomCheckArgs struct {
 	Snippet      pulumi.StringInput `pulumi:"snippet"`
 }
 
-func (GetHostAssurancePolicCustomCheckArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicCustomCheck)(nil)).Elem()
+func (GetHostAssurancePolicyCustomCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyCustomCheck)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicCustomCheckArgs) ToGetHostAssurancePolicCustomCheckOutput() GetHostAssurancePolicCustomCheckOutput {
-	return i.ToGetHostAssurancePolicCustomCheckOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyCustomCheckArgs) ToGetHostAssurancePolicyCustomCheckOutput() GetHostAssurancePolicyCustomCheckOutput {
+	return i.ToGetHostAssurancePolicyCustomCheckOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicCustomCheckArgs) ToGetHostAssurancePolicCustomCheckOutputWithContext(ctx context.Context) GetHostAssurancePolicCustomCheckOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicCustomCheckOutput)
+func (i GetHostAssurancePolicyCustomCheckArgs) ToGetHostAssurancePolicyCustomCheckOutputWithContext(ctx context.Context) GetHostAssurancePolicyCustomCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyCustomCheckOutput)
 }
 
-// GetHostAssurancePolicCustomCheckArrayInput is an input type that accepts GetHostAssurancePolicCustomCheckArray and GetHostAssurancePolicCustomCheckArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicCustomCheckArrayInput` via:
+// GetHostAssurancePolicyCustomCheckArrayInput is an input type that accepts GetHostAssurancePolicyCustomCheckArray and GetHostAssurancePolicyCustomCheckArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyCustomCheckArrayInput` via:
 //
-//	GetHostAssurancePolicCustomCheckArray{ GetHostAssurancePolicCustomCheckArgs{...} }
-type GetHostAssurancePolicCustomCheckArrayInput interface {
+//	GetHostAssurancePolicyCustomCheckArray{ GetHostAssurancePolicyCustomCheckArgs{...} }
+type GetHostAssurancePolicyCustomCheckArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicCustomCheckArrayOutput() GetHostAssurancePolicCustomCheckArrayOutput
-	ToGetHostAssurancePolicCustomCheckArrayOutputWithContext(context.Context) GetHostAssurancePolicCustomCheckArrayOutput
+	ToGetHostAssurancePolicyCustomCheckArrayOutput() GetHostAssurancePolicyCustomCheckArrayOutput
+	ToGetHostAssurancePolicyCustomCheckArrayOutputWithContext(context.Context) GetHostAssurancePolicyCustomCheckArrayOutput
 }
 
-type GetHostAssurancePolicCustomCheckArray []GetHostAssurancePolicCustomCheckInput
+type GetHostAssurancePolicyCustomCheckArray []GetHostAssurancePolicyCustomCheckInput
 
-func (GetHostAssurancePolicCustomCheckArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicCustomCheck)(nil)).Elem()
+func (GetHostAssurancePolicyCustomCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyCustomCheck)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicCustomCheckArray) ToGetHostAssurancePolicCustomCheckArrayOutput() GetHostAssurancePolicCustomCheckArrayOutput {
-	return i.ToGetHostAssurancePolicCustomCheckArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyCustomCheckArray) ToGetHostAssurancePolicyCustomCheckArrayOutput() GetHostAssurancePolicyCustomCheckArrayOutput {
+	return i.ToGetHostAssurancePolicyCustomCheckArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicCustomCheckArray) ToGetHostAssurancePolicCustomCheckArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicCustomCheckArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicCustomCheckArrayOutput)
+func (i GetHostAssurancePolicyCustomCheckArray) ToGetHostAssurancePolicyCustomCheckArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyCustomCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyCustomCheckArrayOutput)
 }
 
-type GetHostAssurancePolicCustomCheckOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyCustomCheckOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicCustomCheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicCustomCheck)(nil)).Elem()
+func (GetHostAssurancePolicyCustomCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyCustomCheck)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) ToGetHostAssurancePolicCustomCheckOutput() GetHostAssurancePolicCustomCheckOutput {
+func (o GetHostAssurancePolicyCustomCheckOutput) ToGetHostAssurancePolicyCustomCheckOutput() GetHostAssurancePolicyCustomCheckOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) ToGetHostAssurancePolicCustomCheckOutputWithContext(ctx context.Context) GetHostAssurancePolicCustomCheckOutput {
+func (o GetHostAssurancePolicyCustomCheckOutput) ToGetHostAssurancePolicyCustomCheckOutputWithContext(ctx context.Context) GetHostAssurancePolicyCustomCheckOutput {
 	return o
 }
 
 // Name of user account that created the policy.
-func (o GetHostAssurancePolicCustomCheckOutput) Author() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Author }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Author }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Description }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Description }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) Engine() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Engine }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) LastModified() pulumi.IntOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) int { return v.LastModified }).(pulumi.IntOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) LastModified() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) int { return v.LastModified }).(pulumi.IntOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Name }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Path }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Path }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) ReadOnly() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) ScriptId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.ScriptId }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) ScriptId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.ScriptId }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) Severity() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Severity }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Severity }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicCustomCheckOutput) Snippet() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicCustomCheck) string { return v.Snippet }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyCustomCheckOutput) Snippet() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Snippet }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicCustomCheckArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyCustomCheckArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicCustomCheckArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicCustomCheck)(nil)).Elem()
+func (GetHostAssurancePolicyCustomCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyCustomCheck)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicCustomCheckArrayOutput) ToGetHostAssurancePolicCustomCheckArrayOutput() GetHostAssurancePolicCustomCheckArrayOutput {
+func (o GetHostAssurancePolicyCustomCheckArrayOutput) ToGetHostAssurancePolicyCustomCheckArrayOutput() GetHostAssurancePolicyCustomCheckArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicCustomCheckArrayOutput) ToGetHostAssurancePolicCustomCheckArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicCustomCheckArrayOutput {
+func (o GetHostAssurancePolicyCustomCheckArrayOutput) ToGetHostAssurancePolicyCustomCheckArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyCustomCheckArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicCustomCheckArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicCustomCheckOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicCustomCheck {
-		return vs[0].([]GetHostAssurancePolicCustomCheck)[vs[1].(int)]
-	}).(GetHostAssurancePolicCustomCheckOutput)
+func (o GetHostAssurancePolicyCustomCheckArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyCustomCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyCustomCheck {
+		return vs[0].([]GetHostAssurancePolicyCustomCheck)[vs[1].(int)]
+	}).(GetHostAssurancePolicyCustomCheckOutput)
 }
 
-type GetHostAssurancePolicForbiddenLabel struct {
+type GetHostAssurancePolicyForbiddenLabel struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
-// GetHostAssurancePolicForbiddenLabelInput is an input type that accepts GetHostAssurancePolicForbiddenLabelArgs and GetHostAssurancePolicForbiddenLabelOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicForbiddenLabelInput` via:
+// GetHostAssurancePolicyForbiddenLabelInput is an input type that accepts GetHostAssurancePolicyForbiddenLabelArgs and GetHostAssurancePolicyForbiddenLabelOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyForbiddenLabelInput` via:
 //
-//	GetHostAssurancePolicForbiddenLabelArgs{...}
-type GetHostAssurancePolicForbiddenLabelInput interface {
+//	GetHostAssurancePolicyForbiddenLabelArgs{...}
+type GetHostAssurancePolicyForbiddenLabelInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicForbiddenLabelOutput() GetHostAssurancePolicForbiddenLabelOutput
-	ToGetHostAssurancePolicForbiddenLabelOutputWithContext(context.Context) GetHostAssurancePolicForbiddenLabelOutput
+	ToGetHostAssurancePolicyForbiddenLabelOutput() GetHostAssurancePolicyForbiddenLabelOutput
+	ToGetHostAssurancePolicyForbiddenLabelOutputWithContext(context.Context) GetHostAssurancePolicyForbiddenLabelOutput
 }
 
-type GetHostAssurancePolicForbiddenLabelArgs struct {
+type GetHostAssurancePolicyForbiddenLabelArgs struct {
 	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetHostAssurancePolicForbiddenLabelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicForbiddenLabel)(nil)).Elem()
+func (GetHostAssurancePolicyForbiddenLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyForbiddenLabel)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicForbiddenLabelArgs) ToGetHostAssurancePolicForbiddenLabelOutput() GetHostAssurancePolicForbiddenLabelOutput {
-	return i.ToGetHostAssurancePolicForbiddenLabelOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyForbiddenLabelArgs) ToGetHostAssurancePolicyForbiddenLabelOutput() GetHostAssurancePolicyForbiddenLabelOutput {
+	return i.ToGetHostAssurancePolicyForbiddenLabelOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicForbiddenLabelArgs) ToGetHostAssurancePolicForbiddenLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicForbiddenLabelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicForbiddenLabelOutput)
+func (i GetHostAssurancePolicyForbiddenLabelArgs) ToGetHostAssurancePolicyForbiddenLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicyForbiddenLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyForbiddenLabelOutput)
 }
 
-// GetHostAssurancePolicForbiddenLabelArrayInput is an input type that accepts GetHostAssurancePolicForbiddenLabelArray and GetHostAssurancePolicForbiddenLabelArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicForbiddenLabelArrayInput` via:
+// GetHostAssurancePolicyForbiddenLabelArrayInput is an input type that accepts GetHostAssurancePolicyForbiddenLabelArray and GetHostAssurancePolicyForbiddenLabelArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyForbiddenLabelArrayInput` via:
 //
-//	GetHostAssurancePolicForbiddenLabelArray{ GetHostAssurancePolicForbiddenLabelArgs{...} }
-type GetHostAssurancePolicForbiddenLabelArrayInput interface {
+//	GetHostAssurancePolicyForbiddenLabelArray{ GetHostAssurancePolicyForbiddenLabelArgs{...} }
+type GetHostAssurancePolicyForbiddenLabelArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicForbiddenLabelArrayOutput() GetHostAssurancePolicForbiddenLabelArrayOutput
-	ToGetHostAssurancePolicForbiddenLabelArrayOutputWithContext(context.Context) GetHostAssurancePolicForbiddenLabelArrayOutput
+	ToGetHostAssurancePolicyForbiddenLabelArrayOutput() GetHostAssurancePolicyForbiddenLabelArrayOutput
+	ToGetHostAssurancePolicyForbiddenLabelArrayOutputWithContext(context.Context) GetHostAssurancePolicyForbiddenLabelArrayOutput
 }
 
-type GetHostAssurancePolicForbiddenLabelArray []GetHostAssurancePolicForbiddenLabelInput
+type GetHostAssurancePolicyForbiddenLabelArray []GetHostAssurancePolicyForbiddenLabelInput
 
-func (GetHostAssurancePolicForbiddenLabelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicForbiddenLabel)(nil)).Elem()
+func (GetHostAssurancePolicyForbiddenLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyForbiddenLabel)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicForbiddenLabelArray) ToGetHostAssurancePolicForbiddenLabelArrayOutput() GetHostAssurancePolicForbiddenLabelArrayOutput {
-	return i.ToGetHostAssurancePolicForbiddenLabelArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyForbiddenLabelArray) ToGetHostAssurancePolicyForbiddenLabelArrayOutput() GetHostAssurancePolicyForbiddenLabelArrayOutput {
+	return i.ToGetHostAssurancePolicyForbiddenLabelArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicForbiddenLabelArray) ToGetHostAssurancePolicForbiddenLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicForbiddenLabelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicForbiddenLabelArrayOutput)
+func (i GetHostAssurancePolicyForbiddenLabelArray) ToGetHostAssurancePolicyForbiddenLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyForbiddenLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyForbiddenLabelArrayOutput)
 }
 
-type GetHostAssurancePolicForbiddenLabelOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyForbiddenLabelOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicForbiddenLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicForbiddenLabel)(nil)).Elem()
+func (GetHostAssurancePolicyForbiddenLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyForbiddenLabel)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicForbiddenLabelOutput) ToGetHostAssurancePolicForbiddenLabelOutput() GetHostAssurancePolicForbiddenLabelOutput {
+func (o GetHostAssurancePolicyForbiddenLabelOutput) ToGetHostAssurancePolicyForbiddenLabelOutput() GetHostAssurancePolicyForbiddenLabelOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicForbiddenLabelOutput) ToGetHostAssurancePolicForbiddenLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicForbiddenLabelOutput {
+func (o GetHostAssurancePolicyForbiddenLabelOutput) ToGetHostAssurancePolicyForbiddenLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicyForbiddenLabelOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicForbiddenLabelOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicForbiddenLabel) string { return v.Key }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyForbiddenLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyForbiddenLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicForbiddenLabelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicForbiddenLabel) string { return v.Value }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyForbiddenLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyForbiddenLabel) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicForbiddenLabelArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyForbiddenLabelArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicForbiddenLabelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicForbiddenLabel)(nil)).Elem()
+func (GetHostAssurancePolicyForbiddenLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyForbiddenLabel)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicForbiddenLabelArrayOutput) ToGetHostAssurancePolicForbiddenLabelArrayOutput() GetHostAssurancePolicForbiddenLabelArrayOutput {
+func (o GetHostAssurancePolicyForbiddenLabelArrayOutput) ToGetHostAssurancePolicyForbiddenLabelArrayOutput() GetHostAssurancePolicyForbiddenLabelArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicForbiddenLabelArrayOutput) ToGetHostAssurancePolicForbiddenLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicForbiddenLabelArrayOutput {
+func (o GetHostAssurancePolicyForbiddenLabelArrayOutput) ToGetHostAssurancePolicyForbiddenLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyForbiddenLabelArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicForbiddenLabelArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicForbiddenLabelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicForbiddenLabel {
-		return vs[0].([]GetHostAssurancePolicForbiddenLabel)[vs[1].(int)]
-	}).(GetHostAssurancePolicForbiddenLabelOutput)
+func (o GetHostAssurancePolicyForbiddenLabelArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyForbiddenLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyForbiddenLabel {
+		return vs[0].([]GetHostAssurancePolicyForbiddenLabel)[vs[1].(int)]
+	}).(GetHostAssurancePolicyForbiddenLabelOutput)
 }
 
-type GetHostAssurancePolicPackagesBlackList struct {
+type GetHostAssurancePolicyPackagesBlackList struct {
 	Arch         string `pulumi:"arch"`
 	Display      string `pulumi:"display"`
 	Epoch        string `pulumi:"epoch"`
@@ -15471,18 +15471,18 @@ type GetHostAssurancePolicPackagesBlackList struct {
 	VersionRange string `pulumi:"versionRange"`
 }
 
-// GetHostAssurancePolicPackagesBlackListInput is an input type that accepts GetHostAssurancePolicPackagesBlackListArgs and GetHostAssurancePolicPackagesBlackListOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicPackagesBlackListInput` via:
+// GetHostAssurancePolicyPackagesBlackListInput is an input type that accepts GetHostAssurancePolicyPackagesBlackListArgs and GetHostAssurancePolicyPackagesBlackListOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyPackagesBlackListInput` via:
 //
-//	GetHostAssurancePolicPackagesBlackListArgs{...}
-type GetHostAssurancePolicPackagesBlackListInput interface {
+//	GetHostAssurancePolicyPackagesBlackListArgs{...}
+type GetHostAssurancePolicyPackagesBlackListInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicPackagesBlackListOutput() GetHostAssurancePolicPackagesBlackListOutput
-	ToGetHostAssurancePolicPackagesBlackListOutputWithContext(context.Context) GetHostAssurancePolicPackagesBlackListOutput
+	ToGetHostAssurancePolicyPackagesBlackListOutput() GetHostAssurancePolicyPackagesBlackListOutput
+	ToGetHostAssurancePolicyPackagesBlackListOutputWithContext(context.Context) GetHostAssurancePolicyPackagesBlackListOutput
 }
 
-type GetHostAssurancePolicPackagesBlackListArgs struct {
+type GetHostAssurancePolicyPackagesBlackListArgs struct {
 	Arch         pulumi.StringInput `pulumi:"arch"`
 	Display      pulumi.StringInput `pulumi:"display"`
 	Epoch        pulumi.StringInput `pulumi:"epoch"`
@@ -15494,114 +15494,114 @@ type GetHostAssurancePolicPackagesBlackListArgs struct {
 	VersionRange pulumi.StringInput `pulumi:"versionRange"`
 }
 
-func (GetHostAssurancePolicPackagesBlackListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicPackagesBlackList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesBlackListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyPackagesBlackList)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicPackagesBlackListArgs) ToGetHostAssurancePolicPackagesBlackListOutput() GetHostAssurancePolicPackagesBlackListOutput {
-	return i.ToGetHostAssurancePolicPackagesBlackListOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyPackagesBlackListArgs) ToGetHostAssurancePolicyPackagesBlackListOutput() GetHostAssurancePolicyPackagesBlackListOutput {
+	return i.ToGetHostAssurancePolicyPackagesBlackListOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicPackagesBlackListArgs) ToGetHostAssurancePolicPackagesBlackListOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesBlackListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicPackagesBlackListOutput)
+func (i GetHostAssurancePolicyPackagesBlackListArgs) ToGetHostAssurancePolicyPackagesBlackListOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesBlackListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyPackagesBlackListOutput)
 }
 
-// GetHostAssurancePolicPackagesBlackListArrayInput is an input type that accepts GetHostAssurancePolicPackagesBlackListArray and GetHostAssurancePolicPackagesBlackListArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicPackagesBlackListArrayInput` via:
+// GetHostAssurancePolicyPackagesBlackListArrayInput is an input type that accepts GetHostAssurancePolicyPackagesBlackListArray and GetHostAssurancePolicyPackagesBlackListArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyPackagesBlackListArrayInput` via:
 //
-//	GetHostAssurancePolicPackagesBlackListArray{ GetHostAssurancePolicPackagesBlackListArgs{...} }
-type GetHostAssurancePolicPackagesBlackListArrayInput interface {
+//	GetHostAssurancePolicyPackagesBlackListArray{ GetHostAssurancePolicyPackagesBlackListArgs{...} }
+type GetHostAssurancePolicyPackagesBlackListArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicPackagesBlackListArrayOutput() GetHostAssurancePolicPackagesBlackListArrayOutput
-	ToGetHostAssurancePolicPackagesBlackListArrayOutputWithContext(context.Context) GetHostAssurancePolicPackagesBlackListArrayOutput
+	ToGetHostAssurancePolicyPackagesBlackListArrayOutput() GetHostAssurancePolicyPackagesBlackListArrayOutput
+	ToGetHostAssurancePolicyPackagesBlackListArrayOutputWithContext(context.Context) GetHostAssurancePolicyPackagesBlackListArrayOutput
 }
 
-type GetHostAssurancePolicPackagesBlackListArray []GetHostAssurancePolicPackagesBlackListInput
+type GetHostAssurancePolicyPackagesBlackListArray []GetHostAssurancePolicyPackagesBlackListInput
 
-func (GetHostAssurancePolicPackagesBlackListArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicPackagesBlackList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesBlackListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyPackagesBlackList)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicPackagesBlackListArray) ToGetHostAssurancePolicPackagesBlackListArrayOutput() GetHostAssurancePolicPackagesBlackListArrayOutput {
-	return i.ToGetHostAssurancePolicPackagesBlackListArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyPackagesBlackListArray) ToGetHostAssurancePolicyPackagesBlackListArrayOutput() GetHostAssurancePolicyPackagesBlackListArrayOutput {
+	return i.ToGetHostAssurancePolicyPackagesBlackListArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicPackagesBlackListArray) ToGetHostAssurancePolicPackagesBlackListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesBlackListArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicPackagesBlackListArrayOutput)
+func (i GetHostAssurancePolicyPackagesBlackListArray) ToGetHostAssurancePolicyPackagesBlackListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesBlackListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyPackagesBlackListArrayOutput)
 }
 
-type GetHostAssurancePolicPackagesBlackListOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyPackagesBlackListOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicPackagesBlackListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicPackagesBlackList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesBlackListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyPackagesBlackList)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) ToGetHostAssurancePolicPackagesBlackListOutput() GetHostAssurancePolicPackagesBlackListOutput {
+func (o GetHostAssurancePolicyPackagesBlackListOutput) ToGetHostAssurancePolicyPackagesBlackListOutput() GetHostAssurancePolicyPackagesBlackListOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) ToGetHostAssurancePolicPackagesBlackListOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesBlackListOutput {
+func (o GetHostAssurancePolicyPackagesBlackListOutput) ToGetHostAssurancePolicyPackagesBlackListOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesBlackListOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Arch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Arch }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Arch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Arch }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Display() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Display }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Display() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Display }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Epoch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Epoch }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Epoch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Epoch }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Format }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Format }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) License() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.License }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) License() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.License }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Name }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Release() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Release }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Release() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Release }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.Version }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.Version }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesBlackListOutput) VersionRange() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesBlackList) string { return v.VersionRange }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesBlackListOutput) VersionRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesBlackList) string { return v.VersionRange }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicPackagesBlackListArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyPackagesBlackListArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicPackagesBlackListArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicPackagesBlackList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesBlackListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyPackagesBlackList)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicPackagesBlackListArrayOutput) ToGetHostAssurancePolicPackagesBlackListArrayOutput() GetHostAssurancePolicPackagesBlackListArrayOutput {
+func (o GetHostAssurancePolicyPackagesBlackListArrayOutput) ToGetHostAssurancePolicyPackagesBlackListArrayOutput() GetHostAssurancePolicyPackagesBlackListArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesBlackListArrayOutput) ToGetHostAssurancePolicPackagesBlackListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesBlackListArrayOutput {
+func (o GetHostAssurancePolicyPackagesBlackListArrayOutput) ToGetHostAssurancePolicyPackagesBlackListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesBlackListArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesBlackListArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicPackagesBlackListOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicPackagesBlackList {
-		return vs[0].([]GetHostAssurancePolicPackagesBlackList)[vs[1].(int)]
-	}).(GetHostAssurancePolicPackagesBlackListOutput)
+func (o GetHostAssurancePolicyPackagesBlackListArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyPackagesBlackListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyPackagesBlackList {
+		return vs[0].([]GetHostAssurancePolicyPackagesBlackList)[vs[1].(int)]
+	}).(GetHostAssurancePolicyPackagesBlackListOutput)
 }
 
-type GetHostAssurancePolicPackagesWhiteList struct {
+type GetHostAssurancePolicyPackagesWhiteList struct {
 	Arch         string `pulumi:"arch"`
 	Display      string `pulumi:"display"`
 	Epoch        string `pulumi:"epoch"`
@@ -15613,18 +15613,18 @@ type GetHostAssurancePolicPackagesWhiteList struct {
 	VersionRange string `pulumi:"versionRange"`
 }
 
-// GetHostAssurancePolicPackagesWhiteListInput is an input type that accepts GetHostAssurancePolicPackagesWhiteListArgs and GetHostAssurancePolicPackagesWhiteListOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicPackagesWhiteListInput` via:
+// GetHostAssurancePolicyPackagesWhiteListInput is an input type that accepts GetHostAssurancePolicyPackagesWhiteListArgs and GetHostAssurancePolicyPackagesWhiteListOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyPackagesWhiteListInput` via:
 //
-//	GetHostAssurancePolicPackagesWhiteListArgs{...}
-type GetHostAssurancePolicPackagesWhiteListInput interface {
+//	GetHostAssurancePolicyPackagesWhiteListArgs{...}
+type GetHostAssurancePolicyPackagesWhiteListInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicPackagesWhiteListOutput() GetHostAssurancePolicPackagesWhiteListOutput
-	ToGetHostAssurancePolicPackagesWhiteListOutputWithContext(context.Context) GetHostAssurancePolicPackagesWhiteListOutput
+	ToGetHostAssurancePolicyPackagesWhiteListOutput() GetHostAssurancePolicyPackagesWhiteListOutput
+	ToGetHostAssurancePolicyPackagesWhiteListOutputWithContext(context.Context) GetHostAssurancePolicyPackagesWhiteListOutput
 }
 
-type GetHostAssurancePolicPackagesWhiteListArgs struct {
+type GetHostAssurancePolicyPackagesWhiteListArgs struct {
 	Arch         pulumi.StringInput `pulumi:"arch"`
 	Display      pulumi.StringInput `pulumi:"display"`
 	Epoch        pulumi.StringInput `pulumi:"epoch"`
@@ -15636,517 +15636,517 @@ type GetHostAssurancePolicPackagesWhiteListArgs struct {
 	VersionRange pulumi.StringInput `pulumi:"versionRange"`
 }
 
-func (GetHostAssurancePolicPackagesWhiteListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicPackagesWhiteList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesWhiteListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyPackagesWhiteList)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicPackagesWhiteListArgs) ToGetHostAssurancePolicPackagesWhiteListOutput() GetHostAssurancePolicPackagesWhiteListOutput {
-	return i.ToGetHostAssurancePolicPackagesWhiteListOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyPackagesWhiteListArgs) ToGetHostAssurancePolicyPackagesWhiteListOutput() GetHostAssurancePolicyPackagesWhiteListOutput {
+	return i.ToGetHostAssurancePolicyPackagesWhiteListOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicPackagesWhiteListArgs) ToGetHostAssurancePolicPackagesWhiteListOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesWhiteListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicPackagesWhiteListOutput)
+func (i GetHostAssurancePolicyPackagesWhiteListArgs) ToGetHostAssurancePolicyPackagesWhiteListOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesWhiteListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyPackagesWhiteListOutput)
 }
 
-// GetHostAssurancePolicPackagesWhiteListArrayInput is an input type that accepts GetHostAssurancePolicPackagesWhiteListArray and GetHostAssurancePolicPackagesWhiteListArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicPackagesWhiteListArrayInput` via:
+// GetHostAssurancePolicyPackagesWhiteListArrayInput is an input type that accepts GetHostAssurancePolicyPackagesWhiteListArray and GetHostAssurancePolicyPackagesWhiteListArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyPackagesWhiteListArrayInput` via:
 //
-//	GetHostAssurancePolicPackagesWhiteListArray{ GetHostAssurancePolicPackagesWhiteListArgs{...} }
-type GetHostAssurancePolicPackagesWhiteListArrayInput interface {
+//	GetHostAssurancePolicyPackagesWhiteListArray{ GetHostAssurancePolicyPackagesWhiteListArgs{...} }
+type GetHostAssurancePolicyPackagesWhiteListArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicPackagesWhiteListArrayOutput() GetHostAssurancePolicPackagesWhiteListArrayOutput
-	ToGetHostAssurancePolicPackagesWhiteListArrayOutputWithContext(context.Context) GetHostAssurancePolicPackagesWhiteListArrayOutput
+	ToGetHostAssurancePolicyPackagesWhiteListArrayOutput() GetHostAssurancePolicyPackagesWhiteListArrayOutput
+	ToGetHostAssurancePolicyPackagesWhiteListArrayOutputWithContext(context.Context) GetHostAssurancePolicyPackagesWhiteListArrayOutput
 }
 
-type GetHostAssurancePolicPackagesWhiteListArray []GetHostAssurancePolicPackagesWhiteListInput
+type GetHostAssurancePolicyPackagesWhiteListArray []GetHostAssurancePolicyPackagesWhiteListInput
 
-func (GetHostAssurancePolicPackagesWhiteListArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicPackagesWhiteList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesWhiteListArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyPackagesWhiteList)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicPackagesWhiteListArray) ToGetHostAssurancePolicPackagesWhiteListArrayOutput() GetHostAssurancePolicPackagesWhiteListArrayOutput {
-	return i.ToGetHostAssurancePolicPackagesWhiteListArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyPackagesWhiteListArray) ToGetHostAssurancePolicyPackagesWhiteListArrayOutput() GetHostAssurancePolicyPackagesWhiteListArrayOutput {
+	return i.ToGetHostAssurancePolicyPackagesWhiteListArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicPackagesWhiteListArray) ToGetHostAssurancePolicPackagesWhiteListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesWhiteListArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicPackagesWhiteListArrayOutput)
+func (i GetHostAssurancePolicyPackagesWhiteListArray) ToGetHostAssurancePolicyPackagesWhiteListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesWhiteListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyPackagesWhiteListArrayOutput)
 }
 
-type GetHostAssurancePolicPackagesWhiteListOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyPackagesWhiteListOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicPackagesWhiteListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicPackagesWhiteList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesWhiteListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyPackagesWhiteList)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) ToGetHostAssurancePolicPackagesWhiteListOutput() GetHostAssurancePolicPackagesWhiteListOutput {
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) ToGetHostAssurancePolicyPackagesWhiteListOutput() GetHostAssurancePolicyPackagesWhiteListOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) ToGetHostAssurancePolicPackagesWhiteListOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesWhiteListOutput {
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) ToGetHostAssurancePolicyPackagesWhiteListOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesWhiteListOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Arch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Arch }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Arch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Arch }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Display() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Display }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Display() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Display }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Epoch() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Epoch }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Epoch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Epoch }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Format }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Format }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) License() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.License }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) License() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.License }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Name }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Release() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Release }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Release() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Release }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) Version() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.Version }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.Version }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListOutput) VersionRange() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicPackagesWhiteList) string { return v.VersionRange }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListOutput) VersionRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyPackagesWhiteList) string { return v.VersionRange }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicPackagesWhiteListArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyPackagesWhiteListArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicPackagesWhiteListArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicPackagesWhiteList)(nil)).Elem()
+func (GetHostAssurancePolicyPackagesWhiteListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyPackagesWhiteList)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListArrayOutput) ToGetHostAssurancePolicPackagesWhiteListArrayOutput() GetHostAssurancePolicPackagesWhiteListArrayOutput {
+func (o GetHostAssurancePolicyPackagesWhiteListArrayOutput) ToGetHostAssurancePolicyPackagesWhiteListArrayOutput() GetHostAssurancePolicyPackagesWhiteListArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListArrayOutput) ToGetHostAssurancePolicPackagesWhiteListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicPackagesWhiteListArrayOutput {
+func (o GetHostAssurancePolicyPackagesWhiteListArrayOutput) ToGetHostAssurancePolicyPackagesWhiteListArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyPackagesWhiteListArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicPackagesWhiteListArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicPackagesWhiteListOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicPackagesWhiteList {
-		return vs[0].([]GetHostAssurancePolicPackagesWhiteList)[vs[1].(int)]
-	}).(GetHostAssurancePolicPackagesWhiteListOutput)
+func (o GetHostAssurancePolicyPackagesWhiteListArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyPackagesWhiteListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyPackagesWhiteList {
+		return vs[0].([]GetHostAssurancePolicyPackagesWhiteList)[vs[1].(int)]
+	}).(GetHostAssurancePolicyPackagesWhiteListOutput)
 }
 
-type GetHostAssurancePolicRequiredLabel struct {
+type GetHostAssurancePolicyRequiredLabel struct {
 	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
-// GetHostAssurancePolicRequiredLabelInput is an input type that accepts GetHostAssurancePolicRequiredLabelArgs and GetHostAssurancePolicRequiredLabelOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicRequiredLabelInput` via:
+// GetHostAssurancePolicyRequiredLabelInput is an input type that accepts GetHostAssurancePolicyRequiredLabelArgs and GetHostAssurancePolicyRequiredLabelOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyRequiredLabelInput` via:
 //
-//	GetHostAssurancePolicRequiredLabelArgs{...}
-type GetHostAssurancePolicRequiredLabelInput interface {
+//	GetHostAssurancePolicyRequiredLabelArgs{...}
+type GetHostAssurancePolicyRequiredLabelInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicRequiredLabelOutput() GetHostAssurancePolicRequiredLabelOutput
-	ToGetHostAssurancePolicRequiredLabelOutputWithContext(context.Context) GetHostAssurancePolicRequiredLabelOutput
+	ToGetHostAssurancePolicyRequiredLabelOutput() GetHostAssurancePolicyRequiredLabelOutput
+	ToGetHostAssurancePolicyRequiredLabelOutputWithContext(context.Context) GetHostAssurancePolicyRequiredLabelOutput
 }
 
-type GetHostAssurancePolicRequiredLabelArgs struct {
+type GetHostAssurancePolicyRequiredLabelArgs struct {
 	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetHostAssurancePolicRequiredLabelArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicRequiredLabel)(nil)).Elem()
+func (GetHostAssurancePolicyRequiredLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyRequiredLabel)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicRequiredLabelArgs) ToGetHostAssurancePolicRequiredLabelOutput() GetHostAssurancePolicRequiredLabelOutput {
-	return i.ToGetHostAssurancePolicRequiredLabelOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyRequiredLabelArgs) ToGetHostAssurancePolicyRequiredLabelOutput() GetHostAssurancePolicyRequiredLabelOutput {
+	return i.ToGetHostAssurancePolicyRequiredLabelOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicRequiredLabelArgs) ToGetHostAssurancePolicRequiredLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicRequiredLabelOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicRequiredLabelOutput)
+func (i GetHostAssurancePolicyRequiredLabelArgs) ToGetHostAssurancePolicyRequiredLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicyRequiredLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyRequiredLabelOutput)
 }
 
-// GetHostAssurancePolicRequiredLabelArrayInput is an input type that accepts GetHostAssurancePolicRequiredLabelArray and GetHostAssurancePolicRequiredLabelArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicRequiredLabelArrayInput` via:
+// GetHostAssurancePolicyRequiredLabelArrayInput is an input type that accepts GetHostAssurancePolicyRequiredLabelArray and GetHostAssurancePolicyRequiredLabelArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyRequiredLabelArrayInput` via:
 //
-//	GetHostAssurancePolicRequiredLabelArray{ GetHostAssurancePolicRequiredLabelArgs{...} }
-type GetHostAssurancePolicRequiredLabelArrayInput interface {
+//	GetHostAssurancePolicyRequiredLabelArray{ GetHostAssurancePolicyRequiredLabelArgs{...} }
+type GetHostAssurancePolicyRequiredLabelArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicRequiredLabelArrayOutput() GetHostAssurancePolicRequiredLabelArrayOutput
-	ToGetHostAssurancePolicRequiredLabelArrayOutputWithContext(context.Context) GetHostAssurancePolicRequiredLabelArrayOutput
+	ToGetHostAssurancePolicyRequiredLabelArrayOutput() GetHostAssurancePolicyRequiredLabelArrayOutput
+	ToGetHostAssurancePolicyRequiredLabelArrayOutputWithContext(context.Context) GetHostAssurancePolicyRequiredLabelArrayOutput
 }
 
-type GetHostAssurancePolicRequiredLabelArray []GetHostAssurancePolicRequiredLabelInput
+type GetHostAssurancePolicyRequiredLabelArray []GetHostAssurancePolicyRequiredLabelInput
 
-func (GetHostAssurancePolicRequiredLabelArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicRequiredLabel)(nil)).Elem()
+func (GetHostAssurancePolicyRequiredLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyRequiredLabel)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicRequiredLabelArray) ToGetHostAssurancePolicRequiredLabelArrayOutput() GetHostAssurancePolicRequiredLabelArrayOutput {
-	return i.ToGetHostAssurancePolicRequiredLabelArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyRequiredLabelArray) ToGetHostAssurancePolicyRequiredLabelArrayOutput() GetHostAssurancePolicyRequiredLabelArrayOutput {
+	return i.ToGetHostAssurancePolicyRequiredLabelArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicRequiredLabelArray) ToGetHostAssurancePolicRequiredLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicRequiredLabelArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicRequiredLabelArrayOutput)
+func (i GetHostAssurancePolicyRequiredLabelArray) ToGetHostAssurancePolicyRequiredLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyRequiredLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyRequiredLabelArrayOutput)
 }
 
-type GetHostAssurancePolicRequiredLabelOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyRequiredLabelOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicRequiredLabelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicRequiredLabel)(nil)).Elem()
+func (GetHostAssurancePolicyRequiredLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyRequiredLabel)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicRequiredLabelOutput) ToGetHostAssurancePolicRequiredLabelOutput() GetHostAssurancePolicRequiredLabelOutput {
+func (o GetHostAssurancePolicyRequiredLabelOutput) ToGetHostAssurancePolicyRequiredLabelOutput() GetHostAssurancePolicyRequiredLabelOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicRequiredLabelOutput) ToGetHostAssurancePolicRequiredLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicRequiredLabelOutput {
+func (o GetHostAssurancePolicyRequiredLabelOutput) ToGetHostAssurancePolicyRequiredLabelOutputWithContext(ctx context.Context) GetHostAssurancePolicyRequiredLabelOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicRequiredLabelOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicRequiredLabel) string { return v.Key }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyRequiredLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyRequiredLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicRequiredLabelOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicRequiredLabel) string { return v.Value }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyRequiredLabelOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyRequiredLabel) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicRequiredLabelArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyRequiredLabelArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicRequiredLabelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicRequiredLabel)(nil)).Elem()
+func (GetHostAssurancePolicyRequiredLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyRequiredLabel)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicRequiredLabelArrayOutput) ToGetHostAssurancePolicRequiredLabelArrayOutput() GetHostAssurancePolicRequiredLabelArrayOutput {
+func (o GetHostAssurancePolicyRequiredLabelArrayOutput) ToGetHostAssurancePolicyRequiredLabelArrayOutput() GetHostAssurancePolicyRequiredLabelArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicRequiredLabelArrayOutput) ToGetHostAssurancePolicRequiredLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicRequiredLabelArrayOutput {
+func (o GetHostAssurancePolicyRequiredLabelArrayOutput) ToGetHostAssurancePolicyRequiredLabelArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyRequiredLabelArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicRequiredLabelArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicRequiredLabelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicRequiredLabel {
-		return vs[0].([]GetHostAssurancePolicRequiredLabel)[vs[1].(int)]
-	}).(GetHostAssurancePolicRequiredLabelOutput)
+func (o GetHostAssurancePolicyRequiredLabelArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyRequiredLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyRequiredLabel {
+		return vs[0].([]GetHostAssurancePolicyRequiredLabel)[vs[1].(int)]
+	}).(GetHostAssurancePolicyRequiredLabelOutput)
 }
 
-type GetHostAssurancePolicScope struct {
-	Expression string                               `pulumi:"expression"`
-	Variables  []GetHostAssurancePolicScopeVariable `pulumi:"variables"`
+type GetHostAssurancePolicyScope struct {
+	Expression string                                `pulumi:"expression"`
+	Variables  []GetHostAssurancePolicyScopeVariable `pulumi:"variables"`
 }
 
-// GetHostAssurancePolicScopeInput is an input type that accepts GetHostAssurancePolicScopeArgs and GetHostAssurancePolicScopeOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicScopeInput` via:
+// GetHostAssurancePolicyScopeInput is an input type that accepts GetHostAssurancePolicyScopeArgs and GetHostAssurancePolicyScopeOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyScopeInput` via:
 //
-//	GetHostAssurancePolicScopeArgs{...}
-type GetHostAssurancePolicScopeInput interface {
+//	GetHostAssurancePolicyScopeArgs{...}
+type GetHostAssurancePolicyScopeInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicScopeOutput() GetHostAssurancePolicScopeOutput
-	ToGetHostAssurancePolicScopeOutputWithContext(context.Context) GetHostAssurancePolicScopeOutput
+	ToGetHostAssurancePolicyScopeOutput() GetHostAssurancePolicyScopeOutput
+	ToGetHostAssurancePolicyScopeOutputWithContext(context.Context) GetHostAssurancePolicyScopeOutput
 }
 
-type GetHostAssurancePolicScopeArgs struct {
-	Expression pulumi.StringInput                           `pulumi:"expression"`
-	Variables  GetHostAssurancePolicScopeVariableArrayInput `pulumi:"variables"`
+type GetHostAssurancePolicyScopeArgs struct {
+	Expression pulumi.StringInput                            `pulumi:"expression"`
+	Variables  GetHostAssurancePolicyScopeVariableArrayInput `pulumi:"variables"`
 }
 
-func (GetHostAssurancePolicScopeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicScope)(nil)).Elem()
+func (GetHostAssurancePolicyScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyScope)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicScopeArgs) ToGetHostAssurancePolicScopeOutput() GetHostAssurancePolicScopeOutput {
-	return i.ToGetHostAssurancePolicScopeOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyScopeArgs) ToGetHostAssurancePolicyScopeOutput() GetHostAssurancePolicyScopeOutput {
+	return i.ToGetHostAssurancePolicyScopeOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicScopeArgs) ToGetHostAssurancePolicScopeOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicScopeOutput)
+func (i GetHostAssurancePolicyScopeArgs) ToGetHostAssurancePolicyScopeOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyScopeOutput)
 }
 
-// GetHostAssurancePolicScopeArrayInput is an input type that accepts GetHostAssurancePolicScopeArray and GetHostAssurancePolicScopeArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicScopeArrayInput` via:
+// GetHostAssurancePolicyScopeArrayInput is an input type that accepts GetHostAssurancePolicyScopeArray and GetHostAssurancePolicyScopeArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyScopeArrayInput` via:
 //
-//	GetHostAssurancePolicScopeArray{ GetHostAssurancePolicScopeArgs{...} }
-type GetHostAssurancePolicScopeArrayInput interface {
+//	GetHostAssurancePolicyScopeArray{ GetHostAssurancePolicyScopeArgs{...} }
+type GetHostAssurancePolicyScopeArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicScopeArrayOutput() GetHostAssurancePolicScopeArrayOutput
-	ToGetHostAssurancePolicScopeArrayOutputWithContext(context.Context) GetHostAssurancePolicScopeArrayOutput
+	ToGetHostAssurancePolicyScopeArrayOutput() GetHostAssurancePolicyScopeArrayOutput
+	ToGetHostAssurancePolicyScopeArrayOutputWithContext(context.Context) GetHostAssurancePolicyScopeArrayOutput
 }
 
-type GetHostAssurancePolicScopeArray []GetHostAssurancePolicScopeInput
+type GetHostAssurancePolicyScopeArray []GetHostAssurancePolicyScopeInput
 
-func (GetHostAssurancePolicScopeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicScope)(nil)).Elem()
+func (GetHostAssurancePolicyScopeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyScope)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicScopeArray) ToGetHostAssurancePolicScopeArrayOutput() GetHostAssurancePolicScopeArrayOutput {
-	return i.ToGetHostAssurancePolicScopeArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyScopeArray) ToGetHostAssurancePolicyScopeArrayOutput() GetHostAssurancePolicyScopeArrayOutput {
+	return i.ToGetHostAssurancePolicyScopeArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicScopeArray) ToGetHostAssurancePolicScopeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicScopeArrayOutput)
+func (i GetHostAssurancePolicyScopeArray) ToGetHostAssurancePolicyScopeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyScopeArrayOutput)
 }
 
-type GetHostAssurancePolicScopeOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyScopeOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicScopeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicScope)(nil)).Elem()
+func (GetHostAssurancePolicyScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyScope)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicScopeOutput) ToGetHostAssurancePolicScopeOutput() GetHostAssurancePolicScopeOutput {
+func (o GetHostAssurancePolicyScopeOutput) ToGetHostAssurancePolicyScopeOutput() GetHostAssurancePolicyScopeOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeOutput) ToGetHostAssurancePolicScopeOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeOutput {
+func (o GetHostAssurancePolicyScopeOutput) ToGetHostAssurancePolicyScopeOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicScope) string { return v.Expression }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyScopeOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyScope) string { return v.Expression }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicScopeOutput) Variables() GetHostAssurancePolicScopeVariableArrayOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicScope) []GetHostAssurancePolicScopeVariable { return v.Variables }).(GetHostAssurancePolicScopeVariableArrayOutput)
+func (o GetHostAssurancePolicyScopeOutput) Variables() GetHostAssurancePolicyScopeVariableArrayOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyScope) []GetHostAssurancePolicyScopeVariable { return v.Variables }).(GetHostAssurancePolicyScopeVariableArrayOutput)
 }
 
-type GetHostAssurancePolicScopeArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyScopeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicScopeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicScope)(nil)).Elem()
+func (GetHostAssurancePolicyScopeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyScope)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicScopeArrayOutput) ToGetHostAssurancePolicScopeArrayOutput() GetHostAssurancePolicScopeArrayOutput {
+func (o GetHostAssurancePolicyScopeArrayOutput) ToGetHostAssurancePolicyScopeArrayOutput() GetHostAssurancePolicyScopeArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeArrayOutput) ToGetHostAssurancePolicScopeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeArrayOutput {
+func (o GetHostAssurancePolicyScopeArrayOutput) ToGetHostAssurancePolicyScopeArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicScopeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicScope {
-		return vs[0].([]GetHostAssurancePolicScope)[vs[1].(int)]
-	}).(GetHostAssurancePolicScopeOutput)
+func (o GetHostAssurancePolicyScopeArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyScopeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyScope {
+		return vs[0].([]GetHostAssurancePolicyScope)[vs[1].(int)]
+	}).(GetHostAssurancePolicyScopeOutput)
 }
 
-type GetHostAssurancePolicScopeVariable struct {
+type GetHostAssurancePolicyScopeVariable struct {
 	Attribute string `pulumi:"attribute"`
 	Name      string `pulumi:"name"`
 	Value     string `pulumi:"value"`
 }
 
-// GetHostAssurancePolicScopeVariableInput is an input type that accepts GetHostAssurancePolicScopeVariableArgs and GetHostAssurancePolicScopeVariableOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicScopeVariableInput` via:
+// GetHostAssurancePolicyScopeVariableInput is an input type that accepts GetHostAssurancePolicyScopeVariableArgs and GetHostAssurancePolicyScopeVariableOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyScopeVariableInput` via:
 //
-//	GetHostAssurancePolicScopeVariableArgs{...}
-type GetHostAssurancePolicScopeVariableInput interface {
+//	GetHostAssurancePolicyScopeVariableArgs{...}
+type GetHostAssurancePolicyScopeVariableInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicScopeVariableOutput() GetHostAssurancePolicScopeVariableOutput
-	ToGetHostAssurancePolicScopeVariableOutputWithContext(context.Context) GetHostAssurancePolicScopeVariableOutput
+	ToGetHostAssurancePolicyScopeVariableOutput() GetHostAssurancePolicyScopeVariableOutput
+	ToGetHostAssurancePolicyScopeVariableOutputWithContext(context.Context) GetHostAssurancePolicyScopeVariableOutput
 }
 
-type GetHostAssurancePolicScopeVariableArgs struct {
+type GetHostAssurancePolicyScopeVariableArgs struct {
 	Attribute pulumi.StringInput `pulumi:"attribute"`
 	Name      pulumi.StringInput `pulumi:"name"`
 	Value     pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetHostAssurancePolicScopeVariableArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicScopeVariable)(nil)).Elem()
+func (GetHostAssurancePolicyScopeVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyScopeVariable)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicScopeVariableArgs) ToGetHostAssurancePolicScopeVariableOutput() GetHostAssurancePolicScopeVariableOutput {
-	return i.ToGetHostAssurancePolicScopeVariableOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyScopeVariableArgs) ToGetHostAssurancePolicyScopeVariableOutput() GetHostAssurancePolicyScopeVariableOutput {
+	return i.ToGetHostAssurancePolicyScopeVariableOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicScopeVariableArgs) ToGetHostAssurancePolicScopeVariableOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeVariableOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicScopeVariableOutput)
+func (i GetHostAssurancePolicyScopeVariableArgs) ToGetHostAssurancePolicyScopeVariableOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyScopeVariableOutput)
 }
 
-// GetHostAssurancePolicScopeVariableArrayInput is an input type that accepts GetHostAssurancePolicScopeVariableArray and GetHostAssurancePolicScopeVariableArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicScopeVariableArrayInput` via:
+// GetHostAssurancePolicyScopeVariableArrayInput is an input type that accepts GetHostAssurancePolicyScopeVariableArray and GetHostAssurancePolicyScopeVariableArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyScopeVariableArrayInput` via:
 //
-//	GetHostAssurancePolicScopeVariableArray{ GetHostAssurancePolicScopeVariableArgs{...} }
-type GetHostAssurancePolicScopeVariableArrayInput interface {
+//	GetHostAssurancePolicyScopeVariableArray{ GetHostAssurancePolicyScopeVariableArgs{...} }
+type GetHostAssurancePolicyScopeVariableArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicScopeVariableArrayOutput() GetHostAssurancePolicScopeVariableArrayOutput
-	ToGetHostAssurancePolicScopeVariableArrayOutputWithContext(context.Context) GetHostAssurancePolicScopeVariableArrayOutput
+	ToGetHostAssurancePolicyScopeVariableArrayOutput() GetHostAssurancePolicyScopeVariableArrayOutput
+	ToGetHostAssurancePolicyScopeVariableArrayOutputWithContext(context.Context) GetHostAssurancePolicyScopeVariableArrayOutput
 }
 
-type GetHostAssurancePolicScopeVariableArray []GetHostAssurancePolicScopeVariableInput
+type GetHostAssurancePolicyScopeVariableArray []GetHostAssurancePolicyScopeVariableInput
 
-func (GetHostAssurancePolicScopeVariableArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicScopeVariable)(nil)).Elem()
+func (GetHostAssurancePolicyScopeVariableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyScopeVariable)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicScopeVariableArray) ToGetHostAssurancePolicScopeVariableArrayOutput() GetHostAssurancePolicScopeVariableArrayOutput {
-	return i.ToGetHostAssurancePolicScopeVariableArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyScopeVariableArray) ToGetHostAssurancePolicyScopeVariableArrayOutput() GetHostAssurancePolicyScopeVariableArrayOutput {
+	return i.ToGetHostAssurancePolicyScopeVariableArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicScopeVariableArray) ToGetHostAssurancePolicScopeVariableArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeVariableArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicScopeVariableArrayOutput)
+func (i GetHostAssurancePolicyScopeVariableArray) ToGetHostAssurancePolicyScopeVariableArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeVariableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyScopeVariableArrayOutput)
 }
 
-type GetHostAssurancePolicScopeVariableOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyScopeVariableOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicScopeVariableOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicScopeVariable)(nil)).Elem()
+func (GetHostAssurancePolicyScopeVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyScopeVariable)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicScopeVariableOutput) ToGetHostAssurancePolicScopeVariableOutput() GetHostAssurancePolicScopeVariableOutput {
+func (o GetHostAssurancePolicyScopeVariableOutput) ToGetHostAssurancePolicyScopeVariableOutput() GetHostAssurancePolicyScopeVariableOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeVariableOutput) ToGetHostAssurancePolicScopeVariableOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeVariableOutput {
+func (o GetHostAssurancePolicyScopeVariableOutput) ToGetHostAssurancePolicyScopeVariableOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeVariableOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeVariableOutput) Attribute() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicScopeVariable) string { return v.Attribute }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyScopeVariableOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyScopeVariable) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicScopeVariableOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicScopeVariable) string { return v.Name }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyScopeVariableOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyScopeVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicScopeVariableOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicScopeVariable) string { return v.Value }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyScopeVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyScopeVariable) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicScopeVariableArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyScopeVariableArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicScopeVariableArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicScopeVariable)(nil)).Elem()
+func (GetHostAssurancePolicyScopeVariableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyScopeVariable)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicScopeVariableArrayOutput) ToGetHostAssurancePolicScopeVariableArrayOutput() GetHostAssurancePolicScopeVariableArrayOutput {
+func (o GetHostAssurancePolicyScopeVariableArrayOutput) ToGetHostAssurancePolicyScopeVariableArrayOutput() GetHostAssurancePolicyScopeVariableArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeVariableArrayOutput) ToGetHostAssurancePolicScopeVariableArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicScopeVariableArrayOutput {
+func (o GetHostAssurancePolicyScopeVariableArrayOutput) ToGetHostAssurancePolicyScopeVariableArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyScopeVariableArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicScopeVariableArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicScopeVariableOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicScopeVariable {
-		return vs[0].([]GetHostAssurancePolicScopeVariable)[vs[1].(int)]
-	}).(GetHostAssurancePolicScopeVariableOutput)
+func (o GetHostAssurancePolicyScopeVariableArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyScopeVariableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyScopeVariable {
+		return vs[0].([]GetHostAssurancePolicyScopeVariable)[vs[1].(int)]
+	}).(GetHostAssurancePolicyScopeVariableOutput)
 }
 
-type GetHostAssurancePolicTrustedBaseImage struct {
+type GetHostAssurancePolicyTrustedBaseImage struct {
 	Imagename string `pulumi:"imagename"`
 	Registry  string `pulumi:"registry"`
 }
 
-// GetHostAssurancePolicTrustedBaseImageInput is an input type that accepts GetHostAssurancePolicTrustedBaseImageArgs and GetHostAssurancePolicTrustedBaseImageOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicTrustedBaseImageInput` via:
+// GetHostAssurancePolicyTrustedBaseImageInput is an input type that accepts GetHostAssurancePolicyTrustedBaseImageArgs and GetHostAssurancePolicyTrustedBaseImageOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyTrustedBaseImageInput` via:
 //
-//	GetHostAssurancePolicTrustedBaseImageArgs{...}
-type GetHostAssurancePolicTrustedBaseImageInput interface {
+//	GetHostAssurancePolicyTrustedBaseImageArgs{...}
+type GetHostAssurancePolicyTrustedBaseImageInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicTrustedBaseImageOutput() GetHostAssurancePolicTrustedBaseImageOutput
-	ToGetHostAssurancePolicTrustedBaseImageOutputWithContext(context.Context) GetHostAssurancePolicTrustedBaseImageOutput
+	ToGetHostAssurancePolicyTrustedBaseImageOutput() GetHostAssurancePolicyTrustedBaseImageOutput
+	ToGetHostAssurancePolicyTrustedBaseImageOutputWithContext(context.Context) GetHostAssurancePolicyTrustedBaseImageOutput
 }
 
-type GetHostAssurancePolicTrustedBaseImageArgs struct {
+type GetHostAssurancePolicyTrustedBaseImageArgs struct {
 	Imagename pulumi.StringInput `pulumi:"imagename"`
 	Registry  pulumi.StringInput `pulumi:"registry"`
 }
 
-func (GetHostAssurancePolicTrustedBaseImageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicTrustedBaseImage)(nil)).Elem()
+func (GetHostAssurancePolicyTrustedBaseImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyTrustedBaseImage)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicTrustedBaseImageArgs) ToGetHostAssurancePolicTrustedBaseImageOutput() GetHostAssurancePolicTrustedBaseImageOutput {
-	return i.ToGetHostAssurancePolicTrustedBaseImageOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyTrustedBaseImageArgs) ToGetHostAssurancePolicyTrustedBaseImageOutput() GetHostAssurancePolicyTrustedBaseImageOutput {
+	return i.ToGetHostAssurancePolicyTrustedBaseImageOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicTrustedBaseImageArgs) ToGetHostAssurancePolicTrustedBaseImageOutputWithContext(ctx context.Context) GetHostAssurancePolicTrustedBaseImageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicTrustedBaseImageOutput)
+func (i GetHostAssurancePolicyTrustedBaseImageArgs) ToGetHostAssurancePolicyTrustedBaseImageOutputWithContext(ctx context.Context) GetHostAssurancePolicyTrustedBaseImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyTrustedBaseImageOutput)
 }
 
-// GetHostAssurancePolicTrustedBaseImageArrayInput is an input type that accepts GetHostAssurancePolicTrustedBaseImageArray and GetHostAssurancePolicTrustedBaseImageArrayOutput values.
-// You can construct a concrete instance of `GetHostAssurancePolicTrustedBaseImageArrayInput` via:
+// GetHostAssurancePolicyTrustedBaseImageArrayInput is an input type that accepts GetHostAssurancePolicyTrustedBaseImageArray and GetHostAssurancePolicyTrustedBaseImageArrayOutput values.
+// You can construct a concrete instance of `GetHostAssurancePolicyTrustedBaseImageArrayInput` via:
 //
-//	GetHostAssurancePolicTrustedBaseImageArray{ GetHostAssurancePolicTrustedBaseImageArgs{...} }
-type GetHostAssurancePolicTrustedBaseImageArrayInput interface {
+//	GetHostAssurancePolicyTrustedBaseImageArray{ GetHostAssurancePolicyTrustedBaseImageArgs{...} }
+type GetHostAssurancePolicyTrustedBaseImageArrayInput interface {
 	pulumi.Input
 
-	ToGetHostAssurancePolicTrustedBaseImageArrayOutput() GetHostAssurancePolicTrustedBaseImageArrayOutput
-	ToGetHostAssurancePolicTrustedBaseImageArrayOutputWithContext(context.Context) GetHostAssurancePolicTrustedBaseImageArrayOutput
+	ToGetHostAssurancePolicyTrustedBaseImageArrayOutput() GetHostAssurancePolicyTrustedBaseImageArrayOutput
+	ToGetHostAssurancePolicyTrustedBaseImageArrayOutputWithContext(context.Context) GetHostAssurancePolicyTrustedBaseImageArrayOutput
 }
 
-type GetHostAssurancePolicTrustedBaseImageArray []GetHostAssurancePolicTrustedBaseImageInput
+type GetHostAssurancePolicyTrustedBaseImageArray []GetHostAssurancePolicyTrustedBaseImageInput
 
-func (GetHostAssurancePolicTrustedBaseImageArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicTrustedBaseImage)(nil)).Elem()
+func (GetHostAssurancePolicyTrustedBaseImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyTrustedBaseImage)(nil)).Elem()
 }
 
-func (i GetHostAssurancePolicTrustedBaseImageArray) ToGetHostAssurancePolicTrustedBaseImageArrayOutput() GetHostAssurancePolicTrustedBaseImageArrayOutput {
-	return i.ToGetHostAssurancePolicTrustedBaseImageArrayOutputWithContext(context.Background())
+func (i GetHostAssurancePolicyTrustedBaseImageArray) ToGetHostAssurancePolicyTrustedBaseImageArrayOutput() GetHostAssurancePolicyTrustedBaseImageArrayOutput {
+	return i.ToGetHostAssurancePolicyTrustedBaseImageArrayOutputWithContext(context.Background())
 }
 
-func (i GetHostAssurancePolicTrustedBaseImageArray) ToGetHostAssurancePolicTrustedBaseImageArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicTrustedBaseImageArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicTrustedBaseImageArrayOutput)
+func (i GetHostAssurancePolicyTrustedBaseImageArray) ToGetHostAssurancePolicyTrustedBaseImageArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyTrustedBaseImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostAssurancePolicyTrustedBaseImageArrayOutput)
 }
 
-type GetHostAssurancePolicTrustedBaseImageOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyTrustedBaseImageOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicTrustedBaseImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostAssurancePolicTrustedBaseImage)(nil)).Elem()
+func (GetHostAssurancePolicyTrustedBaseImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostAssurancePolicyTrustedBaseImage)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageOutput) ToGetHostAssurancePolicTrustedBaseImageOutput() GetHostAssurancePolicTrustedBaseImageOutput {
+func (o GetHostAssurancePolicyTrustedBaseImageOutput) ToGetHostAssurancePolicyTrustedBaseImageOutput() GetHostAssurancePolicyTrustedBaseImageOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageOutput) ToGetHostAssurancePolicTrustedBaseImageOutputWithContext(ctx context.Context) GetHostAssurancePolicTrustedBaseImageOutput {
+func (o GetHostAssurancePolicyTrustedBaseImageOutput) ToGetHostAssurancePolicyTrustedBaseImageOutputWithContext(ctx context.Context) GetHostAssurancePolicyTrustedBaseImageOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageOutput) Imagename() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicTrustedBaseImage) string { return v.Imagename }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyTrustedBaseImageOutput) Imagename() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyTrustedBaseImage) string { return v.Imagename }).(pulumi.StringOutput)
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageOutput) Registry() pulumi.StringOutput {
-	return o.ApplyT(func(v GetHostAssurancePolicTrustedBaseImage) string { return v.Registry }).(pulumi.StringOutput)
+func (o GetHostAssurancePolicyTrustedBaseImageOutput) Registry() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostAssurancePolicyTrustedBaseImage) string { return v.Registry }).(pulumi.StringOutput)
 }
 
-type GetHostAssurancePolicTrustedBaseImageArrayOutput struct{ *pulumi.OutputState }
+type GetHostAssurancePolicyTrustedBaseImageArrayOutput struct{ *pulumi.OutputState }
 
-func (GetHostAssurancePolicTrustedBaseImageArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetHostAssurancePolicTrustedBaseImage)(nil)).Elem()
+func (GetHostAssurancePolicyTrustedBaseImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostAssurancePolicyTrustedBaseImage)(nil)).Elem()
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageArrayOutput) ToGetHostAssurancePolicTrustedBaseImageArrayOutput() GetHostAssurancePolicTrustedBaseImageArrayOutput {
+func (o GetHostAssurancePolicyTrustedBaseImageArrayOutput) ToGetHostAssurancePolicyTrustedBaseImageArrayOutput() GetHostAssurancePolicyTrustedBaseImageArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageArrayOutput) ToGetHostAssurancePolicTrustedBaseImageArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicTrustedBaseImageArrayOutput {
+func (o GetHostAssurancePolicyTrustedBaseImageArrayOutput) ToGetHostAssurancePolicyTrustedBaseImageArrayOutputWithContext(ctx context.Context) GetHostAssurancePolicyTrustedBaseImageArrayOutput {
 	return o
 }
 
-func (o GetHostAssurancePolicTrustedBaseImageArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicTrustedBaseImageOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicTrustedBaseImage {
-		return vs[0].([]GetHostAssurancePolicTrustedBaseImage)[vs[1].(int)]
-	}).(GetHostAssurancePolicTrustedBaseImageOutput)
+func (o GetHostAssurancePolicyTrustedBaseImageArrayOutput) Index(i pulumi.IntInput) GetHostAssurancePolicyTrustedBaseImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostAssurancePolicyTrustedBaseImage {
+		return vs[0].([]GetHostAssurancePolicyTrustedBaseImage)[vs[1].(int)]
+	}).(GetHostAssurancePolicyTrustedBaseImageOutput)
 }
 
 type GetHostRuntimePolicyFileIntegrityMonitoring struct {
@@ -21321,24 +21321,24 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupInput)(nil)).Elem(), GetGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupsGroupArrayInput)(nil)).Elem(), GetGroupsGroupArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicAutoScanTimeInput)(nil)).Elem(), GetHostAssurancePolicAutoScanTimeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicAutoScanTimeArrayInput)(nil)).Elem(), GetHostAssurancePolicAutoScanTimeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicCustomCheckInput)(nil)).Elem(), GetHostAssurancePolicCustomCheckArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicCustomCheckArrayInput)(nil)).Elem(), GetHostAssurancePolicCustomCheckArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicForbiddenLabelInput)(nil)).Elem(), GetHostAssurancePolicForbiddenLabelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicForbiddenLabelArrayInput)(nil)).Elem(), GetHostAssurancePolicForbiddenLabelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicPackagesBlackListInput)(nil)).Elem(), GetHostAssurancePolicPackagesBlackListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicPackagesBlackListArrayInput)(nil)).Elem(), GetHostAssurancePolicPackagesBlackListArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicPackagesWhiteListInput)(nil)).Elem(), GetHostAssurancePolicPackagesWhiteListArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicPackagesWhiteListArrayInput)(nil)).Elem(), GetHostAssurancePolicPackagesWhiteListArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicRequiredLabelInput)(nil)).Elem(), GetHostAssurancePolicRequiredLabelArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicRequiredLabelArrayInput)(nil)).Elem(), GetHostAssurancePolicRequiredLabelArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicScopeInput)(nil)).Elem(), GetHostAssurancePolicScopeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicScopeArrayInput)(nil)).Elem(), GetHostAssurancePolicScopeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicScopeVariableInput)(nil)).Elem(), GetHostAssurancePolicScopeVariableArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicScopeVariableArrayInput)(nil)).Elem(), GetHostAssurancePolicScopeVariableArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicTrustedBaseImageInput)(nil)).Elem(), GetHostAssurancePolicTrustedBaseImageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicTrustedBaseImageArrayInput)(nil)).Elem(), GetHostAssurancePolicTrustedBaseImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyAutoScanTimeInput)(nil)).Elem(), GetHostAssurancePolicyAutoScanTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyAutoScanTimeArrayInput)(nil)).Elem(), GetHostAssurancePolicyAutoScanTimeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyCustomCheckInput)(nil)).Elem(), GetHostAssurancePolicyCustomCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyCustomCheckArrayInput)(nil)).Elem(), GetHostAssurancePolicyCustomCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyForbiddenLabelInput)(nil)).Elem(), GetHostAssurancePolicyForbiddenLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyForbiddenLabelArrayInput)(nil)).Elem(), GetHostAssurancePolicyForbiddenLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyPackagesBlackListInput)(nil)).Elem(), GetHostAssurancePolicyPackagesBlackListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyPackagesBlackListArrayInput)(nil)).Elem(), GetHostAssurancePolicyPackagesBlackListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyPackagesWhiteListInput)(nil)).Elem(), GetHostAssurancePolicyPackagesWhiteListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyPackagesWhiteListArrayInput)(nil)).Elem(), GetHostAssurancePolicyPackagesWhiteListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyRequiredLabelInput)(nil)).Elem(), GetHostAssurancePolicyRequiredLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyRequiredLabelArrayInput)(nil)).Elem(), GetHostAssurancePolicyRequiredLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyScopeInput)(nil)).Elem(), GetHostAssurancePolicyScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyScopeArrayInput)(nil)).Elem(), GetHostAssurancePolicyScopeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyScopeVariableInput)(nil)).Elem(), GetHostAssurancePolicyScopeVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyScopeVariableArrayInput)(nil)).Elem(), GetHostAssurancePolicyScopeVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyTrustedBaseImageInput)(nil)).Elem(), GetHostAssurancePolicyTrustedBaseImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyTrustedBaseImageArrayInput)(nil)).Elem(), GetHostAssurancePolicyTrustedBaseImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyFileIntegrityMonitoringInput)(nil)).Elem(), GetHostRuntimePolicyFileIntegrityMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyFileIntegrityMonitoringArrayInput)(nil)).Elem(), GetHostRuntimePolicyFileIntegrityMonitoringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptionsInput)(nil)).Elem(), GetHostRuntimePolicyMalwareScanOptionsArgs{})
@@ -21657,24 +21657,24 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetGroupsGroupArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicAutoScanTimeOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicAutoScanTimeArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicCustomCheckOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicCustomCheckArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicForbiddenLabelOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicForbiddenLabelArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicPackagesBlackListOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicPackagesBlackListArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicPackagesWhiteListOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicPackagesWhiteListArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicRequiredLabelOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicRequiredLabelArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicScopeOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicScopeArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicScopeVariableOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicScopeVariableArrayOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicTrustedBaseImageOutput{})
-	pulumi.RegisterOutputType(GetHostAssurancePolicTrustedBaseImageArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyAutoScanTimeOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyAutoScanTimeArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyCustomCheckOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyCustomCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyForbiddenLabelOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyForbiddenLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyPackagesBlackListOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyPackagesBlackListArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyPackagesWhiteListOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyPackagesWhiteListArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyRequiredLabelOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyRequiredLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyScopeOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyScopeVariableOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyScopeVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyTrustedBaseImageOutput{})
+	pulumi.RegisterOutputType(GetHostAssurancePolicyTrustedBaseImageArrayOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyFileIntegrityMonitoringOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyFileIntegrityMonitoringArrayOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyMalwareScanOptionsOutput{})

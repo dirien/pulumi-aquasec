@@ -14,34 +14,6 @@ namespace Pulumiverse.Aquasec
     {
         /// <summary>
         /// The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using Pulumi;
-        /// using Aquasec = Pulumi.Aquasec;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var testgateway = Aquasec.GetGateways.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["gatewayData"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult),
-        ///         ["gatewayName"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
-        ///         ["gatewayStatus"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Status),
-        ///         ["gatewayDescription"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Description),
-        ///         ["gatewayVersion"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Version),
-        ///         ["gatewayHostname"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Hostname),
-        ///         ["gatewayGrpcAddress"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.GrpcAddress),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("aquasec:index/getGateways:getGateways", InvokeArgs.Empty, options.WithDefaults());

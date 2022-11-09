@@ -7,30 +7,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			integrationState, err := aquasec.GetIntegrationState(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("aquasecIntegrationState", integrationState)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetIntegrationState(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIntegrationStateResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetIntegrationStateResult
