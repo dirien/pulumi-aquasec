@@ -11,20 +11,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HostAssurancePolicyScopeVariable {
-    private final @Nullable String attribute;
-    private final @Nullable String name;
-    private final @Nullable String value;
+    private @Nullable String attribute;
+    private @Nullable String name;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private HostAssurancePolicyScopeVariable(
-        @CustomType.Parameter("attribute") @Nullable String attribute,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private HostAssurancePolicyScopeVariable() {}
     public Optional<String> attribute() {
         return Optional.ofNullable(this.attribute);
     }
@@ -42,16 +33,12 @@ public final class HostAssurancePolicyScopeVariable {
     public static Builder builder(HostAssurancePolicyScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String attribute;
         private @Nullable String name;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HostAssurancePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -59,19 +46,27 @@ public final class HostAssurancePolicyScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(@Nullable String attribute) {
             this.attribute = attribute;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public HostAssurancePolicyScopeVariable build() {
-            return new HostAssurancePolicyScopeVariable(attribute, name, value);
+        }
+        public HostAssurancePolicyScopeVariable build() {
+            final var o = new HostAssurancePolicyScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

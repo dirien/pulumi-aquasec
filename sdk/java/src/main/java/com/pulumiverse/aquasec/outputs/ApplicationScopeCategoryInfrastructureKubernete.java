@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryInfrastructureKubernete {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryInfrastructureKuberneteVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryInfrastructureKuberneteVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryInfrastructureKubernete(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryInfrastructureKuberneteVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryInfrastructureKubernete() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryInfrastructureKubernete {
     public static Builder builder(ApplicationScopeCategoryInfrastructureKubernete defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryInfrastructureKuberneteVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryInfrastructureKubernete defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryInfrastructureKuberneteVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryInfrastructureKuberneteVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryInfrastructureKubernete build() {
-            return new ApplicationScopeCategoryInfrastructureKubernete(expression, variables);
+        }
+        public ApplicationScopeCategoryInfrastructureKubernete build() {
+            final var o = new ApplicationScopeCategoryInfrastructureKubernete();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

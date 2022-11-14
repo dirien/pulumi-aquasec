@@ -586,7 +586,7 @@ export interface GetApplicationScopeCategoryWorkloadOVariableArgs {
     value?: pulumi.Input<string>;
 }
 
-export interface GetContainerRuntimePolicyMalwareScanOptions {
+export interface GetContainerRuntimePolicyMalwareScanOption {
     /**
      * Set Action, Defaults to 'Alert' when empty
      */
@@ -605,7 +605,7 @@ export interface GetContainerRuntimePolicyMalwareScanOptions {
     excludeProcesses?: string[];
 }
 
-export interface GetContainerRuntimePolicyMalwareScanOptionsArgs {
+export interface GetContainerRuntimePolicyMalwareScanOptionArgs {
     /**
      * Set Action, Defaults to 'Alert' when empty
      */
@@ -660,44 +660,6 @@ export interface GetFirewallPolicyOutboundNetworkArgs {
      * Type of the resource.
      */
     resourceType?: pulumi.Input<string>;
-}
-
-export interface GetHostRuntimePolicyMalwareScanOptions {
-    /**
-     * Set Action, Defaults to 'Alert' when empty
-     */
-    action?: string;
-    /**
-     * Defines if enabled or not
-     */
-    enabled?: boolean;
-    /**
-     * List of registry processes to be excluded from being protected.
-     */
-    excludeProcesses?: string[];
-    /**
-     * List of directories to be protected.
-     */
-    includeDirectories?: string[];
-}
-
-export interface GetHostRuntimePolicyMalwareScanOptionsArgs {
-    /**
-     * Set Action, Defaults to 'Alert' when empty
-     */
-    action?: pulumi.Input<string>;
-    /**
-     * Defines if enabled or not
-     */
-    enabled?: pulumi.Input<boolean>;
-    /**
-     * List of registry processes to be excluded from being protected.
-     */
-    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of directories to be protected.
-     */
-    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface HostAssurancePolicyAutoScanTime {

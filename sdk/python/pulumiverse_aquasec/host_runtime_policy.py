@@ -1049,6 +1049,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         import pulumiverse_aquasec as aquasec
 
         host_runtime_policy = aquasec.HostRuntimePolicy("hostRuntimePolicy",
+            application_scopes=["Global"],
             audit_all_os_user_activity=True,
             audit_brute_force_login=True,
             audit_full_command_arguments=True,
@@ -1083,6 +1084,17 @@ class HostRuntimePolicy(pulumi.CustomResource):
             os_users_blockeds=["user2"],
             package_blocks=["package1"],
             port_scanning_detection=True,
+            scope_variables=[
+                aquasec.HostRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.cluster",
+                    value="default",
+                ),
+                aquasec.HostRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.label",
+                    name="app",
+                    value="aqua",
+                ),
+            ],
             windows_registry_monitoring=aquasec.HostRuntimePolicyWindowsRegistryMonitoringArgs(
                 excluded_paths=["expaths"],
                 excluded_processes=["exprocess"],
@@ -1153,6 +1165,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         import pulumiverse_aquasec as aquasec
 
         host_runtime_policy = aquasec.HostRuntimePolicy("hostRuntimePolicy",
+            application_scopes=["Global"],
             audit_all_os_user_activity=True,
             audit_brute_force_login=True,
             audit_full_command_arguments=True,
@@ -1187,6 +1200,17 @@ class HostRuntimePolicy(pulumi.CustomResource):
             os_users_blockeds=["user2"],
             package_blocks=["package1"],
             port_scanning_detection=True,
+            scope_variables=[
+                aquasec.HostRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.cluster",
+                    value="default",
+                ),
+                aquasec.HostRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.label",
+                    name="app",
+                    value="aqua",
+                ),
+            ],
             windows_registry_monitoring=aquasec.HostRuntimePolicyWindowsRegistryMonitoringArgs(
                 excluded_paths=["expaths"],
                 excluded_processes=["exprocess"],

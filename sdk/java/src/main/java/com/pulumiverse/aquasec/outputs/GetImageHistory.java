@@ -14,34 +14,21 @@ public final class GetImageHistory {
      * @return The image creation comment.
      * 
      */
-    private final String comment;
+    private String comment;
     /**
      * @return The date and time when the image was registered.
      * 
      */
-    private final String created;
-    private final String createdBy;
+    private String created;
+    private String createdBy;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final String id;
-    private final Integer size;
+    private String id;
+    private Integer size;
 
-    @CustomType.Constructor
-    private GetImageHistory(
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("createdBy") String createdBy,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("size") Integer size) {
-        this.comment = comment;
-        this.created = created;
-        this.createdBy = createdBy;
-        this.id = id;
-        this.size = size;
-    }
-
+    private GetImageHistory() {}
     /**
      * @return The image creation comment.
      * 
@@ -77,18 +64,14 @@ public final class GetImageHistory {
     public static Builder builder(GetImageHistory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String comment;
         private String created;
         private String createdBy;
         private String id;
         private Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageHistory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -98,27 +81,39 @@ public final class GetImageHistory {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder createdBy(String createdBy) {
             this.createdBy = Objects.requireNonNull(createdBy);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder size(Integer size) {
             this.size = Objects.requireNonNull(size);
             return this;
-        }        public GetImageHistory build() {
-            return new GetImageHistory(comment, created, createdBy, id, size);
+        }
+        public GetImageHistory build() {
+            final var o = new GetImageHistory();
+            o.comment = comment;
+            o.created = created;
+            o.createdBy = createdBy;
+            o.id = id;
+            o.size = size;
+            return o;
         }
     }
 }

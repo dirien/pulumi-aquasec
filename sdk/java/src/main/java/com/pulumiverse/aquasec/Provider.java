@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.
      * 
      */
-    @Export(name="aquaUrl", type=String.class, parameters={})
+    @Export(name="aquaUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> aquaUrl;
 
     /**
@@ -42,7 +42,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * from the `AQUA_CA_CERT_PATH` environment variable.
      * 
      */
-    @Export(name="caCertificatePath", type=String.class, parameters={})
+    @Export(name="caCertificatePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> caCertificatePath;
 
     /**
@@ -58,7 +58,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * alternatively be sourced from the `AQUA_CONFIG` environment variable.
      * 
      */
-    @Export(name="configPath", type=String.class, parameters={})
+    @Export(name="configPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configPath;
 
     /**
@@ -74,7 +74,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * environment variable.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -90,7 +90,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * environment variable.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**

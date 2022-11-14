@@ -554,6 +554,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
         import pulumiverse_aquasec as aquasec
 
         function_runtime_policy = aquasec.FunctionRuntimePolicy("functionRuntimePolicy",
+            application_scopes=["Global"],
             block_malicious_executables=True,
             block_malicious_executables_allowed_processes=[
                 "proc1",
@@ -566,7 +567,18 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
             ],
             description="function_runtime_policy",
             enabled=True,
-            enforce=False)
+            enforce=False,
+            scope_variables=[
+                aquasec.FunctionRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.cluster",
+                    value="default",
+                ),
+                aquasec.FunctionRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.label",
+                    name="app",
+                    value="aqua",
+                ),
+            ])
         ```
 
         :param str resource_name: The name of the resource.
@@ -601,6 +613,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
         import pulumiverse_aquasec as aquasec
 
         function_runtime_policy = aquasec.FunctionRuntimePolicy("functionRuntimePolicy",
+            application_scopes=["Global"],
             block_malicious_executables=True,
             block_malicious_executables_allowed_processes=[
                 "proc1",
@@ -613,7 +626,18 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
             ],
             description="function_runtime_policy",
             enabled=True,
-            enforce=False)
+            enforce=False,
+            scope_variables=[
+                aquasec.FunctionRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.cluster",
+                    value="default",
+                ),
+                aquasec.FunctionRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.label",
+                    name="app",
+                    value="aqua",
+                ),
+            ])
         ```
 
         :param str resource_name: The name of the resource.

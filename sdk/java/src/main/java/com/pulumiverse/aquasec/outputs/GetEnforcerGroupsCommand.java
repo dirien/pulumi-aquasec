@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnforcerGroupsCommand {
-    private final String default_;
-    private final String kubernetes;
-    private final String swarm;
-    private final String windows;
+    private String default_;
+    private String kubernetes;
+    private String swarm;
+    private String windows;
 
-    @CustomType.Constructor
-    private GetEnforcerGroupsCommand(
-        @CustomType.Parameter("default") String default_,
-        @CustomType.Parameter("kubernetes") String kubernetes,
-        @CustomType.Parameter("swarm") String swarm,
-        @CustomType.Parameter("windows") String windows) {
-        this.default_ = default_;
-        this.kubernetes = kubernetes;
-        this.swarm = swarm;
-        this.windows = windows;
-    }
-
+    private GetEnforcerGroupsCommand() {}
     public String default_() {
         return this.default_;
     }
@@ -46,17 +35,13 @@ public final class GetEnforcerGroupsCommand {
     public static Builder builder(GetEnforcerGroupsCommand defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String default_;
         private String kubernetes;
         private String swarm;
         private String windows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnforcerGroupsCommand defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -65,23 +50,33 @@ public final class GetEnforcerGroupsCommand {
     	      this.windows = defaults.windows;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(String default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetes(String kubernetes) {
             this.kubernetes = Objects.requireNonNull(kubernetes);
             return this;
         }
+        @CustomType.Setter
         public Builder swarm(String swarm) {
             this.swarm = Objects.requireNonNull(swarm);
             return this;
         }
+        @CustomType.Setter
         public Builder windows(String windows) {
             this.windows = Objects.requireNonNull(windows);
             return this;
-        }        public GetEnforcerGroupsCommand build() {
-            return new GetEnforcerGroupsCommand(default_, kubernetes, swarm, windows);
+        }
+        public GetEnforcerGroupsCommand build() {
+            final var o = new GetEnforcerGroupsCommand();
+            o.default_ = default_;
+            o.kubernetes = kubernetes;
+            o.swarm = swarm;
+            o.windows = windows;
+            return o;
         }
     }
 }

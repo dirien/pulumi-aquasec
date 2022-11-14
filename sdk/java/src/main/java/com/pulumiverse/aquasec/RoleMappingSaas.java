@@ -53,31 +53,31 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="aquasec:index/roleMappingSaas:RoleMappingSaas")
 public class RoleMappingSaas extends com.pulumi.resources.CustomResource {
-    @Export(name="accountId", type=Integer.class, parameters={})
+    @Export(name="accountId", refs={Integer.class}, tree="[0]")
     private Output<Integer> accountId;
 
     public Output<Integer> accountId() {
         return this.accountId;
     }
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     public Output<String> created() {
         return this.created;
     }
-    @Export(name="cspRole", type=String.class, parameters={})
+    @Export(name="cspRole", refs={String.class}, tree="[0]")
     private Output<String> cspRole;
 
     public Output<String> cspRole() {
         return this.cspRole;
     }
-    @Export(name="roleMappingId", type=Integer.class, parameters={})
+    @Export(name="roleMappingId", refs={Integer.class}, tree="[0]")
     private Output<Integer> roleMappingId;
 
     public Output<Integer> roleMappingId() {
         return this.roleMappingId;
     }
-    @Export(name="samlGroups", type=List.class, parameters={String.class})
+    @Export(name="samlGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> samlGroups;
 
     public Output<List<String>> samlGroups() {

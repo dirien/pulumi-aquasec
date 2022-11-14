@@ -486,23 +486,23 @@ export interface GetContainerRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers: string[];
 }
 
-export interface GetContainerRuntimePolicyMalwareScanOptions {
+export interface GetContainerRuntimePolicyMalwareScanOption {
     /**
      * Set Action, Defaults to 'Alert' when empty
      */
-    action?: string;
+    action: string;
     /**
      * Defines if enabled or not
      */
-    enabled?: boolean;
+    enabled: boolean;
     /**
      * List of registry paths to be excluded from being protected.
      */
-    excludeDirectories?: string[];
+    excludeDirectories: string[];
     /**
      * List of registry processes to be excluded from being protected.
      */
-    excludeProcesses?: string[];
+    excludeProcesses: string[];
 }
 
 export interface GetContainerRuntimePolicyScopeVariable {
@@ -746,23 +746,14 @@ export interface GetHostRuntimePolicyFileIntegrityMonitoring {
     monitoredUsers: string[];
 }
 
-export interface GetHostRuntimePolicyMalwareScanOptions {
+export interface GetHostRuntimePolicyMalwareScanOption {
+    action: string;
     /**
-     * Set Action, Defaults to 'Alert' when empty
+     * Indicates if the runtime policy is enabled or not.
      */
-    action?: string;
-    /**
-     * Defines if enabled or not
-     */
-    enabled?: boolean;
-    /**
-     * List of registry processes to be excluded from being protected.
-     */
-    excludeProcesses?: string[];
-    /**
-     * List of directories to be protected.
-     */
-    includeDirectories?: string[];
+    enabled: boolean;
+    excludeProcesses: string[];
+    includeDirectories: string[];
 }
 
 export interface GetHostRuntimePolicyScopeVariable {

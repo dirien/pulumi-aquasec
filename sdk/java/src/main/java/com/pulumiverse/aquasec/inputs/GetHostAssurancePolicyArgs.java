@@ -5,31 +5,13 @@ package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetHostAssurancePolicyArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHostAssurancePolicyArgs Empty = new GetHostAssurancePolicyArgs();
-
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     * 
-     */
-    @Import(name="maximumScoreExcludeNoFix")
-    private @Nullable Output<Boolean> maximumScoreExcludeNoFix;
-
-    /**
-     * @return Indicates that policy should ignore cases that do not have a known fix.
-     * 
-     */
-    public Optional<Output<Boolean>> maximumScoreExcludeNoFix() {
-        return Optional.ofNullable(this.maximumScoreExcludeNoFix);
-    }
 
     @Import(name="name", required=true)
     private Output<String> name;
@@ -41,7 +23,6 @@ public final class GetHostAssurancePolicyArgs extends com.pulumi.resources.Invok
     private GetHostAssurancePolicyArgs() {}
 
     private GetHostAssurancePolicyArgs(GetHostAssurancePolicyArgs $) {
-        this.maximumScoreExcludeNoFix = $.maximumScoreExcludeNoFix;
         this.name = $.name;
     }
 
@@ -61,27 +42,6 @@ public final class GetHostAssurancePolicyArgs extends com.pulumi.resources.Invok
 
         public Builder(GetHostAssurancePolicyArgs defaults) {
             $ = new GetHostAssurancePolicyArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param maximumScoreExcludeNoFix Indicates that policy should ignore cases that do not have a known fix.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maximumScoreExcludeNoFix(@Nullable Output<Boolean> maximumScoreExcludeNoFix) {
-            $.maximumScoreExcludeNoFix = maximumScoreExcludeNoFix;
-            return this;
-        }
-
-        /**
-         * @param maximumScoreExcludeNoFix Indicates that policy should ignore cases that do not have a known fix.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maximumScoreExcludeNoFix(Boolean maximumScoreExcludeNoFix) {
-            return maximumScoreExcludeNoFix(Output.of(maximumScoreExcludeNoFix));
         }
 
         public Builder name(Output<String> name) {

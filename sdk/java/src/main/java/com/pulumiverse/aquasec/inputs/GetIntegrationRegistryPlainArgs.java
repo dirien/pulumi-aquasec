@@ -4,7 +4,6 @@
 package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -16,21 +15,6 @@ import javax.annotation.Nullable;
 public final class GetIntegrationRegistryPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetIntegrationRegistryPlainArgs Empty = new GetIntegrationRegistryPlainArgs();
-
-    /**
-     * Whether to automatically pull and rescan images from the registry on creation and daily
-     * 
-     */
-    @Import(name="autoPullRescan")
-    private @Nullable Boolean autoPullRescan;
-
-    /**
-     * @return Whether to automatically pull and rescan images from the registry on creation and daily
-     * 
-     */
-    public Optional<Boolean> autoPullRescan() {
-        return Optional.ofNullable(this.autoPullRescan);
-    }
 
     /**
      * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
@@ -125,7 +109,6 @@ public final class GetIntegrationRegistryPlainArgs extends com.pulumi.resources.
     private GetIntegrationRegistryPlainArgs() {}
 
     private GetIntegrationRegistryPlainArgs(GetIntegrationRegistryPlainArgs $) {
-        this.autoPullRescan = $.autoPullRescan;
         this.imageCreationDateCondition = $.imageCreationDateCondition;
         this.name = $.name;
         this.pullImageAge = $.pullImageAge;
@@ -150,17 +133,6 @@ public final class GetIntegrationRegistryPlainArgs extends com.pulumi.resources.
 
         public Builder(GetIntegrationRegistryPlainArgs defaults) {
             $ = new GetIntegrationRegistryPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
-         * 
-         * @return builder
-         * 
-         */
-        public Builder autoPullRescan(@Nullable Boolean autoPullRescan) {
-            $.autoPullRescan = autoPullRescan;
-            return this;
         }
 
         /**

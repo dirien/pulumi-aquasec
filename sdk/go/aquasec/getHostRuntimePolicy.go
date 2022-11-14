@@ -48,8 +48,6 @@ func LookupHostRuntimePolicy(ctx *pulumi.Context, args *LookupHostRuntimePolicyA
 
 // A collection of arguments for invoking getHostRuntimePolicy.
 type LookupHostRuntimePolicyArgs struct {
-	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions *GetHostRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// Name of the host runtime policy
 	Name string `pulumi:"name"`
 }
@@ -91,7 +89,7 @@ type LookupHostRuntimePolicyResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions *GetHostRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
+	MalwareScanOptions []GetHostRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity bool `pulumi:"monitorSystemLogIntegrity"`
 	// If true, system time changes will be monitored.
@@ -137,8 +135,6 @@ func LookupHostRuntimePolicyOutput(ctx *pulumi.Context, args LookupHostRuntimePo
 
 // A collection of arguments for invoking getHostRuntimePolicy.
 type LookupHostRuntimePolicyOutputArgs struct {
-	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions GetHostRuntimePolicyMalwareScanOptionsPtrInput `pulumi:"malwareScanOptions"`
 	// Name of the host runtime policy
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -250,10 +246,10 @@ func (o LookupHostRuntimePolicyResultOutput) Id() pulumi.StringOutput {
 }
 
 // Configuration for Real-Time Malware Protection.
-func (o LookupHostRuntimePolicyResultOutput) MalwareScanOptions() GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ApplyT(func(v LookupHostRuntimePolicyResult) *GetHostRuntimePolicyMalwareScanOptions {
+func (o LookupHostRuntimePolicyResultOutput) MalwareScanOptions() GetHostRuntimePolicyMalwareScanOptionArrayOutput {
+	return o.ApplyT(func(v LookupHostRuntimePolicyResult) []GetHostRuntimePolicyMalwareScanOption {
 		return v.MalwareScanOptions
-	}).(GetHostRuntimePolicyMalwareScanOptionsPtrOutput)
+	}).(GetHostRuntimePolicyMalwareScanOptionArrayOutput)
 }
 
 // If true, system log will be monitored.

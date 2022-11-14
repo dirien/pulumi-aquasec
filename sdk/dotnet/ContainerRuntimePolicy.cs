@@ -32,6 +32,10 @@ namespace Pulumiverse.Aquasec
     ///             "registry1",
     ///             "registry2",
     ///         },
+    ///         ApplicationScopes = new[]
+    ///         {
+    ///             "Global",
+    ///         },
     ///         AuditAllNetworkActivity = true,
     ///         AuditAllProcessesActivity = true,
     ///         AuditFullCommandArguments = true,
@@ -138,6 +142,11 @@ namespace Pulumiverse.Aquasec
     ///         },
     ///         ForkGuardProcessLimit = 13,
     ///         LimitNewPrivileges = true,
+    ///         MalwareScanOptions = new Aquasec.Inputs.ContainerRuntimePolicyMalwareScanOptionsArgs
+    ///         {
+    ///             Action = "alert",
+    ///             Enabled = true,
+    ///         },
     ///         MonitorSystemTimeChanges = true,
     ///         ReadonlyFilesAndDirectories = new[]
     ///         {
@@ -153,6 +162,21 @@ namespace Pulumiverse.Aquasec
     ///         {
     ///             "proc1",
     ///             "proc2",
+    ///         },
+    ///         ScopeExpression = "v1 || v2",
+    ///         ScopeVariables = new[]
+    ///         {
+    ///             new Aquasec.Inputs.ContainerRuntimePolicyScopeVariableArgs
+    ///             {
+    ///                 Attribute = "kubernetes.cluster",
+    ///                 Value = "default",
+    ///             },
+    ///             new Aquasec.Inputs.ContainerRuntimePolicyScopeVariableArgs
+    ///             {
+    ///                 Attribute = "kubernetes.label",
+    ///                 Name = "app",
+    ///                 Value = "aqua",
+    ///             },
     ///         },
     ///     });
     /// 

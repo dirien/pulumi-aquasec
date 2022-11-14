@@ -33,6 +33,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.aquasec.HostRuntimePolicy;
  * import com.pulumi.aquasec.HostRuntimePolicyArgs;
  * import com.pulumi.aquasec.inputs.HostRuntimePolicyFileIntegrityMonitoringArgs;
+ * import com.pulumi.aquasec.inputs.HostRuntimePolicyScopeVariableArgs;
  * import com.pulumi.aquasec.inputs.HostRuntimePolicyWindowsRegistryMonitoringArgs;
  * import com.pulumi.aquasec.inputs.HostRuntimePolicyWindowsRegistryProtectionArgs;
  * import java.util.List;
@@ -49,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var hostRuntimePolicy = new HostRuntimePolicy(&#34;hostRuntimePolicy&#34;, HostRuntimePolicyArgs.builder()        
+ *             .applicationScopes(&#34;Global&#34;)
  *             .auditAllOsUserActivity(true)
  *             .auditBruteForceLogin(true)
  *             .auditFullCommandArguments(true)
@@ -83,6 +85,16 @@ import javax.annotation.Nullable;
  *             .osUsersBlockeds(&#34;user2&#34;)
  *             .packageBlocks(&#34;package1&#34;)
  *             .portScanningDetection(true)
+ *             .scopeVariables(            
+ *                 HostRuntimePolicyScopeVariableArgs.builder()
+ *                     .attribute(&#34;kubernetes.cluster&#34;)
+ *                     .value(&#34;default&#34;)
+ *                     .build(),
+ *                 HostRuntimePolicyScopeVariableArgs.builder()
+ *                     .attribute(&#34;kubernetes.label&#34;)
+ *                     .name(&#34;app&#34;)
+ *                     .value(&#34;aqua&#34;)
+ *                     .build())
  *             .windowsRegistryMonitoring(HostRuntimePolicyWindowsRegistryMonitoringArgs.builder()
  *                 .excludedPaths(&#34;expaths&#34;)
  *                 .excludedProcesses(&#34;exprocess&#34;)
@@ -117,7 +129,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates the application scope of the service.
      * 
      */
-    @Export(name="applicationScopes", type=List.class, parameters={String.class})
+    @Export(name="applicationScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applicationScopes;
 
     /**
@@ -131,7 +143,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, all process activity will be audited.
      * 
      */
-    @Export(name="auditAllOsUserActivity", type=Boolean.class, parameters={})
+    @Export(name="auditAllOsUserActivity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditAllOsUserActivity;
 
     /**
@@ -145,7 +157,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Detects brute force login attempts
      * 
      */
-    @Export(name="auditBruteForceLogin", type=Boolean.class, parameters={})
+    @Export(name="auditBruteForceLogin", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditBruteForceLogin;
 
     /**
@@ -159,7 +171,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, full command arguments will be audited.
      * 
      */
-    @Export(name="auditFullCommandArguments", type=Boolean.class, parameters={})
+    @Export(name="auditFullCommandArguments", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditFullCommandArguments;
 
     /**
@@ -173,7 +185,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, host failed logins will be audited.
      * 
      */
-    @Export(name="auditHostFailedLoginEvents", type=Boolean.class, parameters={})
+    @Export(name="auditHostFailedLoginEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditHostFailedLoginEvents;
 
     /**
@@ -187,7 +199,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, host successful logins will be audited.
      * 
      */
-    @Export(name="auditHostSuccessfulLoginEvents", type=Boolean.class, parameters={})
+    @Export(name="auditHostSuccessfulLoginEvents", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditHostSuccessfulLoginEvents;
 
     /**
@@ -201,7 +213,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, account management will be audited.
      * 
      */
-    @Export(name="auditUserAccountManagement", type=Boolean.class, parameters={})
+    @Export(name="auditUserAccountManagement", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditUserAccountManagement;
 
     /**
@@ -215,7 +227,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Username of the account that created the service.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -229,7 +241,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      * 
      */
-    @Export(name="blockCryptocurrencyMining", type=Boolean.class, parameters={})
+    @Export(name="blockCryptocurrencyMining", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockCryptocurrencyMining;
 
     /**
@@ -243,7 +255,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of files that are prevented from being read, modified and executed in the containers.
      * 
      */
-    @Export(name="blockedFiles", type=List.class, parameters={String.class})
+    @Export(name="blockedFiles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedFiles;
 
     /**
@@ -257,7 +269,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * The description of the host runtime policy
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -271,7 +283,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
      * 
      */
-    @Export(name="enableIpReputationSecurity", type=Boolean.class, parameters={})
+    @Export(name="enableIpReputationSecurity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpReputationSecurity;
 
     /**
@@ -285,7 +297,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates if the runtime policy is enabled or not.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -299,7 +311,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates that policy should effect container execution (not just for audit).
      * 
      */
-    @Export(name="enforce", type=Boolean.class, parameters={})
+    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforce;
 
     /**
@@ -313,7 +325,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      * 
      */
-    @Export(name="enforceAfterDays", type=Integer.class, parameters={})
+    @Export(name="enforceAfterDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> enforceAfterDays;
 
     /**
@@ -327,7 +339,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Configuration for file integrity monitoring.
      * 
      */
-    @Export(name="fileIntegrityMonitoring", type=HostRuntimePolicyFileIntegrityMonitoring.class, parameters={})
+    @Export(name="fileIntegrityMonitoring", refs={HostRuntimePolicyFileIntegrityMonitoring.class}, tree="[0]")
     private Output</* @Nullable */ HostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitoring;
 
     /**
@@ -341,7 +353,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Configuration for Real-Time Malware Protection.
      * 
      */
-    @Export(name="malwareScanOptions", type=HostRuntimePolicyMalwareScanOptions.class, parameters={})
+    @Export(name="malwareScanOptions", refs={HostRuntimePolicyMalwareScanOptions.class}, tree="[0]")
     private Output</* @Nullable */ HostRuntimePolicyMalwareScanOptions> malwareScanOptions;
 
     /**
@@ -355,7 +367,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, system log will be monitored.
      * 
      */
-    @Export(name="monitorSystemLogIntegrity", type=Boolean.class, parameters={})
+    @Export(name="monitorSystemLogIntegrity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitorSystemLogIntegrity;
 
     /**
@@ -369,7 +381,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, system time changes will be monitored.
      * 
      */
-    @Export(name="monitorSystemTimeChanges", type=Boolean.class, parameters={})
+    @Export(name="monitorSystemTimeChanges", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitorSystemTimeChanges;
 
     /**
@@ -383,7 +395,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, windows service operations will be monitored.
      * 
      */
-    @Export(name="monitorWindowsServices", type=Boolean.class, parameters={})
+    @Export(name="monitorWindowsServices", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitorWindowsServices;
 
     /**
@@ -397,7 +409,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Name of the host runtime policy
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -411,7 +423,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      * 
      */
-    @Export(name="osGroupsAlloweds", type=List.class, parameters={String.class})
+    @Export(name="osGroupsAlloweds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> osGroupsAlloweds;
 
     /**
@@ -425,7 +437,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      * 
      */
-    @Export(name="osGroupsBlockeds", type=List.class, parameters={String.class})
+    @Export(name="osGroupsBlockeds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> osGroupsBlockeds;
 
     /**
@@ -439,7 +451,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
      * 
      */
-    @Export(name="osUsersAlloweds", type=List.class, parameters={String.class})
+    @Export(name="osUsersAlloweds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> osUsersAlloweds;
 
     /**
@@ -453,7 +465,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
      * 
      */
-    @Export(name="osUsersBlockeds", type=List.class, parameters={String.class})
+    @Export(name="osUsersBlockeds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> osUsersBlockeds;
 
     /**
@@ -467,7 +479,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of packages that are not allowed read, write or execute all files that under the packages.
      * 
      */
-    @Export(name="packageBlocks", type=List.class, parameters={String.class})
+    @Export(name="packageBlocks", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> packageBlocks;
 
     /**
@@ -481,7 +493,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, port scanning behaviors will be audited.
      * 
      */
-    @Export(name="portScanningDetection", type=Boolean.class, parameters={})
+    @Export(name="portScanningDetection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> portScanningDetection;
 
     /**
@@ -495,7 +507,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    @Export(name="scopeExpression", type=String.class, parameters={})
+    @Export(name="scopeExpression", refs={String.class}, tree="[0]")
     private Output<String> scopeExpression;
 
     /**
@@ -509,7 +521,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of scope attributes.
      * 
      */
-    @Export(name="scopeVariables", type=List.class, parameters={HostRuntimePolicyScopeVariable.class})
+    @Export(name="scopeVariables", refs={List.class,HostRuntimePolicyScopeVariable.class}, tree="[0,1]")
     private Output<List<HostRuntimePolicyScopeVariable>> scopeVariables;
 
     /**
@@ -523,7 +535,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Configuration for windows registry monitoring.
      * 
      */
-    @Export(name="windowsRegistryMonitoring", type=HostRuntimePolicyWindowsRegistryMonitoring.class, parameters={})
+    @Export(name="windowsRegistryMonitoring", refs={HostRuntimePolicyWindowsRegistryMonitoring.class}, tree="[0]")
     private Output</* @Nullable */ HostRuntimePolicyWindowsRegistryMonitoring> windowsRegistryMonitoring;
 
     /**
@@ -537,7 +549,7 @@ public class HostRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Configuration for windows registry protection.
      * 
      */
-    @Export(name="windowsRegistryProtection", type=HostRuntimePolicyWindowsRegistryProtection.class, parameters={})
+    @Export(name="windowsRegistryProtection", refs={HostRuntimePolicyWindowsRegistryProtection.class}, tree="[0]")
     private Output</* @Nullable */ HostRuntimePolicyWindowsRegistryProtection> windowsRegistryProtection;
 
     /**

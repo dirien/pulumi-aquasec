@@ -25,7 +25,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Username of the account that created the policy.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -39,7 +39,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Indicates whether policy includes blocking incoming &#39;ping&#39; requests.
      * 
      */
-    @Export(name="blockIcmpPing", type=Boolean.class, parameters={})
+    @Export(name="blockIcmpPing", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockIcmpPing;
 
     /**
@@ -53,7 +53,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Indicates whether policy includes blocking metadata services of the cloud.
      * 
      */
-    @Export(name="blockMetadataService", type=Boolean.class, parameters={})
+    @Export(name="blockMetadataService", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockMetadataService;
 
     /**
@@ -67,7 +67,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Description of the Firewall Policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -81,7 +81,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Information on network addresses that are allowed to pass in data or requests.
      * 
      */
-    @Export(name="inboundNetworks", type=List.class, parameters={FirewallPolicyInboundNetwork.class})
+    @Export(name="inboundNetworks", refs={List.class,FirewallPolicyInboundNetwork.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallPolicyInboundNetwork>> inboundNetworks;
 
     /**
@@ -95,7 +95,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Timestamp of the last update in Unix time format.
      * 
      */
-    @Export(name="lastupdate", type=Integer.class, parameters={})
+    @Export(name="lastupdate", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastupdate;
 
     /**
@@ -109,7 +109,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Name of the policy, no longer than 128 characters and no slash characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -123,7 +123,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Information on network addresses that are allowed to receive data or requests.
      * 
      */
-    @Export(name="outboundNetworks", type=List.class, parameters={FirewallPolicyOutboundNetwork.class})
+    @Export(name="outboundNetworks", refs={List.class,FirewallPolicyOutboundNetwork.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FirewallPolicyOutboundNetwork>> outboundNetworks;
 
     /**
@@ -137,7 +137,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Indicates the class of protection defined by the firewall.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -151,7 +151,7 @@ public class FirewallPolicy extends com.pulumi.resources.CustomResource {
      * Aqua version functionality supported
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**

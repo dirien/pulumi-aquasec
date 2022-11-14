@@ -18,8 +18,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetImageAssurancePolicyResult {
@@ -27,400 +25,242 @@ public final class GetImageAssurancePolicyResult {
      * @return List of explicitly allowed images.
      * 
      */
-    private final List<String> allowedImages;
-    private final List<String> applicationScopes;
-    /**
-     * @return What type of assurance policy is described.
-     * 
-     */
-    private final String assuranceType;
+    private List<String> allowedImages;
+    private List<String> applicationScopes;
     /**
      * @return Indicates if auditing for failures.
      * 
      */
-    private final Boolean auditOnFailure;
+    private Boolean auditOnFailure;
     /**
      * @return Name of user account that created the policy.
      * 
      */
-    private final String author;
-    private final Boolean autoScanConfigured;
-    private final Boolean autoScanEnabled;
-    private final List<GetImageAssurancePolicyAutoScanTime> autoScanTimes;
+    private String author;
+    private Boolean autoScanConfigured;
+    private Boolean autoScanEnabled;
+    private List<GetImageAssurancePolicyAutoScanTime> autoScanTimes;
     /**
      * @return List of function&#39;s forbidden permissions.
      * 
      */
-    private final List<String> blacklistPermissions;
+    private List<String> blacklistPermissions;
     /**
      * @return Indicates if blacklist permissions is relevant.
      * 
      */
-    private final Boolean blacklistPermissionsEnabled;
+    private Boolean blacklistPermissionsEnabled;
     /**
      * @return List of blacklisted licenses.
      * 
      */
-    private final List<String> blacklistedLicenses;
+    private List<String> blacklistedLicenses;
     /**
      * @return Lndicates if license blacklist is relevant.
      * 
      */
-    private final Boolean blacklistedLicensesEnabled;
+    private Boolean blacklistedLicensesEnabled;
     /**
      * @return Indicates if failed images are blocked.
      * 
      */
-    private final Boolean blockFailed;
-    private final Boolean controlExcludeNoFix;
+    private Boolean blockFailed;
+    private Boolean controlExcludeNoFix;
     /**
      * @return List of Custom user scripts for checks.
      * 
      */
-    private final List<GetImageAssurancePolicyCustomCheck> customChecks;
+    private List<GetImageAssurancePolicyCustomCheck> customChecks;
     /**
      * @return Indicates if scanning should include custom checks.
      * 
      */
-    private final Boolean customChecksEnabled;
-    private final Boolean customSeverityEnabled;
+    private Boolean customChecksEnabled;
+    private Boolean customSeverityEnabled;
     /**
      * @return Indicates if cves blacklist is relevant.
      * 
      */
-    private final Boolean cvesBlackListEnabled;
+    private Boolean cvesBlackListEnabled;
     /**
      * @return List of cves blacklisted items.
      * 
      */
-    private final List<String> cvesBlackLists;
+    private List<String> cvesBlackLists;
     /**
      * @return Indicates if cves whitelist is relevant.
      * 
      */
-    private final Boolean cvesWhiteListEnabled;
+    private Boolean cvesWhiteListEnabled;
     /**
      * @return List of cves whitelisted licenses
      * 
      */
-    private final List<String> cvesWhiteLists;
+    private List<String> cvesWhiteLists;
     /**
      * @return Identifier of the cvss severity.
      * 
      */
-    private final String cvssSeverity;
+    private String cvssSeverity;
     /**
      * @return Indicates if the cvss severity is scanned.
      * 
      */
-    private final Boolean cvssSeverityEnabled;
+    private Boolean cvssSeverityEnabled;
     /**
      * @return Indicates that policy should ignore cvss cases that do not have a known fix.
      * 
      */
-    private final Boolean cvssSeverityExcludeNoFix;
-    private final String description;
+    private Boolean cvssSeverityExcludeNoFix;
+    private String description;
     /**
      * @return Indicates if malware should block the image.
      * 
      */
-    private final Boolean disallowMalware;
-    private final Boolean dockerCisEnabled;
+    private Boolean disallowMalware;
+    private Boolean dockerCisEnabled;
     /**
      * @return Name of the container image.
      * 
      */
-    private final String domain;
-    private final String domainName;
-    private final Boolean dtaEnabled;
-    private final String dtaSeverity;
-    private final Boolean enabled;
-    private final Boolean enforce;
-    private final Integer enforceAfterDays;
-    private final Boolean enforceExcessivePermissions;
-    private final List<String> exceptionalMonitoredMalwarePaths;
+    private String domain;
+    private String domainName;
+    private Boolean dtaEnabled;
+    private String dtaSeverity;
+    private Boolean enabled;
+    private Boolean enforce;
+    private Integer enforceAfterDays;
+    private Boolean enforceExcessivePermissions;
+    private List<String> exceptionalMonitoredMalwarePaths;
     /**
      * @return Indicates if cicd failures will fail the image.
      * 
      */
-    private final Boolean failCicd;
-    private final List<GetImageAssurancePolicyForbiddenLabel> forbiddenLabels;
-    private final Boolean forbiddenLabelsEnabled;
-    private final Boolean forceMicroenforcer;
-    private final Boolean functionIntegrityEnabled;
+    private Boolean failCicd;
+    private List<GetImageAssurancePolicyForbiddenLabel> forbiddenLabels;
+    private Boolean forbiddenLabelsEnabled;
+    private Boolean forceMicroenforcer;
+    private Boolean functionIntegrityEnabled;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final String id;
-    private final Boolean ignoreRecentlyPublishedVln;
-    private final Integer ignoreRecentlyPublishedVlnPeriod;
+    private String id;
+    private Boolean ignoreRecentlyPublishedVln;
+    private Integer ignoreRecentlyPublishedVlnPeriod;
     /**
      * @return Indicates if risk resources are ignored.
      * 
      */
-    private final Boolean ignoreRiskResourcesEnabled;
+    private Boolean ignoreRiskResourcesEnabled;
     /**
      * @return List of ignored risk resources.
      * 
      */
-    private final List<String> ignoredRiskResources;
+    private List<String> ignoredRiskResources;
     /**
      * @return List of images.
      * 
      */
-    private final List<String> images;
-    private final Boolean kubeCisEnabled;
+    private List<String> images;
+    private Boolean kubeCisEnabled;
     /**
      * @return List of labels.
      * 
      */
-    private final List<String> labels;
-    private final String malwareAction;
+    private List<String> labels;
+    private String malwareAction;
     /**
      * @return Value of allowed maximum score.
      * 
      */
-    private final Double maximumScore;
+    private Double maximumScore;
     /**
      * @return Indicates if exceeding the maximum score is scanned.
      * 
      */
-    private final Boolean maximumScoreEnabled;
+    private Boolean maximumScoreEnabled;
     /**
      * @return Indicates that policy should ignore cases that do not have a known fix.
      * 
      */
-    private final @Nullable Boolean maximumScoreExcludeNoFix;
-    private final List<String> monitoredMalwarePaths;
-    private final String name;
+    private Boolean maximumScoreExcludeNoFix;
+    private List<String> monitoredMalwarePaths;
+    private String name;
     /**
      * @return Indicates if raise a warning for images that should only be run as root.
      * 
      */
-    private final Boolean onlyNoneRootUsers;
+    private Boolean onlyNoneRootUsers;
     /**
      * @return Indicates if packages blacklist is relevant.
      * 
      */
-    private final Boolean packagesBlackListEnabled;
+    private Boolean packagesBlackListEnabled;
     /**
      * @return List of backlisted images.
      * 
      */
-    private final List<GetImageAssurancePolicyPackagesBlackList> packagesBlackLists;
+    private List<GetImageAssurancePolicyPackagesBlackList> packagesBlackLists;
     /**
      * @return Indicates if packages whitelist is relevant.
      * 
      */
-    private final Boolean packagesWhiteListEnabled;
+    private Boolean packagesWhiteListEnabled;
     /**
      * @return List of whitelisted images.
      * 
      */
-    private final List<GetImageAssurancePolicyPackagesWhiteList> packagesWhiteLists;
-    private final Boolean partialResultsImageFail;
-    private final Boolean readOnly;
+    private List<GetImageAssurancePolicyPackagesWhiteList> packagesWhiteLists;
+    private Boolean partialResultsImageFail;
+    private Boolean readOnly;
     /**
      * @return List of registries.
      * 
      */
-    private final List<String> registries;
-    private final String registry;
-    private final List<GetImageAssurancePolicyRequiredLabel> requiredLabels;
-    private final Boolean requiredLabelsEnabled;
-    private final Boolean scanNfsMounts;
+    private List<String> registries;
+    private String registry;
+    private List<GetImageAssurancePolicyRequiredLabel> requiredLabels;
+    private Boolean requiredLabelsEnabled;
+    private Boolean scanNfsMounts;
     /**
      * @return Indicates if scan should include sensitive data in the image.
      * 
      */
-    private final Boolean scanSensitiveData;
+    private Boolean scanSensitiveData;
     /**
      * @return Indicates if scanning should include scap.
      * 
      */
-    private final Boolean scapEnabled;
+    private Boolean scapEnabled;
     /**
      * @return List of SCAP user scripts for checks.
      * 
      */
-    private final List<String> scapFiles;
-    private final List<GetImageAssurancePolicyScope> scopes;
+    private List<String> scapFiles;
+    private List<GetImageAssurancePolicyScope> scopes;
     /**
      * @return List of trusted images.
      * 
      */
-    private final List<GetImageAssurancePolicyTrustedBaseImage> trustedBaseImages;
+    private List<GetImageAssurancePolicyTrustedBaseImage> trustedBaseImages;
     /**
      * @return Indicates if list of trusted base images is relevant.
      * 
      */
-    private final Boolean trustedBaseImagesEnabled;
+    private Boolean trustedBaseImagesEnabled;
     /**
      * @return List of whitelisted licenses.
      * 
      */
-    private final List<String> whitelistedLicenses;
+    private List<String> whitelistedLicenses;
     /**
      * @return Indicates if license blacklist is relevant.
      * 
      */
-    private final Boolean whitelistedLicensesEnabled;
+    private Boolean whitelistedLicensesEnabled;
 
-    @CustomType.Constructor
-    private GetImageAssurancePolicyResult(
-        @CustomType.Parameter("allowedImages") List<String> allowedImages,
-        @CustomType.Parameter("applicationScopes") List<String> applicationScopes,
-        @CustomType.Parameter("assuranceType") String assuranceType,
-        @CustomType.Parameter("auditOnFailure") Boolean auditOnFailure,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("autoScanConfigured") Boolean autoScanConfigured,
-        @CustomType.Parameter("autoScanEnabled") Boolean autoScanEnabled,
-        @CustomType.Parameter("autoScanTimes") List<GetImageAssurancePolicyAutoScanTime> autoScanTimes,
-        @CustomType.Parameter("blacklistPermissions") List<String> blacklistPermissions,
-        @CustomType.Parameter("blacklistPermissionsEnabled") Boolean blacklistPermissionsEnabled,
-        @CustomType.Parameter("blacklistedLicenses") List<String> blacklistedLicenses,
-        @CustomType.Parameter("blacklistedLicensesEnabled") Boolean blacklistedLicensesEnabled,
-        @CustomType.Parameter("blockFailed") Boolean blockFailed,
-        @CustomType.Parameter("controlExcludeNoFix") Boolean controlExcludeNoFix,
-        @CustomType.Parameter("customChecks") List<GetImageAssurancePolicyCustomCheck> customChecks,
-        @CustomType.Parameter("customChecksEnabled") Boolean customChecksEnabled,
-        @CustomType.Parameter("customSeverityEnabled") Boolean customSeverityEnabled,
-        @CustomType.Parameter("cvesBlackListEnabled") Boolean cvesBlackListEnabled,
-        @CustomType.Parameter("cvesBlackLists") List<String> cvesBlackLists,
-        @CustomType.Parameter("cvesWhiteListEnabled") Boolean cvesWhiteListEnabled,
-        @CustomType.Parameter("cvesWhiteLists") List<String> cvesWhiteLists,
-        @CustomType.Parameter("cvssSeverity") String cvssSeverity,
-        @CustomType.Parameter("cvssSeverityEnabled") Boolean cvssSeverityEnabled,
-        @CustomType.Parameter("cvssSeverityExcludeNoFix") Boolean cvssSeverityExcludeNoFix,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("disallowMalware") Boolean disallowMalware,
-        @CustomType.Parameter("dockerCisEnabled") Boolean dockerCisEnabled,
-        @CustomType.Parameter("domain") String domain,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("dtaEnabled") Boolean dtaEnabled,
-        @CustomType.Parameter("dtaSeverity") String dtaSeverity,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("enforce") Boolean enforce,
-        @CustomType.Parameter("enforceAfterDays") Integer enforceAfterDays,
-        @CustomType.Parameter("enforceExcessivePermissions") Boolean enforceExcessivePermissions,
-        @CustomType.Parameter("exceptionalMonitoredMalwarePaths") List<String> exceptionalMonitoredMalwarePaths,
-        @CustomType.Parameter("failCicd") Boolean failCicd,
-        @CustomType.Parameter("forbiddenLabels") List<GetImageAssurancePolicyForbiddenLabel> forbiddenLabels,
-        @CustomType.Parameter("forbiddenLabelsEnabled") Boolean forbiddenLabelsEnabled,
-        @CustomType.Parameter("forceMicroenforcer") Boolean forceMicroenforcer,
-        @CustomType.Parameter("functionIntegrityEnabled") Boolean functionIntegrityEnabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ignoreRecentlyPublishedVln") Boolean ignoreRecentlyPublishedVln,
-        @CustomType.Parameter("ignoreRecentlyPublishedVlnPeriod") Integer ignoreRecentlyPublishedVlnPeriod,
-        @CustomType.Parameter("ignoreRiskResourcesEnabled") Boolean ignoreRiskResourcesEnabled,
-        @CustomType.Parameter("ignoredRiskResources") List<String> ignoredRiskResources,
-        @CustomType.Parameter("images") List<String> images,
-        @CustomType.Parameter("kubeCisEnabled") Boolean kubeCisEnabled,
-        @CustomType.Parameter("labels") List<String> labels,
-        @CustomType.Parameter("malwareAction") String malwareAction,
-        @CustomType.Parameter("maximumScore") Double maximumScore,
-        @CustomType.Parameter("maximumScoreEnabled") Boolean maximumScoreEnabled,
-        @CustomType.Parameter("maximumScoreExcludeNoFix") @Nullable Boolean maximumScoreExcludeNoFix,
-        @CustomType.Parameter("monitoredMalwarePaths") List<String> monitoredMalwarePaths,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("onlyNoneRootUsers") Boolean onlyNoneRootUsers,
-        @CustomType.Parameter("packagesBlackListEnabled") Boolean packagesBlackListEnabled,
-        @CustomType.Parameter("packagesBlackLists") List<GetImageAssurancePolicyPackagesBlackList> packagesBlackLists,
-        @CustomType.Parameter("packagesWhiteListEnabled") Boolean packagesWhiteListEnabled,
-        @CustomType.Parameter("packagesWhiteLists") List<GetImageAssurancePolicyPackagesWhiteList> packagesWhiteLists,
-        @CustomType.Parameter("partialResultsImageFail") Boolean partialResultsImageFail,
-        @CustomType.Parameter("readOnly") Boolean readOnly,
-        @CustomType.Parameter("registries") List<String> registries,
-        @CustomType.Parameter("registry") String registry,
-        @CustomType.Parameter("requiredLabels") List<GetImageAssurancePolicyRequiredLabel> requiredLabels,
-        @CustomType.Parameter("requiredLabelsEnabled") Boolean requiredLabelsEnabled,
-        @CustomType.Parameter("scanNfsMounts") Boolean scanNfsMounts,
-        @CustomType.Parameter("scanSensitiveData") Boolean scanSensitiveData,
-        @CustomType.Parameter("scapEnabled") Boolean scapEnabled,
-        @CustomType.Parameter("scapFiles") List<String> scapFiles,
-        @CustomType.Parameter("scopes") List<GetImageAssurancePolicyScope> scopes,
-        @CustomType.Parameter("trustedBaseImages") List<GetImageAssurancePolicyTrustedBaseImage> trustedBaseImages,
-        @CustomType.Parameter("trustedBaseImagesEnabled") Boolean trustedBaseImagesEnabled,
-        @CustomType.Parameter("whitelistedLicenses") List<String> whitelistedLicenses,
-        @CustomType.Parameter("whitelistedLicensesEnabled") Boolean whitelistedLicensesEnabled) {
-        this.allowedImages = allowedImages;
-        this.applicationScopes = applicationScopes;
-        this.assuranceType = assuranceType;
-        this.auditOnFailure = auditOnFailure;
-        this.author = author;
-        this.autoScanConfigured = autoScanConfigured;
-        this.autoScanEnabled = autoScanEnabled;
-        this.autoScanTimes = autoScanTimes;
-        this.blacklistPermissions = blacklistPermissions;
-        this.blacklistPermissionsEnabled = blacklistPermissionsEnabled;
-        this.blacklistedLicenses = blacklistedLicenses;
-        this.blacklistedLicensesEnabled = blacklistedLicensesEnabled;
-        this.blockFailed = blockFailed;
-        this.controlExcludeNoFix = controlExcludeNoFix;
-        this.customChecks = customChecks;
-        this.customChecksEnabled = customChecksEnabled;
-        this.customSeverityEnabled = customSeverityEnabled;
-        this.cvesBlackListEnabled = cvesBlackListEnabled;
-        this.cvesBlackLists = cvesBlackLists;
-        this.cvesWhiteListEnabled = cvesWhiteListEnabled;
-        this.cvesWhiteLists = cvesWhiteLists;
-        this.cvssSeverity = cvssSeverity;
-        this.cvssSeverityEnabled = cvssSeverityEnabled;
-        this.cvssSeverityExcludeNoFix = cvssSeverityExcludeNoFix;
-        this.description = description;
-        this.disallowMalware = disallowMalware;
-        this.dockerCisEnabled = dockerCisEnabled;
-        this.domain = domain;
-        this.domainName = domainName;
-        this.dtaEnabled = dtaEnabled;
-        this.dtaSeverity = dtaSeverity;
-        this.enabled = enabled;
-        this.enforce = enforce;
-        this.enforceAfterDays = enforceAfterDays;
-        this.enforceExcessivePermissions = enforceExcessivePermissions;
-        this.exceptionalMonitoredMalwarePaths = exceptionalMonitoredMalwarePaths;
-        this.failCicd = failCicd;
-        this.forbiddenLabels = forbiddenLabels;
-        this.forbiddenLabelsEnabled = forbiddenLabelsEnabled;
-        this.forceMicroenforcer = forceMicroenforcer;
-        this.functionIntegrityEnabled = functionIntegrityEnabled;
-        this.id = id;
-        this.ignoreRecentlyPublishedVln = ignoreRecentlyPublishedVln;
-        this.ignoreRecentlyPublishedVlnPeriod = ignoreRecentlyPublishedVlnPeriod;
-        this.ignoreRiskResourcesEnabled = ignoreRiskResourcesEnabled;
-        this.ignoredRiskResources = ignoredRiskResources;
-        this.images = images;
-        this.kubeCisEnabled = kubeCisEnabled;
-        this.labels = labels;
-        this.malwareAction = malwareAction;
-        this.maximumScore = maximumScore;
-        this.maximumScoreEnabled = maximumScoreEnabled;
-        this.maximumScoreExcludeNoFix = maximumScoreExcludeNoFix;
-        this.monitoredMalwarePaths = monitoredMalwarePaths;
-        this.name = name;
-        this.onlyNoneRootUsers = onlyNoneRootUsers;
-        this.packagesBlackListEnabled = packagesBlackListEnabled;
-        this.packagesBlackLists = packagesBlackLists;
-        this.packagesWhiteListEnabled = packagesWhiteListEnabled;
-        this.packagesWhiteLists = packagesWhiteLists;
-        this.partialResultsImageFail = partialResultsImageFail;
-        this.readOnly = readOnly;
-        this.registries = registries;
-        this.registry = registry;
-        this.requiredLabels = requiredLabels;
-        this.requiredLabelsEnabled = requiredLabelsEnabled;
-        this.scanNfsMounts = scanNfsMounts;
-        this.scanSensitiveData = scanSensitiveData;
-        this.scapEnabled = scapEnabled;
-        this.scapFiles = scapFiles;
-        this.scopes = scopes;
-        this.trustedBaseImages = trustedBaseImages;
-        this.trustedBaseImagesEnabled = trustedBaseImagesEnabled;
-        this.whitelistedLicenses = whitelistedLicenses;
-        this.whitelistedLicensesEnabled = whitelistedLicensesEnabled;
-    }
-
+    private GetImageAssurancePolicyResult() {}
     /**
      * @return List of explicitly allowed images.
      * 
@@ -430,13 +270,6 @@ public final class GetImageAssurancePolicyResult {
     }
     public List<String> applicationScopes() {
         return this.applicationScopes;
-    }
-    /**
-     * @return What type of assurance policy is described.
-     * 
-     */
-    public String assuranceType() {
-        return this.assuranceType;
     }
     /**
      * @return Indicates if auditing for failures.
@@ -693,8 +526,8 @@ public final class GetImageAssurancePolicyResult {
      * @return Indicates that policy should ignore cases that do not have a known fix.
      * 
      */
-    public Optional<Boolean> maximumScoreExcludeNoFix() {
-        return Optional.ofNullable(this.maximumScoreExcludeNoFix);
+    public Boolean maximumScoreExcludeNoFix() {
+        return this.maximumScoreExcludeNoFix;
     }
     public List<String> monitoredMalwarePaths() {
         return this.monitoredMalwarePaths;
@@ -822,11 +655,10 @@ public final class GetImageAssurancePolicyResult {
     public static Builder builder(GetImageAssurancePolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedImages;
         private List<String> applicationScopes;
-        private String assuranceType;
         private Boolean auditOnFailure;
         private String author;
         private Boolean autoScanConfigured;
@@ -876,7 +708,7 @@ public final class GetImageAssurancePolicyResult {
         private String malwareAction;
         private Double maximumScore;
         private Boolean maximumScoreEnabled;
-        private @Nullable Boolean maximumScoreExcludeNoFix;
+        private Boolean maximumScoreExcludeNoFix;
         private List<String> monitoredMalwarePaths;
         private String name;
         private Boolean onlyNoneRootUsers;
@@ -899,16 +731,11 @@ public final class GetImageAssurancePolicyResult {
         private Boolean trustedBaseImagesEnabled;
         private List<String> whitelistedLicenses;
         private Boolean whitelistedLicensesEnabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageAssurancePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedImages = defaults.allowedImages;
     	      this.applicationScopes = defaults.applicationScopes;
-    	      this.assuranceType = defaults.assuranceType;
     	      this.auditOnFailure = defaults.auditOnFailure;
     	      this.author = defaults.author;
     	      this.autoScanConfigured = defaults.autoScanConfigured;
@@ -983,6 +810,7 @@ public final class GetImageAssurancePolicyResult {
     	      this.whitelistedLicensesEnabled = defaults.whitelistedLicensesEnabled;
         }
 
+        @CustomType.Setter
         public Builder allowedImages(List<String> allowedImages) {
             this.allowedImages = Objects.requireNonNull(allowedImages);
             return this;
@@ -990,6 +818,7 @@ public final class GetImageAssurancePolicyResult {
         public Builder allowedImages(String... allowedImages) {
             return allowedImages(List.of(allowedImages));
         }
+        @CustomType.Setter
         public Builder applicationScopes(List<String> applicationScopes) {
             this.applicationScopes = Objects.requireNonNull(applicationScopes);
             return this;
@@ -997,26 +826,27 @@ public final class GetImageAssurancePolicyResult {
         public Builder applicationScopes(String... applicationScopes) {
             return applicationScopes(List.of(applicationScopes));
         }
-        public Builder assuranceType(String assuranceType) {
-            this.assuranceType = Objects.requireNonNull(assuranceType);
-            return this;
-        }
+        @CustomType.Setter
         public Builder auditOnFailure(Boolean auditOnFailure) {
             this.auditOnFailure = Objects.requireNonNull(auditOnFailure);
             return this;
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScanConfigured(Boolean autoScanConfigured) {
             this.autoScanConfigured = Objects.requireNonNull(autoScanConfigured);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScanEnabled(Boolean autoScanEnabled) {
             this.autoScanEnabled = Objects.requireNonNull(autoScanEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScanTimes(List<GetImageAssurancePolicyAutoScanTime> autoScanTimes) {
             this.autoScanTimes = Objects.requireNonNull(autoScanTimes);
             return this;
@@ -1024,6 +854,7 @@ public final class GetImageAssurancePolicyResult {
         public Builder autoScanTimes(GetImageAssurancePolicyAutoScanTime... autoScanTimes) {
             return autoScanTimes(List.of(autoScanTimes));
         }
+        @CustomType.Setter
         public Builder blacklistPermissions(List<String> blacklistPermissions) {
             this.blacklistPermissions = Objects.requireNonNull(blacklistPermissions);
             return this;
@@ -1031,10 +862,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder blacklistPermissions(String... blacklistPermissions) {
             return blacklistPermissions(List.of(blacklistPermissions));
         }
+        @CustomType.Setter
         public Builder blacklistPermissionsEnabled(Boolean blacklistPermissionsEnabled) {
             this.blacklistPermissionsEnabled = Objects.requireNonNull(blacklistPermissionsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder blacklistedLicenses(List<String> blacklistedLicenses) {
             this.blacklistedLicenses = Objects.requireNonNull(blacklistedLicenses);
             return this;
@@ -1042,18 +875,22 @@ public final class GetImageAssurancePolicyResult {
         public Builder blacklistedLicenses(String... blacklistedLicenses) {
             return blacklistedLicenses(List.of(blacklistedLicenses));
         }
+        @CustomType.Setter
         public Builder blacklistedLicensesEnabled(Boolean blacklistedLicensesEnabled) {
             this.blacklistedLicensesEnabled = Objects.requireNonNull(blacklistedLicensesEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder blockFailed(Boolean blockFailed) {
             this.blockFailed = Objects.requireNonNull(blockFailed);
             return this;
         }
+        @CustomType.Setter
         public Builder controlExcludeNoFix(Boolean controlExcludeNoFix) {
             this.controlExcludeNoFix = Objects.requireNonNull(controlExcludeNoFix);
             return this;
         }
+        @CustomType.Setter
         public Builder customChecks(List<GetImageAssurancePolicyCustomCheck> customChecks) {
             this.customChecks = Objects.requireNonNull(customChecks);
             return this;
@@ -1061,18 +898,22 @@ public final class GetImageAssurancePolicyResult {
         public Builder customChecks(GetImageAssurancePolicyCustomCheck... customChecks) {
             return customChecks(List.of(customChecks));
         }
+        @CustomType.Setter
         public Builder customChecksEnabled(Boolean customChecksEnabled) {
             this.customChecksEnabled = Objects.requireNonNull(customChecksEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder customSeverityEnabled(Boolean customSeverityEnabled) {
             this.customSeverityEnabled = Objects.requireNonNull(customSeverityEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder cvesBlackListEnabled(Boolean cvesBlackListEnabled) {
             this.cvesBlackListEnabled = Objects.requireNonNull(cvesBlackListEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder cvesBlackLists(List<String> cvesBlackLists) {
             this.cvesBlackLists = Objects.requireNonNull(cvesBlackLists);
             return this;
@@ -1080,10 +921,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder cvesBlackLists(String... cvesBlackLists) {
             return cvesBlackLists(List.of(cvesBlackLists));
         }
+        @CustomType.Setter
         public Builder cvesWhiteListEnabled(Boolean cvesWhiteListEnabled) {
             this.cvesWhiteListEnabled = Objects.requireNonNull(cvesWhiteListEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder cvesWhiteLists(List<String> cvesWhiteLists) {
             this.cvesWhiteLists = Objects.requireNonNull(cvesWhiteLists);
             return this;
@@ -1091,62 +934,77 @@ public final class GetImageAssurancePolicyResult {
         public Builder cvesWhiteLists(String... cvesWhiteLists) {
             return cvesWhiteLists(List.of(cvesWhiteLists));
         }
+        @CustomType.Setter
         public Builder cvssSeverity(String cvssSeverity) {
             this.cvssSeverity = Objects.requireNonNull(cvssSeverity);
             return this;
         }
+        @CustomType.Setter
         public Builder cvssSeverityEnabled(Boolean cvssSeverityEnabled) {
             this.cvssSeverityEnabled = Objects.requireNonNull(cvssSeverityEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder cvssSeverityExcludeNoFix(Boolean cvssSeverityExcludeNoFix) {
             this.cvssSeverityExcludeNoFix = Objects.requireNonNull(cvssSeverityExcludeNoFix);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder disallowMalware(Boolean disallowMalware) {
             this.disallowMalware = Objects.requireNonNull(disallowMalware);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerCisEnabled(Boolean dockerCisEnabled) {
             this.dockerCisEnabled = Objects.requireNonNull(dockerCisEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder domain(String domain) {
             this.domain = Objects.requireNonNull(domain);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder dtaEnabled(Boolean dtaEnabled) {
             this.dtaEnabled = Objects.requireNonNull(dtaEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder dtaSeverity(String dtaSeverity) {
             this.dtaSeverity = Objects.requireNonNull(dtaSeverity);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(Boolean enforce) {
             this.enforce = Objects.requireNonNull(enforce);
             return this;
         }
+        @CustomType.Setter
         public Builder enforceAfterDays(Integer enforceAfterDays) {
             this.enforceAfterDays = Objects.requireNonNull(enforceAfterDays);
             return this;
         }
+        @CustomType.Setter
         public Builder enforceExcessivePermissions(Boolean enforceExcessivePermissions) {
             this.enforceExcessivePermissions = Objects.requireNonNull(enforceExcessivePermissions);
             return this;
         }
+        @CustomType.Setter
         public Builder exceptionalMonitoredMalwarePaths(List<String> exceptionalMonitoredMalwarePaths) {
             this.exceptionalMonitoredMalwarePaths = Objects.requireNonNull(exceptionalMonitoredMalwarePaths);
             return this;
@@ -1154,10 +1012,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder exceptionalMonitoredMalwarePaths(String... exceptionalMonitoredMalwarePaths) {
             return exceptionalMonitoredMalwarePaths(List.of(exceptionalMonitoredMalwarePaths));
         }
+        @CustomType.Setter
         public Builder failCicd(Boolean failCicd) {
             this.failCicd = Objects.requireNonNull(failCicd);
             return this;
         }
+        @CustomType.Setter
         public Builder forbiddenLabels(List<GetImageAssurancePolicyForbiddenLabel> forbiddenLabels) {
             this.forbiddenLabels = Objects.requireNonNull(forbiddenLabels);
             return this;
@@ -1165,34 +1025,42 @@ public final class GetImageAssurancePolicyResult {
         public Builder forbiddenLabels(GetImageAssurancePolicyForbiddenLabel... forbiddenLabels) {
             return forbiddenLabels(List.of(forbiddenLabels));
         }
+        @CustomType.Setter
         public Builder forbiddenLabelsEnabled(Boolean forbiddenLabelsEnabled) {
             this.forbiddenLabelsEnabled = Objects.requireNonNull(forbiddenLabelsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder forceMicroenforcer(Boolean forceMicroenforcer) {
             this.forceMicroenforcer = Objects.requireNonNull(forceMicroenforcer);
             return this;
         }
+        @CustomType.Setter
         public Builder functionIntegrityEnabled(Boolean functionIntegrityEnabled) {
             this.functionIntegrityEnabled = Objects.requireNonNull(functionIntegrityEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreRecentlyPublishedVln(Boolean ignoreRecentlyPublishedVln) {
             this.ignoreRecentlyPublishedVln = Objects.requireNonNull(ignoreRecentlyPublishedVln);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreRecentlyPublishedVlnPeriod(Integer ignoreRecentlyPublishedVlnPeriod) {
             this.ignoreRecentlyPublishedVlnPeriod = Objects.requireNonNull(ignoreRecentlyPublishedVlnPeriod);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreRiskResourcesEnabled(Boolean ignoreRiskResourcesEnabled) {
             this.ignoreRiskResourcesEnabled = Objects.requireNonNull(ignoreRiskResourcesEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoredRiskResources(List<String> ignoredRiskResources) {
             this.ignoredRiskResources = Objects.requireNonNull(ignoredRiskResources);
             return this;
@@ -1200,6 +1068,7 @@ public final class GetImageAssurancePolicyResult {
         public Builder ignoredRiskResources(String... ignoredRiskResources) {
             return ignoredRiskResources(List.of(ignoredRiskResources));
         }
+        @CustomType.Setter
         public Builder images(List<String> images) {
             this.images = Objects.requireNonNull(images);
             return this;
@@ -1207,10 +1076,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder images(String... images) {
             return images(List.of(images));
         }
+        @CustomType.Setter
         public Builder kubeCisEnabled(Boolean kubeCisEnabled) {
             this.kubeCisEnabled = Objects.requireNonNull(kubeCisEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(List<String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
@@ -1218,22 +1089,27 @@ public final class GetImageAssurancePolicyResult {
         public Builder labels(String... labels) {
             return labels(List.of(labels));
         }
+        @CustomType.Setter
         public Builder malwareAction(String malwareAction) {
             this.malwareAction = Objects.requireNonNull(malwareAction);
             return this;
         }
+        @CustomType.Setter
         public Builder maximumScore(Double maximumScore) {
             this.maximumScore = Objects.requireNonNull(maximumScore);
             return this;
         }
+        @CustomType.Setter
         public Builder maximumScoreEnabled(Boolean maximumScoreEnabled) {
             this.maximumScoreEnabled = Objects.requireNonNull(maximumScoreEnabled);
             return this;
         }
-        public Builder maximumScoreExcludeNoFix(@Nullable Boolean maximumScoreExcludeNoFix) {
-            this.maximumScoreExcludeNoFix = maximumScoreExcludeNoFix;
+        @CustomType.Setter
+        public Builder maximumScoreExcludeNoFix(Boolean maximumScoreExcludeNoFix) {
+            this.maximumScoreExcludeNoFix = Objects.requireNonNull(maximumScoreExcludeNoFix);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoredMalwarePaths(List<String> monitoredMalwarePaths) {
             this.monitoredMalwarePaths = Objects.requireNonNull(monitoredMalwarePaths);
             return this;
@@ -1241,18 +1117,22 @@ public final class GetImageAssurancePolicyResult {
         public Builder monitoredMalwarePaths(String... monitoredMalwarePaths) {
             return monitoredMalwarePaths(List.of(monitoredMalwarePaths));
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder onlyNoneRootUsers(Boolean onlyNoneRootUsers) {
             this.onlyNoneRootUsers = Objects.requireNonNull(onlyNoneRootUsers);
             return this;
         }
+        @CustomType.Setter
         public Builder packagesBlackListEnabled(Boolean packagesBlackListEnabled) {
             this.packagesBlackListEnabled = Objects.requireNonNull(packagesBlackListEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder packagesBlackLists(List<GetImageAssurancePolicyPackagesBlackList> packagesBlackLists) {
             this.packagesBlackLists = Objects.requireNonNull(packagesBlackLists);
             return this;
@@ -1260,10 +1140,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder packagesBlackLists(GetImageAssurancePolicyPackagesBlackList... packagesBlackLists) {
             return packagesBlackLists(List.of(packagesBlackLists));
         }
+        @CustomType.Setter
         public Builder packagesWhiteListEnabled(Boolean packagesWhiteListEnabled) {
             this.packagesWhiteListEnabled = Objects.requireNonNull(packagesWhiteListEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder packagesWhiteLists(List<GetImageAssurancePolicyPackagesWhiteList> packagesWhiteLists) {
             this.packagesWhiteLists = Objects.requireNonNull(packagesWhiteLists);
             return this;
@@ -1271,14 +1153,17 @@ public final class GetImageAssurancePolicyResult {
         public Builder packagesWhiteLists(GetImageAssurancePolicyPackagesWhiteList... packagesWhiteLists) {
             return packagesWhiteLists(List.of(packagesWhiteLists));
         }
+        @CustomType.Setter
         public Builder partialResultsImageFail(Boolean partialResultsImageFail) {
             this.partialResultsImageFail = Objects.requireNonNull(partialResultsImageFail);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
             this.readOnly = Objects.requireNonNull(readOnly);
             return this;
         }
+        @CustomType.Setter
         public Builder registries(List<String> registries) {
             this.registries = Objects.requireNonNull(registries);
             return this;
@@ -1286,10 +1171,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder registries(String... registries) {
             return registries(List.of(registries));
         }
+        @CustomType.Setter
         public Builder registry(String registry) {
             this.registry = Objects.requireNonNull(registry);
             return this;
         }
+        @CustomType.Setter
         public Builder requiredLabels(List<GetImageAssurancePolicyRequiredLabel> requiredLabels) {
             this.requiredLabels = Objects.requireNonNull(requiredLabels);
             return this;
@@ -1297,22 +1184,27 @@ public final class GetImageAssurancePolicyResult {
         public Builder requiredLabels(GetImageAssurancePolicyRequiredLabel... requiredLabels) {
             return requiredLabels(List.of(requiredLabels));
         }
+        @CustomType.Setter
         public Builder requiredLabelsEnabled(Boolean requiredLabelsEnabled) {
             this.requiredLabelsEnabled = Objects.requireNonNull(requiredLabelsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder scanNfsMounts(Boolean scanNfsMounts) {
             this.scanNfsMounts = Objects.requireNonNull(scanNfsMounts);
             return this;
         }
+        @CustomType.Setter
         public Builder scanSensitiveData(Boolean scanSensitiveData) {
             this.scanSensitiveData = Objects.requireNonNull(scanSensitiveData);
             return this;
         }
+        @CustomType.Setter
         public Builder scapEnabled(Boolean scapEnabled) {
             this.scapEnabled = Objects.requireNonNull(scapEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder scapFiles(List<String> scapFiles) {
             this.scapFiles = Objects.requireNonNull(scapFiles);
             return this;
@@ -1320,6 +1212,7 @@ public final class GetImageAssurancePolicyResult {
         public Builder scapFiles(String... scapFiles) {
             return scapFiles(List.of(scapFiles));
         }
+        @CustomType.Setter
         public Builder scopes(List<GetImageAssurancePolicyScope> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
@@ -1327,6 +1220,7 @@ public final class GetImageAssurancePolicyResult {
         public Builder scopes(GetImageAssurancePolicyScope... scopes) {
             return scopes(List.of(scopes));
         }
+        @CustomType.Setter
         public Builder trustedBaseImages(List<GetImageAssurancePolicyTrustedBaseImage> trustedBaseImages) {
             this.trustedBaseImages = Objects.requireNonNull(trustedBaseImages);
             return this;
@@ -1334,10 +1228,12 @@ public final class GetImageAssurancePolicyResult {
         public Builder trustedBaseImages(GetImageAssurancePolicyTrustedBaseImage... trustedBaseImages) {
             return trustedBaseImages(List.of(trustedBaseImages));
         }
+        @CustomType.Setter
         public Builder trustedBaseImagesEnabled(Boolean trustedBaseImagesEnabled) {
             this.trustedBaseImagesEnabled = Objects.requireNonNull(trustedBaseImagesEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder whitelistedLicenses(List<String> whitelistedLicenses) {
             this.whitelistedLicenses = Objects.requireNonNull(whitelistedLicenses);
             return this;
@@ -1345,11 +1241,88 @@ public final class GetImageAssurancePolicyResult {
         public Builder whitelistedLicenses(String... whitelistedLicenses) {
             return whitelistedLicenses(List.of(whitelistedLicenses));
         }
+        @CustomType.Setter
         public Builder whitelistedLicensesEnabled(Boolean whitelistedLicensesEnabled) {
             this.whitelistedLicensesEnabled = Objects.requireNonNull(whitelistedLicensesEnabled);
             return this;
-        }        public GetImageAssurancePolicyResult build() {
-            return new GetImageAssurancePolicyResult(allowedImages, applicationScopes, assuranceType, auditOnFailure, author, autoScanConfigured, autoScanEnabled, autoScanTimes, blacklistPermissions, blacklistPermissionsEnabled, blacklistedLicenses, blacklistedLicensesEnabled, blockFailed, controlExcludeNoFix, customChecks, customChecksEnabled, customSeverityEnabled, cvesBlackListEnabled, cvesBlackLists, cvesWhiteListEnabled, cvesWhiteLists, cvssSeverity, cvssSeverityEnabled, cvssSeverityExcludeNoFix, description, disallowMalware, dockerCisEnabled, domain, domainName, dtaEnabled, dtaSeverity, enabled, enforce, enforceAfterDays, enforceExcessivePermissions, exceptionalMonitoredMalwarePaths, failCicd, forbiddenLabels, forbiddenLabelsEnabled, forceMicroenforcer, functionIntegrityEnabled, id, ignoreRecentlyPublishedVln, ignoreRecentlyPublishedVlnPeriod, ignoreRiskResourcesEnabled, ignoredRiskResources, images, kubeCisEnabled, labels, malwareAction, maximumScore, maximumScoreEnabled, maximumScoreExcludeNoFix, monitoredMalwarePaths, name, onlyNoneRootUsers, packagesBlackListEnabled, packagesBlackLists, packagesWhiteListEnabled, packagesWhiteLists, partialResultsImageFail, readOnly, registries, registry, requiredLabels, requiredLabelsEnabled, scanNfsMounts, scanSensitiveData, scapEnabled, scapFiles, scopes, trustedBaseImages, trustedBaseImagesEnabled, whitelistedLicenses, whitelistedLicensesEnabled);
+        }
+        public GetImageAssurancePolicyResult build() {
+            final var o = new GetImageAssurancePolicyResult();
+            o.allowedImages = allowedImages;
+            o.applicationScopes = applicationScopes;
+            o.auditOnFailure = auditOnFailure;
+            o.author = author;
+            o.autoScanConfigured = autoScanConfigured;
+            o.autoScanEnabled = autoScanEnabled;
+            o.autoScanTimes = autoScanTimes;
+            o.blacklistPermissions = blacklistPermissions;
+            o.blacklistPermissionsEnabled = blacklistPermissionsEnabled;
+            o.blacklistedLicenses = blacklistedLicenses;
+            o.blacklistedLicensesEnabled = blacklistedLicensesEnabled;
+            o.blockFailed = blockFailed;
+            o.controlExcludeNoFix = controlExcludeNoFix;
+            o.customChecks = customChecks;
+            o.customChecksEnabled = customChecksEnabled;
+            o.customSeverityEnabled = customSeverityEnabled;
+            o.cvesBlackListEnabled = cvesBlackListEnabled;
+            o.cvesBlackLists = cvesBlackLists;
+            o.cvesWhiteListEnabled = cvesWhiteListEnabled;
+            o.cvesWhiteLists = cvesWhiteLists;
+            o.cvssSeverity = cvssSeverity;
+            o.cvssSeverityEnabled = cvssSeverityEnabled;
+            o.cvssSeverityExcludeNoFix = cvssSeverityExcludeNoFix;
+            o.description = description;
+            o.disallowMalware = disallowMalware;
+            o.dockerCisEnabled = dockerCisEnabled;
+            o.domain = domain;
+            o.domainName = domainName;
+            o.dtaEnabled = dtaEnabled;
+            o.dtaSeverity = dtaSeverity;
+            o.enabled = enabled;
+            o.enforce = enforce;
+            o.enforceAfterDays = enforceAfterDays;
+            o.enforceExcessivePermissions = enforceExcessivePermissions;
+            o.exceptionalMonitoredMalwarePaths = exceptionalMonitoredMalwarePaths;
+            o.failCicd = failCicd;
+            o.forbiddenLabels = forbiddenLabels;
+            o.forbiddenLabelsEnabled = forbiddenLabelsEnabled;
+            o.forceMicroenforcer = forceMicroenforcer;
+            o.functionIntegrityEnabled = functionIntegrityEnabled;
+            o.id = id;
+            o.ignoreRecentlyPublishedVln = ignoreRecentlyPublishedVln;
+            o.ignoreRecentlyPublishedVlnPeriod = ignoreRecentlyPublishedVlnPeriod;
+            o.ignoreRiskResourcesEnabled = ignoreRiskResourcesEnabled;
+            o.ignoredRiskResources = ignoredRiskResources;
+            o.images = images;
+            o.kubeCisEnabled = kubeCisEnabled;
+            o.labels = labels;
+            o.malwareAction = malwareAction;
+            o.maximumScore = maximumScore;
+            o.maximumScoreEnabled = maximumScoreEnabled;
+            o.maximumScoreExcludeNoFix = maximumScoreExcludeNoFix;
+            o.monitoredMalwarePaths = monitoredMalwarePaths;
+            o.name = name;
+            o.onlyNoneRootUsers = onlyNoneRootUsers;
+            o.packagesBlackListEnabled = packagesBlackListEnabled;
+            o.packagesBlackLists = packagesBlackLists;
+            o.packagesWhiteListEnabled = packagesWhiteListEnabled;
+            o.packagesWhiteLists = packagesWhiteLists;
+            o.partialResultsImageFail = partialResultsImageFail;
+            o.readOnly = readOnly;
+            o.registries = registries;
+            o.registry = registry;
+            o.requiredLabels = requiredLabels;
+            o.requiredLabelsEnabled = requiredLabelsEnabled;
+            o.scanNfsMounts = scanNfsMounts;
+            o.scanSensitiveData = scanSensitiveData;
+            o.scapEnabled = scapEnabled;
+            o.scapFiles = scapFiles;
+            o.scopes = scopes;
+            o.trustedBaseImages = trustedBaseImages;
+            o.trustedBaseImagesEnabled = trustedBaseImagesEnabled;
+            o.whitelistedLicenses = whitelistedLicenses;
+            o.whitelistedLicensesEnabled = whitelistedLicensesEnabled;
+            return o;
         }
     }
 }

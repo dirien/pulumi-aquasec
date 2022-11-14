@@ -15,17 +15,10 @@ public final class GetRolesResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetRolesRole> roles;
+    private String id;
+    private List<GetRolesRole> roles;
 
-    @CustomType.Constructor
-    private GetRolesResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("roles") List<GetRolesRole> roles) {
-        this.id = id;
-        this.roles = roles;
-    }
-
+    private GetRolesResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -44,33 +37,35 @@ public final class GetRolesResult {
     public static Builder builder(GetRolesResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetRolesRole> roles;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.roles = defaults.roles;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder roles(List<GetRolesRole> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
         }
         public Builder roles(GetRolesRole... roles) {
             return roles(List.of(roles));
-        }        public GetRolesResult build() {
-            return new GetRolesResult(id, roles);
+        }
+        public GetRolesResult build() {
+            final var o = new GetRolesResult();
+            o.id = id;
+            o.roles = roles;
+            return o;
         }
     }
 }

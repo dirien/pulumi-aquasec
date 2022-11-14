@@ -22,16 +22,13 @@ class GetHostAssurancePolicyResult:
     """
     A collection of values returned by getHostAssurancePolicy.
     """
-    def __init__(__self__, allowed_images=None, application_scopes=None, assurance_type=None, audit_on_failure=None, author=None, auto_scan_configured=None, auto_scan_enabled=None, auto_scan_times=None, blacklist_permissions=None, blacklist_permissions_enabled=None, blacklisted_licenses=None, blacklisted_licenses_enabled=None, block_failed=None, control_exclude_no_fix=None, custom_checks=None, custom_checks_enabled=None, custom_severity_enabled=None, cves_black_list_enabled=None, cves_black_lists=None, cves_white_list_enabled=None, cves_white_lists=None, cvss_severity=None, cvss_severity_enabled=None, cvss_severity_exclude_no_fix=None, description=None, disallow_malware=None, docker_cis_enabled=None, domain=None, domain_name=None, dta_enabled=None, dta_severity=None, enabled=None, enforce=None, enforce_after_days=None, enforce_excessive_permissions=None, exceptional_monitored_malware_paths=None, fail_cicd=None, forbidden_labels=None, forbidden_labels_enabled=None, force_microenforcer=None, function_integrity_enabled=None, id=None, ignore_recently_published_vln=None, ignore_recently_published_vln_period=None, ignore_risk_resources_enabled=None, ignored_risk_resources=None, images=None, kube_cis_enabled=None, labels=None, malware_action=None, maximum_score=None, maximum_score_enabled=None, maximum_score_exclude_no_fix=None, monitored_malware_paths=None, name=None, only_none_root_users=None, packages_black_list_enabled=None, packages_black_lists=None, packages_white_list_enabled=None, packages_white_lists=None, partial_results_image_fail=None, read_only=None, registries=None, registry=None, required_labels=None, required_labels_enabled=None, scan_nfs_mounts=None, scan_sensitive_data=None, scap_enabled=None, scap_files=None, scopes=None, trusted_base_images=None, trusted_base_images_enabled=None, whitelisted_licenses=None, whitelisted_licenses_enabled=None):
+    def __init__(__self__, allowed_images=None, application_scopes=None, audit_on_failure=None, author=None, auto_scan_configured=None, auto_scan_enabled=None, auto_scan_times=None, blacklist_permissions=None, blacklist_permissions_enabled=None, blacklisted_licenses=None, blacklisted_licenses_enabled=None, block_failed=None, control_exclude_no_fix=None, custom_checks=None, custom_checks_enabled=None, custom_severity_enabled=None, cves_black_list_enabled=None, cves_black_lists=None, cves_white_list_enabled=None, cves_white_lists=None, cvss_severity=None, cvss_severity_enabled=None, cvss_severity_exclude_no_fix=None, description=None, disallow_malware=None, docker_cis_enabled=None, domain=None, domain_name=None, dta_enabled=None, dta_severity=None, enabled=None, enforce=None, enforce_after_days=None, enforce_excessive_permissions=None, exceptional_monitored_malware_paths=None, fail_cicd=None, forbidden_labels=None, forbidden_labels_enabled=None, force_microenforcer=None, function_integrity_enabled=None, id=None, ignore_recently_published_vln=None, ignore_recently_published_vln_period=None, ignore_risk_resources_enabled=None, ignored_risk_resources=None, images=None, kube_cis_enabled=None, labels=None, malware_action=None, maximum_score=None, maximum_score_enabled=None, maximum_score_exclude_no_fix=None, monitored_malware_paths=None, name=None, only_none_root_users=None, packages_black_list_enabled=None, packages_black_lists=None, packages_white_list_enabled=None, packages_white_lists=None, partial_results_image_fail=None, read_only=None, registries=None, registry=None, required_labels=None, required_labels_enabled=None, scan_nfs_mounts=None, scan_sensitive_data=None, scap_enabled=None, scap_files=None, scopes=None, trusted_base_images=None, trusted_base_images_enabled=None, whitelisted_licenses=None, whitelisted_licenses_enabled=None):
         if allowed_images and not isinstance(allowed_images, list):
             raise TypeError("Expected argument 'allowed_images' to be a list")
         pulumi.set(__self__, "allowed_images", allowed_images)
         if application_scopes and not isinstance(application_scopes, list):
             raise TypeError("Expected argument 'application_scopes' to be a list")
         pulumi.set(__self__, "application_scopes", application_scopes)
-        if assurance_type and not isinstance(assurance_type, str):
-            raise TypeError("Expected argument 'assurance_type' to be a str")
-        pulumi.set(__self__, "assurance_type", assurance_type)
         if audit_on_failure and not isinstance(audit_on_failure, bool):
             raise TypeError("Expected argument 'audit_on_failure' to be a bool")
         pulumi.set(__self__, "audit_on_failure", audit_on_failure)
@@ -261,14 +258,6 @@ class GetHostAssurancePolicyResult:
     @pulumi.getter(name="applicationScopes")
     def application_scopes(self) -> Sequence[str]:
         return pulumi.get(self, "application_scopes")
-
-    @property
-    @pulumi.getter(name="assuranceType")
-    def assurance_type(self) -> str:
-        """
-        What type of assurance policy is described.
-        """
-        return pulumi.get(self, "assurance_type")
 
     @property
     @pulumi.getter(name="auditOnFailure")
@@ -595,7 +584,7 @@ class GetHostAssurancePolicyResult:
 
     @property
     @pulumi.getter(name="maximumScoreExcludeNoFix")
-    def maximum_score_exclude_no_fix(self) -> Optional[bool]:
+    def maximum_score_exclude_no_fix(self) -> bool:
         """
         Indicates that policy should ignore cases that do not have a known fix.
         """
@@ -759,7 +748,6 @@ class AwaitableGetHostAssurancePolicyResult(GetHostAssurancePolicyResult):
         return GetHostAssurancePolicyResult(
             allowed_images=self.allowed_images,
             application_scopes=self.application_scopes,
-            assurance_type=self.assurance_type,
             audit_on_failure=self.audit_on_failure,
             author=self.author,
             auto_scan_configured=self.auto_scan_configured,
@@ -834,16 +822,12 @@ class AwaitableGetHostAssurancePolicyResult(GetHostAssurancePolicyResult):
             whitelisted_licenses_enabled=self.whitelisted_licenses_enabled)
 
 
-def get_host_assurance_policy(maximum_score_exclude_no_fix: Optional[bool] = None,
-                              name: Optional[str] = None,
+def get_host_assurance_policy(name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHostAssurancePolicyResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param bool maximum_score_exclude_no_fix: Indicates that policy should ignore cases that do not have a known fix.
     """
     __args__ = dict()
-    __args__['maximumScoreExcludeNoFix'] = maximum_score_exclude_no_fix
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy', __args__, opts=opts, typ=GetHostAssurancePolicyResult).value
@@ -851,7 +835,6 @@ def get_host_assurance_policy(maximum_score_exclude_no_fix: Optional[bool] = Non
     return AwaitableGetHostAssurancePolicyResult(
         allowed_images=__ret__.allowed_images,
         application_scopes=__ret__.application_scopes,
-        assurance_type=__ret__.assurance_type,
         audit_on_failure=__ret__.audit_on_failure,
         author=__ret__.author,
         auto_scan_configured=__ret__.auto_scan_configured,
@@ -927,12 +910,9 @@ def get_host_assurance_policy(maximum_score_exclude_no_fix: Optional[bool] = Non
 
 
 @_utilities.lift_output_func(get_host_assurance_policy)
-def get_host_assurance_policy_output(maximum_score_exclude_no_fix: Optional[pulumi.Input[Optional[bool]]] = None,
-                                     name: Optional[pulumi.Input[str]] = None,
+def get_host_assurance_policy_output(name: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostAssurancePolicyResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param bool maximum_score_exclude_no_fix: Indicates that policy should ignore cases that do not have a known fix.
     """
     ...

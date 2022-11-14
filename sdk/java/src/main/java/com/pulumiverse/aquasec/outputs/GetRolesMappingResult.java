@@ -17,35 +17,24 @@ public final class GetRolesMappingResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Oauth2 Authentication
      * 
      */
-    private final List<GetRolesMappingOauth2> oauth2s;
+    private List<GetRolesMappingOauth2> oauth2s;
     /**
      * @return OpenId Authentication
      * 
      */
-    private final List<GetRolesMappingOpenid> openids;
+    private List<GetRolesMappingOpenid> openids;
     /**
      * @return SAML Authentication
      * 
      */
-    private final List<GetRolesMappingSaml> samls;
+    private List<GetRolesMappingSaml> samls;
 
-    @CustomType.Constructor
-    private GetRolesMappingResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("oauth2s") List<GetRolesMappingOauth2> oauth2s,
-        @CustomType.Parameter("openids") List<GetRolesMappingOpenid> openids,
-        @CustomType.Parameter("samls") List<GetRolesMappingSaml> samls) {
-        this.id = id;
-        this.oauth2s = oauth2s;
-        this.openids = openids;
-        this.samls = samls;
-    }
-
+    private GetRolesMappingResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -82,17 +71,13 @@ public final class GetRolesMappingResult {
     public static Builder builder(GetRolesMappingResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetRolesMappingOauth2> oauth2s;
         private List<GetRolesMappingOpenid> openids;
         private List<GetRolesMappingSaml> samls;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesMappingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -101,10 +86,12 @@ public final class GetRolesMappingResult {
     	      this.samls = defaults.samls;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2s(List<GetRolesMappingOauth2> oauth2s) {
             this.oauth2s = Objects.requireNonNull(oauth2s);
             return this;
@@ -112,6 +99,7 @@ public final class GetRolesMappingResult {
         public Builder oauth2s(GetRolesMappingOauth2... oauth2s) {
             return oauth2s(List.of(oauth2s));
         }
+        @CustomType.Setter
         public Builder openids(List<GetRolesMappingOpenid> openids) {
             this.openids = Objects.requireNonNull(openids);
             return this;
@@ -119,14 +107,21 @@ public final class GetRolesMappingResult {
         public Builder openids(GetRolesMappingOpenid... openids) {
             return openids(List.of(openids));
         }
+        @CustomType.Setter
         public Builder samls(List<GetRolesMappingSaml> samls) {
             this.samls = Objects.requireNonNull(samls);
             return this;
         }
         public Builder samls(GetRolesMappingSaml... samls) {
             return samls(List.of(samls));
-        }        public GetRolesMappingResult build() {
-            return new GetRolesMappingResult(id, oauth2s, openids, samls);
+        }
+        public GetRolesMappingResult build() {
+            final var o = new GetRolesMappingResult();
+            o.id = id;
+            o.oauth2s = oauth2s;
+            o.openids = openids;
+            o.samls = samls;
+            return o;
         }
     }
 }

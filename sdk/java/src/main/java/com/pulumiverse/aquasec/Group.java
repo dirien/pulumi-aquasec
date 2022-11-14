@@ -53,7 +53,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The creation date of the group.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -67,7 +67,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The ID of the created group.
      * 
      */
-    @Export(name="groupId", type=Integer.class, parameters={})
+    @Export(name="groupId", refs={Integer.class}, tree="[0]")
     private Output<Integer> groupId;
 
     /**
@@ -81,7 +81,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The desired name of the group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

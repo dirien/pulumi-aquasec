@@ -50,12 +50,8 @@ func LookupApplicationScope(ctx *pulumi.Context, args *LookupApplicationScopeArg
 type LookupApplicationScopeArgs struct {
 	// Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
 	Categories []GetApplicationScopeCategory `pulumi:"categories"`
-	// Description of the application scope.
-	Description *string `pulumi:"description"`
 	// Name of an application scope.
 	Name string `pulumi:"name"`
-	// Name of an application scope.
-	OwnerEmail *string `pulumi:"ownerEmail"`
 }
 
 // A collection of values returned by getApplicationScope.
@@ -65,13 +61,13 @@ type LookupApplicationScopeResult struct {
 	// Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
 	Categories []GetApplicationScopeCategory `pulumi:"categories"`
 	// Description of the application scope.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Name of an application scope.
 	Name string `pulumi:"name"`
 	// Name of an application scope.
-	OwnerEmail *string `pulumi:"ownerEmail"`
+	OwnerEmail string `pulumi:"ownerEmail"`
 }
 
 func LookupApplicationScopeOutput(ctx *pulumi.Context, args LookupApplicationScopeOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationScopeResultOutput {
@@ -91,12 +87,8 @@ func LookupApplicationScopeOutput(ctx *pulumi.Context, args LookupApplicationSco
 type LookupApplicationScopeOutputArgs struct {
 	// Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
 	Categories GetApplicationScopeCategoryArrayInput `pulumi:"categories"`
-	// Description of the application scope.
-	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Name of an application scope.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of an application scope.
-	OwnerEmail pulumi.StringPtrInput `pulumi:"ownerEmail"`
 }
 
 func (LookupApplicationScopeOutputArgs) ElementType() reflect.Type {
@@ -129,8 +121,8 @@ func (o LookupApplicationScopeResultOutput) Categories() GetApplicationScopeCate
 }
 
 // Description of the application scope.
-func (o LookupApplicationScopeResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupApplicationScopeResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupApplicationScopeResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationScopeResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -144,8 +136,8 @@ func (o LookupApplicationScopeResultOutput) Name() pulumi.StringOutput {
 }
 
 // Name of an application scope.
-func (o LookupApplicationScopeResultOutput) OwnerEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupApplicationScopeResult) *string { return v.OwnerEmail }).(pulumi.StringPtrOutput)
+func (o LookupApplicationScopeResultOutput) OwnerEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationScopeResult) string { return v.OwnerEmail }).(pulumi.StringOutput)
 }
 
 func init() {

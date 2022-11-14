@@ -25,6 +25,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aquasec.NewHostRuntimePolicy(ctx, "hostRuntimePolicy", &aquasec.HostRuntimePolicyArgs{
+//				ApplicationScopes: pulumi.StringArray{
+//					pulumi.String("Global"),
+//				},
 //				AuditAllOsUserActivity:         pulumi.Bool(true),
 //				AuditBruteForceLogin:           pulumi.Bool(true),
 //				AuditFullCommandArguments:      pulumi.Bool(true),
@@ -83,6 +86,17 @@ import (
 //					pulumi.String("package1"),
 //				},
 //				PortScanningDetection: pulumi.Bool(true),
+//				ScopeVariables: HostRuntimePolicyScopeVariableArray{
+//					&HostRuntimePolicyScopeVariableArgs{
+//						Attribute: pulumi.String("kubernetes.cluster"),
+//						Value:     pulumi.String("default"),
+//					},
+//					&HostRuntimePolicyScopeVariableArgs{
+//						Attribute: pulumi.String("kubernetes.label"),
+//						Name:      pulumi.String("app"),
+//						Value:     pulumi.String("aqua"),
+//					},
+//				},
 //				WindowsRegistryMonitoring: &HostRuntimePolicyWindowsRegistryMonitoringArgs{
 //					ExcludedPaths: pulumi.StringArray{
 //						pulumi.String("expaths"),

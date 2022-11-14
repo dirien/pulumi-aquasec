@@ -83,7 +83,7 @@ public class ApplicationScope extends com.pulumi.resources.CustomResource {
      * Username of the account that created the service.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -97,7 +97,7 @@ public class ApplicationScope extends com.pulumi.resources.CustomResource {
      * Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
      * 
      */
-    @Export(name="categories", type=List.class, parameters={ApplicationScopeCategory.class})
+    @Export(name="categories", refs={List.class,ApplicationScopeCategory.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationScopeCategory>> categories;
 
     /**
@@ -111,7 +111,7 @@ public class ApplicationScope extends com.pulumi.resources.CustomResource {
      * Description of the application scope.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -125,7 +125,7 @@ public class ApplicationScope extends com.pulumi.resources.CustomResource {
      * Name of an application scope.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -139,7 +139,7 @@ public class ApplicationScope extends com.pulumi.resources.CustomResource {
      * Name of an application scope.
      * 
      */
-    @Export(name="ownerEmail", type=String.class, parameters={})
+    @Export(name="ownerEmail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ownerEmail;
 
     /**

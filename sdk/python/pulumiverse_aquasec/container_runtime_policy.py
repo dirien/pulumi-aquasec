@@ -1750,6 +1750,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                 "registry1",
                 "registry2",
             ],
+            application_scopes=["Global"],
             audit_all_network_activity=True,
             audit_all_processes_activity=True,
             audit_full_command_arguments=True,
@@ -1828,6 +1829,10 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             ),
             fork_guard_process_limit=13,
             limit_new_privileges=True,
+            malware_scan_options=aquasec.ContainerRuntimePolicyMalwareScanOptionsArgs(
+                action="alert",
+                enabled=True,
+            ),
             monitor_system_time_changes=True,
             readonly_files_and_directories=[
                 "readonly",
@@ -1840,6 +1845,18 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             reverse_shell_allowed_processes=[
                 "proc1",
                 "proc2",
+            ],
+            scope_expression="v1 || v2",
+            scope_variables=[
+                aquasec.ContainerRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.cluster",
+                    value="default",
+                ),
+                aquasec.ContainerRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.label",
+                    name="app",
+                    value="aqua",
+                ),
             ])
         ```
 
@@ -1919,6 +1936,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                 "registry1",
                 "registry2",
             ],
+            application_scopes=["Global"],
             audit_all_network_activity=True,
             audit_all_processes_activity=True,
             audit_full_command_arguments=True,
@@ -1997,6 +2015,10 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             ),
             fork_guard_process_limit=13,
             limit_new_privileges=True,
+            malware_scan_options=aquasec.ContainerRuntimePolicyMalwareScanOptionsArgs(
+                action="alert",
+                enabled=True,
+            ),
             monitor_system_time_changes=True,
             readonly_files_and_directories=[
                 "readonly",
@@ -2009,6 +2031,18 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             reverse_shell_allowed_processes=[
                 "proc1",
                 "proc2",
+            ],
+            scope_expression="v1 || v2",
+            scope_variables=[
+                aquasec.ContainerRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.cluster",
+                    value="default",
+                ),
+                aquasec.ContainerRuntimePolicyScopeVariableArgs(
+                    attribute="kubernetes.label",
+                    name="app",
+                    value="aqua",
+                ),
             ])
         ```
 

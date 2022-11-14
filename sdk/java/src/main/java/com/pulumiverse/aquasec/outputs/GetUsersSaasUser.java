@@ -13,59 +13,24 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersSaasUser {
-    private final Boolean accountAdmin;
-    private final Boolean confirmed;
-    private final String created;
-    private final List<String> cspRoles;
-    private final Boolean dashboard;
-    private final String email;
-    private final List<GetUsersSaasUserGroup> groups;
-    private final List<GetUsersSaasUserLogin> logins;
-    private final Boolean multiaccount;
-    private final Boolean passwordReset;
-    private final String provider;
-    private final Boolean sendAnnouncements;
-    private final Boolean sendNewPlugins;
-    private final Boolean sendNewRisks;
-    private final Boolean sendScanResults;
-    private final String userId;
+    private Boolean accountAdmin;
+    private Boolean confirmed;
+    private String created;
+    private List<String> cspRoles;
+    private Boolean dashboard;
+    private String email;
+    private List<GetUsersSaasUserGroup> groups;
+    private List<GetUsersSaasUserLogin> logins;
+    private Boolean multiaccount;
+    private Boolean passwordReset;
+    private String provider;
+    private Boolean sendAnnouncements;
+    private Boolean sendNewPlugins;
+    private Boolean sendNewRisks;
+    private Boolean sendScanResults;
+    private String userId;
 
-    @CustomType.Constructor
-    private GetUsersSaasUser(
-        @CustomType.Parameter("accountAdmin") Boolean accountAdmin,
-        @CustomType.Parameter("confirmed") Boolean confirmed,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("cspRoles") List<String> cspRoles,
-        @CustomType.Parameter("dashboard") Boolean dashboard,
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("groups") List<GetUsersSaasUserGroup> groups,
-        @CustomType.Parameter("logins") List<GetUsersSaasUserLogin> logins,
-        @CustomType.Parameter("multiaccount") Boolean multiaccount,
-        @CustomType.Parameter("passwordReset") Boolean passwordReset,
-        @CustomType.Parameter("provider") String provider,
-        @CustomType.Parameter("sendAnnouncements") Boolean sendAnnouncements,
-        @CustomType.Parameter("sendNewPlugins") Boolean sendNewPlugins,
-        @CustomType.Parameter("sendNewRisks") Boolean sendNewRisks,
-        @CustomType.Parameter("sendScanResults") Boolean sendScanResults,
-        @CustomType.Parameter("userId") String userId) {
-        this.accountAdmin = accountAdmin;
-        this.confirmed = confirmed;
-        this.created = created;
-        this.cspRoles = cspRoles;
-        this.dashboard = dashboard;
-        this.email = email;
-        this.groups = groups;
-        this.logins = logins;
-        this.multiaccount = multiaccount;
-        this.passwordReset = passwordReset;
-        this.provider = provider;
-        this.sendAnnouncements = sendAnnouncements;
-        this.sendNewPlugins = sendNewPlugins;
-        this.sendNewRisks = sendNewRisks;
-        this.sendScanResults = sendScanResults;
-        this.userId = userId;
-    }
-
+    private GetUsersSaasUser() {}
     public Boolean accountAdmin() {
         return this.accountAdmin;
     }
@@ -122,7 +87,7 @@ public final class GetUsersSaasUser {
     public static Builder builder(GetUsersSaasUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accountAdmin;
         private Boolean confirmed;
@@ -140,11 +105,7 @@ public final class GetUsersSaasUser {
         private Boolean sendNewRisks;
         private Boolean sendScanResults;
         private String userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersSaasUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountAdmin = defaults.accountAdmin;
@@ -165,18 +126,22 @@ public final class GetUsersSaasUser {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder accountAdmin(Boolean accountAdmin) {
             this.accountAdmin = Objects.requireNonNull(accountAdmin);
             return this;
         }
+        @CustomType.Setter
         public Builder confirmed(Boolean confirmed) {
             this.confirmed = Objects.requireNonNull(confirmed);
             return this;
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder cspRoles(List<String> cspRoles) {
             this.cspRoles = Objects.requireNonNull(cspRoles);
             return this;
@@ -184,14 +149,17 @@ public final class GetUsersSaasUser {
         public Builder cspRoles(String... cspRoles) {
             return cspRoles(List.of(cspRoles));
         }
+        @CustomType.Setter
         public Builder dashboard(Boolean dashboard) {
             this.dashboard = Objects.requireNonNull(dashboard);
             return this;
         }
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder groups(List<GetUsersSaasUserGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -199,6 +167,7 @@ public final class GetUsersSaasUser {
         public Builder groups(GetUsersSaasUserGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder logins(List<GetUsersSaasUserLogin> logins) {
             this.logins = Objects.requireNonNull(logins);
             return this;
@@ -206,39 +175,65 @@ public final class GetUsersSaasUser {
         public Builder logins(GetUsersSaasUserLogin... logins) {
             return logins(List.of(logins));
         }
+        @CustomType.Setter
         public Builder multiaccount(Boolean multiaccount) {
             this.multiaccount = Objects.requireNonNull(multiaccount);
             return this;
         }
+        @CustomType.Setter
         public Builder passwordReset(Boolean passwordReset) {
             this.passwordReset = Objects.requireNonNull(passwordReset);
             return this;
         }
+        @CustomType.Setter
         public Builder provider(String provider) {
             this.provider = Objects.requireNonNull(provider);
             return this;
         }
+        @CustomType.Setter
         public Builder sendAnnouncements(Boolean sendAnnouncements) {
             this.sendAnnouncements = Objects.requireNonNull(sendAnnouncements);
             return this;
         }
+        @CustomType.Setter
         public Builder sendNewPlugins(Boolean sendNewPlugins) {
             this.sendNewPlugins = Objects.requireNonNull(sendNewPlugins);
             return this;
         }
+        @CustomType.Setter
         public Builder sendNewRisks(Boolean sendNewRisks) {
             this.sendNewRisks = Objects.requireNonNull(sendNewRisks);
             return this;
         }
+        @CustomType.Setter
         public Builder sendScanResults(Boolean sendScanResults) {
             this.sendScanResults = Objects.requireNonNull(sendScanResults);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetUsersSaasUser build() {
-            return new GetUsersSaasUser(accountAdmin, confirmed, created, cspRoles, dashboard, email, groups, logins, multiaccount, passwordReset, provider, sendAnnouncements, sendNewPlugins, sendNewRisks, sendScanResults, userId);
+        }
+        public GetUsersSaasUser build() {
+            final var o = new GetUsersSaasUser();
+            o.accountAdmin = accountAdmin;
+            o.confirmed = confirmed;
+            o.created = created;
+            o.cspRoles = cspRoles;
+            o.dashboard = dashboard;
+            o.email = email;
+            o.groups = groups;
+            o.logins = logins;
+            o.multiaccount = multiaccount;
+            o.passwordReset = passwordReset;
+            o.provider = provider;
+            o.sendAnnouncements = sendAnnouncements;
+            o.sendNewPlugins = sendNewPlugins;
+            o.sendNewRisks = sendNewRisks;
+            o.sendScanResults = sendScanResults;
+            o.userId = userId;
+            return o;
         }
     }
 }

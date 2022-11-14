@@ -8,7 +8,6 @@ import com.pulumiverse.aquasec.outputs.GetApplicationScopeCategory;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -17,49 +16,34 @@ public final class GetApplicationScopeResult {
      * @return Username of the account that created the service.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
      * 
      */
-    private final @Nullable List<GetApplicationScopeCategory> categories;
+    private @Nullable List<GetApplicationScopeCategory> categories;
     /**
      * @return Description of the application scope.
      * 
      */
-    private final @Nullable String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Name of an application scope.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Name of an application scope.
      * 
      */
-    private final @Nullable String ownerEmail;
+    private String ownerEmail;
 
-    @CustomType.Constructor
-    private GetApplicationScopeResult(
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("categories") @Nullable List<GetApplicationScopeCategory> categories,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("ownerEmail") @Nullable String ownerEmail) {
-        this.author = author;
-        this.categories = categories;
-        this.description = description;
-        this.id = id;
-        this.name = name;
-        this.ownerEmail = ownerEmail;
-    }
-
+    private GetApplicationScopeResult() {}
     /**
      * @return Username of the account that created the service.
      * 
@@ -78,8 +62,8 @@ public final class GetApplicationScopeResult {
      * @return Description of the application scope.
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -99,8 +83,8 @@ public final class GetApplicationScopeResult {
      * @return Name of an application scope.
      * 
      */
-    public Optional<String> ownerEmail() {
-        return Optional.ofNullable(this.ownerEmail);
+    public String ownerEmail() {
+        return this.ownerEmail;
     }
 
     public static Builder builder() {
@@ -110,19 +94,15 @@ public final class GetApplicationScopeResult {
     public static Builder builder(GetApplicationScopeResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String author;
         private @Nullable List<GetApplicationScopeCategory> categories;
-        private @Nullable String description;
+        private String description;
         private String id;
         private String name;
-        private @Nullable String ownerEmail;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        private String ownerEmail;
+        public Builder() {}
         public Builder(GetApplicationScopeResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.author = defaults.author;
@@ -133,10 +113,12 @@ public final class GetApplicationScopeResult {
     	      this.ownerEmail = defaults.ownerEmail;
         }
 
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder categories(@Nullable List<GetApplicationScopeCategory> categories) {
             this.categories = categories;
             return this;
@@ -144,23 +126,35 @@ public final class GetApplicationScopeResult {
         public Builder categories(GetApplicationScopeCategory... categories) {
             return categories(List.of(categories));
         }
-        public Builder description(@Nullable String description) {
-            this.description = description;
+        @CustomType.Setter
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
-        public Builder ownerEmail(@Nullable String ownerEmail) {
-            this.ownerEmail = ownerEmail;
+        @CustomType.Setter
+        public Builder ownerEmail(String ownerEmail) {
+            this.ownerEmail = Objects.requireNonNull(ownerEmail);
             return this;
-        }        public GetApplicationScopeResult build() {
-            return new GetApplicationScopeResult(author, categories, description, id, name, ownerEmail);
+        }
+        public GetApplicationScopeResult build() {
+            final var o = new GetApplicationScopeResult();
+            o.author = author;
+            o.categories = categories;
+            o.description = description;
+            o.id = id;
+            o.name = name;
+            o.ownerEmail = ownerEmail;
+            return o;
         }
     }
 }

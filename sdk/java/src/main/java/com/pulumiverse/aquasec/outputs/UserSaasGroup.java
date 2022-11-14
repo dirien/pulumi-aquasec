@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserSaasGroup {
-    private final @Nullable Boolean groupAdmin;
-    private final @Nullable String name;
+    private @Nullable Boolean groupAdmin;
+    private @Nullable String name;
 
-    @CustomType.Constructor
-    private UserSaasGroup(
-        @CustomType.Parameter("groupAdmin") @Nullable Boolean groupAdmin,
-        @CustomType.Parameter("name") @Nullable String name) {
-        this.groupAdmin = groupAdmin;
-        this.name = name;
-    }
-
+    private UserSaasGroup() {}
     public Optional<Boolean> groupAdmin() {
         return Optional.ofNullable(this.groupAdmin);
     }
@@ -37,30 +30,32 @@ public final class UserSaasGroup {
     public static Builder builder(UserSaasGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean groupAdmin;
         private @Nullable String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserSaasGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groupAdmin = defaults.groupAdmin;
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder groupAdmin(@Nullable Boolean groupAdmin) {
             this.groupAdmin = groupAdmin;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
-        }        public UserSaasGroup build() {
-            return new UserSaasGroup(groupAdmin, name);
+        }
+        public UserSaasGroup build() {
+            final var o = new UserSaasGroup();
+            o.groupAdmin = groupAdmin;
+            o.name = name;
+            return o;
         }
     }
 }

@@ -74,11 +74,17 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetContainerRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("malwareScanOptions")]
+        private List<Inputs.GetContainerRuntimePolicyMalwareScanOptionArgs>? _malwareScanOptions;
+
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
         /// </summary>
-        [Input("malwareScanOptions")]
-        public Inputs.GetContainerRuntimePolicyMalwareScanOptionsArgs? MalwareScanOptions { get; set; }
+        public List<Inputs.GetContainerRuntimePolicyMalwareScanOptionArgs> MalwareScanOptions
+        {
+            get => _malwareScanOptions ?? (_malwareScanOptions = new List<Inputs.GetContainerRuntimePolicyMalwareScanOptionArgs>());
+            set => _malwareScanOptions = value;
+        }
 
         /// <summary>
         /// Name of the container runtime policy
@@ -94,11 +100,17 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetContainerRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("malwareScanOptions")]
+        private InputList<Inputs.GetContainerRuntimePolicyMalwareScanOptionInputArgs>? _malwareScanOptions;
+
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
         /// </summary>
-        [Input("malwareScanOptions")]
-        public Input<Inputs.GetContainerRuntimePolicyMalwareScanOptionsInputArgs>? MalwareScanOptions { get; set; }
+        public InputList<Inputs.GetContainerRuntimePolicyMalwareScanOptionInputArgs> MalwareScanOptions
+        {
+            get => _malwareScanOptions ?? (_malwareScanOptions = new InputList<Inputs.GetContainerRuntimePolicyMalwareScanOptionInputArgs>());
+            set => _malwareScanOptions = value;
+        }
 
         /// <summary>
         /// Name of the container runtime policy
@@ -299,7 +311,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
         /// </summary>
-        public readonly Outputs.GetContainerRuntimePolicyMalwareScanOptionsResult? MalwareScanOptions;
+        public readonly ImmutableArray<Outputs.GetContainerRuntimePolicyMalwareScanOptionResult> MalwareScanOptions;
         /// <summary>
         /// If true, system time changes will be monitored.
         /// </summary>
@@ -421,7 +433,7 @@ namespace Pulumiverse.Aquasec
 
             bool limitNewPrivileges,
 
-            Outputs.GetContainerRuntimePolicyMalwareScanOptionsResult? malwareScanOptions,
+            ImmutableArray<Outputs.GetContainerRuntimePolicyMalwareScanOptionResult> malwareScanOptions,
 
             bool monitorSystemTimeChanges,
 

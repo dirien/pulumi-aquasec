@@ -33,6 +33,9 @@ import (
 //					pulumi.String("registry1"),
 //					pulumi.String("registry2"),
 //				},
+//				ApplicationScopes: pulumi.StringArray{
+//					pulumi.String("Global"),
+//				},
 //				AuditAllNetworkActivity:    pulumi.Bool(true),
 //				AuditAllProcessesActivity:  pulumi.Bool(true),
 //				AuditFullCommandArguments:  pulumi.Bool(true),
@@ -121,8 +124,12 @@ import (
 //						pulumi.String("user"),
 //					},
 //				},
-//				ForkGuardProcessLimit:    pulumi.Int(13),
-//				LimitNewPrivileges:       pulumi.Bool(true),
+//				ForkGuardProcessLimit: pulumi.Int(13),
+//				LimitNewPrivileges:    pulumi.Bool(true),
+//				MalwareScanOptions: &ContainerRuntimePolicyMalwareScanOptionsArgs{
+//					Action:  pulumi.String("alert"),
+//					Enabled: pulumi.Bool(true),
+//				},
 //				MonitorSystemTimeChanges: pulumi.Bool(true),
 //				ReadonlyFilesAndDirectories: pulumi.StringArray{
 //					pulumi.String("readonly"),
@@ -135,6 +142,18 @@ import (
 //				ReverseShellAllowedProcesses: pulumi.StringArray{
 //					pulumi.String("proc1"),
 //					pulumi.String("proc2"),
+//				},
+//				ScopeExpression: pulumi.String("v1 || v2"),
+//				ScopeVariables: ContainerRuntimePolicyScopeVariableArray{
+//					&ContainerRuntimePolicyScopeVariableArgs{
+//						Attribute: pulumi.String("kubernetes.cluster"),
+//						Value:     pulumi.String("default"),
+//					},
+//					&ContainerRuntimePolicyScopeVariableArgs{
+//						Attribute: pulumi.String("kubernetes.label"),
+//						Name:      pulumi.String("app"),
+//						Value:     pulumi.String("aqua"),
+//					},
 //				},
 //			})
 //			if err != nil {

@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKubernetesAssurancePolicyTrustedBaseImage {
-    private final String imagename;
-    private final String registry;
+    private String imagename;
+    private String registry;
 
-    @CustomType.Constructor
-    private GetKubernetesAssurancePolicyTrustedBaseImage(
-        @CustomType.Parameter("imagename") String imagename,
-        @CustomType.Parameter("registry") String registry) {
-        this.imagename = imagename;
-        this.registry = registry;
-    }
-
+    private GetKubernetesAssurancePolicyTrustedBaseImage() {}
     public String imagename() {
         return this.imagename;
     }
@@ -34,30 +27,32 @@ public final class GetKubernetesAssurancePolicyTrustedBaseImage {
     public static Builder builder(GetKubernetesAssurancePolicyTrustedBaseImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String imagename;
         private String registry;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesAssurancePolicyTrustedBaseImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imagename = defaults.imagename;
     	      this.registry = defaults.registry;
         }
 
+        @CustomType.Setter
         public Builder imagename(String imagename) {
             this.imagename = Objects.requireNonNull(imagename);
             return this;
         }
+        @CustomType.Setter
         public Builder registry(String registry) {
             this.registry = Objects.requireNonNull(registry);
             return this;
-        }        public GetKubernetesAssurancePolicyTrustedBaseImage build() {
-            return new GetKubernetesAssurancePolicyTrustedBaseImage(imagename, registry);
+        }
+        public GetKubernetesAssurancePolicyTrustedBaseImage build() {
+            final var o = new GetKubernetesAssurancePolicyTrustedBaseImage();
+            o.imagename = imagename;
+            o.registry = registry;
+            return o;
         }
     }
 }

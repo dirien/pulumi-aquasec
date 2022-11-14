@@ -25,6 +25,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aquasec.NewFunctionRuntimePolicy(ctx, "functionRuntimePolicy", &aquasec.FunctionRuntimePolicyArgs{
+//				ApplicationScopes: pulumi.StringArray{
+//					pulumi.String("Global"),
+//				},
 //				BlockMaliciousExecutables: pulumi.Bool(true),
 //				BlockMaliciousExecutablesAllowedProcesses: pulumi.StringArray{
 //					pulumi.String("proc1"),
@@ -38,6 +41,17 @@ import (
 //				Description: pulumi.String("function_runtime_policy"),
 //				Enabled:     pulumi.Bool(true),
 //				Enforce:     pulumi.Bool(false),
+//				ScopeVariables: FunctionRuntimePolicyScopeVariableArray{
+//					&FunctionRuntimePolicyScopeVariableArgs{
+//						Attribute: pulumi.String("kubernetes.cluster"),
+//						Value:     pulumi.String("default"),
+//					},
+//					&FunctionRuntimePolicyScopeVariableArgs{
+//						Attribute: pulumi.String("kubernetes.label"),
+//						Name:      pulumi.String("app"),
+//						Value:     pulumi.String("aqua"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

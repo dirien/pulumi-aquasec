@@ -22,8 +22,6 @@ func LookupIntegrationRegistry(ctx *pulumi.Context, args *LookupIntegrationRegis
 
 // A collection of arguments for invoking getIntegrationRegistry.
 type LookupIntegrationRegistryArgs struct {
-	// Whether to automatically pull and rescan images from the registry on creation and daily
-	AutoPullRescan *bool `pulumi:"autoPullRescan"`
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition *string `pulumi:"imageCreationDateCondition"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -40,6 +38,8 @@ type LookupIntegrationRegistryArgs struct {
 
 // A collection of values returned by getIntegrationRegistry.
 type LookupIntegrationRegistryResult struct {
+	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+	AutoCleanup bool `pulumi:"autoCleanup"`
 	// Whether to automatically pull images from the registry on creation and daily
 	AutoPull bool `pulumi:"autoPull"`
 	// The interval in days to start pulling new images from the registry, Defaults to 1
@@ -47,7 +47,7 @@ type LookupIntegrationRegistryResult struct {
 	// Maximum number of repositories to pull every day, defaults to 100
 	AutoPullMax int `pulumi:"autoPullMax"`
 	// Whether to automatically pull and rescan images from the registry on creation and daily
-	AutoPullRescan *bool `pulumi:"autoPullRescan"`
+	AutoPullRescan bool `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime string `pulumi:"autoPullTime"`
 	// The provider-assigned unique ID for this managed resource.
@@ -67,7 +67,7 @@ type LookupIntegrationRegistryResult struct {
 	// List of scanner names
 	ScannerNames []string `pulumi:"scannerNames"`
 	// Scanner type
-	ScannerType *string `pulumi:"scannerType"`
+	ScannerType string `pulumi:"scannerType"`
 	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
 	Type string `pulumi:"type"`
 	// The URL, address or region of the registry
@@ -91,8 +91,6 @@ func LookupIntegrationRegistryOutput(ctx *pulumi.Context, args LookupIntegration
 
 // A collection of arguments for invoking getIntegrationRegistry.
 type LookupIntegrationRegistryOutputArgs struct {
-	// Whether to automatically pull and rescan images from the registry on creation and daily
-	AutoPullRescan pulumi.BoolPtrInput `pulumi:"autoPullRescan"`
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition pulumi.StringPtrInput `pulumi:"imageCreationDateCondition"`
 	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -126,6 +124,11 @@ func (o LookupIntegrationRegistryResultOutput) ToLookupIntegrationRegistryResult
 	return o
 }
 
+// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+func (o LookupIntegrationRegistryResultOutput) AutoCleanup() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupIntegrationRegistryResult) bool { return v.AutoCleanup }).(pulumi.BoolOutput)
+}
+
 // Whether to automatically pull images from the registry on creation and daily
 func (o LookupIntegrationRegistryResultOutput) AutoPull() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) bool { return v.AutoPull }).(pulumi.BoolOutput)
@@ -142,8 +145,8 @@ func (o LookupIntegrationRegistryResultOutput) AutoPullMax() pulumi.IntOutput {
 }
 
 // Whether to automatically pull and rescan images from the registry on creation and daily
-func (o LookupIntegrationRegistryResultOutput) AutoPullRescan() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupIntegrationRegistryResult) *bool { return v.AutoPullRescan }).(pulumi.BoolPtrOutput)
+func (o LookupIntegrationRegistryResultOutput) AutoPullRescan() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupIntegrationRegistryResult) bool { return v.AutoPullRescan }).(pulumi.BoolOutput)
 }
 
 // The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
@@ -192,8 +195,8 @@ func (o LookupIntegrationRegistryResultOutput) ScannerNames() pulumi.StringArray
 }
 
 // Scanner type
-func (o LookupIntegrationRegistryResultOutput) ScannerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupIntegrationRegistryResult) *string { return v.ScannerType }).(pulumi.StringPtrOutput)
+func (o LookupIntegrationRegistryResultOutput) ScannerType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.ScannerType }).(pulumi.StringOutput)
 }
 
 // Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).

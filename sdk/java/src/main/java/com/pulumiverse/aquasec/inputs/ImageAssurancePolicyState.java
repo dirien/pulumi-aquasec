@@ -50,21 +50,6 @@ public final class ImageAssurancePolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * What type of assurance policy is described.
-     * 
-     */
-    @Import(name="assuranceType")
-    private @Nullable Output<String> assuranceType;
-
-    /**
-     * @return What type of assurance policy is described.
-     * 
-     */
-    public Optional<Output<String>> assuranceType() {
-        return Optional.ofNullable(this.assuranceType);
-    }
-
-    /**
      * Indicates if auditing for failures.
      * 
      */
@@ -878,7 +863,6 @@ public final class ImageAssurancePolicyState extends com.pulumi.resources.Resour
     private ImageAssurancePolicyState(ImageAssurancePolicyState $) {
         this.allowedImages = $.allowedImages;
         this.applicationScopes = $.applicationScopes;
-        this.assuranceType = $.assuranceType;
         this.auditOnFailure = $.auditOnFailure;
         this.author = $.author;
         this.autoScanConfigured = $.autoScanConfigured;
@@ -1012,27 +996,6 @@ public final class ImageAssurancePolicyState extends com.pulumi.resources.Resour
 
         public Builder applicationScopes(String... applicationScopes) {
             return applicationScopes(List.of(applicationScopes));
-        }
-
-        /**
-         * @param assuranceType What type of assurance policy is described.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder assuranceType(@Nullable Output<String> assuranceType) {
-            $.assuranceType = assuranceType;
-            return this;
-        }
-
-        /**
-         * @param assuranceType What type of assurance policy is described.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder assuranceType(String assuranceType) {
-            return assuranceType(Output.of(assuranceType));
         }
 
         /**

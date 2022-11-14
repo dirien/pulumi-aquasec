@@ -4,31 +4,13 @@
 package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumiverse.aquasec.inputs.GetHostRuntimePolicyMalwareScanOptions;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetHostRuntimePolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHostRuntimePolicyPlainArgs Empty = new GetHostRuntimePolicyPlainArgs();
-
-    /**
-     * Configuration for Real-Time Malware Protection.
-     * 
-     */
-    @Import(name="malwareScanOptions")
-    private @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions;
-
-    /**
-     * @return Configuration for Real-Time Malware Protection.
-     * 
-     */
-    public Optional<GetHostRuntimePolicyMalwareScanOptions> malwareScanOptions() {
-        return Optional.ofNullable(this.malwareScanOptions);
-    }
 
     /**
      * Name of the host runtime policy
@@ -48,7 +30,6 @@ public final class GetHostRuntimePolicyPlainArgs extends com.pulumi.resources.In
     private GetHostRuntimePolicyPlainArgs() {}
 
     private GetHostRuntimePolicyPlainArgs(GetHostRuntimePolicyPlainArgs $) {
-        this.malwareScanOptions = $.malwareScanOptions;
         this.name = $.name;
     }
 
@@ -68,17 +49,6 @@ public final class GetHostRuntimePolicyPlainArgs extends com.pulumi.resources.In
 
         public Builder(GetHostRuntimePolicyPlainArgs defaults) {
             $ = new GetHostRuntimePolicyPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder malwareScanOptions(@Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions) {
-            $.malwareScanOptions = malwareScanOptions;
-            return this;
         }
 
         /**

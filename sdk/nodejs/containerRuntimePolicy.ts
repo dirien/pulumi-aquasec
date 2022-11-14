@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *         "registry1",
  *         "registry2",
  *     ],
+ *     applicationScopes: ["Global"],
  *     auditAllNetworkActivity: true,
  *     auditAllProcessesActivity: true,
  *     auditFullCommandArguments: true,
@@ -100,6 +101,10 @@ import * as utilities from "./utilities";
  *     },
  *     forkGuardProcessLimit: 13,
  *     limitNewPrivileges: true,
+ *     malwareScanOptions: {
+ *         action: "alert",
+ *         enabled: true,
+ *     },
  *     monitorSystemTimeChanges: true,
  *     readonlyFilesAndDirectories: [
  *         "readonly",
@@ -112,6 +117,18 @@ import * as utilities from "./utilities";
  *     reverseShellAllowedProcesses: [
  *         "proc1",
  *         "proc2",
+ *     ],
+ *     scopeExpression: "v1 || v2",
+ *     scopeVariables: [
+ *         {
+ *             attribute: "kubernetes.cluster",
+ *             value: "default",
+ *         },
+ *         {
+ *             attribute: "kubernetes.label",
+ *             name: "app",
+ *             value: "aqua",
+ *         },
  *     ],
  * });
  * ```

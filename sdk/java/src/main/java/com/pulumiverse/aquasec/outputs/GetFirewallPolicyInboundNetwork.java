@@ -10,23 +10,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFirewallPolicyInboundNetwork {
-    private final Boolean allow;
-    private final String portRange;
-    private final String resource;
-    private final String resourceType;
+    private Boolean allow;
+    private String portRange;
+    private String resource;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private GetFirewallPolicyInboundNetwork(
-        @CustomType.Parameter("allow") Boolean allow,
-        @CustomType.Parameter("portRange") String portRange,
-        @CustomType.Parameter("resource") String resource,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.allow = allow;
-        this.portRange = portRange;
-        this.resource = resource;
-        this.resourceType = resourceType;
-    }
-
+    private GetFirewallPolicyInboundNetwork() {}
     public Boolean allow() {
         return this.allow;
     }
@@ -47,17 +36,13 @@ public final class GetFirewallPolicyInboundNetwork {
     public static Builder builder(GetFirewallPolicyInboundNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allow;
         private String portRange;
         private String resource;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallPolicyInboundNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allow = defaults.allow;
@@ -66,23 +51,33 @@ public final class GetFirewallPolicyInboundNetwork {
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder allow(Boolean allow) {
             this.allow = Objects.requireNonNull(allow);
             return this;
         }
+        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
         }
+        @CustomType.Setter
         public Builder resource(String resource) {
             this.resource = Objects.requireNonNull(resource);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public GetFirewallPolicyInboundNetwork build() {
-            return new GetFirewallPolicyInboundNetwork(allow, portRange, resource, resourceType);
+        }
+        public GetFirewallPolicyInboundNetwork build() {
+            final var o = new GetFirewallPolicyInboundNetwork();
+            o.allow = allow;
+            o.portRange = portRange;
+            o.resource = resource;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

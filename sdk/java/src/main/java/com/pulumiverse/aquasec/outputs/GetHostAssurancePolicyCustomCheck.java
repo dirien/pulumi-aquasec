@@ -15,41 +15,18 @@ public final class GetHostAssurancePolicyCustomCheck {
      * @return Name of user account that created the policy.
      * 
      */
-    private final String author;
-    private final String description;
-    private final String engine;
-    private final Integer lastModified;
-    private final String name;
-    private final String path;
-    private final Boolean readOnly;
-    private final String scriptId;
-    private final String severity;
-    private final String snippet;
+    private String author;
+    private String description;
+    private String engine;
+    private Integer lastModified;
+    private String name;
+    private String path;
+    private Boolean readOnly;
+    private String scriptId;
+    private String severity;
+    private String snippet;
 
-    @CustomType.Constructor
-    private GetHostAssurancePolicyCustomCheck(
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("engine") String engine,
-        @CustomType.Parameter("lastModified") Integer lastModified,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("path") String path,
-        @CustomType.Parameter("readOnly") Boolean readOnly,
-        @CustomType.Parameter("scriptId") String scriptId,
-        @CustomType.Parameter("severity") String severity,
-        @CustomType.Parameter("snippet") String snippet) {
-        this.author = author;
-        this.description = description;
-        this.engine = engine;
-        this.lastModified = lastModified;
-        this.name = name;
-        this.path = path;
-        this.readOnly = readOnly;
-        this.scriptId = scriptId;
-        this.severity = severity;
-        this.snippet = snippet;
-    }
-
+    private GetHostAssurancePolicyCustomCheck() {}
     /**
      * @return Name of user account that created the policy.
      * 
@@ -92,7 +69,7 @@ public final class GetHostAssurancePolicyCustomCheck {
     public static Builder builder(GetHostAssurancePolicyCustomCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String author;
         private String description;
@@ -104,11 +81,7 @@ public final class GetHostAssurancePolicyCustomCheck {
         private String scriptId;
         private String severity;
         private String snippet;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostAssurancePolicyCustomCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.author = defaults.author;
@@ -123,47 +96,69 @@ public final class GetHostAssurancePolicyCustomCheck {
     	      this.snippet = defaults.snippet;
         }
 
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder engine(String engine) {
             this.engine = Objects.requireNonNull(engine);
             return this;
         }
+        @CustomType.Setter
         public Builder lastModified(Integer lastModified) {
             this.lastModified = Objects.requireNonNull(lastModified);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder path(String path) {
             this.path = Objects.requireNonNull(path);
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(Boolean readOnly) {
             this.readOnly = Objects.requireNonNull(readOnly);
             return this;
         }
+        @CustomType.Setter
         public Builder scriptId(String scriptId) {
             this.scriptId = Objects.requireNonNull(scriptId);
             return this;
         }
+        @CustomType.Setter
         public Builder severity(String severity) {
             this.severity = Objects.requireNonNull(severity);
             return this;
         }
+        @CustomType.Setter
         public Builder snippet(String snippet) {
             this.snippet = Objects.requireNonNull(snippet);
             return this;
-        }        public GetHostAssurancePolicyCustomCheck build() {
-            return new GetHostAssurancePolicyCustomCheck(author, description, engine, lastModified, name, path, readOnly, scriptId, severity, snippet);
+        }
+        public GetHostAssurancePolicyCustomCheck build() {
+            final var o = new GetHostAssurancePolicyCustomCheck();
+            o.author = author;
+            o.description = description;
+            o.engine = engine;
+            o.lastModified = lastModified;
+            o.name = name;
+            o.path = path;
+            o.readOnly = readOnly;
+            o.scriptId = scriptId;
+            o.severity = severity;
+            o.snippet = snippet;
+            return o;
         }
     }
 }

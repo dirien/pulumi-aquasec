@@ -39,6 +39,10 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      */
     public readonly author!: pulumi.Output<string>;
     /**
+     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     */
+    public readonly autoCleanup!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether to automatically pull images from the registry on creation and daily
      */
     public readonly autoPull!: pulumi.Output<boolean | undefined>;
@@ -122,6 +126,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as IntegrationRegistryState | undefined;
             resourceInputs["author"] = state ? state.author : undefined;
+            resourceInputs["autoCleanup"] = state ? state.autoCleanup : undefined;
             resourceInputs["autoPull"] = state ? state.autoPull : undefined;
             resourceInputs["autoPullInterval"] = state ? state.autoPullInterval : undefined;
             resourceInputs["autoPullMax"] = state ? state.autoPullMax : undefined;
@@ -146,6 +151,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["author"] = args ? args.author : undefined;
+            resourceInputs["autoCleanup"] = args ? args.autoCleanup : undefined;
             resourceInputs["autoPull"] = args ? args.autoPull : undefined;
             resourceInputs["autoPullInterval"] = args ? args.autoPullInterval : undefined;
             resourceInputs["autoPullMax"] = args ? args.autoPullMax : undefined;
@@ -178,6 +184,10 @@ export interface IntegrationRegistryState {
      * The username of the user who created or last modified the registry
      */
     author?: pulumi.Input<string>;
+    /**
+     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     */
+    autoCleanup?: pulumi.Input<boolean>;
     /**
      * Whether to automatically pull images from the registry on creation and daily
      */
@@ -257,6 +267,10 @@ export interface IntegrationRegistryArgs {
      * The username of the user who created or last modified the registry
      */
     author?: pulumi.Input<string>;
+    /**
+     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     */
+    autoCleanup?: pulumi.Input<boolean>;
     /**
      * Whether to automatically pull images from the registry on creation and daily
      */

@@ -69,85 +69,85 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="aquasec:index/userSaas:UserSaas")
 public class UserSaas extends com.pulumi.resources.CustomResource {
-    @Export(name="accountAdmin", type=Boolean.class, parameters={})
+    @Export(name="accountAdmin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accountAdmin;
 
     public Output<Boolean> accountAdmin() {
         return this.accountAdmin;
     }
-    @Export(name="confirmed", type=Boolean.class, parameters={})
+    @Export(name="confirmed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> confirmed;
 
     public Output<Boolean> confirmed() {
         return this.confirmed;
     }
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     public Output<String> created() {
         return this.created;
     }
-    @Export(name="cspRoles", type=List.class, parameters={String.class})
+    @Export(name="cspRoles", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> cspRoles;
 
     public Output<List<String>> cspRoles() {
         return this.cspRoles;
     }
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     public Output<String> email() {
         return this.email;
     }
-    @Export(name="groups", type=List.class, parameters={UserSaasGroup.class})
+    @Export(name="groups", refs={List.class,UserSaasGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<UserSaasGroup>> groups;
 
     public Output<Optional<List<UserSaasGroup>>> groups() {
         return Codegen.optional(this.groups);
     }
-    @Export(name="logins", type=List.class, parameters={UserSaasLogin.class})
+    @Export(name="logins", refs={List.class,UserSaasLogin.class}, tree="[0,1]")
     private Output<List<UserSaasLogin>> logins;
 
     public Output<List<UserSaasLogin>> logins() {
         return this.logins;
     }
-    @Export(name="multiaccount", type=Boolean.class, parameters={})
+    @Export(name="multiaccount", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> multiaccount;
 
     public Output<Boolean> multiaccount() {
         return this.multiaccount;
     }
-    @Export(name="passwordReset", type=Boolean.class, parameters={})
+    @Export(name="passwordReset", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> passwordReset;
 
     public Output<Boolean> passwordReset() {
         return this.passwordReset;
     }
-    @Export(name="sendAnnouncements", type=Boolean.class, parameters={})
+    @Export(name="sendAnnouncements", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sendAnnouncements;
 
     public Output<Boolean> sendAnnouncements() {
         return this.sendAnnouncements;
     }
-    @Export(name="sendNewPlugins", type=Boolean.class, parameters={})
+    @Export(name="sendNewPlugins", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sendNewPlugins;
 
     public Output<Boolean> sendNewPlugins() {
         return this.sendNewPlugins;
     }
-    @Export(name="sendNewRisks", type=Boolean.class, parameters={})
+    @Export(name="sendNewRisks", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sendNewRisks;
 
     public Output<Boolean> sendNewRisks() {
         return this.sendNewRisks;
     }
-    @Export(name="sendScanResults", type=Boolean.class, parameters={})
+    @Export(name="sendScanResults", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> sendScanResults;
 
     public Output<Boolean> sendScanResults() {
         return this.sendScanResults;
     }
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     public Output<String> userId() {

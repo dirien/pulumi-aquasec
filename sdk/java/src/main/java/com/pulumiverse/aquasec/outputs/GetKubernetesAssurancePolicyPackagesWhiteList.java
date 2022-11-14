@@ -9,38 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKubernetesAssurancePolicyPackagesWhiteList {
-    private final String arch;
-    private final String display;
-    private final String epoch;
-    private final String format;
-    private final String license;
-    private final String name;
-    private final String release;
-    private final String version;
-    private final String versionRange;
+    private String arch;
+    private String display;
+    private String epoch;
+    private String format;
+    private String license;
+    private String name;
+    private String release;
+    private String version;
+    private String versionRange;
 
-    @CustomType.Constructor
-    private GetKubernetesAssurancePolicyPackagesWhiteList(
-        @CustomType.Parameter("arch") String arch,
-        @CustomType.Parameter("display") String display,
-        @CustomType.Parameter("epoch") String epoch,
-        @CustomType.Parameter("format") String format,
-        @CustomType.Parameter("license") String license,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("release") String release,
-        @CustomType.Parameter("version") String version,
-        @CustomType.Parameter("versionRange") String versionRange) {
-        this.arch = arch;
-        this.display = display;
-        this.epoch = epoch;
-        this.format = format;
-        this.license = license;
-        this.name = name;
-        this.release = release;
-        this.version = version;
-        this.versionRange = versionRange;
-    }
-
+    private GetKubernetesAssurancePolicyPackagesWhiteList() {}
     public String arch() {
         return this.arch;
     }
@@ -76,7 +55,7 @@ public final class GetKubernetesAssurancePolicyPackagesWhiteList {
     public static Builder builder(GetKubernetesAssurancePolicyPackagesWhiteList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String arch;
         private String display;
@@ -87,11 +66,7 @@ public final class GetKubernetesAssurancePolicyPackagesWhiteList {
         private String release;
         private String version;
         private String versionRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesAssurancePolicyPackagesWhiteList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arch = defaults.arch;
@@ -105,43 +80,63 @@ public final class GetKubernetesAssurancePolicyPackagesWhiteList {
     	      this.versionRange = defaults.versionRange;
         }
 
+        @CustomType.Setter
         public Builder arch(String arch) {
             this.arch = Objects.requireNonNull(arch);
             return this;
         }
+        @CustomType.Setter
         public Builder display(String display) {
             this.display = Objects.requireNonNull(display);
             return this;
         }
+        @CustomType.Setter
         public Builder epoch(String epoch) {
             this.epoch = Objects.requireNonNull(epoch);
             return this;
         }
+        @CustomType.Setter
         public Builder format(String format) {
             this.format = Objects.requireNonNull(format);
             return this;
         }
+        @CustomType.Setter
         public Builder license(String license) {
             this.license = Objects.requireNonNull(license);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder release(String release) {
             this.release = Objects.requireNonNull(release);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
         }
+        @CustomType.Setter
         public Builder versionRange(String versionRange) {
             this.versionRange = Objects.requireNonNull(versionRange);
             return this;
-        }        public GetKubernetesAssurancePolicyPackagesWhiteList build() {
-            return new GetKubernetesAssurancePolicyPackagesWhiteList(arch, display, epoch, format, license, name, release, version, versionRange);
+        }
+        public GetKubernetesAssurancePolicyPackagesWhiteList build() {
+            final var o = new GetKubernetesAssurancePolicyPackagesWhiteList();
+            o.arch = arch;
+            o.display = display;
+            o.epoch = epoch;
+            o.format = format;
+            o.license = license;
+            o.name = name;
+            o.release = release;
+            o.version = version;
+            o.versionRange = versionRange;
+            return o;
         }
     }
 }

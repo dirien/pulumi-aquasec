@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryInfrastructureKuberneteVariable {
-    private final @Nullable String attribute;
-    private final @Nullable String value;
+    private @Nullable String attribute;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryInfrastructureKuberneteVariable(
-        @CustomType.Parameter("attribute") @Nullable String attribute,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.attribute = attribute;
-        this.value = value;
-    }
-
+    private ApplicationScopeCategoryInfrastructureKuberneteVariable() {}
     public Optional<String> attribute() {
         return Optional.ofNullable(this.attribute);
     }
@@ -36,30 +29,32 @@ public final class ApplicationScopeCategoryInfrastructureKuberneteVariable {
     public static Builder builder(ApplicationScopeCategoryInfrastructureKuberneteVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String attribute;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryInfrastructureKuberneteVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(@Nullable String attribute) {
             this.attribute = attribute;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ApplicationScopeCategoryInfrastructureKuberneteVariable build() {
-            return new ApplicationScopeCategoryInfrastructureKuberneteVariable(attribute, value);
+        }
+        public ApplicationScopeCategoryInfrastructureKuberneteVariable build() {
+            final var o = new ApplicationScopeCategoryInfrastructureKuberneteVariable();
+            o.attribute = attribute;
+            o.value = value;
+            return o;
         }
     }
 }

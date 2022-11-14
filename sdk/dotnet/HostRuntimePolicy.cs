@@ -22,6 +22,10 @@ namespace Pulumiverse.Aquasec
     /// {
     ///     var hostRuntimePolicy = new Aquasec.HostRuntimePolicy("hostRuntimePolicy", new()
     ///     {
+    ///         ApplicationScopes = new[]
+    ///         {
+    ///             "Global",
+    ///         },
     ///         AuditAllOsUserActivity = true,
     ///         AuditBruteForceLogin = true,
     ///         AuditFullCommandArguments = true,
@@ -93,6 +97,20 @@ namespace Pulumiverse.Aquasec
     ///             "package1",
     ///         },
     ///         PortScanningDetection = true,
+    ///         ScopeVariables = new[]
+    ///         {
+    ///             new Aquasec.Inputs.HostRuntimePolicyScopeVariableArgs
+    ///             {
+    ///                 Attribute = "kubernetes.cluster",
+    ///                 Value = "default",
+    ///             },
+    ///             new Aquasec.Inputs.HostRuntimePolicyScopeVariableArgs
+    ///             {
+    ///                 Attribute = "kubernetes.label",
+    ///                 Name = "app",
+    ///                 Value = "aqua",
+    ///             },
+    ///         },
     ///         WindowsRegistryMonitoring = new Aquasec.Inputs.HostRuntimePolicyWindowsRegistryMonitoringArgs
     ///         {
     ///             ExcludedPaths = new[]

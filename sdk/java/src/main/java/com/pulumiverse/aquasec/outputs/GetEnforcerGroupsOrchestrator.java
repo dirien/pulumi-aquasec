@@ -10,27 +10,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnforcerGroupsOrchestrator {
-    private final Boolean master;
-    private final String namespace;
-    private final String serviceAccount;
+    private Boolean master;
+    private String namespace;
+    private String serviceAccount;
     /**
      * @return Enforcer Type.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetEnforcerGroupsOrchestrator(
-        @CustomType.Parameter("master") Boolean master,
-        @CustomType.Parameter("namespace") String namespace,
-        @CustomType.Parameter("serviceAccount") String serviceAccount,
-        @CustomType.Parameter("type") String type) {
-        this.master = master;
-        this.namespace = namespace;
-        this.serviceAccount = serviceAccount;
-        this.type = type;
-    }
-
+    private GetEnforcerGroupsOrchestrator() {}
     public Boolean master() {
         return this.master;
     }
@@ -55,17 +44,13 @@ public final class GetEnforcerGroupsOrchestrator {
     public static Builder builder(GetEnforcerGroupsOrchestrator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean master;
         private String namespace;
         private String serviceAccount;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnforcerGroupsOrchestrator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.master = defaults.master;
@@ -74,23 +59,33 @@ public final class GetEnforcerGroupsOrchestrator {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder master(Boolean master) {
             this.master = Objects.requireNonNull(master);
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(String namespace) {
             this.namespace = Objects.requireNonNull(namespace);
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
             this.serviceAccount = Objects.requireNonNull(serviceAccount);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetEnforcerGroupsOrchestrator build() {
-            return new GetEnforcerGroupsOrchestrator(master, namespace, serviceAccount, type);
+        }
+        public GetEnforcerGroupsOrchestrator build() {
+            final var o = new GetEnforcerGroupsOrchestrator();
+            o.master = master;
+            o.namespace = namespace;
+            o.serviceAccount = serviceAccount;
+            o.type = type;
+            return o;
         }
     }
 }

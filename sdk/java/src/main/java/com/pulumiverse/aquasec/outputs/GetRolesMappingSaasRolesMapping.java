@@ -11,30 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesMappingSaasRolesMapping {
-    private final Integer accountId;
-    private final String created;
-    private final String cspRole;
+    private Integer accountId;
+    private String created;
+    private String cspRole;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final Integer id;
-    private final List<String> samlGroups;
+    private Integer id;
+    private List<String> samlGroups;
 
-    @CustomType.Constructor
-    private GetRolesMappingSaasRolesMapping(
-        @CustomType.Parameter("accountId") Integer accountId,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("cspRole") String cspRole,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("samlGroups") List<String> samlGroups) {
-        this.accountId = accountId;
-        this.created = created;
-        this.cspRole = cspRole;
-        this.id = id;
-        this.samlGroups = samlGroups;
-    }
-
+    private GetRolesMappingSaasRolesMapping() {}
     public Integer accountId() {
         return this.accountId;
     }
@@ -62,18 +49,14 @@ public final class GetRolesMappingSaasRolesMapping {
     public static Builder builder(GetRolesMappingSaasRolesMapping defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer accountId;
         private String created;
         private String cspRole;
         private Integer id;
         private List<String> samlGroups;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesMappingSaasRolesMapping defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
@@ -83,30 +66,42 @@ public final class GetRolesMappingSaasRolesMapping {
     	      this.samlGroups = defaults.samlGroups;
         }
 
+        @CustomType.Setter
         public Builder accountId(Integer accountId) {
             this.accountId = Objects.requireNonNull(accountId);
             return this;
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder cspRole(String cspRole) {
             this.cspRole = Objects.requireNonNull(cspRole);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder samlGroups(List<String> samlGroups) {
             this.samlGroups = Objects.requireNonNull(samlGroups);
             return this;
         }
         public Builder samlGroups(String... samlGroups) {
             return samlGroups(List.of(samlGroups));
-        }        public GetRolesMappingSaasRolesMapping build() {
-            return new GetRolesMappingSaasRolesMapping(accountId, created, cspRole, id, samlGroups);
+        }
+        public GetRolesMappingSaasRolesMapping build() {
+            final var o = new GetRolesMappingSaasRolesMapping();
+            o.accountId = accountId;
+            o.created = created;
+            o.cspRole = cspRole;
+            o.id = id;
+            o.samlGroups = samlGroups;
+            return o;
         }
     }
 }

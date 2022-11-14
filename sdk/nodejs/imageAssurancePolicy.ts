@@ -40,10 +40,6 @@ export class ImageAssurancePolicy extends pulumi.CustomResource {
     public readonly allowedImages!: pulumi.Output<string[] | undefined>;
     public readonly applicationScopes!: pulumi.Output<string[]>;
     /**
-     * What type of assurance policy is described.
-     */
-    public readonly assuranceType!: pulumi.Output<string | undefined>;
-    /**
      * Indicates if auditing for failures.
      */
     public readonly auditOnFailure!: pulumi.Output<boolean | undefined>;
@@ -247,7 +243,6 @@ export class ImageAssurancePolicy extends pulumi.CustomResource {
             const state = argsOrState as ImageAssurancePolicyState | undefined;
             resourceInputs["allowedImages"] = state ? state.allowedImages : undefined;
             resourceInputs["applicationScopes"] = state ? state.applicationScopes : undefined;
-            resourceInputs["assuranceType"] = state ? state.assuranceType : undefined;
             resourceInputs["auditOnFailure"] = state ? state.auditOnFailure : undefined;
             resourceInputs["author"] = state ? state.author : undefined;
             resourceInputs["autoScanConfigured"] = state ? state.autoScanConfigured : undefined;
@@ -326,7 +321,6 @@ export class ImageAssurancePolicy extends pulumi.CustomResource {
             }
             resourceInputs["allowedImages"] = args ? args.allowedImages : undefined;
             resourceInputs["applicationScopes"] = args ? args.applicationScopes : undefined;
-            resourceInputs["assuranceType"] = args ? args.assuranceType : undefined;
             resourceInputs["auditOnFailure"] = args ? args.auditOnFailure : undefined;
             resourceInputs["autoScanConfigured"] = args ? args.autoScanConfigured : undefined;
             resourceInputs["autoScanEnabled"] = args ? args.autoScanEnabled : undefined;
@@ -413,10 +407,6 @@ export interface ImageAssurancePolicyState {
      */
     allowedImages?: pulumi.Input<pulumi.Input<string>[]>;
     applicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * What type of assurance policy is described.
-     */
-    assuranceType?: pulumi.Input<string>;
     /**
      * Indicates if auditing for failures.
      */
@@ -616,10 +606,6 @@ export interface ImageAssurancePolicyArgs {
      */
     allowedImages?: pulumi.Input<pulumi.Input<string>[]>;
     applicationScopes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * What type of assurance policy is described.
-     */
-    assuranceType?: pulumi.Input<string>;
     /**
      * Indicates if auditing for failures.
      */

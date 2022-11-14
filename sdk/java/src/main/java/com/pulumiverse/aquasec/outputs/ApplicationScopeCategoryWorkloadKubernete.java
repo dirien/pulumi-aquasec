@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryWorkloadKubernete {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryWorkloadKuberneteVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryWorkloadKuberneteVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryWorkloadKubernete(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryWorkloadKuberneteVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryWorkloadKubernete() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryWorkloadKubernete {
     public static Builder builder(ApplicationScopeCategoryWorkloadKubernete defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryWorkloadKuberneteVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryWorkloadKubernete defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryWorkloadKuberneteVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryWorkloadKuberneteVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryWorkloadKubernete build() {
-            return new ApplicationScopeCategoryWorkloadKubernete(expression, variables);
+        }
+        public ApplicationScopeCategoryWorkloadKubernete build() {
+            final var o = new ApplicationScopeCategoryWorkloadKubernete();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

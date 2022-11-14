@@ -15,28 +15,19 @@ public final class ServiceScopeVariable {
      * @return Class of supported scope.
      * 
      */
-    private final @Nullable String attribute;
+    private @Nullable String attribute;
     /**
      * @return Name assigned to the attribute.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Value assigned to the attribute.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ServiceScopeVariable(
-        @CustomType.Parameter("attribute") @Nullable String attribute,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private ServiceScopeVariable() {}
     /**
      * @return Class of supported scope.
      * 
@@ -66,16 +57,12 @@ public final class ServiceScopeVariable {
     public static Builder builder(ServiceScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String attribute;
         private @Nullable String name;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServiceScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -83,19 +70,27 @@ public final class ServiceScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(@Nullable String attribute) {
             this.attribute = attribute;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ServiceScopeVariable build() {
-            return new ServiceScopeVariable(attribute, name, value);
+        }
+        public ServiceScopeVariable build() {
+            final var o = new ServiceScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

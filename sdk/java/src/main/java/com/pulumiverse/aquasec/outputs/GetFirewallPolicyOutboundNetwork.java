@@ -14,35 +14,24 @@ public final class GetFirewallPolicyOutboundNetwork {
      * @return Indicates whether the specified resources are allowed to receive data or requests.
      * 
      */
-    private final Boolean allow;
+    private Boolean allow;
     /**
      * @return Range of ports affected by firewall.
      * 
      */
-    private final String portRange;
+    private String portRange;
     /**
      * @return Information of the resource.
      * 
      */
-    private final String resource;
+    private String resource;
     /**
      * @return Type of the resource.
      * 
      */
-    private final String resourceType;
+    private String resourceType;
 
-    @CustomType.Constructor
-    private GetFirewallPolicyOutboundNetwork(
-        @CustomType.Parameter("allow") Boolean allow,
-        @CustomType.Parameter("portRange") String portRange,
-        @CustomType.Parameter("resource") String resource,
-        @CustomType.Parameter("resourceType") String resourceType) {
-        this.allow = allow;
-        this.portRange = portRange;
-        this.resource = resource;
-        this.resourceType = resourceType;
-    }
-
+    private GetFirewallPolicyOutboundNetwork() {}
     /**
      * @return Indicates whether the specified resources are allowed to receive data or requests.
      * 
@@ -79,17 +68,13 @@ public final class GetFirewallPolicyOutboundNetwork {
     public static Builder builder(GetFirewallPolicyOutboundNetwork defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean allow;
         private String portRange;
         private String resource;
         private String resourceType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallPolicyOutboundNetwork defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allow = defaults.allow;
@@ -98,23 +83,33 @@ public final class GetFirewallPolicyOutboundNetwork {
     	      this.resourceType = defaults.resourceType;
         }
 
+        @CustomType.Setter
         public Builder allow(Boolean allow) {
             this.allow = Objects.requireNonNull(allow);
             return this;
         }
+        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
         }
+        @CustomType.Setter
         public Builder resource(String resource) {
             this.resource = Objects.requireNonNull(resource);
             return this;
         }
+        @CustomType.Setter
         public Builder resourceType(String resourceType) {
             this.resourceType = Objects.requireNonNull(resourceType);
             return this;
-        }        public GetFirewallPolicyOutboundNetwork build() {
-            return new GetFirewallPolicyOutboundNetwork(allow, portRange, resource, resourceType);
+        }
+        public GetFirewallPolicyOutboundNetwork build() {
+            final var o = new GetFirewallPolicyOutboundNetwork();
+            o.allow = allow;
+            o.portRange = portRange;
+            o.resource = resource;
+            o.resourceType = resourceType;
+            return o;
         }
     }
 }

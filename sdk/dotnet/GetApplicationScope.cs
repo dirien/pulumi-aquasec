@@ -87,22 +87,10 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// Description of the application scope.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
         /// Name of an application scope.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
-
-        /// <summary>
-        /// Name of an application scope.
-        /// </summary>
-        [Input("ownerEmail")]
-        public string? OwnerEmail { get; set; }
 
         public GetApplicationScopeArgs()
         {
@@ -125,22 +113,10 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// Description of the application scope.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
         /// Name of an application scope.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// Name of an application scope.
-        /// </summary>
-        [Input("ownerEmail")]
-        public Input<string>? OwnerEmail { get; set; }
 
         public GetApplicationScopeInvokeArgs()
         {
@@ -163,7 +139,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Description of the application scope.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -175,7 +151,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Name of an application scope.
         /// </summary>
-        public readonly string? OwnerEmail;
+        public readonly string OwnerEmail;
 
         [OutputConstructor]
         private GetApplicationScopeResult(
@@ -183,13 +159,13 @@ namespace Pulumiverse.Aquasec
 
             ImmutableArray<Outputs.GetApplicationScopeCategoryResult> categories,
 
-            string? description,
+            string description,
 
             string id,
 
             string name,
 
-            string? ownerEmail)
+            string ownerEmail)
         {
             Author = author;
             Categories = categories;

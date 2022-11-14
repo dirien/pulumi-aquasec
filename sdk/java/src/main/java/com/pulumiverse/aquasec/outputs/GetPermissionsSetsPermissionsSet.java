@@ -11,32 +11,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPermissionsSetsPermissionsSet {
-    private final List<String> actions;
-    private final String author;
-    private final String description;
-    private final Boolean isSuper;
-    private final String name;
-    private final Boolean uiAccess;
-    private final String updatedAt;
+    private List<String> actions;
+    private String author;
+    private String description;
+    private Boolean isSuper;
+    private String name;
+    private Boolean uiAccess;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetPermissionsSetsPermissionsSet(
-        @CustomType.Parameter("actions") List<String> actions,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("isSuper") Boolean isSuper,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("uiAccess") Boolean uiAccess,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.actions = actions;
-        this.author = author;
-        this.description = description;
-        this.isSuper = isSuper;
-        this.name = name;
-        this.uiAccess = uiAccess;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetPermissionsSetsPermissionsSet() {}
     public List<String> actions() {
         return this.actions;
     }
@@ -66,7 +49,7 @@ public final class GetPermissionsSetsPermissionsSet {
     public static Builder builder(GetPermissionsSetsPermissionsSet defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> actions;
         private String author;
@@ -75,11 +58,7 @@ public final class GetPermissionsSetsPermissionsSet {
         private String name;
         private Boolean uiAccess;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPermissionsSetsPermissionsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
@@ -91,6 +70,7 @@ public final class GetPermissionsSetsPermissionsSet {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder actions(List<String> actions) {
             this.actions = Objects.requireNonNull(actions);
             return this;
@@ -98,31 +78,46 @@ public final class GetPermissionsSetsPermissionsSet {
         public Builder actions(String... actions) {
             return actions(List.of(actions));
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder isSuper(Boolean isSuper) {
             this.isSuper = Objects.requireNonNull(isSuper);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder uiAccess(Boolean uiAccess) {
             this.uiAccess = Objects.requireNonNull(uiAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetPermissionsSetsPermissionsSet build() {
-            return new GetPermissionsSetsPermissionsSet(actions, author, description, isSuper, name, uiAccess, updatedAt);
+        }
+        public GetPermissionsSetsPermissionsSet build() {
+            final var o = new GetPermissionsSetsPermissionsSet();
+            o.actions = actions;
+            o.author = author;
+            o.description = description;
+            o.isSuper = isSuper;
+            o.name = name;
+            o.uiAccess = uiAccess;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

@@ -10,24 +10,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersSaasUserGroup {
-    private final String created;
+    private String created;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final Integer id;
-    private final String name;
+    private Integer id;
+    private String name;
 
-    @CustomType.Constructor
-    private GetUsersSaasUserGroup(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("name") String name) {
-        this.created = created;
-        this.id = id;
-        this.name = name;
-    }
-
+    private GetUsersSaasUserGroup() {}
     public String created() {
         return this.created;
     }
@@ -49,16 +40,12 @@ public final class GetUsersSaasUserGroup {
     public static Builder builder(GetUsersSaasUserGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private Integer id;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersSaasUserGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -66,19 +53,27 @@ public final class GetUsersSaasUserGroup {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetUsersSaasUserGroup build() {
-            return new GetUsersSaasUserGroup(created, id, name);
+        }
+        public GetUsersSaasUserGroup build() {
+            final var o = new GetUsersSaasUserGroup();
+            o.created = created;
+            o.id = id;
+            o.name = name;
+            return o;
         }
     }
 }

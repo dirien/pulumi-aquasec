@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScopeCategoryInfrastructure {
-    private final @Nullable List<GetApplicationScopeCategoryInfrastructureKubernete> kubernetes;
-    private final @Nullable List<GetApplicationScopeCategoryInfrastructureO> os;
+    private @Nullable List<GetApplicationScopeCategoryInfrastructureKubernete> kubernetes;
+    private @Nullable List<GetApplicationScopeCategoryInfrastructureO> os;
 
-    @CustomType.Constructor
-    private GetApplicationScopeCategoryInfrastructure(
-        @CustomType.Parameter("kubernetes") @Nullable List<GetApplicationScopeCategoryInfrastructureKubernete> kubernetes,
-        @CustomType.Parameter("os") @Nullable List<GetApplicationScopeCategoryInfrastructureO> os) {
-        this.kubernetes = kubernetes;
-        this.os = os;
-    }
-
+    private GetApplicationScopeCategoryInfrastructure() {}
     public List<GetApplicationScopeCategoryInfrastructureKubernete> kubernetes() {
         return this.kubernetes == null ? List.of() : this.kubernetes;
     }
@@ -37,21 +30,18 @@ public final class GetApplicationScopeCategoryInfrastructure {
     public static Builder builder(GetApplicationScopeCategoryInfrastructure defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetApplicationScopeCategoryInfrastructureKubernete> kubernetes;
         private @Nullable List<GetApplicationScopeCategoryInfrastructureO> os;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScopeCategoryInfrastructure defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.kubernetes = defaults.kubernetes;
     	      this.os = defaults.os;
         }
 
+        @CustomType.Setter
         public Builder kubernetes(@Nullable List<GetApplicationScopeCategoryInfrastructureKubernete> kubernetes) {
             this.kubernetes = kubernetes;
             return this;
@@ -59,14 +49,19 @@ public final class GetApplicationScopeCategoryInfrastructure {
         public Builder kubernetes(GetApplicationScopeCategoryInfrastructureKubernete... kubernetes) {
             return kubernetes(List.of(kubernetes));
         }
+        @CustomType.Setter
         public Builder os(@Nullable List<GetApplicationScopeCategoryInfrastructureO> os) {
             this.os = os;
             return this;
         }
         public Builder os(GetApplicationScopeCategoryInfrastructureO... os) {
             return os(List.of(os));
-        }        public GetApplicationScopeCategoryInfrastructure build() {
-            return new GetApplicationScopeCategoryInfrastructure(kubernetes, os);
+        }
+        public GetApplicationScopeCategoryInfrastructure build() {
+            final var o = new GetApplicationScopeCategoryInfrastructure();
+            o.kubernetes = kubernetes;
+            o.os = os;
+            return o;
         }
     }
 }

@@ -12923,198 +12923,128 @@ func (o GetContainerRuntimePolicyFileIntegrityMonitoringArrayOutput) Index(i pul
 	}).(GetContainerRuntimePolicyFileIntegrityMonitoringOutput)
 }
 
-type GetContainerRuntimePolicyMalwareScanOptions struct {
+type GetContainerRuntimePolicyMalwareScanOption struct {
 	// Set Action, Defaults to 'Alert' when empty
-	Action *string `pulumi:"action"`
+	Action string `pulumi:"action"`
 	// Defines if enabled or not
-	Enabled *bool `pulumi:"enabled"`
+	Enabled bool `pulumi:"enabled"`
 	// List of registry paths to be excluded from being protected.
 	ExcludeDirectories []string `pulumi:"excludeDirectories"`
 	// List of registry processes to be excluded from being protected.
 	ExcludeProcesses []string `pulumi:"excludeProcesses"`
 }
 
-// GetContainerRuntimePolicyMalwareScanOptionsInput is an input type that accepts GetContainerRuntimePolicyMalwareScanOptionsArgs and GetContainerRuntimePolicyMalwareScanOptionsOutput values.
-// You can construct a concrete instance of `GetContainerRuntimePolicyMalwareScanOptionsInput` via:
+// GetContainerRuntimePolicyMalwareScanOptionInput is an input type that accepts GetContainerRuntimePolicyMalwareScanOptionArgs and GetContainerRuntimePolicyMalwareScanOptionOutput values.
+// You can construct a concrete instance of `GetContainerRuntimePolicyMalwareScanOptionInput` via:
 //
-//	GetContainerRuntimePolicyMalwareScanOptionsArgs{...}
-type GetContainerRuntimePolicyMalwareScanOptionsInput interface {
+//	GetContainerRuntimePolicyMalwareScanOptionArgs{...}
+type GetContainerRuntimePolicyMalwareScanOptionInput interface {
 	pulumi.Input
 
-	ToGetContainerRuntimePolicyMalwareScanOptionsOutput() GetContainerRuntimePolicyMalwareScanOptionsOutput
-	ToGetContainerRuntimePolicyMalwareScanOptionsOutputWithContext(context.Context) GetContainerRuntimePolicyMalwareScanOptionsOutput
+	ToGetContainerRuntimePolicyMalwareScanOptionOutput() GetContainerRuntimePolicyMalwareScanOptionOutput
+	ToGetContainerRuntimePolicyMalwareScanOptionOutputWithContext(context.Context) GetContainerRuntimePolicyMalwareScanOptionOutput
 }
 
-type GetContainerRuntimePolicyMalwareScanOptionsArgs struct {
+type GetContainerRuntimePolicyMalwareScanOptionArgs struct {
 	// Set Action, Defaults to 'Alert' when empty
-	Action pulumi.StringPtrInput `pulumi:"action"`
+	Action pulumi.StringInput `pulumi:"action"`
 	// Defines if enabled or not
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// List of registry paths to be excluded from being protected.
 	ExcludeDirectories pulumi.StringArrayInput `pulumi:"excludeDirectories"`
 	// List of registry processes to be excluded from being protected.
 	ExcludeProcesses pulumi.StringArrayInput `pulumi:"excludeProcesses"`
 }
 
-func (GetContainerRuntimePolicyMalwareScanOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptions)(nil)).Elem()
+func (GetContainerRuntimePolicyMalwareScanOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-func (i GetContainerRuntimePolicyMalwareScanOptionsArgs) ToGetContainerRuntimePolicyMalwareScanOptionsOutput() GetContainerRuntimePolicyMalwareScanOptionsOutput {
-	return i.ToGetContainerRuntimePolicyMalwareScanOptionsOutputWithContext(context.Background())
+func (i GetContainerRuntimePolicyMalwareScanOptionArgs) ToGetContainerRuntimePolicyMalwareScanOptionOutput() GetContainerRuntimePolicyMalwareScanOptionOutput {
+	return i.ToGetContainerRuntimePolicyMalwareScanOptionOutputWithContext(context.Background())
 }
 
-func (i GetContainerRuntimePolicyMalwareScanOptionsArgs) ToGetContainerRuntimePolicyMalwareScanOptionsOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainerRuntimePolicyMalwareScanOptionsOutput)
+func (i GetContainerRuntimePolicyMalwareScanOptionArgs) ToGetContainerRuntimePolicyMalwareScanOptionOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainerRuntimePolicyMalwareScanOptionOutput)
 }
 
-func (i GetContainerRuntimePolicyMalwareScanOptionsArgs) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutput() GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return i.ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i GetContainerRuntimePolicyMalwareScanOptionsArgs) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainerRuntimePolicyMalwareScanOptionsOutput).ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx)
-}
-
-// GetContainerRuntimePolicyMalwareScanOptionsPtrInput is an input type that accepts GetContainerRuntimePolicyMalwareScanOptionsArgs, GetContainerRuntimePolicyMalwareScanOptionsPtr and GetContainerRuntimePolicyMalwareScanOptionsPtrOutput values.
-// You can construct a concrete instance of `GetContainerRuntimePolicyMalwareScanOptionsPtrInput` via:
+// GetContainerRuntimePolicyMalwareScanOptionArrayInput is an input type that accepts GetContainerRuntimePolicyMalwareScanOptionArray and GetContainerRuntimePolicyMalwareScanOptionArrayOutput values.
+// You can construct a concrete instance of `GetContainerRuntimePolicyMalwareScanOptionArrayInput` via:
 //
-//	        GetContainerRuntimePolicyMalwareScanOptionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetContainerRuntimePolicyMalwareScanOptionsPtrInput interface {
+//	GetContainerRuntimePolicyMalwareScanOptionArray{ GetContainerRuntimePolicyMalwareScanOptionArgs{...} }
+type GetContainerRuntimePolicyMalwareScanOptionArrayInput interface {
 	pulumi.Input
 
-	ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutput() GetContainerRuntimePolicyMalwareScanOptionsPtrOutput
-	ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Context) GetContainerRuntimePolicyMalwareScanOptionsPtrOutput
+	ToGetContainerRuntimePolicyMalwareScanOptionArrayOutput() GetContainerRuntimePolicyMalwareScanOptionArrayOutput
+	ToGetContainerRuntimePolicyMalwareScanOptionArrayOutputWithContext(context.Context) GetContainerRuntimePolicyMalwareScanOptionArrayOutput
 }
 
-type getContainerRuntimePolicyMalwareScanOptionsPtrType GetContainerRuntimePolicyMalwareScanOptionsArgs
+type GetContainerRuntimePolicyMalwareScanOptionArray []GetContainerRuntimePolicyMalwareScanOptionInput
 
-func GetContainerRuntimePolicyMalwareScanOptionsPtr(v *GetContainerRuntimePolicyMalwareScanOptionsArgs) GetContainerRuntimePolicyMalwareScanOptionsPtrInput {
-	return (*getContainerRuntimePolicyMalwareScanOptionsPtrType)(v)
+func (GetContainerRuntimePolicyMalwareScanOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainerRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-func (*getContainerRuntimePolicyMalwareScanOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetContainerRuntimePolicyMalwareScanOptions)(nil)).Elem()
+func (i GetContainerRuntimePolicyMalwareScanOptionArray) ToGetContainerRuntimePolicyMalwareScanOptionArrayOutput() GetContainerRuntimePolicyMalwareScanOptionArrayOutput {
+	return i.ToGetContainerRuntimePolicyMalwareScanOptionArrayOutputWithContext(context.Background())
 }
 
-func (i *getContainerRuntimePolicyMalwareScanOptionsPtrType) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutput() GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return i.ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Background())
+func (i GetContainerRuntimePolicyMalwareScanOptionArray) ToGetContainerRuntimePolicyMalwareScanOptionArrayOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainerRuntimePolicyMalwareScanOptionArrayOutput)
 }
 
-func (i *getContainerRuntimePolicyMalwareScanOptionsPtrType) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainerRuntimePolicyMalwareScanOptionsPtrOutput)
+type GetContainerRuntimePolicyMalwareScanOptionOutput struct{ *pulumi.OutputState }
+
+func (GetContainerRuntimePolicyMalwareScanOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-type GetContainerRuntimePolicyMalwareScanOptionsOutput struct{ *pulumi.OutputState }
-
-func (GetContainerRuntimePolicyMalwareScanOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptions)(nil)).Elem()
-}
-
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) ToGetContainerRuntimePolicyMalwareScanOptionsOutput() GetContainerRuntimePolicyMalwareScanOptionsOutput {
+func (o GetContainerRuntimePolicyMalwareScanOptionOutput) ToGetContainerRuntimePolicyMalwareScanOptionOutput() GetContainerRuntimePolicyMalwareScanOptionOutput {
 	return o
 }
 
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) ToGetContainerRuntimePolicyMalwareScanOptionsOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionsOutput {
+func (o GetContainerRuntimePolicyMalwareScanOptionOutput) ToGetContainerRuntimePolicyMalwareScanOptionOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionOutput {
 	return o
-}
-
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutput() GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Background())
-}
-
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetContainerRuntimePolicyMalwareScanOptions) *GetContainerRuntimePolicyMalwareScanOptions {
-		return &v
-	}).(GetContainerRuntimePolicyMalwareScanOptionsPtrOutput)
 }
 
 // Set Action, Defaults to 'Alert' when empty
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOptions) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o GetContainerRuntimePolicyMalwareScanOptionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOption) string { return v.Action }).(pulumi.StringOutput)
 }
 
 // Defines if enabled or not
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOptions) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o GetContainerRuntimePolicyMalwareScanOptionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // List of registry paths to be excluded from being protected.
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) ExcludeDirectories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOptions) []string { return v.ExcludeDirectories }).(pulumi.StringArrayOutput)
+func (o GetContainerRuntimePolicyMalwareScanOptionOutput) ExcludeDirectories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOption) []string { return v.ExcludeDirectories }).(pulumi.StringArrayOutput)
 }
 
 // List of registry processes to be excluded from being protected.
-func (o GetContainerRuntimePolicyMalwareScanOptionsOutput) ExcludeProcesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOptions) []string { return v.ExcludeProcesses }).(pulumi.StringArrayOutput)
+func (o GetContainerRuntimePolicyMalwareScanOptionOutput) ExcludeProcesses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetContainerRuntimePolicyMalwareScanOption) []string { return v.ExcludeProcesses }).(pulumi.StringArrayOutput)
 }
 
-type GetContainerRuntimePolicyMalwareScanOptionsPtrOutput struct{ *pulumi.OutputState }
+type GetContainerRuntimePolicyMalwareScanOptionArrayOutput struct{ *pulumi.OutputState }
 
-func (GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetContainerRuntimePolicyMalwareScanOptions)(nil)).Elem()
+func (GetContainerRuntimePolicyMalwareScanOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainerRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutput() GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
+func (o GetContainerRuntimePolicyMalwareScanOptionArrayOutput) ToGetContainerRuntimePolicyMalwareScanOptionArrayOutput() GetContainerRuntimePolicyMalwareScanOptionArrayOutput {
 	return o
 }
 
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) ToGetContainerRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
+func (o GetContainerRuntimePolicyMalwareScanOptionArrayOutput) ToGetContainerRuntimePolicyMalwareScanOptionArrayOutputWithContext(ctx context.Context) GetContainerRuntimePolicyMalwareScanOptionArrayOutput {
 	return o
 }
 
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) Elem() GetContainerRuntimePolicyMalwareScanOptionsOutput {
-	return o.ApplyT(func(v *GetContainerRuntimePolicyMalwareScanOptions) GetContainerRuntimePolicyMalwareScanOptions {
-		if v != nil {
-			return *v
-		}
-		var ret GetContainerRuntimePolicyMalwareScanOptions
-		return ret
-	}).(GetContainerRuntimePolicyMalwareScanOptionsOutput)
-}
-
-// Set Action, Defaults to 'Alert' when empty
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetContainerRuntimePolicyMalwareScanOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Action
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines if enabled or not
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetContainerRuntimePolicyMalwareScanOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of registry paths to be excluded from being protected.
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) ExcludeDirectories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetContainerRuntimePolicyMalwareScanOptions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeDirectories
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of registry processes to be excluded from being protected.
-func (o GetContainerRuntimePolicyMalwareScanOptionsPtrOutput) ExcludeProcesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetContainerRuntimePolicyMalwareScanOptions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeProcesses
-	}).(pulumi.StringArrayOutput)
+func (o GetContainerRuntimePolicyMalwareScanOptionArrayOutput) Index(i pulumi.IntInput) GetContainerRuntimePolicyMalwareScanOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainerRuntimePolicyMalwareScanOption {
+		return vs[0].([]GetContainerRuntimePolicyMalwareScanOption)[vs[1].(int)]
+	}).(GetContainerRuntimePolicyMalwareScanOptionOutput)
 }
 
 type GetContainerRuntimePolicyScopeVariable struct {
@@ -16303,198 +16233,119 @@ func (o GetHostRuntimePolicyFileIntegrityMonitoringArrayOutput) Index(i pulumi.I
 	}).(GetHostRuntimePolicyFileIntegrityMonitoringOutput)
 }
 
-type GetHostRuntimePolicyMalwareScanOptions struct {
-	// Set Action, Defaults to 'Alert' when empty
-	Action *string `pulumi:"action"`
-	// Defines if enabled or not
-	Enabled *bool `pulumi:"enabled"`
-	// List of registry processes to be excluded from being protected.
-	ExcludeProcesses []string `pulumi:"excludeProcesses"`
-	// List of directories to be protected.
+type GetHostRuntimePolicyMalwareScanOption struct {
+	Action string `pulumi:"action"`
+	// Indicates if the runtime policy is enabled or not.
+	Enabled            bool     `pulumi:"enabled"`
+	ExcludeProcesses   []string `pulumi:"excludeProcesses"`
 	IncludeDirectories []string `pulumi:"includeDirectories"`
 }
 
-// GetHostRuntimePolicyMalwareScanOptionsInput is an input type that accepts GetHostRuntimePolicyMalwareScanOptionsArgs and GetHostRuntimePolicyMalwareScanOptionsOutput values.
-// You can construct a concrete instance of `GetHostRuntimePolicyMalwareScanOptionsInput` via:
+// GetHostRuntimePolicyMalwareScanOptionInput is an input type that accepts GetHostRuntimePolicyMalwareScanOptionArgs and GetHostRuntimePolicyMalwareScanOptionOutput values.
+// You can construct a concrete instance of `GetHostRuntimePolicyMalwareScanOptionInput` via:
 //
-//	GetHostRuntimePolicyMalwareScanOptionsArgs{...}
-type GetHostRuntimePolicyMalwareScanOptionsInput interface {
+//	GetHostRuntimePolicyMalwareScanOptionArgs{...}
+type GetHostRuntimePolicyMalwareScanOptionInput interface {
 	pulumi.Input
 
-	ToGetHostRuntimePolicyMalwareScanOptionsOutput() GetHostRuntimePolicyMalwareScanOptionsOutput
-	ToGetHostRuntimePolicyMalwareScanOptionsOutputWithContext(context.Context) GetHostRuntimePolicyMalwareScanOptionsOutput
+	ToGetHostRuntimePolicyMalwareScanOptionOutput() GetHostRuntimePolicyMalwareScanOptionOutput
+	ToGetHostRuntimePolicyMalwareScanOptionOutputWithContext(context.Context) GetHostRuntimePolicyMalwareScanOptionOutput
 }
 
-type GetHostRuntimePolicyMalwareScanOptionsArgs struct {
-	// Set Action, Defaults to 'Alert' when empty
-	Action pulumi.StringPtrInput `pulumi:"action"`
-	// Defines if enabled or not
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// List of registry processes to be excluded from being protected.
-	ExcludeProcesses pulumi.StringArrayInput `pulumi:"excludeProcesses"`
-	// List of directories to be protected.
+type GetHostRuntimePolicyMalwareScanOptionArgs struct {
+	Action pulumi.StringInput `pulumi:"action"`
+	// Indicates if the runtime policy is enabled or not.
+	Enabled            pulumi.BoolInput        `pulumi:"enabled"`
+	ExcludeProcesses   pulumi.StringArrayInput `pulumi:"excludeProcesses"`
 	IncludeDirectories pulumi.StringArrayInput `pulumi:"includeDirectories"`
 }
 
-func (GetHostRuntimePolicyMalwareScanOptionsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptions)(nil)).Elem()
+func (GetHostRuntimePolicyMalwareScanOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-func (i GetHostRuntimePolicyMalwareScanOptionsArgs) ToGetHostRuntimePolicyMalwareScanOptionsOutput() GetHostRuntimePolicyMalwareScanOptionsOutput {
-	return i.ToGetHostRuntimePolicyMalwareScanOptionsOutputWithContext(context.Background())
+func (i GetHostRuntimePolicyMalwareScanOptionArgs) ToGetHostRuntimePolicyMalwareScanOptionOutput() GetHostRuntimePolicyMalwareScanOptionOutput {
+	return i.ToGetHostRuntimePolicyMalwareScanOptionOutputWithContext(context.Background())
 }
 
-func (i GetHostRuntimePolicyMalwareScanOptionsArgs) ToGetHostRuntimePolicyMalwareScanOptionsOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostRuntimePolicyMalwareScanOptionsOutput)
+func (i GetHostRuntimePolicyMalwareScanOptionArgs) ToGetHostRuntimePolicyMalwareScanOptionOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostRuntimePolicyMalwareScanOptionOutput)
 }
 
-func (i GetHostRuntimePolicyMalwareScanOptionsArgs) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutput() GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return i.ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Background())
-}
-
-func (i GetHostRuntimePolicyMalwareScanOptionsArgs) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostRuntimePolicyMalwareScanOptionsOutput).ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx)
-}
-
-// GetHostRuntimePolicyMalwareScanOptionsPtrInput is an input type that accepts GetHostRuntimePolicyMalwareScanOptionsArgs, GetHostRuntimePolicyMalwareScanOptionsPtr and GetHostRuntimePolicyMalwareScanOptionsPtrOutput values.
-// You can construct a concrete instance of `GetHostRuntimePolicyMalwareScanOptionsPtrInput` via:
+// GetHostRuntimePolicyMalwareScanOptionArrayInput is an input type that accepts GetHostRuntimePolicyMalwareScanOptionArray and GetHostRuntimePolicyMalwareScanOptionArrayOutput values.
+// You can construct a concrete instance of `GetHostRuntimePolicyMalwareScanOptionArrayInput` via:
 //
-//	        GetHostRuntimePolicyMalwareScanOptionsArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetHostRuntimePolicyMalwareScanOptionsPtrInput interface {
+//	GetHostRuntimePolicyMalwareScanOptionArray{ GetHostRuntimePolicyMalwareScanOptionArgs{...} }
+type GetHostRuntimePolicyMalwareScanOptionArrayInput interface {
 	pulumi.Input
 
-	ToGetHostRuntimePolicyMalwareScanOptionsPtrOutput() GetHostRuntimePolicyMalwareScanOptionsPtrOutput
-	ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Context) GetHostRuntimePolicyMalwareScanOptionsPtrOutput
+	ToGetHostRuntimePolicyMalwareScanOptionArrayOutput() GetHostRuntimePolicyMalwareScanOptionArrayOutput
+	ToGetHostRuntimePolicyMalwareScanOptionArrayOutputWithContext(context.Context) GetHostRuntimePolicyMalwareScanOptionArrayOutput
 }
 
-type getHostRuntimePolicyMalwareScanOptionsPtrType GetHostRuntimePolicyMalwareScanOptionsArgs
+type GetHostRuntimePolicyMalwareScanOptionArray []GetHostRuntimePolicyMalwareScanOptionInput
 
-func GetHostRuntimePolicyMalwareScanOptionsPtr(v *GetHostRuntimePolicyMalwareScanOptionsArgs) GetHostRuntimePolicyMalwareScanOptionsPtrInput {
-	return (*getHostRuntimePolicyMalwareScanOptionsPtrType)(v)
+func (GetHostRuntimePolicyMalwareScanOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-func (*getHostRuntimePolicyMalwareScanOptionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetHostRuntimePolicyMalwareScanOptions)(nil)).Elem()
+func (i GetHostRuntimePolicyMalwareScanOptionArray) ToGetHostRuntimePolicyMalwareScanOptionArrayOutput() GetHostRuntimePolicyMalwareScanOptionArrayOutput {
+	return i.ToGetHostRuntimePolicyMalwareScanOptionArrayOutputWithContext(context.Background())
 }
 
-func (i *getHostRuntimePolicyMalwareScanOptionsPtrType) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutput() GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return i.ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Background())
+func (i GetHostRuntimePolicyMalwareScanOptionArray) ToGetHostRuntimePolicyMalwareScanOptionArrayOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostRuntimePolicyMalwareScanOptionArrayOutput)
 }
 
-func (i *getHostRuntimePolicyMalwareScanOptionsPtrType) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetHostRuntimePolicyMalwareScanOptionsPtrOutput)
+type GetHostRuntimePolicyMalwareScanOptionOutput struct{ *pulumi.OutputState }
+
+func (GetHostRuntimePolicyMalwareScanOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-type GetHostRuntimePolicyMalwareScanOptionsOutput struct{ *pulumi.OutputState }
-
-func (GetHostRuntimePolicyMalwareScanOptionsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptions)(nil)).Elem()
-}
-
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) ToGetHostRuntimePolicyMalwareScanOptionsOutput() GetHostRuntimePolicyMalwareScanOptionsOutput {
+func (o GetHostRuntimePolicyMalwareScanOptionOutput) ToGetHostRuntimePolicyMalwareScanOptionOutput() GetHostRuntimePolicyMalwareScanOptionOutput {
 	return o
 }
 
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) ToGetHostRuntimePolicyMalwareScanOptionsOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionsOutput {
+func (o GetHostRuntimePolicyMalwareScanOptionOutput) ToGetHostRuntimePolicyMalwareScanOptionOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionOutput {
 	return o
 }
 
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutput() GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(context.Background())
+func (o GetHostRuntimePolicyMalwareScanOptionOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOption) string { return v.Action }).(pulumi.StringOutput)
 }
 
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetHostRuntimePolicyMalwareScanOptions) *GetHostRuntimePolicyMalwareScanOptions {
-		return &v
-	}).(GetHostRuntimePolicyMalwareScanOptionsPtrOutput)
+// Indicates if the runtime policy is enabled or not.
+func (o GetHostRuntimePolicyMalwareScanOptionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Set Action, Defaults to 'Alert' when empty
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOptions) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o GetHostRuntimePolicyMalwareScanOptionOutput) ExcludeProcesses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOption) []string { return v.ExcludeProcesses }).(pulumi.StringArrayOutput)
 }
 
-// Defines if enabled or not
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOptions) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o GetHostRuntimePolicyMalwareScanOptionOutput) IncludeDirectories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOption) []string { return v.IncludeDirectories }).(pulumi.StringArrayOutput)
 }
 
-// List of registry processes to be excluded from being protected.
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) ExcludeProcesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOptions) []string { return v.ExcludeProcesses }).(pulumi.StringArrayOutput)
+type GetHostRuntimePolicyMalwareScanOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostRuntimePolicyMalwareScanOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostRuntimePolicyMalwareScanOption)(nil)).Elem()
 }
 
-// List of directories to be protected.
-func (o GetHostRuntimePolicyMalwareScanOptionsOutput) IncludeDirectories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetHostRuntimePolicyMalwareScanOptions) []string { return v.IncludeDirectories }).(pulumi.StringArrayOutput)
-}
-
-type GetHostRuntimePolicyMalwareScanOptionsPtrOutput struct{ *pulumi.OutputState }
-
-func (GetHostRuntimePolicyMalwareScanOptionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetHostRuntimePolicyMalwareScanOptions)(nil)).Elem()
-}
-
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutput() GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
+func (o GetHostRuntimePolicyMalwareScanOptionArrayOutput) ToGetHostRuntimePolicyMalwareScanOptionArrayOutput() GetHostRuntimePolicyMalwareScanOptionArrayOutput {
 	return o
 }
 
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) ToGetHostRuntimePolicyMalwareScanOptionsPtrOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionsPtrOutput {
+func (o GetHostRuntimePolicyMalwareScanOptionArrayOutput) ToGetHostRuntimePolicyMalwareScanOptionArrayOutputWithContext(ctx context.Context) GetHostRuntimePolicyMalwareScanOptionArrayOutput {
 	return o
 }
 
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) Elem() GetHostRuntimePolicyMalwareScanOptionsOutput {
-	return o.ApplyT(func(v *GetHostRuntimePolicyMalwareScanOptions) GetHostRuntimePolicyMalwareScanOptions {
-		if v != nil {
-			return *v
-		}
-		var ret GetHostRuntimePolicyMalwareScanOptions
-		return ret
-	}).(GetHostRuntimePolicyMalwareScanOptionsOutput)
-}
-
-// Set Action, Defaults to 'Alert' when empty
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetHostRuntimePolicyMalwareScanOptions) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Action
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines if enabled or not
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetHostRuntimePolicyMalwareScanOptions) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Enabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// List of registry processes to be excluded from being protected.
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) ExcludeProcesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetHostRuntimePolicyMalwareScanOptions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeProcesses
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of directories to be protected.
-func (o GetHostRuntimePolicyMalwareScanOptionsPtrOutput) IncludeDirectories() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetHostRuntimePolicyMalwareScanOptions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludeDirectories
-	}).(pulumi.StringArrayOutput)
+func (o GetHostRuntimePolicyMalwareScanOptionArrayOutput) Index(i pulumi.IntInput) GetHostRuntimePolicyMalwareScanOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostRuntimePolicyMalwareScanOption {
+		return vs[0].([]GetHostRuntimePolicyMalwareScanOption)[vs[1].(int)]
+	}).(GetHostRuntimePolicyMalwareScanOptionOutput)
 }
 
 type GetHostRuntimePolicyScopeVariable struct {
@@ -21285,8 +21136,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryWorkloadOVariableArrayInput)(nil)).Elem(), GetApplicationScopeCategoryWorkloadOVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyFileIntegrityMonitoringInput)(nil)).Elem(), GetContainerRuntimePolicyFileIntegrityMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyFileIntegrityMonitoringArrayInput)(nil)).Elem(), GetContainerRuntimePolicyFileIntegrityMonitoringArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptionsInput)(nil)).Elem(), GetContainerRuntimePolicyMalwareScanOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptionsPtrInput)(nil)).Elem(), GetContainerRuntimePolicyMalwareScanOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptionInput)(nil)).Elem(), GetContainerRuntimePolicyMalwareScanOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptionArrayInput)(nil)).Elem(), GetContainerRuntimePolicyMalwareScanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyScopeVariableInput)(nil)).Elem(), GetContainerRuntimePolicyScopeVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyScopeVariableArrayInput)(nil)).Elem(), GetContainerRuntimePolicyScopeVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnforcerGroupsCommandInput)(nil)).Elem(), GetEnforcerGroupsCommandArgs{})
@@ -21341,8 +21192,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostAssurancePolicyTrustedBaseImageArrayInput)(nil)).Elem(), GetHostAssurancePolicyTrustedBaseImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyFileIntegrityMonitoringInput)(nil)).Elem(), GetHostRuntimePolicyFileIntegrityMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyFileIntegrityMonitoringArrayInput)(nil)).Elem(), GetHostRuntimePolicyFileIntegrityMonitoringArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptionsInput)(nil)).Elem(), GetHostRuntimePolicyMalwareScanOptionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptionsPtrInput)(nil)).Elem(), GetHostRuntimePolicyMalwareScanOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptionInput)(nil)).Elem(), GetHostRuntimePolicyMalwareScanOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyMalwareScanOptionArrayInput)(nil)).Elem(), GetHostRuntimePolicyMalwareScanOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyScopeVariableInput)(nil)).Elem(), GetHostRuntimePolicyScopeVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyScopeVariableArrayInput)(nil)).Elem(), GetHostRuntimePolicyScopeVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHostRuntimePolicyWindowsRegistryMonitoringInput)(nil)).Elem(), GetHostRuntimePolicyWindowsRegistryMonitoringArgs{})
@@ -21621,8 +21472,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryWorkloadOVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyFileIntegrityMonitoringOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyFileIntegrityMonitoringArrayOutput{})
-	pulumi.RegisterOutputType(GetContainerRuntimePolicyMalwareScanOptionsOutput{})
-	pulumi.RegisterOutputType(GetContainerRuntimePolicyMalwareScanOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetContainerRuntimePolicyMalwareScanOptionOutput{})
+	pulumi.RegisterOutputType(GetContainerRuntimePolicyMalwareScanOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyScopeVariableOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyScopeVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetEnforcerGroupsCommandOutput{})
@@ -21677,8 +21528,8 @@ func init() {
 	pulumi.RegisterOutputType(GetHostAssurancePolicyTrustedBaseImageArrayOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyFileIntegrityMonitoringOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyFileIntegrityMonitoringArrayOutput{})
-	pulumi.RegisterOutputType(GetHostRuntimePolicyMalwareScanOptionsOutput{})
-	pulumi.RegisterOutputType(GetHostRuntimePolicyMalwareScanOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GetHostRuntimePolicyMalwareScanOptionOutput{})
+	pulumi.RegisterOutputType(GetHostRuntimePolicyMalwareScanOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyScopeVariableOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyScopeVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetHostRuntimePolicyWindowsRegistryMonitoringOutput{})

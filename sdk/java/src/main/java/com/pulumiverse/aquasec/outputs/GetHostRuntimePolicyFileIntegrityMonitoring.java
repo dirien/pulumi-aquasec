@@ -11,44 +11,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHostRuntimePolicyFileIntegrityMonitoring {
-    private final List<String> excludedPaths;
-    private final List<String> excludedProcesses;
-    private final List<String> excludedUsers;
-    private final Boolean monitorAttributes;
-    private final Boolean monitorCreate;
-    private final Boolean monitorDelete;
-    private final Boolean monitorModify;
-    private final Boolean monitorRead;
-    private final List<String> monitoredPaths;
-    private final List<String> monitoredProcesses;
-    private final List<String> monitoredUsers;
+    private List<String> excludedPaths;
+    private List<String> excludedProcesses;
+    private List<String> excludedUsers;
+    private Boolean monitorAttributes;
+    private Boolean monitorCreate;
+    private Boolean monitorDelete;
+    private Boolean monitorModify;
+    private Boolean monitorRead;
+    private List<String> monitoredPaths;
+    private List<String> monitoredProcesses;
+    private List<String> monitoredUsers;
 
-    @CustomType.Constructor
-    private GetHostRuntimePolicyFileIntegrityMonitoring(
-        @CustomType.Parameter("excludedPaths") List<String> excludedPaths,
-        @CustomType.Parameter("excludedProcesses") List<String> excludedProcesses,
-        @CustomType.Parameter("excludedUsers") List<String> excludedUsers,
-        @CustomType.Parameter("monitorAttributes") Boolean monitorAttributes,
-        @CustomType.Parameter("monitorCreate") Boolean monitorCreate,
-        @CustomType.Parameter("monitorDelete") Boolean monitorDelete,
-        @CustomType.Parameter("monitorModify") Boolean monitorModify,
-        @CustomType.Parameter("monitorRead") Boolean monitorRead,
-        @CustomType.Parameter("monitoredPaths") List<String> monitoredPaths,
-        @CustomType.Parameter("monitoredProcesses") List<String> monitoredProcesses,
-        @CustomType.Parameter("monitoredUsers") List<String> monitoredUsers) {
-        this.excludedPaths = excludedPaths;
-        this.excludedProcesses = excludedProcesses;
-        this.excludedUsers = excludedUsers;
-        this.monitorAttributes = monitorAttributes;
-        this.monitorCreate = monitorCreate;
-        this.monitorDelete = monitorDelete;
-        this.monitorModify = monitorModify;
-        this.monitorRead = monitorRead;
-        this.monitoredPaths = monitoredPaths;
-        this.monitoredProcesses = monitoredProcesses;
-        this.monitoredUsers = monitoredUsers;
-    }
-
+    private GetHostRuntimePolicyFileIntegrityMonitoring() {}
     public List<String> excludedPaths() {
         return this.excludedPaths;
     }
@@ -90,7 +65,7 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
     public static Builder builder(GetHostRuntimePolicyFileIntegrityMonitoring defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> excludedPaths;
         private List<String> excludedProcesses;
@@ -103,11 +78,7 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
         private List<String> monitoredPaths;
         private List<String> monitoredProcesses;
         private List<String> monitoredUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostRuntimePolicyFileIntegrityMonitoring defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedPaths = defaults.excludedPaths;
@@ -123,6 +94,7 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
     	      this.monitoredUsers = defaults.monitoredUsers;
         }
 
+        @CustomType.Setter
         public Builder excludedPaths(List<String> excludedPaths) {
             this.excludedPaths = Objects.requireNonNull(excludedPaths);
             return this;
@@ -130,6 +102,7 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
         public Builder excludedPaths(String... excludedPaths) {
             return excludedPaths(List.of(excludedPaths));
         }
+        @CustomType.Setter
         public Builder excludedProcesses(List<String> excludedProcesses) {
             this.excludedProcesses = Objects.requireNonNull(excludedProcesses);
             return this;
@@ -137,6 +110,7 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
         public Builder excludedProcesses(String... excludedProcesses) {
             return excludedProcesses(List.of(excludedProcesses));
         }
+        @CustomType.Setter
         public Builder excludedUsers(List<String> excludedUsers) {
             this.excludedUsers = Objects.requireNonNull(excludedUsers);
             return this;
@@ -144,26 +118,32 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
         public Builder excludedUsers(String... excludedUsers) {
             return excludedUsers(List.of(excludedUsers));
         }
+        @CustomType.Setter
         public Builder monitorAttributes(Boolean monitorAttributes) {
             this.monitorAttributes = Objects.requireNonNull(monitorAttributes);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorCreate(Boolean monitorCreate) {
             this.monitorCreate = Objects.requireNonNull(monitorCreate);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorDelete(Boolean monitorDelete) {
             this.monitorDelete = Objects.requireNonNull(monitorDelete);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorModify(Boolean monitorModify) {
             this.monitorModify = Objects.requireNonNull(monitorModify);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorRead(Boolean monitorRead) {
             this.monitorRead = Objects.requireNonNull(monitorRead);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoredPaths(List<String> monitoredPaths) {
             this.monitoredPaths = Objects.requireNonNull(monitoredPaths);
             return this;
@@ -171,6 +151,7 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
         public Builder monitoredPaths(String... monitoredPaths) {
             return monitoredPaths(List.of(monitoredPaths));
         }
+        @CustomType.Setter
         public Builder monitoredProcesses(List<String> monitoredProcesses) {
             this.monitoredProcesses = Objects.requireNonNull(monitoredProcesses);
             return this;
@@ -178,14 +159,28 @@ public final class GetHostRuntimePolicyFileIntegrityMonitoring {
         public Builder monitoredProcesses(String... monitoredProcesses) {
             return monitoredProcesses(List.of(monitoredProcesses));
         }
+        @CustomType.Setter
         public Builder monitoredUsers(List<String> monitoredUsers) {
             this.monitoredUsers = Objects.requireNonNull(monitoredUsers);
             return this;
         }
         public Builder monitoredUsers(String... monitoredUsers) {
             return monitoredUsers(List.of(monitoredUsers));
-        }        public GetHostRuntimePolicyFileIntegrityMonitoring build() {
-            return new GetHostRuntimePolicyFileIntegrityMonitoring(excludedPaths, excludedProcesses, excludedUsers, monitorAttributes, monitorCreate, monitorDelete, monitorModify, monitorRead, monitoredPaths, monitoredProcesses, monitoredUsers);
+        }
+        public GetHostRuntimePolicyFileIntegrityMonitoring build() {
+            final var o = new GetHostRuntimePolicyFileIntegrityMonitoring();
+            o.excludedPaths = excludedPaths;
+            o.excludedProcesses = excludedProcesses;
+            o.excludedUsers = excludedUsers;
+            o.monitorAttributes = monitorAttributes;
+            o.monitorCreate = monitorCreate;
+            o.monitorDelete = monitorDelete;
+            o.monitorModify = monitorModify;
+            o.monitorRead = monitorRead;
+            o.monitoredPaths = monitoredPaths;
+            o.monitoredProcesses = monitoredProcesses;
+            o.monitoredUsers = monitoredUsers;
+            return o;
         }
     }
 }

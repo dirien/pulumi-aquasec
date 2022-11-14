@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryInfrastructureO {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryInfrastructureOVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryInfrastructureOVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryInfrastructureO(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryInfrastructureOVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryInfrastructureO() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryInfrastructureO {
     public static Builder builder(ApplicationScopeCategoryInfrastructureO defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryInfrastructureOVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryInfrastructureO defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryInfrastructureOVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryInfrastructureOVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryInfrastructureO build() {
-            return new ApplicationScopeCategoryInfrastructureO(expression, variables);
+        }
+        public ApplicationScopeCategoryInfrastructureO build() {
+            final var o = new ApplicationScopeCategoryInfrastructureO();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

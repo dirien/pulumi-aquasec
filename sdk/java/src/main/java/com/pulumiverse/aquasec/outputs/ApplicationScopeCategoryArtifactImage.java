@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryArtifactImage {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryArtifactImageVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryArtifactImageVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryArtifactImage(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryArtifactImageVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryArtifactImage() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryArtifactImage {
     public static Builder builder(ApplicationScopeCategoryArtifactImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryArtifactImageVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryArtifactImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryArtifactImageVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryArtifactImageVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryArtifactImage build() {
-            return new ApplicationScopeCategoryArtifactImage(expression, variables);
+        }
+        public ApplicationScopeCategoryArtifactImage build() {
+            final var o = new ApplicationScopeCategoryArtifactImage();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

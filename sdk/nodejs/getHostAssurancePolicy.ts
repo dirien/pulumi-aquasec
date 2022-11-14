@@ -13,7 +13,6 @@ export function getHostAssurancePolicy(args: GetHostAssurancePolicyArgs, opts?: 
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy", {
-        "maximumScoreExcludeNoFix": args.maximumScoreExcludeNoFix,
         "name": args.name,
     }, opts);
 }
@@ -22,10 +21,6 @@ export function getHostAssurancePolicy(args: GetHostAssurancePolicyArgs, opts?: 
  * A collection of arguments for invoking getHostAssurancePolicy.
  */
 export interface GetHostAssurancePolicyArgs {
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     */
-    maximumScoreExcludeNoFix?: boolean;
     name: string;
 }
 
@@ -38,10 +33,6 @@ export interface GetHostAssurancePolicyResult {
      */
     readonly allowedImages: string[];
     readonly applicationScopes: string[];
-    /**
-     * What type of assurance policy is described.
-     */
-    readonly assuranceType: string;
     /**
      * Indicates if auditing for failures.
      */
@@ -172,7 +163,7 @@ export interface GetHostAssurancePolicyResult {
     /**
      * Indicates that policy should ignore cases that do not have a known fix.
      */
-    readonly maximumScoreExcludeNoFix?: boolean;
+    readonly maximumScoreExcludeNoFix: boolean;
     readonly monitoredMalwarePaths: string[];
     readonly name: string;
     /**
@@ -244,9 +235,5 @@ export function getHostAssurancePolicyOutput(args: GetHostAssurancePolicyOutputA
  * A collection of arguments for invoking getHostAssurancePolicy.
  */
 export interface GetHostAssurancePolicyOutputArgs {
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     */
-    maximumScoreExcludeNoFix?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
 }

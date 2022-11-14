@@ -12,35 +12,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnforcerGroupsOrchestrator {
-    private final @Nullable Boolean master;
+    private @Nullable Boolean master;
     /**
      * @return May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
      * 
      */
-    private final @Nullable String namespace;
+    private @Nullable String namespace;
     /**
      * @return May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
      * 
      */
-    private final @Nullable String serviceAccount;
+    private @Nullable String serviceAccount;
     /**
      * @return Enforcer Type.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
 
-    @CustomType.Constructor
-    private EnforcerGroupsOrchestrator(
-        @CustomType.Parameter("master") @Nullable Boolean master,
-        @CustomType.Parameter("namespace") @Nullable String namespace,
-        @CustomType.Parameter("serviceAccount") @Nullable String serviceAccount,
-        @CustomType.Parameter("type") @Nullable String type) {
-        this.master = master;
-        this.namespace = namespace;
-        this.serviceAccount = serviceAccount;
-        this.type = type;
-    }
-
+    private EnforcerGroupsOrchestrator() {}
     public Optional<Boolean> master() {
         return Optional.ofNullable(this.master);
     }
@@ -73,17 +62,13 @@ public final class EnforcerGroupsOrchestrator {
     public static Builder builder(EnforcerGroupsOrchestrator defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean master;
         private @Nullable String namespace;
         private @Nullable String serviceAccount;
         private @Nullable String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnforcerGroupsOrchestrator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.master = defaults.master;
@@ -92,23 +77,33 @@ public final class EnforcerGroupsOrchestrator {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder master(@Nullable Boolean master) {
             this.master = master;
             return this;
         }
+        @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
             this.namespace = namespace;
             return this;
         }
+        @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
             this.serviceAccount = serviceAccount;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
-        }        public EnforcerGroupsOrchestrator build() {
-            return new EnforcerGroupsOrchestrator(master, namespace, serviceAccount, type);
+        }
+        public EnforcerGroupsOrchestrator build() {
+            final var o = new EnforcerGroupsOrchestrator();
+            o.master = master;
+            o.namespace = namespace;
+            o.serviceAccount = serviceAccount;
+            o.type = type;
+            return o;
         }
     }
 }

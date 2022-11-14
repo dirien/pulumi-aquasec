@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsGroup {
-    private final String created;
-    private final String groupId;
-    private final String name;
+    private String created;
+    private String groupId;
+    private String name;
 
-    @CustomType.Constructor
-    private GetGroupsGroup(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("name") String name) {
-        this.created = created;
-        this.groupId = groupId;
-        this.name = name;
-    }
-
+    private GetGroupsGroup() {}
     public String created() {
         return this.created;
     }
@@ -40,16 +31,12 @@ public final class GetGroupsGroup {
     public static Builder builder(GetGroupsGroup defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private String groupId;
         private String name;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -57,19 +44,27 @@ public final class GetGroupsGroup {
     	      this.name = defaults.name;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
-        }        public GetGroupsGroup build() {
-            return new GetGroupsGroup(created, groupId, name);
+        }
+        public GetGroupsGroup build() {
+            final var o = new GetGroupsGroup();
+            o.created = created;
+            o.groupId = groupId;
+            o.name = name;
+            return o;
         }
     }
 }

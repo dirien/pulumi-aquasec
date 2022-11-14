@@ -33,21 +33,6 @@ public final class GetApplicationScopeArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Description of the application scope.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return Description of the application scope.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
      * Name of an application scope.
      * 
      */
@@ -62,28 +47,11 @@ public final class GetApplicationScopeArgs extends com.pulumi.resources.InvokeAr
         return this.name;
     }
 
-    /**
-     * Name of an application scope.
-     * 
-     */
-    @Import(name="ownerEmail")
-    private @Nullable Output<String> ownerEmail;
-
-    /**
-     * @return Name of an application scope.
-     * 
-     */
-    public Optional<Output<String>> ownerEmail() {
-        return Optional.ofNullable(this.ownerEmail);
-    }
-
     private GetApplicationScopeArgs() {}
 
     private GetApplicationScopeArgs(GetApplicationScopeArgs $) {
         this.categories = $.categories;
-        this.description = $.description;
         this.name = $.name;
-        this.ownerEmail = $.ownerEmail;
     }
 
     public static Builder builder() {
@@ -136,27 +104,6 @@ public final class GetApplicationScopeArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param description Description of the application scope.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description Description of the application scope.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
-        }
-
-        /**
          * @param name Name of an application scope.
          * 
          * @return builder
@@ -175,27 +122,6 @@ public final class GetApplicationScopeArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
-        }
-
-        /**
-         * @param ownerEmail Name of an application scope.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ownerEmail(@Nullable Output<String> ownerEmail) {
-            $.ownerEmail = ownerEmail;
-            return this;
-        }
-
-        /**
-         * @param ownerEmail Name of an application scope.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ownerEmail(String ownerEmail) {
-            return ownerEmail(Output.of(ownerEmail));
         }
 
         public GetApplicationScopeArgs build() {

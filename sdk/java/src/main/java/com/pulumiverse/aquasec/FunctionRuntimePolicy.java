@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.aquasec.FunctionRuntimePolicy;
  * import com.pulumi.aquasec.FunctionRuntimePolicyArgs;
+ * import com.pulumi.aquasec.inputs.FunctionRuntimePolicyScopeVariableArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -41,6 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var functionRuntimePolicy = new FunctionRuntimePolicy(&#34;functionRuntimePolicy&#34;, FunctionRuntimePolicyArgs.builder()        
+ *             .applicationScopes(&#34;Global&#34;)
  *             .blockMaliciousExecutables(true)
  *             .blockMaliciousExecutablesAllowedProcesses(            
  *                 &#34;proc1&#34;,
@@ -52,6 +54,16 @@ import javax.annotation.Nullable;
  *             .description(&#34;function_runtime_policy&#34;)
  *             .enabled(true)
  *             .enforce(false)
+ *             .scopeVariables(            
+ *                 FunctionRuntimePolicyScopeVariableArgs.builder()
+ *                     .attribute(&#34;kubernetes.cluster&#34;)
+ *                     .value(&#34;default&#34;)
+ *                     .build(),
+ *                 FunctionRuntimePolicyScopeVariableArgs.builder()
+ *                     .attribute(&#34;kubernetes.label&#34;)
+ *                     .name(&#34;app&#34;)
+ *                     .value(&#34;aqua&#34;)
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -65,7 +77,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates the application scope of the service.
      * 
      */
-    @Export(name="applicationScopes", type=List.class, parameters={String.class})
+    @Export(name="applicationScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applicationScopes;
 
     /**
@@ -79,7 +91,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Username of the account that created the service.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -93,7 +105,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, prevent creation of malicious executables in functions during their runtime post invocation.
      * 
      */
-    @Export(name="blockMaliciousExecutables", type=Boolean.class, parameters={})
+    @Export(name="blockMaliciousExecutables", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockMaliciousExecutables;
 
     /**
@@ -107,7 +119,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of processes that will be allowed
      * 
      */
-    @Export(name="blockMaliciousExecutablesAllowedProcesses", type=List.class, parameters={String.class})
+    @Export(name="blockMaliciousExecutablesAllowedProcesses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockMaliciousExecutablesAllowedProcesses;
 
     /**
@@ -121,7 +133,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
      * 
      */
-    @Export(name="blockRunningExecutablesInTmpFolder", type=Boolean.class, parameters={})
+    @Export(name="blockRunningExecutablesInTmpFolder", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockRunningExecutablesInTmpFolder;
 
     /**
@@ -135,7 +147,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of executables that are prevented from running in containers.
      * 
      */
-    @Export(name="blockedExecutables", type=List.class, parameters={String.class})
+    @Export(name="blockedExecutables", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedExecutables;
 
     /**
@@ -149,7 +161,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * The description of the function runtime policy
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -163,7 +175,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates if the runtime policy is enabled or not.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -177,7 +189,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Indicates that policy should effect container execution (not just for audit).
      * 
      */
-    @Export(name="enforce", type=Boolean.class, parameters={})
+    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforce;
 
     /**
@@ -191,7 +203,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Honeypot User ID (Access Key)
      * 
      */
-    @Export(name="honeypotAccessKey", type=String.class, parameters={})
+    @Export(name="honeypotAccessKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> honeypotAccessKey;
 
     /**
@@ -205,7 +217,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of options to apply the honeypot on (Environment Vairable, Layer, File)
      * 
      */
-    @Export(name="honeypotApplyOns", type=List.class, parameters={String.class})
+    @Export(name="honeypotApplyOns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> honeypotApplyOns;
 
     /**
@@ -219,7 +231,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Honeypot User Password (Secret Key)
      * 
      */
-    @Export(name="honeypotSecretKey", type=String.class, parameters={})
+    @Export(name="honeypotSecretKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> honeypotSecretKey;
 
     /**
@@ -233,7 +245,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Serverless application name
      * 
      */
-    @Export(name="honeypotServerlessAppName", type=String.class, parameters={})
+    @Export(name="honeypotServerlessAppName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> honeypotServerlessAppName;
 
     /**
@@ -247,7 +259,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Name of the function runtime policy
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -261,7 +273,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    @Export(name="scopeExpression", type=String.class, parameters={})
+    @Export(name="scopeExpression", refs={String.class}, tree="[0]")
     private Output<String> scopeExpression;
 
     /**
@@ -275,7 +287,7 @@ public class FunctionRuntimePolicy extends com.pulumi.resources.CustomResource {
      * List of scope attributes.
      * 
      */
-    @Export(name="scopeVariables", type=List.class, parameters={FunctionRuntimePolicyScopeVariable.class})
+    @Export(name="scopeVariables", refs={List.class,FunctionRuntimePolicyScopeVariable.class}, tree="[0,1]")
     private Output<List<FunctionRuntimePolicyScopeVariable>> scopeVariables;
 
     /**

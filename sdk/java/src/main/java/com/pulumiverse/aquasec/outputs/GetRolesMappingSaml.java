@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesMappingSaml {
-    private final Map<String,String> roleMapping;
+    private Map<String,String> roleMapping;
 
-    @CustomType.Constructor
-    private GetRolesMappingSaml(@CustomType.Parameter("roleMapping") Map<String,String> roleMapping) {
-        this.roleMapping = roleMapping;
-    }
-
+    private GetRolesMappingSaml() {}
     public Map<String,String> roleMapping() {
         return this.roleMapping;
     }
@@ -28,24 +24,24 @@ public final class GetRolesMappingSaml {
     public static Builder builder(GetRolesMappingSaml defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> roleMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesMappingSaml defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleMapping = defaults.roleMapping;
         }
 
+        @CustomType.Setter
         public Builder roleMapping(Map<String,String> roleMapping) {
             this.roleMapping = Objects.requireNonNull(roleMapping);
             return this;
-        }        public GetRolesMappingSaml build() {
-            return new GetRolesMappingSaml(roleMapping);
+        }
+        public GetRolesMappingSaml build() {
+            final var o = new GetRolesMappingSaml();
+            o.roleMapping = roleMapping;
+            return o;
         }
     }
 }
