@@ -113,9 +113,8 @@ __all__ = [
     'GetApplicationScopeCategoryWorkloadKuberneteVariableArgs',
     'GetApplicationScopeCategoryWorkloadOArgs',
     'GetApplicationScopeCategoryWorkloadOVariableArgs',
-    'GetContainerRuntimePolicyMalwareScanOptionsArgs',
+    'GetContainerRuntimePolicyMalwareScanOptionArgs',
     'GetFirewallPolicyOutboundNetworkArgs',
-    'GetHostRuntimePolicyMalwareScanOptionsArgs',
 ]
 
 @pulumi.input_type
@@ -6207,73 +6206,69 @@ class GetApplicationScopeCategoryWorkloadOVariableArgs:
 
 
 @pulumi.input_type
-class GetContainerRuntimePolicyMalwareScanOptionsArgs:
+class GetContainerRuntimePolicyMalwareScanOptionArgs:
     def __init__(__self__, *,
-                 action: Optional[str] = None,
-                 enabled: Optional[bool] = None,
-                 exclude_directories: Optional[Sequence[str]] = None,
-                 exclude_processes: Optional[Sequence[str]] = None):
+                 action: str,
+                 enabled: bool,
+                 exclude_directories: Sequence[str],
+                 exclude_processes: Sequence[str]):
         """
         :param str action: Set Action, Defaults to 'Alert' when empty
         :param bool enabled: Defines if enabled or not
         :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
         :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
         """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if exclude_directories is not None:
-            pulumi.set(__self__, "exclude_directories", exclude_directories)
-        if exclude_processes is not None:
-            pulumi.set(__self__, "exclude_processes", exclude_processes)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "exclude_directories", exclude_directories)
+        pulumi.set(__self__, "exclude_processes", exclude_processes)
 
     @property
     @pulumi.getter
-    def action(self) -> Optional[str]:
+    def action(self) -> str:
         """
         Set Action, Defaults to 'Alert' when empty
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[str]):
+    def action(self, value: str):
         pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> bool:
         """
         Defines if enabled or not
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[bool]):
+    def enabled(self, value: bool):
         pulumi.set(self, "enabled", value)
 
     @property
     @pulumi.getter(name="excludeDirectories")
-    def exclude_directories(self) -> Optional[Sequence[str]]:
+    def exclude_directories(self) -> Sequence[str]:
         """
         List of registry paths to be excluded from being protected.
         """
         return pulumi.get(self, "exclude_directories")
 
     @exclude_directories.setter
-    def exclude_directories(self, value: Optional[Sequence[str]]):
+    def exclude_directories(self, value: Sequence[str]):
         pulumi.set(self, "exclude_directories", value)
 
     @property
     @pulumi.getter(name="excludeProcesses")
-    def exclude_processes(self) -> Optional[Sequence[str]]:
+    def exclude_processes(self) -> Sequence[str]:
         """
         List of registry processes to be excluded from being protected.
         """
         return pulumi.get(self, "exclude_processes")
 
     @exclude_processes.setter
-    def exclude_processes(self, value: Optional[Sequence[str]]):
+    def exclude_processes(self, value: Sequence[str]):
         pulumi.set(self, "exclude_processes", value)
 
 
@@ -6342,76 +6337,5 @@ class GetFirewallPolicyOutboundNetworkArgs:
     @resource_type.setter
     def resource_type(self, value: str):
         pulumi.set(self, "resource_type", value)
-
-
-@pulumi.input_type
-class GetHostRuntimePolicyMalwareScanOptionsArgs:
-    def __init__(__self__, *,
-                 action: Optional[str] = None,
-                 enabled: Optional[bool] = None,
-                 exclude_processes: Optional[Sequence[str]] = None,
-                 include_directories: Optional[Sequence[str]] = None):
-        """
-        :param str action: Set Action, Defaults to 'Alert' when empty
-        :param bool enabled: Defines if enabled or not
-        :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
-        :param Sequence[str] include_directories: List of directories to be protected.
-        """
-        if action is not None:
-            pulumi.set(__self__, "action", action)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if exclude_processes is not None:
-            pulumi.set(__self__, "exclude_processes", exclude_processes)
-        if include_directories is not None:
-            pulumi.set(__self__, "include_directories", include_directories)
-
-    @property
-    @pulumi.getter
-    def action(self) -> Optional[str]:
-        """
-        Set Action, Defaults to 'Alert' when empty
-        """
-        return pulumi.get(self, "action")
-
-    @action.setter
-    def action(self, value: Optional[str]):
-        pulumi.set(self, "action", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[bool]:
-        """
-        Defines if enabled or not
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[bool]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter(name="excludeProcesses")
-    def exclude_processes(self) -> Optional[Sequence[str]]:
-        """
-        List of registry processes to be excluded from being protected.
-        """
-        return pulumi.get(self, "exclude_processes")
-
-    @exclude_processes.setter
-    def exclude_processes(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "exclude_processes", value)
-
-    @property
-    @pulumi.getter(name="includeDirectories")
-    def include_directories(self) -> Optional[Sequence[str]]:
-        """
-        List of directories to be protected.
-        """
-        return pulumi.get(self, "include_directories")
-
-    @include_directories.setter
-    def include_directories(self, value: Optional[Sequence[str]]):
-        pulumi.set(self, "include_directories", value)
 
 

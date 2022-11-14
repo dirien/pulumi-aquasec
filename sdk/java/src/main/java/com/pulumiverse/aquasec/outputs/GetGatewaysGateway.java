@@ -9,39 +9,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGatewaysGateway {
-    private final String description;
-    private final String grpcAddress;
-    private final String hostname;
+    private String description;
+    private String grpcAddress;
+    private String hostname;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final String id;
-    private final String logicalname;
-    private final String publicAddress;
-    private final String status;
-    private final String version;
+    private String id;
+    private String logicalname;
+    private String publicAddress;
+    private String status;
+    private String version;
 
-    @CustomType.Constructor
-    private GetGatewaysGateway(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("grpcAddress") String grpcAddress,
-        @CustomType.Parameter("hostname") String hostname,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logicalname") String logicalname,
-        @CustomType.Parameter("publicAddress") String publicAddress,
-        @CustomType.Parameter("status") String status,
-        @CustomType.Parameter("version") String version) {
-        this.description = description;
-        this.grpcAddress = grpcAddress;
-        this.hostname = hostname;
-        this.id = id;
-        this.logicalname = logicalname;
-        this.publicAddress = publicAddress;
-        this.status = status;
-        this.version = version;
-    }
-
+    private GetGatewaysGateway() {}
     public String description() {
         return this.description;
     }
@@ -78,7 +59,7 @@ public final class GetGatewaysGateway {
     public static Builder builder(GetGatewaysGateway defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String grpcAddress;
@@ -88,11 +69,7 @@ public final class GetGatewaysGateway {
         private String publicAddress;
         private String status;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysGateway defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -105,39 +82,57 @@ public final class GetGatewaysGateway {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder grpcAddress(String grpcAddress) {
             this.grpcAddress = Objects.requireNonNull(grpcAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder hostname(String hostname) {
             this.hostname = Objects.requireNonNull(hostname);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logicalname(String logicalname) {
             this.logicalname = Objects.requireNonNull(logicalname);
             return this;
         }
+        @CustomType.Setter
         public Builder publicAddress(String publicAddress) {
             this.publicAddress = Objects.requireNonNull(publicAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder status(String status) {
             this.status = Objects.requireNonNull(status);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetGatewaysGateway build() {
-            return new GetGatewaysGateway(description, grpcAddress, hostname, id, logicalname, publicAddress, status, version);
+        }
+        public GetGatewaysGateway build() {
+            final var o = new GetGatewaysGateway();
+            o.description = description;
+            o.grpcAddress = grpcAddress;
+            o.hostname = hostname;
+            o.id = id;
+            o.logicalname = logicalname;
+            o.publicAddress = publicAddress;
+            o.status = status;
+            o.version = version;
+            return o;
         }
     }
 }

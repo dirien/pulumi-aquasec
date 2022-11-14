@@ -9,135 +9,108 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetIntegrationRegistryResult {
     /**
+     * @return Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     * 
+     */
+    private Boolean autoCleanup;
+    /**
      * @return Whether to automatically pull images from the registry on creation and daily
      * 
      */
-    private final Boolean autoPull;
+    private Boolean autoPull;
     /**
      * @return The interval in days to start pulling new images from the registry, Defaults to 1
      * 
      */
-    private final Integer autoPullInterval;
+    private Integer autoPullInterval;
     /**
      * @return Maximum number of repositories to pull every day, defaults to 100
      * 
      */
-    private final Integer autoPullMax;
+    private Integer autoPullMax;
     /**
      * @return Whether to automatically pull and rescan images from the registry on creation and daily
      * 
      */
-    private final @Nullable Boolean autoPullRescan;
+    private Boolean autoPullRescan;
     /**
      * @return The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      * 
      */
-    private final String autoPullTime;
+    private String autoPullTime;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
      * 
      */
-    private final String imageCreationDateCondition;
+    private String imageCreationDateCondition;
     /**
      * @return The name of the registry; string, required - this will be treated as the registry&#39;s ID, so choose a simple alphanumerical name without special signs and spaces
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The password for registry authentication
      * 
      */
-    private final String password;
+    private String password;
     /**
      * @return List of possible prefixes to image names pulled from the registry
      * 
      */
-    private final List<String> prefixes;
+    private List<String> prefixes;
     /**
      * @return When auto pull image enabled, sets maximum age of auto pulled images
      * 
      */
-    private final String pullImageAge;
+    private String pullImageAge;
     /**
      * @return When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
      * 
      */
-    private final Integer pullImageCount;
+    private Integer pullImageCount;
     /**
      * @return List of scanner names
      * 
      */
-    private final @Nullable List<String> scannerNames;
+    private List<String> scannerNames;
     /**
      * @return Scanner type
      * 
      */
-    private final @Nullable String scannerType;
+    private String scannerType;
     /**
      * @return Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return The URL, address or region of the registry
      * 
      */
-    private final String url;
+    private String url;
     /**
      * @return The username for registry authentication.
      * 
      */
-    private final String username;
+    private String username;
 
-    @CustomType.Constructor
-    private GetIntegrationRegistryResult(
-        @CustomType.Parameter("autoPull") Boolean autoPull,
-        @CustomType.Parameter("autoPullInterval") Integer autoPullInterval,
-        @CustomType.Parameter("autoPullMax") Integer autoPullMax,
-        @CustomType.Parameter("autoPullRescan") @Nullable Boolean autoPullRescan,
-        @CustomType.Parameter("autoPullTime") String autoPullTime,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageCreationDateCondition") String imageCreationDateCondition,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("password") String password,
-        @CustomType.Parameter("prefixes") List<String> prefixes,
-        @CustomType.Parameter("pullImageAge") String pullImageAge,
-        @CustomType.Parameter("pullImageCount") Integer pullImageCount,
-        @CustomType.Parameter("scannerNames") @Nullable List<String> scannerNames,
-        @CustomType.Parameter("scannerType") @Nullable String scannerType,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("url") String url,
-        @CustomType.Parameter("username") String username) {
-        this.autoPull = autoPull;
-        this.autoPullInterval = autoPullInterval;
-        this.autoPullMax = autoPullMax;
-        this.autoPullRescan = autoPullRescan;
-        this.autoPullTime = autoPullTime;
-        this.id = id;
-        this.imageCreationDateCondition = imageCreationDateCondition;
-        this.name = name;
-        this.password = password;
-        this.prefixes = prefixes;
-        this.pullImageAge = pullImageAge;
-        this.pullImageCount = pullImageCount;
-        this.scannerNames = scannerNames;
-        this.scannerType = scannerType;
-        this.type = type;
-        this.url = url;
-        this.username = username;
+    private GetIntegrationRegistryResult() {}
+    /**
+     * @return Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     * 
+     */
+    public Boolean autoCleanup() {
+        return this.autoCleanup;
     }
-
     /**
      * @return Whether to automatically pull images from the registry on creation and daily
      * 
@@ -163,8 +136,8 @@ public final class GetIntegrationRegistryResult {
      * @return Whether to automatically pull and rescan images from the registry on creation and daily
      * 
      */
-    public Optional<Boolean> autoPullRescan() {
-        return Optional.ofNullable(this.autoPullRescan);
+    public Boolean autoPullRescan() {
+        return this.autoPullRescan;
     }
     /**
      * @return The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
@@ -227,14 +200,14 @@ public final class GetIntegrationRegistryResult {
      * 
      */
     public List<String> scannerNames() {
-        return this.scannerNames == null ? List.of() : this.scannerNames;
+        return this.scannerNames;
     }
     /**
      * @return Scanner type
      * 
      */
-    public Optional<String> scannerType() {
-        return Optional.ofNullable(this.scannerType);
+    public String scannerType() {
+        return this.scannerType;
     }
     /**
      * @return Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
@@ -265,12 +238,13 @@ public final class GetIntegrationRegistryResult {
     public static Builder builder(GetIntegrationRegistryResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
+        private Boolean autoCleanup;
         private Boolean autoPull;
         private Integer autoPullInterval;
         private Integer autoPullMax;
-        private @Nullable Boolean autoPullRescan;
+        private Boolean autoPullRescan;
         private String autoPullTime;
         private String id;
         private String imageCreationDateCondition;
@@ -279,18 +253,15 @@ public final class GetIntegrationRegistryResult {
         private List<String> prefixes;
         private String pullImageAge;
         private Integer pullImageCount;
-        private @Nullable List<String> scannerNames;
-        private @Nullable String scannerType;
+        private List<String> scannerNames;
+        private String scannerType;
         private String type;
         private String url;
         private String username;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIntegrationRegistryResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autoCleanup = defaults.autoCleanup;
     	      this.autoPull = defaults.autoPull;
     	      this.autoPullInterval = defaults.autoPullInterval;
     	      this.autoPullMax = defaults.autoPullMax;
@@ -310,42 +281,57 @@ public final class GetIntegrationRegistryResult {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder autoCleanup(Boolean autoCleanup) {
+            this.autoCleanup = Objects.requireNonNull(autoCleanup);
+            return this;
+        }
+        @CustomType.Setter
         public Builder autoPull(Boolean autoPull) {
             this.autoPull = Objects.requireNonNull(autoPull);
             return this;
         }
+        @CustomType.Setter
         public Builder autoPullInterval(Integer autoPullInterval) {
             this.autoPullInterval = Objects.requireNonNull(autoPullInterval);
             return this;
         }
+        @CustomType.Setter
         public Builder autoPullMax(Integer autoPullMax) {
             this.autoPullMax = Objects.requireNonNull(autoPullMax);
             return this;
         }
-        public Builder autoPullRescan(@Nullable Boolean autoPullRescan) {
-            this.autoPullRescan = autoPullRescan;
+        @CustomType.Setter
+        public Builder autoPullRescan(Boolean autoPullRescan) {
+            this.autoPullRescan = Objects.requireNonNull(autoPullRescan);
             return this;
         }
+        @CustomType.Setter
         public Builder autoPullTime(String autoPullTime) {
             this.autoPullTime = Objects.requireNonNull(autoPullTime);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageCreationDateCondition(String imageCreationDateCondition) {
             this.imageCreationDateCondition = Objects.requireNonNull(imageCreationDateCondition);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder password(String password) {
             this.password = Objects.requireNonNull(password);
             return this;
         }
+        @CustomType.Setter
         public Builder prefixes(List<String> prefixes) {
             this.prefixes = Objects.requireNonNull(prefixes);
             return this;
@@ -353,38 +339,65 @@ public final class GetIntegrationRegistryResult {
         public Builder prefixes(String... prefixes) {
             return prefixes(List.of(prefixes));
         }
+        @CustomType.Setter
         public Builder pullImageAge(String pullImageAge) {
             this.pullImageAge = Objects.requireNonNull(pullImageAge);
             return this;
         }
+        @CustomType.Setter
         public Builder pullImageCount(Integer pullImageCount) {
             this.pullImageCount = Objects.requireNonNull(pullImageCount);
             return this;
         }
-        public Builder scannerNames(@Nullable List<String> scannerNames) {
-            this.scannerNames = scannerNames;
+        @CustomType.Setter
+        public Builder scannerNames(List<String> scannerNames) {
+            this.scannerNames = Objects.requireNonNull(scannerNames);
             return this;
         }
         public Builder scannerNames(String... scannerNames) {
             return scannerNames(List.of(scannerNames));
         }
-        public Builder scannerType(@Nullable String scannerType) {
-            this.scannerType = scannerType;
+        @CustomType.Setter
+        public Builder scannerType(String scannerType) {
+            this.scannerType = Objects.requireNonNull(scannerType);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder url(String url) {
             this.url = Objects.requireNonNull(url);
             return this;
         }
+        @CustomType.Setter
         public Builder username(String username) {
             this.username = Objects.requireNonNull(username);
             return this;
-        }        public GetIntegrationRegistryResult build() {
-            return new GetIntegrationRegistryResult(autoPull, autoPullInterval, autoPullMax, autoPullRescan, autoPullTime, id, imageCreationDateCondition, name, password, prefixes, pullImageAge, pullImageCount, scannerNames, scannerType, type, url, username);
+        }
+        public GetIntegrationRegistryResult build() {
+            final var o = new GetIntegrationRegistryResult();
+            o.autoCleanup = autoCleanup;
+            o.autoPull = autoPull;
+            o.autoPullInterval = autoPullInterval;
+            o.autoPullMax = autoPullMax;
+            o.autoPullRescan = autoPullRescan;
+            o.autoPullTime = autoPullTime;
+            o.id = id;
+            o.imageCreationDateCondition = imageCreationDateCondition;
+            o.name = name;
+            o.password = password;
+            o.prefixes = prefixes;
+            o.pullImageAge = pullImageAge;
+            o.pullImageCount = pullImageCount;
+            o.scannerNames = scannerNames;
+            o.scannerType = scannerType;
+            o.type = type;
+            o.url = url;
+            o.username = username;
+            return o;
         }
     }
 }

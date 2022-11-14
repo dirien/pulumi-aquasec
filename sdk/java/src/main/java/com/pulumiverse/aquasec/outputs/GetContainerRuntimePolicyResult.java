@@ -5,15 +5,13 @@ package com.pulumiverse.aquasec.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyFileIntegrityMonitoring;
-import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyMalwareScanOptions;
+import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyMalwareScanOption;
 import com.pulumiverse.aquasec.outputs.GetContainerRuntimePolicyScopeVariable;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetContainerRuntimePolicyResult {
@@ -21,378 +19,269 @@ public final class GetContainerRuntimePolicyResult {
      * @return List of executables that are allowed for the user.
      * 
      */
-    private final List<String> allowedExecutables;
+    private List<String> allowedExecutables;
     /**
      * @return List of registries that allowed for running containers.
      * 
      */
-    private final List<String> allowedRegistries;
+    private List<String> allowedRegistries;
     /**
      * @return Indicates the application scope of the service.
      * 
      */
-    private final List<String> applicationScopes;
+    private List<String> applicationScopes;
     /**
      * @return If true, all network activity will be audited.
      * 
      */
-    private final Boolean auditAllNetworkActivity;
+    private Boolean auditAllNetworkActivity;
     /**
      * @return If true, all process activity will be audited.
      * 
      */
-    private final Boolean auditAllProcessesActivity;
+    private Boolean auditAllProcessesActivity;
     /**
      * @return If true, full command arguments will be audited.
      * 
      */
-    private final Boolean auditFullCommandArguments;
+    private Boolean auditFullCommandArguments;
     /**
      * @return Username of the account that created the service.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return If true, prevent containers from running with access to host network.
      * 
      */
-    private final Boolean blockAccessHostNetwork;
+    private Boolean blockAccessHostNetwork;
     /**
      * @return If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
      * 
      */
-    private final Boolean blockAddingCapabilities;
+    private Boolean blockAddingCapabilities;
     /**
      * @return If true, exec into a container is prevented.
      * 
      */
-    private final Boolean blockContainerExec;
+    private Boolean blockContainerExec;
     /**
      * @return Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      * 
      */
-    private final Boolean blockCryptocurrencyMining;
+    private Boolean blockCryptocurrencyMining;
     /**
      * @return Detect and prevent running in-memory execution
      * 
      */
-    private final Boolean blockFilelessExec;
+    private Boolean blockFilelessExec;
     /**
      * @return If true, prevent containers from running with the capability to bind in port lower than 1024.
      * 
      */
-    private final Boolean blockLowPortBinding;
+    private Boolean blockLowPortBinding;
     /**
      * @return If true, running non-compliant image in the container is prevented.
      * 
      */
-    private final Boolean blockNonCompliantImages;
+    private Boolean blockNonCompliantImages;
     /**
      * @return If true, running containers in non-compliant pods is prevented.
      * 
      */
-    private final Boolean blockNonCompliantWorkloads;
+    private Boolean blockNonCompliantWorkloads;
     /**
      * @return If true, running non-kubernetes containers is prevented.
      * 
      */
-    private final Boolean blockNonK8sContainers;
+    private Boolean blockNonK8sContainers;
     /**
      * @return If true, prevent containers from running with privileged container capability.
      * 
      */
-    private final Boolean blockPrivilegedContainers;
+    private Boolean blockPrivilegedContainers;
     /**
      * @return If true, reverse shell is prevented.
      * 
      */
-    private final Boolean blockReverseShell;
+    private Boolean blockReverseShell;
     /**
      * @return If true, prevent containers from running with root user.
      * 
      */
-    private final Boolean blockRootUser;
+    private Boolean blockRootUser;
     /**
      * @return If true, running images in the container that are not registered in Aqua is prevented.
      * 
      */
-    private final Boolean blockUnregisteredImages;
+    private Boolean blockUnregisteredImages;
     /**
      * @return If true, prevent containers from running with the privilege to use the IPC namespace.
      * 
      */
-    private final Boolean blockUseIpcNamespace;
+    private Boolean blockUseIpcNamespace;
     /**
      * @return If true, prevent containers from running with the privilege to use the PID namespace.
      * 
      */
-    private final Boolean blockUsePidNamespace;
+    private Boolean blockUsePidNamespace;
     /**
      * @return If true, prevent containers from running with the privilege to use the user namespace.
      * 
      */
-    private final Boolean blockUseUserNamespace;
+    private Boolean blockUseUserNamespace;
     /**
      * @return If true, prevent containers from running with the privilege to use the UTS namespace.
      * 
      */
-    private final Boolean blockUseUtsNamespace;
+    private Boolean blockUseUtsNamespace;
     /**
      * @return If true, prevents containers from using specific Unix capabilities.
      * 
      */
-    private final List<String> blockedCapabilities;
+    private List<String> blockedCapabilities;
     /**
      * @return List of executables that are prevented from running in containers.
      * 
      */
-    private final List<String> blockedExecutables;
+    private List<String> blockedExecutables;
     /**
      * @return List of files that are prevented from being read, modified and executed in the containers.
      * 
      */
-    private final List<String> blockedFiles;
+    private List<String> blockedFiles;
     /**
      * @return List of blocked inbound ports.
      * 
      */
-    private final List<String> blockedInboundPorts;
+    private List<String> blockedInboundPorts;
     /**
      * @return List of blocked outbound ports.
      * 
      */
-    private final List<String> blockedOutboundPorts;
+    private List<String> blockedOutboundPorts;
     /**
      * @return Prevent containers from reading, writing, or executing all files in the list of packages.
      * 
      */
-    private final List<String> blockedPackages;
+    private List<String> blockedPackages;
     /**
      * @return List of volumes that are prevented from being mounted in the containers.
      * 
      */
-    private final List<String> blockedVolumes;
+    private List<String> blockedVolumes;
     /**
      * @return List of processes that will be allowed.
      * 
      */
-    private final List<String> containerExecAllowedProcesses;
+    private List<String> containerExecAllowedProcesses;
     /**
      * @return The description of the container runtime policy
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return If true, executables that are not in the original image is prevented from running.
      * 
      */
-    private final Boolean enableDriftPrevention;
+    private Boolean enableDriftPrevention;
     /**
      * @return If true, fork bombs are prevented in the containers.
      * 
      */
-    private final Boolean enableForkGuard;
+    private Boolean enableForkGuard;
     /**
      * @return If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
      * 
      */
-    private final Boolean enableIpReputationSecurity;
+    private Boolean enableIpReputationSecurity;
     /**
      * @return If true, detects port scanning behavior in the container.
      * 
      */
-    private final Boolean enablePortScanDetection;
+    private Boolean enablePortScanDetection;
     /**
      * @return Indicates if the runtime policy is enabled or not.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Indicates that policy should effect container execution (not just for audit).
      * 
      */
-    private final Boolean enforce;
+    private Boolean enforce;
     /**
      * @return Indicates the number of days after which the runtime policy will be changed to enforce mode.
      * 
      */
-    private final Integer enforceAfterDays;
+    private Integer enforceAfterDays;
     /**
      * @return List of files and directories to be excluded from the read-only list.
      * 
      */
-    private final List<String> exceptionalReadonlyFilesAndDirectories;
+    private List<String> exceptionalReadonlyFilesAndDirectories;
     /**
      * @return Configuration for file integrity monitoring.
      * 
      */
-    private final List<GetContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
+    private List<GetContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
     /**
      * @return Process limit for the fork guard.
      * 
      */
-    private final Integer forkGuardProcessLimit;
+    private Integer forkGuardProcessLimit;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      * 
      */
-    private final Boolean limitNewPrivileges;
+    private Boolean limitNewPrivileges;
     /**
      * @return Configuration for Real-Time Malware Protection.
      * 
      */
-    private final @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions;
+    private List<GetContainerRuntimePolicyMalwareScanOption> malwareScanOptions;
     /**
      * @return If true, system time changes will be monitored.
      * 
      */
-    private final Boolean monitorSystemTimeChanges;
+    private Boolean monitorSystemTimeChanges;
     /**
      * @return Name of the container runtime policy
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return List of files and directories to be restricted as read-only
      * 
      */
-    private final List<String> readonlyFilesAndDirectories;
+    private List<String> readonlyFilesAndDirectories;
     /**
      * @return List of IPs/ CIDRs that will be allowed
      * 
      */
-    private final List<String> reverseShellAllowedIps;
+    private List<String> reverseShellAllowedIps;
     /**
      * @return List of processes that will be allowed
      * 
      */
-    private final List<String> reverseShellAllowedProcesses;
+    private List<String> reverseShellAllowedProcesses;
     /**
      * @return Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    private final String scopeExpression;
+    private String scopeExpression;
     /**
      * @return List of scope attributes.
      * 
      */
-    private final List<GetContainerRuntimePolicyScopeVariable> scopeVariables;
+    private List<GetContainerRuntimePolicyScopeVariable> scopeVariables;
 
-    @CustomType.Constructor
-    private GetContainerRuntimePolicyResult(
-        @CustomType.Parameter("allowedExecutables") List<String> allowedExecutables,
-        @CustomType.Parameter("allowedRegistries") List<String> allowedRegistries,
-        @CustomType.Parameter("applicationScopes") List<String> applicationScopes,
-        @CustomType.Parameter("auditAllNetworkActivity") Boolean auditAllNetworkActivity,
-        @CustomType.Parameter("auditAllProcessesActivity") Boolean auditAllProcessesActivity,
-        @CustomType.Parameter("auditFullCommandArguments") Boolean auditFullCommandArguments,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("blockAccessHostNetwork") Boolean blockAccessHostNetwork,
-        @CustomType.Parameter("blockAddingCapabilities") Boolean blockAddingCapabilities,
-        @CustomType.Parameter("blockContainerExec") Boolean blockContainerExec,
-        @CustomType.Parameter("blockCryptocurrencyMining") Boolean blockCryptocurrencyMining,
-        @CustomType.Parameter("blockFilelessExec") Boolean blockFilelessExec,
-        @CustomType.Parameter("blockLowPortBinding") Boolean blockLowPortBinding,
-        @CustomType.Parameter("blockNonCompliantImages") Boolean blockNonCompliantImages,
-        @CustomType.Parameter("blockNonCompliantWorkloads") Boolean blockNonCompliantWorkloads,
-        @CustomType.Parameter("blockNonK8sContainers") Boolean blockNonK8sContainers,
-        @CustomType.Parameter("blockPrivilegedContainers") Boolean blockPrivilegedContainers,
-        @CustomType.Parameter("blockReverseShell") Boolean blockReverseShell,
-        @CustomType.Parameter("blockRootUser") Boolean blockRootUser,
-        @CustomType.Parameter("blockUnregisteredImages") Boolean blockUnregisteredImages,
-        @CustomType.Parameter("blockUseIpcNamespace") Boolean blockUseIpcNamespace,
-        @CustomType.Parameter("blockUsePidNamespace") Boolean blockUsePidNamespace,
-        @CustomType.Parameter("blockUseUserNamespace") Boolean blockUseUserNamespace,
-        @CustomType.Parameter("blockUseUtsNamespace") Boolean blockUseUtsNamespace,
-        @CustomType.Parameter("blockedCapabilities") List<String> blockedCapabilities,
-        @CustomType.Parameter("blockedExecutables") List<String> blockedExecutables,
-        @CustomType.Parameter("blockedFiles") List<String> blockedFiles,
-        @CustomType.Parameter("blockedInboundPorts") List<String> blockedInboundPorts,
-        @CustomType.Parameter("blockedOutboundPorts") List<String> blockedOutboundPorts,
-        @CustomType.Parameter("blockedPackages") List<String> blockedPackages,
-        @CustomType.Parameter("blockedVolumes") List<String> blockedVolumes,
-        @CustomType.Parameter("containerExecAllowedProcesses") List<String> containerExecAllowedProcesses,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableDriftPrevention") Boolean enableDriftPrevention,
-        @CustomType.Parameter("enableForkGuard") Boolean enableForkGuard,
-        @CustomType.Parameter("enableIpReputationSecurity") Boolean enableIpReputationSecurity,
-        @CustomType.Parameter("enablePortScanDetection") Boolean enablePortScanDetection,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("enforce") Boolean enforce,
-        @CustomType.Parameter("enforceAfterDays") Integer enforceAfterDays,
-        @CustomType.Parameter("exceptionalReadonlyFilesAndDirectories") List<String> exceptionalReadonlyFilesAndDirectories,
-        @CustomType.Parameter("fileIntegrityMonitorings") List<GetContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings,
-        @CustomType.Parameter("forkGuardProcessLimit") Integer forkGuardProcessLimit,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("limitNewPrivileges") Boolean limitNewPrivileges,
-        @CustomType.Parameter("malwareScanOptions") @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions,
-        @CustomType.Parameter("monitorSystemTimeChanges") Boolean monitorSystemTimeChanges,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("readonlyFilesAndDirectories") List<String> readonlyFilesAndDirectories,
-        @CustomType.Parameter("reverseShellAllowedIps") List<String> reverseShellAllowedIps,
-        @CustomType.Parameter("reverseShellAllowedProcesses") List<String> reverseShellAllowedProcesses,
-        @CustomType.Parameter("scopeExpression") String scopeExpression,
-        @CustomType.Parameter("scopeVariables") List<GetContainerRuntimePolicyScopeVariable> scopeVariables) {
-        this.allowedExecutables = allowedExecutables;
-        this.allowedRegistries = allowedRegistries;
-        this.applicationScopes = applicationScopes;
-        this.auditAllNetworkActivity = auditAllNetworkActivity;
-        this.auditAllProcessesActivity = auditAllProcessesActivity;
-        this.auditFullCommandArguments = auditFullCommandArguments;
-        this.author = author;
-        this.blockAccessHostNetwork = blockAccessHostNetwork;
-        this.blockAddingCapabilities = blockAddingCapabilities;
-        this.blockContainerExec = blockContainerExec;
-        this.blockCryptocurrencyMining = blockCryptocurrencyMining;
-        this.blockFilelessExec = blockFilelessExec;
-        this.blockLowPortBinding = blockLowPortBinding;
-        this.blockNonCompliantImages = blockNonCompliantImages;
-        this.blockNonCompliantWorkloads = blockNonCompliantWorkloads;
-        this.blockNonK8sContainers = blockNonK8sContainers;
-        this.blockPrivilegedContainers = blockPrivilegedContainers;
-        this.blockReverseShell = blockReverseShell;
-        this.blockRootUser = blockRootUser;
-        this.blockUnregisteredImages = blockUnregisteredImages;
-        this.blockUseIpcNamespace = blockUseIpcNamespace;
-        this.blockUsePidNamespace = blockUsePidNamespace;
-        this.blockUseUserNamespace = blockUseUserNamespace;
-        this.blockUseUtsNamespace = blockUseUtsNamespace;
-        this.blockedCapabilities = blockedCapabilities;
-        this.blockedExecutables = blockedExecutables;
-        this.blockedFiles = blockedFiles;
-        this.blockedInboundPorts = blockedInboundPorts;
-        this.blockedOutboundPorts = blockedOutboundPorts;
-        this.blockedPackages = blockedPackages;
-        this.blockedVolumes = blockedVolumes;
-        this.containerExecAllowedProcesses = containerExecAllowedProcesses;
-        this.description = description;
-        this.enableDriftPrevention = enableDriftPrevention;
-        this.enableForkGuard = enableForkGuard;
-        this.enableIpReputationSecurity = enableIpReputationSecurity;
-        this.enablePortScanDetection = enablePortScanDetection;
-        this.enabled = enabled;
-        this.enforce = enforce;
-        this.enforceAfterDays = enforceAfterDays;
-        this.exceptionalReadonlyFilesAndDirectories = exceptionalReadonlyFilesAndDirectories;
-        this.fileIntegrityMonitorings = fileIntegrityMonitorings;
-        this.forkGuardProcessLimit = forkGuardProcessLimit;
-        this.id = id;
-        this.limitNewPrivileges = limitNewPrivileges;
-        this.malwareScanOptions = malwareScanOptions;
-        this.monitorSystemTimeChanges = monitorSystemTimeChanges;
-        this.name = name;
-        this.readonlyFilesAndDirectories = readonlyFilesAndDirectories;
-        this.reverseShellAllowedIps = reverseShellAllowedIps;
-        this.reverseShellAllowedProcesses = reverseShellAllowedProcesses;
-        this.scopeExpression = scopeExpression;
-        this.scopeVariables = scopeVariables;
-    }
-
+    private GetContainerRuntimePolicyResult() {}
     /**
      * @return List of executables that are allowed for the user.
      * 
@@ -712,8 +601,8 @@ public final class GetContainerRuntimePolicyResult {
      * @return Configuration for Real-Time Malware Protection.
      * 
      */
-    public Optional<GetContainerRuntimePolicyMalwareScanOptions> malwareScanOptions() {
-        return Optional.ofNullable(this.malwareScanOptions);
+    public List<GetContainerRuntimePolicyMalwareScanOption> malwareScanOptions() {
+        return this.malwareScanOptions;
     }
     /**
      * @return If true, system time changes will be monitored.
@@ -772,7 +661,7 @@ public final class GetContainerRuntimePolicyResult {
     public static Builder builder(GetContainerRuntimePolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedExecutables;
         private List<String> allowedRegistries;
@@ -819,7 +708,7 @@ public final class GetContainerRuntimePolicyResult {
         private Integer forkGuardProcessLimit;
         private String id;
         private Boolean limitNewPrivileges;
-        private @Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions;
+        private List<GetContainerRuntimePolicyMalwareScanOption> malwareScanOptions;
         private Boolean monitorSystemTimeChanges;
         private String name;
         private List<String> readonlyFilesAndDirectories;
@@ -827,11 +716,7 @@ public final class GetContainerRuntimePolicyResult {
         private List<String> reverseShellAllowedProcesses;
         private String scopeExpression;
         private List<GetContainerRuntimePolicyScopeVariable> scopeVariables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerRuntimePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedExecutables = defaults.allowedExecutables;
@@ -889,6 +774,7 @@ public final class GetContainerRuntimePolicyResult {
     	      this.scopeVariables = defaults.scopeVariables;
         }
 
+        @CustomType.Setter
         public Builder allowedExecutables(List<String> allowedExecutables) {
             this.allowedExecutables = Objects.requireNonNull(allowedExecutables);
             return this;
@@ -896,6 +782,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder allowedExecutables(String... allowedExecutables) {
             return allowedExecutables(List.of(allowedExecutables));
         }
+        @CustomType.Setter
         public Builder allowedRegistries(List<String> allowedRegistries) {
             this.allowedRegistries = Objects.requireNonNull(allowedRegistries);
             return this;
@@ -903,6 +790,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder allowedRegistries(String... allowedRegistries) {
             return allowedRegistries(List.of(allowedRegistries));
         }
+        @CustomType.Setter
         public Builder applicationScopes(List<String> applicationScopes) {
             this.applicationScopes = Objects.requireNonNull(applicationScopes);
             return this;
@@ -910,90 +798,112 @@ public final class GetContainerRuntimePolicyResult {
         public Builder applicationScopes(String... applicationScopes) {
             return applicationScopes(List.of(applicationScopes));
         }
+        @CustomType.Setter
         public Builder auditAllNetworkActivity(Boolean auditAllNetworkActivity) {
             this.auditAllNetworkActivity = Objects.requireNonNull(auditAllNetworkActivity);
             return this;
         }
+        @CustomType.Setter
         public Builder auditAllProcessesActivity(Boolean auditAllProcessesActivity) {
             this.auditAllProcessesActivity = Objects.requireNonNull(auditAllProcessesActivity);
             return this;
         }
+        @CustomType.Setter
         public Builder auditFullCommandArguments(Boolean auditFullCommandArguments) {
             this.auditFullCommandArguments = Objects.requireNonNull(auditFullCommandArguments);
             return this;
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder blockAccessHostNetwork(Boolean blockAccessHostNetwork) {
             this.blockAccessHostNetwork = Objects.requireNonNull(blockAccessHostNetwork);
             return this;
         }
+        @CustomType.Setter
         public Builder blockAddingCapabilities(Boolean blockAddingCapabilities) {
             this.blockAddingCapabilities = Objects.requireNonNull(blockAddingCapabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder blockContainerExec(Boolean blockContainerExec) {
             this.blockContainerExec = Objects.requireNonNull(blockContainerExec);
             return this;
         }
+        @CustomType.Setter
         public Builder blockCryptocurrencyMining(Boolean blockCryptocurrencyMining) {
             this.blockCryptocurrencyMining = Objects.requireNonNull(blockCryptocurrencyMining);
             return this;
         }
+        @CustomType.Setter
         public Builder blockFilelessExec(Boolean blockFilelessExec) {
             this.blockFilelessExec = Objects.requireNonNull(blockFilelessExec);
             return this;
         }
+        @CustomType.Setter
         public Builder blockLowPortBinding(Boolean blockLowPortBinding) {
             this.blockLowPortBinding = Objects.requireNonNull(blockLowPortBinding);
             return this;
         }
+        @CustomType.Setter
         public Builder blockNonCompliantImages(Boolean blockNonCompliantImages) {
             this.blockNonCompliantImages = Objects.requireNonNull(blockNonCompliantImages);
             return this;
         }
+        @CustomType.Setter
         public Builder blockNonCompliantWorkloads(Boolean blockNonCompliantWorkloads) {
             this.blockNonCompliantWorkloads = Objects.requireNonNull(blockNonCompliantWorkloads);
             return this;
         }
+        @CustomType.Setter
         public Builder blockNonK8sContainers(Boolean blockNonK8sContainers) {
             this.blockNonK8sContainers = Objects.requireNonNull(blockNonK8sContainers);
             return this;
         }
+        @CustomType.Setter
         public Builder blockPrivilegedContainers(Boolean blockPrivilegedContainers) {
             this.blockPrivilegedContainers = Objects.requireNonNull(blockPrivilegedContainers);
             return this;
         }
+        @CustomType.Setter
         public Builder blockReverseShell(Boolean blockReverseShell) {
             this.blockReverseShell = Objects.requireNonNull(blockReverseShell);
             return this;
         }
+        @CustomType.Setter
         public Builder blockRootUser(Boolean blockRootUser) {
             this.blockRootUser = Objects.requireNonNull(blockRootUser);
             return this;
         }
+        @CustomType.Setter
         public Builder blockUnregisteredImages(Boolean blockUnregisteredImages) {
             this.blockUnregisteredImages = Objects.requireNonNull(blockUnregisteredImages);
             return this;
         }
+        @CustomType.Setter
         public Builder blockUseIpcNamespace(Boolean blockUseIpcNamespace) {
             this.blockUseIpcNamespace = Objects.requireNonNull(blockUseIpcNamespace);
             return this;
         }
+        @CustomType.Setter
         public Builder blockUsePidNamespace(Boolean blockUsePidNamespace) {
             this.blockUsePidNamespace = Objects.requireNonNull(blockUsePidNamespace);
             return this;
         }
+        @CustomType.Setter
         public Builder blockUseUserNamespace(Boolean blockUseUserNamespace) {
             this.blockUseUserNamespace = Objects.requireNonNull(blockUseUserNamespace);
             return this;
         }
+        @CustomType.Setter
         public Builder blockUseUtsNamespace(Boolean blockUseUtsNamespace) {
             this.blockUseUtsNamespace = Objects.requireNonNull(blockUseUtsNamespace);
             return this;
         }
+        @CustomType.Setter
         public Builder blockedCapabilities(List<String> blockedCapabilities) {
             this.blockedCapabilities = Objects.requireNonNull(blockedCapabilities);
             return this;
@@ -1001,6 +911,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedCapabilities(String... blockedCapabilities) {
             return blockedCapabilities(List.of(blockedCapabilities));
         }
+        @CustomType.Setter
         public Builder blockedExecutables(List<String> blockedExecutables) {
             this.blockedExecutables = Objects.requireNonNull(blockedExecutables);
             return this;
@@ -1008,6 +919,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedExecutables(String... blockedExecutables) {
             return blockedExecutables(List.of(blockedExecutables));
         }
+        @CustomType.Setter
         public Builder blockedFiles(List<String> blockedFiles) {
             this.blockedFiles = Objects.requireNonNull(blockedFiles);
             return this;
@@ -1015,6 +927,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedFiles(String... blockedFiles) {
             return blockedFiles(List.of(blockedFiles));
         }
+        @CustomType.Setter
         public Builder blockedInboundPorts(List<String> blockedInboundPorts) {
             this.blockedInboundPorts = Objects.requireNonNull(blockedInboundPorts);
             return this;
@@ -1022,6 +935,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedInboundPorts(String... blockedInboundPorts) {
             return blockedInboundPorts(List.of(blockedInboundPorts));
         }
+        @CustomType.Setter
         public Builder blockedOutboundPorts(List<String> blockedOutboundPorts) {
             this.blockedOutboundPorts = Objects.requireNonNull(blockedOutboundPorts);
             return this;
@@ -1029,6 +943,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedOutboundPorts(String... blockedOutboundPorts) {
             return blockedOutboundPorts(List.of(blockedOutboundPorts));
         }
+        @CustomType.Setter
         public Builder blockedPackages(List<String> blockedPackages) {
             this.blockedPackages = Objects.requireNonNull(blockedPackages);
             return this;
@@ -1036,6 +951,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedPackages(String... blockedPackages) {
             return blockedPackages(List.of(blockedPackages));
         }
+        @CustomType.Setter
         public Builder blockedVolumes(List<String> blockedVolumes) {
             this.blockedVolumes = Objects.requireNonNull(blockedVolumes);
             return this;
@@ -1043,6 +959,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder blockedVolumes(String... blockedVolumes) {
             return blockedVolumes(List.of(blockedVolumes));
         }
+        @CustomType.Setter
         public Builder containerExecAllowedProcesses(List<String> containerExecAllowedProcesses) {
             this.containerExecAllowedProcesses = Objects.requireNonNull(containerExecAllowedProcesses);
             return this;
@@ -1050,38 +967,47 @@ public final class GetContainerRuntimePolicyResult {
         public Builder containerExecAllowedProcesses(String... containerExecAllowedProcesses) {
             return containerExecAllowedProcesses(List.of(containerExecAllowedProcesses));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableDriftPrevention(Boolean enableDriftPrevention) {
             this.enableDriftPrevention = Objects.requireNonNull(enableDriftPrevention);
             return this;
         }
+        @CustomType.Setter
         public Builder enableForkGuard(Boolean enableForkGuard) {
             this.enableForkGuard = Objects.requireNonNull(enableForkGuard);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpReputationSecurity(Boolean enableIpReputationSecurity) {
             this.enableIpReputationSecurity = Objects.requireNonNull(enableIpReputationSecurity);
             return this;
         }
+        @CustomType.Setter
         public Builder enablePortScanDetection(Boolean enablePortScanDetection) {
             this.enablePortScanDetection = Objects.requireNonNull(enablePortScanDetection);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(Boolean enforce) {
             this.enforce = Objects.requireNonNull(enforce);
             return this;
         }
+        @CustomType.Setter
         public Builder enforceAfterDays(Integer enforceAfterDays) {
             this.enforceAfterDays = Objects.requireNonNull(enforceAfterDays);
             return this;
         }
+        @CustomType.Setter
         public Builder exceptionalReadonlyFilesAndDirectories(List<String> exceptionalReadonlyFilesAndDirectories) {
             this.exceptionalReadonlyFilesAndDirectories = Objects.requireNonNull(exceptionalReadonlyFilesAndDirectories);
             return this;
@@ -1089,6 +1015,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder exceptionalReadonlyFilesAndDirectories(String... exceptionalReadonlyFilesAndDirectories) {
             return exceptionalReadonlyFilesAndDirectories(List.of(exceptionalReadonlyFilesAndDirectories));
         }
+        @CustomType.Setter
         public Builder fileIntegrityMonitorings(List<GetContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings) {
             this.fileIntegrityMonitorings = Objects.requireNonNull(fileIntegrityMonitorings);
             return this;
@@ -1096,30 +1023,40 @@ public final class GetContainerRuntimePolicyResult {
         public Builder fileIntegrityMonitorings(GetContainerRuntimePolicyFileIntegrityMonitoring... fileIntegrityMonitorings) {
             return fileIntegrityMonitorings(List.of(fileIntegrityMonitorings));
         }
+        @CustomType.Setter
         public Builder forkGuardProcessLimit(Integer forkGuardProcessLimit) {
             this.forkGuardProcessLimit = Objects.requireNonNull(forkGuardProcessLimit);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder limitNewPrivileges(Boolean limitNewPrivileges) {
             this.limitNewPrivileges = Objects.requireNonNull(limitNewPrivileges);
             return this;
         }
-        public Builder malwareScanOptions(@Nullable GetContainerRuntimePolicyMalwareScanOptions malwareScanOptions) {
-            this.malwareScanOptions = malwareScanOptions;
+        @CustomType.Setter
+        public Builder malwareScanOptions(List<GetContainerRuntimePolicyMalwareScanOption> malwareScanOptions) {
+            this.malwareScanOptions = Objects.requireNonNull(malwareScanOptions);
             return this;
         }
+        public Builder malwareScanOptions(GetContainerRuntimePolicyMalwareScanOption... malwareScanOptions) {
+            return malwareScanOptions(List.of(malwareScanOptions));
+        }
+        @CustomType.Setter
         public Builder monitorSystemTimeChanges(Boolean monitorSystemTimeChanges) {
             this.monitorSystemTimeChanges = Objects.requireNonNull(monitorSystemTimeChanges);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder readonlyFilesAndDirectories(List<String> readonlyFilesAndDirectories) {
             this.readonlyFilesAndDirectories = Objects.requireNonNull(readonlyFilesAndDirectories);
             return this;
@@ -1127,6 +1064,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder readonlyFilesAndDirectories(String... readonlyFilesAndDirectories) {
             return readonlyFilesAndDirectories(List.of(readonlyFilesAndDirectories));
         }
+        @CustomType.Setter
         public Builder reverseShellAllowedIps(List<String> reverseShellAllowedIps) {
             this.reverseShellAllowedIps = Objects.requireNonNull(reverseShellAllowedIps);
             return this;
@@ -1134,6 +1072,7 @@ public final class GetContainerRuntimePolicyResult {
         public Builder reverseShellAllowedIps(String... reverseShellAllowedIps) {
             return reverseShellAllowedIps(List.of(reverseShellAllowedIps));
         }
+        @CustomType.Setter
         public Builder reverseShellAllowedProcesses(List<String> reverseShellAllowedProcesses) {
             this.reverseShellAllowedProcesses = Objects.requireNonNull(reverseShellAllowedProcesses);
             return this;
@@ -1141,18 +1080,75 @@ public final class GetContainerRuntimePolicyResult {
         public Builder reverseShellAllowedProcesses(String... reverseShellAllowedProcesses) {
             return reverseShellAllowedProcesses(List.of(reverseShellAllowedProcesses));
         }
+        @CustomType.Setter
         public Builder scopeExpression(String scopeExpression) {
             this.scopeExpression = Objects.requireNonNull(scopeExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeVariables(List<GetContainerRuntimePolicyScopeVariable> scopeVariables) {
             this.scopeVariables = Objects.requireNonNull(scopeVariables);
             return this;
         }
         public Builder scopeVariables(GetContainerRuntimePolicyScopeVariable... scopeVariables) {
             return scopeVariables(List.of(scopeVariables));
-        }        public GetContainerRuntimePolicyResult build() {
-            return new GetContainerRuntimePolicyResult(allowedExecutables, allowedRegistries, applicationScopes, auditAllNetworkActivity, auditAllProcessesActivity, auditFullCommandArguments, author, blockAccessHostNetwork, blockAddingCapabilities, blockContainerExec, blockCryptocurrencyMining, blockFilelessExec, blockLowPortBinding, blockNonCompliantImages, blockNonCompliantWorkloads, blockNonK8sContainers, blockPrivilegedContainers, blockReverseShell, blockRootUser, blockUnregisteredImages, blockUseIpcNamespace, blockUsePidNamespace, blockUseUserNamespace, blockUseUtsNamespace, blockedCapabilities, blockedExecutables, blockedFiles, blockedInboundPorts, blockedOutboundPorts, blockedPackages, blockedVolumes, containerExecAllowedProcesses, description, enableDriftPrevention, enableForkGuard, enableIpReputationSecurity, enablePortScanDetection, enabled, enforce, enforceAfterDays, exceptionalReadonlyFilesAndDirectories, fileIntegrityMonitorings, forkGuardProcessLimit, id, limitNewPrivileges, malwareScanOptions, monitorSystemTimeChanges, name, readonlyFilesAndDirectories, reverseShellAllowedIps, reverseShellAllowedProcesses, scopeExpression, scopeVariables);
+        }
+        public GetContainerRuntimePolicyResult build() {
+            final var o = new GetContainerRuntimePolicyResult();
+            o.allowedExecutables = allowedExecutables;
+            o.allowedRegistries = allowedRegistries;
+            o.applicationScopes = applicationScopes;
+            o.auditAllNetworkActivity = auditAllNetworkActivity;
+            o.auditAllProcessesActivity = auditAllProcessesActivity;
+            o.auditFullCommandArguments = auditFullCommandArguments;
+            o.author = author;
+            o.blockAccessHostNetwork = blockAccessHostNetwork;
+            o.blockAddingCapabilities = blockAddingCapabilities;
+            o.blockContainerExec = blockContainerExec;
+            o.blockCryptocurrencyMining = blockCryptocurrencyMining;
+            o.blockFilelessExec = blockFilelessExec;
+            o.blockLowPortBinding = blockLowPortBinding;
+            o.blockNonCompliantImages = blockNonCompliantImages;
+            o.blockNonCompliantWorkloads = blockNonCompliantWorkloads;
+            o.blockNonK8sContainers = blockNonK8sContainers;
+            o.blockPrivilegedContainers = blockPrivilegedContainers;
+            o.blockReverseShell = blockReverseShell;
+            o.blockRootUser = blockRootUser;
+            o.blockUnregisteredImages = blockUnregisteredImages;
+            o.blockUseIpcNamespace = blockUseIpcNamespace;
+            o.blockUsePidNamespace = blockUsePidNamespace;
+            o.blockUseUserNamespace = blockUseUserNamespace;
+            o.blockUseUtsNamespace = blockUseUtsNamespace;
+            o.blockedCapabilities = blockedCapabilities;
+            o.blockedExecutables = blockedExecutables;
+            o.blockedFiles = blockedFiles;
+            o.blockedInboundPorts = blockedInboundPorts;
+            o.blockedOutboundPorts = blockedOutboundPorts;
+            o.blockedPackages = blockedPackages;
+            o.blockedVolumes = blockedVolumes;
+            o.containerExecAllowedProcesses = containerExecAllowedProcesses;
+            o.description = description;
+            o.enableDriftPrevention = enableDriftPrevention;
+            o.enableForkGuard = enableForkGuard;
+            o.enableIpReputationSecurity = enableIpReputationSecurity;
+            o.enablePortScanDetection = enablePortScanDetection;
+            o.enabled = enabled;
+            o.enforce = enforce;
+            o.enforceAfterDays = enforceAfterDays;
+            o.exceptionalReadonlyFilesAndDirectories = exceptionalReadonlyFilesAndDirectories;
+            o.fileIntegrityMonitorings = fileIntegrityMonitorings;
+            o.forkGuardProcessLimit = forkGuardProcessLimit;
+            o.id = id;
+            o.limitNewPrivileges = limitNewPrivileges;
+            o.malwareScanOptions = malwareScanOptions;
+            o.monitorSystemTimeChanges = monitorSystemTimeChanges;
+            o.name = name;
+            o.readonlyFilesAndDirectories = readonlyFilesAndDirectories;
+            o.reverseShellAllowedIps = reverseShellAllowedIps;
+            o.reverseShellAllowedProcesses = reverseShellAllowedProcesses;
+            o.scopeExpression = scopeExpression;
+            o.scopeVariables = scopeVariables;
+            return o;
         }
     }
 }

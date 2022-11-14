@@ -17,41 +17,18 @@ public final class ImageAssurancePolicyCustomCheck {
      * @return Name of user account that created the policy.
      * 
      */
-    private final @Nullable String author;
-    private final @Nullable String description;
-    private final @Nullable String engine;
-    private final @Nullable Integer lastModified;
-    private final @Nullable String name;
-    private final @Nullable String path;
-    private final @Nullable Boolean readOnly;
-    private final @Nullable String scriptId;
-    private final @Nullable String severity;
-    private final @Nullable String snippet;
+    private @Nullable String author;
+    private @Nullable String description;
+    private @Nullable String engine;
+    private @Nullable Integer lastModified;
+    private @Nullable String name;
+    private @Nullable String path;
+    private @Nullable Boolean readOnly;
+    private @Nullable String scriptId;
+    private @Nullable String severity;
+    private @Nullable String snippet;
 
-    @CustomType.Constructor
-    private ImageAssurancePolicyCustomCheck(
-        @CustomType.Parameter("author") @Nullable String author,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("engine") @Nullable String engine,
-        @CustomType.Parameter("lastModified") @Nullable Integer lastModified,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("path") @Nullable String path,
-        @CustomType.Parameter("readOnly") @Nullable Boolean readOnly,
-        @CustomType.Parameter("scriptId") @Nullable String scriptId,
-        @CustomType.Parameter("severity") @Nullable String severity,
-        @CustomType.Parameter("snippet") @Nullable String snippet) {
-        this.author = author;
-        this.description = description;
-        this.engine = engine;
-        this.lastModified = lastModified;
-        this.name = name;
-        this.path = path;
-        this.readOnly = readOnly;
-        this.scriptId = scriptId;
-        this.severity = severity;
-        this.snippet = snippet;
-    }
-
+    private ImageAssurancePolicyCustomCheck() {}
     /**
      * @return Name of user account that created the policy.
      * 
@@ -94,7 +71,7 @@ public final class ImageAssurancePolicyCustomCheck {
     public static Builder builder(ImageAssurancePolicyCustomCheck defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String author;
         private @Nullable String description;
@@ -106,11 +83,7 @@ public final class ImageAssurancePolicyCustomCheck {
         private @Nullable String scriptId;
         private @Nullable String severity;
         private @Nullable String snippet;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageAssurancePolicyCustomCheck defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.author = defaults.author;
@@ -125,47 +98,69 @@ public final class ImageAssurancePolicyCustomCheck {
     	      this.snippet = defaults.snippet;
         }
 
+        @CustomType.Setter
         public Builder author(@Nullable String author) {
             this.author = author;
             return this;
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder engine(@Nullable String engine) {
             this.engine = engine;
             return this;
         }
+        @CustomType.Setter
         public Builder lastModified(@Nullable Integer lastModified) {
             this.lastModified = lastModified;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder path(@Nullable String path) {
             this.path = path;
             return this;
         }
+        @CustomType.Setter
         public Builder readOnly(@Nullable Boolean readOnly) {
             this.readOnly = readOnly;
             return this;
         }
+        @CustomType.Setter
         public Builder scriptId(@Nullable String scriptId) {
             this.scriptId = scriptId;
             return this;
         }
+        @CustomType.Setter
         public Builder severity(@Nullable String severity) {
             this.severity = severity;
             return this;
         }
+        @CustomType.Setter
         public Builder snippet(@Nullable String snippet) {
             this.snippet = snippet;
             return this;
-        }        public ImageAssurancePolicyCustomCheck build() {
-            return new ImageAssurancePolicyCustomCheck(author, description, engine, lastModified, name, path, readOnly, scriptId, severity, snippet);
+        }
+        public ImageAssurancePolicyCustomCheck build() {
+            final var o = new ImageAssurancePolicyCustomCheck();
+            o.author = author;
+            o.description = description;
+            o.engine = engine;
+            o.lastModified = lastModified;
+            o.name = name;
+            o.path = path;
+            o.readOnly = readOnly;
+            o.scriptId = scriptId;
+            o.severity = severity;
+            o.snippet = snippet;
+            return o;
         }
     }
 }

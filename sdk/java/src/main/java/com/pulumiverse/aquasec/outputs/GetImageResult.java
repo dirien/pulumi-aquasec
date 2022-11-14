@@ -19,364 +19,259 @@ public final class GetImageResult {
      * @return The image architecture.
      * 
      */
-    private final String architecture;
+    private String architecture;
     /**
      * @return The list of image assurance checks performed on the image.
      * 
      */
-    private final List<GetImageAssuranceChecksPerformed> assuranceChecksPerformeds;
+    private List<GetImageAssuranceChecksPerformed> assuranceChecksPerformeds;
     /**
      * @return The name of the user who registered the image.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return Whether the image is blacklisted.
      * 
      */
-    private final Boolean blacklisted;
+    private Boolean blacklisted;
     /**
      * @return The image creation comment.
      * 
      */
-    private final String comment;
+    private String comment;
     /**
      * @return The date and time when the image was registered.
      * 
      */
-    private final String created;
+    private String created;
     /**
      * @return Number of critical severity vulnerabilities detected in the image.
      * 
      */
-    private final Integer criticalVulnerabilities;
+    private Integer criticalVulnerabilities;
     /**
      * @return The default user of the image.
      * 
      */
-    private final String defaultUser;
+    private String defaultUser;
     /**
      * @return The content digest of the image.
      * 
      */
-    private final String digest;
+    private String digest;
     /**
      * @return Whether the image is disallowed (non-compliant).
      * 
      */
-    private final Boolean disallowed;
+    private Boolean disallowed;
     /**
      * @return Whether the image was disallowed because of Image Assurance Policies.
      * 
      */
-    private final Boolean disallowedByAssuranceChecks;
+    private Boolean disallowedByAssuranceChecks;
     /**
      * @return The Docker image ID.
      * 
      */
-    private final String dockerId;
+    private String dockerId;
     /**
      * @return Docker labels of the image.
      * 
      */
-    private final List<String> dockerLabels;
+    private List<String> dockerLabels;
     /**
      * @return The Docker version used when building the image.
      * 
      */
-    private final String dockerVersion;
+    private String dockerVersion;
     /**
      * @return DTA severity score.
      * 
      */
-    private final String dtaSeverityScore;
+    private String dtaSeverityScore;
     /**
      * @return If DTA was skipped.
      * 
      */
-    private final Boolean dtaSkipped;
+    private Boolean dtaSkipped;
     /**
      * @return The reason why DTA was skipped.
      * 
      */
-    private final String dtaSkippedReason;
+    private String dtaSkippedReason;
     /**
      * @return Environment variables in the image.
      * 
      */
-    private final List<String> environmentVariables;
+    private List<String> environmentVariables;
     /**
      * @return Number of high severity vulnerabilities detected in the image.
      * 
      */
-    private final Integer highVulnerabilities;
+    private Integer highVulnerabilities;
     /**
      * @return The Docker history of the image.
      * 
      */
-    private final List<GetImageHistory> histories;
+    private List<GetImageHistory> histories;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The size of the image in bytes.
      * 
      */
-    private final Integer imageSize;
+    private Integer imageSize;
     /**
      * @return The type of the image.
      * 
      */
-    private final String imageType;
+    private String imageType;
     /**
      * @return Aqua labels of the image.
      * 
      */
-    private final List<String> labels;
+    private List<String> labels;
     /**
      * @return Number of low severity vulnerabilities detected in the image.
      * 
      */
-    private final Integer lowVulnerabilities;
+    private Integer lowVulnerabilities;
     /**
      * @return Number of malware found on the image.
      * 
      */
-    private final Integer malware;
+    private Integer malware;
     /**
      * @return Number of medium severity vulnerabilities detected in the image.
      * 
      */
-    private final Integer mediumVulnerabilities;
+    private Integer mediumVulnerabilities;
     /**
      * @return The name of the image.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Number of negligible severity vulnerabilities detected in the image.
      * 
      */
-    private final Integer negligibleVulnerabilities;
+    private Integer negligibleVulnerabilities;
     /**
      * @return Whether a new version of the image is available in the registry but is not scanned and registered yet.
      * 
      */
-    private final Boolean newerImageExists;
+    private Boolean newerImageExists;
     /**
      * @return The operating system detected in the image
      * 
      */
-    private final String os;
+    private String os;
     /**
      * @return The version of the OS detected in the image.
      * 
      */
-    private final String osVersion;
+    private String osVersion;
     /**
      * @return The ID of the parent image.
      * 
      */
-    private final String parent;
+    private String parent;
     /**
      * @return Whether the image could only be partially scanned.
      * 
      */
-    private final Boolean partialResults;
+    private Boolean partialResults;
     /**
      * @return Whether the image is non-compliant, but is pending this status due to running containers.
      * 
      */
-    private final Boolean pendingDisallowed;
+    private Boolean pendingDisallowed;
     /**
      * @return Permission of the image.
      * 
      */
-    private final String permission;
+    private String permission;
     /**
      * @return The name of the user who last modified the image permissions.
      * 
      */
-    private final String permissionAuthor;
+    private String permissionAuthor;
     /**
      * @return The comment provided when the image permissions were last modified
      * 
      */
-    private final String permissionComment;
+    private String permissionComment;
     /**
      * @return The name of the registry where the image is stored.
      * 
      */
-    private final String registry;
+    private String registry;
     /**
      * @return Type of the registry.
      * 
      */
-    private final String registryType;
+    private String registryType;
     /**
      * @return The repository digests.
      * 
      */
-    private final List<String> repoDigests;
+    private List<String> repoDigests;
     /**
      * @return The name of the image&#39;s repository.
      * 
      */
-    private final String repository;
+    private String repository;
     /**
      * @return The date and time when the image was last scanned.
      * 
      */
-    private final String scanDate;
+    private String scanDate;
     /**
      * @return If the image scan failed, the failure message.
      * 
      */
-    private final String scanError;
+    private String scanError;
     /**
      * @return The scan status of the image (either &#39;pending&#39;, &#39;in*progress&#39;, &#39;finished&#39;, &#39;failed&#39; or &#39;not*started&#39;).
      * 
      */
-    private final String scanStatus;
+    private String scanStatus;
     /**
      * @return Number of sensitive data detected in the image.
      * 
      */
-    private final Integer sensitiveData;
+    private Integer sensitiveData;
     /**
      * @return The tag of the image.
      * 
      */
-    private final String tag;
+    private String tag;
     /**
      * @return The total number of vulnerabilities detected in the image.
      * 
      */
-    private final Integer totalVulnerabilities;
+    private Integer totalVulnerabilities;
     /**
      * @return The virtual size of the image.
      * 
      */
-    private final Integer virtualSize;
+    private Integer virtualSize;
     /**
      * @return A list of all the vulnerabilities found in the image
      * 
      */
-    private final List<GetImageVulnerability> vulnerabilities;
+    private List<GetImageVulnerability> vulnerabilities;
     /**
      * @return Whether the image is whitelisted.
      * 
      */
-    private final Boolean whitelisted;
+    private Boolean whitelisted;
 
-    @CustomType.Constructor
-    private GetImageResult(
-        @CustomType.Parameter("architecture") String architecture,
-        @CustomType.Parameter("assuranceChecksPerformeds") List<GetImageAssuranceChecksPerformed> assuranceChecksPerformeds,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("blacklisted") Boolean blacklisted,
-        @CustomType.Parameter("comment") String comment,
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("criticalVulnerabilities") Integer criticalVulnerabilities,
-        @CustomType.Parameter("defaultUser") String defaultUser,
-        @CustomType.Parameter("digest") String digest,
-        @CustomType.Parameter("disallowed") Boolean disallowed,
-        @CustomType.Parameter("disallowedByAssuranceChecks") Boolean disallowedByAssuranceChecks,
-        @CustomType.Parameter("dockerId") String dockerId,
-        @CustomType.Parameter("dockerLabels") List<String> dockerLabels,
-        @CustomType.Parameter("dockerVersion") String dockerVersion,
-        @CustomType.Parameter("dtaSeverityScore") String dtaSeverityScore,
-        @CustomType.Parameter("dtaSkipped") Boolean dtaSkipped,
-        @CustomType.Parameter("dtaSkippedReason") String dtaSkippedReason,
-        @CustomType.Parameter("environmentVariables") List<String> environmentVariables,
-        @CustomType.Parameter("highVulnerabilities") Integer highVulnerabilities,
-        @CustomType.Parameter("histories") List<GetImageHistory> histories,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageSize") Integer imageSize,
-        @CustomType.Parameter("imageType") String imageType,
-        @CustomType.Parameter("labels") List<String> labels,
-        @CustomType.Parameter("lowVulnerabilities") Integer lowVulnerabilities,
-        @CustomType.Parameter("malware") Integer malware,
-        @CustomType.Parameter("mediumVulnerabilities") Integer mediumVulnerabilities,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("negligibleVulnerabilities") Integer negligibleVulnerabilities,
-        @CustomType.Parameter("newerImageExists") Boolean newerImageExists,
-        @CustomType.Parameter("os") String os,
-        @CustomType.Parameter("osVersion") String osVersion,
-        @CustomType.Parameter("parent") String parent,
-        @CustomType.Parameter("partialResults") Boolean partialResults,
-        @CustomType.Parameter("pendingDisallowed") Boolean pendingDisallowed,
-        @CustomType.Parameter("permission") String permission,
-        @CustomType.Parameter("permissionAuthor") String permissionAuthor,
-        @CustomType.Parameter("permissionComment") String permissionComment,
-        @CustomType.Parameter("registry") String registry,
-        @CustomType.Parameter("registryType") String registryType,
-        @CustomType.Parameter("repoDigests") List<String> repoDigests,
-        @CustomType.Parameter("repository") String repository,
-        @CustomType.Parameter("scanDate") String scanDate,
-        @CustomType.Parameter("scanError") String scanError,
-        @CustomType.Parameter("scanStatus") String scanStatus,
-        @CustomType.Parameter("sensitiveData") Integer sensitiveData,
-        @CustomType.Parameter("tag") String tag,
-        @CustomType.Parameter("totalVulnerabilities") Integer totalVulnerabilities,
-        @CustomType.Parameter("virtualSize") Integer virtualSize,
-        @CustomType.Parameter("vulnerabilities") List<GetImageVulnerability> vulnerabilities,
-        @CustomType.Parameter("whitelisted") Boolean whitelisted) {
-        this.architecture = architecture;
-        this.assuranceChecksPerformeds = assuranceChecksPerformeds;
-        this.author = author;
-        this.blacklisted = blacklisted;
-        this.comment = comment;
-        this.created = created;
-        this.criticalVulnerabilities = criticalVulnerabilities;
-        this.defaultUser = defaultUser;
-        this.digest = digest;
-        this.disallowed = disallowed;
-        this.disallowedByAssuranceChecks = disallowedByAssuranceChecks;
-        this.dockerId = dockerId;
-        this.dockerLabels = dockerLabels;
-        this.dockerVersion = dockerVersion;
-        this.dtaSeverityScore = dtaSeverityScore;
-        this.dtaSkipped = dtaSkipped;
-        this.dtaSkippedReason = dtaSkippedReason;
-        this.environmentVariables = environmentVariables;
-        this.highVulnerabilities = highVulnerabilities;
-        this.histories = histories;
-        this.id = id;
-        this.imageSize = imageSize;
-        this.imageType = imageType;
-        this.labels = labels;
-        this.lowVulnerabilities = lowVulnerabilities;
-        this.malware = malware;
-        this.mediumVulnerabilities = mediumVulnerabilities;
-        this.name = name;
-        this.negligibleVulnerabilities = negligibleVulnerabilities;
-        this.newerImageExists = newerImageExists;
-        this.os = os;
-        this.osVersion = osVersion;
-        this.parent = parent;
-        this.partialResults = partialResults;
-        this.pendingDisallowed = pendingDisallowed;
-        this.permission = permission;
-        this.permissionAuthor = permissionAuthor;
-        this.permissionComment = permissionComment;
-        this.registry = registry;
-        this.registryType = registryType;
-        this.repoDigests = repoDigests;
-        this.repository = repository;
-        this.scanDate = scanDate;
-        this.scanError = scanError;
-        this.scanStatus = scanStatus;
-        this.sensitiveData = sensitiveData;
-        this.tag = tag;
-        this.totalVulnerabilities = totalVulnerabilities;
-        this.virtualSize = virtualSize;
-        this.vulnerabilities = vulnerabilities;
-        this.whitelisted = whitelisted;
-    }
-
+    private GetImageResult() {}
     /**
      * @return The image architecture.
      * 
@@ -742,7 +637,7 @@ public final class GetImageResult {
     public static Builder builder(GetImageResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String architecture;
         private List<GetImageAssuranceChecksPerformed> assuranceChecksPerformeds;
@@ -795,11 +690,7 @@ public final class GetImageResult {
         private Integer virtualSize;
         private List<GetImageVulnerability> vulnerabilities;
         private Boolean whitelisted;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetImageResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architecture = defaults.architecture;
@@ -855,10 +746,12 @@ public final class GetImageResult {
     	      this.whitelisted = defaults.whitelisted;
         }
 
+        @CustomType.Setter
         public Builder architecture(String architecture) {
             this.architecture = Objects.requireNonNull(architecture);
             return this;
         }
+        @CustomType.Setter
         public Builder assuranceChecksPerformeds(List<GetImageAssuranceChecksPerformed> assuranceChecksPerformeds) {
             this.assuranceChecksPerformeds = Objects.requireNonNull(assuranceChecksPerformeds);
             return this;
@@ -866,46 +759,57 @@ public final class GetImageResult {
         public Builder assuranceChecksPerformeds(GetImageAssuranceChecksPerformed... assuranceChecksPerformeds) {
             return assuranceChecksPerformeds(List.of(assuranceChecksPerformeds));
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder blacklisted(Boolean blacklisted) {
             this.blacklisted = Objects.requireNonNull(blacklisted);
             return this;
         }
+        @CustomType.Setter
         public Builder comment(String comment) {
             this.comment = Objects.requireNonNull(comment);
             return this;
         }
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder criticalVulnerabilities(Integer criticalVulnerabilities) {
             this.criticalVulnerabilities = Objects.requireNonNull(criticalVulnerabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder defaultUser(String defaultUser) {
             this.defaultUser = Objects.requireNonNull(defaultUser);
             return this;
         }
+        @CustomType.Setter
         public Builder digest(String digest) {
             this.digest = Objects.requireNonNull(digest);
             return this;
         }
+        @CustomType.Setter
         public Builder disallowed(Boolean disallowed) {
             this.disallowed = Objects.requireNonNull(disallowed);
             return this;
         }
+        @CustomType.Setter
         public Builder disallowedByAssuranceChecks(Boolean disallowedByAssuranceChecks) {
             this.disallowedByAssuranceChecks = Objects.requireNonNull(disallowedByAssuranceChecks);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerId(String dockerId) {
             this.dockerId = Objects.requireNonNull(dockerId);
             return this;
         }
+        @CustomType.Setter
         public Builder dockerLabels(List<String> dockerLabels) {
             this.dockerLabels = Objects.requireNonNull(dockerLabels);
             return this;
@@ -913,22 +817,27 @@ public final class GetImageResult {
         public Builder dockerLabels(String... dockerLabels) {
             return dockerLabels(List.of(dockerLabels));
         }
+        @CustomType.Setter
         public Builder dockerVersion(String dockerVersion) {
             this.dockerVersion = Objects.requireNonNull(dockerVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder dtaSeverityScore(String dtaSeverityScore) {
             this.dtaSeverityScore = Objects.requireNonNull(dtaSeverityScore);
             return this;
         }
+        @CustomType.Setter
         public Builder dtaSkipped(Boolean dtaSkipped) {
             this.dtaSkipped = Objects.requireNonNull(dtaSkipped);
             return this;
         }
+        @CustomType.Setter
         public Builder dtaSkippedReason(String dtaSkippedReason) {
             this.dtaSkippedReason = Objects.requireNonNull(dtaSkippedReason);
             return this;
         }
+        @CustomType.Setter
         public Builder environmentVariables(List<String> environmentVariables) {
             this.environmentVariables = Objects.requireNonNull(environmentVariables);
             return this;
@@ -936,10 +845,12 @@ public final class GetImageResult {
         public Builder environmentVariables(String... environmentVariables) {
             return environmentVariables(List.of(environmentVariables));
         }
+        @CustomType.Setter
         public Builder highVulnerabilities(Integer highVulnerabilities) {
             this.highVulnerabilities = Objects.requireNonNull(highVulnerabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder histories(List<GetImageHistory> histories) {
             this.histories = Objects.requireNonNull(histories);
             return this;
@@ -947,18 +858,22 @@ public final class GetImageResult {
         public Builder histories(GetImageHistory... histories) {
             return histories(List.of(histories));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageSize(Integer imageSize) {
             this.imageSize = Objects.requireNonNull(imageSize);
             return this;
         }
+        @CustomType.Setter
         public Builder imageType(String imageType) {
             this.imageType = Objects.requireNonNull(imageType);
             return this;
         }
+        @CustomType.Setter
         public Builder labels(List<String> labels) {
             this.labels = Objects.requireNonNull(labels);
             return this;
@@ -966,70 +881,87 @@ public final class GetImageResult {
         public Builder labels(String... labels) {
             return labels(List.of(labels));
         }
+        @CustomType.Setter
         public Builder lowVulnerabilities(Integer lowVulnerabilities) {
             this.lowVulnerabilities = Objects.requireNonNull(lowVulnerabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder malware(Integer malware) {
             this.malware = Objects.requireNonNull(malware);
             return this;
         }
+        @CustomType.Setter
         public Builder mediumVulnerabilities(Integer mediumVulnerabilities) {
             this.mediumVulnerabilities = Objects.requireNonNull(mediumVulnerabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder negligibleVulnerabilities(Integer negligibleVulnerabilities) {
             this.negligibleVulnerabilities = Objects.requireNonNull(negligibleVulnerabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder newerImageExists(Boolean newerImageExists) {
             this.newerImageExists = Objects.requireNonNull(newerImageExists);
             return this;
         }
+        @CustomType.Setter
         public Builder os(String os) {
             this.os = Objects.requireNonNull(os);
             return this;
         }
+        @CustomType.Setter
         public Builder osVersion(String osVersion) {
             this.osVersion = Objects.requireNonNull(osVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder parent(String parent) {
             this.parent = Objects.requireNonNull(parent);
             return this;
         }
+        @CustomType.Setter
         public Builder partialResults(Boolean partialResults) {
             this.partialResults = Objects.requireNonNull(partialResults);
             return this;
         }
+        @CustomType.Setter
         public Builder pendingDisallowed(Boolean pendingDisallowed) {
             this.pendingDisallowed = Objects.requireNonNull(pendingDisallowed);
             return this;
         }
+        @CustomType.Setter
         public Builder permission(String permission) {
             this.permission = Objects.requireNonNull(permission);
             return this;
         }
+        @CustomType.Setter
         public Builder permissionAuthor(String permissionAuthor) {
             this.permissionAuthor = Objects.requireNonNull(permissionAuthor);
             return this;
         }
+        @CustomType.Setter
         public Builder permissionComment(String permissionComment) {
             this.permissionComment = Objects.requireNonNull(permissionComment);
             return this;
         }
+        @CustomType.Setter
         public Builder registry(String registry) {
             this.registry = Objects.requireNonNull(registry);
             return this;
         }
+        @CustomType.Setter
         public Builder registryType(String registryType) {
             this.registryType = Objects.requireNonNull(registryType);
             return this;
         }
+        @CustomType.Setter
         public Builder repoDigests(List<String> repoDigests) {
             this.repoDigests = Objects.requireNonNull(repoDigests);
             return this;
@@ -1037,38 +969,47 @@ public final class GetImageResult {
         public Builder repoDigests(String... repoDigests) {
             return repoDigests(List.of(repoDigests));
         }
+        @CustomType.Setter
         public Builder repository(String repository) {
             this.repository = Objects.requireNonNull(repository);
             return this;
         }
+        @CustomType.Setter
         public Builder scanDate(String scanDate) {
             this.scanDate = Objects.requireNonNull(scanDate);
             return this;
         }
+        @CustomType.Setter
         public Builder scanError(String scanError) {
             this.scanError = Objects.requireNonNull(scanError);
             return this;
         }
+        @CustomType.Setter
         public Builder scanStatus(String scanStatus) {
             this.scanStatus = Objects.requireNonNull(scanStatus);
             return this;
         }
+        @CustomType.Setter
         public Builder sensitiveData(Integer sensitiveData) {
             this.sensitiveData = Objects.requireNonNull(sensitiveData);
             return this;
         }
+        @CustomType.Setter
         public Builder tag(String tag) {
             this.tag = Objects.requireNonNull(tag);
             return this;
         }
+        @CustomType.Setter
         public Builder totalVulnerabilities(Integer totalVulnerabilities) {
             this.totalVulnerabilities = Objects.requireNonNull(totalVulnerabilities);
             return this;
         }
+        @CustomType.Setter
         public Builder virtualSize(Integer virtualSize) {
             this.virtualSize = Objects.requireNonNull(virtualSize);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilities(List<GetImageVulnerability> vulnerabilities) {
             this.vulnerabilities = Objects.requireNonNull(vulnerabilities);
             return this;
@@ -1076,11 +1017,65 @@ public final class GetImageResult {
         public Builder vulnerabilities(GetImageVulnerability... vulnerabilities) {
             return vulnerabilities(List.of(vulnerabilities));
         }
+        @CustomType.Setter
         public Builder whitelisted(Boolean whitelisted) {
             this.whitelisted = Objects.requireNonNull(whitelisted);
             return this;
-        }        public GetImageResult build() {
-            return new GetImageResult(architecture, assuranceChecksPerformeds, author, blacklisted, comment, created, criticalVulnerabilities, defaultUser, digest, disallowed, disallowedByAssuranceChecks, dockerId, dockerLabels, dockerVersion, dtaSeverityScore, dtaSkipped, dtaSkippedReason, environmentVariables, highVulnerabilities, histories, id, imageSize, imageType, labels, lowVulnerabilities, malware, mediumVulnerabilities, name, negligibleVulnerabilities, newerImageExists, os, osVersion, parent, partialResults, pendingDisallowed, permission, permissionAuthor, permissionComment, registry, registryType, repoDigests, repository, scanDate, scanError, scanStatus, sensitiveData, tag, totalVulnerabilities, virtualSize, vulnerabilities, whitelisted);
+        }
+        public GetImageResult build() {
+            final var o = new GetImageResult();
+            o.architecture = architecture;
+            o.assuranceChecksPerformeds = assuranceChecksPerformeds;
+            o.author = author;
+            o.blacklisted = blacklisted;
+            o.comment = comment;
+            o.created = created;
+            o.criticalVulnerabilities = criticalVulnerabilities;
+            o.defaultUser = defaultUser;
+            o.digest = digest;
+            o.disallowed = disallowed;
+            o.disallowedByAssuranceChecks = disallowedByAssuranceChecks;
+            o.dockerId = dockerId;
+            o.dockerLabels = dockerLabels;
+            o.dockerVersion = dockerVersion;
+            o.dtaSeverityScore = dtaSeverityScore;
+            o.dtaSkipped = dtaSkipped;
+            o.dtaSkippedReason = dtaSkippedReason;
+            o.environmentVariables = environmentVariables;
+            o.highVulnerabilities = highVulnerabilities;
+            o.histories = histories;
+            o.id = id;
+            o.imageSize = imageSize;
+            o.imageType = imageType;
+            o.labels = labels;
+            o.lowVulnerabilities = lowVulnerabilities;
+            o.malware = malware;
+            o.mediumVulnerabilities = mediumVulnerabilities;
+            o.name = name;
+            o.negligibleVulnerabilities = negligibleVulnerabilities;
+            o.newerImageExists = newerImageExists;
+            o.os = os;
+            o.osVersion = osVersion;
+            o.parent = parent;
+            o.partialResults = partialResults;
+            o.pendingDisallowed = pendingDisallowed;
+            o.permission = permission;
+            o.permissionAuthor = permissionAuthor;
+            o.permissionComment = permissionComment;
+            o.registry = registry;
+            o.registryType = registryType;
+            o.repoDigests = repoDigests;
+            o.repository = repository;
+            o.scanDate = scanDate;
+            o.scanError = scanError;
+            o.scanStatus = scanStatus;
+            o.sensitiveData = sensitiveData;
+            o.tag = tag;
+            o.totalVulnerabilities = totalVulnerabilities;
+            o.virtualSize = virtualSize;
+            o.vulnerabilities = vulnerabilities;
+            o.whitelisted = whitelisted;
+            return o;
         }
     }
 }

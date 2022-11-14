@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScopeCategoryArtifact {
-    private final @Nullable List<GetApplicationScopeCategoryArtifactCf> cfs;
-    private final @Nullable List<GetApplicationScopeCategoryArtifactFunction> functions;
-    private final @Nullable List<GetApplicationScopeCategoryArtifactImage> images;
+    private @Nullable List<GetApplicationScopeCategoryArtifactCf> cfs;
+    private @Nullable List<GetApplicationScopeCategoryArtifactFunction> functions;
+    private @Nullable List<GetApplicationScopeCategoryArtifactImage> images;
 
-    @CustomType.Constructor
-    private GetApplicationScopeCategoryArtifact(
-        @CustomType.Parameter("cfs") @Nullable List<GetApplicationScopeCategoryArtifactCf> cfs,
-        @CustomType.Parameter("functions") @Nullable List<GetApplicationScopeCategoryArtifactFunction> functions,
-        @CustomType.Parameter("images") @Nullable List<GetApplicationScopeCategoryArtifactImage> images) {
-        this.cfs = cfs;
-        this.functions = functions;
-        this.images = images;
-    }
-
+    private GetApplicationScopeCategoryArtifact() {}
     public List<GetApplicationScopeCategoryArtifactCf> cfs() {
         return this.cfs == null ? List.of() : this.cfs;
     }
@@ -44,16 +35,12 @@ public final class GetApplicationScopeCategoryArtifact {
     public static Builder builder(GetApplicationScopeCategoryArtifact defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetApplicationScopeCategoryArtifactCf> cfs;
         private @Nullable List<GetApplicationScopeCategoryArtifactFunction> functions;
         private @Nullable List<GetApplicationScopeCategoryArtifactImage> images;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScopeCategoryArtifact defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cfs = defaults.cfs;
@@ -61,6 +48,7 @@ public final class GetApplicationScopeCategoryArtifact {
     	      this.images = defaults.images;
         }
 
+        @CustomType.Setter
         public Builder cfs(@Nullable List<GetApplicationScopeCategoryArtifactCf> cfs) {
             this.cfs = cfs;
             return this;
@@ -68,6 +56,7 @@ public final class GetApplicationScopeCategoryArtifact {
         public Builder cfs(GetApplicationScopeCategoryArtifactCf... cfs) {
             return cfs(List.of(cfs));
         }
+        @CustomType.Setter
         public Builder functions(@Nullable List<GetApplicationScopeCategoryArtifactFunction> functions) {
             this.functions = functions;
             return this;
@@ -75,14 +64,20 @@ public final class GetApplicationScopeCategoryArtifact {
         public Builder functions(GetApplicationScopeCategoryArtifactFunction... functions) {
             return functions(List.of(functions));
         }
+        @CustomType.Setter
         public Builder images(@Nullable List<GetApplicationScopeCategoryArtifactImage> images) {
             this.images = images;
             return this;
         }
         public Builder images(GetApplicationScopeCategoryArtifactImage... images) {
             return images(List.of(images));
-        }        public GetApplicationScopeCategoryArtifact build() {
-            return new GetApplicationScopeCategoryArtifact(cfs, functions, images);
+        }
+        public GetApplicationScopeCategoryArtifact build() {
+            final var o = new GetApplicationScopeCategoryArtifact();
+            o.cfs = cfs;
+            o.functions = functions;
+            o.images = images;
+            return o;
         }
     }
 }

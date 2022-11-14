@@ -32,21 +32,6 @@ public final class GetApplicationScopePlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * Description of the application scope.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable String description;
-
-    /**
-     * @return Description of the application scope.
-     * 
-     */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
-    }
-
-    /**
      * Name of an application scope.
      * 
      */
@@ -61,28 +46,11 @@ public final class GetApplicationScopePlainArgs extends com.pulumi.resources.Inv
         return this.name;
     }
 
-    /**
-     * Name of an application scope.
-     * 
-     */
-    @Import(name="ownerEmail")
-    private @Nullable String ownerEmail;
-
-    /**
-     * @return Name of an application scope.
-     * 
-     */
-    public Optional<String> ownerEmail() {
-        return Optional.ofNullable(this.ownerEmail);
-    }
-
     private GetApplicationScopePlainArgs() {}
 
     private GetApplicationScopePlainArgs(GetApplicationScopePlainArgs $) {
         this.categories = $.categories;
-        this.description = $.description;
         this.name = $.name;
-        this.ownerEmail = $.ownerEmail;
     }
 
     public static Builder builder() {
@@ -125,17 +93,6 @@ public final class GetApplicationScopePlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param description Description of the application scope.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable String description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
          * @param name Name of an application scope.
          * 
          * @return builder
@@ -143,17 +100,6 @@ public final class GetApplicationScopePlainArgs extends com.pulumi.resources.Inv
          */
         public Builder name(String name) {
             $.name = name;
-            return this;
-        }
-
-        /**
-         * @param ownerEmail Name of an application scope.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder ownerEmail(@Nullable String ownerEmail) {
-            $.ownerEmail = ownerEmail;
             return this;
         }
 

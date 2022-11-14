@@ -95,7 +95,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * 			This functionality can work only when the KubeEnforcer is deployed in Enforce mode.
      * 
      */
-    @Export(name="admissionControl", type=Boolean.class, parameters={})
+    @Export(name="admissionControl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> admissionControl;
 
     /**
@@ -113,7 +113,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Allow kube enforcer audit.
      * 
      */
-    @Export(name="allowKubeEnforcerAudit", type=Boolean.class, parameters={})
+    @Export(name="allowKubeEnforcerAudit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowKubeEnforcerAudit;
 
     /**
@@ -127,7 +127,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * List of application names to allow on the hosts. if provided, only containers of the listed applications will be allowed to run.
      * 
      */
-    @Export(name="allowedApplications", type=List.class, parameters={String.class})
+    @Export(name="allowedApplications", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedApplications;
 
     /**
@@ -141,7 +141,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * List of label names to allow on the hosts.
      * 
      */
-    @Export(name="allowedLabels", type=List.class, parameters={String.class})
+    @Export(name="allowedLabels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedLabels;
 
     /**
@@ -155,7 +155,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * List of registry names to allow on the hosts.
      * 
      */
-    @Export(name="allowedRegistries", type=List.class, parameters={String.class})
+    @Export(name="allowedRegistries", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedRegistries;
 
     /**
@@ -169,7 +169,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This setting is available only when you have license for `Advanced Malware Protection`. Send true to make use of the license and enable the `Real-time Malware Protection` control in the Host Runtime policies.
      * 
      */
-    @Export(name="antivirusProtection", type=Boolean.class, parameters={})
+    @Export(name="antivirusProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> antivirusProtection;
 
     /**
@@ -183,7 +183,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Aqua server version
      * 
      */
-    @Export(name="aquaVersion", type=String.class, parameters={})
+    @Export(name="aquaVersion", refs={String.class}, tree="[0]")
     private Output<String> aquaVersion;
 
     /**
@@ -197,7 +197,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Agent will send extra audit messages to the server for success operations from inside the container (runtime).
      * 
      */
-    @Export(name="auditAll", type=Boolean.class, parameters={})
+    @Export(name="auditAll", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditAll;
 
     /**
@@ -211,7 +211,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This option is applicable only if `Enable Pod Enforcer injection` is selected. Select this option if you want Aqua Enterprise to copy the secrets defined above to the Pod Enforcer namespace and container. Otherwise, you can choose to copy these secrets by other means.
      * 
      */
-    @Export(name="autoCopySecrets", type=Boolean.class, parameters={})
+    @Export(name="autoCopySecrets", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoCopySecrets;
 
     /**
@@ -225,7 +225,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This option is available only if `Enable workload discovery` is selected. If selected, the KubeEnforcer will add previously unknown image registries from the cluster to Aqua.
      * 
      */
-    @Export(name="autoDiscoverConfigureRegistries", type=Boolean.class, parameters={})
+    @Export(name="autoDiscoverConfigureRegistries", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoDiscoverConfigureRegistries;
 
     /**
@@ -239,7 +239,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * When this option is selected, the KubeEnforcer will discover workloads on its cluster.
      * 
      */
-    @Export(name="autoDiscoveryEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoDiscoveryEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoDiscoveryEnabled;
 
     /**
@@ -253,7 +253,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This option is available only if `Enable workload discovery` is selected. If selected, the KubeEnforcer will automatically register images running as workloads (and scan the discovered images for security issues).
      * 
      */
-    @Export(name="autoScanDiscoveredImagesRunningContainers", type=Boolean.class, parameters={})
+    @Export(name="autoScanDiscoveredImagesRunningContainers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoScanDiscoveredImagesRunningContainers;
 
     /**
@@ -267,7 +267,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Select Enabled to detect suspicious activity in your containers and display potential security threats in the Incidents and Audit pages.
      * 
      */
-    @Export(name="behavioralEngine", type=Boolean.class, parameters={})
+    @Export(name="behavioralEngine", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> behavioralEngine;
 
     /**
@@ -281,7 +281,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This applies only if both `Enable admission control` and Enforce mode are set. This additional option must be selected for admission control to work if the KubeEnforcer is not connected to any Gateway. If this option is not selected, admission control will be disabled; this will have no effect on containers already running.
      * 
      */
-    @Export(name="blockAdmissionControl", type=Boolean.class, parameters={})
+    @Export(name="blockAdmissionControl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockAdmissionControl;
 
     /**
@@ -295,7 +295,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The installation command.
      * 
      */
-    @Export(name="commands", type=List.class, parameters={EnforcerGroupsCommand.class})
+    @Export(name="commands", refs={List.class,EnforcerGroupsCommand.class}, tree="[0,1]")
     private Output<List<EnforcerGroupsCommand>> commands;
 
     /**
@@ -309,7 +309,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of connected enforcers in the enforcer group.
      * 
      */
-    @Export(name="connectedCount", type=Integer.class, parameters={})
+    @Export(name="connectedCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectedCount;
 
     /**
@@ -323,7 +323,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to apply Container Runtime Policies, Image Profiles, and Firewall Policies to containers.
      * 
      */
-    @Export(name="containerActivityProtection", type=Boolean.class, parameters={})
+    @Export(name="containerActivityProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> containerActivityProtection;
 
     /**
@@ -337,7 +337,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This setting is available only when you have license for `Advanced Malware Protection`. Send true to make use of the license and enable the `Real-time Malware Protection` control in the Container Runtime policies.
      * 
      */
-    @Export(name="containerAntivirusProtection", type=Boolean.class, parameters={})
+    @Export(name="containerAntivirusProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> containerAntivirusProtection;
 
     /**
@@ -351,7 +351,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * A description of the Aqua Enforcer group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -365,7 +365,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of disconnected enforcers in the enforcer group.
      * 
      */
-    @Export(name="disconnectedCount", type=Integer.class, parameters={})
+    @Export(name="disconnectedCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> disconnectedCount;
 
     /**
@@ -379,7 +379,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Whether to enable enforce mode on the Enforcers, defaults to False.
      * 
      */
-    @Export(name="enforce", type=Boolean.class, parameters={})
+    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforce;
 
     /**
@@ -393,7 +393,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The specific Aqua Enforcer product image (with image tag) to be deployed.
      * 
      */
-    @Export(name="enforcerImageName", type=String.class, parameters={})
+    @Export(name="enforcerImageName", refs={String.class}, tree="[0]")
     private Output<String> enforcerImageName;
 
     /**
@@ -407,7 +407,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Select Enabled to send activity logs in your containers to the Aqua Server for forensics purposes.
      * 
      */
-    @Export(name="forensics", type=Boolean.class, parameters={})
+    @Export(name="forensics", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forensics;
 
     /**
@@ -421,7 +421,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Gateway Address
      * 
      */
-    @Export(name="gatewayAddress", type=String.class, parameters={})
+    @Export(name="gatewayAddress", refs={String.class}, tree="[0]")
     private Output<String> gatewayAddress;
 
     /**
@@ -435,7 +435,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Gateway Name
      * 
      */
-    @Export(name="gatewayName", type=String.class, parameters={})
+    @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output<String> gatewayName;
 
     /**
@@ -449,7 +449,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * List of Aqua gateway IDs for the Enforcers.
      * 
      */
-    @Export(name="gateways", type=List.class, parameters={String.class})
+    @Export(name="gateways", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> gateways;
 
     /**
@@ -463,7 +463,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The ID of the Enforcer group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -477,7 +477,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of high vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    @Export(name="highVulns", type=Integer.class, parameters={})
+    @Export(name="highVulns", refs={Integer.class}, tree="[0]")
     private Output<Integer> highVulns;
 
     /**
@@ -491,7 +491,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to enable host scanning and respective Host Assurance controls.
      * 
      */
-    @Export(name="hostAssurance", type=Boolean.class, parameters={})
+    @Export(name="hostAssurance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostAssurance;
 
     /**
@@ -505,7 +505,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to enable these Host Runtime Policy controls: `OS Users and Groups Allowed` and `OS Users and Groups Blocked`
      * 
      */
-    @Export(name="hostBehavioralEngine", type=Boolean.class, parameters={})
+    @Export(name="hostBehavioralEngine", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostBehavioralEngine;
 
     /**
@@ -519,7 +519,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Select Enabled to send activity logs in your host to the Aqua Server for forensics purposes.
      * 
      */
-    @Export(name="hostForensics", type=Boolean.class, parameters={})
+    @Export(name="hostForensics", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostForensics;
 
     /**
@@ -533,7 +533,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to apply Firewall Policies to hosts, and allow recording network maps for Aqua services. The Network Firewall setting must be disabled when deploying the Aqua Enforcer on a machine running Rocky Linux. See https://docs.aquasec.com/docs/platform-support-limitations-rocky-linux for further information
      * 
      */
-    @Export(name="hostNetworkProtection", type=Boolean.class, parameters={})
+    @Export(name="hostNetworkProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostNetworkProtection;
 
     /**
@@ -547,7 +547,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The OS type for the host
      * 
      */
-    @Export(name="hostOs", type=String.class, parameters={})
+    @Export(name="hostOs", refs={String.class}, tree="[0]")
     private Output<String> hostOs;
 
     /**
@@ -561,7 +561,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to enable all Host Runtime Policy controls except for `OS Users and Groups Allowed` and `OS Users and Groups Blocked`.
      * 
      */
-    @Export(name="hostProtection", type=Boolean.class, parameters={})
+    @Export(name="hostProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostProtection;
 
     /**
@@ -575,7 +575,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to enable these Host Runtime Policy controls: `OS Users and Groups Allowed` and `OS Users and Groups Blocked`
      * 
      */
-    @Export(name="hostUserProtection", type=Boolean.class, parameters={})
+    @Export(name="hostUserProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> hostUserProtection;
 
     /**
@@ -589,7 +589,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The hostname
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -603,7 +603,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of enforcers in the enforcer group.
      * 
      */
-    @Export(name="hostsCount", type=Integer.class, parameters={})
+    @Export(name="hostsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> hostsCount;
 
     /**
@@ -617,7 +617,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to enable selected controls: Container Runtime Policy (`Block Non-Compliant Images`, `Block Unregistered Images`, and `Registries Allowed`) and Default Image Assurance Policy (`Images Blocked`).
      * 
      */
-    @Export(name="imageAssurance", type=Boolean.class, parameters={})
+    @Export(name="imageAssurance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> imageAssurance;
 
     /**
@@ -631,7 +631,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Enforcer install command
      * 
      */
-    @Export(name="installCommand", type=String.class, parameters={})
+    @Export(name="installCommand", refs={String.class}, tree="[0]")
     private Output<String> installCommand;
 
     /**
@@ -646,7 +646,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * 			This field specifies the path and file name of the kube-bench product image for the KubeEnforcer to deploy; it will be filled in automatically. You can optionally enter a different value.
      * 
      */
-    @Export(name="kubeBenchImageName", type=String.class, parameters={})
+    @Export(name="kubeBenchImageName", refs={String.class}, tree="[0]")
     private Output<String> kubeBenchImageName;
 
     /**
@@ -661,7 +661,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The last date and time the batch token was updated in UNIX time.
      * 
      */
-    @Export(name="lastUpdate", type=Integer.class, parameters={})
+    @Export(name="lastUpdate", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastUpdate;
 
     /**
@@ -675,7 +675,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Name for the batch install record.
      * 
      */
-    @Export(name="logicalName", type=String.class, parameters={})
+    @Export(name="logicalName", refs={String.class}, tree="[0]")
     private Output<String> logicalName;
 
     /**
@@ -689,7 +689,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of low vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    @Export(name="lowVulns", type=Integer.class, parameters={})
+    @Export(name="lowVulns", refs={Integer.class}, tree="[0]")
     private Output<Integer> lowVulns;
 
     /**
@@ -703,7 +703,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of medium vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    @Export(name="medVulns", type=Integer.class, parameters={})
+    @Export(name="medVulns", refs={Integer.class}, tree="[0]")
     private Output<Integer> medVulns;
 
     /**
@@ -717,7 +717,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This option is applicable only if `Enable Pod Enforcer injection` is selected.
      * 
      */
-    @Export(name="microEnforcerCertsSecretsName", type=String.class, parameters={})
+    @Export(name="microEnforcerCertsSecretsName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> microEnforcerCertsSecretsName;
 
     /**
@@ -731,7 +731,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This option is applicable only if `Enable Pod Enforcer injection` is selected. This field specifies the path and file name of the KubeEnforcer product image to be deployed; it will be filled in automatically. You can optionally enter a different value.
      * 
      */
-    @Export(name="microEnforcerImageName", type=String.class, parameters={})
+    @Export(name="microEnforcerImageName", refs={String.class}, tree="[0]")
     private Output<String> microEnforcerImageName;
 
     /**
@@ -745,7 +745,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * This applies only if both `Enable admission control` and Enforce mode are set. This additional option must be selected for admission control to work if the KubeEnforcer is not connected to any Gateway. If this option is not selected, admission control will be disabled; this will have no effect on containers already running.
      * 
      */
-    @Export(name="microEnforcerInjection", type=Boolean.class, parameters={})
+    @Export(name="microEnforcerInjection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> microEnforcerInjection;
 
     /**
@@ -759,7 +759,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * You can specify the name of the secret (in the Aqua namespace) that Aqua copies into the Pod Enforcer namespace and kube-bench, allowing them access to the Pod Enforcer and kube-bench product images, respectively.
      * 
      */
-    @Export(name="microEnforcerSecretsName", type=String.class, parameters={})
+    @Export(name="microEnforcerSecretsName", refs={String.class}, tree="[0]")
     private Output<String> microEnforcerSecretsName;
 
     /**
@@ -773,7 +773,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Number of negligible vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    @Export(name="negVulns", type=Integer.class, parameters={})
+    @Export(name="negVulns", refs={Integer.class}, tree="[0]")
     private Output<Integer> negVulns;
 
     /**
@@ -787,7 +787,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Send true to apply Firewall Policies to containers, and allow recording network maps for Aqua services. The Network Firewall setting must be disabled when deploying the Aqua Enforcer on a machine running Rocky Linux. See https://docs.aquasec.com/docs/platform-support-limitations-rocky-linux for further information.
      * 
      */
-    @Export(name="networkProtection", type=Boolean.class, parameters={})
+    @Export(name="networkProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> networkProtection;
 
     /**
@@ -801,7 +801,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The orchestrator for which you are creating the Enforcer group.
      * 
      */
-    @Export(name="orchestrators", type=List.class, parameters={EnforcerGroupsOrchestrator.class})
+    @Export(name="orchestrators", refs={List.class,EnforcerGroupsOrchestrator.class}, tree="[0,1]")
     private Output<List<EnforcerGroupsOrchestrator>> orchestrators;
 
     /**
@@ -815,7 +815,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * pas deployment link
      * 
      */
-    @Export(name="pasDeploymentLink", type=String.class, parameters={})
+    @Export(name="pasDeploymentLink", refs={String.class}, tree="[0]")
     private Output<String> pasDeploymentLink;
 
     /**
@@ -829,7 +829,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Permission Action
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> permission;
 
     /**
@@ -843,7 +843,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to allow Enforcers to be discovered in the Risk Explorer.
      * 
      */
-    @Export(name="riskExplorerAutoDiscovery", type=Boolean.class, parameters={})
+    @Export(name="riskExplorerAutoDiscovery", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> riskExplorerAutoDiscovery;
 
     /**
@@ -857,7 +857,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Function Runtime Policy that will applay on the nano enforcer.
      * 
      */
-    @Export(name="runtimePolicyName", type=String.class, parameters={})
+    @Export(name="runtimePolicyName", refs={String.class}, tree="[0]")
     private Output<String> runtimePolicyName;
 
     /**
@@ -871,7 +871,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The container runtime environment.
      * 
      */
-    @Export(name="runtimeType", type=String.class, parameters={})
+    @Export(name="runtimeType", refs={String.class}, tree="[0]")
     private Output<String> runtimeType;
 
     /**
@@ -885,7 +885,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to configure Enforcers to discover local host images. Discovered images will be listed under Images &gt; Host Images, as well as under Infrastructure (in the Images tab for applicable hosts).
      * 
      */
-    @Export(name="syncHostImages", type=Boolean.class, parameters={})
+    @Export(name="syncHostImages", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syncHostImages;
 
     /**
@@ -899,7 +899,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` will allow profiling and monitoring system calls made by running containers.
      * 
      */
-    @Export(name="syscallEnabled", type=Boolean.class, parameters={})
+    @Export(name="syscallEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> syscallEnabled;
 
     /**
@@ -913,7 +913,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * The batch install token.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -927,7 +927,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Enforcer Type.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -941,7 +941,7 @@ public class EnforcerGroups extends com.pulumi.resources.CustomResource {
      * Set `True` to apply User Access Control Policies to containers. Note that Aqua Enforcers must be deployed with the AQUA*RUNC*INTERCEPTION environment variable set to 0 in order to use User Access Control Policies.
      * 
      */
-    @Export(name="userAccessControl", type=Boolean.class, parameters={})
+    @Export(name="userAccessControl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> userAccessControl;
 
     /**

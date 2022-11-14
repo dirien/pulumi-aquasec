@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionAssurancePolicyTrustedBaseImage {
-    private final @Nullable String imagename;
-    private final @Nullable String registry;
+    private @Nullable String imagename;
+    private @Nullable String registry;
 
-    @CustomType.Constructor
-    private FunctionAssurancePolicyTrustedBaseImage(
-        @CustomType.Parameter("imagename") @Nullable String imagename,
-        @CustomType.Parameter("registry") @Nullable String registry) {
-        this.imagename = imagename;
-        this.registry = registry;
-    }
-
+    private FunctionAssurancePolicyTrustedBaseImage() {}
     public Optional<String> imagename() {
         return Optional.ofNullable(this.imagename);
     }
@@ -36,30 +29,32 @@ public final class FunctionAssurancePolicyTrustedBaseImage {
     public static Builder builder(FunctionAssurancePolicyTrustedBaseImage defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String imagename;
         private @Nullable String registry;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionAssurancePolicyTrustedBaseImage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imagename = defaults.imagename;
     	      this.registry = defaults.registry;
         }
 
+        @CustomType.Setter
         public Builder imagename(@Nullable String imagename) {
             this.imagename = imagename;
             return this;
         }
+        @CustomType.Setter
         public Builder registry(@Nullable String registry) {
             this.registry = registry;
             return this;
-        }        public FunctionAssurancePolicyTrustedBaseImage build() {
-            return new FunctionAssurancePolicyTrustedBaseImage(imagename, registry);
+        }
+        public FunctionAssurancePolicyTrustedBaseImage build() {
+            final var o = new FunctionAssurancePolicyTrustedBaseImage();
+            o.imagename = imagename;
+            o.registry = registry;
+            return o;
         }
     }
 }

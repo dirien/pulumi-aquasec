@@ -75,12 +75,6 @@ namespace Pulumiverse.Aquasec
     public sealed class GetHostRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Configuration for Real-Time Malware Protection.
-        /// </summary>
-        [Input("malwareScanOptions")]
-        public Inputs.GetHostRuntimePolicyMalwareScanOptionsArgs? MalwareScanOptions { get; set; }
-
-        /// <summary>
         /// Name of the host runtime policy
         /// </summary>
         [Input("name", required: true)]
@@ -94,12 +88,6 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetHostRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Configuration for Real-Time Malware Protection.
-        /// </summary>
-        [Input("malwareScanOptions")]
-        public Input<Inputs.GetHostRuntimePolicyMalwareScanOptionsInputArgs>? MalwareScanOptions { get; set; }
-
         /// <summary>
         /// Name of the host runtime policy
         /// </summary>
@@ -187,7 +175,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
         /// </summary>
-        public readonly Outputs.GetHostRuntimePolicyMalwareScanOptionsResult? MalwareScanOptions;
+        public readonly ImmutableArray<Outputs.GetHostRuntimePolicyMalwareScanOptionResult> MalwareScanOptions;
         /// <summary>
         /// If true, system log will be monitored.
         /// </summary>
@@ -281,7 +269,7 @@ namespace Pulumiverse.Aquasec
 
             string id,
 
-            Outputs.GetHostRuntimePolicyMalwareScanOptionsResult? malwareScanOptions,
+            ImmutableArray<Outputs.GetHostRuntimePolicyMalwareScanOptionResult> malwareScanOptions,
 
             bool monitorSystemLogIntegrity,
 

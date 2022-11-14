@@ -38,7 +38,7 @@ export interface GetContainerRuntimePolicyArgs {
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    malwareScanOptions?: inputs.GetContainerRuntimePolicyMalwareScanOptions;
+    malwareScanOptions?: inputs.GetContainerRuntimePolicyMalwareScanOption[];
     /**
      * Name of the container runtime policy
      */
@@ -232,7 +232,7 @@ export interface GetContainerRuntimePolicyResult {
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    readonly malwareScanOptions?: outputs.GetContainerRuntimePolicyMalwareScanOptions;
+    readonly malwareScanOptions: outputs.GetContainerRuntimePolicyMalwareScanOption[];
     /**
      * If true, system time changes will be monitored.
      */
@@ -274,7 +274,7 @@ export interface GetContainerRuntimePolicyOutputArgs {
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    malwareScanOptions?: pulumi.Input<inputs.GetContainerRuntimePolicyMalwareScanOptionsArgs>;
+    malwareScanOptions?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyMalwareScanOptionArgs>[]>;
     /**
      * Name of the container runtime policy
      */

@@ -15,21 +15,14 @@ public final class GetGatewaysResult {
      * @return A list of existing gateways&#39; parameters.
      * 
      */
-    private final List<GetGatewaysGateway> gateways;
+    private List<GetGatewaysGateway> gateways;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetGatewaysResult(
-        @CustomType.Parameter("gateways") List<GetGatewaysGateway> gateways,
-        @CustomType.Parameter("id") String id) {
-        this.gateways = gateways;
-        this.id = id;
-    }
-
+    private GetGatewaysResult() {}
     /**
      * @return A list of existing gateways&#39; parameters.
      * 
@@ -52,21 +45,18 @@ public final class GetGatewaysResult {
     public static Builder builder(GetGatewaysResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGatewaysGateway> gateways;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGatewaysResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.gateways = defaults.gateways;
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder gateways(List<GetGatewaysGateway> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -74,11 +64,16 @@ public final class GetGatewaysResult {
         public Builder gateways(GetGatewaysGateway... gateways) {
             return gateways(List.of(gateways));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetGatewaysResult build() {
-            return new GetGatewaysResult(gateways, id);
+        }
+        public GetGatewaysResult build() {
+            final var o = new GetGatewaysResult();
+            o.gateways = gateways;
+            o.id = id;
+            return o;
         }
     }
 }

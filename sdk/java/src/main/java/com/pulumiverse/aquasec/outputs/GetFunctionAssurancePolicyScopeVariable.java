@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionAssurancePolicyScopeVariable {
-    private final String attribute;
-    private final String name;
-    private final String value;
+    private String attribute;
+    private String name;
+    private String value;
 
-    @CustomType.Constructor
-    private GetFunctionAssurancePolicyScopeVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetFunctionAssurancePolicyScopeVariable() {}
     public String attribute() {
         return this.attribute;
     }
@@ -40,16 +31,12 @@ public final class GetFunctionAssurancePolicyScopeVariable {
     public static Builder builder(GetFunctionAssurancePolicyScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionAssurancePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -57,19 +44,27 @@ public final class GetFunctionAssurancePolicyScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetFunctionAssurancePolicyScopeVariable build() {
-            return new GetFunctionAssurancePolicyScopeVariable(attribute, name, value);
+        }
+        public GetFunctionAssurancePolicyScopeVariable build() {
+            final var o = new GetFunctionAssurancePolicyScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

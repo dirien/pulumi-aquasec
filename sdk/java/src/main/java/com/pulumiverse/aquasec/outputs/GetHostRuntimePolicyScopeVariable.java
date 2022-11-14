@@ -9,24 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHostRuntimePolicyScopeVariable {
-    private final String attribute;
+    private String attribute;
     /**
      * @return Name of the host runtime policy
      * 
      */
-    private final String name;
-    private final String value;
+    private String name;
+    private String value;
 
-    @CustomType.Constructor
-    private GetHostRuntimePolicyScopeVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetHostRuntimePolicyScopeVariable() {}
     public String attribute() {
         return this.attribute;
     }
@@ -48,16 +39,12 @@ public final class GetHostRuntimePolicyScopeVariable {
     public static Builder builder(GetHostRuntimePolicyScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostRuntimePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -65,19 +52,27 @@ public final class GetHostRuntimePolicyScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetHostRuntimePolicyScopeVariable build() {
-            return new GetHostRuntimePolicyScopeVariable(attribute, name, value);
+        }
+        public GetHostRuntimePolicyScopeVariable build() {
+            final var o = new GetHostRuntimePolicyScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

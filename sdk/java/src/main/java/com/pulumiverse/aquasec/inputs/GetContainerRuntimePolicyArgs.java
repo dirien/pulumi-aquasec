@@ -5,8 +5,9 @@ package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumiverse.aquasec.inputs.GetContainerRuntimePolicyMalwareScanOptionsArgs;
+import com.pulumiverse.aquasec.inputs.GetContainerRuntimePolicyMalwareScanOptionArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,13 +22,13 @@ public final class GetContainerRuntimePolicyArgs extends com.pulumi.resources.In
      * 
      */
     @Import(name="malwareScanOptions")
-    private @Nullable Output<GetContainerRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions;
+    private @Nullable Output<List<GetContainerRuntimePolicyMalwareScanOptionArgs>> malwareScanOptions;
 
     /**
      * @return Configuration for Real-Time Malware Protection.
      * 
      */
-    public Optional<Output<GetContainerRuntimePolicyMalwareScanOptionsArgs>> malwareScanOptions() {
+    public Optional<Output<List<GetContainerRuntimePolicyMalwareScanOptionArgs>>> malwareScanOptions() {
         return Optional.ofNullable(this.malwareScanOptions);
     }
 
@@ -77,7 +78,7 @@ public final class GetContainerRuntimePolicyArgs extends com.pulumi.resources.In
          * @return builder
          * 
          */
-        public Builder malwareScanOptions(@Nullable Output<GetContainerRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions) {
+        public Builder malwareScanOptions(@Nullable Output<List<GetContainerRuntimePolicyMalwareScanOptionArgs>> malwareScanOptions) {
             $.malwareScanOptions = malwareScanOptions;
             return this;
         }
@@ -88,8 +89,18 @@ public final class GetContainerRuntimePolicyArgs extends com.pulumi.resources.In
          * @return builder
          * 
          */
-        public Builder malwareScanOptions(GetContainerRuntimePolicyMalwareScanOptionsArgs malwareScanOptions) {
+        public Builder malwareScanOptions(List<GetContainerRuntimePolicyMalwareScanOptionArgs> malwareScanOptions) {
             return malwareScanOptions(Output.of(malwareScanOptions));
+        }
+
+        /**
+         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder malwareScanOptions(GetContainerRuntimePolicyMalwareScanOptionArgs... malwareScanOptions) {
+            return malwareScanOptions(List.of(malwareScanOptions));
         }
 
         /**

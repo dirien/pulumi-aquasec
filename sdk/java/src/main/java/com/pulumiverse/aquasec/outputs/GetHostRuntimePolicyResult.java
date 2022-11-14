@@ -5,7 +5,7 @@ package com.pulumiverse.aquasec.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyFileIntegrityMonitoring;
-import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyMalwareScanOptions;
+import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyMalwareScanOption;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyScopeVariable;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyWindowsRegistryMonitoring;
 import com.pulumiverse.aquasec.outputs.GetHostRuntimePolicyWindowsRegistryProtection;
@@ -14,8 +14,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHostRuntimePolicyResult {
@@ -23,231 +21,164 @@ public final class GetHostRuntimePolicyResult {
      * @return Indicates the application scope of the service.
      * 
      */
-    private final List<String> applicationScopes;
+    private List<String> applicationScopes;
     /**
      * @return If true, all process activity will be audited.
      * 
      */
-    private final Boolean auditAllOsUserActivity;
+    private Boolean auditAllOsUserActivity;
     /**
      * @return Detects brute force login attempts
      * 
      */
-    private final Boolean auditBruteForceLogin;
+    private Boolean auditBruteForceLogin;
     /**
      * @return If true, full command arguments will be audited.
      * 
      */
-    private final Boolean auditFullCommandArguments;
+    private Boolean auditFullCommandArguments;
     /**
      * @return If true, host failed logins will be audited.
      * 
      */
-    private final Boolean auditHostFailedLoginEvents;
+    private Boolean auditHostFailedLoginEvents;
     /**
      * @return If true, host successful logins will be audited.
      * 
      */
-    private final Boolean auditHostSuccessfulLoginEvents;
+    private Boolean auditHostSuccessfulLoginEvents;
     /**
      * @return If true, account management will be audited.
      * 
      */
-    private final Boolean auditUserAccountManagement;
+    private Boolean auditUserAccountManagement;
     /**
      * @return Username of the account that created the service.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      * 
      */
-    private final Boolean blockCryptocurrencyMining;
+    private Boolean blockCryptocurrencyMining;
     /**
      * @return List of files that are prevented from being read, modified and executed in the containers.
      * 
      */
-    private final List<String> blockedFiles;
+    private List<String> blockedFiles;
     /**
      * @return The description of the host runtime policy
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
      * 
      */
-    private final Boolean enableIpReputationSecurity;
+    private Boolean enableIpReputationSecurity;
     /**
      * @return Indicates if the runtime policy is enabled or not.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Indicates that policy should effect container execution (not just for audit).
      * 
      */
-    private final Boolean enforce;
+    private Boolean enforce;
     /**
      * @return Indicates the number of days after which the runtime policy will be changed to enforce mode.
      * 
      */
-    private final Integer enforceAfterDays;
+    private Integer enforceAfterDays;
     /**
      * @return Configuration for file integrity monitoring.
      * 
      */
-    private final List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
+    private List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Configuration for Real-Time Malware Protection.
      * 
      */
-    private final @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions;
+    private List<GetHostRuntimePolicyMalwareScanOption> malwareScanOptions;
     /**
      * @return If true, system log will be monitored.
      * 
      */
-    private final Boolean monitorSystemLogIntegrity;
+    private Boolean monitorSystemLogIntegrity;
     /**
      * @return If true, system time changes will be monitored.
      * 
      */
-    private final Boolean monitorSystemTimeChanges;
+    private Boolean monitorSystemTimeChanges;
     /**
      * @return If true, windows service operations will be monitored.
      * 
      */
-    private final Boolean monitorWindowsServices;
+    private Boolean monitorWindowsServices;
     /**
      * @return Name of the host runtime policy
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      * 
      */
-    private final List<String> osGroupsAlloweds;
+    private List<String> osGroupsAlloweds;
     /**
      * @return List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      * 
      */
-    private final List<String> osGroupsBlockeds;
+    private List<String> osGroupsBlockeds;
     /**
      * @return List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
      * 
      */
-    private final List<String> osUsersAlloweds;
+    private List<String> osUsersAlloweds;
     /**
      * @return List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
      * 
      */
-    private final List<String> osUsersBlockeds;
+    private List<String> osUsersBlockeds;
     /**
      * @return List of packages that are not allowed read, write or execute all files that under the packages.
      * 
      */
-    private final List<String> packageBlocks;
+    private List<String> packageBlocks;
     /**
      * @return If true, port scanning behaviors will be audited.
      * 
      */
-    private final Boolean portScanningDetection;
+    private Boolean portScanningDetection;
     /**
      * @return Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    private final String scopeExpression;
+    private String scopeExpression;
     /**
      * @return List of scope attributes.
      * 
      */
-    private final List<GetHostRuntimePolicyScopeVariable> scopeVariables;
+    private List<GetHostRuntimePolicyScopeVariable> scopeVariables;
     /**
      * @return Configuration for windows registry monitoring.
      * 
      */
-    private final List<GetHostRuntimePolicyWindowsRegistryMonitoring> windowsRegistryMonitorings;
+    private List<GetHostRuntimePolicyWindowsRegistryMonitoring> windowsRegistryMonitorings;
     /**
      * @return Configuration for windows registry protection.
      * 
      */
-    private final List<GetHostRuntimePolicyWindowsRegistryProtection> windowsRegistryProtections;
+    private List<GetHostRuntimePolicyWindowsRegistryProtection> windowsRegistryProtections;
 
-    @CustomType.Constructor
-    private GetHostRuntimePolicyResult(
-        @CustomType.Parameter("applicationScopes") List<String> applicationScopes,
-        @CustomType.Parameter("auditAllOsUserActivity") Boolean auditAllOsUserActivity,
-        @CustomType.Parameter("auditBruteForceLogin") Boolean auditBruteForceLogin,
-        @CustomType.Parameter("auditFullCommandArguments") Boolean auditFullCommandArguments,
-        @CustomType.Parameter("auditHostFailedLoginEvents") Boolean auditHostFailedLoginEvents,
-        @CustomType.Parameter("auditHostSuccessfulLoginEvents") Boolean auditHostSuccessfulLoginEvents,
-        @CustomType.Parameter("auditUserAccountManagement") Boolean auditUserAccountManagement,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("blockCryptocurrencyMining") Boolean blockCryptocurrencyMining,
-        @CustomType.Parameter("blockedFiles") List<String> blockedFiles,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enableIpReputationSecurity") Boolean enableIpReputationSecurity,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("enforce") Boolean enforce,
-        @CustomType.Parameter("enforceAfterDays") Integer enforceAfterDays,
-        @CustomType.Parameter("fileIntegrityMonitorings") List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("malwareScanOptions") @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions,
-        @CustomType.Parameter("monitorSystemLogIntegrity") Boolean monitorSystemLogIntegrity,
-        @CustomType.Parameter("monitorSystemTimeChanges") Boolean monitorSystemTimeChanges,
-        @CustomType.Parameter("monitorWindowsServices") Boolean monitorWindowsServices,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("osGroupsAlloweds") List<String> osGroupsAlloweds,
-        @CustomType.Parameter("osGroupsBlockeds") List<String> osGroupsBlockeds,
-        @CustomType.Parameter("osUsersAlloweds") List<String> osUsersAlloweds,
-        @CustomType.Parameter("osUsersBlockeds") List<String> osUsersBlockeds,
-        @CustomType.Parameter("packageBlocks") List<String> packageBlocks,
-        @CustomType.Parameter("portScanningDetection") Boolean portScanningDetection,
-        @CustomType.Parameter("scopeExpression") String scopeExpression,
-        @CustomType.Parameter("scopeVariables") List<GetHostRuntimePolicyScopeVariable> scopeVariables,
-        @CustomType.Parameter("windowsRegistryMonitorings") List<GetHostRuntimePolicyWindowsRegistryMonitoring> windowsRegistryMonitorings,
-        @CustomType.Parameter("windowsRegistryProtections") List<GetHostRuntimePolicyWindowsRegistryProtection> windowsRegistryProtections) {
-        this.applicationScopes = applicationScopes;
-        this.auditAllOsUserActivity = auditAllOsUserActivity;
-        this.auditBruteForceLogin = auditBruteForceLogin;
-        this.auditFullCommandArguments = auditFullCommandArguments;
-        this.auditHostFailedLoginEvents = auditHostFailedLoginEvents;
-        this.auditHostSuccessfulLoginEvents = auditHostSuccessfulLoginEvents;
-        this.auditUserAccountManagement = auditUserAccountManagement;
-        this.author = author;
-        this.blockCryptocurrencyMining = blockCryptocurrencyMining;
-        this.blockedFiles = blockedFiles;
-        this.description = description;
-        this.enableIpReputationSecurity = enableIpReputationSecurity;
-        this.enabled = enabled;
-        this.enforce = enforce;
-        this.enforceAfterDays = enforceAfterDays;
-        this.fileIntegrityMonitorings = fileIntegrityMonitorings;
-        this.id = id;
-        this.malwareScanOptions = malwareScanOptions;
-        this.monitorSystemLogIntegrity = monitorSystemLogIntegrity;
-        this.monitorSystemTimeChanges = monitorSystemTimeChanges;
-        this.monitorWindowsServices = monitorWindowsServices;
-        this.name = name;
-        this.osGroupsAlloweds = osGroupsAlloweds;
-        this.osGroupsBlockeds = osGroupsBlockeds;
-        this.osUsersAlloweds = osUsersAlloweds;
-        this.osUsersBlockeds = osUsersBlockeds;
-        this.packageBlocks = packageBlocks;
-        this.portScanningDetection = portScanningDetection;
-        this.scopeExpression = scopeExpression;
-        this.scopeVariables = scopeVariables;
-        this.windowsRegistryMonitorings = windowsRegistryMonitorings;
-        this.windowsRegistryProtections = windowsRegistryProtections;
-    }
-
+    private GetHostRuntimePolicyResult() {}
     /**
      * @return Indicates the application scope of the service.
      * 
@@ -371,8 +302,8 @@ public final class GetHostRuntimePolicyResult {
      * @return Configuration for Real-Time Malware Protection.
      * 
      */
-    public Optional<GetHostRuntimePolicyMalwareScanOptions> malwareScanOptions() {
-        return Optional.ofNullable(this.malwareScanOptions);
+    public List<GetHostRuntimePolicyMalwareScanOption> malwareScanOptions() {
+        return this.malwareScanOptions;
     }
     /**
      * @return If true, system log will be monitored.
@@ -480,7 +411,7 @@ public final class GetHostRuntimePolicyResult {
     public static Builder builder(GetHostRuntimePolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> applicationScopes;
         private Boolean auditAllOsUserActivity;
@@ -499,7 +430,7 @@ public final class GetHostRuntimePolicyResult {
         private Integer enforceAfterDays;
         private List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
         private String id;
-        private @Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions;
+        private List<GetHostRuntimePolicyMalwareScanOption> malwareScanOptions;
         private Boolean monitorSystemLogIntegrity;
         private Boolean monitorSystemTimeChanges;
         private Boolean monitorWindowsServices;
@@ -514,11 +445,7 @@ public final class GetHostRuntimePolicyResult {
         private List<GetHostRuntimePolicyScopeVariable> scopeVariables;
         private List<GetHostRuntimePolicyWindowsRegistryMonitoring> windowsRegistryMonitorings;
         private List<GetHostRuntimePolicyWindowsRegistryProtection> windowsRegistryProtections;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostRuntimePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationScopes = defaults.applicationScopes;
@@ -555,6 +482,7 @@ public final class GetHostRuntimePolicyResult {
     	      this.windowsRegistryProtections = defaults.windowsRegistryProtections;
         }
 
+        @CustomType.Setter
         public Builder applicationScopes(List<String> applicationScopes) {
             this.applicationScopes = Objects.requireNonNull(applicationScopes);
             return this;
@@ -562,38 +490,47 @@ public final class GetHostRuntimePolicyResult {
         public Builder applicationScopes(String... applicationScopes) {
             return applicationScopes(List.of(applicationScopes));
         }
+        @CustomType.Setter
         public Builder auditAllOsUserActivity(Boolean auditAllOsUserActivity) {
             this.auditAllOsUserActivity = Objects.requireNonNull(auditAllOsUserActivity);
             return this;
         }
+        @CustomType.Setter
         public Builder auditBruteForceLogin(Boolean auditBruteForceLogin) {
             this.auditBruteForceLogin = Objects.requireNonNull(auditBruteForceLogin);
             return this;
         }
+        @CustomType.Setter
         public Builder auditFullCommandArguments(Boolean auditFullCommandArguments) {
             this.auditFullCommandArguments = Objects.requireNonNull(auditFullCommandArguments);
             return this;
         }
+        @CustomType.Setter
         public Builder auditHostFailedLoginEvents(Boolean auditHostFailedLoginEvents) {
             this.auditHostFailedLoginEvents = Objects.requireNonNull(auditHostFailedLoginEvents);
             return this;
         }
+        @CustomType.Setter
         public Builder auditHostSuccessfulLoginEvents(Boolean auditHostSuccessfulLoginEvents) {
             this.auditHostSuccessfulLoginEvents = Objects.requireNonNull(auditHostSuccessfulLoginEvents);
             return this;
         }
+        @CustomType.Setter
         public Builder auditUserAccountManagement(Boolean auditUserAccountManagement) {
             this.auditUserAccountManagement = Objects.requireNonNull(auditUserAccountManagement);
             return this;
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder blockCryptocurrencyMining(Boolean blockCryptocurrencyMining) {
             this.blockCryptocurrencyMining = Objects.requireNonNull(blockCryptocurrencyMining);
             return this;
         }
+        @CustomType.Setter
         public Builder blockedFiles(List<String> blockedFiles) {
             this.blockedFiles = Objects.requireNonNull(blockedFiles);
             return this;
@@ -601,26 +538,32 @@ public final class GetHostRuntimePolicyResult {
         public Builder blockedFiles(String... blockedFiles) {
             return blockedFiles(List.of(blockedFiles));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enableIpReputationSecurity(Boolean enableIpReputationSecurity) {
             this.enableIpReputationSecurity = Objects.requireNonNull(enableIpReputationSecurity);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(Boolean enforce) {
             this.enforce = Objects.requireNonNull(enforce);
             return this;
         }
+        @CustomType.Setter
         public Builder enforceAfterDays(Integer enforceAfterDays) {
             this.enforceAfterDays = Objects.requireNonNull(enforceAfterDays);
             return this;
         }
+        @CustomType.Setter
         public Builder fileIntegrityMonitorings(List<GetHostRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings) {
             this.fileIntegrityMonitorings = Objects.requireNonNull(fileIntegrityMonitorings);
             return this;
@@ -628,30 +571,40 @@ public final class GetHostRuntimePolicyResult {
         public Builder fileIntegrityMonitorings(GetHostRuntimePolicyFileIntegrityMonitoring... fileIntegrityMonitorings) {
             return fileIntegrityMonitorings(List.of(fileIntegrityMonitorings));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
-        public Builder malwareScanOptions(@Nullable GetHostRuntimePolicyMalwareScanOptions malwareScanOptions) {
-            this.malwareScanOptions = malwareScanOptions;
+        @CustomType.Setter
+        public Builder malwareScanOptions(List<GetHostRuntimePolicyMalwareScanOption> malwareScanOptions) {
+            this.malwareScanOptions = Objects.requireNonNull(malwareScanOptions);
             return this;
         }
+        public Builder malwareScanOptions(GetHostRuntimePolicyMalwareScanOption... malwareScanOptions) {
+            return malwareScanOptions(List.of(malwareScanOptions));
+        }
+        @CustomType.Setter
         public Builder monitorSystemLogIntegrity(Boolean monitorSystemLogIntegrity) {
             this.monitorSystemLogIntegrity = Objects.requireNonNull(monitorSystemLogIntegrity);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorSystemTimeChanges(Boolean monitorSystemTimeChanges) {
             this.monitorSystemTimeChanges = Objects.requireNonNull(monitorSystemTimeChanges);
             return this;
         }
+        @CustomType.Setter
         public Builder monitorWindowsServices(Boolean monitorWindowsServices) {
             this.monitorWindowsServices = Objects.requireNonNull(monitorWindowsServices);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder osGroupsAlloweds(List<String> osGroupsAlloweds) {
             this.osGroupsAlloweds = Objects.requireNonNull(osGroupsAlloweds);
             return this;
@@ -659,6 +612,7 @@ public final class GetHostRuntimePolicyResult {
         public Builder osGroupsAlloweds(String... osGroupsAlloweds) {
             return osGroupsAlloweds(List.of(osGroupsAlloweds));
         }
+        @CustomType.Setter
         public Builder osGroupsBlockeds(List<String> osGroupsBlockeds) {
             this.osGroupsBlockeds = Objects.requireNonNull(osGroupsBlockeds);
             return this;
@@ -666,6 +620,7 @@ public final class GetHostRuntimePolicyResult {
         public Builder osGroupsBlockeds(String... osGroupsBlockeds) {
             return osGroupsBlockeds(List.of(osGroupsBlockeds));
         }
+        @CustomType.Setter
         public Builder osUsersAlloweds(List<String> osUsersAlloweds) {
             this.osUsersAlloweds = Objects.requireNonNull(osUsersAlloweds);
             return this;
@@ -673,6 +628,7 @@ public final class GetHostRuntimePolicyResult {
         public Builder osUsersAlloweds(String... osUsersAlloweds) {
             return osUsersAlloweds(List.of(osUsersAlloweds));
         }
+        @CustomType.Setter
         public Builder osUsersBlockeds(List<String> osUsersBlockeds) {
             this.osUsersBlockeds = Objects.requireNonNull(osUsersBlockeds);
             return this;
@@ -680,6 +636,7 @@ public final class GetHostRuntimePolicyResult {
         public Builder osUsersBlockeds(String... osUsersBlockeds) {
             return osUsersBlockeds(List.of(osUsersBlockeds));
         }
+        @CustomType.Setter
         public Builder packageBlocks(List<String> packageBlocks) {
             this.packageBlocks = Objects.requireNonNull(packageBlocks);
             return this;
@@ -687,14 +644,17 @@ public final class GetHostRuntimePolicyResult {
         public Builder packageBlocks(String... packageBlocks) {
             return packageBlocks(List.of(packageBlocks));
         }
+        @CustomType.Setter
         public Builder portScanningDetection(Boolean portScanningDetection) {
             this.portScanningDetection = Objects.requireNonNull(portScanningDetection);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeExpression(String scopeExpression) {
             this.scopeExpression = Objects.requireNonNull(scopeExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeVariables(List<GetHostRuntimePolicyScopeVariable> scopeVariables) {
             this.scopeVariables = Objects.requireNonNull(scopeVariables);
             return this;
@@ -702,6 +662,7 @@ public final class GetHostRuntimePolicyResult {
         public Builder scopeVariables(GetHostRuntimePolicyScopeVariable... scopeVariables) {
             return scopeVariables(List.of(scopeVariables));
         }
+        @CustomType.Setter
         public Builder windowsRegistryMonitorings(List<GetHostRuntimePolicyWindowsRegistryMonitoring> windowsRegistryMonitorings) {
             this.windowsRegistryMonitorings = Objects.requireNonNull(windowsRegistryMonitorings);
             return this;
@@ -709,14 +670,49 @@ public final class GetHostRuntimePolicyResult {
         public Builder windowsRegistryMonitorings(GetHostRuntimePolicyWindowsRegistryMonitoring... windowsRegistryMonitorings) {
             return windowsRegistryMonitorings(List.of(windowsRegistryMonitorings));
         }
+        @CustomType.Setter
         public Builder windowsRegistryProtections(List<GetHostRuntimePolicyWindowsRegistryProtection> windowsRegistryProtections) {
             this.windowsRegistryProtections = Objects.requireNonNull(windowsRegistryProtections);
             return this;
         }
         public Builder windowsRegistryProtections(GetHostRuntimePolicyWindowsRegistryProtection... windowsRegistryProtections) {
             return windowsRegistryProtections(List.of(windowsRegistryProtections));
-        }        public GetHostRuntimePolicyResult build() {
-            return new GetHostRuntimePolicyResult(applicationScopes, auditAllOsUserActivity, auditBruteForceLogin, auditFullCommandArguments, auditHostFailedLoginEvents, auditHostSuccessfulLoginEvents, auditUserAccountManagement, author, blockCryptocurrencyMining, blockedFiles, description, enableIpReputationSecurity, enabled, enforce, enforceAfterDays, fileIntegrityMonitorings, id, malwareScanOptions, monitorSystemLogIntegrity, monitorSystemTimeChanges, monitorWindowsServices, name, osGroupsAlloweds, osGroupsBlockeds, osUsersAlloweds, osUsersBlockeds, packageBlocks, portScanningDetection, scopeExpression, scopeVariables, windowsRegistryMonitorings, windowsRegistryProtections);
+        }
+        public GetHostRuntimePolicyResult build() {
+            final var o = new GetHostRuntimePolicyResult();
+            o.applicationScopes = applicationScopes;
+            o.auditAllOsUserActivity = auditAllOsUserActivity;
+            o.auditBruteForceLogin = auditBruteForceLogin;
+            o.auditFullCommandArguments = auditFullCommandArguments;
+            o.auditHostFailedLoginEvents = auditHostFailedLoginEvents;
+            o.auditHostSuccessfulLoginEvents = auditHostSuccessfulLoginEvents;
+            o.auditUserAccountManagement = auditUserAccountManagement;
+            o.author = author;
+            o.blockCryptocurrencyMining = blockCryptocurrencyMining;
+            o.blockedFiles = blockedFiles;
+            o.description = description;
+            o.enableIpReputationSecurity = enableIpReputationSecurity;
+            o.enabled = enabled;
+            o.enforce = enforce;
+            o.enforceAfterDays = enforceAfterDays;
+            o.fileIntegrityMonitorings = fileIntegrityMonitorings;
+            o.id = id;
+            o.malwareScanOptions = malwareScanOptions;
+            o.monitorSystemLogIntegrity = monitorSystemLogIntegrity;
+            o.monitorSystemTimeChanges = monitorSystemTimeChanges;
+            o.monitorWindowsServices = monitorWindowsServices;
+            o.name = name;
+            o.osGroupsAlloweds = osGroupsAlloweds;
+            o.osGroupsBlockeds = osGroupsBlockeds;
+            o.osUsersAlloweds = osUsersAlloweds;
+            o.osUsersBlockeds = osUsersBlockeds;
+            o.packageBlocks = packageBlocks;
+            o.portScanningDetection = portScanningDetection;
+            o.scopeExpression = scopeExpression;
+            o.scopeVariables = scopeVariables;
+            o.windowsRegistryMonitorings = windowsRegistryMonitorings;
+            o.windowsRegistryProtections = windowsRegistryProtections;
+            return o;
         }
     }
 }

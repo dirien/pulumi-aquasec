@@ -11,41 +11,18 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersUser {
-    private final String email;
-    private final Boolean firstTime;
-    private final Boolean isSuper;
-    private final String name;
-    private final String plan;
-    private final String role;
-    private final List<String> roles;
-    private final String type;
-    private final Boolean uiAccess;
-    private final String userId;
+    private String email;
+    private Boolean firstTime;
+    private Boolean isSuper;
+    private String name;
+    private String plan;
+    private String role;
+    private List<String> roles;
+    private String type;
+    private Boolean uiAccess;
+    private String userId;
 
-    @CustomType.Constructor
-    private GetUsersUser(
-        @CustomType.Parameter("email") String email,
-        @CustomType.Parameter("firstTime") Boolean firstTime,
-        @CustomType.Parameter("isSuper") Boolean isSuper,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("plan") String plan,
-        @CustomType.Parameter("role") String role,
-        @CustomType.Parameter("roles") List<String> roles,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("uiAccess") Boolean uiAccess,
-        @CustomType.Parameter("userId") String userId) {
-        this.email = email;
-        this.firstTime = firstTime;
-        this.isSuper = isSuper;
-        this.name = name;
-        this.plan = plan;
-        this.role = role;
-        this.roles = roles;
-        this.type = type;
-        this.uiAccess = uiAccess;
-        this.userId = userId;
-    }
-
+    private GetUsersUser() {}
     public String email() {
         return this.email;
     }
@@ -84,7 +61,7 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String email;
         private Boolean firstTime;
@@ -96,11 +73,7 @@ public final class GetUsersUser {
         private String type;
         private Boolean uiAccess;
         private String userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.email = defaults.email;
@@ -115,30 +88,37 @@ public final class GetUsersUser {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder email(String email) {
             this.email = Objects.requireNonNull(email);
             return this;
         }
+        @CustomType.Setter
         public Builder firstTime(Boolean firstTime) {
             this.firstTime = Objects.requireNonNull(firstTime);
             return this;
         }
+        @CustomType.Setter
         public Builder isSuper(Boolean isSuper) {
             this.isSuper = Objects.requireNonNull(isSuper);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder plan(String plan) {
             this.plan = Objects.requireNonNull(plan);
             return this;
         }
+        @CustomType.Setter
         public Builder role(String role) {
             this.role = Objects.requireNonNull(role);
             return this;
         }
+        @CustomType.Setter
         public Builder roles(List<String> roles) {
             this.roles = Objects.requireNonNull(roles);
             return this;
@@ -146,19 +126,34 @@ public final class GetUsersUser {
         public Builder roles(String... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder uiAccess(Boolean uiAccess) {
             this.uiAccess = Objects.requireNonNull(uiAccess);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(String userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetUsersUser build() {
-            return new GetUsersUser(email, firstTime, isSuper, name, plan, role, roles, type, uiAccess, userId);
+        }
+        public GetUsersUser build() {
+            final var o = new GetUsersUser();
+            o.email = email;
+            o.firstTime = firstTime;
+            o.isSuper = isSuper;
+            o.name = name;
+            o.plan = plan;
+            o.role = role;
+            o.roles = roles;
+            o.type = type;
+            o.uiAccess = uiAccess;
+            o.userId = userId;
+            return o;
         }
     }
 }

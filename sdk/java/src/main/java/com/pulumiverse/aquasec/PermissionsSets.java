@@ -107,7 +107,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * List of allowed actions for the Permission Set (not relevant if &#39;is_super&#39; is true).
      * 
      */
-    @Export(name="actions", type=List.class, parameters={String.class})
+    @Export(name="actions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> actions;
 
     /**
@@ -121,7 +121,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * The name of the user who created the Permission Set.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> author;
 
     /**
@@ -135,7 +135,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * Free text description for the Permission Set.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -149,7 +149,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * Give the Permission Set full access, meaning all actions are allowed without restriction.
      * 
      */
-    @Export(name="isSuper", type=Boolean.class, parameters={})
+    @Export(name="isSuper", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isSuper;
 
     /**
@@ -163,7 +163,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * The name of the Permission Set, comprised of alphanumeric characters and &#39;-&#39;, &#39;_&#39;, &#39; &#39;, &#39;:&#39;, &#39;.&#39;, &#39;@&#39;, &#39;!&#39;, &#39;^&#39;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -177,7 +177,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * Whether to allow UI access for users with this Permission Set.
      * 
      */
-    @Export(name="uiAccess", type=Boolean.class, parameters={})
+    @Export(name="uiAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> uiAccess;
 
     /**
@@ -191,7 +191,7 @@ public class PermissionsSets extends com.pulumi.resources.CustomResource {
      * The date of the last modification of the Role.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

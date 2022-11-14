@@ -14,13 +14,9 @@ public final class RoleMappingSaml {
      * @return Role Mapping is used to define the IdP role that the user will assume in Aqua
      * 
      */
-    private final Map<String,String> roleMapping;
+    private Map<String,String> roleMapping;
 
-    @CustomType.Constructor
-    private RoleMappingSaml(@CustomType.Parameter("roleMapping") Map<String,String> roleMapping) {
-        this.roleMapping = roleMapping;
-    }
-
+    private RoleMappingSaml() {}
     /**
      * @return Role Mapping is used to define the IdP role that the user will assume in Aqua
      * 
@@ -36,24 +32,24 @@ public final class RoleMappingSaml {
     public static Builder builder(RoleMappingSaml defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> roleMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RoleMappingSaml defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleMapping = defaults.roleMapping;
         }
 
+        @CustomType.Setter
         public Builder roleMapping(Map<String,String> roleMapping) {
             this.roleMapping = Objects.requireNonNull(roleMapping);
             return this;
-        }        public RoleMappingSaml build() {
-            return new RoleMappingSaml(roleMapping);
+        }
+        public RoleMappingSaml build() {
+            final var o = new RoleMappingSaml();
+            o.roleMapping = roleMapping;
+            return o;
         }
     }
 }

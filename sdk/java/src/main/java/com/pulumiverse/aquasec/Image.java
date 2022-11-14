@@ -26,7 +26,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * If this field is set to true, the image will be whitelisted.
      * 
      */
-    @Export(name="allowImage", type=Boolean.class, parameters={})
+    @Export(name="allowImage", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowImage;
 
     /**
@@ -40,7 +40,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The image architecture.
      * 
      */
-    @Export(name="architecture", type=String.class, parameters={})
+    @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output<String> architecture;
 
     /**
@@ -54,7 +54,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The list of image assurance checks performed on the image.
      * 
      */
-    @Export(name="assuranceChecksPerformeds", type=List.class, parameters={ImageAssuranceChecksPerformed.class})
+    @Export(name="assuranceChecksPerformeds", refs={List.class,ImageAssuranceChecksPerformed.class}, tree="[0,1]")
     private Output<List<ImageAssuranceChecksPerformed>> assuranceChecksPerformeds;
 
     /**
@@ -68,7 +68,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the user who registered the image.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -82,7 +82,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether the image is blacklisted.
      * 
      */
-    @Export(name="blacklisted", type=Boolean.class, parameters={})
+    @Export(name="blacklisted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> blacklisted;
 
     /**
@@ -96,7 +96,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * If this field is set to true, the image will be blacklisted.
      * 
      */
-    @Export(name="blockImage", type=Boolean.class, parameters={})
+    @Export(name="blockImage", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockImage;
 
     /**
@@ -110,7 +110,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The image creation comment.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output<String> comment;
 
     /**
@@ -124,7 +124,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The date and time when the image was registered.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -138,7 +138,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of critical severity vulnerabilities detected in the image.
      * 
      */
-    @Export(name="criticalVulnerabilities", type=Integer.class, parameters={})
+    @Export(name="criticalVulnerabilities", refs={Integer.class}, tree="[0]")
     private Output<Integer> criticalVulnerabilities;
 
     /**
@@ -152,7 +152,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The default user of the image.
      * 
      */
-    @Export(name="defaultUser", type=String.class, parameters={})
+    @Export(name="defaultUser", refs={String.class}, tree="[0]")
     private Output<String> defaultUser;
 
     /**
@@ -166,7 +166,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The content digest of the image.
      * 
      */
-    @Export(name="digest", type=String.class, parameters={})
+    @Export(name="digest", refs={String.class}, tree="[0]")
     private Output<String> digest;
 
     /**
@@ -180,7 +180,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether the image is disallowed (non-compliant).
      * 
      */
-    @Export(name="disallowed", type=Boolean.class, parameters={})
+    @Export(name="disallowed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disallowed;
 
     /**
@@ -194,7 +194,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether the image was disallowed because of Image Assurance Policies.
      * 
      */
-    @Export(name="disallowedByAssuranceChecks", type=Boolean.class, parameters={})
+    @Export(name="disallowedByAssuranceChecks", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disallowedByAssuranceChecks;
 
     /**
@@ -208,7 +208,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The Docker image ID.
      * 
      */
-    @Export(name="dockerId", type=String.class, parameters={})
+    @Export(name="dockerId", refs={String.class}, tree="[0]")
     private Output<String> dockerId;
 
     /**
@@ -222,7 +222,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Docker labels of the image.
      * 
      */
-    @Export(name="dockerLabels", type=List.class, parameters={String.class})
+    @Export(name="dockerLabels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dockerLabels;
 
     /**
@@ -236,7 +236,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The Docker version used when building the image.
      * 
      */
-    @Export(name="dockerVersion", type=String.class, parameters={})
+    @Export(name="dockerVersion", refs={String.class}, tree="[0]")
     private Output<String> dockerVersion;
 
     /**
@@ -250,7 +250,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * DTA severity score.
      * 
      */
-    @Export(name="dtaSeverityScore", type=String.class, parameters={})
+    @Export(name="dtaSeverityScore", refs={String.class}, tree="[0]")
     private Output<String> dtaSeverityScore;
 
     /**
@@ -264,7 +264,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * If DTA was skipped.
      * 
      */
-    @Export(name="dtaSkipped", type=Boolean.class, parameters={})
+    @Export(name="dtaSkipped", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dtaSkipped;
 
     /**
@@ -278,7 +278,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The reason why DTA was skipped.
      * 
      */
-    @Export(name="dtaSkippedReason", type=String.class, parameters={})
+    @Export(name="dtaSkippedReason", refs={String.class}, tree="[0]")
     private Output<String> dtaSkippedReason;
 
     /**
@@ -292,7 +292,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Environment variables in the image.
      * 
      */
-    @Export(name="environmentVariables", type=List.class, parameters={String.class})
+    @Export(name="environmentVariables", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> environmentVariables;
 
     /**
@@ -306,7 +306,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of high severity vulnerabilities detected in the image.
      * 
      */
-    @Export(name="highVulnerabilities", type=Integer.class, parameters={})
+    @Export(name="highVulnerabilities", refs={Integer.class}, tree="[0]")
     private Output<Integer> highVulnerabilities;
 
     /**
@@ -320,7 +320,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The Docker history of the image.
      * 
      */
-    @Export(name="histories", type=List.class, parameters={ImageHistory.class})
+    @Export(name="histories", refs={List.class,ImageHistory.class}, tree="[0,1]")
     private Output<List<ImageHistory>> histories;
 
     /**
@@ -334,7 +334,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The size of the image in bytes.
      * 
      */
-    @Export(name="imageSize", type=Integer.class, parameters={})
+    @Export(name="imageSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> imageSize;
 
     /**
@@ -348,7 +348,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The type of the image.
      * 
      */
-    @Export(name="imageType", type=String.class, parameters={})
+    @Export(name="imageType", refs={String.class}, tree="[0]")
     private Output<String> imageType;
 
     /**
@@ -362,7 +362,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Aqua labels of the image.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={String.class})
+    @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> labels;
 
     /**
@@ -376,7 +376,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of low severity vulnerabilities detected in the image.
      * 
      */
-    @Export(name="lowVulnerabilities", type=Integer.class, parameters={})
+    @Export(name="lowVulnerabilities", refs={Integer.class}, tree="[0]")
     private Output<Integer> lowVulnerabilities;
 
     /**
@@ -390,7 +390,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of malware found on the image.
      * 
      */
-    @Export(name="malware", type=Integer.class, parameters={})
+    @Export(name="malware", refs={Integer.class}, tree="[0]")
     private Output<Integer> malware;
 
     /**
@@ -404,7 +404,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of medium severity vulnerabilities detected in the image.
      * 
      */
-    @Export(name="mediumVulnerabilities", type=Integer.class, parameters={})
+    @Export(name="mediumVulnerabilities", refs={Integer.class}, tree="[0]")
     private Output<Integer> mediumVulnerabilities;
 
     /**
@@ -418,7 +418,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the image.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -432,7 +432,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of negligible severity vulnerabilities detected in the image.
      * 
      */
-    @Export(name="negligibleVulnerabilities", type=Integer.class, parameters={})
+    @Export(name="negligibleVulnerabilities", refs={Integer.class}, tree="[0]")
     private Output<Integer> negligibleVulnerabilities;
 
     /**
@@ -446,7 +446,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether a new version of the image is available in the registry but is not scanned and registered yet.
      * 
      */
-    @Export(name="newerImageExists", type=Boolean.class, parameters={})
+    @Export(name="newerImageExists", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> newerImageExists;
 
     /**
@@ -460,7 +460,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The operating system detected in the image
      * 
      */
-    @Export(name="os", type=String.class, parameters={})
+    @Export(name="os", refs={String.class}, tree="[0]")
     private Output<String> os;
 
     /**
@@ -474,7 +474,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The version of the OS detected in the image.
      * 
      */
-    @Export(name="osVersion", type=String.class, parameters={})
+    @Export(name="osVersion", refs={String.class}, tree="[0]")
     private Output<String> osVersion;
 
     /**
@@ -488,7 +488,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The ID of the parent image.
      * 
      */
-    @Export(name="parent", type=String.class, parameters={})
+    @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
@@ -502,7 +502,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether the image could only be partially scanned.
      * 
      */
-    @Export(name="partialResults", type=Boolean.class, parameters={})
+    @Export(name="partialResults", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> partialResults;
 
     /**
@@ -516,7 +516,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether the image is non-compliant, but is pending this status due to running containers.
      * 
      */
-    @Export(name="pendingDisallowed", type=Boolean.class, parameters={})
+    @Export(name="pendingDisallowed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> pendingDisallowed;
 
     /**
@@ -530,7 +530,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Permission of the image.
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
@@ -544,7 +544,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the user who last modified the image permissions.
      * 
      */
-    @Export(name="permissionAuthor", type=String.class, parameters={})
+    @Export(name="permissionAuthor", refs={String.class}, tree="[0]")
     private Output<String> permissionAuthor;
 
     /**
@@ -558,7 +558,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The comment provided when the image permissions were last modified
      * 
      */
-    @Export(name="permissionComment", type=String.class, parameters={})
+    @Export(name="permissionComment", refs={String.class}, tree="[0]")
     private Output<String> permissionComment;
 
     /**
@@ -572,7 +572,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * A comment on why the image was whitelisted or blacklisted
      * 
      */
-    @Export(name="permissionModificationComment", type=String.class, parameters={})
+    @Export(name="permissionModificationComment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> permissionModificationComment;
 
     /**
@@ -586,7 +586,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the registry where the image is stored.
      * 
      */
-    @Export(name="registry", type=String.class, parameters={})
+    @Export(name="registry", refs={String.class}, tree="[0]")
     private Output<String> registry;
 
     /**
@@ -600,7 +600,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Type of the registry.
      * 
      */
-    @Export(name="registryType", type=String.class, parameters={})
+    @Export(name="registryType", refs={String.class}, tree="[0]")
     private Output<String> registryType;
 
     /**
@@ -614,7 +614,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The repository digests.
      * 
      */
-    @Export(name="repoDigests", type=List.class, parameters={String.class})
+    @Export(name="repoDigests", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> repoDigests;
 
     /**
@@ -628,7 +628,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the image&#39;s repository.
      * 
      */
-    @Export(name="repository", type=String.class, parameters={})
+    @Export(name="repository", refs={String.class}, tree="[0]")
     private Output<String> repository;
 
     /**
@@ -642,7 +642,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The date and time when the image was last scanned.
      * 
      */
-    @Export(name="scanDate", type=String.class, parameters={})
+    @Export(name="scanDate", refs={String.class}, tree="[0]")
     private Output<String> scanDate;
 
     /**
@@ -656,7 +656,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * If the image scan failed, the failure message.
      * 
      */
-    @Export(name="scanError", type=String.class, parameters={})
+    @Export(name="scanError", refs={String.class}, tree="[0]")
     private Output<String> scanError;
 
     /**
@@ -670,7 +670,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The scan status of the image (either &#39;pending&#39;, &#39;in*progress&#39;, &#39;finished&#39;, &#39;failed&#39; or &#39;not*started&#39;).
      * 
      */
-    @Export(name="scanStatus", type=String.class, parameters={})
+    @Export(name="scanStatus", refs={String.class}, tree="[0]")
     private Output<String> scanStatus;
 
     /**
@@ -684,7 +684,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Number of sensitive data detected in the image.
      * 
      */
-    @Export(name="sensitiveData", type=Integer.class, parameters={})
+    @Export(name="sensitiveData", refs={Integer.class}, tree="[0]")
     private Output<Integer> sensitiveData;
 
     /**
@@ -698,7 +698,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The tag of the image.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
@@ -712,7 +712,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The total number of vulnerabilities detected in the image.
      * 
      */
-    @Export(name="totalVulnerabilities", type=Integer.class, parameters={})
+    @Export(name="totalVulnerabilities", refs={Integer.class}, tree="[0]")
     private Output<Integer> totalVulnerabilities;
 
     /**
@@ -726,7 +726,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The virtual size of the image.
      * 
      */
-    @Export(name="virtualSize", type=Integer.class, parameters={})
+    @Export(name="virtualSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> virtualSize;
 
     /**
@@ -740,7 +740,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * A list of all the vulnerabilities found in the image
      * 
      */
-    @Export(name="vulnerabilities", type=List.class, parameters={ImageVulnerability.class})
+    @Export(name="vulnerabilities", refs={List.class,ImageVulnerability.class}, tree="[0,1]")
     private Output<List<ImageVulnerability>> vulnerabilities;
 
     /**
@@ -754,7 +754,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * Whether the image is whitelisted.
      * 
      */
-    @Export(name="whitelisted", type=Boolean.class, parameters={})
+    @Export(name="whitelisted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> whitelisted;
 
     /**

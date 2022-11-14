@@ -12,17 +12,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubernetesAssurancePolicyScope {
-    private final String expression;
-    private final @Nullable List<GetKubernetesAssurancePolicyScopeVariable> variables;
+    private String expression;
+    private @Nullable List<GetKubernetesAssurancePolicyScopeVariable> variables;
 
-    @CustomType.Constructor
-    private GetKubernetesAssurancePolicyScope(
-        @CustomType.Parameter("expression") String expression,
-        @CustomType.Parameter("variables") @Nullable List<GetKubernetesAssurancePolicyScopeVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private GetKubernetesAssurancePolicyScope() {}
     public String expression() {
         return this.expression;
     }
@@ -37,33 +30,35 @@ public final class GetKubernetesAssurancePolicyScope {
     public static Builder builder(GetKubernetesAssurancePolicyScope defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String expression;
         private @Nullable List<GetKubernetesAssurancePolicyScopeVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesAssurancePolicyScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(String expression) {
             this.expression = Objects.requireNonNull(expression);
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<GetKubernetesAssurancePolicyScopeVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(GetKubernetesAssurancePolicyScopeVariable... variables) {
             return variables(List.of(variables));
-        }        public GetKubernetesAssurancePolicyScope build() {
-            return new GetKubernetesAssurancePolicyScope(expression, variables);
+        }
+        public GetKubernetesAssurancePolicyScope build() {
+            final var o = new GetKubernetesAssurancePolicyScope();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

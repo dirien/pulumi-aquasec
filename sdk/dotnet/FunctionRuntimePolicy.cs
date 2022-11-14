@@ -22,6 +22,10 @@ namespace Pulumiverse.Aquasec
     /// {
     ///     var functionRuntimePolicy = new Aquasec.FunctionRuntimePolicy("functionRuntimePolicy", new()
     ///     {
+    ///         ApplicationScopes = new[]
+    ///         {
+    ///             "Global",
+    ///         },
     ///         BlockMaliciousExecutables = true,
     ///         BlockMaliciousExecutablesAllowedProcesses = new[]
     ///         {
@@ -37,6 +41,20 @@ namespace Pulumiverse.Aquasec
     ///         Description = "function_runtime_policy",
     ///         Enabled = true,
     ///         Enforce = false,
+    ///         ScopeVariables = new[]
+    ///         {
+    ///             new Aquasec.Inputs.FunctionRuntimePolicyScopeVariableArgs
+    ///             {
+    ///                 Attribute = "kubernetes.cluster",
+    ///                 Value = "default",
+    ///             },
+    ///             new Aquasec.Inputs.FunctionRuntimePolicyScopeVariableArgs
+    ///             {
+    ///                 Attribute = "kubernetes.label",
+    ///                 Name = "app",
+    ///                 Value = "aqua",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

@@ -16,34 +16,21 @@ public final class ImageHistory {
      * @return The image creation comment.
      * 
      */
-    private final @Nullable String comment;
+    private @Nullable String comment;
     /**
      * @return The date and time when the image was registered.
      * 
      */
-    private final @Nullable String created;
-    private final @Nullable String createdBy;
+    private @Nullable String created;
+    private @Nullable String createdBy;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final @Nullable String id;
-    private final @Nullable Integer size;
+    private @Nullable String id;
+    private @Nullable Integer size;
 
-    @CustomType.Constructor
-    private ImageHistory(
-        @CustomType.Parameter("comment") @Nullable String comment,
-        @CustomType.Parameter("created") @Nullable String created,
-        @CustomType.Parameter("createdBy") @Nullable String createdBy,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("size") @Nullable Integer size) {
-        this.comment = comment;
-        this.created = created;
-        this.createdBy = createdBy;
-        this.id = id;
-        this.size = size;
-    }
-
+    private ImageHistory() {}
     /**
      * @return The image creation comment.
      * 
@@ -79,18 +66,14 @@ public final class ImageHistory {
     public static Builder builder(ImageHistory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String comment;
         private @Nullable String created;
         private @Nullable String createdBy;
         private @Nullable String id;
         private @Nullable Integer size;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageHistory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
@@ -100,27 +83,39 @@ public final class ImageHistory {
     	      this.size = defaults.size;
         }
 
+        @CustomType.Setter
         public Builder comment(@Nullable String comment) {
             this.comment = comment;
             return this;
         }
+        @CustomType.Setter
         public Builder created(@Nullable String created) {
             this.created = created;
             return this;
         }
+        @CustomType.Setter
         public Builder createdBy(@Nullable String createdBy) {
             this.createdBy = createdBy;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
             this.size = size;
             return this;
-        }        public ImageHistory build() {
-            return new ImageHistory(comment, created, createdBy, id, size);
+        }
+        public ImageHistory build() {
+            final var o = new ImageHistory();
+            o.comment = comment;
+            o.created = created;
+            o.createdBy = createdBy;
+            o.id = id;
+            o.size = size;
+            return o;
         }
     }
 }

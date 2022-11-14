@@ -16,6 +16,8 @@ type IntegrationRegistry struct {
 
 	// The username of the user who created or last modified the registry
 	Author pulumi.StringOutput `pulumi:"author"`
+	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+	AutoCleanup pulumi.BoolPtrOutput `pulumi:"autoCleanup"`
 	// Whether to automatically pull images from the registry on creation and daily
 	AutoPull pulumi.BoolPtrOutput `pulumi:"autoPull"`
 	// The interval in days to start pulling new images from the registry, Defaults to 1
@@ -88,6 +90,8 @@ func GetIntegrationRegistry(ctx *pulumi.Context,
 type integrationRegistryState struct {
 	// The username of the user who created or last modified the registry
 	Author *string `pulumi:"author"`
+	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+	AutoCleanup *bool `pulumi:"autoCleanup"`
 	// Whether to automatically pull images from the registry on creation and daily
 	AutoPull *bool `pulumi:"autoPull"`
 	// The interval in days to start pulling new images from the registry, Defaults to 1
@@ -128,6 +132,8 @@ type integrationRegistryState struct {
 type IntegrationRegistryState struct {
 	// The username of the user who created or last modified the registry
 	Author pulumi.StringPtrInput
+	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+	AutoCleanup pulumi.BoolPtrInput
 	// Whether to automatically pull images from the registry on creation and daily
 	AutoPull pulumi.BoolPtrInput
 	// The interval in days to start pulling new images from the registry, Defaults to 1
@@ -172,6 +178,8 @@ func (IntegrationRegistryState) ElementType() reflect.Type {
 type integrationRegistryArgs struct {
 	// The username of the user who created or last modified the registry
 	Author *string `pulumi:"author"`
+	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+	AutoCleanup *bool `pulumi:"autoCleanup"`
 	// Whether to automatically pull images from the registry on creation and daily
 	AutoPull *bool `pulumi:"autoPull"`
 	// The interval in days to start pulling new images from the registry, Defaults to 1
@@ -213,6 +221,8 @@ type integrationRegistryArgs struct {
 type IntegrationRegistryArgs struct {
 	// The username of the user who created or last modified the registry
 	Author pulumi.StringPtrInput
+	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+	AutoCleanup pulumi.BoolPtrInput
 	// Whether to automatically pull images from the registry on creation and daily
 	AutoPull pulumi.BoolPtrInput
 	// The interval in days to start pulling new images from the registry, Defaults to 1
@@ -340,6 +350,11 @@ func (o IntegrationRegistryOutput) ToIntegrationRegistryOutputWithContext(ctx co
 // The username of the user who created or last modified the registry
 func (o IntegrationRegistryOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
+}
+
+// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+func (o IntegrationRegistryOutput) AutoCleanup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) pulumi.BoolPtrOutput { return v.AutoCleanup }).(pulumi.BoolPtrOutput)
 }
 
 // Whether to automatically pull images from the registry on creation and daily

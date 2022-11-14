@@ -24,435 +24,310 @@ public final class GetEnforcerGroupsResult {
      * 			This functionality can work only when the KubeEnforcer is deployed in Enforce mode.
      * 
      */
-    private final Boolean admissionControl;
+    private Boolean admissionControl;
     /**
      * @return Allow kube enforcer audit.
      * 
      */
-    private final Boolean allowKubeEnforcerAudit;
+    private Boolean allowKubeEnforcerAudit;
     /**
      * @return List of application names to allow on the hosts. if provided, only containers of the listed applications will be allowed to run.
      * 
      */
-    private final List<String> allowedApplications;
+    private List<String> allowedApplications;
     /**
      * @return List of label names to allow on the hosts.
      * 
      */
-    private final List<String> allowedLabels;
+    private List<String> allowedLabels;
     /**
      * @return List of registry names to allow on the hosts.
      * 
      */
-    private final List<String> allowedRegistries;
+    private List<String> allowedRegistries;
     /**
      * @return This setting is available only when you have license for `Advanced Malware Protection`. Send true to make use of the license and enable the `Real-time Malware Protection` control in the Host Runtime policies.
      * 
      */
-    private final Boolean antivirusProtection;
+    private Boolean antivirusProtection;
     /**
      * @return Aqua server version
      * 
      */
-    private final String aquaVersion;
+    private String aquaVersion;
     /**
      * @return Agent will send extra audit messages to the server for success operations from inside the container (runtime).
      * 
      */
-    private final Boolean auditAll;
+    private Boolean auditAll;
     /**
      * @return This option is applicable only if `Enable Pod Enforcer injection` is selected. Select this option if you want Aqua Enterprise to copy the secrets defined above to the Pod Enforcer namespace and container. Otherwise, you can choose to copy these secrets by other means.
      * 
      */
-    private final Boolean autoCopySecrets;
+    private Boolean autoCopySecrets;
     /**
      * @return This option is available only if `Enable workload discovery` is selected. If selected, the KubeEnforcer will add previously unknown image registries from the cluster to Aqua.
      * 
      */
-    private final Boolean autoDiscoverConfigureRegistries;
+    private Boolean autoDiscoverConfigureRegistries;
     /**
      * @return When this option is selected, the KubeEnforcer will discover workloads on its cluster.
      * 
      */
-    private final Boolean autoDiscoveryEnabled;
+    private Boolean autoDiscoveryEnabled;
     /**
      * @return This option is available only if `Enable workload discovery` is selected. If selected, the KubeEnforcer will automatically register images running as workloads (and scan the discovered images for security issues).
      * 
      */
-    private final Boolean autoScanDiscoveredImagesRunningContainers;
+    private Boolean autoScanDiscoveredImagesRunningContainers;
     /**
      * @return If `Enabled`, detects suspicious activity in your containers and displays potential security threats in the Incidents and Audits pages.
      * 
      */
-    private final Boolean behavioralEngine;
+    private Boolean behavioralEngine;
     /**
      * @return This applies only if both `Enable admission control` and Enforce mode are set. This additional option must be selected for admission control to work if the KubeEnforcer is not connected to any Gateway. If this option is not selected, admission control will be disabled; this will have no effect on containers already running.
      * 
      */
-    private final Boolean blockAdmissionControl;
+    private Boolean blockAdmissionControl;
     /**
      * @return The installation command.
      * 
      */
-    private final List<GetEnforcerGroupsCommand> commands;
+    private List<GetEnforcerGroupsCommand> commands;
     /**
      * @return Number of connected enforcers in the enforcer group.
      * 
      */
-    private final Integer connectedCount;
+    private Integer connectedCount;
     /**
      * @return When set to `True` applies Container Runtime Policies, Image Profiles, and Firewall Policies to containers.
      * 
      */
-    private final Boolean containerActivityProtection;
+    private Boolean containerActivityProtection;
     /**
      * @return This setting is available only when you have license for `Advanced Malware Protection`. Send true to make use of the license and enable the `Real-time Malware Protection` control in the Container Runtime policies.
      * 
      */
-    private final Boolean containerAntivirusProtection;
+    private Boolean containerAntivirusProtection;
     /**
      * @return A description for the Aqua Enforcer group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Number of disconnected enforcers in the enforcer group.
      * 
      */
-    private final Integer disconnectedCount;
+    private Integer disconnectedCount;
     /**
      * @return Whether the enforce mode is enabled on the Enforcers.
      * 
      */
-    private final Boolean enforce;
+    private Boolean enforce;
     /**
      * @return The specific Aqua Enforcer product image (with image tag) to be deployed.
      * 
      */
-    private final String enforcerImageName;
+    private String enforcerImageName;
     /**
      * @return Select Enabled to send activity logs in your containers to the Aqua Server for forensics purposes.
      * 
      */
-    private final @Nullable Boolean forensics;
+    private @Nullable Boolean forensics;
     /**
      * @return Gateway Address
      * 
      */
-    private final String gatewayAddress;
+    private String gatewayAddress;
     /**
      * @return Gateway Name
      * 
      */
-    private final String gatewayName;
+    private String gatewayName;
     /**
      * @return List of Aqua gateway IDs for the Enforcers.
      * 
      */
-    private final List<String> gateways;
+    private List<String> gateways;
     /**
      * @return The ID of the Enforcer group.
      * 
      */
-    private final String groupId;
+    private String groupId;
     /**
      * @return Number of high vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    private final Integer highVulns;
+    private Integer highVulns;
     /**
      * @return When set to `True` enables host scanning and respective Host Assurance controls.
      * 
      */
-    private final Boolean hostAssurance;
+    private Boolean hostAssurance;
     /**
      * @return When set to `True` enables these Host Runtime Policy controls: `OS Users and Groups Allowed` and `OS Users and Groups Blocked`
      * 
      */
-    private final Boolean hostBehavioralEngine;
+    private Boolean hostBehavioralEngine;
     /**
      * @return Select Enabled to send activity logs in your host to the Aqua Server for forensics purposes.
      * 
      */
-    private final @Nullable Boolean hostForensics;
+    private @Nullable Boolean hostForensics;
     /**
      * @return When set to `True` applies Firewall Policies to hosts, and allows recording network maps for Aqua services. The Network Firewall setting must be disabled when deploying the Aqua Enforcer on a machine running Rocky Linux. See https://docs.aquasec.com/docs/platform-support-limitations-rocky-linux for further information
      * 
      */
-    private final Boolean hostNetworkProtection;
+    private Boolean hostNetworkProtection;
     /**
      * @return The OS type for the host
      * 
      */
-    private final String hostOs;
+    private String hostOs;
     /**
      * @return When set to `True` enables all Host Runtime Policy controls except for `OS Users and Groups Allowed` and `OS Users and Groups Blocked`.
      * 
      */
-    private final Boolean hostProtection;
+    private Boolean hostProtection;
     /**
      * @return When set to `True` enables these Host Runtime Policy controls: `OS Users and Groups Allowed` and `OS Users and Groups Blocked`
      * 
      */
-    private final Boolean hostUserProtection;
+    private Boolean hostUserProtection;
     /**
      * @return Number of enforcers in the enforcer group.
      * 
      */
-    private final Integer hostsCount;
+    private Integer hostsCount;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return When Set to `True` enables selected controls: Container Runtime Policy (`Block Non-Compliant Images`, `Block Unregistered Images`, and `Registries Allowed`) and Default Image Assurance Policy (`Images Blocked`).
      * 
      */
-    private final Boolean imageAssurance;
+    private Boolean imageAssurance;
     /**
      * @return Enforcer install command
      * 
      */
-    private final String installCommand;
+    private String installCommand;
     /**
      * @return See https://docs.aquasec.com/docs/securing-kubernetes-applications#section-configuration-hardening, The KubeEnforcer can deploy the Aqua Security kube-bench open-source product to perform Kubernetes CIS benchmark testing of nodes.
      * 			This field specifies the path and file name of the kube-bench product image for the KubeEnforcer to deploy; it will be filled in automatically. You can optionally enter a different value.
      * 
      */
-    private final String kubeBenchImageName;
+    private String kubeBenchImageName;
     /**
      * @return The last date and time the batch token was updated in UNIX time.
      * 
      */
-    private final Integer lastUpdate;
+    private Integer lastUpdate;
     /**
      * @return Name for the batch install record.
      * 
      */
-    private final String logicalName;
+    private String logicalName;
     /**
      * @return Number of low vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    private final Integer lowVulns;
+    private Integer lowVulns;
     /**
      * @return Number of medium vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    private final Integer medVulns;
+    private Integer medVulns;
     /**
      * @return This option is applicable only if `Enable Pod Enforcer injection` is selected.
      * 
      */
-    private final String microEnforcerCertsSecretsName;
+    private String microEnforcerCertsSecretsName;
     /**
      * @return This option is applicable only if `Enable Pod Enforcer injection` is selected. This field specifies the path and file name of the KubeEnforcer product image to be deployed; it will be filled in automatically. You can optionally enter a different value.
      * 
      */
-    private final String microEnforcerImageName;
+    private String microEnforcerImageName;
     /**
      * @return This applies only if both `Enable admission control` and Enforce mode are set. This additional option must be selected for admission control to work if the KubeEnforcer is not connected to any Gateway. If this option is not selected, admission control will be disabled; this will have no effect on containers already running.
      * 
      */
-    private final Boolean microEnforcerInjection;
+    private Boolean microEnforcerInjection;
     /**
      * @return This option is applicable only if `Enable Pod Enforcer injection` is selected.
      * 
      */
-    private final String microEnforcerSecretsName;
+    private String microEnforcerSecretsName;
     /**
      * @return Number of negligible vulnerabilities in the enforcers that in this enforcer group.
      * 
      */
-    private final Integer negVulns;
+    private Integer negVulns;
     /**
      * @return When set to `True` applies Firewall Policies to containers, and allows recording network maps for Aqua services. The Network Firewall setting must be disabled when deploying the Aqua Enforcer on a machine running Rocky Linux. See https://docs.aquasec.com/docs/platform-support-limitations-rocky-linux for further information.
      * 
      */
-    private final Boolean networkProtection;
+    private Boolean networkProtection;
     /**
      * @return The orchestrator for which you are creating the Enforcer group.
      * 
      */
-    private final List<GetEnforcerGroupsOrchestrator> orchestrators;
+    private List<GetEnforcerGroupsOrchestrator> orchestrators;
     /**
      * @return pas deployment link
      * 
      */
-    private final String pasDeploymentLink;
+    private String pasDeploymentLink;
     /**
      * @return Permission Action
      * 
      */
-    private final String permission;
+    private String permission;
     /**
      * @return When set to `True` allows Enforcers to be discovered in the Risk Explorer.
      * 
      */
-    private final Boolean riskExplorerAutoDiscovery;
+    private Boolean riskExplorerAutoDiscovery;
     /**
      * @return Function Runtime Policy that will applay on the nano enforcer.
      * 
      */
-    private final String runtimePolicyName;
+    private String runtimePolicyName;
     /**
      * @return The container runtime environment.
      * 
      */
-    private final String runtimeType;
+    private String runtimeType;
     /**
      * @return When set to `True` configures Enforcers to discover local host images. Discovered images will be listed under Images &gt; Host Images, as well as under Infrastructure (in the Images tab for applicable hosts).
      * 
      */
-    private final Boolean syncHostImages;
+    private Boolean syncHostImages;
     /**
      * @return When set to `True` allows profiling and monitoring system calls made by running containers.
      * 
      */
-    private final Boolean syscallEnabled;
+    private Boolean syscallEnabled;
     /**
      * @return The batch install token.
      * 
      */
-    private final String token;
+    private String token;
     /**
      * @return Enforcer Type.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return When set to `True` applies User Access Control Policies to containers. Note that Aqua Enforcers must be deployed with the AQUA*RUNC*INTERCEPTION environment variable set to 0 in order to use User Access Control Policies.
      * 
      */
-    private final Boolean userAccessControl;
+    private Boolean userAccessControl;
 
-    @CustomType.Constructor
-    private GetEnforcerGroupsResult(
-        @CustomType.Parameter("admissionControl") Boolean admissionControl,
-        @CustomType.Parameter("allowKubeEnforcerAudit") Boolean allowKubeEnforcerAudit,
-        @CustomType.Parameter("allowedApplications") List<String> allowedApplications,
-        @CustomType.Parameter("allowedLabels") List<String> allowedLabels,
-        @CustomType.Parameter("allowedRegistries") List<String> allowedRegistries,
-        @CustomType.Parameter("antivirusProtection") Boolean antivirusProtection,
-        @CustomType.Parameter("aquaVersion") String aquaVersion,
-        @CustomType.Parameter("auditAll") Boolean auditAll,
-        @CustomType.Parameter("autoCopySecrets") Boolean autoCopySecrets,
-        @CustomType.Parameter("autoDiscoverConfigureRegistries") Boolean autoDiscoverConfigureRegistries,
-        @CustomType.Parameter("autoDiscoveryEnabled") Boolean autoDiscoveryEnabled,
-        @CustomType.Parameter("autoScanDiscoveredImagesRunningContainers") Boolean autoScanDiscoveredImagesRunningContainers,
-        @CustomType.Parameter("behavioralEngine") Boolean behavioralEngine,
-        @CustomType.Parameter("blockAdmissionControl") Boolean blockAdmissionControl,
-        @CustomType.Parameter("commands") List<GetEnforcerGroupsCommand> commands,
-        @CustomType.Parameter("connectedCount") Integer connectedCount,
-        @CustomType.Parameter("containerActivityProtection") Boolean containerActivityProtection,
-        @CustomType.Parameter("containerAntivirusProtection") Boolean containerAntivirusProtection,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("disconnectedCount") Integer disconnectedCount,
-        @CustomType.Parameter("enforce") Boolean enforce,
-        @CustomType.Parameter("enforcerImageName") String enforcerImageName,
-        @CustomType.Parameter("forensics") @Nullable Boolean forensics,
-        @CustomType.Parameter("gatewayAddress") String gatewayAddress,
-        @CustomType.Parameter("gatewayName") String gatewayName,
-        @CustomType.Parameter("gateways") List<String> gateways,
-        @CustomType.Parameter("groupId") String groupId,
-        @CustomType.Parameter("highVulns") Integer highVulns,
-        @CustomType.Parameter("hostAssurance") Boolean hostAssurance,
-        @CustomType.Parameter("hostBehavioralEngine") Boolean hostBehavioralEngine,
-        @CustomType.Parameter("hostForensics") @Nullable Boolean hostForensics,
-        @CustomType.Parameter("hostNetworkProtection") Boolean hostNetworkProtection,
-        @CustomType.Parameter("hostOs") String hostOs,
-        @CustomType.Parameter("hostProtection") Boolean hostProtection,
-        @CustomType.Parameter("hostUserProtection") Boolean hostUserProtection,
-        @CustomType.Parameter("hostsCount") Integer hostsCount,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imageAssurance") Boolean imageAssurance,
-        @CustomType.Parameter("installCommand") String installCommand,
-        @CustomType.Parameter("kubeBenchImageName") String kubeBenchImageName,
-        @CustomType.Parameter("lastUpdate") Integer lastUpdate,
-        @CustomType.Parameter("logicalName") String logicalName,
-        @CustomType.Parameter("lowVulns") Integer lowVulns,
-        @CustomType.Parameter("medVulns") Integer medVulns,
-        @CustomType.Parameter("microEnforcerCertsSecretsName") String microEnforcerCertsSecretsName,
-        @CustomType.Parameter("microEnforcerImageName") String microEnforcerImageName,
-        @CustomType.Parameter("microEnforcerInjection") Boolean microEnforcerInjection,
-        @CustomType.Parameter("microEnforcerSecretsName") String microEnforcerSecretsName,
-        @CustomType.Parameter("negVulns") Integer negVulns,
-        @CustomType.Parameter("networkProtection") Boolean networkProtection,
-        @CustomType.Parameter("orchestrators") List<GetEnforcerGroupsOrchestrator> orchestrators,
-        @CustomType.Parameter("pasDeploymentLink") String pasDeploymentLink,
-        @CustomType.Parameter("permission") String permission,
-        @CustomType.Parameter("riskExplorerAutoDiscovery") Boolean riskExplorerAutoDiscovery,
-        @CustomType.Parameter("runtimePolicyName") String runtimePolicyName,
-        @CustomType.Parameter("runtimeType") String runtimeType,
-        @CustomType.Parameter("syncHostImages") Boolean syncHostImages,
-        @CustomType.Parameter("syscallEnabled") Boolean syscallEnabled,
-        @CustomType.Parameter("token") String token,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("userAccessControl") Boolean userAccessControl) {
-        this.admissionControl = admissionControl;
-        this.allowKubeEnforcerAudit = allowKubeEnforcerAudit;
-        this.allowedApplications = allowedApplications;
-        this.allowedLabels = allowedLabels;
-        this.allowedRegistries = allowedRegistries;
-        this.antivirusProtection = antivirusProtection;
-        this.aquaVersion = aquaVersion;
-        this.auditAll = auditAll;
-        this.autoCopySecrets = autoCopySecrets;
-        this.autoDiscoverConfigureRegistries = autoDiscoverConfigureRegistries;
-        this.autoDiscoveryEnabled = autoDiscoveryEnabled;
-        this.autoScanDiscoveredImagesRunningContainers = autoScanDiscoveredImagesRunningContainers;
-        this.behavioralEngine = behavioralEngine;
-        this.blockAdmissionControl = blockAdmissionControl;
-        this.commands = commands;
-        this.connectedCount = connectedCount;
-        this.containerActivityProtection = containerActivityProtection;
-        this.containerAntivirusProtection = containerAntivirusProtection;
-        this.description = description;
-        this.disconnectedCount = disconnectedCount;
-        this.enforce = enforce;
-        this.enforcerImageName = enforcerImageName;
-        this.forensics = forensics;
-        this.gatewayAddress = gatewayAddress;
-        this.gatewayName = gatewayName;
-        this.gateways = gateways;
-        this.groupId = groupId;
-        this.highVulns = highVulns;
-        this.hostAssurance = hostAssurance;
-        this.hostBehavioralEngine = hostBehavioralEngine;
-        this.hostForensics = hostForensics;
-        this.hostNetworkProtection = hostNetworkProtection;
-        this.hostOs = hostOs;
-        this.hostProtection = hostProtection;
-        this.hostUserProtection = hostUserProtection;
-        this.hostsCount = hostsCount;
-        this.id = id;
-        this.imageAssurance = imageAssurance;
-        this.installCommand = installCommand;
-        this.kubeBenchImageName = kubeBenchImageName;
-        this.lastUpdate = lastUpdate;
-        this.logicalName = logicalName;
-        this.lowVulns = lowVulns;
-        this.medVulns = medVulns;
-        this.microEnforcerCertsSecretsName = microEnforcerCertsSecretsName;
-        this.microEnforcerImageName = microEnforcerImageName;
-        this.microEnforcerInjection = microEnforcerInjection;
-        this.microEnforcerSecretsName = microEnforcerSecretsName;
-        this.negVulns = negVulns;
-        this.networkProtection = networkProtection;
-        this.orchestrators = orchestrators;
-        this.pasDeploymentLink = pasDeploymentLink;
-        this.permission = permission;
-        this.riskExplorerAutoDiscovery = riskExplorerAutoDiscovery;
-        this.runtimePolicyName = runtimePolicyName;
-        this.runtimeType = runtimeType;
-        this.syncHostImages = syncHostImages;
-        this.syscallEnabled = syscallEnabled;
-        this.token = token;
-        this.type = type;
-        this.userAccessControl = userAccessControl;
-    }
-
+    private GetEnforcerGroupsResult() {}
     /**
      * @return Selecting this option will allow the KubeEnforcer to block the deployment of container images that have failed any of these Container Runtime Policy controls:\
      * 			* Block Non-Compliant Images\
@@ -893,7 +768,7 @@ public final class GetEnforcerGroupsResult {
     public static Builder builder(GetEnforcerGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean admissionControl;
         private Boolean allowKubeEnforcerAudit;
@@ -956,11 +831,7 @@ public final class GetEnforcerGroupsResult {
         private String token;
         private String type;
         private Boolean userAccessControl;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetEnforcerGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.admissionControl = defaults.admissionControl;
@@ -1026,14 +897,17 @@ public final class GetEnforcerGroupsResult {
     	      this.userAccessControl = defaults.userAccessControl;
         }
 
+        @CustomType.Setter
         public Builder admissionControl(Boolean admissionControl) {
             this.admissionControl = Objects.requireNonNull(admissionControl);
             return this;
         }
+        @CustomType.Setter
         public Builder allowKubeEnforcerAudit(Boolean allowKubeEnforcerAudit) {
             this.allowKubeEnforcerAudit = Objects.requireNonNull(allowKubeEnforcerAudit);
             return this;
         }
+        @CustomType.Setter
         public Builder allowedApplications(List<String> allowedApplications) {
             this.allowedApplications = Objects.requireNonNull(allowedApplications);
             return this;
@@ -1041,6 +915,7 @@ public final class GetEnforcerGroupsResult {
         public Builder allowedApplications(String... allowedApplications) {
             return allowedApplications(List.of(allowedApplications));
         }
+        @CustomType.Setter
         public Builder allowedLabels(List<String> allowedLabels) {
             this.allowedLabels = Objects.requireNonNull(allowedLabels);
             return this;
@@ -1048,6 +923,7 @@ public final class GetEnforcerGroupsResult {
         public Builder allowedLabels(String... allowedLabels) {
             return allowedLabels(List.of(allowedLabels));
         }
+        @CustomType.Setter
         public Builder allowedRegistries(List<String> allowedRegistries) {
             this.allowedRegistries = Objects.requireNonNull(allowedRegistries);
             return this;
@@ -1055,42 +931,52 @@ public final class GetEnforcerGroupsResult {
         public Builder allowedRegistries(String... allowedRegistries) {
             return allowedRegistries(List.of(allowedRegistries));
         }
+        @CustomType.Setter
         public Builder antivirusProtection(Boolean antivirusProtection) {
             this.antivirusProtection = Objects.requireNonNull(antivirusProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder aquaVersion(String aquaVersion) {
             this.aquaVersion = Objects.requireNonNull(aquaVersion);
             return this;
         }
+        @CustomType.Setter
         public Builder auditAll(Boolean auditAll) {
             this.auditAll = Objects.requireNonNull(auditAll);
             return this;
         }
+        @CustomType.Setter
         public Builder autoCopySecrets(Boolean autoCopySecrets) {
             this.autoCopySecrets = Objects.requireNonNull(autoCopySecrets);
             return this;
         }
+        @CustomType.Setter
         public Builder autoDiscoverConfigureRegistries(Boolean autoDiscoverConfigureRegistries) {
             this.autoDiscoverConfigureRegistries = Objects.requireNonNull(autoDiscoverConfigureRegistries);
             return this;
         }
+        @CustomType.Setter
         public Builder autoDiscoveryEnabled(Boolean autoDiscoveryEnabled) {
             this.autoDiscoveryEnabled = Objects.requireNonNull(autoDiscoveryEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder autoScanDiscoveredImagesRunningContainers(Boolean autoScanDiscoveredImagesRunningContainers) {
             this.autoScanDiscoveredImagesRunningContainers = Objects.requireNonNull(autoScanDiscoveredImagesRunningContainers);
             return this;
         }
+        @CustomType.Setter
         public Builder behavioralEngine(Boolean behavioralEngine) {
             this.behavioralEngine = Objects.requireNonNull(behavioralEngine);
             return this;
         }
+        @CustomType.Setter
         public Builder blockAdmissionControl(Boolean blockAdmissionControl) {
             this.blockAdmissionControl = Objects.requireNonNull(blockAdmissionControl);
             return this;
         }
+        @CustomType.Setter
         public Builder commands(List<GetEnforcerGroupsCommand> commands) {
             this.commands = Objects.requireNonNull(commands);
             return this;
@@ -1098,46 +984,57 @@ public final class GetEnforcerGroupsResult {
         public Builder commands(GetEnforcerGroupsCommand... commands) {
             return commands(List.of(commands));
         }
+        @CustomType.Setter
         public Builder connectedCount(Integer connectedCount) {
             this.connectedCount = Objects.requireNonNull(connectedCount);
             return this;
         }
+        @CustomType.Setter
         public Builder containerActivityProtection(Boolean containerActivityProtection) {
             this.containerActivityProtection = Objects.requireNonNull(containerActivityProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder containerAntivirusProtection(Boolean containerAntivirusProtection) {
             this.containerAntivirusProtection = Objects.requireNonNull(containerAntivirusProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder disconnectedCount(Integer disconnectedCount) {
             this.disconnectedCount = Objects.requireNonNull(disconnectedCount);
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(Boolean enforce) {
             this.enforce = Objects.requireNonNull(enforce);
             return this;
         }
+        @CustomType.Setter
         public Builder enforcerImageName(String enforcerImageName) {
             this.enforcerImageName = Objects.requireNonNull(enforcerImageName);
             return this;
         }
+        @CustomType.Setter
         public Builder forensics(@Nullable Boolean forensics) {
             this.forensics = forensics;
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayAddress(String gatewayAddress) {
             this.gatewayAddress = Objects.requireNonNull(gatewayAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder gatewayName(String gatewayName) {
             this.gatewayName = Objects.requireNonNull(gatewayName);
             return this;
         }
+        @CustomType.Setter
         public Builder gateways(List<String> gateways) {
             this.gateways = Objects.requireNonNull(gateways);
             return this;
@@ -1145,102 +1042,127 @@ public final class GetEnforcerGroupsResult {
         public Builder gateways(String... gateways) {
             return gateways(List.of(gateways));
         }
+        @CustomType.Setter
         public Builder groupId(String groupId) {
             this.groupId = Objects.requireNonNull(groupId);
             return this;
         }
+        @CustomType.Setter
         public Builder highVulns(Integer highVulns) {
             this.highVulns = Objects.requireNonNull(highVulns);
             return this;
         }
+        @CustomType.Setter
         public Builder hostAssurance(Boolean hostAssurance) {
             this.hostAssurance = Objects.requireNonNull(hostAssurance);
             return this;
         }
+        @CustomType.Setter
         public Builder hostBehavioralEngine(Boolean hostBehavioralEngine) {
             this.hostBehavioralEngine = Objects.requireNonNull(hostBehavioralEngine);
             return this;
         }
+        @CustomType.Setter
         public Builder hostForensics(@Nullable Boolean hostForensics) {
             this.hostForensics = hostForensics;
             return this;
         }
+        @CustomType.Setter
         public Builder hostNetworkProtection(Boolean hostNetworkProtection) {
             this.hostNetworkProtection = Objects.requireNonNull(hostNetworkProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder hostOs(String hostOs) {
             this.hostOs = Objects.requireNonNull(hostOs);
             return this;
         }
+        @CustomType.Setter
         public Builder hostProtection(Boolean hostProtection) {
             this.hostProtection = Objects.requireNonNull(hostProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder hostUserProtection(Boolean hostUserProtection) {
             this.hostUserProtection = Objects.requireNonNull(hostUserProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder hostsCount(Integer hostsCount) {
             this.hostsCount = Objects.requireNonNull(hostsCount);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imageAssurance(Boolean imageAssurance) {
             this.imageAssurance = Objects.requireNonNull(imageAssurance);
             return this;
         }
+        @CustomType.Setter
         public Builder installCommand(String installCommand) {
             this.installCommand = Objects.requireNonNull(installCommand);
             return this;
         }
+        @CustomType.Setter
         public Builder kubeBenchImageName(String kubeBenchImageName) {
             this.kubeBenchImageName = Objects.requireNonNull(kubeBenchImageName);
             return this;
         }
+        @CustomType.Setter
         public Builder lastUpdate(Integer lastUpdate) {
             this.lastUpdate = Objects.requireNonNull(lastUpdate);
             return this;
         }
+        @CustomType.Setter
         public Builder logicalName(String logicalName) {
             this.logicalName = Objects.requireNonNull(logicalName);
             return this;
         }
+        @CustomType.Setter
         public Builder lowVulns(Integer lowVulns) {
             this.lowVulns = Objects.requireNonNull(lowVulns);
             return this;
         }
+        @CustomType.Setter
         public Builder medVulns(Integer medVulns) {
             this.medVulns = Objects.requireNonNull(medVulns);
             return this;
         }
+        @CustomType.Setter
         public Builder microEnforcerCertsSecretsName(String microEnforcerCertsSecretsName) {
             this.microEnforcerCertsSecretsName = Objects.requireNonNull(microEnforcerCertsSecretsName);
             return this;
         }
+        @CustomType.Setter
         public Builder microEnforcerImageName(String microEnforcerImageName) {
             this.microEnforcerImageName = Objects.requireNonNull(microEnforcerImageName);
             return this;
         }
+        @CustomType.Setter
         public Builder microEnforcerInjection(Boolean microEnforcerInjection) {
             this.microEnforcerInjection = Objects.requireNonNull(microEnforcerInjection);
             return this;
         }
+        @CustomType.Setter
         public Builder microEnforcerSecretsName(String microEnforcerSecretsName) {
             this.microEnforcerSecretsName = Objects.requireNonNull(microEnforcerSecretsName);
             return this;
         }
+        @CustomType.Setter
         public Builder negVulns(Integer negVulns) {
             this.negVulns = Objects.requireNonNull(negVulns);
             return this;
         }
+        @CustomType.Setter
         public Builder networkProtection(Boolean networkProtection) {
             this.networkProtection = Objects.requireNonNull(networkProtection);
             return this;
         }
+        @CustomType.Setter
         public Builder orchestrators(List<GetEnforcerGroupsOrchestrator> orchestrators) {
             this.orchestrators = Objects.requireNonNull(orchestrators);
             return this;
@@ -1248,47 +1170,120 @@ public final class GetEnforcerGroupsResult {
         public Builder orchestrators(GetEnforcerGroupsOrchestrator... orchestrators) {
             return orchestrators(List.of(orchestrators));
         }
+        @CustomType.Setter
         public Builder pasDeploymentLink(String pasDeploymentLink) {
             this.pasDeploymentLink = Objects.requireNonNull(pasDeploymentLink);
             return this;
         }
+        @CustomType.Setter
         public Builder permission(String permission) {
             this.permission = Objects.requireNonNull(permission);
             return this;
         }
+        @CustomType.Setter
         public Builder riskExplorerAutoDiscovery(Boolean riskExplorerAutoDiscovery) {
             this.riskExplorerAutoDiscovery = Objects.requireNonNull(riskExplorerAutoDiscovery);
             return this;
         }
+        @CustomType.Setter
         public Builder runtimePolicyName(String runtimePolicyName) {
             this.runtimePolicyName = Objects.requireNonNull(runtimePolicyName);
             return this;
         }
+        @CustomType.Setter
         public Builder runtimeType(String runtimeType) {
             this.runtimeType = Objects.requireNonNull(runtimeType);
             return this;
         }
+        @CustomType.Setter
         public Builder syncHostImages(Boolean syncHostImages) {
             this.syncHostImages = Objects.requireNonNull(syncHostImages);
             return this;
         }
+        @CustomType.Setter
         public Builder syscallEnabled(Boolean syscallEnabled) {
             this.syscallEnabled = Objects.requireNonNull(syscallEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder token(String token) {
             this.token = Objects.requireNonNull(token);
             return this;
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder userAccessControl(Boolean userAccessControl) {
             this.userAccessControl = Objects.requireNonNull(userAccessControl);
             return this;
-        }        public GetEnforcerGroupsResult build() {
-            return new GetEnforcerGroupsResult(admissionControl, allowKubeEnforcerAudit, allowedApplications, allowedLabels, allowedRegistries, antivirusProtection, aquaVersion, auditAll, autoCopySecrets, autoDiscoverConfigureRegistries, autoDiscoveryEnabled, autoScanDiscoveredImagesRunningContainers, behavioralEngine, blockAdmissionControl, commands, connectedCount, containerActivityProtection, containerAntivirusProtection, description, disconnectedCount, enforce, enforcerImageName, forensics, gatewayAddress, gatewayName, gateways, groupId, highVulns, hostAssurance, hostBehavioralEngine, hostForensics, hostNetworkProtection, hostOs, hostProtection, hostUserProtection, hostsCount, id, imageAssurance, installCommand, kubeBenchImageName, lastUpdate, logicalName, lowVulns, medVulns, microEnforcerCertsSecretsName, microEnforcerImageName, microEnforcerInjection, microEnforcerSecretsName, negVulns, networkProtection, orchestrators, pasDeploymentLink, permission, riskExplorerAutoDiscovery, runtimePolicyName, runtimeType, syncHostImages, syscallEnabled, token, type, userAccessControl);
+        }
+        public GetEnforcerGroupsResult build() {
+            final var o = new GetEnforcerGroupsResult();
+            o.admissionControl = admissionControl;
+            o.allowKubeEnforcerAudit = allowKubeEnforcerAudit;
+            o.allowedApplications = allowedApplications;
+            o.allowedLabels = allowedLabels;
+            o.allowedRegistries = allowedRegistries;
+            o.antivirusProtection = antivirusProtection;
+            o.aquaVersion = aquaVersion;
+            o.auditAll = auditAll;
+            o.autoCopySecrets = autoCopySecrets;
+            o.autoDiscoverConfigureRegistries = autoDiscoverConfigureRegistries;
+            o.autoDiscoveryEnabled = autoDiscoveryEnabled;
+            o.autoScanDiscoveredImagesRunningContainers = autoScanDiscoveredImagesRunningContainers;
+            o.behavioralEngine = behavioralEngine;
+            o.blockAdmissionControl = blockAdmissionControl;
+            o.commands = commands;
+            o.connectedCount = connectedCount;
+            o.containerActivityProtection = containerActivityProtection;
+            o.containerAntivirusProtection = containerAntivirusProtection;
+            o.description = description;
+            o.disconnectedCount = disconnectedCount;
+            o.enforce = enforce;
+            o.enforcerImageName = enforcerImageName;
+            o.forensics = forensics;
+            o.gatewayAddress = gatewayAddress;
+            o.gatewayName = gatewayName;
+            o.gateways = gateways;
+            o.groupId = groupId;
+            o.highVulns = highVulns;
+            o.hostAssurance = hostAssurance;
+            o.hostBehavioralEngine = hostBehavioralEngine;
+            o.hostForensics = hostForensics;
+            o.hostNetworkProtection = hostNetworkProtection;
+            o.hostOs = hostOs;
+            o.hostProtection = hostProtection;
+            o.hostUserProtection = hostUserProtection;
+            o.hostsCount = hostsCount;
+            o.id = id;
+            o.imageAssurance = imageAssurance;
+            o.installCommand = installCommand;
+            o.kubeBenchImageName = kubeBenchImageName;
+            o.lastUpdate = lastUpdate;
+            o.logicalName = logicalName;
+            o.lowVulns = lowVulns;
+            o.medVulns = medVulns;
+            o.microEnforcerCertsSecretsName = microEnforcerCertsSecretsName;
+            o.microEnforcerImageName = microEnforcerImageName;
+            o.microEnforcerInjection = microEnforcerInjection;
+            o.microEnforcerSecretsName = microEnforcerSecretsName;
+            o.negVulns = negVulns;
+            o.networkProtection = networkProtection;
+            o.orchestrators = orchestrators;
+            o.pasDeploymentLink = pasDeploymentLink;
+            o.permission = permission;
+            o.riskExplorerAutoDiscovery = riskExplorerAutoDiscovery;
+            o.runtimePolicyName = runtimePolicyName;
+            o.runtimeType = runtimeType;
+            o.syncHostImages = syncHostImages;
+            o.syscallEnabled = syscallEnabled;
+            o.token = token;
+            o.type = type;
+            o.userAccessControl = userAccessControl;
+            return o;
         }
     }
 }

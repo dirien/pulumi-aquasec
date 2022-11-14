@@ -21,7 +21,10 @@ class GetIntegrationRegistryResult:
     """
     A collection of values returned by getIntegrationRegistry.
     """
-    def __init__(__self__, auto_pull=None, auto_pull_interval=None, auto_pull_max=None, auto_pull_rescan=None, auto_pull_time=None, id=None, image_creation_date_condition=None, name=None, password=None, prefixes=None, pull_image_age=None, pull_image_count=None, scanner_names=None, scanner_type=None, type=None, url=None, username=None):
+    def __init__(__self__, auto_cleanup=None, auto_pull=None, auto_pull_interval=None, auto_pull_max=None, auto_pull_rescan=None, auto_pull_time=None, id=None, image_creation_date_condition=None, name=None, password=None, prefixes=None, pull_image_age=None, pull_image_count=None, scanner_names=None, scanner_type=None, type=None, url=None, username=None):
+        if auto_cleanup and not isinstance(auto_cleanup, bool):
+            raise TypeError("Expected argument 'auto_cleanup' to be a bool")
+        pulumi.set(__self__, "auto_cleanup", auto_cleanup)
         if auto_pull and not isinstance(auto_pull, bool):
             raise TypeError("Expected argument 'auto_pull' to be a bool")
         pulumi.set(__self__, "auto_pull", auto_pull)
@@ -75,6 +78,14 @@ class GetIntegrationRegistryResult:
         pulumi.set(__self__, "username", username)
 
     @property
+    @pulumi.getter(name="autoCleanup")
+    def auto_cleanup(self) -> bool:
+        """
+        Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        """
+        return pulumi.get(self, "auto_cleanup")
+
+    @property
     @pulumi.getter(name="autoPull")
     def auto_pull(self) -> bool:
         """
@@ -100,7 +111,7 @@ class GetIntegrationRegistryResult:
 
     @property
     @pulumi.getter(name="autoPullRescan")
-    def auto_pull_rescan(self) -> Optional[bool]:
+    def auto_pull_rescan(self) -> bool:
         """
         Whether to automatically pull and rescan images from the registry on creation and daily
         """
@@ -172,7 +183,7 @@ class GetIntegrationRegistryResult:
 
     @property
     @pulumi.getter(name="scannerNames")
-    def scanner_names(self) -> Optional[Sequence[str]]:
+    def scanner_names(self) -> Sequence[str]:
         """
         List of scanner names
         """
@@ -180,7 +191,7 @@ class GetIntegrationRegistryResult:
 
     @property
     @pulumi.getter(name="scannerType")
-    def scanner_type(self) -> Optional[str]:
+    def scanner_type(self) -> str:
         """
         Scanner type
         """
@@ -217,6 +228,7 @@ class AwaitableGetIntegrationRegistryResult(GetIntegrationRegistryResult):
         if False:
             yield self
         return GetIntegrationRegistryResult(
+            auto_cleanup=self.auto_cleanup,
             auto_pull=self.auto_pull,
             auto_pull_interval=self.auto_pull_interval,
             auto_pull_max=self.auto_pull_max,
@@ -236,8 +248,7 @@ class AwaitableGetIntegrationRegistryResult(GetIntegrationRegistryResult):
             username=self.username)
 
 
-def get_integration_registry(auto_pull_rescan: Optional[bool] = None,
-                             image_creation_date_condition: Optional[str] = None,
+def get_integration_registry(image_creation_date_condition: Optional[str] = None,
                              name: Optional[str] = None,
                              pull_image_age: Optional[str] = None,
                              pull_image_count: Optional[int] = None,
@@ -247,7 +258,6 @@ def get_integration_registry(auto_pull_rescan: Optional[bool] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param bool auto_pull_rescan: Whether to automatically pull and rescan images from the registry on creation and daily
     :param str image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
     :param str name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
     :param str pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images
@@ -256,7 +266,6 @@ def get_integration_registry(auto_pull_rescan: Optional[bool] = None,
     :param str scanner_type: Scanner type
     """
     __args__ = dict()
-    __args__['autoPullRescan'] = auto_pull_rescan
     __args__['imageCreationDateCondition'] = image_creation_date_condition
     __args__['name'] = name
     __args__['pullImageAge'] = pull_image_age
@@ -267,6 +276,7 @@ def get_integration_registry(auto_pull_rescan: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('aquasec:index/getIntegrationRegistry:getIntegrationRegistry', __args__, opts=opts, typ=GetIntegrationRegistryResult).value
 
     return AwaitableGetIntegrationRegistryResult(
+        auto_cleanup=__ret__.auto_cleanup,
         auto_pull=__ret__.auto_pull,
         auto_pull_interval=__ret__.auto_pull_interval,
         auto_pull_max=__ret__.auto_pull_max,
@@ -287,8 +297,7 @@ def get_integration_registry(auto_pull_rescan: Optional[bool] = None,
 
 
 @_utilities.lift_output_func(get_integration_registry)
-def get_integration_registry_output(auto_pull_rescan: Optional[pulumi.Input[Optional[bool]]] = None,
-                                    image_creation_date_condition: Optional[pulumi.Input[Optional[str]]] = None,
+def get_integration_registry_output(image_creation_date_condition: Optional[pulumi.Input[Optional[str]]] = None,
                                     name: Optional[pulumi.Input[str]] = None,
                                     pull_image_age: Optional[pulumi.Input[Optional[str]]] = None,
                                     pull_image_count: Optional[pulumi.Input[Optional[int]]] = None,
@@ -298,7 +307,6 @@ def get_integration_registry_output(auto_pull_rescan: Optional[pulumi.Input[Opti
     """
     Use this data source to access information about an existing resource.
 
-    :param bool auto_pull_rescan: Whether to automatically pull and rescan images from the registry on creation and daily
     :param str image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
     :param str name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
     :param str pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images

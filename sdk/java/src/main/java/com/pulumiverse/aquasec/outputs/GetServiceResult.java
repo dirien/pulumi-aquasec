@@ -17,189 +17,134 @@ public final class GetServiceResult {
      * @return Indicates the application scope of the service.
      * 
      */
-    private final List<String> applicationScopes;
+    private List<String> applicationScopes;
     /**
      * @return Username of the account that created the service.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return The number of containers associated with the service.
      * 
      */
-    private final Integer containersCount;
+    private Integer containersCount;
     /**
      * @return A textual description of the service record; maximum 500 characters.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Enforcement status of the service.
      * 
      */
-    private final Boolean enforce;
+    private Boolean enforce;
     /**
      * @return Whether the service has been evaluated for security vulnerabilities.
      * 
      */
-    private final Boolean evaluated;
+    private Boolean evaluated;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Indicates if registered or not.
      * 
      */
-    private final Boolean isRegistered;
+    private Boolean isRegistered;
     /**
      * @return Timestamp of the last update in Unix time format.
      * 
      */
-    private final Integer lastupdate;
+    private Integer lastupdate;
     /**
      * @return Indicates if monitoring is enabled or not
      * 
      */
-    private final Boolean monitoring;
+    private Boolean monitoring;
     /**
      * @return The name of the service. It is recommended not to use whitespace characters in the name.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The number of container that are not evaluated.
      * 
      */
-    private final Integer notEvaluatedCount;
+    private Integer notEvaluatedCount;
     /**
      * @return The service&#39;s policies; an array of container firewall policy names.
      * 
      */
-    private final List<String> policies;
+    private List<String> policies;
     /**
      * @return Rules priority, must be between 1-100.
      * 
      */
-    private final Integer priority;
+    private Integer priority;
     /**
      * @return Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    private final String scopeExpression;
+    private String scopeExpression;
     /**
      * @return List of scope attributes.
      * 
      */
-    private final List<GetServiceScopeVariable> scopeVariables;
+    private List<GetServiceScopeVariable> scopeVariables;
     /**
      * @return Type of the workload. container or host.
      * 
      */
-    private final String target;
+    private String target;
     /**
      * @return The number of containers allocated to the service that are not registered.
      * 
      */
-    private final Integer unregisteredCount;
+    private Integer unregisteredCount;
     /**
      * @return Number of high severity vulnerabilities.
      * 
      */
-    private final Integer vulnerabilitiesHigh;
+    private Integer vulnerabilitiesHigh;
     /**
      * @return Number of low severity vulnerabilities.
      * 
      */
-    private final Integer vulnerabilitiesLow;
+    private Integer vulnerabilitiesLow;
     /**
      * @return Number of malware.
      * 
      */
-    private final Integer vulnerabilitiesMalware;
+    private Integer vulnerabilitiesMalware;
     /**
      * @return Number of medium severity vulnerabilities.
      * 
      */
-    private final Integer vulnerabilitiesMedium;
+    private Integer vulnerabilitiesMedium;
     /**
      * @return Number of negligible vulnerabilities.
      * 
      */
-    private final Integer vulnerabilitiesNegligible;
+    private Integer vulnerabilitiesNegligible;
     /**
      * @return The CVSS average vulnerabilities score.
      * 
      */
-    private final Integer vulnerabilitiesScoreAverage;
+    private Integer vulnerabilitiesScoreAverage;
     /**
      * @return Number of sensitive vulnerabilities.
      * 
      */
-    private final Integer vulnerabilitiesSensitive;
+    private Integer vulnerabilitiesSensitive;
     /**
      * @return Total number of vulnerabilities.
      * 
      */
-    private final Integer vulnerabilitiesTotal;
+    private Integer vulnerabilitiesTotal;
 
-    @CustomType.Constructor
-    private GetServiceResult(
-        @CustomType.Parameter("applicationScopes") List<String> applicationScopes,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("containersCount") Integer containersCount,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enforce") Boolean enforce,
-        @CustomType.Parameter("evaluated") Boolean evaluated,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("isRegistered") Boolean isRegistered,
-        @CustomType.Parameter("lastupdate") Integer lastupdate,
-        @CustomType.Parameter("monitoring") Boolean monitoring,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("notEvaluatedCount") Integer notEvaluatedCount,
-        @CustomType.Parameter("policies") List<String> policies,
-        @CustomType.Parameter("priority") Integer priority,
-        @CustomType.Parameter("scopeExpression") String scopeExpression,
-        @CustomType.Parameter("scopeVariables") List<GetServiceScopeVariable> scopeVariables,
-        @CustomType.Parameter("target") String target,
-        @CustomType.Parameter("unregisteredCount") Integer unregisteredCount,
-        @CustomType.Parameter("vulnerabilitiesHigh") Integer vulnerabilitiesHigh,
-        @CustomType.Parameter("vulnerabilitiesLow") Integer vulnerabilitiesLow,
-        @CustomType.Parameter("vulnerabilitiesMalware") Integer vulnerabilitiesMalware,
-        @CustomType.Parameter("vulnerabilitiesMedium") Integer vulnerabilitiesMedium,
-        @CustomType.Parameter("vulnerabilitiesNegligible") Integer vulnerabilitiesNegligible,
-        @CustomType.Parameter("vulnerabilitiesScoreAverage") Integer vulnerabilitiesScoreAverage,
-        @CustomType.Parameter("vulnerabilitiesSensitive") Integer vulnerabilitiesSensitive,
-        @CustomType.Parameter("vulnerabilitiesTotal") Integer vulnerabilitiesTotal) {
-        this.applicationScopes = applicationScopes;
-        this.author = author;
-        this.containersCount = containersCount;
-        this.description = description;
-        this.enforce = enforce;
-        this.evaluated = evaluated;
-        this.id = id;
-        this.isRegistered = isRegistered;
-        this.lastupdate = lastupdate;
-        this.monitoring = monitoring;
-        this.name = name;
-        this.notEvaluatedCount = notEvaluatedCount;
-        this.policies = policies;
-        this.priority = priority;
-        this.scopeExpression = scopeExpression;
-        this.scopeVariables = scopeVariables;
-        this.target = target;
-        this.unregisteredCount = unregisteredCount;
-        this.vulnerabilitiesHigh = vulnerabilitiesHigh;
-        this.vulnerabilitiesLow = vulnerabilitiesLow;
-        this.vulnerabilitiesMalware = vulnerabilitiesMalware;
-        this.vulnerabilitiesMedium = vulnerabilitiesMedium;
-        this.vulnerabilitiesNegligible = vulnerabilitiesNegligible;
-        this.vulnerabilitiesScoreAverage = vulnerabilitiesScoreAverage;
-        this.vulnerabilitiesSensitive = vulnerabilitiesSensitive;
-        this.vulnerabilitiesTotal = vulnerabilitiesTotal;
-    }
-
+    private GetServiceResult() {}
     /**
      * @return Indicates the application scope of the service.
      * 
@@ -390,7 +335,7 @@ public final class GetServiceResult {
     public static Builder builder(GetServiceResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> applicationScopes;
         private String author;
@@ -418,11 +363,7 @@ public final class GetServiceResult {
         private Integer vulnerabilitiesScoreAverage;
         private Integer vulnerabilitiesSensitive;
         private Integer vulnerabilitiesTotal;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationScopes = defaults.applicationScopes;
@@ -453,6 +394,7 @@ public final class GetServiceResult {
     	      this.vulnerabilitiesTotal = defaults.vulnerabilitiesTotal;
         }
 
+        @CustomType.Setter
         public Builder applicationScopes(List<String> applicationScopes) {
             this.applicationScopes = Objects.requireNonNull(applicationScopes);
             return this;
@@ -460,50 +402,62 @@ public final class GetServiceResult {
         public Builder applicationScopes(String... applicationScopes) {
             return applicationScopes(List.of(applicationScopes));
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder containersCount(Integer containersCount) {
             this.containersCount = Objects.requireNonNull(containersCount);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(Boolean enforce) {
             this.enforce = Objects.requireNonNull(enforce);
             return this;
         }
+        @CustomType.Setter
         public Builder evaluated(Boolean evaluated) {
             this.evaluated = Objects.requireNonNull(evaluated);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder isRegistered(Boolean isRegistered) {
             this.isRegistered = Objects.requireNonNull(isRegistered);
             return this;
         }
+        @CustomType.Setter
         public Builder lastupdate(Integer lastupdate) {
             this.lastupdate = Objects.requireNonNull(lastupdate);
             return this;
         }
+        @CustomType.Setter
         public Builder monitoring(Boolean monitoring) {
             this.monitoring = Objects.requireNonNull(monitoring);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder notEvaluatedCount(Integer notEvaluatedCount) {
             this.notEvaluatedCount = Objects.requireNonNull(notEvaluatedCount);
             return this;
         }
+        @CustomType.Setter
         public Builder policies(List<String> policies) {
             this.policies = Objects.requireNonNull(policies);
             return this;
@@ -511,14 +465,17 @@ public final class GetServiceResult {
         public Builder policies(String... policies) {
             return policies(List.of(policies));
         }
+        @CustomType.Setter
         public Builder priority(Integer priority) {
             this.priority = Objects.requireNonNull(priority);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeExpression(String scopeExpression) {
             this.scopeExpression = Objects.requireNonNull(scopeExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeVariables(List<GetServiceScopeVariable> scopeVariables) {
             this.scopeVariables = Objects.requireNonNull(scopeVariables);
             return this;
@@ -526,47 +483,85 @@ public final class GetServiceResult {
         public Builder scopeVariables(GetServiceScopeVariable... scopeVariables) {
             return scopeVariables(List.of(scopeVariables));
         }
+        @CustomType.Setter
         public Builder target(String target) {
             this.target = Objects.requireNonNull(target);
             return this;
         }
+        @CustomType.Setter
         public Builder unregisteredCount(Integer unregisteredCount) {
             this.unregisteredCount = Objects.requireNonNull(unregisteredCount);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesHigh(Integer vulnerabilitiesHigh) {
             this.vulnerabilitiesHigh = Objects.requireNonNull(vulnerabilitiesHigh);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesLow(Integer vulnerabilitiesLow) {
             this.vulnerabilitiesLow = Objects.requireNonNull(vulnerabilitiesLow);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesMalware(Integer vulnerabilitiesMalware) {
             this.vulnerabilitiesMalware = Objects.requireNonNull(vulnerabilitiesMalware);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesMedium(Integer vulnerabilitiesMedium) {
             this.vulnerabilitiesMedium = Objects.requireNonNull(vulnerabilitiesMedium);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesNegligible(Integer vulnerabilitiesNegligible) {
             this.vulnerabilitiesNegligible = Objects.requireNonNull(vulnerabilitiesNegligible);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesScoreAverage(Integer vulnerabilitiesScoreAverage) {
             this.vulnerabilitiesScoreAverage = Objects.requireNonNull(vulnerabilitiesScoreAverage);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesSensitive(Integer vulnerabilitiesSensitive) {
             this.vulnerabilitiesSensitive = Objects.requireNonNull(vulnerabilitiesSensitive);
             return this;
         }
+        @CustomType.Setter
         public Builder vulnerabilitiesTotal(Integer vulnerabilitiesTotal) {
             this.vulnerabilitiesTotal = Objects.requireNonNull(vulnerabilitiesTotal);
             return this;
-        }        public GetServiceResult build() {
-            return new GetServiceResult(applicationScopes, author, containersCount, description, enforce, evaluated, id, isRegistered, lastupdate, monitoring, name, notEvaluatedCount, policies, priority, scopeExpression, scopeVariables, target, unregisteredCount, vulnerabilitiesHigh, vulnerabilitiesLow, vulnerabilitiesMalware, vulnerabilitiesMedium, vulnerabilitiesNegligible, vulnerabilitiesScoreAverage, vulnerabilitiesSensitive, vulnerabilitiesTotal);
+        }
+        public GetServiceResult build() {
+            final var o = new GetServiceResult();
+            o.applicationScopes = applicationScopes;
+            o.author = author;
+            o.containersCount = containersCount;
+            o.description = description;
+            o.enforce = enforce;
+            o.evaluated = evaluated;
+            o.id = id;
+            o.isRegistered = isRegistered;
+            o.lastupdate = lastupdate;
+            o.monitoring = monitoring;
+            o.name = name;
+            o.notEvaluatedCount = notEvaluatedCount;
+            o.policies = policies;
+            o.priority = priority;
+            o.scopeExpression = scopeExpression;
+            o.scopeVariables = scopeVariables;
+            o.target = target;
+            o.unregisteredCount = unregisteredCount;
+            o.vulnerabilitiesHigh = vulnerabilitiesHigh;
+            o.vulnerabilitiesLow = vulnerabilitiesLow;
+            o.vulnerabilitiesMalware = vulnerabilitiesMalware;
+            o.vulnerabilitiesMedium = vulnerabilitiesMedium;
+            o.vulnerabilitiesNegligible = vulnerabilitiesNegligible;
+            o.vulnerabilitiesScoreAverage = vulnerabilitiesScoreAverage;
+            o.vulnerabilitiesSensitive = vulnerabilitiesSensitive;
+            o.vulnerabilitiesTotal = vulnerabilitiesTotal;
+            return o;
         }
     }
 }

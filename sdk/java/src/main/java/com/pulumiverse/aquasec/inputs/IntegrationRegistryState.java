@@ -35,6 +35,21 @@ public final class IntegrationRegistryState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     * 
+     */
+    @Import(name="autoCleanup")
+    private @Nullable Output<Boolean> autoCleanup;
+
+    /**
+     * @return Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     * 
+     */
+    public Optional<Output<Boolean>> autoCleanup() {
+        return Optional.ofNullable(this.autoCleanup);
+    }
+
+    /**
      * Whether to automatically pull images from the registry on creation and daily
      * 
      */
@@ -300,6 +315,7 @@ public final class IntegrationRegistryState extends com.pulumi.resources.Resourc
 
     private IntegrationRegistryState(IntegrationRegistryState $) {
         this.author = $.author;
+        this.autoCleanup = $.autoCleanup;
         this.autoPull = $.autoPull;
         this.autoPullInterval = $.autoPullInterval;
         this.autoPullMax = $.autoPullMax;
@@ -357,6 +373,27 @@ public final class IntegrationRegistryState extends com.pulumi.resources.Resourc
          */
         public Builder author(String author) {
             return author(Output.of(author));
+        }
+
+        /**
+         * @param autoCleanup Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCleanup(@Nullable Output<Boolean> autoCleanup) {
+            $.autoCleanup = autoCleanup;
+            return this;
+        }
+
+        /**
+         * @param autoCleanup Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoCleanup(Boolean autoCleanup) {
+            return autoCleanup(Output.of(autoCleanup));
         }
 
         /**

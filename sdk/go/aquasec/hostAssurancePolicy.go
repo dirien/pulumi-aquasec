@@ -17,8 +17,6 @@ type HostAssurancePolicy struct {
 	// List of explicitly allowed images.
 	AllowedImages     pulumi.StringArrayOutput `pulumi:"allowedImages"`
 	ApplicationScopes pulumi.StringArrayOutput `pulumi:"applicationScopes"`
-	// What type of assurance policy is described.
-	AssuranceType pulumi.StringPtrOutput `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
 	AuditOnFailure pulumi.BoolPtrOutput `pulumi:"auditOnFailure"`
 	// Name of user account that created the policy.
@@ -167,8 +165,6 @@ type hostAssurancePolicyState struct {
 	// List of explicitly allowed images.
 	AllowedImages     []string `pulumi:"allowedImages"`
 	ApplicationScopes []string `pulumi:"applicationScopes"`
-	// What type of assurance policy is described.
-	AssuranceType *string `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
 	AuditOnFailure *bool `pulumi:"auditOnFailure"`
 	// Name of user account that created the policy.
@@ -285,8 +281,6 @@ type HostAssurancePolicyState struct {
 	// List of explicitly allowed images.
 	AllowedImages     pulumi.StringArrayInput
 	ApplicationScopes pulumi.StringArrayInput
-	// What type of assurance policy is described.
-	AssuranceType pulumi.StringPtrInput
 	// Indicates if auditing for failures.
 	AuditOnFailure pulumi.BoolPtrInput
 	// Name of user account that created the policy.
@@ -407,8 +401,6 @@ type hostAssurancePolicyArgs struct {
 	// List of explicitly allowed images.
 	AllowedImages     []string `pulumi:"allowedImages"`
 	ApplicationScopes []string `pulumi:"applicationScopes"`
-	// What type of assurance policy is described.
-	AssuranceType *string `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
 	AuditOnFailure     *bool                             `pulumi:"auditOnFailure"`
 	AutoScanConfigured *bool                             `pulumi:"autoScanConfigured"`
@@ -523,8 +515,6 @@ type HostAssurancePolicyArgs struct {
 	// List of explicitly allowed images.
 	AllowedImages     pulumi.StringArrayInput
 	ApplicationScopes pulumi.StringArrayInput
-	// What type of assurance policy is described.
-	AssuranceType pulumi.StringPtrInput
 	// Indicates if auditing for failures.
 	AuditOnFailure     pulumi.BoolPtrInput
 	AutoScanConfigured pulumi.BoolPtrInput
@@ -728,11 +718,6 @@ func (o HostAssurancePolicyOutput) AllowedImages() pulumi.StringArrayOutput {
 
 func (o HostAssurancePolicyOutput) ApplicationScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostAssurancePolicy) pulumi.StringArrayOutput { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
-}
-
-// What type of assurance policy is described.
-func (o HostAssurancePolicyOutput) AssuranceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HostAssurancePolicy) pulumi.StringPtrOutput { return v.AssuranceType }).(pulumi.StringPtrOutput)
 }
 
 // Indicates if auditing for failures.

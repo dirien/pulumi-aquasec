@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScopeCategoryArtifactCfVariable {
-    private final String attribute;
-    private final @Nullable String value;
+    private String attribute;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private GetApplicationScopeCategoryArtifactCfVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.attribute = attribute;
-        this.value = value;
-    }
-
+    private GetApplicationScopeCategoryArtifactCfVariable() {}
     public String attribute() {
         return this.attribute;
     }
@@ -36,30 +29,32 @@ public final class GetApplicationScopeCategoryArtifactCfVariable {
     public static Builder builder(GetApplicationScopeCategoryArtifactCfVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScopeCategoryArtifactCfVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public GetApplicationScopeCategoryArtifactCfVariable build() {
-            return new GetApplicationScopeCategoryArtifactCfVariable(attribute, value);
+        }
+        public GetApplicationScopeCategoryArtifactCfVariable build() {
+            final var o = new GetApplicationScopeCategoryArtifactCfVariable();
+            o.attribute = attribute;
+            o.value = value;
+            return o;
         }
     }
 }

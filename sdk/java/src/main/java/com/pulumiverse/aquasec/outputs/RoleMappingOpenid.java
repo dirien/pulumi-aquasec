@@ -14,13 +14,9 @@ public final class RoleMappingOpenid {
      * @return Role Mapping is used to define the IdP role that the user will assume in Aqua
      * 
      */
-    private final Map<String,String> roleMapping;
+    private Map<String,String> roleMapping;
 
-    @CustomType.Constructor
-    private RoleMappingOpenid(@CustomType.Parameter("roleMapping") Map<String,String> roleMapping) {
-        this.roleMapping = roleMapping;
-    }
-
+    private RoleMappingOpenid() {}
     /**
      * @return Role Mapping is used to define the IdP role that the user will assume in Aqua
      * 
@@ -36,24 +32,24 @@ public final class RoleMappingOpenid {
     public static Builder builder(RoleMappingOpenid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> roleMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RoleMappingOpenid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleMapping = defaults.roleMapping;
         }
 
+        @CustomType.Setter
         public Builder roleMapping(Map<String,String> roleMapping) {
             this.roleMapping = Objects.requireNonNull(roleMapping);
             return this;
-        }        public RoleMappingOpenid build() {
-            return new RoleMappingOpenid(roleMapping);
+        }
+        public RoleMappingOpenid build() {
+            final var o = new RoleMappingOpenid();
+            o.roleMapping = roleMapping;
+            return o;
         }
     }
 }

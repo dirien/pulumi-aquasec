@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionAssurancePolicyForbiddenLabel {
-    private final String key;
-    private final String value;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetFunctionAssurancePolicyForbiddenLabel(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetFunctionAssurancePolicyForbiddenLabel() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class GetFunctionAssurancePolicyForbiddenLabel {
     public static Builder builder(GetFunctionAssurancePolicyForbiddenLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionAssurancePolicyForbiddenLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetFunctionAssurancePolicyForbiddenLabel build() {
-            return new GetFunctionAssurancePolicyForbiddenLabel(key, value);
+        }
+        public GetFunctionAssurancePolicyForbiddenLabel build() {
+            final var o = new GetFunctionAssurancePolicyForbiddenLabel();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

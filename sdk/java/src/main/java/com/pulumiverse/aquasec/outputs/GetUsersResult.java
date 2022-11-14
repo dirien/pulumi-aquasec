@@ -15,17 +15,10 @@ public final class GetUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetUsersUser> users;
+    private String id;
+    private List<GetUsersUser> users;
 
-    @CustomType.Constructor
-    private GetUsersResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("users") List<GetUsersUser> users) {
-        this.id = id;
-        this.users = users;
-    }
-
+    private GetUsersResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -44,33 +37,35 @@ public final class GetUsersResult {
     public static Builder builder(GetUsersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetUsersUser> users;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetUsersUser... users) {
             return users(List.of(users));
-        }        public GetUsersResult build() {
-            return new GetUsersResult(id, users);
+        }
+        public GetUsersResult build() {
+            final var o = new GetUsersResult();
+            o.id = id;
+            o.users = users;
+            return o;
         }
     }
 }

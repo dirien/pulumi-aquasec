@@ -10,26 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesRole {
-    private final String description;
-    private final String name;
-    private final String permission;
-    private final List<String> scopes;
-    private final String updatedAt;
+    private String description;
+    private String name;
+    private String permission;
+    private List<String> scopes;
+    private String updatedAt;
 
-    @CustomType.Constructor
-    private GetRolesRole(
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("permission") String permission,
-        @CustomType.Parameter("scopes") List<String> scopes,
-        @CustomType.Parameter("updatedAt") String updatedAt) {
-        this.description = description;
-        this.name = name;
-        this.permission = permission;
-        this.scopes = scopes;
-        this.updatedAt = updatedAt;
-    }
-
+    private GetRolesRole() {}
     public String description() {
         return this.description;
     }
@@ -53,18 +40,14 @@ public final class GetRolesRole {
     public static Builder builder(GetRolesRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String description;
         private String name;
         private String permission;
         private List<String> scopes;
         private String updatedAt;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
@@ -74,18 +57,22 @@ public final class GetRolesRole {
     	      this.updatedAt = defaults.updatedAt;
         }
 
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder permission(String permission) {
             this.permission = Objects.requireNonNull(permission);
             return this;
         }
+        @CustomType.Setter
         public Builder scopes(List<String> scopes) {
             this.scopes = Objects.requireNonNull(scopes);
             return this;
@@ -93,11 +80,19 @@ public final class GetRolesRole {
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
+        @CustomType.Setter
         public Builder updatedAt(String updatedAt) {
             this.updatedAt = Objects.requireNonNull(updatedAt);
             return this;
-        }        public GetRolesRole build() {
-            return new GetRolesRole(description, name, permission, scopes, updatedAt);
+        }
+        public GetRolesRole build() {
+            final var o = new GetRolesRole();
+            o.description = description;
+            o.name = name;
+            o.permission = permission;
+            o.scopes = scopes;
+            o.updatedAt = updatedAt;
+            return o;
         }
     }
 }

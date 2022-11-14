@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  * import * as aquasec from "@pulumi/aquasec";
  *
  * const functionRuntimePolicy = new aquasec.FunctionRuntimePolicy("function_runtime_policy", {
+ *     applicationScopes: ["Global"],
  *     blockMaliciousExecutables: true,
  *     blockMaliciousExecutablesAllowedProcesses: [
  *         "proc1",
@@ -27,6 +28,17 @@ import * as utilities from "./utilities";
  *     description: "function_runtime_policy",
  *     enabled: true,
  *     enforce: false,
+ *     scopeVariables: [
+ *         {
+ *             attribute: "kubernetes.cluster",
+ *             value: "default",
+ *         },
+ *         {
+ *             attribute: "kubernetes.label",
+ *             name: "app",
+ *             value: "aqua",
+ *         },
+ *     ],
  * });
  * ```
  */

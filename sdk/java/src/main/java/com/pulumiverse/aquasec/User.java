@@ -62,7 +62,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user Email.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -76,7 +76,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * If the user must change the password first login. Applicable only one time, Later for user password resets use aqua console.
      * 
      */
-    @Export(name="firstTime", type=Boolean.class, parameters={})
+    @Export(name="firstTime", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> firstTime;
 
     /**
@@ -90,7 +90,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Give the Permission Set full access, meaning all actions are allowed without restriction.
      * 
      */
-    @Export(name="isSuper", type=Boolean.class, parameters={})
+    @Export(name="isSuper", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isSuper;
 
     /**
@@ -104,7 +104,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -118,7 +118,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Login password for the user; string, required, at least 8 characters long.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -132,7 +132,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Password confirmation.
      * 
      */
-    @Export(name="passwordConfirm", type=String.class, parameters={})
+    @Export(name="passwordConfirm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passwordConfirm;
 
     /**
@@ -146,7 +146,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * User&#39;s Aqua plan (Developer / Team / Advanced).
      * 
      */
-    @Export(name="plan", type=String.class, parameters={})
+    @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
@@ -160,7 +160,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The first role that assigned to the user for backward compatibility.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -174,7 +174,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The roles that will be assigned to the user.
      * 
      */
-    @Export(name="roles", type=List.class, parameters={String.class})
+    @Export(name="roles", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> roles;
 
     /**
@@ -188,7 +188,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -202,7 +202,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Whether to allow UI access for users with this Permission Set.
      * 
      */
-    @Export(name="uiAccess", type=Boolean.class, parameters={})
+    @Export(name="uiAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> uiAccess;
 
     /**
@@ -216,7 +216,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The user ID.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

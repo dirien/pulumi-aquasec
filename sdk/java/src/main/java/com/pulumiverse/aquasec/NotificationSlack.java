@@ -17,55 +17,55 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="aquasec:index/notificationSlack:NotificationSlack")
 public class NotificationSlack extends com.pulumi.resources.CustomResource {
-    @Export(name="channel", type=String.class, parameters={})
+    @Export(name="channel", refs={String.class}, tree="[0]")
     private Output<String> channel;
 
     public Output<String> channel() {
         return this.channel;
     }
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     public Output<Boolean> enabled() {
         return this.enabled;
     }
-    @Export(name="icon", type=String.class, parameters={})
+    @Export(name="icon", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> icon;
 
     public Output<Optional<String>> icon() {
         return Codegen.optional(this.icon);
     }
-    @Export(name="mainText", type=String.class, parameters={})
+    @Export(name="mainText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mainText;
 
     public Output<Optional<String>> mainText() {
         return Codegen.optional(this.mainText);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="serviceKey", type=String.class, parameters={})
+    @Export(name="serviceKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceKey;
 
     public Output<Optional<String>> serviceKey() {
         return Codegen.optional(this.serviceKey);
     }
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     public Output<String> type() {
         return this.type;
     }
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     public Output<String> userName() {
         return this.userName;
     }
-    @Export(name="webhookUrl", type=String.class, parameters={})
+    @Export(name="webhookUrl", refs={String.class}, tree="[0]")
     private Output<String> webhookUrl;
 
     public Output<String> webhookUrl() {

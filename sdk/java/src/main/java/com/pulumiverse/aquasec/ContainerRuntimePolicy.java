@@ -31,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.aquasec.ContainerRuntimePolicy;
  * import com.pulumi.aquasec.ContainerRuntimePolicyArgs;
  * import com.pulumi.aquasec.inputs.ContainerRuntimePolicyFileIntegrityMonitoringArgs;
+ * import com.pulumi.aquasec.inputs.ContainerRuntimePolicyMalwareScanOptionsArgs;
+ * import com.pulumi.aquasec.inputs.ContainerRuntimePolicyScopeVariableArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -51,6 +53,7 @@ import javax.annotation.Nullable;
  *             .allowedRegistries(            
  *                 &#34;registry1&#34;,
  *                 &#34;registry2&#34;)
+ *             .applicationScopes(&#34;Global&#34;)
  *             .auditAllNetworkActivity(true)
  *             .auditAllProcessesActivity(true)
  *             .auditFullCommandArguments(true)
@@ -120,6 +123,10 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .forkGuardProcessLimit(13)
  *             .limitNewPrivileges(true)
+ *             .malwareScanOptions(ContainerRuntimePolicyMalwareScanOptionsArgs.builder()
+ *                 .action(&#34;alert&#34;)
+ *                 .enabled(true)
+ *                 .build())
  *             .monitorSystemTimeChanges(&#34;true&#34;)
  *             .readonlyFilesAndDirectories(            
  *                 &#34;readonly&#34;,
@@ -130,6 +137,17 @@ import javax.annotation.Nullable;
  *             .reverseShellAllowedProcesses(            
  *                 &#34;proc1&#34;,
  *                 &#34;proc2&#34;)
+ *             .scopeExpression(&#34;v1 || v2&#34;)
+ *             .scopeVariables(            
+ *                 ContainerRuntimePolicyScopeVariableArgs.builder()
+ *                     .attribute(&#34;kubernetes.cluster&#34;)
+ *                     .value(&#34;default&#34;)
+ *                     .build(),
+ *                 ContainerRuntimePolicyScopeVariableArgs.builder()
+ *                     .attribute(&#34;kubernetes.label&#34;)
+ *                     .name(&#34;app&#34;)
+ *                     .value(&#34;aqua&#34;)
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -143,7 +161,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of executables that are allowed for the user.
      * 
      */
-    @Export(name="allowedExecutables", type=List.class, parameters={String.class})
+    @Export(name="allowedExecutables", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedExecutables;
 
     /**
@@ -157,7 +175,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of registries that allowed for running containers.
      * 
      */
-    @Export(name="allowedRegistries", type=List.class, parameters={String.class})
+    @Export(name="allowedRegistries", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedRegistries;
 
     /**
@@ -171,7 +189,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Indicates the application scope of the service.
      * 
      */
-    @Export(name="applicationScopes", type=List.class, parameters={String.class})
+    @Export(name="applicationScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applicationScopes;
 
     /**
@@ -185,7 +203,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, all network activity will be audited.
      * 
      */
-    @Export(name="auditAllNetworkActivity", type=Boolean.class, parameters={})
+    @Export(name="auditAllNetworkActivity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditAllNetworkActivity;
 
     /**
@@ -199,7 +217,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, all process activity will be audited.
      * 
      */
-    @Export(name="auditAllProcessesActivity", type=Boolean.class, parameters={})
+    @Export(name="auditAllProcessesActivity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditAllProcessesActivity;
 
     /**
@@ -213,7 +231,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, full command arguments will be audited.
      * 
      */
-    @Export(name="auditFullCommandArguments", type=Boolean.class, parameters={})
+    @Export(name="auditFullCommandArguments", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditFullCommandArguments;
 
     /**
@@ -227,7 +245,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Username of the account that created the service.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -241,7 +259,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with access to host network.
      * 
      */
-    @Export(name="blockAccessHostNetwork", type=Boolean.class, parameters={})
+    @Export(name="blockAccessHostNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockAccessHostNetwork;
 
     /**
@@ -255,7 +273,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
      * 
      */
-    @Export(name="blockAddingCapabilities", type=Boolean.class, parameters={})
+    @Export(name="blockAddingCapabilities", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockAddingCapabilities;
 
     /**
@@ -269,7 +287,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, exec into a container is prevented.
      * 
      */
-    @Export(name="blockContainerExec", type=Boolean.class, parameters={})
+    @Export(name="blockContainerExec", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockContainerExec;
 
     /**
@@ -283,7 +301,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      * 
      */
-    @Export(name="blockCryptocurrencyMining", type=Boolean.class, parameters={})
+    @Export(name="blockCryptocurrencyMining", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockCryptocurrencyMining;
 
     /**
@@ -297,7 +315,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Detect and prevent running in-memory execution
      * 
      */
-    @Export(name="blockFilelessExec", type=Boolean.class, parameters={})
+    @Export(name="blockFilelessExec", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockFilelessExec;
 
     /**
@@ -311,7 +329,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with the capability to bind in port lower than 1024.
      * 
      */
-    @Export(name="blockLowPortBinding", type=Boolean.class, parameters={})
+    @Export(name="blockLowPortBinding", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockLowPortBinding;
 
     /**
@@ -325,7 +343,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, running non-compliant image in the container is prevented.
      * 
      */
-    @Export(name="blockNonCompliantImages", type=Boolean.class, parameters={})
+    @Export(name="blockNonCompliantImages", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockNonCompliantImages;
 
     /**
@@ -339,7 +357,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, running containers in non-compliant pods is prevented.
      * 
      */
-    @Export(name="blockNonCompliantWorkloads", type=Boolean.class, parameters={})
+    @Export(name="blockNonCompliantWorkloads", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockNonCompliantWorkloads;
 
     /**
@@ -353,7 +371,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, running non-kubernetes containers is prevented.
      * 
      */
-    @Export(name="blockNonK8sContainers", type=Boolean.class, parameters={})
+    @Export(name="blockNonK8sContainers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockNonK8sContainers;
 
     /**
@@ -367,7 +385,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with privileged container capability.
      * 
      */
-    @Export(name="blockPrivilegedContainers", type=Boolean.class, parameters={})
+    @Export(name="blockPrivilegedContainers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockPrivilegedContainers;
 
     /**
@@ -381,7 +399,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, reverse shell is prevented.
      * 
      */
-    @Export(name="blockReverseShell", type=Boolean.class, parameters={})
+    @Export(name="blockReverseShell", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockReverseShell;
 
     /**
@@ -395,7 +413,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with root user.
      * 
      */
-    @Export(name="blockRootUser", type=Boolean.class, parameters={})
+    @Export(name="blockRootUser", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockRootUser;
 
     /**
@@ -409,7 +427,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, running images in the container that are not registered in Aqua is prevented.
      * 
      */
-    @Export(name="blockUnregisteredImages", type=Boolean.class, parameters={})
+    @Export(name="blockUnregisteredImages", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockUnregisteredImages;
 
     /**
@@ -423,7 +441,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with the privilege to use the IPC namespace.
      * 
      */
-    @Export(name="blockUseIpcNamespace", type=Boolean.class, parameters={})
+    @Export(name="blockUseIpcNamespace", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockUseIpcNamespace;
 
     /**
@@ -437,7 +455,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with the privilege to use the PID namespace.
      * 
      */
-    @Export(name="blockUsePidNamespace", type=Boolean.class, parameters={})
+    @Export(name="blockUsePidNamespace", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockUsePidNamespace;
 
     /**
@@ -451,7 +469,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with the privilege to use the user namespace.
      * 
      */
-    @Export(name="blockUseUserNamespace", type=Boolean.class, parameters={})
+    @Export(name="blockUseUserNamespace", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockUseUserNamespace;
 
     /**
@@ -465,7 +483,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevent containers from running with the privilege to use the UTS namespace.
      * 
      */
-    @Export(name="blockUseUtsNamespace", type=Boolean.class, parameters={})
+    @Export(name="blockUseUtsNamespace", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockUseUtsNamespace;
 
     /**
@@ -479,7 +497,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevents containers from using specific Unix capabilities.
      * 
      */
-    @Export(name="blockedCapabilities", type=List.class, parameters={String.class})
+    @Export(name="blockedCapabilities", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedCapabilities;
 
     /**
@@ -493,7 +511,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of executables that are prevented from running in containers.
      * 
      */
-    @Export(name="blockedExecutables", type=List.class, parameters={String.class})
+    @Export(name="blockedExecutables", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedExecutables;
 
     /**
@@ -507,7 +525,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of files that are prevented from being read, modified and executed in the containers.
      * 
      */
-    @Export(name="blockedFiles", type=List.class, parameters={String.class})
+    @Export(name="blockedFiles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedFiles;
 
     /**
@@ -521,7 +539,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of blocked inbound ports.
      * 
      */
-    @Export(name="blockedInboundPorts", type=List.class, parameters={String.class})
+    @Export(name="blockedInboundPorts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedInboundPorts;
 
     /**
@@ -535,7 +553,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of blocked outbound ports.
      * 
      */
-    @Export(name="blockedOutboundPorts", type=List.class, parameters={String.class})
+    @Export(name="blockedOutboundPorts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedOutboundPorts;
 
     /**
@@ -549,7 +567,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Prevent containers from reading, writing, or executing all files in the list of packages.
      * 
      */
-    @Export(name="blockedPackages", type=List.class, parameters={String.class})
+    @Export(name="blockedPackages", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedPackages;
 
     /**
@@ -563,7 +581,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of volumes that are prevented from being mounted in the containers.
      * 
      */
-    @Export(name="blockedVolumes", type=List.class, parameters={String.class})
+    @Export(name="blockedVolumes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blockedVolumes;
 
     /**
@@ -577,7 +595,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of processes that will be allowed.
      * 
      */
-    @Export(name="containerExecAllowedProcesses", type=List.class, parameters={String.class})
+    @Export(name="containerExecAllowedProcesses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> containerExecAllowedProcesses;
 
     /**
@@ -591,7 +609,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * The description of the container runtime policy
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -605,7 +623,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, executables that are not in the original image is prevented from running.
      * 
      */
-    @Export(name="enableDriftPrevention", type=Boolean.class, parameters={})
+    @Export(name="enableDriftPrevention", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableDriftPrevention;
 
     /**
@@ -619,7 +637,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, fork bombs are prevented in the containers.
      * 
      */
-    @Export(name="enableForkGuard", type=Boolean.class, parameters={})
+    @Export(name="enableForkGuard", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableForkGuard;
 
     /**
@@ -633,7 +651,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
      * 
      */
-    @Export(name="enableIpReputationSecurity", type=Boolean.class, parameters={})
+    @Export(name="enableIpReputationSecurity", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpReputationSecurity;
 
     /**
@@ -647,7 +665,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, detects port scanning behavior in the container.
      * 
      */
-    @Export(name="enablePortScanDetection", type=Boolean.class, parameters={})
+    @Export(name="enablePortScanDetection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePortScanDetection;
 
     /**
@@ -661,7 +679,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Indicates if the runtime policy is enabled or not.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -675,7 +693,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Indicates that policy should effect container execution (not just for audit).
      * 
      */
-    @Export(name="enforce", type=Boolean.class, parameters={})
+    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforce;
 
     /**
@@ -689,7 +707,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      * 
      */
-    @Export(name="enforceAfterDays", type=Integer.class, parameters={})
+    @Export(name="enforceAfterDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> enforceAfterDays;
 
     /**
@@ -703,7 +721,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of files and directories to be excluded from the read-only list.
      * 
      */
-    @Export(name="exceptionalReadonlyFilesAndDirectories", type=List.class, parameters={String.class})
+    @Export(name="exceptionalReadonlyFilesAndDirectories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> exceptionalReadonlyFilesAndDirectories;
 
     /**
@@ -717,7 +735,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Configuration for file integrity monitoring.
      * 
      */
-    @Export(name="fileIntegrityMonitoring", type=ContainerRuntimePolicyFileIntegrityMonitoring.class, parameters={})
+    @Export(name="fileIntegrityMonitoring", refs={ContainerRuntimePolicyFileIntegrityMonitoring.class}, tree="[0]")
     private Output</* @Nullable */ ContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitoring;
 
     /**
@@ -731,7 +749,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Process limit for the fork guard.
      * 
      */
-    @Export(name="forkGuardProcessLimit", type=Integer.class, parameters={})
+    @Export(name="forkGuardProcessLimit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> forkGuardProcessLimit;
 
     /**
@@ -745,7 +763,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      * 
      */
-    @Export(name="limitNewPrivileges", type=Boolean.class, parameters={})
+    @Export(name="limitNewPrivileges", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> limitNewPrivileges;
 
     /**
@@ -759,7 +777,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Configuration for Real-Time Malware Protection.
      * 
      */
-    @Export(name="malwareScanOptions", type=ContainerRuntimePolicyMalwareScanOptions.class, parameters={})
+    @Export(name="malwareScanOptions", refs={ContainerRuntimePolicyMalwareScanOptions.class}, tree="[0]")
     private Output</* @Nullable */ ContainerRuntimePolicyMalwareScanOptions> malwareScanOptions;
 
     /**
@@ -773,7 +791,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * If true, system time changes will be monitored.
      * 
      */
-    @Export(name="monitorSystemTimeChanges", type=Boolean.class, parameters={})
+    @Export(name="monitorSystemTimeChanges", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitorSystemTimeChanges;
 
     /**
@@ -787,7 +805,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Name of the container runtime policy
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -801,7 +819,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of files and directories to be restricted as read-only
      * 
      */
-    @Export(name="readonlyFilesAndDirectories", type=List.class, parameters={String.class})
+    @Export(name="readonlyFilesAndDirectories", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> readonlyFilesAndDirectories;
 
     /**
@@ -815,7 +833,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of IPs/ CIDRs that will be allowed
      * 
      */
-    @Export(name="reverseShellAllowedIps", type=List.class, parameters={String.class})
+    @Export(name="reverseShellAllowedIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> reverseShellAllowedIps;
 
     /**
@@ -829,7 +847,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of processes that will be allowed
      * 
      */
-    @Export(name="reverseShellAllowedProcesses", type=List.class, parameters={String.class})
+    @Export(name="reverseShellAllowedProcesses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> reverseShellAllowedProcesses;
 
     /**
@@ -843,7 +861,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    @Export(name="scopeExpression", type=String.class, parameters={})
+    @Export(name="scopeExpression", refs={String.class}, tree="[0]")
     private Output<String> scopeExpression;
 
     /**
@@ -857,7 +875,7 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
      * List of scope attributes.
      * 
      */
-    @Export(name="scopeVariables", type=List.class, parameters={ContainerRuntimePolicyScopeVariable.class})
+    @Export(name="scopeVariables", refs={List.class,ContainerRuntimePolicyScopeVariable.class}, tree="[0,1]")
     private Output<List<ContainerRuntimePolicyScopeVariable>> scopeVariables;
 
     /**

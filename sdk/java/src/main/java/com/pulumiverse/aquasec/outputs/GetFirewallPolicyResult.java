@@ -19,84 +19,59 @@ public final class GetFirewallPolicyResult {
      * @return Username of the account that created the policy.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return Indicates whether policy includes blocking incoming &#39;ping&#39; requests.
      * 
      */
-    private final Boolean blockIcmpPing;
+    private Boolean blockIcmpPing;
     /**
      * @return Indicates whether policy includes blocking metadata services of the cloud.
      * 
      */
-    private final Boolean blockMetadataService;
+    private Boolean blockMetadataService;
     /**
      * @return Description of the Firewall Policy.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Information on network addresses that are allowed to pass in data or requests.
      * 
      */
-    private final List<GetFirewallPolicyInboundNetwork> inboundNetworks;
+    private List<GetFirewallPolicyInboundNetwork> inboundNetworks;
     /**
      * @return Timestamp of the last update in Unix time format.
      * 
      */
-    private final Integer lastupdate;
+    private Integer lastupdate;
     /**
      * @return Name of the policy, no longer than 128 characters and no slash characters.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Information on network addresses that are allowed to receive data or requests.
      * 
      */
-    private final @Nullable List<GetFirewallPolicyOutboundNetwork> outboundNetworks;
+    private @Nullable List<GetFirewallPolicyOutboundNetwork> outboundNetworks;
     /**
      * @return Indicates the class of protection defined by the firewall.
      * 
      */
-    private final String type;
+    private String type;
     /**
      * @return Aqua version functionality supported
      * 
      */
-    private final String version;
+    private String version;
 
-    @CustomType.Constructor
-    private GetFirewallPolicyResult(
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("blockIcmpPing") Boolean blockIcmpPing,
-        @CustomType.Parameter("blockMetadataService") Boolean blockMetadataService,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("inboundNetworks") List<GetFirewallPolicyInboundNetwork> inboundNetworks,
-        @CustomType.Parameter("lastupdate") Integer lastupdate,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("outboundNetworks") @Nullable List<GetFirewallPolicyOutboundNetwork> outboundNetworks,
-        @CustomType.Parameter("type") String type,
-        @CustomType.Parameter("version") String version) {
-        this.author = author;
-        this.blockIcmpPing = blockIcmpPing;
-        this.blockMetadataService = blockMetadataService;
-        this.description = description;
-        this.id = id;
-        this.inboundNetworks = inboundNetworks;
-        this.lastupdate = lastupdate;
-        this.name = name;
-        this.outboundNetworks = outboundNetworks;
-        this.type = type;
-        this.version = version;
-    }
-
+    private GetFirewallPolicyResult() {}
     /**
      * @return Username of the account that created the policy.
      * 
@@ -182,7 +157,7 @@ public final class GetFirewallPolicyResult {
     public static Builder builder(GetFirewallPolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String author;
         private Boolean blockIcmpPing;
@@ -195,11 +170,7 @@ public final class GetFirewallPolicyResult {
         private @Nullable List<GetFirewallPolicyOutboundNetwork> outboundNetworks;
         private String type;
         private String version;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFirewallPolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.author = defaults.author;
@@ -215,26 +186,32 @@ public final class GetFirewallPolicyResult {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder blockIcmpPing(Boolean blockIcmpPing) {
             this.blockIcmpPing = Objects.requireNonNull(blockIcmpPing);
             return this;
         }
+        @CustomType.Setter
         public Builder blockMetadataService(Boolean blockMetadataService) {
             this.blockMetadataService = Objects.requireNonNull(blockMetadataService);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder inboundNetworks(List<GetFirewallPolicyInboundNetwork> inboundNetworks) {
             this.inboundNetworks = Objects.requireNonNull(inboundNetworks);
             return this;
@@ -242,14 +219,17 @@ public final class GetFirewallPolicyResult {
         public Builder inboundNetworks(GetFirewallPolicyInboundNetwork... inboundNetworks) {
             return inboundNetworks(List.of(inboundNetworks));
         }
+        @CustomType.Setter
         public Builder lastupdate(Integer lastupdate) {
             this.lastupdate = Objects.requireNonNull(lastupdate);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder outboundNetworks(@Nullable List<GetFirewallPolicyOutboundNetwork> outboundNetworks) {
             this.outboundNetworks = outboundNetworks;
             return this;
@@ -257,15 +237,30 @@ public final class GetFirewallPolicyResult {
         public Builder outboundNetworks(GetFirewallPolicyOutboundNetwork... outboundNetworks) {
             return outboundNetworks(List.of(outboundNetworks));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
         }
+        @CustomType.Setter
         public Builder version(String version) {
             this.version = Objects.requireNonNull(version);
             return this;
-        }        public GetFirewallPolicyResult build() {
-            return new GetFirewallPolicyResult(author, blockIcmpPing, blockMetadataService, description, id, inboundNetworks, lastupdate, name, outboundNetworks, type, version);
+        }
+        public GetFirewallPolicyResult build() {
+            final var o = new GetFirewallPolicyResult();
+            o.author = author;
+            o.blockIcmpPing = blockIcmpPing;
+            o.blockMetadataService = blockMetadataService;
+            o.description = description;
+            o.id = id;
+            o.inboundNetworks = inboundNetworks;
+            o.lastupdate = lastupdate;
+            o.name = name;
+            o.outboundNetworks = outboundNetworks;
+            o.type = type;
+            o.version = version;
+            return o;
         }
     }
 }

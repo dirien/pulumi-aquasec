@@ -18,6 +18,7 @@ class IntegrationRegistryArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
                  author: Optional[pulumi.Input[str]] = None,
+                 auto_cleanup: Optional[pulumi.Input[bool]] = None,
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
@@ -39,6 +40,7 @@ class IntegrationRegistryArgs:
         The set of arguments for constructing a IntegrationRegistry resource.
         :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
         :param pulumi.Input[str] author: The username of the user who created or last modified the registry
+        :param pulumi.Input[bool] auto_cleanup: Automatically clean up images and repositories which are no longer present in the registry from Aqua console
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
@@ -59,6 +61,8 @@ class IntegrationRegistryArgs:
         pulumi.set(__self__, "type", type)
         if author is not None:
             pulumi.set(__self__, "author", author)
+        if auto_cleanup is not None:
+            pulumi.set(__self__, "auto_cleanup", auto_cleanup)
         if auto_pull is not None:
             pulumi.set(__self__, "auto_pull", auto_pull)
         if auto_pull_interval is not None:
@@ -117,6 +121,18 @@ class IntegrationRegistryArgs:
     @author.setter
     def author(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "author", value)
+
+    @property
+    @pulumi.getter(name="autoCleanup")
+    def auto_cleanup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        """
+        return pulumi.get(self, "auto_cleanup")
+
+    @auto_cleanup.setter
+    def auto_cleanup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_cleanup", value)
 
     @property
     @pulumi.getter(name="autoPull")
@@ -324,6 +340,7 @@ class IntegrationRegistryArgs:
 class _IntegrationRegistryState:
     def __init__(__self__, *,
                  author: Optional[pulumi.Input[str]] = None,
+                 auto_cleanup: Optional[pulumi.Input[bool]] = None,
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
@@ -345,6 +362,7 @@ class _IntegrationRegistryState:
         """
         Input properties used for looking up and filtering IntegrationRegistry resources.
         :param pulumi.Input[str] author: The username of the user who created or last modified the registry
+        :param pulumi.Input[bool] auto_cleanup: Automatically clean up images and repositories which are no longer present in the registry from Aqua console
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
@@ -365,6 +383,8 @@ class _IntegrationRegistryState:
         """
         if author is not None:
             pulumi.set(__self__, "author", author)
+        if auto_cleanup is not None:
+            pulumi.set(__self__, "auto_cleanup", auto_cleanup)
         if auto_pull is not None:
             pulumi.set(__self__, "auto_pull", auto_pull)
         if auto_pull_interval is not None:
@@ -413,6 +433,18 @@ class _IntegrationRegistryState:
     @author.setter
     def author(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "author", value)
+
+    @property
+    @pulumi.getter(name="autoCleanup")
+    def auto_cleanup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        """
+        return pulumi.get(self, "auto_cleanup")
+
+    @auto_cleanup.setter
+    def auto_cleanup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_cleanup", value)
 
     @property
     @pulumi.getter(name="autoPull")
@@ -634,6 +666,7 @@ class IntegrationRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  author: Optional[pulumi.Input[str]] = None,
+                 auto_cleanup: Optional[pulumi.Input[bool]] = None,
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
@@ -658,6 +691,7 @@ class IntegrationRegistry(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] author: The username of the user who created or last modified the registry
+        :param pulumi.Input[bool] auto_cleanup: Automatically clean up images and repositories which are no longer present in the registry from Aqua console
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
@@ -700,6 +734,7 @@ class IntegrationRegistry(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  author: Optional[pulumi.Input[str]] = None,
+                 auto_cleanup: Optional[pulumi.Input[bool]] = None,
                  auto_pull: Optional[pulumi.Input[bool]] = None,
                  auto_pull_interval: Optional[pulumi.Input[int]] = None,
                  auto_pull_max: Optional[pulumi.Input[int]] = None,
@@ -728,6 +763,7 @@ class IntegrationRegistry(pulumi.CustomResource):
             __props__ = IntegrationRegistryArgs.__new__(IntegrationRegistryArgs)
 
             __props__.__dict__["author"] = author
+            __props__.__dict__["auto_cleanup"] = auto_cleanup
             __props__.__dict__["auto_pull"] = auto_pull
             __props__.__dict__["auto_pull_interval"] = auto_pull_interval
             __props__.__dict__["auto_pull_max"] = auto_pull_max
@@ -759,6 +795,7 @@ class IntegrationRegistry(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             author: Optional[pulumi.Input[str]] = None,
+            auto_cleanup: Optional[pulumi.Input[bool]] = None,
             auto_pull: Optional[pulumi.Input[bool]] = None,
             auto_pull_interval: Optional[pulumi.Input[int]] = None,
             auto_pull_max: Optional[pulumi.Input[int]] = None,
@@ -785,6 +822,7 @@ class IntegrationRegistry(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] author: The username of the user who created or last modified the registry
+        :param pulumi.Input[bool] auto_cleanup: Automatically clean up images and repositories which are no longer present in the registry from Aqua console
         :param pulumi.Input[bool] auto_pull: Whether to automatically pull images from the registry on creation and daily
         :param pulumi.Input[int] auto_pull_interval: The interval in days to start pulling new images from the registry, Defaults to 1
         :param pulumi.Input[int] auto_pull_max: Maximum number of repositories to pull every day, defaults to 100
@@ -808,6 +846,7 @@ class IntegrationRegistry(pulumi.CustomResource):
         __props__ = _IntegrationRegistryState.__new__(_IntegrationRegistryState)
 
         __props__.__dict__["author"] = author
+        __props__.__dict__["auto_cleanup"] = auto_cleanup
         __props__.__dict__["auto_pull"] = auto_pull
         __props__.__dict__["auto_pull_interval"] = auto_pull_interval
         __props__.__dict__["auto_pull_max"] = auto_pull_max
@@ -835,6 +874,14 @@ class IntegrationRegistry(pulumi.CustomResource):
         The username of the user who created or last modified the registry
         """
         return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter(name="autoCleanup")
+    def auto_cleanup(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        """
+        return pulumi.get(self, "auto_cleanup")
 
     @property
     @pulumi.getter(name="autoPull")

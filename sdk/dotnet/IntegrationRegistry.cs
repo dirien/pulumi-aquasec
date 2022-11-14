@@ -20,6 +20,12 @@ namespace Pulumiverse.Aquasec
         public Output<string> Author { get; private set; } = null!;
 
         /// <summary>
+        /// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        /// </summary>
+        [Output("autoCleanup")]
+        public Output<bool?> AutoCleanup { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to automatically pull images from the registry on creation and daily
         /// </summary>
         [Output("autoPull")]
@@ -178,6 +184,12 @@ namespace Pulumiverse.Aquasec
         public Input<string>? Author { get; set; }
 
         /// <summary>
+        /// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        /// </summary>
+        [Input("autoCleanup")]
+        public Input<bool>? AutoCleanup { get; set; }
+
+        /// <summary>
         /// Whether to automatically pull images from the registry on creation and daily
         /// </summary>
         [Input("autoPull")]
@@ -312,6 +324,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("author")]
         public Input<string>? Author { get; set; }
+
+        /// <summary>
+        /// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        /// </summary>
+        [Input("autoCleanup")]
+        public Input<bool>? AutoCleanup { get; set; }
 
         /// <summary>
         /// Whether to automatically pull images from the registry on creation and daily

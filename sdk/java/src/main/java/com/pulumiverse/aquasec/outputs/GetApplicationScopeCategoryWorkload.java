@@ -13,20 +13,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScopeCategoryWorkload {
-    private final @Nullable List<GetApplicationScopeCategoryWorkloadCf> cfs;
-    private final @Nullable List<GetApplicationScopeCategoryWorkloadKubernete> kubernetes;
-    private final @Nullable List<GetApplicationScopeCategoryWorkloadO> os;
+    private @Nullable List<GetApplicationScopeCategoryWorkloadCf> cfs;
+    private @Nullable List<GetApplicationScopeCategoryWorkloadKubernete> kubernetes;
+    private @Nullable List<GetApplicationScopeCategoryWorkloadO> os;
 
-    @CustomType.Constructor
-    private GetApplicationScopeCategoryWorkload(
-        @CustomType.Parameter("cfs") @Nullable List<GetApplicationScopeCategoryWorkloadCf> cfs,
-        @CustomType.Parameter("kubernetes") @Nullable List<GetApplicationScopeCategoryWorkloadKubernete> kubernetes,
-        @CustomType.Parameter("os") @Nullable List<GetApplicationScopeCategoryWorkloadO> os) {
-        this.cfs = cfs;
-        this.kubernetes = kubernetes;
-        this.os = os;
-    }
-
+    private GetApplicationScopeCategoryWorkload() {}
     public List<GetApplicationScopeCategoryWorkloadCf> cfs() {
         return this.cfs == null ? List.of() : this.cfs;
     }
@@ -44,16 +35,12 @@ public final class GetApplicationScopeCategoryWorkload {
     public static Builder builder(GetApplicationScopeCategoryWorkload defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetApplicationScopeCategoryWorkloadCf> cfs;
         private @Nullable List<GetApplicationScopeCategoryWorkloadKubernete> kubernetes;
         private @Nullable List<GetApplicationScopeCategoryWorkloadO> os;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScopeCategoryWorkload defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cfs = defaults.cfs;
@@ -61,6 +48,7 @@ public final class GetApplicationScopeCategoryWorkload {
     	      this.os = defaults.os;
         }
 
+        @CustomType.Setter
         public Builder cfs(@Nullable List<GetApplicationScopeCategoryWorkloadCf> cfs) {
             this.cfs = cfs;
             return this;
@@ -68,6 +56,7 @@ public final class GetApplicationScopeCategoryWorkload {
         public Builder cfs(GetApplicationScopeCategoryWorkloadCf... cfs) {
             return cfs(List.of(cfs));
         }
+        @CustomType.Setter
         public Builder kubernetes(@Nullable List<GetApplicationScopeCategoryWorkloadKubernete> kubernetes) {
             this.kubernetes = kubernetes;
             return this;
@@ -75,14 +64,20 @@ public final class GetApplicationScopeCategoryWorkload {
         public Builder kubernetes(GetApplicationScopeCategoryWorkloadKubernete... kubernetes) {
             return kubernetes(List.of(kubernetes));
         }
+        @CustomType.Setter
         public Builder os(@Nullable List<GetApplicationScopeCategoryWorkloadO> os) {
             this.os = os;
             return this;
         }
         public Builder os(GetApplicationScopeCategoryWorkloadO... os) {
             return os(List.of(os));
-        }        public GetApplicationScopeCategoryWorkload build() {
-            return new GetApplicationScopeCategoryWorkload(cfs, kubernetes, os);
+        }
+        public GetApplicationScopeCategoryWorkload build() {
+            final var o = new GetApplicationScopeCategoryWorkload();
+            o.cfs = cfs;
+            o.kubernetes = kubernetes;
+            o.os = os;
+            return o;
         }
     }
 }

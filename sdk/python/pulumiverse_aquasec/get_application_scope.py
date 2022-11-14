@@ -61,7 +61,7 @@ class GetApplicationScopeResult:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
         """
         Description of the application scope.
         """
@@ -85,7 +85,7 @@ class GetApplicationScopeResult:
 
     @property
     @pulumi.getter(name="ownerEmail")
-    def owner_email(self) -> Optional[str]:
+    def owner_email(self) -> str:
         """
         Name of an application scope.
         """
@@ -107,9 +107,7 @@ class AwaitableGetApplicationScopeResult(GetApplicationScopeResult):
 
 
 def get_application_scope(categories: Optional[Sequence[pulumi.InputType['GetApplicationScopeCategoryArgs']]] = None,
-                          description: Optional[str] = None,
                           name: Optional[str] = None,
-                          owner_email: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationScopeResult:
     """
     ## Example Usage
@@ -124,15 +122,11 @@ def get_application_scope(categories: Optional[Sequence[pulumi.InputType['GetApp
 
 
     :param Sequence[pulumi.InputType['GetApplicationScopeCategoryArgs']] categories: Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
-    :param str description: Description of the application scope.
     :param str name: Name of an application scope.
-    :param str owner_email: Name of an application scope.
     """
     __args__ = dict()
     __args__['categories'] = categories
-    __args__['description'] = description
     __args__['name'] = name
-    __args__['ownerEmail'] = owner_email
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getApplicationScope:getApplicationScope', __args__, opts=opts, typ=GetApplicationScopeResult).value
 
@@ -147,9 +141,7 @@ def get_application_scope(categories: Optional[Sequence[pulumi.InputType['GetApp
 
 @_utilities.lift_output_func(get_application_scope)
 def get_application_scope_output(categories: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetApplicationScopeCategoryArgs']]]]] = None,
-                                 description: Optional[pulumi.Input[Optional[str]]] = None,
                                  name: Optional[pulumi.Input[str]] = None,
-                                 owner_email: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationScopeResult]:
     """
     ## Example Usage
@@ -164,8 +156,6 @@ def get_application_scope_output(categories: Optional[pulumi.Input[Optional[Sequ
 
 
     :param Sequence[pulumi.InputType['GetApplicationScopeCategoryArgs']] categories: Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
-    :param str description: Description of the application scope.
     :param str name: Name of an application scope.
-    :param str owner_email: Name of an application scope.
     """
     ...

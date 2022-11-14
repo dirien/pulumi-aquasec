@@ -9,24 +9,15 @@ import java.util.Objects;
 
 @CustomType
 public final class GetContainerRuntimePolicyScopeVariable {
-    private final String attribute;
+    private String attribute;
     /**
      * @return Name of the container runtime policy
      * 
      */
-    private final String name;
-    private final String value;
+    private String name;
+    private String value;
 
-    @CustomType.Constructor
-    private GetContainerRuntimePolicyScopeVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetContainerRuntimePolicyScopeVariable() {}
     public String attribute() {
         return this.attribute;
     }
@@ -48,16 +39,12 @@ public final class GetContainerRuntimePolicyScopeVariable {
     public static Builder builder(GetContainerRuntimePolicyScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetContainerRuntimePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -65,19 +52,27 @@ public final class GetContainerRuntimePolicyScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetContainerRuntimePolicyScopeVariable build() {
-            return new GetContainerRuntimePolicyScopeVariable(attribute, name, value);
+        }
+        public GetContainerRuntimePolicyScopeVariable build() {
+            final var o = new GetContainerRuntimePolicyScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

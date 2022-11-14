@@ -15,49 +15,34 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
      * @return List of registry paths to be excluded from being protected.
      * 
      */
-    private final @Nullable List<String> excludedPaths;
+    private @Nullable List<String> excludedPaths;
     /**
      * @return List of registry processes to be excluded from being protected.
      * 
      */
-    private final @Nullable List<String> excludedProcesses;
+    private @Nullable List<String> excludedProcesses;
     /**
      * @return List of registry paths to be users from being protected.
      * 
      */
-    private final @Nullable List<String> excludedUsers;
+    private @Nullable List<String> excludedUsers;
     /**
      * @return List of registry paths to be protected.
      * 
      */
-    private final @Nullable List<String> protectedPaths;
+    private @Nullable List<String> protectedPaths;
     /**
      * @return List of registry processes to be protected.
      * 
      */
-    private final @Nullable List<String> protectedProcesses;
+    private @Nullable List<String> protectedProcesses;
     /**
      * @return List of registry users to be protected.
      * 
      */
-    private final @Nullable List<String> protectedUsers;
+    private @Nullable List<String> protectedUsers;
 
-    @CustomType.Constructor
-    private HostRuntimePolicyWindowsRegistryProtection(
-        @CustomType.Parameter("excludedPaths") @Nullable List<String> excludedPaths,
-        @CustomType.Parameter("excludedProcesses") @Nullable List<String> excludedProcesses,
-        @CustomType.Parameter("excludedUsers") @Nullable List<String> excludedUsers,
-        @CustomType.Parameter("protectedPaths") @Nullable List<String> protectedPaths,
-        @CustomType.Parameter("protectedProcesses") @Nullable List<String> protectedProcesses,
-        @CustomType.Parameter("protectedUsers") @Nullable List<String> protectedUsers) {
-        this.excludedPaths = excludedPaths;
-        this.excludedProcesses = excludedProcesses;
-        this.excludedUsers = excludedUsers;
-        this.protectedPaths = protectedPaths;
-        this.protectedProcesses = protectedProcesses;
-        this.protectedUsers = protectedUsers;
-    }
-
+    private HostRuntimePolicyWindowsRegistryProtection() {}
     /**
      * @return List of registry paths to be excluded from being protected.
      * 
@@ -108,7 +93,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
     public static Builder builder(HostRuntimePolicyWindowsRegistryProtection defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedPaths;
         private @Nullable List<String> excludedProcesses;
@@ -116,11 +101,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
         private @Nullable List<String> protectedPaths;
         private @Nullable List<String> protectedProcesses;
         private @Nullable List<String> protectedUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HostRuntimePolicyWindowsRegistryProtection defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedPaths = defaults.excludedPaths;
@@ -131,6 +112,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
     	      this.protectedUsers = defaults.protectedUsers;
         }
 
+        @CustomType.Setter
         public Builder excludedPaths(@Nullable List<String> excludedPaths) {
             this.excludedPaths = excludedPaths;
             return this;
@@ -138,6 +120,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
         public Builder excludedPaths(String... excludedPaths) {
             return excludedPaths(List.of(excludedPaths));
         }
+        @CustomType.Setter
         public Builder excludedProcesses(@Nullable List<String> excludedProcesses) {
             this.excludedProcesses = excludedProcesses;
             return this;
@@ -145,6 +128,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
         public Builder excludedProcesses(String... excludedProcesses) {
             return excludedProcesses(List.of(excludedProcesses));
         }
+        @CustomType.Setter
         public Builder excludedUsers(@Nullable List<String> excludedUsers) {
             this.excludedUsers = excludedUsers;
             return this;
@@ -152,6 +136,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
         public Builder excludedUsers(String... excludedUsers) {
             return excludedUsers(List.of(excludedUsers));
         }
+        @CustomType.Setter
         public Builder protectedPaths(@Nullable List<String> protectedPaths) {
             this.protectedPaths = protectedPaths;
             return this;
@@ -159,6 +144,7 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
         public Builder protectedPaths(String... protectedPaths) {
             return protectedPaths(List.of(protectedPaths));
         }
+        @CustomType.Setter
         public Builder protectedProcesses(@Nullable List<String> protectedProcesses) {
             this.protectedProcesses = protectedProcesses;
             return this;
@@ -166,14 +152,23 @@ public final class HostRuntimePolicyWindowsRegistryProtection {
         public Builder protectedProcesses(String... protectedProcesses) {
             return protectedProcesses(List.of(protectedProcesses));
         }
+        @CustomType.Setter
         public Builder protectedUsers(@Nullable List<String> protectedUsers) {
             this.protectedUsers = protectedUsers;
             return this;
         }
         public Builder protectedUsers(String... protectedUsers) {
             return protectedUsers(List.of(protectedUsers));
-        }        public HostRuntimePolicyWindowsRegistryProtection build() {
-            return new HostRuntimePolicyWindowsRegistryProtection(excludedPaths, excludedProcesses, excludedUsers, protectedPaths, protectedProcesses, protectedUsers);
+        }
+        public HostRuntimePolicyWindowsRegistryProtection build() {
+            final var o = new HostRuntimePolicyWindowsRegistryProtection();
+            o.excludedPaths = excludedPaths;
+            o.excludedProcesses = excludedProcesses;
+            o.excludedUsers = excludedUsers;
+            o.protectedPaths = protectedPaths;
+            o.protectedProcesses = protectedProcesses;
+            o.protectedUsers = protectedUsers;
+            return o;
         }
     }
 }

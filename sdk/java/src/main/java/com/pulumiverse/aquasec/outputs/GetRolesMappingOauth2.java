@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesMappingOauth2 {
-    private final Map<String,String> roleMapping;
+    private Map<String,String> roleMapping;
 
-    @CustomType.Constructor
-    private GetRolesMappingOauth2(@CustomType.Parameter("roleMapping") Map<String,String> roleMapping) {
-        this.roleMapping = roleMapping;
-    }
-
+    private GetRolesMappingOauth2() {}
     public Map<String,String> roleMapping() {
         return this.roleMapping;
     }
@@ -28,24 +24,24 @@ public final class GetRolesMappingOauth2 {
     public static Builder builder(GetRolesMappingOauth2 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> roleMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesMappingOauth2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleMapping = defaults.roleMapping;
         }
 
+        @CustomType.Setter
         public Builder roleMapping(Map<String,String> roleMapping) {
             this.roleMapping = Objects.requireNonNull(roleMapping);
             return this;
-        }        public GetRolesMappingOauth2 build() {
-            return new GetRolesMappingOauth2(roleMapping);
+        }
+        public GetRolesMappingOauth2 build() {
+            final var o = new GetRolesMappingOauth2();
+            o.roleMapping = roleMapping;
+            return o;
         }
     }
 }

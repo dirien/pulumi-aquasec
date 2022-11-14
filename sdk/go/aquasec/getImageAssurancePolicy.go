@@ -22,9 +22,7 @@ func LookupImageAssurancePolicy(ctx *pulumi.Context, args *LookupImageAssuranceP
 
 // A collection of arguments for invoking getImageAssurancePolicy.
 type LookupImageAssurancePolicyArgs struct {
-	// Indicates that policy should ignore cases that do not have a known fix.
-	MaximumScoreExcludeNoFix *bool  `pulumi:"maximumScoreExcludeNoFix"`
-	Name                     string `pulumi:"name"`
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getImageAssurancePolicy.
@@ -32,8 +30,6 @@ type LookupImageAssurancePolicyResult struct {
 	// List of explicitly allowed images.
 	AllowedImages     []string `pulumi:"allowedImages"`
 	ApplicationScopes []string `pulumi:"applicationScopes"`
-	// What type of assurance policy is described.
-	AssuranceType string `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
 	AuditOnFailure bool `pulumi:"auditOnFailure"`
 	// Name of user account that created the policy.
@@ -110,7 +106,7 @@ type LookupImageAssurancePolicyResult struct {
 	// Indicates if exceeding the maximum score is scanned.
 	MaximumScoreEnabled bool `pulumi:"maximumScoreEnabled"`
 	// Indicates that policy should ignore cases that do not have a known fix.
-	MaximumScoreExcludeNoFix *bool    `pulumi:"maximumScoreExcludeNoFix"`
+	MaximumScoreExcludeNoFix bool     `pulumi:"maximumScoreExcludeNoFix"`
 	MonitoredMalwarePaths    []string `pulumi:"monitoredMalwarePaths"`
 	Name                     string   `pulumi:"name"`
 	// Indicates if raise a warning for images that should only be run as root.
@@ -163,9 +159,7 @@ func LookupImageAssurancePolicyOutput(ctx *pulumi.Context, args LookupImageAssur
 
 // A collection of arguments for invoking getImageAssurancePolicy.
 type LookupImageAssurancePolicyOutputArgs struct {
-	// Indicates that policy should ignore cases that do not have a known fix.
-	MaximumScoreExcludeNoFix pulumi.BoolPtrInput `pulumi:"maximumScoreExcludeNoFix"`
-	Name                     pulumi.StringInput  `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupImageAssurancePolicyOutputArgs) ElementType() reflect.Type {
@@ -194,11 +188,6 @@ func (o LookupImageAssurancePolicyResultOutput) AllowedImages() pulumi.StringArr
 
 func (o LookupImageAssurancePolicyResultOutput) ApplicationScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) []string { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
-}
-
-// What type of assurance policy is described.
-func (o LookupImageAssurancePolicyResultOutput) AssuranceType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupImageAssurancePolicyResult) string { return v.AssuranceType }).(pulumi.StringOutput)
 }
 
 // Indicates if auditing for failures.
@@ -426,8 +415,8 @@ func (o LookupImageAssurancePolicyResultOutput) MaximumScoreEnabled() pulumi.Boo
 }
 
 // Indicates that policy should ignore cases that do not have a known fix.
-func (o LookupImageAssurancePolicyResultOutput) MaximumScoreExcludeNoFix() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupImageAssurancePolicyResult) *bool { return v.MaximumScoreExcludeNoFix }).(pulumi.BoolPtrOutput)
+func (o LookupImageAssurancePolicyResultOutput) MaximumScoreExcludeNoFix() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.MaximumScoreExcludeNoFix }).(pulumi.BoolOutput)
 }
 
 func (o LookupImageAssurancePolicyResultOutput) MonitoredMalwarePaths() pulumi.StringArrayOutput {

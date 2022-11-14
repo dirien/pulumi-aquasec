@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesAssurancePolicyScope {
-    private final @Nullable String expression;
-    private final @Nullable List<KubernetesAssurancePolicyScopeVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<KubernetesAssurancePolicyScopeVariable> variables;
 
-    @CustomType.Constructor
-    private KubernetesAssurancePolicyScope(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<KubernetesAssurancePolicyScopeVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private KubernetesAssurancePolicyScope() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class KubernetesAssurancePolicyScope {
     public static Builder builder(KubernetesAssurancePolicyScope defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<KubernetesAssurancePolicyScopeVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(KubernetesAssurancePolicyScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<KubernetesAssurancePolicyScopeVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(KubernetesAssurancePolicyScopeVariable... variables) {
             return variables(List.of(variables));
-        }        public KubernetesAssurancePolicyScope build() {
-            return new KubernetesAssurancePolicyScope(expression, variables);
+        }
+        public KubernetesAssurancePolicyScope build() {
+            final var o = new KubernetesAssurancePolicyScope();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

@@ -9,20 +9,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHostAssurancePolicyScopeVariable {
-    private final String attribute;
-    private final String name;
-    private final String value;
+    private String attribute;
+    private String name;
+    private String value;
 
-    @CustomType.Constructor
-    private GetHostAssurancePolicyScopeVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private GetHostAssurancePolicyScopeVariable() {}
     public String attribute() {
         return this.attribute;
     }
@@ -40,16 +31,12 @@ public final class GetHostAssurancePolicyScopeVariable {
     public static Builder builder(GetHostAssurancePolicyScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetHostAssurancePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -57,19 +44,27 @@ public final class GetHostAssurancePolicyScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetHostAssurancePolicyScopeVariable build() {
-            return new GetHostAssurancePolicyScopeVariable(attribute, name, value);
+        }
+        public GetHostAssurancePolicyScopeVariable build() {
+            final var o = new GetHostAssurancePolicyScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

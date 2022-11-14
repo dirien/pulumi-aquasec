@@ -14,35 +14,24 @@ public final class GetIntegrationStateResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return OIDCSettings enabled status
      * 
      */
-    private final Boolean oidcSettings;
+    private Boolean oidcSettings;
     /**
      * @return OpenIdSettings enabled status
      * 
      */
-    private final Boolean openidSettings;
+    private Boolean openidSettings;
     /**
      * @return SAMLSettings enabled status
      * 
      */
-    private final Boolean samlSettings;
+    private Boolean samlSettings;
 
-    @CustomType.Constructor
-    private GetIntegrationStateResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("oidcSettings") Boolean oidcSettings,
-        @CustomType.Parameter("openidSettings") Boolean openidSettings,
-        @CustomType.Parameter("samlSettings") Boolean samlSettings) {
-        this.id = id;
-        this.oidcSettings = oidcSettings;
-        this.openidSettings = openidSettings;
-        this.samlSettings = samlSettings;
-    }
-
+    private GetIntegrationStateResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -79,17 +68,13 @@ public final class GetIntegrationStateResult {
     public static Builder builder(GetIntegrationStateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private Boolean oidcSettings;
         private Boolean openidSettings;
         private Boolean samlSettings;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetIntegrationStateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -98,23 +83,33 @@ public final class GetIntegrationStateResult {
     	      this.samlSettings = defaults.samlSettings;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder oidcSettings(Boolean oidcSettings) {
             this.oidcSettings = Objects.requireNonNull(oidcSettings);
             return this;
         }
+        @CustomType.Setter
         public Builder openidSettings(Boolean openidSettings) {
             this.openidSettings = Objects.requireNonNull(openidSettings);
             return this;
         }
+        @CustomType.Setter
         public Builder samlSettings(Boolean samlSettings) {
             this.samlSettings = Objects.requireNonNull(samlSettings);
             return this;
-        }        public GetIntegrationStateResult build() {
-            return new GetIntegrationStateResult(id, oidcSettings, openidSettings, samlSettings);
+        }
+        public GetIntegrationStateResult build() {
+            final var o = new GetIntegrationStateResult();
+            o.id = id;
+            o.oidcSettings = oidcSettings;
+            o.openidSettings = openidSettings;
+            o.samlSettings = samlSettings;
+            return o;
         }
     }
 }

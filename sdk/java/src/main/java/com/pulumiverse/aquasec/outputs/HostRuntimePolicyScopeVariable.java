@@ -15,28 +15,19 @@ public final class HostRuntimePolicyScopeVariable {
      * @return Class of supported scope.
      * 
      */
-    private final String attribute;
+    private String attribute;
     /**
      * @return Name assigned to the attribute.
      * 
      */
-    private final @Nullable String name;
+    private @Nullable String name;
     /**
      * @return Value assigned to the attribute.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private HostRuntimePolicyScopeVariable(
-        @CustomType.Parameter("attribute") String attribute,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("value") String value) {
-        this.attribute = attribute;
-        this.name = name;
-        this.value = value;
-    }
-
+    private HostRuntimePolicyScopeVariable() {}
     /**
      * @return Class of supported scope.
      * 
@@ -66,16 +57,12 @@ public final class HostRuntimePolicyScopeVariable {
     public static Builder builder(HostRuntimePolicyScopeVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String attribute;
         private @Nullable String name;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HostRuntimePolicyScopeVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
@@ -83,19 +70,27 @@ public final class HostRuntimePolicyScopeVariable {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(String attribute) {
             this.attribute = Objects.requireNonNull(attribute);
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public HostRuntimePolicyScopeVariable build() {
-            return new HostRuntimePolicyScopeVariable(attribute, name, value);
+        }
+        public HostRuntimePolicyScopeVariable build() {
+            final var o = new HostRuntimePolicyScopeVariable();
+            o.attribute = attribute;
+            o.name = name;
+            o.value = value;
+            return o;
         }
     }
 }

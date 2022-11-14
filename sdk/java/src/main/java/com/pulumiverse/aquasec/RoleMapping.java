@@ -58,7 +58,7 @@ public class RoleMapping extends com.pulumi.resources.CustomResource {
      * Oauth2 Authentication
      * 
      */
-    @Export(name="oauth2", type=RoleMappingOauth2.class, parameters={})
+    @Export(name="oauth2", refs={RoleMappingOauth2.class}, tree="[0]")
     private Output</* @Nullable */ RoleMappingOauth2> oauth2;
 
     /**
@@ -72,7 +72,7 @@ public class RoleMapping extends com.pulumi.resources.CustomResource {
      * OpenId Authentication
      * 
      */
-    @Export(name="openid", type=RoleMappingOpenid.class, parameters={})
+    @Export(name="openid", refs={RoleMappingOpenid.class}, tree="[0]")
     private Output</* @Nullable */ RoleMappingOpenid> openid;
 
     /**
@@ -86,7 +86,7 @@ public class RoleMapping extends com.pulumi.resources.CustomResource {
      * SAML Authentication
      * 
      */
-    @Export(name="saml", type=RoleMappingSaml.class, parameters={})
+    @Export(name="saml", refs={RoleMappingSaml.class}, tree="[0]")
     private Output</* @Nullable */ RoleMappingSaml> saml;
 
     /**

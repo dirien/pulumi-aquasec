@@ -14,23 +14,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetApplicationScopeCategory {
-    private final @Nullable List<GetApplicationScopeCategoryArtifact> artifacts;
-    private final @Nullable List<GetApplicationScopeCategoryEntityScope> entityScopes;
-    private final @Nullable List<GetApplicationScopeCategoryInfrastructure> infrastructures;
-    private final @Nullable List<GetApplicationScopeCategoryWorkload> workloads;
+    private @Nullable List<GetApplicationScopeCategoryArtifact> artifacts;
+    private @Nullable List<GetApplicationScopeCategoryEntityScope> entityScopes;
+    private @Nullable List<GetApplicationScopeCategoryInfrastructure> infrastructures;
+    private @Nullable List<GetApplicationScopeCategoryWorkload> workloads;
 
-    @CustomType.Constructor
-    private GetApplicationScopeCategory(
-        @CustomType.Parameter("artifacts") @Nullable List<GetApplicationScopeCategoryArtifact> artifacts,
-        @CustomType.Parameter("entityScopes") @Nullable List<GetApplicationScopeCategoryEntityScope> entityScopes,
-        @CustomType.Parameter("infrastructures") @Nullable List<GetApplicationScopeCategoryInfrastructure> infrastructures,
-        @CustomType.Parameter("workloads") @Nullable List<GetApplicationScopeCategoryWorkload> workloads) {
-        this.artifacts = artifacts;
-        this.entityScopes = entityScopes;
-        this.infrastructures = infrastructures;
-        this.workloads = workloads;
-    }
-
+    private GetApplicationScopeCategory() {}
     public List<GetApplicationScopeCategoryArtifact> artifacts() {
         return this.artifacts == null ? List.of() : this.artifacts;
     }
@@ -51,17 +40,13 @@ public final class GetApplicationScopeCategory {
     public static Builder builder(GetApplicationScopeCategory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetApplicationScopeCategoryArtifact> artifacts;
         private @Nullable List<GetApplicationScopeCategoryEntityScope> entityScopes;
         private @Nullable List<GetApplicationScopeCategoryInfrastructure> infrastructures;
         private @Nullable List<GetApplicationScopeCategoryWorkload> workloads;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationScopeCategory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifacts = defaults.artifacts;
@@ -70,6 +55,7 @@ public final class GetApplicationScopeCategory {
     	      this.workloads = defaults.workloads;
         }
 
+        @CustomType.Setter
         public Builder artifacts(@Nullable List<GetApplicationScopeCategoryArtifact> artifacts) {
             this.artifacts = artifacts;
             return this;
@@ -77,6 +63,7 @@ public final class GetApplicationScopeCategory {
         public Builder artifacts(GetApplicationScopeCategoryArtifact... artifacts) {
             return artifacts(List.of(artifacts));
         }
+        @CustomType.Setter
         public Builder entityScopes(@Nullable List<GetApplicationScopeCategoryEntityScope> entityScopes) {
             this.entityScopes = entityScopes;
             return this;
@@ -84,6 +71,7 @@ public final class GetApplicationScopeCategory {
         public Builder entityScopes(GetApplicationScopeCategoryEntityScope... entityScopes) {
             return entityScopes(List.of(entityScopes));
         }
+        @CustomType.Setter
         public Builder infrastructures(@Nullable List<GetApplicationScopeCategoryInfrastructure> infrastructures) {
             this.infrastructures = infrastructures;
             return this;
@@ -91,14 +79,21 @@ public final class GetApplicationScopeCategory {
         public Builder infrastructures(GetApplicationScopeCategoryInfrastructure... infrastructures) {
             return infrastructures(List.of(infrastructures));
         }
+        @CustomType.Setter
         public Builder workloads(@Nullable List<GetApplicationScopeCategoryWorkload> workloads) {
             this.workloads = workloads;
             return this;
         }
         public Builder workloads(GetApplicationScopeCategoryWorkload... workloads) {
             return workloads(List.of(workloads));
-        }        public GetApplicationScopeCategory build() {
-            return new GetApplicationScopeCategory(artifacts, entityScopes, infrastructures, workloads);
+        }
+        public GetApplicationScopeCategory build() {
+            final var o = new GetApplicationScopeCategory();
+            o.artifacts = artifacts;
+            o.entityScopes = entityScopes;
+            o.infrastructures = infrastructures;
+            o.workloads = workloads;
+            return o;
         }
     }
 }

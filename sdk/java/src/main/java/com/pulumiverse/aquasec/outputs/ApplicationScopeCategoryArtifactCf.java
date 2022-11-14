@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryArtifactCf {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryArtifactCfVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryArtifactCfVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryArtifactCf(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryArtifactCfVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryArtifactCf() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryArtifactCf {
     public static Builder builder(ApplicationScopeCategoryArtifactCf defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryArtifactCfVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryArtifactCf defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryArtifactCfVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryArtifactCfVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryArtifactCf build() {
-            return new ApplicationScopeCategoryArtifactCf(expression, variables);
+        }
+        public ApplicationScopeCategoryArtifactCf build() {
+            final var o = new ApplicationScopeCategoryArtifactCf();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

@@ -15,17 +15,10 @@ public final class GetPermissionsSetsResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final List<GetPermissionsSetsPermissionsSet> permissionsSets;
+    private String id;
+    private List<GetPermissionsSetsPermissionsSet> permissionsSets;
 
-    @CustomType.Constructor
-    private GetPermissionsSetsResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("permissionsSets") List<GetPermissionsSetsPermissionsSet> permissionsSets) {
-        this.id = id;
-        this.permissionsSets = permissionsSets;
-    }
-
+    private GetPermissionsSetsResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -44,33 +37,35 @@ public final class GetPermissionsSetsResult {
     public static Builder builder(GetPermissionsSetsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private List<GetPermissionsSetsPermissionsSet> permissionsSets;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetPermissionsSetsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.permissionsSets = defaults.permissionsSets;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder permissionsSets(List<GetPermissionsSetsPermissionsSet> permissionsSets) {
             this.permissionsSets = Objects.requireNonNull(permissionsSets);
             return this;
         }
         public Builder permissionsSets(GetPermissionsSetsPermissionsSet... permissionsSets) {
             return permissionsSets(List.of(permissionsSets));
-        }        public GetPermissionsSetsResult build() {
-            return new GetPermissionsSetsResult(id, permissionsSets);
+        }
+        public GetPermissionsSetsResult build() {
+            final var o = new GetPermissionsSetsResult();
+            o.id = id;
+            o.permissionsSets = permissionsSets;
+            return o;
         }
     }
 }

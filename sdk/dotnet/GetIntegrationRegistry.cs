@@ -23,12 +23,6 @@ namespace Pulumiverse.Aquasec
     public sealed class GetIntegrationRegistryArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to automatically pull and rescan images from the registry on creation and daily
-        /// </summary>
-        [Input("autoPullRescan")]
-        public bool? AutoPullRescan { get; set; }
-
-        /// <summary>
         /// Additional condition for pulling and rescanning images, Defaults to 'none'
         /// </summary>
         [Input("imageCreationDateCondition")]
@@ -78,12 +72,6 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetIntegrationRegistryInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Whether to automatically pull and rescan images from the registry on creation and daily
-        /// </summary>
-        [Input("autoPullRescan")]
-        public Input<bool>? AutoPullRescan { get; set; }
-
         /// <summary>
         /// Additional condition for pulling and rescanning images, Defaults to 'none'
         /// </summary>
@@ -137,6 +125,10 @@ namespace Pulumiverse.Aquasec
     public sealed class GetIntegrationRegistryResult
     {
         /// <summary>
+        /// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+        /// </summary>
+        public readonly bool AutoCleanup;
+        /// <summary>
         /// Whether to automatically pull images from the registry on creation and daily
         /// </summary>
         public readonly bool AutoPull;
@@ -151,7 +143,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Whether to automatically pull and rescan images from the registry on creation and daily
         /// </summary>
-        public readonly bool? AutoPullRescan;
+        public readonly bool AutoPullRescan;
         /// <summary>
         /// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         /// </summary>
@@ -191,7 +183,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Scanner type
         /// </summary>
-        public readonly string? ScannerType;
+        public readonly string ScannerType;
         /// <summary>
         /// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
         /// </summary>
@@ -207,13 +199,15 @@ namespace Pulumiverse.Aquasec
 
         [OutputConstructor]
         private GetIntegrationRegistryResult(
+            bool autoCleanup,
+
             bool autoPull,
 
             int autoPullInterval,
 
             int autoPullMax,
 
-            bool? autoPullRescan,
+            bool autoPullRescan,
 
             string autoPullTime,
 
@@ -233,7 +227,7 @@ namespace Pulumiverse.Aquasec
 
             ImmutableArray<string> scannerNames,
 
-            string? scannerType,
+            string scannerType,
 
             string type,
 
@@ -241,6 +235,7 @@ namespace Pulumiverse.Aquasec
 
             string username)
         {
+            AutoCleanup = autoCleanup;
             AutoPull = autoPull;
             AutoPullInterval = autoPullInterval;
             AutoPullMax = autoPullMax;

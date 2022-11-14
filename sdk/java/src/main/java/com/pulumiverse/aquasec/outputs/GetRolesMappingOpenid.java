@@ -10,13 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRolesMappingOpenid {
-    private final Map<String,String> roleMapping;
+    private Map<String,String> roleMapping;
 
-    @CustomType.Constructor
-    private GetRolesMappingOpenid(@CustomType.Parameter("roleMapping") Map<String,String> roleMapping) {
-        this.roleMapping = roleMapping;
-    }
-
+    private GetRolesMappingOpenid() {}
     public Map<String,String> roleMapping() {
         return this.roleMapping;
     }
@@ -28,24 +24,24 @@ public final class GetRolesMappingOpenid {
     public static Builder builder(GetRolesMappingOpenid defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> roleMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetRolesMappingOpenid defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleMapping = defaults.roleMapping;
         }
 
+        @CustomType.Setter
         public Builder roleMapping(Map<String,String> roleMapping) {
             this.roleMapping = Objects.requireNonNull(roleMapping);
             return this;
-        }        public GetRolesMappingOpenid build() {
-            return new GetRolesMappingOpenid(roleMapping);
+        }
+        public GetRolesMappingOpenid build() {
+            final var o = new GetRolesMappingOpenid();
+            o.roleMapping = roleMapping;
+            return o;
         }
     }
 }

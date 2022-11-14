@@ -13,23 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FunctionAssurancePolicyAutoScanTime {
-    private final @Nullable Integer iteration;
-    private final @Nullable String iterationType;
-    private final @Nullable String time;
-    private final @Nullable List<String> weekDays;
+    private @Nullable Integer iteration;
+    private @Nullable String iterationType;
+    private @Nullable String time;
+    private @Nullable List<String> weekDays;
 
-    @CustomType.Constructor
-    private FunctionAssurancePolicyAutoScanTime(
-        @CustomType.Parameter("iteration") @Nullable Integer iteration,
-        @CustomType.Parameter("iterationType") @Nullable String iterationType,
-        @CustomType.Parameter("time") @Nullable String time,
-        @CustomType.Parameter("weekDays") @Nullable List<String> weekDays) {
-        this.iteration = iteration;
-        this.iterationType = iterationType;
-        this.time = time;
-        this.weekDays = weekDays;
-    }
-
+    private FunctionAssurancePolicyAutoScanTime() {}
     public Optional<Integer> iteration() {
         return Optional.ofNullable(this.iteration);
     }
@@ -50,17 +39,13 @@ public final class FunctionAssurancePolicyAutoScanTime {
     public static Builder builder(FunctionAssurancePolicyAutoScanTime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Integer iteration;
         private @Nullable String iterationType;
         private @Nullable String time;
         private @Nullable List<String> weekDays;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(FunctionAssurancePolicyAutoScanTime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iteration = defaults.iteration;
@@ -69,26 +54,36 @@ public final class FunctionAssurancePolicyAutoScanTime {
     	      this.weekDays = defaults.weekDays;
         }
 
+        @CustomType.Setter
         public Builder iteration(@Nullable Integer iteration) {
             this.iteration = iteration;
             return this;
         }
+        @CustomType.Setter
         public Builder iterationType(@Nullable String iterationType) {
             this.iterationType = iterationType;
             return this;
         }
+        @CustomType.Setter
         public Builder time(@Nullable String time) {
             this.time = time;
             return this;
         }
+        @CustomType.Setter
         public Builder weekDays(@Nullable List<String> weekDays) {
             this.weekDays = weekDays;
             return this;
         }
         public Builder weekDays(String... weekDays) {
             return weekDays(List.of(weekDays));
-        }        public FunctionAssurancePolicyAutoScanTime build() {
-            return new FunctionAssurancePolicyAutoScanTime(iteration, iterationType, time, weekDays);
+        }
+        public FunctionAssurancePolicyAutoScanTime build() {
+            final var o = new FunctionAssurancePolicyAutoScanTime();
+            o.iteration = iteration;
+            o.iterationType = iterationType;
+            o.time = time;
+            o.weekDays = weekDays;
+            return o;
         }
     }
 }

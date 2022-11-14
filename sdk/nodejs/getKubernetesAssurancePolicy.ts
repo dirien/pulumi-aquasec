@@ -13,8 +13,6 @@ export function getKubernetesAssurancePolicy(args: GetKubernetesAssurancePolicyA
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy", {
-        "kubernetesControlsNames": args.kubernetesControlsNames,
-        "maximumScoreExcludeNoFix": args.maximumScoreExcludeNoFix,
         "name": args.name,
     }, opts);
 }
@@ -23,14 +21,6 @@ export function getKubernetesAssurancePolicy(args: GetKubernetesAssurancePolicyA
  * A collection of arguments for invoking getKubernetesAssurancePolicy.
  */
 export interface GetKubernetesAssurancePolicyArgs {
-    /**
-     * List of kubernetes control names
-     */
-    kubernetesControlsNames?: string[];
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     */
-    maximumScoreExcludeNoFix?: boolean;
     name: string;
 }
 
@@ -43,10 +33,6 @@ export interface GetKubernetesAssurancePolicyResult {
      */
     readonly allowedImages: string[];
     readonly applicationScopes: string[];
-    /**
-     * What type of assurance policy is described.
-     */
-    readonly assuranceType: string;
     /**
      * Indicates if auditing for failures.
      */
@@ -164,7 +150,7 @@ export interface GetKubernetesAssurancePolicyResult {
     /**
      * List of kubernetes control names
      */
-    readonly kubernetesControlsNames?: string[];
+    readonly kubernetesControlsNames: string[];
     /**
      * List of labels.
      */
@@ -181,7 +167,7 @@ export interface GetKubernetesAssurancePolicyResult {
     /**
      * Indicates that policy should ignore cases that do not have a known fix.
      */
-    readonly maximumScoreExcludeNoFix?: boolean;
+    readonly maximumScoreExcludeNoFix: boolean;
     readonly monitoredMalwarePaths: string[];
     readonly name: string;
     /**
@@ -253,13 +239,5 @@ export function getKubernetesAssurancePolicyOutput(args: GetKubernetesAssuranceP
  * A collection of arguments for invoking getKubernetesAssurancePolicy.
  */
 export interface GetKubernetesAssurancePolicyOutputArgs {
-    /**
-     * List of kubernetes control names
-     */
-    kubernetesControlsNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     */
-    maximumScoreExcludeNoFix?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
 }

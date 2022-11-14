@@ -18,7 +18,6 @@ class HostAssurancePolicyArgs:
     def __init__(__self__, *,
                  application_scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
                  allowed_images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 assurance_type: Optional[pulumi.Input[str]] = None,
                  audit_on_failure: Optional[pulumi.Input[bool]] = None,
                  auto_scan_configured: Optional[pulumi.Input[bool]] = None,
                  auto_scan_enabled: Optional[pulumi.Input[bool]] = None,
@@ -91,7 +90,6 @@ class HostAssurancePolicyArgs:
         """
         The set of arguments for constructing a HostAssurancePolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_images: List of explicitly allowed images.
-        :param pulumi.Input[str] assurance_type: What type of assurance policy is described.
         :param pulumi.Input[bool] audit_on_failure: Indicates if auditing for failures.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_permissions: List of function's forbidden permissions.
         :param pulumi.Input[bool] blacklist_permissions_enabled: Indicates if blacklist permissions is relevant.
@@ -134,8 +132,6 @@ class HostAssurancePolicyArgs:
         pulumi.set(__self__, "application_scopes", application_scopes)
         if allowed_images is not None:
             pulumi.set(__self__, "allowed_images", allowed_images)
-        if assurance_type is not None:
-            pulumi.set(__self__, "assurance_type", assurance_type)
         if audit_on_failure is not None:
             pulumi.set(__self__, "audit_on_failure", audit_on_failure)
         if auto_scan_configured is not None:
@@ -295,18 +291,6 @@ class HostAssurancePolicyArgs:
     @allowed_images.setter
     def allowed_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_images", value)
-
-    @property
-    @pulumi.getter(name="assuranceType")
-    def assurance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        What type of assurance policy is described.
-        """
-        return pulumi.get(self, "assurance_type")
-
-    @assurance_type.setter
-    def assurance_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "assurance_type", value)
 
     @property
     @pulumi.getter(name="auditOnFailure")
@@ -1049,7 +1033,6 @@ class _HostAssurancePolicyState:
     def __init__(__self__, *,
                  allowed_images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 assurance_type: Optional[pulumi.Input[str]] = None,
                  audit_on_failure: Optional[pulumi.Input[bool]] = None,
                  author: Optional[pulumi.Input[str]] = None,
                  auto_scan_configured: Optional[pulumi.Input[bool]] = None,
@@ -1124,7 +1107,6 @@ class _HostAssurancePolicyState:
         """
         Input properties used for looking up and filtering HostAssurancePolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_images: List of explicitly allowed images.
-        :param pulumi.Input[str] assurance_type: What type of assurance policy is described.
         :param pulumi.Input[bool] audit_on_failure: Indicates if auditing for failures.
         :param pulumi.Input[str] author: Name of user account that created the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_permissions: List of function's forbidden permissions.
@@ -1169,8 +1151,6 @@ class _HostAssurancePolicyState:
             pulumi.set(__self__, "allowed_images", allowed_images)
         if application_scopes is not None:
             pulumi.set(__self__, "application_scopes", application_scopes)
-        if assurance_type is not None:
-            pulumi.set(__self__, "assurance_type", assurance_type)
         if audit_on_failure is not None:
             pulumi.set(__self__, "audit_on_failure", audit_on_failure)
         if author is not None:
@@ -1334,18 +1314,6 @@ class _HostAssurancePolicyState:
     @application_scopes.setter
     def application_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "application_scopes", value)
-
-    @property
-    @pulumi.getter(name="assuranceType")
-    def assurance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        What type of assurance policy is described.
-        """
-        return pulumi.get(self, "assurance_type")
-
-    @assurance_type.setter
-    def assurance_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "assurance_type", value)
 
     @property
     @pulumi.getter(name="auditOnFailure")
@@ -2111,7 +2079,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 assurance_type: Optional[pulumi.Input[str]] = None,
                  audit_on_failure: Optional[pulumi.Input[bool]] = None,
                  auto_scan_configured: Optional[pulumi.Input[bool]] = None,
                  auto_scan_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2187,7 +2154,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_images: List of explicitly allowed images.
-        :param pulumi.Input[str] assurance_type: What type of assurance policy is described.
         :param pulumi.Input[bool] audit_on_failure: Indicates if auditing for failures.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_permissions: List of function's forbidden permissions.
         :param pulumi.Input[bool] blacklist_permissions_enabled: Indicates if blacklist permissions is relevant.
@@ -2252,7 +2218,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 assurance_type: Optional[pulumi.Input[str]] = None,
                  audit_on_failure: Optional[pulumi.Input[bool]] = None,
                  auto_scan_configured: Optional[pulumi.Input[bool]] = None,
                  auto_scan_enabled: Optional[pulumi.Input[bool]] = None,
@@ -2335,7 +2300,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
             if application_scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'application_scopes'")
             __props__.__dict__["application_scopes"] = application_scopes
-            __props__.__dict__["assurance_type"] = assurance_type
             __props__.__dict__["audit_on_failure"] = audit_on_failure
             __props__.__dict__["auto_scan_configured"] = auto_scan_configured
             __props__.__dict__["auto_scan_enabled"] = auto_scan_enabled
@@ -2419,7 +2383,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            assurance_type: Optional[pulumi.Input[str]] = None,
             audit_on_failure: Optional[pulumi.Input[bool]] = None,
             author: Optional[pulumi.Input[str]] = None,
             auto_scan_configured: Optional[pulumi.Input[bool]] = None,
@@ -2499,7 +2462,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_images: List of explicitly allowed images.
-        :param pulumi.Input[str] assurance_type: What type of assurance policy is described.
         :param pulumi.Input[bool] audit_on_failure: Indicates if auditing for failures.
         :param pulumi.Input[str] author: Name of user account that created the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_permissions: List of function's forbidden permissions.
@@ -2546,7 +2508,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
 
         __props__.__dict__["allowed_images"] = allowed_images
         __props__.__dict__["application_scopes"] = application_scopes
-        __props__.__dict__["assurance_type"] = assurance_type
         __props__.__dict__["audit_on_failure"] = audit_on_failure
         __props__.__dict__["author"] = author
         __props__.__dict__["auto_scan_configured"] = auto_scan_configured
@@ -2632,14 +2593,6 @@ class HostAssurancePolicy(pulumi.CustomResource):
     @pulumi.getter(name="applicationScopes")
     def application_scopes(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "application_scopes")
-
-    @property
-    @pulumi.getter(name="assuranceType")
-    def assurance_type(self) -> pulumi.Output[Optional[str]]:
-        """
-        What type of assurance policy is described.
-        """
-        return pulumi.get(self, "assurance_type")
 
     @property
     @pulumi.getter(name="auditOnFailure")

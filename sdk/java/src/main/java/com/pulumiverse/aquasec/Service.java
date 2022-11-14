@@ -24,7 +24,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Indicates the application scope of the service.
      * 
      */
-    @Export(name="applicationScopes", type=List.class, parameters={String.class})
+    @Export(name="applicationScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applicationScopes;
 
     /**
@@ -38,7 +38,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Username of the account that created the service.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -52,7 +52,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The number of containers associated with the service.
      * 
      */
-    @Export(name="containersCount", type=Integer.class, parameters={})
+    @Export(name="containersCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> containersCount;
 
     /**
@@ -66,7 +66,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * A textual description of the service record; maximum 500 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -80,7 +80,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Enforcement status of the service.
      * 
      */
-    @Export(name="enforce", type=Boolean.class, parameters={})
+    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforce;
 
     /**
@@ -94,7 +94,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Whether the service has been evaluated for security vulnerabilities.
      * 
      */
-    @Export(name="evaluated", type=Boolean.class, parameters={})
+    @Export(name="evaluated", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> evaluated;
 
     /**
@@ -108,7 +108,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Indicates if registered or not.
      * 
      */
-    @Export(name="isRegistered", type=Boolean.class, parameters={})
+    @Export(name="isRegistered", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isRegistered;
 
     /**
@@ -122,7 +122,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Timestamp of the last update in Unix time format.
      * 
      */
-    @Export(name="lastupdate", type=Integer.class, parameters={})
+    @Export(name="lastupdate", refs={Integer.class}, tree="[0]")
     private Output<Integer> lastupdate;
 
     /**
@@ -136,7 +136,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Indicates if monitoring is enabled or not
      * 
      */
-    @Export(name="monitoring", type=Boolean.class, parameters={})
+    @Export(name="monitoring", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> monitoring;
 
     /**
@@ -150,7 +150,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The name of the service. It is recommended not to use whitespace characters in the name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -164,7 +164,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The number of container that are not evaluated.
      * 
      */
-    @Export(name="notEvaluatedCount", type=Integer.class, parameters={})
+    @Export(name="notEvaluatedCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> notEvaluatedCount;
 
     /**
@@ -178,7 +178,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The service&#39;s policies; an array of container firewall policy names.
      * 
      */
-    @Export(name="policies", type=List.class, parameters={String.class})
+    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> policies;
 
     /**
@@ -192,7 +192,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Rules priority, must be between 1-100.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -206,7 +206,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    @Export(name="scopeExpression", type=String.class, parameters={})
+    @Export(name="scopeExpression", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scopeExpression;
 
     /**
@@ -220,7 +220,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * List of scope attributes.
      * 
      */
-    @Export(name="scopeVariables", type=List.class, parameters={ServiceScopeVariable.class})
+    @Export(name="scopeVariables", refs={List.class,ServiceScopeVariable.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServiceScopeVariable>> scopeVariables;
 
     /**
@@ -234,7 +234,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Type of the workload. container or host.
      * 
      */
-    @Export(name="target", type=String.class, parameters={})
+    @Export(name="target", refs={String.class}, tree="[0]")
     private Output<String> target;
 
     /**
@@ -248,7 +248,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The number of containers allocated to the service that are not registered.
      * 
      */
-    @Export(name="unregisteredCount", type=Integer.class, parameters={})
+    @Export(name="unregisteredCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> unregisteredCount;
 
     /**
@@ -262,7 +262,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Number of high severity vulnerabilities.
      * 
      */
-    @Export(name="vulnerabilitiesHigh", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesHigh", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesHigh;
 
     /**
@@ -276,7 +276,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Number of low severity vulnerabilities.
      * 
      */
-    @Export(name="vulnerabilitiesLow", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesLow", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesLow;
 
     /**
@@ -290,7 +290,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Number of malware.
      * 
      */
-    @Export(name="vulnerabilitiesMalware", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesMalware", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesMalware;
 
     /**
@@ -304,7 +304,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Number of medium severity vulnerabilities.
      * 
      */
-    @Export(name="vulnerabilitiesMedium", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesMedium", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesMedium;
 
     /**
@@ -318,7 +318,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Number of negligible vulnerabilities.
      * 
      */
-    @Export(name="vulnerabilitiesNegligible", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesNegligible", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesNegligible;
 
     /**
@@ -332,7 +332,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The CVSS average vulnerabilities score.
      * 
      */
-    @Export(name="vulnerabilitiesScoreAverage", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesScoreAverage", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesScoreAverage;
 
     /**
@@ -346,7 +346,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Number of sensitive vulnerabilities.
      * 
      */
-    @Export(name="vulnerabilitiesSensitive", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesSensitive", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesSensitive;
 
     /**
@@ -360,7 +360,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Total number of vulnerabilities.
      * 
      */
-    @Export(name="vulnerabilitiesTotal", type=Integer.class, parameters={})
+    @Export(name="vulnerabilitiesTotal", refs={Integer.class}, tree="[0]")
     private Output<Integer> vulnerabilitiesTotal;
 
     /**

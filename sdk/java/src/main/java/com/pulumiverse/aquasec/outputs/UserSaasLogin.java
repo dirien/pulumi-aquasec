@@ -12,27 +12,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class UserSaasLogin {
-    private final @Nullable String created;
+    private @Nullable String created;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final @Nullable Integer id;
-    private final @Nullable String ipAddress;
-    private final @Nullable Integer userId;
+    private @Nullable Integer id;
+    private @Nullable String ipAddress;
+    private @Nullable Integer userId;
 
-    @CustomType.Constructor
-    private UserSaasLogin(
-        @CustomType.Parameter("created") @Nullable String created,
-        @CustomType.Parameter("id") @Nullable Integer id,
-        @CustomType.Parameter("ipAddress") @Nullable String ipAddress,
-        @CustomType.Parameter("userId") @Nullable Integer userId) {
-        this.created = created;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.userId = userId;
-    }
-
+    private UserSaasLogin() {}
     public Optional<String> created() {
         return Optional.ofNullable(this.created);
     }
@@ -57,17 +46,13 @@ public final class UserSaasLogin {
     public static Builder builder(UserSaasLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String created;
         private @Nullable Integer id;
         private @Nullable String ipAddress;
         private @Nullable Integer userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(UserSaasLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -76,23 +61,33 @@ public final class UserSaasLogin {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder created(@Nullable String created) {
             this.created = created;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable Integer id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
             this.ipAddress = ipAddress;
             return this;
         }
+        @CustomType.Setter
         public Builder userId(@Nullable Integer userId) {
             this.userId = userId;
             return this;
-        }        public UserSaasLogin build() {
-            return new UserSaasLogin(created, id, ipAddress, userId);
+        }
+        public UserSaasLogin build() {
+            final var o = new UserSaasLogin();
+            o.created = created;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.userId = userId;
+            return o;
         }
     }
 }

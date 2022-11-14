@@ -18,31 +18,20 @@ public final class ApplicationScopeCategory {
      * @return An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
      * 
      */
-    private final @Nullable List<ApplicationScopeCategoryArtifact> artifacts;
-    private final @Nullable List<ApplicationScopeCategoryEntityScope> entityScopes;
+    private @Nullable List<ApplicationScopeCategoryArtifact> artifacts;
+    private @Nullable List<ApplicationScopeCategoryEntityScope> entityScopes;
     /**
      * @return An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
      * 
      */
-    private final @Nullable List<ApplicationScopeCategoryInfrastructure> infrastructures;
+    private @Nullable List<ApplicationScopeCategoryInfrastructure> infrastructures;
     /**
      * @return A workload is a running container. It can run in a Kubernetes cluster, on a VM (no orchestrator), or under Tanzu Application Service (TAS).
      * 
      */
-    private final @Nullable List<ApplicationScopeCategoryWorkload> workloads;
+    private @Nullable List<ApplicationScopeCategoryWorkload> workloads;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategory(
-        @CustomType.Parameter("artifacts") @Nullable List<ApplicationScopeCategoryArtifact> artifacts,
-        @CustomType.Parameter("entityScopes") @Nullable List<ApplicationScopeCategoryEntityScope> entityScopes,
-        @CustomType.Parameter("infrastructures") @Nullable List<ApplicationScopeCategoryInfrastructure> infrastructures,
-        @CustomType.Parameter("workloads") @Nullable List<ApplicationScopeCategoryWorkload> workloads) {
-        this.artifacts = artifacts;
-        this.entityScopes = entityScopes;
-        this.infrastructures = infrastructures;
-        this.workloads = workloads;
-    }
-
+    private ApplicationScopeCategory() {}
     /**
      * @return An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
      * 
@@ -75,17 +64,13 @@ public final class ApplicationScopeCategory {
     public static Builder builder(ApplicationScopeCategory defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<ApplicationScopeCategoryArtifact> artifacts;
         private @Nullable List<ApplicationScopeCategoryEntityScope> entityScopes;
         private @Nullable List<ApplicationScopeCategoryInfrastructure> infrastructures;
         private @Nullable List<ApplicationScopeCategoryWorkload> workloads;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategory defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.artifacts = defaults.artifacts;
@@ -94,6 +79,7 @@ public final class ApplicationScopeCategory {
     	      this.workloads = defaults.workloads;
         }
 
+        @CustomType.Setter
         public Builder artifacts(@Nullable List<ApplicationScopeCategoryArtifact> artifacts) {
             this.artifacts = artifacts;
             return this;
@@ -101,6 +87,7 @@ public final class ApplicationScopeCategory {
         public Builder artifacts(ApplicationScopeCategoryArtifact... artifacts) {
             return artifacts(List.of(artifacts));
         }
+        @CustomType.Setter
         public Builder entityScopes(@Nullable List<ApplicationScopeCategoryEntityScope> entityScopes) {
             this.entityScopes = entityScopes;
             return this;
@@ -108,6 +95,7 @@ public final class ApplicationScopeCategory {
         public Builder entityScopes(ApplicationScopeCategoryEntityScope... entityScopes) {
             return entityScopes(List.of(entityScopes));
         }
+        @CustomType.Setter
         public Builder infrastructures(@Nullable List<ApplicationScopeCategoryInfrastructure> infrastructures) {
             this.infrastructures = infrastructures;
             return this;
@@ -115,14 +103,21 @@ public final class ApplicationScopeCategory {
         public Builder infrastructures(ApplicationScopeCategoryInfrastructure... infrastructures) {
             return infrastructures(List.of(infrastructures));
         }
+        @CustomType.Setter
         public Builder workloads(@Nullable List<ApplicationScopeCategoryWorkload> workloads) {
             this.workloads = workloads;
             return this;
         }
         public Builder workloads(ApplicationScopeCategoryWorkload... workloads) {
             return workloads(List.of(workloads));
-        }        public ApplicationScopeCategory build() {
-            return new ApplicationScopeCategory(artifacts, entityScopes, infrastructures, workloads);
+        }
+        public ApplicationScopeCategory build() {
+            final var o = new ApplicationScopeCategory();
+            o.artifacts = artifacts;
+            o.entityScopes = entityScopes;
+            o.infrastructures = infrastructures;
+            o.workloads = workloads;
+            return o;
         }
     }
 }

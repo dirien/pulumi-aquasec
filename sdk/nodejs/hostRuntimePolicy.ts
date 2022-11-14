@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  * import * as aquasec from "@pulumi/aquasec";
  *
  * const hostRuntimePolicy = new aquasec.HostRuntimePolicy("host_runtime_policy", {
+ *     applicationScopes: ["Global"],
  *     auditAllOsUserActivity: true,
  *     auditBruteForceLogin: true,
  *     auditFullCommandArguments: true,
@@ -48,6 +49,17 @@ import * as utilities from "./utilities";
  *     osUsersBlockeds: ["user2"],
  *     packageBlocks: ["package1"],
  *     portScanningDetection: true,
+ *     scopeVariables: [
+ *         {
+ *             attribute: "kubernetes.cluster",
+ *             value: "default",
+ *         },
+ *         {
+ *             attribute: "kubernetes.label",
+ *             name: "app",
+ *             value: "aqua",
+ *         },
+ *     ],
  *     windowsRegistryMonitoring: {
  *         excludedPaths: ["expaths"],
  *         excludedProcesses: ["exprocess"],

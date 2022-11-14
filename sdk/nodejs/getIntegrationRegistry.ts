@@ -11,7 +11,6 @@ export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: 
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", {
-        "autoPullRescan": args.autoPullRescan,
         "imageCreationDateCondition": args.imageCreationDateCondition,
         "name": args.name,
         "pullImageAge": args.pullImageAge,
@@ -25,10 +24,6 @@ export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: 
  * A collection of arguments for invoking getIntegrationRegistry.
  */
 export interface GetIntegrationRegistryArgs {
-    /**
-     * Whether to automatically pull and rescan images from the registry on creation and daily
-     */
-    autoPullRescan?: boolean;
     /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */
@@ -60,6 +55,10 @@ export interface GetIntegrationRegistryArgs {
  */
 export interface GetIntegrationRegistryResult {
     /**
+     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     */
+    readonly autoCleanup: boolean;
+    /**
      * Whether to automatically pull images from the registry on creation and daily
      */
     readonly autoPull: boolean;
@@ -74,7 +73,7 @@ export interface GetIntegrationRegistryResult {
     /**
      * Whether to automatically pull and rescan images from the registry on creation and daily
      */
-    readonly autoPullRescan?: boolean;
+    readonly autoPullRescan: boolean;
     /**
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
@@ -110,11 +109,11 @@ export interface GetIntegrationRegistryResult {
     /**
      * List of scanner names
      */
-    readonly scannerNames?: string[];
+    readonly scannerNames: string[];
     /**
      * Scanner type
      */
-    readonly scannerType?: string;
+    readonly scannerType: string;
     /**
      * Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
      */
@@ -137,10 +136,6 @@ export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputA
  * A collection of arguments for invoking getIntegrationRegistry.
  */
 export interface GetIntegrationRegistryOutputArgs {
-    /**
-     * Whether to automatically pull and rescan images from the registry on creation and daily
-     */
-    autoPullRescan?: pulumi.Input<boolean>;
     /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */

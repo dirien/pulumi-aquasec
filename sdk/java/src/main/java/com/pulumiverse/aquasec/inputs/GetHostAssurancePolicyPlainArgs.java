@@ -4,31 +4,13 @@
 package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetHostAssurancePolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHostAssurancePolicyPlainArgs Empty = new GetHostAssurancePolicyPlainArgs();
-
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     * 
-     */
-    @Import(name="maximumScoreExcludeNoFix")
-    private @Nullable Boolean maximumScoreExcludeNoFix;
-
-    /**
-     * @return Indicates that policy should ignore cases that do not have a known fix.
-     * 
-     */
-    public Optional<Boolean> maximumScoreExcludeNoFix() {
-        return Optional.ofNullable(this.maximumScoreExcludeNoFix);
-    }
 
     @Import(name="name", required=true)
     private String name;
@@ -40,7 +22,6 @@ public final class GetHostAssurancePolicyPlainArgs extends com.pulumi.resources.
     private GetHostAssurancePolicyPlainArgs() {}
 
     private GetHostAssurancePolicyPlainArgs(GetHostAssurancePolicyPlainArgs $) {
-        this.maximumScoreExcludeNoFix = $.maximumScoreExcludeNoFix;
         this.name = $.name;
     }
 
@@ -60,17 +41,6 @@ public final class GetHostAssurancePolicyPlainArgs extends com.pulumi.resources.
 
         public Builder(GetHostAssurancePolicyPlainArgs defaults) {
             $ = new GetHostAssurancePolicyPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param maximumScoreExcludeNoFix Indicates that policy should ignore cases that do not have a known fix.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maximumScoreExcludeNoFix(@Nullable Boolean maximumScoreExcludeNoFix) {
-            $.maximumScoreExcludeNoFix = maximumScoreExcludeNoFix;
-            return this;
         }
 
         public Builder name(String name) {

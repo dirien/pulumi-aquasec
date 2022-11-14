@@ -13,7 +13,6 @@ export function getFunctionAssurancePolicy(args: GetFunctionAssurancePolicyArgs,
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy", {
-        "maximumScoreExcludeNoFix": args.maximumScoreExcludeNoFix,
         "name": args.name,
     }, opts);
 }
@@ -22,10 +21,6 @@ export function getFunctionAssurancePolicy(args: GetFunctionAssurancePolicyArgs,
  * A collection of arguments for invoking getFunctionAssurancePolicy.
  */
 export interface GetFunctionAssurancePolicyArgs {
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     */
-    maximumScoreExcludeNoFix?: boolean;
     name: string;
 }
 
@@ -38,10 +33,6 @@ export interface GetFunctionAssurancePolicyResult {
      */
     readonly allowedImages: string[];
     readonly applicationScopes: string[];
-    /**
-     * What type of assurance policy is described.
-     */
-    readonly assuranceType: string;
     /**
      * Indicates if auditing for failures.
      */
@@ -172,7 +163,7 @@ export interface GetFunctionAssurancePolicyResult {
     /**
      * Indicates that policy should ignore cases that do not have a known fix.
      */
-    readonly maximumScoreExcludeNoFix?: boolean;
+    readonly maximumScoreExcludeNoFix: boolean;
     readonly monitoredMalwarePaths: string[];
     readonly name: string;
     /**
@@ -244,9 +235,5 @@ export function getFunctionAssurancePolicyOutput(args: GetFunctionAssurancePolic
  * A collection of arguments for invoking getFunctionAssurancePolicy.
  */
 export interface GetFunctionAssurancePolicyOutputArgs {
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     */
-    maximumScoreExcludeNoFix?: pulumi.Input<boolean>;
     name: pulumi.Input<string>;
 }

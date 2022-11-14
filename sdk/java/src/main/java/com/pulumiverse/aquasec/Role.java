@@ -60,7 +60,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the user who created the role. Only returned from the API for existing permissions, not part of the permission creation/modification structure.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -74,7 +74,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Free text description for the role.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -88,7 +88,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the Permission Set that will affect the users assigned to this specific Role.
      * 
      */
-    @Export(name="permission", type=String.class, parameters={})
+    @Export(name="permission", refs={String.class}, tree="[0]")
     private Output<String> permission;
 
     /**
@@ -102,7 +102,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The name of the role, comprised of alphanumeric characters and &#39;-&#39;, &#39;_&#39;, &#39; &#39;, &#39;:&#39;, &#39;.&#39;, &#39;@&#39;, &#39;!&#39;, &#39;^&#39;.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -116,7 +116,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * List of Application Scopes that will affect the users assigned to this specific Role.
      * 
      */
-    @Export(name="scopes", type=List.class, parameters={String.class})
+    @Export(name="scopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> scopes;
 
     /**
@@ -130,7 +130,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The date of the last modification of the role.
      * 
      */
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**

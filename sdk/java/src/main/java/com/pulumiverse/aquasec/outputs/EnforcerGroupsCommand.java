@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnforcerGroupsCommand {
-    private final @Nullable String default_;
-    private final @Nullable String kubernetes;
-    private final @Nullable String swarm;
-    private final @Nullable String windows;
+    private @Nullable String default_;
+    private @Nullable String kubernetes;
+    private @Nullable String swarm;
+    private @Nullable String windows;
 
-    @CustomType.Constructor
-    private EnforcerGroupsCommand(
-        @CustomType.Parameter("default") @Nullable String default_,
-        @CustomType.Parameter("kubernetes") @Nullable String kubernetes,
-        @CustomType.Parameter("swarm") @Nullable String swarm,
-        @CustomType.Parameter("windows") @Nullable String windows) {
-        this.default_ = default_;
-        this.kubernetes = kubernetes;
-        this.swarm = swarm;
-        this.windows = windows;
-    }
-
+    private EnforcerGroupsCommand() {}
     public Optional<String> default_() {
         return Optional.ofNullable(this.default_);
     }
@@ -48,17 +37,13 @@ public final class EnforcerGroupsCommand {
     public static Builder builder(EnforcerGroupsCommand defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String default_;
         private @Nullable String kubernetes;
         private @Nullable String swarm;
         private @Nullable String windows;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(EnforcerGroupsCommand defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.default_ = defaults.default_;
@@ -67,23 +52,33 @@ public final class EnforcerGroupsCommand {
     	      this.windows = defaults.windows;
         }
 
+        @CustomType.Setter("default")
         public Builder default_(@Nullable String default_) {
             this.default_ = default_;
             return this;
         }
+        @CustomType.Setter
         public Builder kubernetes(@Nullable String kubernetes) {
             this.kubernetes = kubernetes;
             return this;
         }
+        @CustomType.Setter
         public Builder swarm(@Nullable String swarm) {
             this.swarm = swarm;
             return this;
         }
+        @CustomType.Setter
         public Builder windows(@Nullable String windows) {
             this.windows = windows;
             return this;
-        }        public EnforcerGroupsCommand build() {
-            return new EnforcerGroupsCommand(default_, kubernetes, swarm, windows);
+        }
+        public EnforcerGroupsCommand build() {
+            final var o = new EnforcerGroupsCommand();
+            o.default_ = default_;
+            o.kubernetes = kubernetes;
+            o.swarm = swarm;
+            o.windows = windows;
+            return o;
         }
     }
 }

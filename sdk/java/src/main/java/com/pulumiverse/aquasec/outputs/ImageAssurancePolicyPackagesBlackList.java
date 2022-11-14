@@ -11,38 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ImageAssurancePolicyPackagesBlackList {
-    private final @Nullable String arch;
-    private final @Nullable String display;
-    private final @Nullable String epoch;
-    private final @Nullable String format;
-    private final @Nullable String license;
-    private final @Nullable String name;
-    private final @Nullable String release;
-    private final @Nullable String version;
-    private final @Nullable String versionRange;
+    private @Nullable String arch;
+    private @Nullable String display;
+    private @Nullable String epoch;
+    private @Nullable String format;
+    private @Nullable String license;
+    private @Nullable String name;
+    private @Nullable String release;
+    private @Nullable String version;
+    private @Nullable String versionRange;
 
-    @CustomType.Constructor
-    private ImageAssurancePolicyPackagesBlackList(
-        @CustomType.Parameter("arch") @Nullable String arch,
-        @CustomType.Parameter("display") @Nullable String display,
-        @CustomType.Parameter("epoch") @Nullable String epoch,
-        @CustomType.Parameter("format") @Nullable String format,
-        @CustomType.Parameter("license") @Nullable String license,
-        @CustomType.Parameter("name") @Nullable String name,
-        @CustomType.Parameter("release") @Nullable String release,
-        @CustomType.Parameter("version") @Nullable String version,
-        @CustomType.Parameter("versionRange") @Nullable String versionRange) {
-        this.arch = arch;
-        this.display = display;
-        this.epoch = epoch;
-        this.format = format;
-        this.license = license;
-        this.name = name;
-        this.release = release;
-        this.version = version;
-        this.versionRange = versionRange;
-    }
-
+    private ImageAssurancePolicyPackagesBlackList() {}
     public Optional<String> arch() {
         return Optional.ofNullable(this.arch);
     }
@@ -78,7 +57,7 @@ public final class ImageAssurancePolicyPackagesBlackList {
     public static Builder builder(ImageAssurancePolicyPackagesBlackList defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String arch;
         private @Nullable String display;
@@ -89,11 +68,7 @@ public final class ImageAssurancePolicyPackagesBlackList {
         private @Nullable String release;
         private @Nullable String version;
         private @Nullable String versionRange;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageAssurancePolicyPackagesBlackList defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.arch = defaults.arch;
@@ -107,43 +82,63 @@ public final class ImageAssurancePolicyPackagesBlackList {
     	      this.versionRange = defaults.versionRange;
         }
 
+        @CustomType.Setter
         public Builder arch(@Nullable String arch) {
             this.arch = arch;
             return this;
         }
+        @CustomType.Setter
         public Builder display(@Nullable String display) {
             this.display = display;
             return this;
         }
+        @CustomType.Setter
         public Builder epoch(@Nullable String epoch) {
             this.epoch = epoch;
             return this;
         }
+        @CustomType.Setter
         public Builder format(@Nullable String format) {
             this.format = format;
             return this;
         }
+        @CustomType.Setter
         public Builder license(@Nullable String license) {
             this.license = license;
             return this;
         }
+        @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
         public Builder release(@Nullable String release) {
             this.release = release;
             return this;
         }
+        @CustomType.Setter
         public Builder version(@Nullable String version) {
             this.version = version;
             return this;
         }
+        @CustomType.Setter
         public Builder versionRange(@Nullable String versionRange) {
             this.versionRange = versionRange;
             return this;
-        }        public ImageAssurancePolicyPackagesBlackList build() {
-            return new ImageAssurancePolicyPackagesBlackList(arch, display, epoch, format, license, name, release, version, versionRange);
+        }
+        public ImageAssurancePolicyPackagesBlackList build() {
+            final var o = new ImageAssurancePolicyPackagesBlackList();
+            o.arch = arch;
+            o.display = display;
+            o.epoch = epoch;
+            o.format = format;
+            o.license = license;
+            o.name = name;
+            o.release = release;
+            o.version = version;
+            o.versionRange = versionRange;
+            return o;
         }
     }
 }

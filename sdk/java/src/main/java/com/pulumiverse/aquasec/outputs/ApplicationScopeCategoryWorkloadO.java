@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryWorkloadO {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryWorkloadOVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryWorkloadOVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryWorkloadO(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryWorkloadOVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryWorkloadO() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryWorkloadO {
     public static Builder builder(ApplicationScopeCategoryWorkloadO defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryWorkloadOVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryWorkloadO defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryWorkloadOVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryWorkloadOVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryWorkloadO build() {
-            return new ApplicationScopeCategoryWorkloadO(expression, variables);
+        }
+        public ApplicationScopeCategoryWorkloadO build() {
+            final var o = new ApplicationScopeCategoryWorkloadO();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

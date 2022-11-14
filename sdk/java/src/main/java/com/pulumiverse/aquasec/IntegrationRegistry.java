@@ -18,13 +18,91 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aquasec.IntegrationRegistry;
+ * import com.pulumi.aquasec.IntegrationRegistryArgs;
+ * import com.pulumi.aquasec.inputs.IntegrationRegistryOptionArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var integrationRegistry = new IntegrationRegistry(&#34;integrationRegistry&#34;, IntegrationRegistryArgs.builder()        
+ *             .type(&#34;AWS&#34;)
+ *             .advancedSettingsCleanup(false)
+ *             .alwaysPullPatterns()
+ *             .author(&#34;aqua@aquasec.com&#34;)
+ *             .autoCleanup(false)
+ *             .autoPull(true)
+ *             .autoPullInterval(1)
+ *             .autoPullLatestXffEnabled(false)
+ *             .autoPullMax(100)
+ *             .autoPullRescan(false)
+ *             .autoPullTime(&#34;08:45&#34;)
+ *             .description(&#34;Automatically discovered registry&#34;)
+ *             .detectedType(4)
+ *             .imageCreationDateCondition(&#34;image_count&#34;)
+ *             .options(            
+ *                 IntegrationRegistryOptionArgs.builder()
+ *                     .option(&#34;ARNRole&#34;)
+ *                     .value(&#34;arn:aws:iam::000000000000:role/aqua-AAAAABBBBCCCDDD-EEEEFFFFGGGG&#34;)
+ *                     .build(),
+ *                 IntegrationRegistryOptionArgs.builder()
+ *                     .option(&#34;TestImagePull&#34;)
+ *                     .build(),
+ *                 IntegrationRegistryOptionArgs.builder()
+ *                     .option(&#34;sts:ExternalId&#34;)
+ *                     .value(&#34;00000e2a-5353-4ddd-bbbb-ccc&#34;)
+ *                     .build())
+ *             .permission(&#34;&#34;)
+ *             .prefixes(&#34;111111111111.dkr.ecr.us-east-1.amazonaws.com&#34;)
+ *             .pullImageAge(&#34;0D&#34;)
+ *             .pullImageCount(3)
+ *             .pullImageTagPattern()
+ *             .pullMaxTags(0)
+ *             .pullRepoPatterns(null)
+ *             .pullRepoPatternsExcluded()
+ *             .pullTagPatterns(null)
+ *             .registriesType(&#34;cloud&#34;)
+ *             .registryScanTimeout(0)
+ *             .scannerNames(            
+ *                 &#34;aqua-scanner-222222-cl9qx&#34;,
+ *                 &#34;aqua-scanner-111111-fstrc&#34;,
+ *                 &#34;513882222222&#34;)
+ *             .scannerType(&#34;specific&#34;)
+ *             .url(&#34;ap-northeast-1&#34;)
+ *             .username(&#34;&#34;)
+ *             .webhook(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ */
 @ResourceType(type="aquasec:index/integrationRegistry:IntegrationRegistry")
 public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
     /**
      * The username of the user who created or last modified the registry
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -35,10 +113,24 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
         return this.author;
     }
     /**
+     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     * 
+     */
+    @Export(name="autoCleanup", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> autoCleanup;
+
+    /**
+     * @return Automatically clean up images and repositories which are no longer present in the registry from Aqua console
+     * 
+     */
+    public Output<Optional<Boolean>> autoCleanup() {
+        return Codegen.optional(this.autoCleanup);
+    }
+    /**
      * Whether to automatically pull images from the registry on creation and daily
      * 
      */
-    @Export(name="autoPull", type=Boolean.class, parameters={})
+    @Export(name="autoPull", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPull;
 
     /**
@@ -52,7 +144,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The interval in days to start pulling new images from the registry, Defaults to 1
      * 
      */
-    @Export(name="autoPullInterval", type=Integer.class, parameters={})
+    @Export(name="autoPullInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoPullInterval;
 
     /**
@@ -66,7 +158,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * Maximum number of repositories to pull every day, defaults to 100
      * 
      */
-    @Export(name="autoPullMax", type=Integer.class, parameters={})
+    @Export(name="autoPullMax", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoPullMax;
 
     /**
@@ -80,7 +172,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * Whether to automatically pull and rescan images from the registry on creation and daily
      * 
      */
-    @Export(name="autoPullRescan", type=Boolean.class, parameters={})
+    @Export(name="autoPullRescan", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPullRescan;
 
     /**
@@ -94,7 +186,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      * 
      */
-    @Export(name="autoPullTime", type=String.class, parameters={})
+    @Export(name="autoPullTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoPullTime;
 
     /**
@@ -108,7 +200,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
      * 
      */
-    @Export(name="imageCreationDateCondition", type=String.class, parameters={})
+    @Export(name="imageCreationDateCondition", refs={String.class}, tree="[0]")
     private Output<String> imageCreationDateCondition;
 
     /**
@@ -122,7 +214,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The last time the registry was modified in UNIX time
      * 
      */
-    @Export(name="lastUpdated", type=String.class, parameters={})
+    @Export(name="lastUpdated", refs={String.class}, tree="[0]")
     private Output<String> lastUpdated;
 
     /**
@@ -136,7 +228,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The name of the registry; string, required - this will be treated as the registry&#39;s ID, so choose a simple alphanumerical name without special signs and spaces
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -146,7 +238,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="options", type=List.class, parameters={IntegrationRegistryOption.class})
+    @Export(name="options", refs={List.class,IntegrationRegistryOption.class}, tree="[0,1]")
     private Output</* @Nullable */ List<IntegrationRegistryOption>> options;
 
     public Output<Optional<List<IntegrationRegistryOption>>> options() {
@@ -156,7 +248,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The password for registry authentication
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -170,7 +262,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * List of possible prefixes to image names pulled from the registry
      * 
      */
-    @Export(name="prefixes", type=List.class, parameters={String.class})
+    @Export(name="prefixes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> prefixes;
 
     /**
@@ -184,7 +276,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * When auto pull image enabled, sets maximum age of auto pulled images (for example for 5 Days the value should be: 5D), Requires `image_creation_date_condition = &#34;image_age&#34;`
      * 
      */
-    @Export(name="pullImageAge", type=String.class, parameters={})
+    @Export(name="pullImageAge", refs={String.class}, tree="[0]")
     private Output<String> pullImageAge;
 
     /**
@@ -198,7 +290,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = &#34;image_count&#34;`
      * 
      */
-    @Export(name="pullImageCount", type=Integer.class, parameters={})
+    @Export(name="pullImageCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> pullImageCount;
 
     /**
@@ -212,7 +304,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * List of scanner names
      * 
      */
-    @Export(name="scannerNames", type=List.class, parameters={String.class})
+    @Export(name="scannerNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scannerNames;
 
     /**
@@ -226,7 +318,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The Scanner type
      * 
      */
-    @Export(name="scannerType", type=String.class, parameters={})
+    @Export(name="scannerType", refs={String.class}, tree="[0]")
     private Output<String> scannerType;
 
     /**
@@ -240,7 +332,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -254,7 +346,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The URL, address or region of the registry
      * 
      */
-    @Export(name="url", type=String.class, parameters={})
+    @Export(name="url", refs={String.class}, tree="[0]")
     private Output<String> url;
 
     /**
@@ -268,7 +360,7 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
      * The username for registry authentication.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> username;
 
     /**

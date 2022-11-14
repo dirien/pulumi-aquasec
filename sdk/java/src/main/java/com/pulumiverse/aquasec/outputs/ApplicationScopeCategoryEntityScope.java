@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryEntityScope {
-    private final @Nullable String expression;
-    private final @Nullable List<ApplicationScopeCategoryEntityScopeVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<ApplicationScopeCategoryEntityScopeVariable> variables;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryEntityScope(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<ApplicationScopeCategoryEntityScopeVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private ApplicationScopeCategoryEntityScope() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class ApplicationScopeCategoryEntityScope {
     public static Builder builder(ApplicationScopeCategoryEntityScope defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<ApplicationScopeCategoryEntityScopeVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryEntityScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<ApplicationScopeCategoryEntityScopeVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(ApplicationScopeCategoryEntityScopeVariable... variables) {
             return variables(List.of(variables));
-        }        public ApplicationScopeCategoryEntityScope build() {
-            return new ApplicationScopeCategoryEntityScope(expression, variables);
+        }
+        public ApplicationScopeCategoryEntityScope build() {
+            final var o = new ApplicationScopeCategoryEntityScope();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

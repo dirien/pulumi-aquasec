@@ -16,126 +16,89 @@ public final class GetFunctionRuntimePolicyResult {
      * @return Indicates the application scope of the service.
      * 
      */
-    private final List<String> applicationScopes;
+    private List<String> applicationScopes;
     /**
      * @return Username of the account that created the service.
      * 
      */
-    private final String author;
+    private String author;
     /**
      * @return If true, prevent creation of malicious executables in functions during their runtime post invocation.
      * 
      */
-    private final Boolean blockMaliciousExecutables;
+    private Boolean blockMaliciousExecutables;
     /**
      * @return List of processes that will be allowed
      * 
      */
-    private final List<String> blockMaliciousExecutablesAllowedProcesses;
+    private List<String> blockMaliciousExecutablesAllowedProcesses;
     /**
      * @return If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
      * 
      */
-    private final Boolean blockRunningExecutablesInTmpFolder;
+    private Boolean blockRunningExecutablesInTmpFolder;
     /**
      * @return List of executables that are prevented from running in containers.
      * 
      */
-    private final List<String> blockedExecutables;
+    private List<String> blockedExecutables;
     /**
      * @return The description of the function runtime policy
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Indicates if the runtime policy is enabled or not.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return Indicates that policy should effect container execution (not just for audit).
      * 
      */
-    private final Boolean enforce;
+    private Boolean enforce;
     /**
      * @return Honeypot User ID (Access Key)
      * 
      */
-    private final String honeypotAccessKey;
+    private String honeypotAccessKey;
     /**
      * @return List of options to apply the honeypot on (Environment Vairable, Layer, File)
      * 
      */
-    private final List<String> honeypotApplyOns;
+    private List<String> honeypotApplyOns;
     /**
      * @return Honeypot User Password (Secret Key)
      * 
      */
-    private final String honeypotSecretKey;
+    private String honeypotSecretKey;
     /**
      * @return Serverless application name
      * 
      */
-    private final String honeypotServerlessAppName;
+    private String honeypotServerlessAppName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return Name of the function runtime policy
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return Logical expression of how to compute the dependency of the scope variables.
      * 
      */
-    private final String scopeExpression;
+    private String scopeExpression;
     /**
      * @return List of scope attributes.
      * 
      */
-    private final List<GetFunctionRuntimePolicyScopeVariable> scopeVariables;
+    private List<GetFunctionRuntimePolicyScopeVariable> scopeVariables;
 
-    @CustomType.Constructor
-    private GetFunctionRuntimePolicyResult(
-        @CustomType.Parameter("applicationScopes") List<String> applicationScopes,
-        @CustomType.Parameter("author") String author,
-        @CustomType.Parameter("blockMaliciousExecutables") Boolean blockMaliciousExecutables,
-        @CustomType.Parameter("blockMaliciousExecutablesAllowedProcesses") List<String> blockMaliciousExecutablesAllowedProcesses,
-        @CustomType.Parameter("blockRunningExecutablesInTmpFolder") Boolean blockRunningExecutablesInTmpFolder,
-        @CustomType.Parameter("blockedExecutables") List<String> blockedExecutables,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("enforce") Boolean enforce,
-        @CustomType.Parameter("honeypotAccessKey") String honeypotAccessKey,
-        @CustomType.Parameter("honeypotApplyOns") List<String> honeypotApplyOns,
-        @CustomType.Parameter("honeypotSecretKey") String honeypotSecretKey,
-        @CustomType.Parameter("honeypotServerlessAppName") String honeypotServerlessAppName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("scopeExpression") String scopeExpression,
-        @CustomType.Parameter("scopeVariables") List<GetFunctionRuntimePolicyScopeVariable> scopeVariables) {
-        this.applicationScopes = applicationScopes;
-        this.author = author;
-        this.blockMaliciousExecutables = blockMaliciousExecutables;
-        this.blockMaliciousExecutablesAllowedProcesses = blockMaliciousExecutablesAllowedProcesses;
-        this.blockRunningExecutablesInTmpFolder = blockRunningExecutablesInTmpFolder;
-        this.blockedExecutables = blockedExecutables;
-        this.description = description;
-        this.enabled = enabled;
-        this.enforce = enforce;
-        this.honeypotAccessKey = honeypotAccessKey;
-        this.honeypotApplyOns = honeypotApplyOns;
-        this.honeypotSecretKey = honeypotSecretKey;
-        this.honeypotServerlessAppName = honeypotServerlessAppName;
-        this.id = id;
-        this.name = name;
-        this.scopeExpression = scopeExpression;
-        this.scopeVariables = scopeVariables;
-    }
-
+    private GetFunctionRuntimePolicyResult() {}
     /**
      * @return Indicates the application scope of the service.
      * 
@@ -263,7 +226,7 @@ public final class GetFunctionRuntimePolicyResult {
     public static Builder builder(GetFunctionRuntimePolicyResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> applicationScopes;
         private String author;
@@ -282,11 +245,7 @@ public final class GetFunctionRuntimePolicyResult {
         private String name;
         private String scopeExpression;
         private List<GetFunctionRuntimePolicyScopeVariable> scopeVariables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionRuntimePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationScopes = defaults.applicationScopes;
@@ -308,6 +267,7 @@ public final class GetFunctionRuntimePolicyResult {
     	      this.scopeVariables = defaults.scopeVariables;
         }
 
+        @CustomType.Setter
         public Builder applicationScopes(List<String> applicationScopes) {
             this.applicationScopes = Objects.requireNonNull(applicationScopes);
             return this;
@@ -315,14 +275,17 @@ public final class GetFunctionRuntimePolicyResult {
         public Builder applicationScopes(String... applicationScopes) {
             return applicationScopes(List.of(applicationScopes));
         }
+        @CustomType.Setter
         public Builder author(String author) {
             this.author = Objects.requireNonNull(author);
             return this;
         }
+        @CustomType.Setter
         public Builder blockMaliciousExecutables(Boolean blockMaliciousExecutables) {
             this.blockMaliciousExecutables = Objects.requireNonNull(blockMaliciousExecutables);
             return this;
         }
+        @CustomType.Setter
         public Builder blockMaliciousExecutablesAllowedProcesses(List<String> blockMaliciousExecutablesAllowedProcesses) {
             this.blockMaliciousExecutablesAllowedProcesses = Objects.requireNonNull(blockMaliciousExecutablesAllowedProcesses);
             return this;
@@ -330,10 +293,12 @@ public final class GetFunctionRuntimePolicyResult {
         public Builder blockMaliciousExecutablesAllowedProcesses(String... blockMaliciousExecutablesAllowedProcesses) {
             return blockMaliciousExecutablesAllowedProcesses(List.of(blockMaliciousExecutablesAllowedProcesses));
         }
+        @CustomType.Setter
         public Builder blockRunningExecutablesInTmpFolder(Boolean blockRunningExecutablesInTmpFolder) {
             this.blockRunningExecutablesInTmpFolder = Objects.requireNonNull(blockRunningExecutablesInTmpFolder);
             return this;
         }
+        @CustomType.Setter
         public Builder blockedExecutables(List<String> blockedExecutables) {
             this.blockedExecutables = Objects.requireNonNull(blockedExecutables);
             return this;
@@ -341,22 +306,27 @@ public final class GetFunctionRuntimePolicyResult {
         public Builder blockedExecutables(String... blockedExecutables) {
             return blockedExecutables(List.of(blockedExecutables));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder enforce(Boolean enforce) {
             this.enforce = Objects.requireNonNull(enforce);
             return this;
         }
+        @CustomType.Setter
         public Builder honeypotAccessKey(String honeypotAccessKey) {
             this.honeypotAccessKey = Objects.requireNonNull(honeypotAccessKey);
             return this;
         }
+        @CustomType.Setter
         public Builder honeypotApplyOns(List<String> honeypotApplyOns) {
             this.honeypotApplyOns = Objects.requireNonNull(honeypotApplyOns);
             return this;
@@ -364,34 +334,59 @@ public final class GetFunctionRuntimePolicyResult {
         public Builder honeypotApplyOns(String... honeypotApplyOns) {
             return honeypotApplyOns(List.of(honeypotApplyOns));
         }
+        @CustomType.Setter
         public Builder honeypotSecretKey(String honeypotSecretKey) {
             this.honeypotSecretKey = Objects.requireNonNull(honeypotSecretKey);
             return this;
         }
+        @CustomType.Setter
         public Builder honeypotServerlessAppName(String honeypotServerlessAppName) {
             this.honeypotServerlessAppName = Objects.requireNonNull(honeypotServerlessAppName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeExpression(String scopeExpression) {
             this.scopeExpression = Objects.requireNonNull(scopeExpression);
             return this;
         }
+        @CustomType.Setter
         public Builder scopeVariables(List<GetFunctionRuntimePolicyScopeVariable> scopeVariables) {
             this.scopeVariables = Objects.requireNonNull(scopeVariables);
             return this;
         }
         public Builder scopeVariables(GetFunctionRuntimePolicyScopeVariable... scopeVariables) {
             return scopeVariables(List.of(scopeVariables));
-        }        public GetFunctionRuntimePolicyResult build() {
-            return new GetFunctionRuntimePolicyResult(applicationScopes, author, blockMaliciousExecutables, blockMaliciousExecutablesAllowedProcesses, blockRunningExecutablesInTmpFolder, blockedExecutables, description, enabled, enforce, honeypotAccessKey, honeypotApplyOns, honeypotSecretKey, honeypotServerlessAppName, id, name, scopeExpression, scopeVariables);
+        }
+        public GetFunctionRuntimePolicyResult build() {
+            final var o = new GetFunctionRuntimePolicyResult();
+            o.applicationScopes = applicationScopes;
+            o.author = author;
+            o.blockMaliciousExecutables = blockMaliciousExecutables;
+            o.blockMaliciousExecutablesAllowedProcesses = blockMaliciousExecutablesAllowedProcesses;
+            o.blockRunningExecutablesInTmpFolder = blockRunningExecutablesInTmpFolder;
+            o.blockedExecutables = blockedExecutables;
+            o.description = description;
+            o.enabled = enabled;
+            o.enforce = enforce;
+            o.honeypotAccessKey = honeypotAccessKey;
+            o.honeypotApplyOns = honeypotApplyOns;
+            o.honeypotSecretKey = honeypotSecretKey;
+            o.honeypotServerlessAppName = honeypotServerlessAppName;
+            o.id = id;
+            o.name = name;
+            o.scopeExpression = scopeExpression;
+            o.scopeVariables = scopeVariables;
+            return o;
         }
     }
 }

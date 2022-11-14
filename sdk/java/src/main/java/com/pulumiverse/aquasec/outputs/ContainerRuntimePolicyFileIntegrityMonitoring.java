@@ -17,84 +17,59 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
      * @return List of paths to be excluded from being monitored.
      * 
      */
-    private final @Nullable List<String> excludedPaths;
+    private @Nullable List<String> excludedPaths;
     /**
      * @return List of processes to be excluded from being monitored.
      * 
      */
-    private final @Nullable List<String> excludedProcesses;
+    private @Nullable List<String> excludedProcesses;
     /**
      * @return List of users to be excluded from being monitored.
      * 
      */
-    private final @Nullable List<String> excludedUsers;
+    private @Nullable List<String> excludedUsers;
     /**
      * @return If true, add attributes operations will be monitored.
      * 
      */
-    private final @Nullable Boolean monitorAttributes;
+    private @Nullable Boolean monitorAttributes;
     /**
      * @return If true, create operations will be monitored.
      * 
      */
-    private final @Nullable Boolean monitorCreate;
+    private @Nullable Boolean monitorCreate;
     /**
      * @return If true, deletion operations will be monitored.
      * 
      */
-    private final @Nullable Boolean monitorDelete;
+    private @Nullable Boolean monitorDelete;
     /**
      * @return If true, modification operations will be monitored.
      * 
      */
-    private final @Nullable Boolean monitorModify;
+    private @Nullable Boolean monitorModify;
     /**
      * @return If true, read operations will be monitored.
      * 
      */
-    private final @Nullable Boolean monitorRead;
+    private @Nullable Boolean monitorRead;
     /**
      * @return List of paths to be monitored.
      * 
      */
-    private final @Nullable List<String> monitoredPaths;
+    private @Nullable List<String> monitoredPaths;
     /**
      * @return List of processes to be monitored.
      * 
      */
-    private final @Nullable List<String> monitoredProcesses;
+    private @Nullable List<String> monitoredProcesses;
     /**
      * @return List of users to be monitored.
      * 
      */
-    private final @Nullable List<String> monitoredUsers;
+    private @Nullable List<String> monitoredUsers;
 
-    @CustomType.Constructor
-    private ContainerRuntimePolicyFileIntegrityMonitoring(
-        @CustomType.Parameter("excludedPaths") @Nullable List<String> excludedPaths,
-        @CustomType.Parameter("excludedProcesses") @Nullable List<String> excludedProcesses,
-        @CustomType.Parameter("excludedUsers") @Nullable List<String> excludedUsers,
-        @CustomType.Parameter("monitorAttributes") @Nullable Boolean monitorAttributes,
-        @CustomType.Parameter("monitorCreate") @Nullable Boolean monitorCreate,
-        @CustomType.Parameter("monitorDelete") @Nullable Boolean monitorDelete,
-        @CustomType.Parameter("monitorModify") @Nullable Boolean monitorModify,
-        @CustomType.Parameter("monitorRead") @Nullable Boolean monitorRead,
-        @CustomType.Parameter("monitoredPaths") @Nullable List<String> monitoredPaths,
-        @CustomType.Parameter("monitoredProcesses") @Nullable List<String> monitoredProcesses,
-        @CustomType.Parameter("monitoredUsers") @Nullable List<String> monitoredUsers) {
-        this.excludedPaths = excludedPaths;
-        this.excludedProcesses = excludedProcesses;
-        this.excludedUsers = excludedUsers;
-        this.monitorAttributes = monitorAttributes;
-        this.monitorCreate = monitorCreate;
-        this.monitorDelete = monitorDelete;
-        this.monitorModify = monitorModify;
-        this.monitorRead = monitorRead;
-        this.monitoredPaths = monitoredPaths;
-        this.monitoredProcesses = monitoredProcesses;
-        this.monitoredUsers = monitoredUsers;
-    }
-
+    private ContainerRuntimePolicyFileIntegrityMonitoring() {}
     /**
      * @return List of paths to be excluded from being monitored.
      * 
@@ -180,7 +155,7 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
     public static Builder builder(ContainerRuntimePolicyFileIntegrityMonitoring defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedPaths;
         private @Nullable List<String> excludedProcesses;
@@ -193,11 +168,7 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
         private @Nullable List<String> monitoredPaths;
         private @Nullable List<String> monitoredProcesses;
         private @Nullable List<String> monitoredUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ContainerRuntimePolicyFileIntegrityMonitoring defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedPaths = defaults.excludedPaths;
@@ -213,6 +184,7 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
     	      this.monitoredUsers = defaults.monitoredUsers;
         }
 
+        @CustomType.Setter
         public Builder excludedPaths(@Nullable List<String> excludedPaths) {
             this.excludedPaths = excludedPaths;
             return this;
@@ -220,6 +192,7 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
         public Builder excludedPaths(String... excludedPaths) {
             return excludedPaths(List.of(excludedPaths));
         }
+        @CustomType.Setter
         public Builder excludedProcesses(@Nullable List<String> excludedProcesses) {
             this.excludedProcesses = excludedProcesses;
             return this;
@@ -227,6 +200,7 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
         public Builder excludedProcesses(String... excludedProcesses) {
             return excludedProcesses(List.of(excludedProcesses));
         }
+        @CustomType.Setter
         public Builder excludedUsers(@Nullable List<String> excludedUsers) {
             this.excludedUsers = excludedUsers;
             return this;
@@ -234,26 +208,32 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
         public Builder excludedUsers(String... excludedUsers) {
             return excludedUsers(List.of(excludedUsers));
         }
+        @CustomType.Setter
         public Builder monitorAttributes(@Nullable Boolean monitorAttributes) {
             this.monitorAttributes = monitorAttributes;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorCreate(@Nullable Boolean monitorCreate) {
             this.monitorCreate = monitorCreate;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorDelete(@Nullable Boolean monitorDelete) {
             this.monitorDelete = monitorDelete;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorModify(@Nullable Boolean monitorModify) {
             this.monitorModify = monitorModify;
             return this;
         }
+        @CustomType.Setter
         public Builder monitorRead(@Nullable Boolean monitorRead) {
             this.monitorRead = monitorRead;
             return this;
         }
+        @CustomType.Setter
         public Builder monitoredPaths(@Nullable List<String> monitoredPaths) {
             this.monitoredPaths = monitoredPaths;
             return this;
@@ -261,6 +241,7 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
         public Builder monitoredPaths(String... monitoredPaths) {
             return monitoredPaths(List.of(monitoredPaths));
         }
+        @CustomType.Setter
         public Builder monitoredProcesses(@Nullable List<String> monitoredProcesses) {
             this.monitoredProcesses = monitoredProcesses;
             return this;
@@ -268,14 +249,28 @@ public final class ContainerRuntimePolicyFileIntegrityMonitoring {
         public Builder monitoredProcesses(String... monitoredProcesses) {
             return monitoredProcesses(List.of(monitoredProcesses));
         }
+        @CustomType.Setter
         public Builder monitoredUsers(@Nullable List<String> monitoredUsers) {
             this.monitoredUsers = monitoredUsers;
             return this;
         }
         public Builder monitoredUsers(String... monitoredUsers) {
             return monitoredUsers(List.of(monitoredUsers));
-        }        public ContainerRuntimePolicyFileIntegrityMonitoring build() {
-            return new ContainerRuntimePolicyFileIntegrityMonitoring(excludedPaths, excludedProcesses, excludedUsers, monitorAttributes, monitorCreate, monitorDelete, monitorModify, monitorRead, monitoredPaths, monitoredProcesses, monitoredUsers);
+        }
+        public ContainerRuntimePolicyFileIntegrityMonitoring build() {
+            final var o = new ContainerRuntimePolicyFileIntegrityMonitoring();
+            o.excludedPaths = excludedPaths;
+            o.excludedProcesses = excludedProcesses;
+            o.excludedUsers = excludedUsers;
+            o.monitorAttributes = monitorAttributes;
+            o.monitorCreate = monitorCreate;
+            o.monitorDelete = monitorDelete;
+            o.monitorModify = monitorModify;
+            o.monitorRead = monitorRead;
+            o.monitoredPaths = monitoredPaths;
+            o.monitoredProcesses = monitoredProcesses;
+            o.monitoredUsers = monitoredUsers;
+            return o;
         }
     }
 }

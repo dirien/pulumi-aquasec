@@ -14,13 +14,9 @@ public final class RoleMappingOauth2 {
      * @return Role Mapping is used to define the IdP role that the user will assume in Aqua
      * 
      */
-    private final Map<String,String> roleMapping;
+    private Map<String,String> roleMapping;
 
-    @CustomType.Constructor
-    private RoleMappingOauth2(@CustomType.Parameter("roleMapping") Map<String,String> roleMapping) {
-        this.roleMapping = roleMapping;
-    }
-
+    private RoleMappingOauth2() {}
     /**
      * @return Role Mapping is used to define the IdP role that the user will assume in Aqua
      * 
@@ -36,24 +32,24 @@ public final class RoleMappingOauth2 {
     public static Builder builder(RoleMappingOauth2 defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Map<String,String> roleMapping;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(RoleMappingOauth2 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.roleMapping = defaults.roleMapping;
         }
 
+        @CustomType.Setter
         public Builder roleMapping(Map<String,String> roleMapping) {
             this.roleMapping = Objects.requireNonNull(roleMapping);
             return this;
-        }        public RoleMappingOauth2 build() {
-            return new RoleMappingOauth2(roleMapping);
+        }
+        public RoleMappingOauth2 build() {
+            final var o = new RoleMappingOauth2();
+            o.roleMapping = roleMapping;
+            return o;
         }
     }
 }

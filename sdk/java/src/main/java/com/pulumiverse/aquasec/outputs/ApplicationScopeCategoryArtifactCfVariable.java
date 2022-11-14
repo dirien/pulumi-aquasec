@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScopeCategoryArtifactCfVariable {
-    private final @Nullable String attribute;
-    private final @Nullable String value;
+    private @Nullable String attribute;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ApplicationScopeCategoryArtifactCfVariable(
-        @CustomType.Parameter("attribute") @Nullable String attribute,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.attribute = attribute;
-        this.value = value;
-    }
-
+    private ApplicationScopeCategoryArtifactCfVariable() {}
     public Optional<String> attribute() {
         return Optional.ofNullable(this.attribute);
     }
@@ -36,30 +29,32 @@ public final class ApplicationScopeCategoryArtifactCfVariable {
     public static Builder builder(ApplicationScopeCategoryArtifactCfVariable defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String attribute;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationScopeCategoryArtifactCfVariable defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attribute = defaults.attribute;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder attribute(@Nullable String attribute) {
             this.attribute = attribute;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ApplicationScopeCategoryArtifactCfVariable build() {
-            return new ApplicationScopeCategoryArtifactCfVariable(attribute, value);
+        }
+        public ApplicationScopeCategoryArtifactCfVariable build() {
+            final var o = new ApplicationScopeCategoryArtifactCfVariable();
+            o.attribute = attribute;
+            o.value = value;
+            return o;
         }
     }
 }

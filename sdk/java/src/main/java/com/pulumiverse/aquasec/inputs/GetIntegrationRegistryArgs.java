@@ -5,7 +5,6 @@ package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,21 +16,6 @@ import javax.annotation.Nullable;
 public final class GetIntegrationRegistryArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetIntegrationRegistryArgs Empty = new GetIntegrationRegistryArgs();
-
-    /**
-     * Whether to automatically pull and rescan images from the registry on creation and daily
-     * 
-     */
-    @Import(name="autoPullRescan")
-    private @Nullable Output<Boolean> autoPullRescan;
-
-    /**
-     * @return Whether to automatically pull and rescan images from the registry on creation and daily
-     * 
-     */
-    public Optional<Output<Boolean>> autoPullRescan() {
-        return Optional.ofNullable(this.autoPullRescan);
-    }
 
     /**
      * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
@@ -126,7 +110,6 @@ public final class GetIntegrationRegistryArgs extends com.pulumi.resources.Invok
     private GetIntegrationRegistryArgs() {}
 
     private GetIntegrationRegistryArgs(GetIntegrationRegistryArgs $) {
-        this.autoPullRescan = $.autoPullRescan;
         this.imageCreationDateCondition = $.imageCreationDateCondition;
         this.name = $.name;
         this.pullImageAge = $.pullImageAge;
@@ -151,27 +134,6 @@ public final class GetIntegrationRegistryArgs extends com.pulumi.resources.Invok
 
         public Builder(GetIntegrationRegistryArgs defaults) {
             $ = new GetIntegrationRegistryArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
-         * 
-         * @return builder
-         * 
-         */
-        public Builder autoPullRescan(@Nullable Output<Boolean> autoPullRescan) {
-            $.autoPullRescan = autoPullRescan;
-            return this;
-        }
-
-        /**
-         * @param autoPullRescan Whether to automatically pull and rescan images from the registry on creation and daily
-         * 
-         * @return builder
-         * 
-         */
-        public Builder autoPullRescan(Boolean autoPullRescan) {
-            return autoPullRescan(Output.of(autoPullRescan));
         }
 
         /**

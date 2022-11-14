@@ -27,9 +27,7 @@ export function getApplicationScope(args: GetApplicationScopeArgs, opts?: pulumi
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("aquasec:index/getApplicationScope:getApplicationScope", {
         "categories": args.categories,
-        "description": args.description,
         "name": args.name,
-        "ownerEmail": args.ownerEmail,
     }, opts);
 }
 
@@ -42,17 +40,9 @@ export interface GetApplicationScopeArgs {
      */
     categories?: inputs.GetApplicationScopeCategory[];
     /**
-     * Description of the application scope.
-     */
-    description?: string;
-    /**
      * Name of an application scope.
      */
     name: string;
-    /**
-     * Name of an application scope.
-     */
-    ownerEmail?: string;
 }
 
 /**
@@ -70,7 +60,7 @@ export interface GetApplicationScopeResult {
     /**
      * Description of the application scope.
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -82,7 +72,7 @@ export interface GetApplicationScopeResult {
     /**
      * Name of an application scope.
      */
-    readonly ownerEmail?: string;
+    readonly ownerEmail: string;
 }
 
 export function getApplicationScopeOutput(args: GetApplicationScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationScopeResult> {
@@ -98,15 +88,7 @@ export interface GetApplicationScopeOutputArgs {
      */
     categories?: pulumi.Input<pulumi.Input<inputs.GetApplicationScopeCategoryArgs>[]>;
     /**
-     * Description of the application scope.
-     */
-    description?: pulumi.Input<string>;
-    /**
      * Name of an application scope.
      */
     name: pulumi.Input<string>;
-    /**
-     * Name of an application scope.
-     */
-    ownerEmail?: pulumi.Input<string>;
 }

@@ -32,7 +32,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of explicitly allowed images.
      * 
      */
-    @Export(name="allowedImages", type=List.class, parameters={String.class})
+    @Export(name="allowedImages", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> allowedImages;
 
     /**
@@ -42,31 +42,17 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<List<String>>> allowedImages() {
         return Codegen.optional(this.allowedImages);
     }
-    @Export(name="applicationScopes", type=List.class, parameters={String.class})
+    @Export(name="applicationScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> applicationScopes;
 
     public Output<List<String>> applicationScopes() {
         return this.applicationScopes;
     }
     /**
-     * What type of assurance policy is described.
-     * 
-     */
-    @Export(name="assuranceType", type=String.class, parameters={})
-    private Output</* @Nullable */ String> assuranceType;
-
-    /**
-     * @return What type of assurance policy is described.
-     * 
-     */
-    public Output<Optional<String>> assuranceType() {
-        return Codegen.optional(this.assuranceType);
-    }
-    /**
      * Indicates if auditing for failures.
      * 
      */
-    @Export(name="auditOnFailure", type=Boolean.class, parameters={})
+    @Export(name="auditOnFailure", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> auditOnFailure;
 
     /**
@@ -80,7 +66,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Name of user account that created the policy.
      * 
      */
-    @Export(name="author", type=String.class, parameters={})
+    @Export(name="author", refs={String.class}, tree="[0]")
     private Output<String> author;
 
     /**
@@ -90,19 +76,19 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<String> author() {
         return this.author;
     }
-    @Export(name="autoScanConfigured", type=Boolean.class, parameters={})
+    @Export(name="autoScanConfigured", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoScanConfigured;
 
     public Output<Optional<Boolean>> autoScanConfigured() {
         return Codegen.optional(this.autoScanConfigured);
     }
-    @Export(name="autoScanEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoScanEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoScanEnabled;
 
     public Output<Optional<Boolean>> autoScanEnabled() {
         return Codegen.optional(this.autoScanEnabled);
     }
-    @Export(name="autoScanTimes", type=List.class, parameters={KubernetesAssurancePolicyAutoScanTime.class})
+    @Export(name="autoScanTimes", refs={List.class,KubernetesAssurancePolicyAutoScanTime.class}, tree="[0,1]")
     private Output<List<KubernetesAssurancePolicyAutoScanTime>> autoScanTimes;
 
     public Output<List<KubernetesAssurancePolicyAutoScanTime>> autoScanTimes() {
@@ -112,7 +98,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of function&#39;s forbidden permissions.
      * 
      */
-    @Export(name="blacklistPermissions", type=List.class, parameters={String.class})
+    @Export(name="blacklistPermissions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blacklistPermissions;
 
     /**
@@ -126,7 +112,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if blacklist permissions is relevant.
      * 
      */
-    @Export(name="blacklistPermissionsEnabled", type=Boolean.class, parameters={})
+    @Export(name="blacklistPermissionsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blacklistPermissionsEnabled;
 
     /**
@@ -140,7 +126,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of blacklisted licenses.
      * 
      */
-    @Export(name="blacklistedLicenses", type=List.class, parameters={String.class})
+    @Export(name="blacklistedLicenses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> blacklistedLicenses;
 
     /**
@@ -154,7 +140,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Lndicates if license blacklist is relevant.
      * 
      */
-    @Export(name="blacklistedLicensesEnabled", type=Boolean.class, parameters={})
+    @Export(name="blacklistedLicensesEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blacklistedLicensesEnabled;
 
     /**
@@ -168,7 +154,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if failed images are blocked.
      * 
      */
-    @Export(name="blockFailed", type=Boolean.class, parameters={})
+    @Export(name="blockFailed", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> blockFailed;
 
     /**
@@ -178,7 +164,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<Boolean>> blockFailed() {
         return Codegen.optional(this.blockFailed);
     }
-    @Export(name="controlExcludeNoFix", type=Boolean.class, parameters={})
+    @Export(name="controlExcludeNoFix", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> controlExcludeNoFix;
 
     public Output<Optional<Boolean>> controlExcludeNoFix() {
@@ -188,7 +174,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of Custom user scripts for checks.
      * 
      */
-    @Export(name="customChecks", type=List.class, parameters={KubernetesAssurancePolicyCustomCheck.class})
+    @Export(name="customChecks", refs={List.class,KubernetesAssurancePolicyCustomCheck.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAssurancePolicyCustomCheck>> customChecks;
 
     /**
@@ -202,7 +188,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if scanning should include custom checks.
      * 
      */
-    @Export(name="customChecksEnabled", type=Boolean.class, parameters={})
+    @Export(name="customChecksEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> customChecksEnabled;
 
     /**
@@ -212,7 +198,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<Boolean>> customChecksEnabled() {
         return Codegen.optional(this.customChecksEnabled);
     }
-    @Export(name="customSeverityEnabled", type=Boolean.class, parameters={})
+    @Export(name="customSeverityEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> customSeverityEnabled;
 
     public Output<Optional<Boolean>> customSeverityEnabled() {
@@ -222,7 +208,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if cves blacklist is relevant.
      * 
      */
-    @Export(name="cvesBlackListEnabled", type=Boolean.class, parameters={})
+    @Export(name="cvesBlackListEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cvesBlackListEnabled;
 
     /**
@@ -236,7 +222,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of cves blacklisted items.
      * 
      */
-    @Export(name="cvesBlackLists", type=List.class, parameters={String.class})
+    @Export(name="cvesBlackLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> cvesBlackLists;
 
     /**
@@ -250,7 +236,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if cves whitelist is relevant.
      * 
      */
-    @Export(name="cvesWhiteListEnabled", type=Boolean.class, parameters={})
+    @Export(name="cvesWhiteListEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cvesWhiteListEnabled;
 
     /**
@@ -264,7 +250,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of cves whitelisted licenses
      * 
      */
-    @Export(name="cvesWhiteLists", type=List.class, parameters={String.class})
+    @Export(name="cvesWhiteLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> cvesWhiteLists;
 
     /**
@@ -278,7 +264,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Identifier of the cvss severity.
      * 
      */
-    @Export(name="cvssSeverity", type=String.class, parameters={})
+    @Export(name="cvssSeverity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cvssSeverity;
 
     /**
@@ -292,7 +278,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if the cvss severity is scanned.
      * 
      */
-    @Export(name="cvssSeverityEnabled", type=Boolean.class, parameters={})
+    @Export(name="cvssSeverityEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cvssSeverityEnabled;
 
     /**
@@ -306,7 +292,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates that policy should ignore cvss cases that do not have a known fix.
      * 
      */
-    @Export(name="cvssSeverityExcludeNoFix", type=Boolean.class, parameters={})
+    @Export(name="cvssSeverityExcludeNoFix", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cvssSeverityExcludeNoFix;
 
     /**
@@ -316,7 +302,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<Boolean>> cvssSeverityExcludeNoFix() {
         return Codegen.optional(this.cvssSeverityExcludeNoFix);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
@@ -326,7 +312,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if malware should block the image.
      * 
      */
-    @Export(name="disallowMalware", type=Boolean.class, parameters={})
+    @Export(name="disallowMalware", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disallowMalware;
 
     /**
@@ -336,7 +322,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<Boolean>> disallowMalware() {
         return Codegen.optional(this.disallowMalware);
     }
-    @Export(name="dockerCisEnabled", type=Boolean.class, parameters={})
+    @Export(name="dockerCisEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dockerCisEnabled;
 
     public Output<Optional<Boolean>> dockerCisEnabled() {
@@ -346,7 +332,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Name of the container image.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -356,85 +342,85 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<String>> domain() {
         return Codegen.optional(this.domain);
     }
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domainName;
 
     public Output<Optional<String>> domainName() {
         return Codegen.optional(this.domainName);
     }
-    @Export(name="dtaEnabled", type=Boolean.class, parameters={})
+    @Export(name="dtaEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dtaEnabled;
 
     public Output<Optional<Boolean>> dtaEnabled() {
         return Codegen.optional(this.dtaEnabled);
     }
-    @Export(name="dtaSeverity", type=String.class, parameters={})
+    @Export(name="dtaSeverity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dtaSeverity;
 
     public Output<Optional<String>> dtaSeverity() {
         return Codegen.optional(this.dtaSeverity);
     }
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     public Output<Optional<Boolean>> enabled() {
         return Codegen.optional(this.enabled);
     }
-    @Export(name="enforce", type=Boolean.class, parameters={})
+    @Export(name="enforce", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforce;
 
     public Output<Optional<Boolean>> enforce() {
         return Codegen.optional(this.enforce);
     }
-    @Export(name="enforceAfterDays", type=Integer.class, parameters={})
+    @Export(name="enforceAfterDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> enforceAfterDays;
 
     public Output<Optional<Integer>> enforceAfterDays() {
         return Codegen.optional(this.enforceAfterDays);
     }
-    @Export(name="enforceExcessivePermissions", type=Boolean.class, parameters={})
+    @Export(name="enforceExcessivePermissions", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enforceExcessivePermissions;
 
     public Output<Optional<Boolean>> enforceExcessivePermissions() {
         return Codegen.optional(this.enforceExcessivePermissions);
     }
-    @Export(name="exceptionalMonitoredMalwarePaths", type=List.class, parameters={String.class})
+    @Export(name="exceptionalMonitoredMalwarePaths", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> exceptionalMonitoredMalwarePaths;
 
     public Output<Optional<List<String>>> exceptionalMonitoredMalwarePaths() {
         return Codegen.optional(this.exceptionalMonitoredMalwarePaths);
     }
-    @Export(name="forbiddenLabels", type=List.class, parameters={KubernetesAssurancePolicyForbiddenLabel.class})
+    @Export(name="forbiddenLabels", refs={List.class,KubernetesAssurancePolicyForbiddenLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAssurancePolicyForbiddenLabel>> forbiddenLabels;
 
     public Output<Optional<List<KubernetesAssurancePolicyForbiddenLabel>>> forbiddenLabels() {
         return Codegen.optional(this.forbiddenLabels);
     }
-    @Export(name="forbiddenLabelsEnabled", type=Boolean.class, parameters={})
+    @Export(name="forbiddenLabelsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forbiddenLabelsEnabled;
 
     public Output<Optional<Boolean>> forbiddenLabelsEnabled() {
         return Codegen.optional(this.forbiddenLabelsEnabled);
     }
-    @Export(name="forceMicroenforcer", type=Boolean.class, parameters={})
+    @Export(name="forceMicroenforcer", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceMicroenforcer;
 
     public Output<Optional<Boolean>> forceMicroenforcer() {
         return Codegen.optional(this.forceMicroenforcer);
     }
-    @Export(name="functionIntegrityEnabled", type=Boolean.class, parameters={})
+    @Export(name="functionIntegrityEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> functionIntegrityEnabled;
 
     public Output<Optional<Boolean>> functionIntegrityEnabled() {
         return Codegen.optional(this.functionIntegrityEnabled);
     }
-    @Export(name="ignoreRecentlyPublishedVln", type=Boolean.class, parameters={})
+    @Export(name="ignoreRecentlyPublishedVln", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ignoreRecentlyPublishedVln;
 
     public Output<Optional<Boolean>> ignoreRecentlyPublishedVln() {
         return Codegen.optional(this.ignoreRecentlyPublishedVln);
     }
-    @Export(name="ignoreRecentlyPublishedVlnPeriod", type=Integer.class, parameters={})
+    @Export(name="ignoreRecentlyPublishedVlnPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> ignoreRecentlyPublishedVlnPeriod;
 
     public Output<Integer> ignoreRecentlyPublishedVlnPeriod() {
@@ -444,7 +430,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if risk resources are ignored.
      * 
      */
-    @Export(name="ignoreRiskResourcesEnabled", type=Boolean.class, parameters={})
+    @Export(name="ignoreRiskResourcesEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ignoreRiskResourcesEnabled;
 
     /**
@@ -458,7 +444,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of ignored risk resources.
      * 
      */
-    @Export(name="ignoredRiskResources", type=List.class, parameters={String.class})
+    @Export(name="ignoredRiskResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ignoredRiskResources;
 
     /**
@@ -472,7 +458,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of images.
      * 
      */
-    @Export(name="images", type=List.class, parameters={String.class})
+    @Export(name="images", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> images;
 
     /**
@@ -482,7 +468,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<List<String>>> images() {
         return Codegen.optional(this.images);
     }
-    @Export(name="kubeCisEnabled", type=Boolean.class, parameters={})
+    @Export(name="kubeCisEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> kubeCisEnabled;
 
     public Output<Optional<Boolean>> kubeCisEnabled() {
@@ -492,7 +478,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of kubernetes control names and available kubernetes controls are: &#39;Access to host IPC namespace&#39;, &#39;Access to host PID&#39;, &#39;Access to host network&#39;, &#39;Access to host ports&#39;, &#39;All container images must start with a GCR domain&#39;, &#39;All container images must start with an ECR domain&#39;, &#39;All container images must start with the *.azurecr.io domain&#39;, &#39;CPU not limited&#39;, &#39;CPU requests not specified&#39;, &#39;Can elevate its own privileges&#39;, &#39;ConfigMap with secrets&#39;, &#39;ConfigMap with sensitive content&#39;, &#39;Container images from public registries used&#39;, &#39;Default capabilitiessome containers do not drop all&#39;, &#39;Default capabilitiessome containers do not drop any&#39;, &#39;Delete pod logs&#39;, &#39;Exec into Pods&#39;, &#39;Image tag :latest used&#39;, &#39;Manage EKS IAM Auth ConfigMap&#39;, &#39;Manage Kubernetes RBAC resources&#39;, &#39;Manage Kubernetes networking&#39;, &#39;Manage Kubernetes workloads and pods&#39;, &#39;Manage all resources&#39;, &#39;Manage all resources at the namespace&#39;, &#39;Manage configmaps&#39;, &#39;Manage namespace secrets&#39;, &#39;Manage secrets&#39;, &#39;Manage webhookconfigurations&#39;, &#39;Manages /etc/hosts&#39;, &#39;Memory not limited&#39;, &#39;Memory requests not specified&#39;, &#39;Non-core volume types used.&#39;, &#39;Non-default /proc masks set&#39;, &#39;Privileged&#39;, &#39;Root file system is not read-only&#39;, &#39;Runs as root user&#39;, &#39;Runs with GID &lt;= 10000&#39;, &#39;Runs with UID &lt;= 10000&#39;, &#39;Runs with a root primary or supplementary GID&#39;, &#39;Runtime/Default AppArmor profile not set&#39;, &#39;Runtime/Default Seccomp profile not set&#39;, &#39;SELinux custom options set&#39;, &#39;SYS_ADMIN capability added&#39;, &#39;Seccomp policies disabled&#39;, &#39;Service with External IP&#39;, &#39;Specific capabilities added&#39;, &#39;Unsafe sysctl options set&#39;, &#39;User with admin access&#39;, &#39;Workloads in the default namespace&#39;, &#39;hostPath volume mounted with docker.sock&#39;, &#39;hostPath volumes mounted&#39;
      * 
      */
-    @Export(name="kubernetesControlsNames", type=List.class, parameters={String.class})
+    @Export(name="kubernetesControlsNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> kubernetesControlsNames;
 
     /**
@@ -506,7 +492,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of labels.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={String.class})
+    @Export(name="labels", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> labels;
 
     /**
@@ -516,7 +502,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<List<String>>> labels() {
         return Codegen.optional(this.labels);
     }
-    @Export(name="malwareAction", type=String.class, parameters={})
+    @Export(name="malwareAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> malwareAction;
 
     public Output<Optional<String>> malwareAction() {
@@ -526,7 +512,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Value of allowed maximum score.
      * 
      */
-    @Export(name="maximumScore", type=Double.class, parameters={})
+    @Export(name="maximumScore", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> maximumScore;
 
     /**
@@ -540,7 +526,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if exceeding the maximum score is scanned.
      * 
      */
-    @Export(name="maximumScoreEnabled", type=Boolean.class, parameters={})
+    @Export(name="maximumScoreEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> maximumScoreEnabled;
 
     /**
@@ -554,7 +540,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates that policy should ignore cases that do not have a known fix.
      * 
      */
-    @Export(name="maximumScoreExcludeNoFix", type=Boolean.class, parameters={})
+    @Export(name="maximumScoreExcludeNoFix", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> maximumScoreExcludeNoFix;
 
     /**
@@ -564,13 +550,13 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<Boolean>> maximumScoreExcludeNoFix() {
         return Codegen.optional(this.maximumScoreExcludeNoFix);
     }
-    @Export(name="monitoredMalwarePaths", type=List.class, parameters={String.class})
+    @Export(name="monitoredMalwarePaths", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> monitoredMalwarePaths;
 
     public Output<Optional<List<String>>> monitoredMalwarePaths() {
         return Codegen.optional(this.monitoredMalwarePaths);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
@@ -580,7 +566,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if raise a warning for images that should only be run as root.
      * 
      */
-    @Export(name="onlyNoneRootUsers", type=Boolean.class, parameters={})
+    @Export(name="onlyNoneRootUsers", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> onlyNoneRootUsers;
 
     /**
@@ -594,7 +580,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if packages blacklist is relevant.
      * 
      */
-    @Export(name="packagesBlackListEnabled", type=Boolean.class, parameters={})
+    @Export(name="packagesBlackListEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> packagesBlackListEnabled;
 
     /**
@@ -608,7 +594,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of backlisted images.
      * 
      */
-    @Export(name="packagesBlackLists", type=List.class, parameters={KubernetesAssurancePolicyPackagesBlackList.class})
+    @Export(name="packagesBlackLists", refs={List.class,KubernetesAssurancePolicyPackagesBlackList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAssurancePolicyPackagesBlackList>> packagesBlackLists;
 
     /**
@@ -622,7 +608,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if packages whitelist is relevant.
      * 
      */
-    @Export(name="packagesWhiteListEnabled", type=Boolean.class, parameters={})
+    @Export(name="packagesWhiteListEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> packagesWhiteListEnabled;
 
     /**
@@ -636,7 +622,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of whitelisted images.
      * 
      */
-    @Export(name="packagesWhiteLists", type=List.class, parameters={KubernetesAssurancePolicyPackagesWhiteList.class})
+    @Export(name="packagesWhiteLists", refs={List.class,KubernetesAssurancePolicyPackagesWhiteList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAssurancePolicyPackagesWhiteList>> packagesWhiteLists;
 
     /**
@@ -646,13 +632,13 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<List<KubernetesAssurancePolicyPackagesWhiteList>>> packagesWhiteLists() {
         return Codegen.optional(this.packagesWhiteLists);
     }
-    @Export(name="partialResultsImageFail", type=Boolean.class, parameters={})
+    @Export(name="partialResultsImageFail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> partialResultsImageFail;
 
     public Output<Optional<Boolean>> partialResultsImageFail() {
         return Codegen.optional(this.partialResultsImageFail);
     }
-    @Export(name="readOnly", type=Boolean.class, parameters={})
+    @Export(name="readOnly", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readOnly;
 
     public Output<Optional<Boolean>> readOnly() {
@@ -662,7 +648,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of registries.
      * 
      */
-    @Export(name="registries", type=List.class, parameters={String.class})
+    @Export(name="registries", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> registries;
 
     /**
@@ -672,25 +658,25 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<List<String>>> registries() {
         return Codegen.optional(this.registries);
     }
-    @Export(name="registry", type=String.class, parameters={})
+    @Export(name="registry", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> registry;
 
     public Output<Optional<String>> registry() {
         return Codegen.optional(this.registry);
     }
-    @Export(name="requiredLabels", type=List.class, parameters={KubernetesAssurancePolicyRequiredLabel.class})
+    @Export(name="requiredLabels", refs={List.class,KubernetesAssurancePolicyRequiredLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAssurancePolicyRequiredLabel>> requiredLabels;
 
     public Output<Optional<List<KubernetesAssurancePolicyRequiredLabel>>> requiredLabels() {
         return Codegen.optional(this.requiredLabels);
     }
-    @Export(name="requiredLabelsEnabled", type=Boolean.class, parameters={})
+    @Export(name="requiredLabelsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> requiredLabelsEnabled;
 
     public Output<Optional<Boolean>> requiredLabelsEnabled() {
         return Codegen.optional(this.requiredLabelsEnabled);
     }
-    @Export(name="scanNfsMounts", type=Boolean.class, parameters={})
+    @Export(name="scanNfsMounts", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scanNfsMounts;
 
     public Output<Optional<Boolean>> scanNfsMounts() {
@@ -700,7 +686,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if scan should include sensitive data in the image.
      * 
      */
-    @Export(name="scanSensitiveData", type=Boolean.class, parameters={})
+    @Export(name="scanSensitiveData", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scanSensitiveData;
 
     /**
@@ -714,7 +700,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if scanning should include scap.
      * 
      */
-    @Export(name="scapEnabled", type=Boolean.class, parameters={})
+    @Export(name="scapEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> scapEnabled;
 
     /**
@@ -728,7 +714,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of SCAP user scripts for checks.
      * 
      */
-    @Export(name="scapFiles", type=List.class, parameters={String.class})
+    @Export(name="scapFiles", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scapFiles;
 
     /**
@@ -738,7 +724,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
     public Output<Optional<List<String>>> scapFiles() {
         return Codegen.optional(this.scapFiles);
     }
-    @Export(name="scopes", type=List.class, parameters={KubernetesAssurancePolicyScope.class})
+    @Export(name="scopes", refs={List.class,KubernetesAssurancePolicyScope.class}, tree="[0,1]")
     private Output<List<KubernetesAssurancePolicyScope>> scopes;
 
     public Output<List<KubernetesAssurancePolicyScope>> scopes() {
@@ -748,7 +734,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of trusted images.
      * 
      */
-    @Export(name="trustedBaseImages", type=List.class, parameters={KubernetesAssurancePolicyTrustedBaseImage.class})
+    @Export(name="trustedBaseImages", refs={List.class,KubernetesAssurancePolicyTrustedBaseImage.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAssurancePolicyTrustedBaseImage>> trustedBaseImages;
 
     /**
@@ -762,7 +748,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if list of trusted base images is relevant.
      * 
      */
-    @Export(name="trustedBaseImagesEnabled", type=Boolean.class, parameters={})
+    @Export(name="trustedBaseImagesEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> trustedBaseImagesEnabled;
 
     /**
@@ -776,7 +762,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * List of whitelisted licenses.
      * 
      */
-    @Export(name="whitelistedLicenses", type=List.class, parameters={String.class})
+    @Export(name="whitelistedLicenses", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> whitelistedLicenses;
 
     /**
@@ -790,7 +776,7 @@ public class KubernetesAssurancePolicy extends com.pulumi.resources.CustomResour
      * Indicates if license blacklist is relevant.
      * 
      */
-    @Export(name="whitelistedLicensesEnabled", type=Boolean.class, parameters={})
+    @Export(name="whitelistedLicensesEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> whitelistedLicensesEnabled;
 
     /**

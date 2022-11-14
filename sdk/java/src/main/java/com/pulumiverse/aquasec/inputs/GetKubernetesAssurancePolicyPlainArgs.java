@@ -4,47 +4,13 @@
 package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.annotations.Import;
-import java.lang.Boolean;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetKubernetesAssurancePolicyPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesAssurancePolicyPlainArgs Empty = new GetKubernetesAssurancePolicyPlainArgs();
-
-    /**
-     * List of kubernetes control names
-     * 
-     */
-    @Import(name="kubernetesControlsNames")
-    private @Nullable List<String> kubernetesControlsNames;
-
-    /**
-     * @return List of kubernetes control names
-     * 
-     */
-    public Optional<List<String>> kubernetesControlsNames() {
-        return Optional.ofNullable(this.kubernetesControlsNames);
-    }
-
-    /**
-     * Indicates that policy should ignore cases that do not have a known fix.
-     * 
-     */
-    @Import(name="maximumScoreExcludeNoFix")
-    private @Nullable Boolean maximumScoreExcludeNoFix;
-
-    /**
-     * @return Indicates that policy should ignore cases that do not have a known fix.
-     * 
-     */
-    public Optional<Boolean> maximumScoreExcludeNoFix() {
-        return Optional.ofNullable(this.maximumScoreExcludeNoFix);
-    }
 
     @Import(name="name", required=true)
     private String name;
@@ -56,8 +22,6 @@ public final class GetKubernetesAssurancePolicyPlainArgs extends com.pulumi.reso
     private GetKubernetesAssurancePolicyPlainArgs() {}
 
     private GetKubernetesAssurancePolicyPlainArgs(GetKubernetesAssurancePolicyPlainArgs $) {
-        this.kubernetesControlsNames = $.kubernetesControlsNames;
-        this.maximumScoreExcludeNoFix = $.maximumScoreExcludeNoFix;
         this.name = $.name;
     }
 
@@ -77,38 +41,6 @@ public final class GetKubernetesAssurancePolicyPlainArgs extends com.pulumi.reso
 
         public Builder(GetKubernetesAssurancePolicyPlainArgs defaults) {
             $ = new GetKubernetesAssurancePolicyPlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param kubernetesControlsNames List of kubernetes control names
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kubernetesControlsNames(@Nullable List<String> kubernetesControlsNames) {
-            $.kubernetesControlsNames = kubernetesControlsNames;
-            return this;
-        }
-
-        /**
-         * @param kubernetesControlsNames List of kubernetes control names
-         * 
-         * @return builder
-         * 
-         */
-        public Builder kubernetesControlsNames(String... kubernetesControlsNames) {
-            return kubernetesControlsNames(List.of(kubernetesControlsNames));
-        }
-
-        /**
-         * @param maximumScoreExcludeNoFix Indicates that policy should ignore cases that do not have a known fix.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maximumScoreExcludeNoFix(@Nullable Boolean maximumScoreExcludeNoFix) {
-            $.maximumScoreExcludeNoFix = maximumScoreExcludeNoFix;
-            return this;
         }
 
         public Builder name(String name) {

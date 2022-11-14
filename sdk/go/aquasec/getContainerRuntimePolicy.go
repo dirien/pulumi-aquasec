@@ -49,7 +49,7 @@ func LookupContainerRuntimePolicy(ctx *pulumi.Context, args *LookupContainerRunt
 // A collection of arguments for invoking getContainerRuntimePolicy.
 type LookupContainerRuntimePolicyArgs struct {
 	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions *GetContainerRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
+	MalwareScanOptions []GetContainerRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
 	// Name of the container runtime policy
 	Name string `pulumi:"name"`
 }
@@ -147,7 +147,7 @@ type LookupContainerRuntimePolicyResult struct {
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges bool `pulumi:"limitNewPrivileges"`
 	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions *GetContainerRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
+	MalwareScanOptions []GetContainerRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges bool `pulumi:"monitorSystemTimeChanges"`
 	// Name of the container runtime policy
@@ -180,7 +180,7 @@ func LookupContainerRuntimePolicyOutput(ctx *pulumi.Context, args LookupContaine
 // A collection of arguments for invoking getContainerRuntimePolicy.
 type LookupContainerRuntimePolicyOutputArgs struct {
 	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions GetContainerRuntimePolicyMalwareScanOptionsPtrInput `pulumi:"malwareScanOptions"`
+	MalwareScanOptions GetContainerRuntimePolicyMalwareScanOptionArrayInput `pulumi:"malwareScanOptions"`
 	// Name of the container runtime policy
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -432,10 +432,10 @@ func (o LookupContainerRuntimePolicyResultOutput) LimitNewPrivileges() pulumi.Bo
 }
 
 // Configuration for Real-Time Malware Protection.
-func (o LookupContainerRuntimePolicyResultOutput) MalwareScanOptions() GetContainerRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) *GetContainerRuntimePolicyMalwareScanOptions {
+func (o LookupContainerRuntimePolicyResultOutput) MalwareScanOptions() GetContainerRuntimePolicyMalwareScanOptionArrayOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []GetContainerRuntimePolicyMalwareScanOption {
 		return v.MalwareScanOptions
-	}).(GetContainerRuntimePolicyMalwareScanOptionsPtrOutput)
+	}).(GetContainerRuntimePolicyMalwareScanOptionArrayOutput)
 }
 
 // If true, system time changes will be monitored.

@@ -23,12 +23,6 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> ApplicationScopes { get; private set; } = null!;
 
         /// <summary>
-        /// What type of assurance policy is described.
-        /// </summary>
-        [Output("assuranceType")]
-        public Output<string?> AssuranceType { get; private set; } = null!;
-
-        /// <summary>
         /// Indicates if auditing for failures.
         /// </summary>
         [Output("auditOnFailure")]
@@ -424,12 +418,6 @@ namespace Pulumiverse.Aquasec
             get => _applicationScopes ?? (_applicationScopes = new InputList<string>());
             set => _applicationScopes = value;
         }
-
-        /// <summary>
-        /// What type of assurance policy is described.
-        /// </summary>
-        [Input("assuranceType")]
-        public Input<string>? AssuranceType { get; set; }
 
         /// <summary>
         /// Indicates if auditing for failures.
@@ -899,12 +887,6 @@ namespace Pulumiverse.Aquasec
             get => _applicationScopes ?? (_applicationScopes = new InputList<string>());
             set => _applicationScopes = value;
         }
-
-        /// <summary>
-        /// What type of assurance policy is described.
-        /// </summary>
-        [Input("assuranceType")]
-        public Input<string>? AssuranceType { get; set; }
 
         /// <summary>
         /// Indicates if auditing for failures.

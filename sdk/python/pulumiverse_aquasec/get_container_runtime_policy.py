@@ -159,8 +159,8 @@ class GetContainerRuntimePolicyResult:
         if limit_new_privileges and not isinstance(limit_new_privileges, bool):
             raise TypeError("Expected argument 'limit_new_privileges' to be a bool")
         pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
-        if malware_scan_options and not isinstance(malware_scan_options, dict):
-            raise TypeError("Expected argument 'malware_scan_options' to be a dict")
+        if malware_scan_options and not isinstance(malware_scan_options, list):
+            raise TypeError("Expected argument 'malware_scan_options' to be a list")
         pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_time_changes and not isinstance(monitor_system_time_changes, bool):
             raise TypeError("Expected argument 'monitor_system_time_changes' to be a bool")
@@ -546,7 +546,7 @@ class GetContainerRuntimePolicyResult:
 
     @property
     @pulumi.getter(name="malwareScanOptions")
-    def malware_scan_options(self) -> Optional['outputs.GetContainerRuntimePolicyMalwareScanOptionsResult']:
+    def malware_scan_options(self) -> Sequence['outputs.GetContainerRuntimePolicyMalwareScanOptionResult']:
         """
         Configuration for Real-Time Malware Protection.
         """
@@ -670,7 +670,7 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             scope_variables=self.scope_variables)
 
 
-def get_container_runtime_policy(malware_scan_options: Optional[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
+def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']]] = None,
                                  name: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRuntimePolicyResult:
     """
@@ -685,7 +685,7 @@ def get_container_runtime_policy(malware_scan_options: Optional[pulumi.InputType
     ```
 
 
-    :param pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
     :param str name: Name of the container runtime policy
     """
     __args__ = dict()
@@ -751,7 +751,7 @@ def get_container_runtime_policy(malware_scan_options: Optional[pulumi.InputType
 
 
 @_utilities.lift_output_func(get_container_runtime_policy)
-def get_container_runtime_policy_output(malware_scan_options: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs']]]] = None,
+def get_container_runtime_policy_output(malware_scan_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']]]]] = None,
                                         name: Optional[pulumi.Input[str]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRuntimePolicyResult]:
     """
@@ -766,7 +766,7 @@ def get_container_runtime_policy_output(malware_scan_options: Optional[pulumi.In
     ```
 
 
-    :param pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
     :param str name: Name of the container runtime policy
     """
     ...

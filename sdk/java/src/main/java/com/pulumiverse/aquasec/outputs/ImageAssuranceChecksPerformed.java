@@ -12,40 +12,23 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ImageAssuranceChecksPerformed {
-    private final @Nullable String assuranceType;
-    private final @Nullable Boolean blocking;
-    private final @Nullable String control;
+    private @Nullable String assuranceType;
+    private @Nullable Boolean blocking;
+    private @Nullable String control;
     /**
      * @return If DTA was skipped.
      * 
      */
-    private final @Nullable Boolean dtaSkipped;
+    private @Nullable Boolean dtaSkipped;
     /**
      * @return The reason why DTA was skipped.
      * 
      */
-    private final @Nullable String dtaSkippedReason;
-    private final @Nullable Boolean failed;
-    private final @Nullable String policyName;
+    private @Nullable String dtaSkippedReason;
+    private @Nullable Boolean failed;
+    private @Nullable String policyName;
 
-    @CustomType.Constructor
-    private ImageAssuranceChecksPerformed(
-        @CustomType.Parameter("assuranceType") @Nullable String assuranceType,
-        @CustomType.Parameter("blocking") @Nullable Boolean blocking,
-        @CustomType.Parameter("control") @Nullable String control,
-        @CustomType.Parameter("dtaSkipped") @Nullable Boolean dtaSkipped,
-        @CustomType.Parameter("dtaSkippedReason") @Nullable String dtaSkippedReason,
-        @CustomType.Parameter("failed") @Nullable Boolean failed,
-        @CustomType.Parameter("policyName") @Nullable String policyName) {
-        this.assuranceType = assuranceType;
-        this.blocking = blocking;
-        this.control = control;
-        this.dtaSkipped = dtaSkipped;
-        this.dtaSkippedReason = dtaSkippedReason;
-        this.failed = failed;
-        this.policyName = policyName;
-    }
-
+    private ImageAssuranceChecksPerformed() {}
     public Optional<String> assuranceType() {
         return Optional.ofNullable(this.assuranceType);
     }
@@ -83,7 +66,7 @@ public final class ImageAssuranceChecksPerformed {
     public static Builder builder(ImageAssuranceChecksPerformed defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String assuranceType;
         private @Nullable Boolean blocking;
@@ -92,11 +75,7 @@ public final class ImageAssuranceChecksPerformed {
         private @Nullable String dtaSkippedReason;
         private @Nullable Boolean failed;
         private @Nullable String policyName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ImageAssuranceChecksPerformed defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assuranceType = defaults.assuranceType;
@@ -108,35 +87,51 @@ public final class ImageAssuranceChecksPerformed {
     	      this.policyName = defaults.policyName;
         }
 
+        @CustomType.Setter
         public Builder assuranceType(@Nullable String assuranceType) {
             this.assuranceType = assuranceType;
             return this;
         }
+        @CustomType.Setter
         public Builder blocking(@Nullable Boolean blocking) {
             this.blocking = blocking;
             return this;
         }
+        @CustomType.Setter
         public Builder control(@Nullable String control) {
             this.control = control;
             return this;
         }
+        @CustomType.Setter
         public Builder dtaSkipped(@Nullable Boolean dtaSkipped) {
             this.dtaSkipped = dtaSkipped;
             return this;
         }
+        @CustomType.Setter
         public Builder dtaSkippedReason(@Nullable String dtaSkippedReason) {
             this.dtaSkippedReason = dtaSkippedReason;
             return this;
         }
+        @CustomType.Setter
         public Builder failed(@Nullable Boolean failed) {
             this.failed = failed;
             return this;
         }
+        @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
             this.policyName = policyName;
             return this;
-        }        public ImageAssuranceChecksPerformed build() {
-            return new ImageAssuranceChecksPerformed(assuranceType, blocking, control, dtaSkipped, dtaSkippedReason, failed, policyName);
+        }
+        public ImageAssuranceChecksPerformed build() {
+            final var o = new ImageAssuranceChecksPerformed();
+            o.assuranceType = assuranceType;
+            o.blocking = blocking;
+            o.control = control;
+            o.dtaSkipped = dtaSkipped;
+            o.dtaSkippedReason = dtaSkippedReason;
+            o.failed = failed;
+            o.policyName = policyName;
+            return o;
         }
     }
 }

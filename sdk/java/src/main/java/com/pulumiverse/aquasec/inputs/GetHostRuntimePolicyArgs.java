@@ -5,31 +5,13 @@ package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumiverse.aquasec.inputs.GetHostRuntimePolicyMalwareScanOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class GetHostRuntimePolicyArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetHostRuntimePolicyArgs Empty = new GetHostRuntimePolicyArgs();
-
-    /**
-     * Configuration for Real-Time Malware Protection.
-     * 
-     */
-    @Import(name="malwareScanOptions")
-    private @Nullable Output<GetHostRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions;
-
-    /**
-     * @return Configuration for Real-Time Malware Protection.
-     * 
-     */
-    public Optional<Output<GetHostRuntimePolicyMalwareScanOptionsArgs>> malwareScanOptions() {
-        return Optional.ofNullable(this.malwareScanOptions);
-    }
 
     /**
      * Name of the host runtime policy
@@ -49,7 +31,6 @@ public final class GetHostRuntimePolicyArgs extends com.pulumi.resources.InvokeA
     private GetHostRuntimePolicyArgs() {}
 
     private GetHostRuntimePolicyArgs(GetHostRuntimePolicyArgs $) {
-        this.malwareScanOptions = $.malwareScanOptions;
         this.name = $.name;
     }
 
@@ -69,27 +50,6 @@ public final class GetHostRuntimePolicyArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetHostRuntimePolicyArgs defaults) {
             $ = new GetHostRuntimePolicyArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder malwareScanOptions(@Nullable Output<GetHostRuntimePolicyMalwareScanOptionsArgs> malwareScanOptions) {
-            $.malwareScanOptions = malwareScanOptions;
-            return this;
-        }
-
-        /**
-         * @param malwareScanOptions Configuration for Real-Time Malware Protection.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder malwareScanOptions(GetHostRuntimePolicyMalwareScanOptionsArgs malwareScanOptions) {
-            return malwareScanOptions(Output.of(malwareScanOptions));
         }
 
         /**

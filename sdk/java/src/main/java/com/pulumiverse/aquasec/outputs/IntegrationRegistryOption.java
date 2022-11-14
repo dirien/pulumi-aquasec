@@ -11,17 +11,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class IntegrationRegistryOption {
-    private final @Nullable String option;
-    private final @Nullable String value;
+    private @Nullable String option;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private IntegrationRegistryOption(
-        @CustomType.Parameter("option") @Nullable String option,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.option = option;
-        this.value = value;
-    }
-
+    private IntegrationRegistryOption() {}
     public Optional<String> option() {
         return Optional.ofNullable(this.option);
     }
@@ -36,30 +29,32 @@ public final class IntegrationRegistryOption {
     public static Builder builder(IntegrationRegistryOption defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String option;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(IntegrationRegistryOption defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.option = defaults.option;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder option(@Nullable String option) {
             this.option = option;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public IntegrationRegistryOption build() {
-            return new IntegrationRegistryOption(option, value);
+        }
+        public IntegrationRegistryOption build() {
+            final var o = new IntegrationRegistryOption();
+            o.option = option;
+            o.value = value;
+            return o;
         }
     }
 }

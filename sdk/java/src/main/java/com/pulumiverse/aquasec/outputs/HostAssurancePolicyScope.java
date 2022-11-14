@@ -13,17 +13,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class HostAssurancePolicyScope {
-    private final @Nullable String expression;
-    private final @Nullable List<HostAssurancePolicyScopeVariable> variables;
+    private @Nullable String expression;
+    private @Nullable List<HostAssurancePolicyScopeVariable> variables;
 
-    @CustomType.Constructor
-    private HostAssurancePolicyScope(
-        @CustomType.Parameter("expression") @Nullable String expression,
-        @CustomType.Parameter("variables") @Nullable List<HostAssurancePolicyScopeVariable> variables) {
-        this.expression = expression;
-        this.variables = variables;
-    }
-
+    private HostAssurancePolicyScope() {}
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -38,33 +31,35 @@ public final class HostAssurancePolicyScope {
     public static Builder builder(HostAssurancePolicyScope defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String expression;
         private @Nullable List<HostAssurancePolicyScopeVariable> variables;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(HostAssurancePolicyScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.expression = defaults.expression;
     	      this.variables = defaults.variables;
         }
 
+        @CustomType.Setter
         public Builder expression(@Nullable String expression) {
             this.expression = expression;
             return this;
         }
+        @CustomType.Setter
         public Builder variables(@Nullable List<HostAssurancePolicyScopeVariable> variables) {
             this.variables = variables;
             return this;
         }
         public Builder variables(HostAssurancePolicyScopeVariable... variables) {
             return variables(List.of(variables));
-        }        public HostAssurancePolicyScope build() {
-            return new HostAssurancePolicyScope(expression, variables);
+        }
+        public HostAssurancePolicyScope build() {
+            final var o = new HostAssurancePolicyScope();
+            o.expression = expression;
+            o.variables = variables;
+            return o;
         }
     }
 }

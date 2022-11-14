@@ -11,23 +11,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFunctionAssurancePolicyAutoScanTime {
-    private final Integer iteration;
-    private final String iterationType;
-    private final String time;
-    private final List<String> weekDays;
+    private Integer iteration;
+    private String iterationType;
+    private String time;
+    private List<String> weekDays;
 
-    @CustomType.Constructor
-    private GetFunctionAssurancePolicyAutoScanTime(
-        @CustomType.Parameter("iteration") Integer iteration,
-        @CustomType.Parameter("iterationType") String iterationType,
-        @CustomType.Parameter("time") String time,
-        @CustomType.Parameter("weekDays") List<String> weekDays) {
-        this.iteration = iteration;
-        this.iterationType = iterationType;
-        this.time = time;
-        this.weekDays = weekDays;
-    }
-
+    private GetFunctionAssurancePolicyAutoScanTime() {}
     public Integer iteration() {
         return this.iteration;
     }
@@ -48,17 +37,13 @@ public final class GetFunctionAssurancePolicyAutoScanTime {
     public static Builder builder(GetFunctionAssurancePolicyAutoScanTime defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Integer iteration;
         private String iterationType;
         private String time;
         private List<String> weekDays;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetFunctionAssurancePolicyAutoScanTime defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.iteration = defaults.iteration;
@@ -67,26 +52,36 @@ public final class GetFunctionAssurancePolicyAutoScanTime {
     	      this.weekDays = defaults.weekDays;
         }
 
+        @CustomType.Setter
         public Builder iteration(Integer iteration) {
             this.iteration = Objects.requireNonNull(iteration);
             return this;
         }
+        @CustomType.Setter
         public Builder iterationType(String iterationType) {
             this.iterationType = Objects.requireNonNull(iterationType);
             return this;
         }
+        @CustomType.Setter
         public Builder time(String time) {
             this.time = Objects.requireNonNull(time);
             return this;
         }
+        @CustomType.Setter
         public Builder weekDays(List<String> weekDays) {
             this.weekDays = Objects.requireNonNull(weekDays);
             return this;
         }
         public Builder weekDays(String... weekDays) {
             return weekDays(List.of(weekDays));
-        }        public GetFunctionAssurancePolicyAutoScanTime build() {
-            return new GetFunctionAssurancePolicyAutoScanTime(iteration, iterationType, time, weekDays);
+        }
+        public GetFunctionAssurancePolicyAutoScanTime build() {
+            final var o = new GetFunctionAssurancePolicyAutoScanTime();
+            o.iteration = iteration;
+            o.iterationType = iterationType;
+            o.time = time;
+            o.weekDays = weekDays;
+            return o;
         }
     }
 }

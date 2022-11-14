@@ -10,27 +10,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersSaasUserLogin {
-    private final String created;
+    private String created;
     /**
      * @return The ID of this resource.
      * 
      */
-    private final Integer id;
-    private final String ipAddress;
-    private final Integer userId;
+    private Integer id;
+    private String ipAddress;
+    private Integer userId;
 
-    @CustomType.Constructor
-    private GetUsersSaasUserLogin(
-        @CustomType.Parameter("created") String created,
-        @CustomType.Parameter("id") Integer id,
-        @CustomType.Parameter("ipAddress") String ipAddress,
-        @CustomType.Parameter("userId") Integer userId) {
-        this.created = created;
-        this.id = id;
-        this.ipAddress = ipAddress;
-        this.userId = userId;
-    }
-
+    private GetUsersSaasUserLogin() {}
     public String created() {
         return this.created;
     }
@@ -55,17 +44,13 @@ public final class GetUsersSaasUserLogin {
     public static Builder builder(GetUsersSaasUserLogin defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String created;
         private Integer id;
         private String ipAddress;
         private Integer userId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersSaasUserLogin defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
@@ -74,23 +59,33 @@ public final class GetUsersSaasUserLogin {
     	      this.userId = defaults.userId;
         }
 
+        @CustomType.Setter
         public Builder created(String created) {
             this.created = Objects.requireNonNull(created);
             return this;
         }
+        @CustomType.Setter
         public Builder id(Integer id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
             this.ipAddress = Objects.requireNonNull(ipAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder userId(Integer userId) {
             this.userId = Objects.requireNonNull(userId);
             return this;
-        }        public GetUsersSaasUserLogin build() {
-            return new GetUsersSaasUserLogin(created, id, ipAddress, userId);
+        }
+        public GetUsersSaasUserLogin build() {
+            final var o = new GetUsersSaasUserLogin();
+            o.created = created;
+            o.id = id;
+            o.ipAddress = ipAddress;
+            o.userId = userId;
+            return o;
         }
     }
 }

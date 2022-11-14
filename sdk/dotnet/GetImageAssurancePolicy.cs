@@ -22,12 +22,6 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetImageAssurancePolicyArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Indicates that policy should ignore cases that do not have a known fix.
-        /// </summary>
-        [Input("maximumScoreExcludeNoFix")]
-        public bool? MaximumScoreExcludeNoFix { get; set; }
-
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -39,12 +33,6 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetImageAssurancePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Indicates that policy should ignore cases that do not have a known fix.
-        /// </summary>
-        [Input("maximumScoreExcludeNoFix")]
-        public Input<bool>? MaximumScoreExcludeNoFix { get; set; }
-
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -63,10 +51,6 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly ImmutableArray<string> AllowedImages;
         public readonly ImmutableArray<string> ApplicationScopes;
-        /// <summary>
-        /// What type of assurance policy is described.
-        /// </summary>
-        public readonly string AssuranceType;
         /// <summary>
         /// Indicates if auditing for failures.
         /// </summary>
@@ -197,7 +181,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// Indicates that policy should ignore cases that do not have a known fix.
         /// </summary>
-        public readonly bool? MaximumScoreExcludeNoFix;
+        public readonly bool MaximumScoreExcludeNoFix;
         public readonly ImmutableArray<string> MonitoredMalwarePaths;
         public readonly string Name;
         /// <summary>
@@ -265,8 +249,6 @@ namespace Pulumiverse.Aquasec
             ImmutableArray<string> allowedImages,
 
             ImmutableArray<string> applicationScopes,
-
-            string assuranceType,
 
             bool auditOnFailure,
 
@@ -366,7 +348,7 @@ namespace Pulumiverse.Aquasec
 
             bool maximumScoreEnabled,
 
-            bool? maximumScoreExcludeNoFix,
+            bool maximumScoreExcludeNoFix,
 
             ImmutableArray<string> monitoredMalwarePaths,
 
@@ -414,7 +396,6 @@ namespace Pulumiverse.Aquasec
         {
             AllowedImages = allowedImages;
             ApplicationScopes = applicationScopes;
-            AssuranceType = assuranceType;
             AuditOnFailure = auditOnFailure;
             Author = author;
             AutoScanConfigured = autoScanConfigured;

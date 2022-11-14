@@ -9,17 +9,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKubernetesAssurancePolicyForbiddenLabel {
-    private final String key;
-    private final String value;
+    private String key;
+    private String value;
 
-    @CustomType.Constructor
-    private GetKubernetesAssurancePolicyForbiddenLabel(
-        @CustomType.Parameter("key") String key,
-        @CustomType.Parameter("value") String value) {
-        this.key = key;
-        this.value = value;
-    }
-
+    private GetKubernetesAssurancePolicyForbiddenLabel() {}
     public String key() {
         return this.key;
     }
@@ -34,30 +27,32 @@ public final class GetKubernetesAssurancePolicyForbiddenLabel {
     public static Builder builder(GetKubernetesAssurancePolicyForbiddenLabel defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String key;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetKubernetesAssurancePolicyForbiddenLabel defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.key = defaults.key;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder key(String key) {
             this.key = Objects.requireNonNull(key);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetKubernetesAssurancePolicyForbiddenLabel build() {
-            return new GetKubernetesAssurancePolicyForbiddenLabel(key, value);
+        }
+        public GetKubernetesAssurancePolicyForbiddenLabel build() {
+            final var o = new GetKubernetesAssurancePolicyForbiddenLabel();
+            o.key = key;
+            o.value = value;
+            return o;
         }
     }
 }

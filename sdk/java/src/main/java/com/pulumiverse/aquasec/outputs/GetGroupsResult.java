@@ -11,21 +11,14 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGroupsResult {
-    private final List<GetGroupsGroup> groups;
+    private List<GetGroupsGroup> groups;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
 
-    @CustomType.Constructor
-    private GetGroupsResult(
-        @CustomType.Parameter("groups") List<GetGroupsGroup> groups,
-        @CustomType.Parameter("id") String id) {
-        this.groups = groups;
-        this.id = id;
-    }
-
+    private GetGroupsResult() {}
     public List<GetGroupsGroup> groups() {
         return this.groups;
     }
@@ -44,21 +37,18 @@ public final class GetGroupsResult {
     public static Builder builder(GetGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetGroupsGroup> groups;
         private String id;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.groups = defaults.groups;
     	      this.id = defaults.id;
         }
 
+        @CustomType.Setter
         public Builder groups(List<GetGroupsGroup> groups) {
             this.groups = Objects.requireNonNull(groups);
             return this;
@@ -66,11 +56,16 @@ public final class GetGroupsResult {
         public Builder groups(GetGroupsGroup... groups) {
             return groups(List.of(groups));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
-        }        public GetGroupsResult build() {
-            return new GetGroupsResult(groups, id);
+        }
+        public GetGroupsResult build() {
+            final var o = new GetGroupsResult();
+            o.groups = groups;
+            o.id = id;
+            return o;
         }
     }
 }
