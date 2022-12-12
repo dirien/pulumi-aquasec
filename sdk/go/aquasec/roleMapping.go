@@ -25,7 +25,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			roleMappingRoleMapping, err := aquasec.NewRoleMapping(ctx, "roleMappingRoleMapping", &aquasec.RoleMappingArgs{
-//				Saml: &RoleMappingSamlArgs{
+//				Saml: &aquasec.RoleMappingSamlArgs{
 //					RoleMapping: pulumi.StringMap{
 //						"Administrator": pulumi.String("group1"),
 //					},

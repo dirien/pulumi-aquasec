@@ -8,6 +8,31 @@ import (
 )
 
 // The data source `getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			users, err := aquasec.GetUsers(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstUserName", users.Users[0].Name)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult

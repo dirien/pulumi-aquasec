@@ -81,7 +81,15 @@ class AwaitableGetIntegrationStateResult(GetIntegrationStateResult):
 
 def get_integration_state(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIntegrationStateResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    integration_state = aquasec.get_integration_state()
+    pulumi.export("aquasecIntegrationState", integration_state)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

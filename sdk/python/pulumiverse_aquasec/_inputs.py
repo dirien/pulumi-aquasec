@@ -10,6 +10,7 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'AcknowledgeIssueArgs',
     'ApplicationScopeCategoryArgs',
     'ApplicationScopeCategoryArtifactArgs',
     'ApplicationScopeCategoryArtifactCfArgs',
@@ -116,6 +117,342 @@ __all__ = [
     'GetContainerRuntimePolicyMalwareScanOptionArgs',
     'GetFirewallPolicyOutboundNetworkArgs',
 ]
+
+@pulumi.input_type
+class AcknowledgeIssueArgs:
+    def __init__(__self__, *,
+                 issue_name: pulumi.Input[str],
+                 issue_type: pulumi.Input[str],
+                 resource_type: pulumi.Input[str],
+                 author: Optional[pulumi.Input[str]] = None,
+                 date: Optional[pulumi.Input[str]] = None,
+                 docker_id: Optional[pulumi.Input[str]] = None,
+                 expiration_configured_at: Optional[pulumi.Input[str]] = None,
+                 expiration_configured_by: Optional[pulumi.Input[str]] = None,
+                 expiration_days: Optional[pulumi.Input[int]] = None,
+                 fix_version: Optional[pulumi.Input[str]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 os: Optional[pulumi.Input[str]] = None,
+                 os_version: Optional[pulumi.Input[str]] = None,
+                 permission: Optional[pulumi.Input[str]] = None,
+                 registry_name: Optional[pulumi.Input[str]] = None,
+                 resource_cpe: Optional[pulumi.Input[str]] = None,
+                 resource_format: Optional[pulumi.Input[str]] = None,
+                 resource_hash: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
+                 resource_path: Optional[pulumi.Input[str]] = None,
+                 resource_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] issue_name: The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        :param pulumi.Input[str] issue_type: The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        :param pulumi.Input[str] resource_type: The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        :param pulumi.Input[str] author: The user who acknowledged the issue.
+        :param pulumi.Input[str] date: The date and time of the acknowledgment.
+        :param pulumi.Input[str] expiration_configured_at: The current dat and time when the expiration was set
+        :param pulumi.Input[str] expiration_configured_by: The user who set the expiration of the issue.
+        :param pulumi.Input[int] expiration_days: Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        :param pulumi.Input[str] fix_version: The version of the package that having a fix for the issue.
+        :param pulumi.Input[str] image_name: Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        :param pulumi.Input[str] os: When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        :param pulumi.Input[str] os_version: When the resource_type is 'package', the operating system version is required.
+        :param pulumi.Input[str] permission: The permissions of the user who acknowledged the issue.
+        :param pulumi.Input[str] registry_name: Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        :param pulumi.Input[str] resource_cpe: The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        :param pulumi.Input[str] resource_format: The format of the resource.
+        :param pulumi.Input[str] resource_hash: When the resource_type is 'file', the hash of the file is required
+        :param pulumi.Input[str] resource_name: When the resource_type is 'package', the name of the package is required.
+        :param pulumi.Input[str] resource_path: The path of the resource. This is required for resources of type 'file' and 'executable'.
+        :param pulumi.Input[str] resource_version: When the resource_type is 'package', the version of the package is required
+        """
+        pulumi.set(__self__, "issue_name", issue_name)
+        pulumi.set(__self__, "issue_type", issue_type)
+        pulumi.set(__self__, "resource_type", resource_type)
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if docker_id is not None:
+            pulumi.set(__self__, "docker_id", docker_id)
+        if expiration_configured_at is not None:
+            pulumi.set(__self__, "expiration_configured_at", expiration_configured_at)
+        if expiration_configured_by is not None:
+            pulumi.set(__self__, "expiration_configured_by", expiration_configured_by)
+        if expiration_days is not None:
+            pulumi.set(__self__, "expiration_days", expiration_days)
+        if fix_version is not None:
+            pulumi.set(__self__, "fix_version", fix_version)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+        if registry_name is not None:
+            pulumi.set(__self__, "registry_name", registry_name)
+        if resource_cpe is not None:
+            pulumi.set(__self__, "resource_cpe", resource_cpe)
+        if resource_format is not None:
+            pulumi.set(__self__, "resource_format", resource_format)
+        if resource_hash is not None:
+            pulumi.set(__self__, "resource_hash", resource_hash)
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+        if resource_path is not None:
+            pulumi.set(__self__, "resource_path", resource_path)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
+
+    @property
+    @pulumi.getter(name="issueName")
+    def issue_name(self) -> pulumi.Input[str]:
+        """
+        The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        """
+        return pulumi.get(self, "issue_name")
+
+    @issue_name.setter
+    def issue_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "issue_name", value)
+
+    @property
+    @pulumi.getter(name="issueType")
+    def issue_type(self) -> pulumi.Input[str]:
+        """
+        The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        """
+        return pulumi.get(self, "issue_type")
+
+    @issue_type.setter
+    def issue_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "issue_type", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Input[str]:
+        """
+        The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter
+    def author(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user who acknowledged the issue.
+        """
+        return pulumi.get(self, "author")
+
+    @author.setter
+    def author(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author", value)
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date and time of the acknowledgment.
+        """
+        return pulumi.get(self, "date")
+
+    @date.setter
+    def date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "date", value)
+
+    @property
+    @pulumi.getter(name="dockerId")
+    def docker_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "docker_id")
+
+    @docker_id.setter
+    def docker_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "docker_id", value)
+
+    @property
+    @pulumi.getter(name="expirationConfiguredAt")
+    def expiration_configured_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current dat and time when the expiration was set
+        """
+        return pulumi.get(self, "expiration_configured_at")
+
+    @expiration_configured_at.setter
+    def expiration_configured_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_configured_at", value)
+
+    @property
+    @pulumi.getter(name="expirationConfiguredBy")
+    def expiration_configured_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user who set the expiration of the issue.
+        """
+        return pulumi.get(self, "expiration_configured_by")
+
+    @expiration_configured_by.setter
+    def expiration_configured_by(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_configured_by", value)
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @expiration_days.setter
+    def expiration_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "expiration_days", value)
+
+    @property
+    @pulumi.getter(name="fixVersion")
+    def fix_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the package that having a fix for the issue.
+        """
+        return pulumi.get(self, "fix_version")
+
+    @fix_version.setter
+    def fix_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fix_version", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        """
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter
+    def os(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        """
+        return pulumi.get(self, "os")
+
+    @os.setter
+    def os(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os", value)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the resource_type is 'package', the operating system version is required.
+        """
+        return pulumi.get(self, "os_version")
+
+    @os_version.setter
+    def os_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        The permissions of the user who acknowledged the issue.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission", value)
+
+    @property
+    @pulumi.getter(name="registryName")
+    def registry_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        """
+        return pulumi.get(self, "registry_name")
+
+    @registry_name.setter
+    def registry_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry_name", value)
+
+    @property
+    @pulumi.getter(name="resourceCpe")
+    def resource_cpe(self) -> Optional[pulumi.Input[str]]:
+        """
+        The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        """
+        return pulumi.get(self, "resource_cpe")
+
+    @resource_cpe.setter
+    def resource_cpe(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_cpe", value)
+
+    @property
+    @pulumi.getter(name="resourceFormat")
+    def resource_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        The format of the resource.
+        """
+        return pulumi.get(self, "resource_format")
+
+    @resource_format.setter
+    def resource_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_format", value)
+
+    @property
+    @pulumi.getter(name="resourceHash")
+    def resource_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the resource_type is 'file', the hash of the file is required
+        """
+        return pulumi.get(self, "resource_hash")
+
+    @resource_hash.setter
+    def resource_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_hash", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the resource_type is 'package', the name of the package is required.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter(name="resourcePath")
+    def resource_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The path of the resource. This is required for resources of type 'file' and 'executable'.
+        """
+        return pulumi.get(self, "resource_path")
+
+    @resource_path.setter
+    def resource_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_path", value)
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the resource_type is 'package', the version of the package is required
+        """
+        return pulumi.get(self, "resource_version")
+
+    @resource_version.setter
+    def resource_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_version", value)
+
 
 @pulumi.input_type
 class ApplicationScopeCategoryArgs:

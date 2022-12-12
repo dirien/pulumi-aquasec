@@ -20,11 +20,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getFunctionRuntimePolicy(args: GetFunctionRuntimePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionRuntimePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy", {
         "name": args.name,
     }, opts);

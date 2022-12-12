@@ -148,6 +148,7 @@ namespace Pulumiverse.Aquasec
         /// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         /// </summary>
         public readonly string AutoPullTime;
+        public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -211,6 +212,8 @@ namespace Pulumiverse.Aquasec
 
             string autoPullTime,
 
+            string description,
+
             string id,
 
             string imageCreationDateCondition,
@@ -241,6 +244,7 @@ namespace Pulumiverse.Aquasec
             AutoPullMax = autoPullMax;
             AutoPullRescan = autoPullRescan;
             AutoPullTime = autoPullTime;
+            Description = description;
             Id = id;
             ImageCreationDateCondition = imageCreationDateCondition;
             Name = name;

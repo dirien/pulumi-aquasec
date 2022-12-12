@@ -43,8 +43,8 @@ import (
 //					pulumi.String("Default"),
 //				},
 //				Email: pulumi.String("infrastructure2@example.com"),
-//				Groups: UserSaasGroupArray{
-//					&UserSaasGroupArgs{
+//				Groups: aquasec.UserSaasGroupArray{
+//					&aquasec.UserSaasGroupArgs{
 //						GroupAdmin: pulumi.Bool(false),
 //						Name:       pulumi.String("IacGroupName"),
 //					},

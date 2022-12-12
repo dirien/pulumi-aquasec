@@ -8,13 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const groups = aquasec.getGroups({});
+ * export const firstGroupName = groups.then(groups => groups.groups?[0]?.name);
+ * ```
  */
 export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getGroups:getGroups", {
     }, opts);
 }

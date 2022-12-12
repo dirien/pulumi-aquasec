@@ -20,11 +20,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getApplicationScope(args: GetApplicationScopeArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationScopeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getApplicationScope:getApplicationScope", {
         "categories": args.categories,
         "name": args.name,

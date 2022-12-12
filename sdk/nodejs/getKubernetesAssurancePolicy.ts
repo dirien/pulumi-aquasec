@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getKubernetesAssurancePolicy(args: GetKubernetesAssurancePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesAssurancePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy", {
         "name": args.name,
     }, opts);

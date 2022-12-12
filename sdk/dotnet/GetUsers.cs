@@ -14,6 +14,28 @@ namespace Pulumiverse.Aquasec
     {
         /// <summary>
         /// The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = Aquasec.GetUsers.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstUserName"] = users.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("aquasec:index/getUsers:getUsers", InvokeArgs.Empty, options.WithDefaults());

@@ -20,8 +20,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "aquasec:index/acknowledge:Acknowledge":
+		r = &Acknowledge{}
 	case "aquasec:index/applicationScope:ApplicationScope":
 		r = &ApplicationScope{}
+	case "aquasec:index/aquaLabel:AquaLabel":
+		r = &AquaLabel{}
 	case "aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy":
 		r = &ContainerRuntimePolicy{}
 	case "aquasec:index/enforcerGroups:EnforcerGroups":
@@ -92,7 +96,17 @@ func init() {
 	version, _ := PkgVersion()
 	pulumi.RegisterResourceModule(
 		"aquasec",
+		"index/acknowledge",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
 		"index/applicationScope",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
+		"index/aquaLabel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -4,12 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const integrationState = aquasec.getIntegrationState({});
+ * export const aquasecIntegrationState = integrationState;
+ * ```
+ */
 export function getIntegrationState(opts?: pulumi.InvokeOptions): Promise<GetIntegrationStateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getIntegrationState:getIntegrationState", {
     }, opts);
 }

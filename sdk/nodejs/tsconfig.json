@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "baseUrl": ".",
         "outDir": "bin",
         "target": "es2016",
         "module": "commonjs",
@@ -10,10 +11,15 @@
         "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,
         "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "@/*": ["*"]
+        },
         "strict": true
     },
     "files": [
+        "acknowledge.ts",
         "applicationScope.ts",
+        "aquaLabel.ts",
         "config/index.ts",
         "config/vars.ts",
         "containerRuntimePolicy.ts",
@@ -21,7 +27,9 @@
         "firewallPolicy.ts",
         "functionAssurancePolicy.ts",
         "functionRuntimePolicy.ts",
+        "getAcknowledges.ts",
         "getApplicationScope.ts",
+        "getAquaLabels.ts",
         "getContainerRuntimePolicy.ts",
         "getEnforcerGroups.ts",
         "getFirewallPolicy.ts",

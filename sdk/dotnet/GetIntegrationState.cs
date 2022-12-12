@@ -12,6 +12,29 @@ namespace Pulumiverse.Aquasec
 {
     public static class GetIntegrationState
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var integrationState = Aquasec.GetIntegrationState.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aquasecIntegrationState"] = integrationState.Apply(getIntegrationStateResult =&gt; getIntegrationStateResult),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetIntegrationStateResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationStateResult>("aquasec:index/getIntegrationState:getIntegrationState", InvokeArgs.Empty, options.WithDefaults());
     }

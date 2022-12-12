@@ -4,6 +4,91 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
+import * as utilities from "../utilities";
+
+export interface AcknowledgeIssue {
+    /**
+     * The user who acknowledged the issue.
+     */
+    author?: pulumi.Input<string>;
+    /**
+     * The date and time of the acknowledgment.
+     */
+    date?: pulumi.Input<string>;
+    dockerId?: pulumi.Input<string>;
+    /**
+     * The current dat and time when the expiration was set
+     */
+    expirationConfiguredAt?: pulumi.Input<string>;
+    /**
+     * The user who set the expiration of the issue.
+     */
+    expirationConfiguredBy?: pulumi.Input<string>;
+    /**
+     * Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+     */
+    expirationDays?: pulumi.Input<number>;
+    /**
+     * The version of the package that having a fix for the issue.
+     */
+    fixVersion?: pulumi.Input<string>;
+    /**
+     * Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+     */
+    imageName?: pulumi.Input<string>;
+    /**
+     * The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+     */
+    issueName: pulumi.Input<string>;
+    /**
+     * The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+     */
+    issueType: pulumi.Input<string>;
+    /**
+     * When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+     */
+    os?: pulumi.Input<string>;
+    /**
+     * When the resourceType is 'package', the operating system version is required.
+     */
+    osVersion?: pulumi.Input<string>;
+    /**
+     * The permissions of the user who acknowledged the issue.
+     */
+    permission?: pulumi.Input<string>;
+    /**
+     * Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+     */
+    registryName?: pulumi.Input<string>;
+    /**
+     * The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+     */
+    resourceCpe?: pulumi.Input<string>;
+    /**
+     * The format of the resource.
+     */
+    resourceFormat?: pulumi.Input<string>;
+    /**
+     * When the resourceType is 'file', the hash of the file is required
+     */
+    resourceHash?: pulumi.Input<string>;
+    /**
+     * When the resourceType is 'package', the name of the package is required.
+     */
+    resourceName?: pulumi.Input<string>;
+    /**
+     * The path of the resource. This is required for resources of type 'file' and 'executable'.
+     */
+    resourcePath?: pulumi.Input<string>;
+    /**
+     * The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+     */
+    resourceType: pulumi.Input<string>;
+    /**
+     * When the resourceType is 'package', the version of the package is required
+     */
+    resourceVersion?: pulumi.Input<string>;
+}
 
 export interface ApplicationScopeCategory {
     /**

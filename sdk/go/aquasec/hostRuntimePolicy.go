@@ -42,7 +42,7 @@ import (
 //				EnableIpReputationSecurity: pulumi.Bool(true),
 //				Enabled:                    pulumi.Bool(true),
 //				Enforce:                    pulumi.Bool(false),
-//				FileIntegrityMonitoring: &HostRuntimePolicyFileIntegrityMonitoringArgs{
+//				FileIntegrityMonitoring: &aquasec.HostRuntimePolicyFileIntegrityMonitoringArgs{
 //					ExcludedPaths: pulumi.StringArray{
 //						pulumi.String("expaths"),
 //					},
@@ -86,18 +86,18 @@ import (
 //					pulumi.String("package1"),
 //				},
 //				PortScanningDetection: pulumi.Bool(true),
-//				ScopeVariables: HostRuntimePolicyScopeVariableArray{
-//					&HostRuntimePolicyScopeVariableArgs{
+//				ScopeVariables: aquasec.HostRuntimePolicyScopeVariableArray{
+//					&aquasec.HostRuntimePolicyScopeVariableArgs{
 //						Attribute: pulumi.String("kubernetes.cluster"),
 //						Value:     pulumi.String("default"),
 //					},
-//					&HostRuntimePolicyScopeVariableArgs{
+//					&aquasec.HostRuntimePolicyScopeVariableArgs{
 //						Attribute: pulumi.String("kubernetes.label"),
 //						Name:      pulumi.String("app"),
 //						Value:     pulumi.String("aqua"),
 //					},
 //				},
-//				WindowsRegistryMonitoring: &HostRuntimePolicyWindowsRegistryMonitoringArgs{
+//				WindowsRegistryMonitoring: &aquasec.HostRuntimePolicyWindowsRegistryMonitoringArgs{
 //					ExcludedPaths: pulumi.StringArray{
 //						pulumi.String("expaths"),
 //					},
@@ -122,7 +122,7 @@ import (
 //						pulumi.String("user"),
 //					},
 //				},
-//				WindowsRegistryProtection: &HostRuntimePolicyWindowsRegistryProtectionArgs{
+//				WindowsRegistryProtection: &aquasec.HostRuntimePolicyWindowsRegistryProtectionArgs{
 //					ExcludedPaths: pulumi.StringArray{
 //						pulumi.String("expaths"),
 //					},

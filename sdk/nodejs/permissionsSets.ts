@@ -11,95 +11,56 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
- * const myTerraformPermSet = new aquasec.PermissionsSets("my_terraform_perm_set", {
+ * const myTerraformPermSet = new aquasec.PermissionsSets("myTerraformPermSet", {
  *     actions: [
- *         //################
- *         // Policies
- *         //################
- *         // Assurance Policies
- *         "acl_policies.read", // Removed from version 2022.4
- *         "acl_policies.write", // Removed from version 2022.4
- *         // Image Profiles
+ *         "acl_policies.read",
+ *         "acl_policies.write",
  *         "image_profiles.read",
- *         "image_profiles.write", // Only for version 2022.4
- *         // Firewall Policies
+ *         "image_profiles.write",
  *         "network_policies.read",
- *         "network_policies.write", // Only for version 2022.4
- *         // Runtime Policies
+ *         "network_policies.write",
  *         "runtime_policies.read",
  *         "runtime_policies.write",
- *         // Response Policies                 # Only for version 2022.4
- *         "response_policies.read", // Only for version 2022.4
- *         "response_policies.write", // Only for version 2022.4
- *         // User Access Control Policies
+ *         "response_policies.read",
+ *         "response_policies.write",
  *         "image_assurance.read",
  *         "image_assurance.write",
- *         //################
- *         // Assets
- *         //################
- *         // Dashboard
  *         "dashboard.read",
- *         "dashboard.write", // Only for version 2022.4
- *         // Risk Explorer
+ *         "dashboard.write",
  *         "risk_explorer.read",
- *         // Images
  *         "images.read",
- *         "images.write", // Only for version 2022.4
- *         // Host Images
+ *         "images.write",
  *         "risks.host_images.read",
- *         "risks.host_images.write", // Only for version 2022.4
- *         // Functions
+ *         "risks.host_images.write",
  *         "functions.read",
- *         "functions.write", // Only for version 2022.4
- *         // Enforcers
+ *         "functions.write",
  *         "enforcers.read",
- *         "enforcers.write", // Only for version 2022.4
- *         // Containers
+ *         "enforcers.write",
  *         "containers.read",
- *         // Services
  *         "services.read",
- *         "services.write", // Only for version 2022.4
- *         // Infrastructure
+ *         "services.write",
  *         "infrastructure.read",
- *         "infrastructure.write", // Only for version 2022.4
- *         //################
- *         // Compliance
- *         //################
- *         // Vulnerabilities
+ *         "infrastructure.write",
  *         "risks.vulnerabilities.read",
  *         "risks.vulnerabilities.write",
- *         // CIS Benchmarks
  *         "risks.benchmark.read",
- *         "risks.benchmark.write", // Only for version 2022.4
- *         //################
- *         // System
- *         //################
- *         // Audit Events
+ *         "risks.benchmark.write",
  *         "audits.read",
- *         // Secrets
  *         "secrets.read",
- *         "secrets.write", // Only for version 2022.4
- *         // Settings
+ *         "secrets.write",
  *         "settings.read",
- *         "settings.write", // Only for version 2022.4
- *         // Integrations
+ *         "settings.write",
  *         "integrations.read",
- *         "integrations.write", // Only for version 2022.4
- *         // Image Registry Integrations
+ *         "integrations.write",
  *         "registries_integrations.read",
- *         "registries_integrations.write", // Only for version 2022.4
- *         // Scanner CLI                       # Only for version 2022.4
- *         "scan.read", // Only for version 2022.4
- *         // Gateways
+ *         "registries_integrations.write",
+ *         "scan.read",
  *         "gateways.read",
- *         "gateways.write", // Only for version 2022.4
- *         // Consoles
+ *         "gateways.write",
  *         "consoles.read",
- *         // Webhook authorization API
  *         "web_hook.read",
- *         // Incidents
  *         "incidents.read",
  *     ],
  *     author: "system",

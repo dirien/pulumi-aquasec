@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			groups, err := aquasec.LookupEnforcerGroups(ctx, &GetEnforcerGroupsArgs{
+//			groups, err := aquasec.LookupEnforcerGroups(ctx, &aquasec.LookupEnforcerGroupsArgs{
 //				GroupId: "IacGroup",
 //			}, nil)
 //			if err != nil {

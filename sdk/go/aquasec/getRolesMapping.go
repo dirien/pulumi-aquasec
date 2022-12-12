@@ -7,6 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			rolesMapping, err := aquasec.GetRolesMapping(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("roleMappingAll", rolesMapping)
+//			ctx.Export("roleMappingSaml", rolesMapping.Samls)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRolesMapping(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRolesMappingResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetRolesMappingResult

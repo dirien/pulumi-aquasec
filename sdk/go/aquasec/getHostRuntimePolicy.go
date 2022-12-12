@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			hostRuntimePolicy, err := aquasec.LookupHostRuntimePolicy(ctx, &GetHostRuntimePolicyArgs{
+//			hostRuntimePolicy, err := aquasec.LookupHostRuntimePolicy(ctx, &aquasec.LookupHostRuntimePolicyArgs{
 //				Name: "hostRuntimePolicyName",
 //			}, nil)
 //			if err != nil {

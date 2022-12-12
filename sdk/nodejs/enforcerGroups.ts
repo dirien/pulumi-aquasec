@@ -11,56 +11,36 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
  * const group = new aquasec.EnforcerGroups("group", {
- *     // Advanced Malware Protection (Host Protection)
  *     antivirusProtection: true,
- *     // Runtime Controls
  *     containerActivityProtection: true,
- *     // Advanced Malware Protection (Container Protection)
  *     containerAntivirusProtection: true,
  *     enforce: true,
- *     // forensics
  *     forensics: true,
  *     groupId: "tf-test-enforcer",
- *     // Host Assurance
  *     hostAssurance: true,
- *     // host_forensics
  *     hostForensics: true,
- *     // Network Firewall (Host Protection)
  *     hostNetworkProtection: true,
- *     // Runtime Controls
  *     hostProtection: true,
- *     // Image Assurance
  *     imageAssurance: true,
- *     // Network Firewall (Container Protection)
  *     networkProtection: true,
  *     orchestrators: [{}],
- *     // Risk Explorer
  *     riskExplorerAutoDiscovery: true,
- *     // Host Images
  *     syncHostImages: true,
  *     type: "agent",
  * });
- * const group_kube_enforcer = new aquasec.EnforcerGroups("group-kube_enforcer", {
- *     // Enable admission control
+ * const group_kubeEnforcer = new aquasec.EnforcerGroups("group-kubeEnforcer", {
  *     admissionControl: true,
- *     // Auto copy these secrets to the Pod Enforcer namespace and container
  *     autoCopySecrets: true,
- *     // Add discovered registries
  *     autoDiscoverConfigureRegistries: true,
- *     // Enable workload discovery
  *     autoDiscoveryEnabled: true,
- *     // Register discovered pod images
  *     autoScanDiscoveredImagesRunningContainers: true,
- *     // Perform admission control if not connected to a gateway
  *     blockAdmissionControl: true,
  *     enforce: true,
  *     groupId: "tf-test-kube_enforcer",
- *     // Kube-bench image path
  *     kubeBenchImageName: "registry.aquasec.com/kube-bench:v0.6.5",
- *     // Secret that holds the registry credentials for the Pod Enforcer and kube-bench
  *     microEnforcerSecretsName: "aqua-registry",
  *     orchestrators: [{
  *         namespace: "aqua",

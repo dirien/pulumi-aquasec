@@ -15,18 +15,17 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
- * const iaC1 = new aquasec.UserSaas("IaC1", {
+ * const iaC1 = new aquasec.UserSaas("iaC1", {
  *     accountAdmin: true,
  *     cspRoles: [],
  *     email: "infrastructure1@example.com",
  * });
- * const iaC2 = new aquasec.UserSaas("IaC2", {
+ * const iaC2 = new aquasec.UserSaas("iaC2", {
  *     accountAdmin: false,
  *     cspRoles: ["Default"],
  *     email: "infrastructure2@example.com",
- *     //optional
  *     groups: [{
  *         groupAdmin: false,
  *         name: "IacGroupName",

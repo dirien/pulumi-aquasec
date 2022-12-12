@@ -42,6 +42,7 @@ public final class GetIntegrationRegistryResult {
      * 
      */
     private String autoPullTime;
+    private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -146,6 +147,9 @@ public final class GetIntegrationRegistryResult {
     public String autoPullTime() {
         return this.autoPullTime;
     }
+    public String description() {
+        return this.description;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -246,6 +250,7 @@ public final class GetIntegrationRegistryResult {
         private Integer autoPullMax;
         private Boolean autoPullRescan;
         private String autoPullTime;
+        private String description;
         private String id;
         private String imageCreationDateCondition;
         private String name;
@@ -267,6 +272,7 @@ public final class GetIntegrationRegistryResult {
     	      this.autoPullMax = defaults.autoPullMax;
     	      this.autoPullRescan = defaults.autoPullRescan;
     	      this.autoPullTime = defaults.autoPullTime;
+    	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.imageCreationDateCondition = defaults.imageCreationDateCondition;
     	      this.name = defaults.name;
@@ -309,6 +315,11 @@ public final class GetIntegrationRegistryResult {
         @CustomType.Setter
         public Builder autoPullTime(String autoPullTime) {
             this.autoPullTime = Objects.requireNonNull(autoPullTime);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
             return this;
         }
         @CustomType.Setter
@@ -385,6 +396,7 @@ public final class GetIntegrationRegistryResult {
             o.autoPullMax = autoPullMax;
             o.autoPullRescan = autoPullRescan;
             o.autoPullTime = autoPullTime;
+            o.description = description;
             o.id = id;
             o.imageCreationDateCondition = imageCreationDateCondition;
             o.name = name;

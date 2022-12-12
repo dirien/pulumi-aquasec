@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRegistryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", {
         "imageCreationDateCondition": args.imageCreationDateCondition,
         "name": args.name,
@@ -78,6 +75,7 @@ export interface GetIntegrationRegistryResult {
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     readonly autoPullTime: string;
+    readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

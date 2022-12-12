@@ -20,11 +20,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getEnforcerGroups(args: GetEnforcerGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetEnforcerGroupsResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getEnforcerGroups:getEnforcerGroups", {
         "forensics": args.forensics,
         "groupId": args.groupId,

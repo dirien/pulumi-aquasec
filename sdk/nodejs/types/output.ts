@@ -4,6 +4,91 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
+import * as utilities from "../utilities";
+
+export interface AcknowledgeIssue {
+    /**
+     * The user who acknowledged the issue.
+     */
+    author: string;
+    /**
+     * The date and time of the acknowledgment.
+     */
+    date: string;
+    dockerId?: string;
+    /**
+     * The current dat and time when the expiration was set
+     */
+    expirationConfiguredAt: string;
+    /**
+     * The user who set the expiration of the issue.
+     */
+    expirationConfiguredBy: string;
+    /**
+     * Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+     */
+    expirationDays?: number;
+    /**
+     * The version of the package that having a fix for the issue.
+     */
+    fixVersion?: string;
+    /**
+     * Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+     */
+    imageName?: string;
+    /**
+     * The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+     */
+    issueName: string;
+    /**
+     * The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+     */
+    issueType: string;
+    /**
+     * When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+     */
+    os?: string;
+    /**
+     * When the resourceType is 'package', the operating system version is required.
+     */
+    osVersion?: string;
+    /**
+     * The permissions of the user who acknowledged the issue.
+     */
+    permission: string;
+    /**
+     * Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+     */
+    registryName?: string;
+    /**
+     * The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+     */
+    resourceCpe?: string;
+    /**
+     * The format of the resource.
+     */
+    resourceFormat?: string;
+    /**
+     * When the resourceType is 'file', the hash of the file is required
+     */
+    resourceHash?: string;
+    /**
+     * When the resourceType is 'package', the name of the package is required.
+     */
+    resourceName?: string;
+    /**
+     * The path of the resource. This is required for resources of type 'file' and 'executable'.
+     */
+    resourcePath?: string;
+    /**
+     * The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+     */
+    resourceType: string;
+    /**
+     * When the resourceType is 'package', the version of the package is required
+     */
+    resourceVersion?: string;
+}
 
 export interface ApplicationScopeCategory {
     /**
@@ -358,6 +443,31 @@ export interface FunctionRuntimePolicyScopeVariable {
     value: string;
 }
 
+export interface GetAcknowledgesAcknowledge {
+    author: string;
+    comment: string;
+    date: string;
+    dockerId: string;
+    expirationConfiguredAt: string;
+    expirationConfiguredBy: string;
+    expirationDays: number;
+    fixVersion: string;
+    imageName: string;
+    issueName: string;
+    issueType: string;
+    os: string;
+    osVersion: string;
+    permission: string;
+    registryName: string;
+    resourceCpe: string;
+    resourceFormat: string;
+    resourceHash: string;
+    resourceName: string;
+    resourcePath: string;
+    resourceType: string;
+    resourceVersion: string;
+}
+
 export interface GetApplicationScopeCategory {
     artifacts?: outputs.GetApplicationScopeCategoryArtifact[];
     entityScopes?: outputs.GetApplicationScopeCategoryEntityScope[];
@@ -470,6 +580,13 @@ export interface GetApplicationScopeCategoryWorkloadO {
 export interface GetApplicationScopeCategoryWorkloadOVariable {
     attribute: string;
     value?: string;
+}
+
+export interface GetAquaLabelsAquaLabel {
+    author: string;
+    created: string;
+    description: string;
+    name: string;
 }
 
 export interface GetContainerRuntimePolicyFileIntegrityMonitoring {
