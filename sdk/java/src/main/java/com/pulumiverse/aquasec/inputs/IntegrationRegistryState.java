@@ -125,6 +125,21 @@ public final class IntegrationRegistryState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The description of the registry
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the registry
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
      * 
      */
@@ -321,6 +336,7 @@ public final class IntegrationRegistryState extends com.pulumi.resources.Resourc
         this.autoPullMax = $.autoPullMax;
         this.autoPullRescan = $.autoPullRescan;
         this.autoPullTime = $.autoPullTime;
+        this.description = $.description;
         this.imageCreationDateCondition = $.imageCreationDateCondition;
         this.lastUpdated = $.lastUpdated;
         this.name = $.name;
@@ -499,6 +515,27 @@ public final class IntegrationRegistryState extends com.pulumi.resources.Resourc
          */
         public Builder autoPullTime(String autoPullTime) {
             return autoPullTime(Output.of(autoPullTime));
+        }
+
+        /**
+         * @param description The description of the registry
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the registry
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

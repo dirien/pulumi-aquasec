@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
- * const containerRuntimePolicy = new aquasec.ContainerRuntimePolicy("container_runtime_policy", {
+ * const containerRuntimePolicy = new aquasec.ContainerRuntimePolicy("containerRuntimePolicy", {
  *     allowedExecutables: [
  *         "exe",
  *         "bin",

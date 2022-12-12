@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getFirewallPolicy(args: GetFirewallPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFirewallPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getFirewallPolicy:getFirewallPolicy", {
         "name": args.name,
         "outboundNetworks": args.outboundNetworks,

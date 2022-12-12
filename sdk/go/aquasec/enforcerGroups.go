@@ -38,7 +38,7 @@ import (
 //				HostProtection:               pulumi.Bool(true),
 //				ImageAssurance:               pulumi.Bool(true),
 //				NetworkProtection:            pulumi.Bool(true),
-//				Orchestrators: EnforcerGroupsOrchestratorArray{
+//				Orchestrators: aquasec.EnforcerGroupsOrchestratorArray{
 //					nil,
 //				},
 //				RiskExplorerAutoDiscovery: pulumi.Bool(true),
@@ -59,8 +59,8 @@ import (
 //				GroupId:                                   pulumi.String("tf-test-kube_enforcer"),
 //				KubeBenchImageName:                        pulumi.String("registry.aquasec.com/kube-bench:v0.6.5"),
 //				MicroEnforcerSecretsName:                  pulumi.String("aqua-registry"),
-//				Orchestrators: EnforcerGroupsOrchestratorArray{
-//					&EnforcerGroupsOrchestratorArgs{
+//				Orchestrators: aquasec.EnforcerGroupsOrchestratorArray{
+//					&aquasec.EnforcerGroupsOrchestratorArgs{
 //						Namespace: pulumi.String("aqua"),
 //						Type:      pulumi.String("kubernetes"),
 //					},

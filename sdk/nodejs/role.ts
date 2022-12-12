@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
- * const iaC = new aquasec.Role("IaC", {
+ * const iaC = new aquasec.Role("iaC", {
  *     description: "RoleIaC",
  *     permission: "PermissionIaC",
  *     roleName: "RoleIaC",

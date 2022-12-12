@@ -8,6 +8,31 @@ import (
 )
 
 // The data source `getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			roles, err := aquasec.GetRoles(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("firstUserName", roles.Roles[0])
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRoles(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRolesResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetRolesResult

@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			containerRuntimePolicy, err := aquasec.LookupContainerRuntimePolicy(ctx, &GetContainerRuntimePolicyArgs{
+//			containerRuntimePolicy, err := aquasec.LookupContainerRuntimePolicy(ctx, &aquasec.LookupContainerRuntimePolicyArgs{
 //				Name: "FunctionRuntimePolicyName",
 //			}, nil)
 //			if err != nil {

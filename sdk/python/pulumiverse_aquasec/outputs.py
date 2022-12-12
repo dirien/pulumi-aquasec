@@ -11,6 +11,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'AcknowledgeIssue',
     'ApplicationScopeCategory',
     'ApplicationScopeCategoryArtifact',
     'ApplicationScopeCategoryArtifactCf',
@@ -92,6 +93,7 @@ __all__ = [
     'ServiceScopeVariable',
     'UserSaasGroup',
     'UserSaasLogin',
+    'GetAcknowledgesAcknowledgeResult',
     'GetApplicationScopeCategoryResult',
     'GetApplicationScopeCategoryArtifactResult',
     'GetApplicationScopeCategoryArtifactCfResult',
@@ -114,6 +116,7 @@ __all__ = [
     'GetApplicationScopeCategoryWorkloadKuberneteVariableResult',
     'GetApplicationScopeCategoryWorkloadOResult',
     'GetApplicationScopeCategoryWorkloadOVariableResult',
+    'GetAquaLabelsAquaLabelResult',
     'GetContainerRuntimePolicyFileIntegrityMonitoringResult',
     'GetContainerRuntimePolicyMalwareScanOptionResult',
     'GetContainerRuntimePolicyScopeVariableResult',
@@ -180,6 +183,307 @@ __all__ = [
     'GetUsersSaasUserLoginResult',
     'GetUsersUserResult',
 ]
+
+@pulumi.output_type
+class AcknowledgeIssue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issueName":
+            suggest = "issue_name"
+        elif key == "issueType":
+            suggest = "issue_type"
+        elif key == "resourceType":
+            suggest = "resource_type"
+        elif key == "dockerId":
+            suggest = "docker_id"
+        elif key == "expirationConfiguredAt":
+            suggest = "expiration_configured_at"
+        elif key == "expirationConfiguredBy":
+            suggest = "expiration_configured_by"
+        elif key == "expirationDays":
+            suggest = "expiration_days"
+        elif key == "fixVersion":
+            suggest = "fix_version"
+        elif key == "imageName":
+            suggest = "image_name"
+        elif key == "osVersion":
+            suggest = "os_version"
+        elif key == "registryName":
+            suggest = "registry_name"
+        elif key == "resourceCpe":
+            suggest = "resource_cpe"
+        elif key == "resourceFormat":
+            suggest = "resource_format"
+        elif key == "resourceHash":
+            suggest = "resource_hash"
+        elif key == "resourceName":
+            suggest = "resource_name"
+        elif key == "resourcePath":
+            suggest = "resource_path"
+        elif key == "resourceVersion":
+            suggest = "resource_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AcknowledgeIssue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AcknowledgeIssue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AcknowledgeIssue.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 issue_name: str,
+                 issue_type: str,
+                 resource_type: str,
+                 author: Optional[str] = None,
+                 date: Optional[str] = None,
+                 docker_id: Optional[str] = None,
+                 expiration_configured_at: Optional[str] = None,
+                 expiration_configured_by: Optional[str] = None,
+                 expiration_days: Optional[int] = None,
+                 fix_version: Optional[str] = None,
+                 image_name: Optional[str] = None,
+                 os: Optional[str] = None,
+                 os_version: Optional[str] = None,
+                 permission: Optional[str] = None,
+                 registry_name: Optional[str] = None,
+                 resource_cpe: Optional[str] = None,
+                 resource_format: Optional[str] = None,
+                 resource_hash: Optional[str] = None,
+                 resource_name: Optional[str] = None,
+                 resource_path: Optional[str] = None,
+                 resource_version: Optional[str] = None):
+        """
+        :param str issue_name: The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        :param str issue_type: The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        :param str resource_type: The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        :param str author: The user who acknowledged the issue.
+        :param str date: The date and time of the acknowledgment.
+        :param str expiration_configured_at: The current dat and time when the expiration was set
+        :param str expiration_configured_by: The user who set the expiration of the issue.
+        :param int expiration_days: Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        :param str fix_version: The version of the package that having a fix for the issue.
+        :param str image_name: Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        :param str os: When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        :param str os_version: When the resource_type is 'package', the operating system version is required.
+        :param str permission: The permissions of the user who acknowledged the issue.
+        :param str registry_name: Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        :param str resource_cpe: The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        :param str resource_format: The format of the resource.
+        :param str resource_hash: When the resource_type is 'file', the hash of the file is required
+        :param str resource_name: When the resource_type is 'package', the name of the package is required.
+        :param str resource_path: The path of the resource. This is required for resources of type 'file' and 'executable'.
+        :param str resource_version: When the resource_type is 'package', the version of the package is required
+        """
+        pulumi.set(__self__, "issue_name", issue_name)
+        pulumi.set(__self__, "issue_type", issue_type)
+        pulumi.set(__self__, "resource_type", resource_type)
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if date is not None:
+            pulumi.set(__self__, "date", date)
+        if docker_id is not None:
+            pulumi.set(__self__, "docker_id", docker_id)
+        if expiration_configured_at is not None:
+            pulumi.set(__self__, "expiration_configured_at", expiration_configured_at)
+        if expiration_configured_by is not None:
+            pulumi.set(__self__, "expiration_configured_by", expiration_configured_by)
+        if expiration_days is not None:
+            pulumi.set(__self__, "expiration_days", expiration_days)
+        if fix_version is not None:
+            pulumi.set(__self__, "fix_version", fix_version)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if os is not None:
+            pulumi.set(__self__, "os", os)
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+        if registry_name is not None:
+            pulumi.set(__self__, "registry_name", registry_name)
+        if resource_cpe is not None:
+            pulumi.set(__self__, "resource_cpe", resource_cpe)
+        if resource_format is not None:
+            pulumi.set(__self__, "resource_format", resource_format)
+        if resource_hash is not None:
+            pulumi.set(__self__, "resource_hash", resource_hash)
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+        if resource_path is not None:
+            pulumi.set(__self__, "resource_path", resource_path)
+        if resource_version is not None:
+            pulumi.set(__self__, "resource_version", resource_version)
+
+    @property
+    @pulumi.getter(name="issueName")
+    def issue_name(self) -> str:
+        """
+        The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        """
+        return pulumi.get(self, "issue_name")
+
+    @property
+    @pulumi.getter(name="issueType")
+    def issue_type(self) -> str:
+        """
+        The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        """
+        return pulumi.get(self, "issue_type")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        """
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter
+    def author(self) -> Optional[str]:
+        """
+        The user who acknowledged the issue.
+        """
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def date(self) -> Optional[str]:
+        """
+        The date and time of the acknowledgment.
+        """
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="dockerId")
+    def docker_id(self) -> Optional[str]:
+        return pulumi.get(self, "docker_id")
+
+    @property
+    @pulumi.getter(name="expirationConfiguredAt")
+    def expiration_configured_at(self) -> Optional[str]:
+        """
+        The current dat and time when the expiration was set
+        """
+        return pulumi.get(self, "expiration_configured_at")
+
+    @property
+    @pulumi.getter(name="expirationConfiguredBy")
+    def expiration_configured_by(self) -> Optional[str]:
+        """
+        The user who set the expiration of the issue.
+        """
+        return pulumi.get(self, "expiration_configured_by")
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> Optional[int]:
+        """
+        Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        """
+        return pulumi.get(self, "expiration_days")
+
+    @property
+    @pulumi.getter(name="fixVersion")
+    def fix_version(self) -> Optional[str]:
+        """
+        The version of the package that having a fix for the issue.
+        """
+        return pulumi.get(self, "fix_version")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[str]:
+        """
+        Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        """
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter
+    def os(self) -> Optional[str]:
+        """
+        When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        """
+        return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[str]:
+        """
+        When the resource_type is 'package', the operating system version is required.
+        """
+        return pulumi.get(self, "os_version")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[str]:
+        """
+        The permissions of the user who acknowledged the issue.
+        """
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter(name="registryName")
+    def registry_name(self) -> Optional[str]:
+        """
+        Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        """
+        return pulumi.get(self, "registry_name")
+
+    @property
+    @pulumi.getter(name="resourceCpe")
+    def resource_cpe(self) -> Optional[str]:
+        """
+        The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        """
+        return pulumi.get(self, "resource_cpe")
+
+    @property
+    @pulumi.getter(name="resourceFormat")
+    def resource_format(self) -> Optional[str]:
+        """
+        The format of the resource.
+        """
+        return pulumi.get(self, "resource_format")
+
+    @property
+    @pulumi.getter(name="resourceHash")
+    def resource_hash(self) -> Optional[str]:
+        """
+        When the resource_type is 'file', the hash of the file is required
+        """
+        return pulumi.get(self, "resource_hash")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[str]:
+        """
+        When the resource_type is 'package', the name of the package is required.
+        """
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="resourcePath")
+    def resource_path(self) -> Optional[str]:
+        """
+        The path of the resource. This is required for resources of type 'file' and 'executable'.
+        """
+        return pulumi.get(self, "resource_path")
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> Optional[str]:
+        """
+        When the resource_type is 'package', the version of the package is required
+        """
+        return pulumi.get(self, "resource_version")
+
 
 @pulumi.output_type
 class ApplicationScopeCategory(dict):
@@ -4866,6 +5170,165 @@ class UserSaasLogin(dict):
 
 
 @pulumi.output_type
+class GetAcknowledgesAcknowledgeResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 comment: str,
+                 date: str,
+                 docker_id: str,
+                 expiration_configured_at: str,
+                 expiration_configured_by: str,
+                 expiration_days: int,
+                 fix_version: str,
+                 image_name: str,
+                 issue_name: str,
+                 issue_type: str,
+                 os: str,
+                 os_version: str,
+                 permission: str,
+                 registry_name: str,
+                 resource_cpe: str,
+                 resource_format: str,
+                 resource_hash: str,
+                 resource_name: str,
+                 resource_path: str,
+                 resource_type: str,
+                 resource_version: str):
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "date", date)
+        pulumi.set(__self__, "docker_id", docker_id)
+        pulumi.set(__self__, "expiration_configured_at", expiration_configured_at)
+        pulumi.set(__self__, "expiration_configured_by", expiration_configured_by)
+        pulumi.set(__self__, "expiration_days", expiration_days)
+        pulumi.set(__self__, "fix_version", fix_version)
+        pulumi.set(__self__, "image_name", image_name)
+        pulumi.set(__self__, "issue_name", issue_name)
+        pulumi.set(__self__, "issue_type", issue_type)
+        pulumi.set(__self__, "os", os)
+        pulumi.set(__self__, "os_version", os_version)
+        pulumi.set(__self__, "permission", permission)
+        pulumi.set(__self__, "registry_name", registry_name)
+        pulumi.set(__self__, "resource_cpe", resource_cpe)
+        pulumi.set(__self__, "resource_format", resource_format)
+        pulumi.set(__self__, "resource_hash", resource_hash)
+        pulumi.set(__self__, "resource_name", resource_name)
+        pulumi.set(__self__, "resource_path", resource_path)
+        pulumi.set(__self__, "resource_type", resource_type)
+        pulumi.set(__self__, "resource_version", resource_version)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def comment(self) -> str:
+        return pulumi.get(self, "comment")
+
+    @property
+    @pulumi.getter
+    def date(self) -> str:
+        return pulumi.get(self, "date")
+
+    @property
+    @pulumi.getter(name="dockerId")
+    def docker_id(self) -> str:
+        return pulumi.get(self, "docker_id")
+
+    @property
+    @pulumi.getter(name="expirationConfiguredAt")
+    def expiration_configured_at(self) -> str:
+        return pulumi.get(self, "expiration_configured_at")
+
+    @property
+    @pulumi.getter(name="expirationConfiguredBy")
+    def expiration_configured_by(self) -> str:
+        return pulumi.get(self, "expiration_configured_by")
+
+    @property
+    @pulumi.getter(name="expirationDays")
+    def expiration_days(self) -> int:
+        return pulumi.get(self, "expiration_days")
+
+    @property
+    @pulumi.getter(name="fixVersion")
+    def fix_version(self) -> str:
+        return pulumi.get(self, "fix_version")
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> str:
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="issueName")
+    def issue_name(self) -> str:
+        return pulumi.get(self, "issue_name")
+
+    @property
+    @pulumi.getter(name="issueType")
+    def issue_type(self) -> str:
+        return pulumi.get(self, "issue_type")
+
+    @property
+    @pulumi.getter
+    def os(self) -> str:
+        return pulumi.get(self, "os")
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> str:
+        return pulumi.get(self, "os_version")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter(name="registryName")
+    def registry_name(self) -> str:
+        return pulumi.get(self, "registry_name")
+
+    @property
+    @pulumi.getter(name="resourceCpe")
+    def resource_cpe(self) -> str:
+        return pulumi.get(self, "resource_cpe")
+
+    @property
+    @pulumi.getter(name="resourceFormat")
+    def resource_format(self) -> str:
+        return pulumi.get(self, "resource_format")
+
+    @property
+    @pulumi.getter(name="resourceHash")
+    def resource_hash(self) -> str:
+        return pulumi.get(self, "resource_hash")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> str:
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="resourcePath")
+    def resource_path(self) -> str:
+        return pulumi.get(self, "resource_path")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="resourceVersion")
+    def resource_version(self) -> str:
+        return pulumi.get(self, "resource_version")
+
+
+@pulumi.output_type
 class GetApplicationScopeCategoryResult(dict):
     def __init__(__self__, *,
                  artifacts: Optional[Sequence['outputs.GetApplicationScopeCategoryArtifactResult']] = None,
@@ -5339,6 +5802,39 @@ class GetApplicationScopeCategoryWorkloadOVariableResult(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetAquaLabelsAquaLabelResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 created: str,
+                 description: str,
+                 name: str):
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def created(self) -> str:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

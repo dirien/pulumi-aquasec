@@ -20,11 +20,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getContainerRuntimePolicy(args: GetContainerRuntimePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetContainerRuntimePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", {
         "malwareScanOptions": args.malwareScanOptions,
         "name": args.name,

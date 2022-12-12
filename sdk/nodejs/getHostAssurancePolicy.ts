@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getHostAssurancePolicy(args: GetHostAssurancePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetHostAssurancePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy", {
         "name": args.name,
     }, opts);

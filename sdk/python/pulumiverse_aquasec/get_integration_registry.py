@@ -21,7 +21,7 @@ class GetIntegrationRegistryResult:
     """
     A collection of values returned by getIntegrationRegistry.
     """
-    def __init__(__self__, auto_cleanup=None, auto_pull=None, auto_pull_interval=None, auto_pull_max=None, auto_pull_rescan=None, auto_pull_time=None, id=None, image_creation_date_condition=None, name=None, password=None, prefixes=None, pull_image_age=None, pull_image_count=None, scanner_names=None, scanner_type=None, type=None, url=None, username=None):
+    def __init__(__self__, auto_cleanup=None, auto_pull=None, auto_pull_interval=None, auto_pull_max=None, auto_pull_rescan=None, auto_pull_time=None, description=None, id=None, image_creation_date_condition=None, name=None, password=None, prefixes=None, pull_image_age=None, pull_image_count=None, scanner_names=None, scanner_type=None, type=None, url=None, username=None):
         if auto_cleanup and not isinstance(auto_cleanup, bool):
             raise TypeError("Expected argument 'auto_cleanup' to be a bool")
         pulumi.set(__self__, "auto_cleanup", auto_cleanup)
@@ -40,6 +40,9 @@ class GetIntegrationRegistryResult:
         if auto_pull_time and not isinstance(auto_pull_time, str):
             raise TypeError("Expected argument 'auto_pull_time' to be a str")
         pulumi.set(__self__, "auto_pull_time", auto_pull_time)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -124,6 +127,11 @@ class GetIntegrationRegistryResult:
         The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
         """
         return pulumi.get(self, "auto_pull_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
@@ -234,6 +242,7 @@ class AwaitableGetIntegrationRegistryResult(GetIntegrationRegistryResult):
             auto_pull_max=self.auto_pull_max,
             auto_pull_rescan=self.auto_pull_rescan,
             auto_pull_time=self.auto_pull_time,
+            description=self.description,
             id=self.id,
             image_creation_date_condition=self.image_creation_date_condition,
             name=self.name,
@@ -282,6 +291,7 @@ def get_integration_registry(image_creation_date_condition: Optional[str] = None
         auto_pull_max=__ret__.auto_pull_max,
         auto_pull_rescan=__ret__.auto_pull_rescan,
         auto_pull_time=__ret__.auto_pull_time,
+        description=__ret__.description,
         id=__ret__.id,
         image_creation_date_condition=__ret__.image_creation_date_condition,
         name=__ret__.name,

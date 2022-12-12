@@ -197,6 +197,20 @@ public class IntegrationRegistry extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoPullTime);
     }
     /**
+     * The description of the registry
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the registry
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * Additional condition for pulling and rescanning images, Defaults to &#39;none&#39;
      * 
      */

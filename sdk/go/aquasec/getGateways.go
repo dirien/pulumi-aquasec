@@ -8,6 +8,37 @@ import (
 )
 
 // The data source `getGateways` provides a method to query all gateways within the Aqua
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testgateway, err := aquasec.GetGateways(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("gatewayData", testgateway)
+//			ctx.Export("gatewayName", testgateway.Gateways[0].Id)
+//			ctx.Export("gatewayStatus", testgateway.Gateways[0].Status)
+//			ctx.Export("gatewayDescription", testgateway.Gateways[0].Description)
+//			ctx.Export("gatewayVersion", testgateway.Gateways[0].Version)
+//			ctx.Export("gatewayHostname", testgateway.Gateways[0].Hostname)
+//			ctx.Export("gatewayGrpcAddress", testgateway.Gateways[0].GrpcAddress)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetGateways(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
 	opts = pkgInvokeDefaultOpts(opts)
 	var rv GetGatewaysResult

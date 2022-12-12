@@ -56,6 +56,12 @@ namespace Pulumiverse.Aquasec
         public Output<string?> AutoPullTime { get; private set; } = null!;
 
         /// <summary>
+        /// The description of the registry
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Additional condition for pulling and rescanning images, Defaults to 'none'
         /// </summary>
         [Output("imageCreationDateCondition")]
@@ -220,6 +226,12 @@ namespace Pulumiverse.Aquasec
         public Input<string>? AutoPullTime { get; set; }
 
         /// <summary>
+        /// The description of the registry
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Additional condition for pulling and rescanning images, Defaults to 'none'
         /// </summary>
         [Input("imageCreationDateCondition")]
@@ -360,6 +372,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("autoPullTime")]
         public Input<string>? AutoPullTime { get; set; }
+
+        /// <summary>
+        /// The description of the registry
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Additional condition for pulling and rescanning images, Defaults to 'none'

@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := aquasec.LookupApplicationScope(ctx, &GetApplicationScopeArgs{
+//			_default, err := aquasec.LookupApplicationScope(ctx, &aquasec.LookupApplicationScopeArgs{
 //				Name: "Global",
 //			}, nil)
 //			if err != nil {

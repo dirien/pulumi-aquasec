@@ -99,7 +99,7 @@ import (
 //					pulumi.String("readonly2"),
 //					pulumi.String("/dir2/"),
 //				},
-//				FileIntegrityMonitoring: &ContainerRuntimePolicyFileIntegrityMonitoringArgs{
+//				FileIntegrityMonitoring: &aquasec.ContainerRuntimePolicyFileIntegrityMonitoringArgs{
 //					ExcludedPaths: pulumi.StringArray{
 //						pulumi.String("expaths"),
 //					},
@@ -126,7 +126,7 @@ import (
 //				},
 //				ForkGuardProcessLimit: pulumi.Int(13),
 //				LimitNewPrivileges:    pulumi.Bool(true),
-//				MalwareScanOptions: &ContainerRuntimePolicyMalwareScanOptionsArgs{
+//				MalwareScanOptions: &aquasec.ContainerRuntimePolicyMalwareScanOptionsArgs{
 //					Action:  pulumi.String("alert"),
 //					Enabled: pulumi.Bool(true),
 //				},
@@ -144,12 +144,12 @@ import (
 //					pulumi.String("proc2"),
 //				},
 //				ScopeExpression: pulumi.String("v1 || v2"),
-//				ScopeVariables: ContainerRuntimePolicyScopeVariableArray{
-//					&ContainerRuntimePolicyScopeVariableArgs{
+//				ScopeVariables: aquasec.ContainerRuntimePolicyScopeVariableArray{
+//					&aquasec.ContainerRuntimePolicyScopeVariableArgs{
 //						Attribute: pulumi.String("kubernetes.cluster"),
 //						Value:     pulumi.String("default"),
 //					},
-//					&ContainerRuntimePolicyScopeVariableArgs{
+//					&aquasec.ContainerRuntimePolicyScopeVariableArgs{
 //						Attribute: pulumi.String("kubernetes.label"),
 //						Name:      pulumi.String("app"),
 //						Value:     pulumi.String("aqua"),

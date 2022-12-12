@@ -5,13 +5,17 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .acknowledge import *
 from .application_scope import *
+from .aqua_label import *
 from .container_runtime_policy import *
 from .enforcer_groups import *
 from .firewall_policy import *
 from .function_assurance_policy import *
 from .function_runtime_policy import *
+from .get_acknowledges import *
 from .get_application_scope import *
+from .get_aqua_labels import *
 from .get_container_runtime_policy import *
 from .get_enforcer_groups import *
 from .get_firewall_policy import *
@@ -64,10 +68,26 @@ _utilities.register(
 [
  {
   "pkg": "aquasec",
+  "mod": "index/acknowledge",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/acknowledge:Acknowledge": "Acknowledge"
+  }
+ },
+ {
+  "pkg": "aquasec",
   "mod": "index/applicationScope",
   "fqn": "pulumiverse_aquasec",
   "classes": {
    "aquasec:index/applicationScope:ApplicationScope": "ApplicationScope"
+  }
+ },
+ {
+  "pkg": "aquasec",
+  "mod": "index/aquaLabel",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/aquaLabel:AquaLabel": "AquaLabel"
   }
  },
  {

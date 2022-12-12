@@ -8,13 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * The data source `aquasec.getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const users = aquasec.getUsers({});
+ * export const firstUserEmail = data.aquasec_users_saas.users.users[0].email;
+ * ```
  */
 export function getUsersSaas(opts?: pulumi.InvokeOptions): Promise<GetUsersSaasResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getUsersSaas:getUsersSaas", {
     }, opts);
 }

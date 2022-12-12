@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
- * const hostRuntimePolicy = new aquasec.HostRuntimePolicy("host_runtime_policy", {
+ * const hostRuntimePolicy = new aquasec.HostRuntimePolicy("hostRuntimePolicy", {
  *     applicationScopes: ["Global"],
  *     auditAllOsUserActivity: true,
  *     auditBruteForceLogin: true,

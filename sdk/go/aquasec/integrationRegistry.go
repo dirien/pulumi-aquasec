@@ -28,6 +28,8 @@ type IntegrationRegistry struct {
 	AutoPullRescan pulumi.BoolPtrOutput `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime pulumi.StringPtrOutput `pulumi:"autoPullTime"`
+	// The description of the registry
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition pulumi.StringOutput `pulumi:"imageCreationDateCondition"`
 	// The last time the registry was modified in UNIX time
@@ -102,6 +104,8 @@ type integrationRegistryState struct {
 	AutoPullRescan *bool `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime *string `pulumi:"autoPullTime"`
+	// The description of the registry
+	Description *string `pulumi:"description"`
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition *string `pulumi:"imageCreationDateCondition"`
 	// The last time the registry was modified in UNIX time
@@ -144,6 +148,8 @@ type IntegrationRegistryState struct {
 	AutoPullRescan pulumi.BoolPtrInput
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime pulumi.StringPtrInput
+	// The description of the registry
+	Description pulumi.StringPtrInput
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition pulumi.StringPtrInput
 	// The last time the registry was modified in UNIX time
@@ -190,6 +196,8 @@ type integrationRegistryArgs struct {
 	AutoPullRescan *bool `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime *string `pulumi:"autoPullTime"`
+	// The description of the registry
+	Description *string `pulumi:"description"`
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition *string `pulumi:"imageCreationDateCondition"`
 	// The last time the registry was modified in UNIX time
@@ -233,6 +241,8 @@ type IntegrationRegistryArgs struct {
 	AutoPullRescan pulumi.BoolPtrInput
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime pulumi.StringPtrInput
+	// The description of the registry
+	Description pulumi.StringPtrInput
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
 	ImageCreationDateCondition pulumi.StringPtrInput
 	// The last time the registry was modified in UNIX time
@@ -380,6 +390,11 @@ func (o IntegrationRegistryOutput) AutoPullRescan() pulumi.BoolPtrOutput {
 // The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 func (o IntegrationRegistryOutput) AutoPullTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringPtrOutput { return v.AutoPullTime }).(pulumi.StringPtrOutput)
+}
+
+// The description of the registry
+func (o IntegrationRegistryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Additional condition for pulling and rescanning images, Defaults to 'none'

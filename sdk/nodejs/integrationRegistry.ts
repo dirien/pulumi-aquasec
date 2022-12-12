@@ -63,6 +63,10 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      */
     public readonly autoPullTime!: pulumi.Output<string | undefined>;
     /**
+     * The description of the registry
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */
     public readonly imageCreationDateCondition!: pulumi.Output<string>;
@@ -132,6 +136,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["autoPullMax"] = state ? state.autoPullMax : undefined;
             resourceInputs["autoPullRescan"] = state ? state.autoPullRescan : undefined;
             resourceInputs["autoPullTime"] = state ? state.autoPullTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["imageCreationDateCondition"] = state ? state.imageCreationDateCondition : undefined;
             resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -157,6 +162,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["autoPullMax"] = args ? args.autoPullMax : undefined;
             resourceInputs["autoPullRescan"] = args ? args.autoPullRescan : undefined;
             resourceInputs["autoPullTime"] = args ? args.autoPullTime : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["imageCreationDateCondition"] = args ? args.imageCreationDateCondition : undefined;
             resourceInputs["lastUpdated"] = args ? args.lastUpdated : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -208,6 +214,10 @@ export interface IntegrationRegistryState {
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     autoPullTime?: pulumi.Input<string>;
+    /**
+     * The description of the registry
+     */
+    description?: pulumi.Input<string>;
     /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */
@@ -291,6 +301,10 @@ export interface IntegrationRegistryArgs {
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     autoPullTime?: pulumi.Input<string>;
+    /**
+     * The description of the registry
+     */
+    description?: pulumi.Input<string>;
     /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */

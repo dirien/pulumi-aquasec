@@ -6,66 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
- *
- * const terraformiap = new aquasec.ApplicationScope("terraformiap", {
- *     // Categories is a nested block of artifacts, workloads and infrastructure
- *     categories: [{
- *         // Artifacts is a nested block of Image, Function, CF
- *         artifacts: [{
- *             // Every object requires expression(logical combinations of variables v1, v2, v3...) and list of variables consists of attribute(pre-defined) and value
- *             images: [{
- *                 expression: "v1 && v2",
- *                 variables: [
- *                     {
- *                         attribute: "aqua.registry",
- *                         value: "test-registry",
- *                     },
- *                     {
- *                         attribute: "image.repo",
- *                         value: "nginx",
- *                     },
- *                 ],
- *             }],
- *         }],
- *         // Infrastructure is a nested block of Kubernetes, OS
- *         infrastructures: [{
- *             // Every object requires expression and list of variables consists of attribute(pre-defined) and value
- *             kubernetes: [{
- *                 expression: "v1",
- *                 variables: [{
- *                     attribute: "kubernetes.cluster",
- *                     value: "aqua",
- *                 }],
- *             }],
- *         }],
- *         // Workloads is a nested block of Kubernetes, OS, CF
- *         workloads: [{
- *             // Every object requires expression(logical combinations of variables v1, v2, v3...) and list of variables consists of attribute(pre-defined) and value
- *             kubernetes: [{
- *                 expression: "v1 && v2",
- *                 variables: [
- *                     {
- *                         attribute: "kubernetes.cluster",
- *                         value: "aqua",
- *                     },
- *                     {
- *                         attribute: "kubernetes.namespace",
- *                         value: "aqua",
- *                     },
- *                 ],
- *             }],
- *         }],
- *     }],
- *     description: "test123",
- * });
- * ```
- */
 export class ApplicationScope extends pulumi.CustomResource {
     /**
      * Get an existing ApplicationScope resource's state with the given name, ID, and optional extra

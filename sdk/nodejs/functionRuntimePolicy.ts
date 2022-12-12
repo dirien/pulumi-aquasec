@@ -11,9 +11,9 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumi/aquasec";
+ * import * as aquasec from "@pulumiverse/aquasec";
  *
- * const functionRuntimePolicy = new aquasec.FunctionRuntimePolicy("function_runtime_policy", {
+ * const functionRuntimePolicy = new aquasec.FunctionRuntimePolicy("functionRuntimePolicy", {
  *     applicationScopes: ["Global"],
  *     blockMaliciousExecutables: true,
  *     blockMaliciousExecutablesAllowedProcesses: [

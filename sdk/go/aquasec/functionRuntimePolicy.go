@@ -41,12 +41,12 @@ import (
 //				Description: pulumi.String("function_runtime_policy"),
 //				Enabled:     pulumi.Bool(true),
 //				Enforce:     pulumi.Bool(false),
-//				ScopeVariables: FunctionRuntimePolicyScopeVariableArray{
-//					&FunctionRuntimePolicyScopeVariableArgs{
+//				ScopeVariables: aquasec.FunctionRuntimePolicyScopeVariableArray{
+//					&aquasec.FunctionRuntimePolicyScopeVariableArgs{
 //						Attribute: pulumi.String("kubernetes.cluster"),
 //						Value:     pulumi.String("default"),
 //					},
-//					&FunctionRuntimePolicyScopeVariableArgs{
+//					&aquasec.FunctionRuntimePolicyScopeVariableArgs{
 //						Attribute: pulumi.String("kubernetes.label"),
 //						Name:      pulumi.String("app"),
 //						Value:     pulumi.String("aqua"),

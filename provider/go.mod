@@ -6,7 +6,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/aquasecurity/terraform-provider-aquasec v0.8.18
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.33.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.33.1-0.20221104131001-330791e758b8
 	github.com/pulumi/pulumi/sdk/v3 v3.48.0
 )
 
@@ -162,8 +162,8 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/pulumi-java/pkg v0.6.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.0.2 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.46.1 // indirect
+	github.com/pulumi/pulumi-yaml v1.0.3 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.48.0 // indirect
 	github.com/pulumi/schema-tools v0.1.0 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect

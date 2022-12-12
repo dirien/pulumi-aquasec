@@ -5,10 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AcknowledgeArgs, AcknowledgeState } from "./acknowledge";
+export type Acknowledge = import("./acknowledge").Acknowledge;
+export const Acknowledge: typeof import("./acknowledge").Acknowledge = null as any;
+utilities.lazyLoad(exports, ["Acknowledge"], () => require("./acknowledge"));
+
 export { ApplicationScopeArgs, ApplicationScopeState } from "./applicationScope";
 export type ApplicationScope = import("./applicationScope").ApplicationScope;
 export const ApplicationScope: typeof import("./applicationScope").ApplicationScope = null as any;
 utilities.lazyLoad(exports, ["ApplicationScope"], () => require("./applicationScope"));
+
+export { AquaLabelArgs, AquaLabelState } from "./aquaLabel";
+export type AquaLabel = import("./aquaLabel").AquaLabel;
+export const AquaLabel: typeof import("./aquaLabel").AquaLabel = null as any;
+utilities.lazyLoad(exports, ["AquaLabel"], () => require("./aquaLabel"));
 
 export { ContainerRuntimePolicyArgs, ContainerRuntimePolicyState } from "./containerRuntimePolicy";
 export type ContainerRuntimePolicy = import("./containerRuntimePolicy").ContainerRuntimePolicy;
@@ -35,10 +45,18 @@ export type FunctionRuntimePolicy = import("./functionRuntimePolicy").FunctionRu
 export const FunctionRuntimePolicy: typeof import("./functionRuntimePolicy").FunctionRuntimePolicy = null as any;
 utilities.lazyLoad(exports, ["FunctionRuntimePolicy"], () => require("./functionRuntimePolicy"));
 
+export { GetAcknowledgesResult } from "./getAcknowledges";
+export const getAcknowledges: typeof import("./getAcknowledges").getAcknowledges = null as any;
+utilities.lazyLoad(exports, ["getAcknowledges"], () => require("./getAcknowledges"));
+
 export { GetApplicationScopeArgs, GetApplicationScopeResult, GetApplicationScopeOutputArgs } from "./getApplicationScope";
 export const getApplicationScope: typeof import("./getApplicationScope").getApplicationScope = null as any;
 export const getApplicationScopeOutput: typeof import("./getApplicationScope").getApplicationScopeOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationScope","getApplicationScopeOutput"], () => require("./getApplicationScope"));
+
+export { GetAquaLabelsResult } from "./getAquaLabels";
+export const getAquaLabels: typeof import("./getAquaLabels").getAquaLabels = null as any;
+utilities.lazyLoad(exports, ["getAquaLabels"], () => require("./getAquaLabels"));
 
 export { GetContainerRuntimePolicyArgs, GetContainerRuntimePolicyResult, GetContainerRuntimePolicyOutputArgs } from "./getContainerRuntimePolicy";
 export const getContainerRuntimePolicy: typeof import("./getContainerRuntimePolicy").getContainerRuntimePolicy = null as any;
@@ -230,8 +248,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "aquasec:index/acknowledge:Acknowledge":
+                return new Acknowledge(name, <any>undefined, { urn })
             case "aquasec:index/applicationScope:ApplicationScope":
                 return new ApplicationScope(name, <any>undefined, { urn })
+            case "aquasec:index/aquaLabel:AquaLabel":
+                return new AquaLabel(name, <any>undefined, { urn })
             case "aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy":
                 return new ContainerRuntimePolicy(name, <any>undefined, { urn })
             case "aquasec:index/enforcerGroups:EnforcerGroups":
@@ -277,7 +299,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("aquasec", "index/acknowledge", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/applicationScope", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/aquaLabel", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/containerRuntimePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/enforcerGroups", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/firewallPolicy", _module)

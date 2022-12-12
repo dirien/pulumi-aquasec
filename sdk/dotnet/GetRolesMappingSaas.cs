@@ -12,6 +12,29 @@ namespace Pulumiverse.Aquasec
 {
     public static class GetRolesMappingSaas
     {
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rolesMappingSaas = Aquasec.GetRolesMappingSaas.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roleMapping"] = rolesMappingSaas.Apply(getRolesMappingSaasResult =&gt; getRolesMappingSaasResult.RolesMappings),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetRolesMappingSaasResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesMappingSaasResult>("aquasec:index/getRolesMappingSaas:getRolesMappingSaas", InvokeArgs.Empty, options.WithDefaults());
     }

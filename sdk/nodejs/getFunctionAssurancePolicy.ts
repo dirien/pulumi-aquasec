@@ -7,11 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getFunctionAssurancePolicy(args: GetFunctionAssurancePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionAssurancePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy", {
         "name": args.name,
     }, opts);

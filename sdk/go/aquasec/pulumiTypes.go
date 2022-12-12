@@ -10,6 +10,280 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AcknowledgeIssue struct {
+	// The user who acknowledged the issue.
+	Author *string `pulumi:"author"`
+	// The date and time of the acknowledgment.
+	Date     *string `pulumi:"date"`
+	DockerId *string `pulumi:"dockerId"`
+	// The current dat and time when the expiration was set
+	ExpirationConfiguredAt *string `pulumi:"expirationConfiguredAt"`
+	// The user who set the expiration of the issue.
+	ExpirationConfiguredBy *string `pulumi:"expirationConfiguredBy"`
+	// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+	ExpirationDays *int `pulumi:"expirationDays"`
+	// The version of the package that having a fix for the issue.
+	FixVersion *string `pulumi:"fixVersion"`
+	// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+	ImageName *string `pulumi:"imageName"`
+	// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+	IssueName string `pulumi:"issueName"`
+	// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+	IssueType string `pulumi:"issueType"`
+	// When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+	Os *string `pulumi:"os"`
+	// When the resourceType is 'package', the operating system version is required.
+	OsVersion *string `pulumi:"osVersion"`
+	// The permissions of the user who acknowledged the issue.
+	Permission *string `pulumi:"permission"`
+	// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+	RegistryName *string `pulumi:"registryName"`
+	// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+	ResourceCpe *string `pulumi:"resourceCpe"`
+	// The format of the resource.
+	ResourceFormat *string `pulumi:"resourceFormat"`
+	// When the resourceType is 'file', the hash of the file is required
+	ResourceHash *string `pulumi:"resourceHash"`
+	// When the resourceType is 'package', the name of the package is required.
+	ResourceName *string `pulumi:"resourceName"`
+	// The path of the resource. This is required for resources of type 'file' and 'executable'.
+	ResourcePath *string `pulumi:"resourcePath"`
+	// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+	ResourceType string `pulumi:"resourceType"`
+	// When the resourceType is 'package', the version of the package is required
+	ResourceVersion *string `pulumi:"resourceVersion"`
+}
+
+// AcknowledgeIssueInput is an input type that accepts AcknowledgeIssueArgs and AcknowledgeIssueOutput values.
+// You can construct a concrete instance of `AcknowledgeIssueInput` via:
+//
+//	AcknowledgeIssueArgs{...}
+type AcknowledgeIssueInput interface {
+	pulumi.Input
+
+	ToAcknowledgeIssueOutput() AcknowledgeIssueOutput
+	ToAcknowledgeIssueOutputWithContext(context.Context) AcknowledgeIssueOutput
+}
+
+type AcknowledgeIssueArgs struct {
+	// The user who acknowledged the issue.
+	Author pulumi.StringPtrInput `pulumi:"author"`
+	// The date and time of the acknowledgment.
+	Date     pulumi.StringPtrInput `pulumi:"date"`
+	DockerId pulumi.StringPtrInput `pulumi:"dockerId"`
+	// The current dat and time when the expiration was set
+	ExpirationConfiguredAt pulumi.StringPtrInput `pulumi:"expirationConfiguredAt"`
+	// The user who set the expiration of the issue.
+	ExpirationConfiguredBy pulumi.StringPtrInput `pulumi:"expirationConfiguredBy"`
+	// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+	ExpirationDays pulumi.IntPtrInput `pulumi:"expirationDays"`
+	// The version of the package that having a fix for the issue.
+	FixVersion pulumi.StringPtrInput `pulumi:"fixVersion"`
+	// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
+	// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+	IssueName pulumi.StringInput `pulumi:"issueName"`
+	// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+	IssueType pulumi.StringInput `pulumi:"issueType"`
+	// When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+	Os pulumi.StringPtrInput `pulumi:"os"`
+	// When the resourceType is 'package', the operating system version is required.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+	// The permissions of the user who acknowledged the issue.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+	// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+	RegistryName pulumi.StringPtrInput `pulumi:"registryName"`
+	// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+	ResourceCpe pulumi.StringPtrInput `pulumi:"resourceCpe"`
+	// The format of the resource.
+	ResourceFormat pulumi.StringPtrInput `pulumi:"resourceFormat"`
+	// When the resourceType is 'file', the hash of the file is required
+	ResourceHash pulumi.StringPtrInput `pulumi:"resourceHash"`
+	// When the resourceType is 'package', the name of the package is required.
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// The path of the resource. This is required for resources of type 'file' and 'executable'.
+	ResourcePath pulumi.StringPtrInput `pulumi:"resourcePath"`
+	// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// When the resourceType is 'package', the version of the package is required
+	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
+}
+
+func (AcknowledgeIssueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcknowledgeIssue)(nil)).Elem()
+}
+
+func (i AcknowledgeIssueArgs) ToAcknowledgeIssueOutput() AcknowledgeIssueOutput {
+	return i.ToAcknowledgeIssueOutputWithContext(context.Background())
+}
+
+func (i AcknowledgeIssueArgs) ToAcknowledgeIssueOutputWithContext(ctx context.Context) AcknowledgeIssueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcknowledgeIssueOutput)
+}
+
+// AcknowledgeIssueArrayInput is an input type that accepts AcknowledgeIssueArray and AcknowledgeIssueArrayOutput values.
+// You can construct a concrete instance of `AcknowledgeIssueArrayInput` via:
+//
+//	AcknowledgeIssueArray{ AcknowledgeIssueArgs{...} }
+type AcknowledgeIssueArrayInput interface {
+	pulumi.Input
+
+	ToAcknowledgeIssueArrayOutput() AcknowledgeIssueArrayOutput
+	ToAcknowledgeIssueArrayOutputWithContext(context.Context) AcknowledgeIssueArrayOutput
+}
+
+type AcknowledgeIssueArray []AcknowledgeIssueInput
+
+func (AcknowledgeIssueArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcknowledgeIssue)(nil)).Elem()
+}
+
+func (i AcknowledgeIssueArray) ToAcknowledgeIssueArrayOutput() AcknowledgeIssueArrayOutput {
+	return i.ToAcknowledgeIssueArrayOutputWithContext(context.Background())
+}
+
+func (i AcknowledgeIssueArray) ToAcknowledgeIssueArrayOutputWithContext(ctx context.Context) AcknowledgeIssueArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcknowledgeIssueArrayOutput)
+}
+
+type AcknowledgeIssueOutput struct{ *pulumi.OutputState }
+
+func (AcknowledgeIssueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcknowledgeIssue)(nil)).Elem()
+}
+
+func (o AcknowledgeIssueOutput) ToAcknowledgeIssueOutput() AcknowledgeIssueOutput {
+	return o
+}
+
+func (o AcknowledgeIssueOutput) ToAcknowledgeIssueOutputWithContext(ctx context.Context) AcknowledgeIssueOutput {
+	return o
+}
+
+// The user who acknowledged the issue.
+func (o AcknowledgeIssueOutput) Author() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.Author }).(pulumi.StringPtrOutput)
+}
+
+// The date and time of the acknowledgment.
+func (o AcknowledgeIssueOutput) Date() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.Date }).(pulumi.StringPtrOutput)
+}
+
+func (o AcknowledgeIssueOutput) DockerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.DockerId }).(pulumi.StringPtrOutput)
+}
+
+// The current dat and time when the expiration was set
+func (o AcknowledgeIssueOutput) ExpirationConfiguredAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ExpirationConfiguredAt }).(pulumi.StringPtrOutput)
+}
+
+// The user who set the expiration of the issue.
+func (o AcknowledgeIssueOutput) ExpirationConfiguredBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ExpirationConfiguredBy }).(pulumi.StringPtrOutput)
+}
+
+// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+func (o AcknowledgeIssueOutput) ExpirationDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *int { return v.ExpirationDays }).(pulumi.IntPtrOutput)
+}
+
+// The version of the package that having a fix for the issue.
+func (o AcknowledgeIssueOutput) FixVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.FixVersion }).(pulumi.StringPtrOutput)
+}
+
+// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+func (o AcknowledgeIssueOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+func (o AcknowledgeIssueOutput) IssueName() pulumi.StringOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) string { return v.IssueName }).(pulumi.StringOutput)
+}
+
+// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+func (o AcknowledgeIssueOutput) IssueType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) string { return v.IssueType }).(pulumi.StringOutput)
+}
+
+// When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+func (o AcknowledgeIssueOutput) Os() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.Os }).(pulumi.StringPtrOutput)
+}
+
+// When the resourceType is 'package', the operating system version is required.
+func (o AcknowledgeIssueOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+// The permissions of the user who acknowledged the issue.
+func (o AcknowledgeIssueOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+func (o AcknowledgeIssueOutput) RegistryName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.RegistryName }).(pulumi.StringPtrOutput)
+}
+
+// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+func (o AcknowledgeIssueOutput) ResourceCpe() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ResourceCpe }).(pulumi.StringPtrOutput)
+}
+
+// The format of the resource.
+func (o AcknowledgeIssueOutput) ResourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ResourceFormat }).(pulumi.StringPtrOutput)
+}
+
+// When the resourceType is 'file', the hash of the file is required
+func (o AcknowledgeIssueOutput) ResourceHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ResourceHash }).(pulumi.StringPtrOutput)
+}
+
+// When the resourceType is 'package', the name of the package is required.
+func (o AcknowledgeIssueOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+// The path of the resource. This is required for resources of type 'file' and 'executable'.
+func (o AcknowledgeIssueOutput) ResourcePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ResourcePath }).(pulumi.StringPtrOutput)
+}
+
+// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+func (o AcknowledgeIssueOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+// When the resourceType is 'package', the version of the package is required
+func (o AcknowledgeIssueOutput) ResourceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcknowledgeIssue) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
+}
+
+type AcknowledgeIssueArrayOutput struct{ *pulumi.OutputState }
+
+func (AcknowledgeIssueArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AcknowledgeIssue)(nil)).Elem()
+}
+
+func (o AcknowledgeIssueArrayOutput) ToAcknowledgeIssueArrayOutput() AcknowledgeIssueArrayOutput {
+	return o
+}
+
+func (o AcknowledgeIssueArrayOutput) ToAcknowledgeIssueArrayOutputWithContext(ctx context.Context) AcknowledgeIssueArrayOutput {
+	return o
+}
+
+func (o AcknowledgeIssueArrayOutput) Index(i pulumi.IntInput) AcknowledgeIssueOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AcknowledgeIssue {
+		return vs[0].([]AcknowledgeIssue)[vs[1].(int)]
+	}).(AcknowledgeIssueOutput)
+}
+
 type ApplicationScopeCategory struct {
 	// An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
 	Artifacts    []ApplicationScopeCategoryArtifact    `pulumi:"artifacts"`
@@ -10515,6 +10789,226 @@ func (o UserSaasLoginArrayOutput) Index(i pulumi.IntInput) UserSaasLoginOutput {
 	}).(UserSaasLoginOutput)
 }
 
+type GetAcknowledgesAcknowledge struct {
+	Author                 string `pulumi:"author"`
+	Comment                string `pulumi:"comment"`
+	Date                   string `pulumi:"date"`
+	DockerId               string `pulumi:"dockerId"`
+	ExpirationConfiguredAt string `pulumi:"expirationConfiguredAt"`
+	ExpirationConfiguredBy string `pulumi:"expirationConfiguredBy"`
+	ExpirationDays         int    `pulumi:"expirationDays"`
+	FixVersion             string `pulumi:"fixVersion"`
+	ImageName              string `pulumi:"imageName"`
+	IssueName              string `pulumi:"issueName"`
+	IssueType              string `pulumi:"issueType"`
+	Os                     string `pulumi:"os"`
+	OsVersion              string `pulumi:"osVersion"`
+	Permission             string `pulumi:"permission"`
+	RegistryName           string `pulumi:"registryName"`
+	ResourceCpe            string `pulumi:"resourceCpe"`
+	ResourceFormat         string `pulumi:"resourceFormat"`
+	ResourceHash           string `pulumi:"resourceHash"`
+	ResourceName           string `pulumi:"resourceName"`
+	ResourcePath           string `pulumi:"resourcePath"`
+	ResourceType           string `pulumi:"resourceType"`
+	ResourceVersion        string `pulumi:"resourceVersion"`
+}
+
+// GetAcknowledgesAcknowledgeInput is an input type that accepts GetAcknowledgesAcknowledgeArgs and GetAcknowledgesAcknowledgeOutput values.
+// You can construct a concrete instance of `GetAcknowledgesAcknowledgeInput` via:
+//
+//	GetAcknowledgesAcknowledgeArgs{...}
+type GetAcknowledgesAcknowledgeInput interface {
+	pulumi.Input
+
+	ToGetAcknowledgesAcknowledgeOutput() GetAcknowledgesAcknowledgeOutput
+	ToGetAcknowledgesAcknowledgeOutputWithContext(context.Context) GetAcknowledgesAcknowledgeOutput
+}
+
+type GetAcknowledgesAcknowledgeArgs struct {
+	Author                 pulumi.StringInput `pulumi:"author"`
+	Comment                pulumi.StringInput `pulumi:"comment"`
+	Date                   pulumi.StringInput `pulumi:"date"`
+	DockerId               pulumi.StringInput `pulumi:"dockerId"`
+	ExpirationConfiguredAt pulumi.StringInput `pulumi:"expirationConfiguredAt"`
+	ExpirationConfiguredBy pulumi.StringInput `pulumi:"expirationConfiguredBy"`
+	ExpirationDays         pulumi.IntInput    `pulumi:"expirationDays"`
+	FixVersion             pulumi.StringInput `pulumi:"fixVersion"`
+	ImageName              pulumi.StringInput `pulumi:"imageName"`
+	IssueName              pulumi.StringInput `pulumi:"issueName"`
+	IssueType              pulumi.StringInput `pulumi:"issueType"`
+	Os                     pulumi.StringInput `pulumi:"os"`
+	OsVersion              pulumi.StringInput `pulumi:"osVersion"`
+	Permission             pulumi.StringInput `pulumi:"permission"`
+	RegistryName           pulumi.StringInput `pulumi:"registryName"`
+	ResourceCpe            pulumi.StringInput `pulumi:"resourceCpe"`
+	ResourceFormat         pulumi.StringInput `pulumi:"resourceFormat"`
+	ResourceHash           pulumi.StringInput `pulumi:"resourceHash"`
+	ResourceName           pulumi.StringInput `pulumi:"resourceName"`
+	ResourcePath           pulumi.StringInput `pulumi:"resourcePath"`
+	ResourceType           pulumi.StringInput `pulumi:"resourceType"`
+	ResourceVersion        pulumi.StringInput `pulumi:"resourceVersion"`
+}
+
+func (GetAcknowledgesAcknowledgeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcknowledgesAcknowledge)(nil)).Elem()
+}
+
+func (i GetAcknowledgesAcknowledgeArgs) ToGetAcknowledgesAcknowledgeOutput() GetAcknowledgesAcknowledgeOutput {
+	return i.ToGetAcknowledgesAcknowledgeOutputWithContext(context.Background())
+}
+
+func (i GetAcknowledgesAcknowledgeArgs) ToGetAcknowledgesAcknowledgeOutputWithContext(ctx context.Context) GetAcknowledgesAcknowledgeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAcknowledgesAcknowledgeOutput)
+}
+
+// GetAcknowledgesAcknowledgeArrayInput is an input type that accepts GetAcknowledgesAcknowledgeArray and GetAcknowledgesAcknowledgeArrayOutput values.
+// You can construct a concrete instance of `GetAcknowledgesAcknowledgeArrayInput` via:
+//
+//	GetAcknowledgesAcknowledgeArray{ GetAcknowledgesAcknowledgeArgs{...} }
+type GetAcknowledgesAcknowledgeArrayInput interface {
+	pulumi.Input
+
+	ToGetAcknowledgesAcknowledgeArrayOutput() GetAcknowledgesAcknowledgeArrayOutput
+	ToGetAcknowledgesAcknowledgeArrayOutputWithContext(context.Context) GetAcknowledgesAcknowledgeArrayOutput
+}
+
+type GetAcknowledgesAcknowledgeArray []GetAcknowledgesAcknowledgeInput
+
+func (GetAcknowledgesAcknowledgeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAcknowledgesAcknowledge)(nil)).Elem()
+}
+
+func (i GetAcknowledgesAcknowledgeArray) ToGetAcknowledgesAcknowledgeArrayOutput() GetAcknowledgesAcknowledgeArrayOutput {
+	return i.ToGetAcknowledgesAcknowledgeArrayOutputWithContext(context.Background())
+}
+
+func (i GetAcknowledgesAcknowledgeArray) ToGetAcknowledgesAcknowledgeArrayOutputWithContext(ctx context.Context) GetAcknowledgesAcknowledgeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAcknowledgesAcknowledgeArrayOutput)
+}
+
+type GetAcknowledgesAcknowledgeOutput struct{ *pulumi.OutputState }
+
+func (GetAcknowledgesAcknowledgeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcknowledgesAcknowledge)(nil)).Elem()
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ToGetAcknowledgesAcknowledgeOutput() GetAcknowledgesAcknowledgeOutput {
+	return o
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ToGetAcknowledgesAcknowledgeOutputWithContext(ctx context.Context) GetAcknowledgesAcknowledgeOutput {
+	return o
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Author }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) Date() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Date }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) DockerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.DockerId }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ExpirationConfiguredAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ExpirationConfiguredAt }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ExpirationConfiguredBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ExpirationConfiguredBy }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ExpirationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) int { return v.ExpirationDays }).(pulumi.IntOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) FixVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.FixVersion }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ImageName }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) IssueName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.IssueName }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) IssueType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.IssueType }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) Os() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Os }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) RegistryName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.RegistryName }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourceCpe() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceCpe }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourceFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceFormat }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourceHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceHash }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourcePath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourcePath }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+func (o GetAcknowledgesAcknowledgeOutput) ResourceVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceVersion }).(pulumi.StringOutput)
+}
+
+type GetAcknowledgesAcknowledgeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAcknowledgesAcknowledgeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAcknowledgesAcknowledge)(nil)).Elem()
+}
+
+func (o GetAcknowledgesAcknowledgeArrayOutput) ToGetAcknowledgesAcknowledgeArrayOutput() GetAcknowledgesAcknowledgeArrayOutput {
+	return o
+}
+
+func (o GetAcknowledgesAcknowledgeArrayOutput) ToGetAcknowledgesAcknowledgeArrayOutputWithContext(ctx context.Context) GetAcknowledgesAcknowledgeArrayOutput {
+	return o
+}
+
+func (o GetAcknowledgesAcknowledgeArrayOutput) Index(i pulumi.IntInput) GetAcknowledgesAcknowledgeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAcknowledgesAcknowledge {
+		return vs[0].([]GetAcknowledgesAcknowledge)[vs[1].(int)]
+	}).(GetAcknowledgesAcknowledgeOutput)
+}
+
 type GetApplicationScopeCategory struct {
 	Artifacts       []GetApplicationScopeCategoryArtifact       `pulumi:"artifacts"`
 	EntityScopes    []GetApplicationScopeCategoryEntityScope    `pulumi:"entityScopes"`
@@ -12767,6 +13261,118 @@ func (o GetApplicationScopeCategoryWorkloadOVariableArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationScopeCategoryWorkloadOVariable {
 		return vs[0].([]GetApplicationScopeCategoryWorkloadOVariable)[vs[1].(int)]
 	}).(GetApplicationScopeCategoryWorkloadOVariableOutput)
+}
+
+type GetAquaLabelsAquaLabel struct {
+	Author      string `pulumi:"author"`
+	Created     string `pulumi:"created"`
+	Description string `pulumi:"description"`
+	Name        string `pulumi:"name"`
+}
+
+// GetAquaLabelsAquaLabelInput is an input type that accepts GetAquaLabelsAquaLabelArgs and GetAquaLabelsAquaLabelOutput values.
+// You can construct a concrete instance of `GetAquaLabelsAquaLabelInput` via:
+//
+//	GetAquaLabelsAquaLabelArgs{...}
+type GetAquaLabelsAquaLabelInput interface {
+	pulumi.Input
+
+	ToGetAquaLabelsAquaLabelOutput() GetAquaLabelsAquaLabelOutput
+	ToGetAquaLabelsAquaLabelOutputWithContext(context.Context) GetAquaLabelsAquaLabelOutput
+}
+
+type GetAquaLabelsAquaLabelArgs struct {
+	Author      pulumi.StringInput `pulumi:"author"`
+	Created     pulumi.StringInput `pulumi:"created"`
+	Description pulumi.StringInput `pulumi:"description"`
+	Name        pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetAquaLabelsAquaLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAquaLabelsAquaLabel)(nil)).Elem()
+}
+
+func (i GetAquaLabelsAquaLabelArgs) ToGetAquaLabelsAquaLabelOutput() GetAquaLabelsAquaLabelOutput {
+	return i.ToGetAquaLabelsAquaLabelOutputWithContext(context.Background())
+}
+
+func (i GetAquaLabelsAquaLabelArgs) ToGetAquaLabelsAquaLabelOutputWithContext(ctx context.Context) GetAquaLabelsAquaLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAquaLabelsAquaLabelOutput)
+}
+
+// GetAquaLabelsAquaLabelArrayInput is an input type that accepts GetAquaLabelsAquaLabelArray and GetAquaLabelsAquaLabelArrayOutput values.
+// You can construct a concrete instance of `GetAquaLabelsAquaLabelArrayInput` via:
+//
+//	GetAquaLabelsAquaLabelArray{ GetAquaLabelsAquaLabelArgs{...} }
+type GetAquaLabelsAquaLabelArrayInput interface {
+	pulumi.Input
+
+	ToGetAquaLabelsAquaLabelArrayOutput() GetAquaLabelsAquaLabelArrayOutput
+	ToGetAquaLabelsAquaLabelArrayOutputWithContext(context.Context) GetAquaLabelsAquaLabelArrayOutput
+}
+
+type GetAquaLabelsAquaLabelArray []GetAquaLabelsAquaLabelInput
+
+func (GetAquaLabelsAquaLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAquaLabelsAquaLabel)(nil)).Elem()
+}
+
+func (i GetAquaLabelsAquaLabelArray) ToGetAquaLabelsAquaLabelArrayOutput() GetAquaLabelsAquaLabelArrayOutput {
+	return i.ToGetAquaLabelsAquaLabelArrayOutputWithContext(context.Background())
+}
+
+func (i GetAquaLabelsAquaLabelArray) ToGetAquaLabelsAquaLabelArrayOutputWithContext(ctx context.Context) GetAquaLabelsAquaLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAquaLabelsAquaLabelArrayOutput)
+}
+
+type GetAquaLabelsAquaLabelOutput struct{ *pulumi.OutputState }
+
+func (GetAquaLabelsAquaLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAquaLabelsAquaLabel)(nil)).Elem()
+}
+
+func (o GetAquaLabelsAquaLabelOutput) ToGetAquaLabelsAquaLabelOutput() GetAquaLabelsAquaLabelOutput {
+	return o
+}
+
+func (o GetAquaLabelsAquaLabelOutput) ToGetAquaLabelsAquaLabelOutputWithContext(ctx context.Context) GetAquaLabelsAquaLabelOutput {
+	return o
+}
+
+func (o GetAquaLabelsAquaLabelOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Author }).(pulumi.StringOutput)
+}
+
+func (o GetAquaLabelsAquaLabelOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o GetAquaLabelsAquaLabelOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetAquaLabelsAquaLabelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAquaLabelsAquaLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAquaLabelsAquaLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAquaLabelsAquaLabel)(nil)).Elem()
+}
+
+func (o GetAquaLabelsAquaLabelArrayOutput) ToGetAquaLabelsAquaLabelArrayOutput() GetAquaLabelsAquaLabelArrayOutput {
+	return o
+}
+
+func (o GetAquaLabelsAquaLabelArrayOutput) ToGetAquaLabelsAquaLabelArrayOutputWithContext(ctx context.Context) GetAquaLabelsAquaLabelArrayOutput {
+	return o
+}
+
+func (o GetAquaLabelsAquaLabelArrayOutput) Index(i pulumi.IntInput) GetAquaLabelsAquaLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAquaLabelsAquaLabel {
+		return vs[0].([]GetAquaLabelsAquaLabel)[vs[1].(int)]
+	}).(GetAquaLabelsAquaLabelOutput)
 }
 
 type GetContainerRuntimePolicyFileIntegrityMonitoring struct {
@@ -20928,6 +21534,8 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcknowledgeIssueInput)(nil)).Elem(), AcknowledgeIssueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcknowledgeIssueArrayInput)(nil)).Elem(), AcknowledgeIssueArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScopeCategoryInput)(nil)).Elem(), ApplicationScopeCategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScopeCategoryArrayInput)(nil)).Elem(), ApplicationScopeCategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationScopeCategoryArtifactInput)(nil)).Elem(), ApplicationScopeCategoryArtifactArgs{})
@@ -21090,6 +21698,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSaasGroupArrayInput)(nil)).Elem(), UserSaasGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSaasLoginInput)(nil)).Elem(), UserSaasLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserSaasLoginArrayInput)(nil)).Elem(), UserSaasLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcknowledgesAcknowledgeInput)(nil)).Elem(), GetAcknowledgesAcknowledgeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAcknowledgesAcknowledgeArrayInput)(nil)).Elem(), GetAcknowledgesAcknowledgeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryInput)(nil)).Elem(), GetApplicationScopeCategoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryArrayInput)(nil)).Elem(), GetApplicationScopeCategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryArtifactInput)(nil)).Elem(), GetApplicationScopeCategoryArtifactArgs{})
@@ -21134,6 +21744,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryWorkloadOArrayInput)(nil)).Elem(), GetApplicationScopeCategoryWorkloadOArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryWorkloadOVariableInput)(nil)).Elem(), GetApplicationScopeCategoryWorkloadOVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationScopeCategoryWorkloadOVariableArrayInput)(nil)).Elem(), GetApplicationScopeCategoryWorkloadOVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAquaLabelsAquaLabelInput)(nil)).Elem(), GetAquaLabelsAquaLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAquaLabelsAquaLabelArrayInput)(nil)).Elem(), GetAquaLabelsAquaLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyFileIntegrityMonitoringInput)(nil)).Elem(), GetContainerRuntimePolicyFileIntegrityMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyFileIntegrityMonitoringArrayInput)(nil)).Elem(), GetContainerRuntimePolicyFileIntegrityMonitoringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainerRuntimePolicyMalwareScanOptionInput)(nil)).Elem(), GetContainerRuntimePolicyMalwareScanOptionArgs{})
@@ -21264,6 +21876,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersSaasUserLoginArrayInput)(nil)).Elem(), GetUsersSaasUserLoginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterOutputType(AcknowledgeIssueOutput{})
+	pulumi.RegisterOutputType(AcknowledgeIssueArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationScopeCategoryOutput{})
 	pulumi.RegisterOutputType(ApplicationScopeCategoryArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationScopeCategoryArtifactOutput{})
@@ -21426,6 +22040,8 @@ func init() {
 	pulumi.RegisterOutputType(UserSaasGroupArrayOutput{})
 	pulumi.RegisterOutputType(UserSaasLoginOutput{})
 	pulumi.RegisterOutputType(UserSaasLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetAcknowledgesAcknowledgeOutput{})
+	pulumi.RegisterOutputType(GetAcknowledgesAcknowledgeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryOutput{})
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryArtifactOutput{})
@@ -21470,6 +22086,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryWorkloadOArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryWorkloadOVariableOutput{})
 	pulumi.RegisterOutputType(GetApplicationScopeCategoryWorkloadOVariableArrayOutput{})
+	pulumi.RegisterOutputType(GetAquaLabelsAquaLabelOutput{})
+	pulumi.RegisterOutputType(GetAquaLabelsAquaLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyFileIntegrityMonitoringOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyFileIntegrityMonitoringArrayOutput{})
 	pulumi.RegisterOutputType(GetContainerRuntimePolicyMalwareScanOptionOutput{})

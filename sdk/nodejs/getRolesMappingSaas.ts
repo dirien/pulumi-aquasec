@@ -6,12 +6,20 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const rolesMappingSaas = aquasec.getRolesMappingSaas({});
+ * export const roleMapping = rolesMappingSaas.then(rolesMappingSaas => rolesMappingSaas.rolesMappings);
+ * ```
+ */
 export function getRolesMappingSaas(opts?: pulumi.InvokeOptions): Promise<GetRolesMappingSaasResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getRolesMappingSaas:getRolesMappingSaas", {
     }, opts);
 }

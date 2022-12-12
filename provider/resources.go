@@ -105,7 +105,9 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
+			"aquasec_acknowledge":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Acknowledge")},
 			"aquasec_application_scope":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApplicationScope")},
+			"aquasec_aqua_label":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AquaLabel")},
 			"aquasec_container_runtime_policy":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ContainerRuntimePolicy")},
 			"aquasec_enforcer_groups":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnforcerGroups")},
 			"aquasec_firewall_policy":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FirewallPolicy")},
@@ -131,7 +133,9 @@ func Provider() tfbridge.ProviderInfo {
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
+			"aquasec_acknowledges":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAcknowledges")},
 			"aquasec_application_scope":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApplicationScope")},
+			"aquasec_aqua_labels":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAquaLabels")},
 			"aquasec_container_runtime_policy": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getContainerRuntimePolicy")},
 			"aquasec_enforcer_groups":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnforcerGroups")},
 			"aquasec_firewall_policy":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFirewallPolicy")},

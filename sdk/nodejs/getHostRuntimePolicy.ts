@@ -20,11 +20,8 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getHostRuntimePolicy(args: GetHostRuntimePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetHostRuntimePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", {
         "name": args.name,
     }, opts);
