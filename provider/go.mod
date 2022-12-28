@@ -7,7 +7,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/aquasecurity/terraform-provider-aquasec v0.8.18
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.33.1-0.20221104131001-330791e758b8
-	github.com/pulumi/pulumi/sdk/v3 v3.49.0
+	github.com/pulumi/pulumi/sdk/v3 v3.50.2
 )
 
 require (
@@ -216,7 +216,6 @@ require (
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	lukechampine.com/frand v1.4.2 // indirect
 	moul.io/http2curl v1.0.0 // indirect
