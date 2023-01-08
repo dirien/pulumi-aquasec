@@ -75,6 +75,9 @@ export interface GetIntegrationRegistryResult {
      * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
      */
     readonly autoPullTime: string;
+    /**
+     * The description of the registry
+     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -125,9 +128,8 @@ export interface GetIntegrationRegistryResult {
      */
     readonly username: string;
 }
-
 export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRegistryResult> {
-    return pulumi.output(args).apply(a => getIntegrationRegistry(a, opts))
+    return pulumi.output(args).apply((a: any) => getIntegrationRegistry(a, opts))
 }
 
 /**

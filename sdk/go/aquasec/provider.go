@@ -41,10 +41,10 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.Password != nil {
-		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrOutput)
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
 	if args.Username != nil {
-		args.Username = pulumi.ToSecret(args.Username).(pulumi.StringPtrOutput)
+		args.Username = pulumi.ToSecret(args.Username).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"password",

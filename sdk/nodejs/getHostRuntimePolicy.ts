@@ -170,9 +170,21 @@ export interface GetHostRuntimePolicyResult {
      */
     readonly windowsRegistryProtections: outputs.GetHostRuntimePolicyWindowsRegistryProtection[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const hostRuntimePolicy = aquasec.getHostRuntimePolicy({
+ *     name: "hostRuntimePolicyName",
+ * });
+ * export const hostRuntimePolicyDetails = hostRuntimePolicy;
+ * ```
+ */
 export function getHostRuntimePolicyOutput(args: GetHostRuntimePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostRuntimePolicyResult> {
-    return pulumi.output(args).apply(a => getHostRuntimePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getHostRuntimePolicy(a, opts))
 }
 
 /**

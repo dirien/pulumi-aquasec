@@ -622,6 +622,21 @@ public final class ContainerRuntimePolicyArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Specify processes that will be allowed
+     * 
+     */
+    @Import(name="execLockdownWhiteLists")
+    private @Nullable Output<List<String>> execLockdownWhiteLists;
+
+    /**
+     * @return Specify processes that will be allowed
+     * 
+     */
+    public Optional<Output<List<String>>> execLockdownWhiteLists() {
+        return Optional.ofNullable(this.execLockdownWhiteLists);
+    }
+
+    /**
      * Configuration for file integrity monitoring.
      * 
      */
@@ -829,6 +844,7 @@ public final class ContainerRuntimePolicyArgs extends com.pulumi.resources.Resou
         this.enforce = $.enforce;
         this.enforceAfterDays = $.enforceAfterDays;
         this.exceptionalReadonlyFilesAndDirectories = $.exceptionalReadonlyFilesAndDirectories;
+        this.execLockdownWhiteLists = $.execLockdownWhiteLists;
         this.fileIntegrityMonitoring = $.fileIntegrityMonitoring;
         this.forkGuardProcessLimit = $.forkGuardProcessLimit;
         this.limitNewPrivileges = $.limitNewPrivileges;
@@ -1818,6 +1834,37 @@ public final class ContainerRuntimePolicyArgs extends com.pulumi.resources.Resou
          */
         public Builder exceptionalReadonlyFilesAndDirectories(String... exceptionalReadonlyFilesAndDirectories) {
             return exceptionalReadonlyFilesAndDirectories(List.of(exceptionalReadonlyFilesAndDirectories));
+        }
+
+        /**
+         * @param execLockdownWhiteLists Specify processes that will be allowed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder execLockdownWhiteLists(@Nullable Output<List<String>> execLockdownWhiteLists) {
+            $.execLockdownWhiteLists = execLockdownWhiteLists;
+            return this;
+        }
+
+        /**
+         * @param execLockdownWhiteLists Specify processes that will be allowed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder execLockdownWhiteLists(List<String> execLockdownWhiteLists) {
+            return execLockdownWhiteLists(Output.of(execLockdownWhiteLists));
+        }
+
+        /**
+         * @param execLockdownWhiteLists Specify processes that will be allowed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder execLockdownWhiteLists(String... execLockdownWhiteLists) {
+            return execLockdownWhiteLists(List.of(execLockdownWhiteLists));
         }
 
         /**

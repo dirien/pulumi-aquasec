@@ -23,7 +23,7 @@ class GetContainerRuntimePolicyResult:
     """
     A collection of values returned by getContainerRuntimePolicy.
     """
-    def __init__(__self__, allowed_executables=None, allowed_registries=None, application_scopes=None, audit_all_network_activity=None, audit_all_processes_activity=None, audit_full_command_arguments=None, author=None, block_access_host_network=None, block_adding_capabilities=None, block_container_exec=None, block_cryptocurrency_mining=None, block_fileless_exec=None, block_low_port_binding=None, block_non_compliant_images=None, block_non_compliant_workloads=None, block_non_k8s_containers=None, block_privileged_containers=None, block_reverse_shell=None, block_root_user=None, block_unregistered_images=None, block_use_ipc_namespace=None, block_use_pid_namespace=None, block_use_user_namespace=None, block_use_uts_namespace=None, blocked_capabilities=None, blocked_executables=None, blocked_files=None, blocked_inbound_ports=None, blocked_outbound_ports=None, blocked_packages=None, blocked_volumes=None, container_exec_allowed_processes=None, description=None, enable_drift_prevention=None, enable_fork_guard=None, enable_ip_reputation_security=None, enable_port_scan_detection=None, enabled=None, enforce=None, enforce_after_days=None, exceptional_readonly_files_and_directories=None, file_integrity_monitorings=None, fork_guard_process_limit=None, id=None, limit_new_privileges=None, malware_scan_options=None, monitor_system_time_changes=None, name=None, readonly_files_and_directories=None, reverse_shell_allowed_ips=None, reverse_shell_allowed_processes=None, scope_expression=None, scope_variables=None):
+    def __init__(__self__, allowed_executables=None, allowed_registries=None, application_scopes=None, audit_all_network_activity=None, audit_all_processes_activity=None, audit_full_command_arguments=None, author=None, block_access_host_network=None, block_adding_capabilities=None, block_container_exec=None, block_cryptocurrency_mining=None, block_fileless_exec=None, block_low_port_binding=None, block_non_compliant_images=None, block_non_compliant_workloads=None, block_non_k8s_containers=None, block_privileged_containers=None, block_reverse_shell=None, block_root_user=None, block_unregistered_images=None, block_use_ipc_namespace=None, block_use_pid_namespace=None, block_use_user_namespace=None, block_use_uts_namespace=None, blocked_capabilities=None, blocked_executables=None, blocked_files=None, blocked_inbound_ports=None, blocked_outbound_ports=None, blocked_packages=None, blocked_volumes=None, container_exec_allowed_processes=None, description=None, enable_drift_prevention=None, enable_fork_guard=None, enable_ip_reputation_security=None, enable_port_scan_detection=None, enabled=None, enforce=None, enforce_after_days=None, exceptional_readonly_files_and_directories=None, exec_lockdown_white_lists=None, file_integrity_monitorings=None, fork_guard_process_limit=None, id=None, limit_new_privileges=None, malware_scan_options=None, monitor_system_time_changes=None, name=None, readonly_files_and_directories=None, reverse_shell_allowed_ips=None, reverse_shell_allowed_processes=None, scope_expression=None, scope_variables=None):
         if allowed_executables and not isinstance(allowed_executables, list):
             raise TypeError("Expected argument 'allowed_executables' to be a list")
         pulumi.set(__self__, "allowed_executables", allowed_executables)
@@ -147,6 +147,9 @@ class GetContainerRuntimePolicyResult:
         if exceptional_readonly_files_and_directories and not isinstance(exceptional_readonly_files_and_directories, list):
             raise TypeError("Expected argument 'exceptional_readonly_files_and_directories' to be a list")
         pulumi.set(__self__, "exceptional_readonly_files_and_directories", exceptional_readonly_files_and_directories)
+        if exec_lockdown_white_lists and not isinstance(exec_lockdown_white_lists, list):
+            raise TypeError("Expected argument 'exec_lockdown_white_lists' to be a list")
+        pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
         if file_integrity_monitorings and not isinstance(file_integrity_monitorings, list):
             raise TypeError("Expected argument 'file_integrity_monitorings' to be a list")
         pulumi.set(__self__, "file_integrity_monitorings", file_integrity_monitorings)
@@ -513,6 +516,14 @@ class GetContainerRuntimePolicyResult:
         return pulumi.get(self, "exceptional_readonly_files_and_directories")
 
     @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Sequence[str]:
+        """
+        Specify processes that will be allowed
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @property
     @pulumi.getter(name="fileIntegrityMonitorings")
     def file_integrity_monitorings(self) -> Sequence['outputs.GetContainerRuntimePolicyFileIntegrityMonitoringResult']:
         """
@@ -656,6 +667,7 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             enforce=self.enforce,
             enforce_after_days=self.enforce_after_days,
             exceptional_readonly_files_and_directories=self.exceptional_readonly_files_and_directories,
+            exec_lockdown_white_lists=self.exec_lockdown_white_lists,
             file_integrity_monitorings=self.file_integrity_monitorings,
             fork_guard_process_limit=self.fork_guard_process_limit,
             id=self.id,
@@ -736,6 +748,7 @@ def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.
         enforce=__ret__.enforce,
         enforce_after_days=__ret__.enforce_after_days,
         exceptional_readonly_files_and_directories=__ret__.exceptional_readonly_files_and_directories,
+        exec_lockdown_white_lists=__ret__.exec_lockdown_white_lists,
         file_integrity_monitorings=__ret__.file_integrity_monitorings,
         fork_guard_process_limit=__ret__.fork_guard_process_limit,
         id=__ret__.id,

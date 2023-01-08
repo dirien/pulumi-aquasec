@@ -211,6 +211,10 @@ export interface GetContainerRuntimePolicyResult {
      */
     readonly exceptionalReadonlyFilesAndDirectories: string[];
     /**
+     * Specify processes that will be allowed
+     */
+    readonly execLockdownWhiteLists: string[];
+    /**
      * Configuration for file integrity monitoring.
      */
     readonly fileIntegrityMonitorings: outputs.GetContainerRuntimePolicyFileIntegrityMonitoring[];
@@ -259,9 +263,21 @@ export interface GetContainerRuntimePolicyResult {
      */
     readonly scopeVariables: outputs.GetContainerRuntimePolicyScopeVariable[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const containerRuntimePolicy = aquasec.getContainerRuntimePolicy({
+ *     name: "FunctionRuntimePolicyName",
+ * });
+ * export const containerRuntimePolicyDetails = containerRuntimePolicy;
+ * ```
+ */
 export function getContainerRuntimePolicyOutput(args: GetContainerRuntimePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerRuntimePolicyResult> {
-    return pulumi.output(args).apply(a => getContainerRuntimePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getContainerRuntimePolicy(a, opts))
 }
 
 /**

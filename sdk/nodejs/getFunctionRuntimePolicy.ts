@@ -110,9 +110,21 @@ export interface GetFunctionRuntimePolicyResult {
      */
     readonly scopeVariables: outputs.GetFunctionRuntimePolicyScopeVariable[];
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const functionRuntimePolicy = aquasec.getFunctionRuntimePolicy({
+ *     name: "FunctionRuntimePolicyName",
+ * });
+ * export const functionRuntimePolicyDetails = functionRuntimePolicy;
+ * ```
+ */
 export function getFunctionRuntimePolicyOutput(args: GetFunctionRuntimePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionRuntimePolicyResult> {
-    return pulumi.output(args).apply(a => getFunctionRuntimePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunctionRuntimePolicy(a, opts))
 }
 
 /**

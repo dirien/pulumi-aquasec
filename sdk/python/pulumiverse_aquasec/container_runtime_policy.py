@@ -56,6 +56,7 @@ class ContainerRuntimePolicyArgs:
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
@@ -109,6 +110,7 @@ class ContainerRuntimePolicyArgs:
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
         :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
@@ -201,6 +203,8 @@ class ContainerRuntimePolicyArgs:
             pulumi.set(__self__, "enforce_after_days", enforce_after_days)
         if exceptional_readonly_files_and_directories is not None:
             pulumi.set(__self__, "exceptional_readonly_files_and_directories", exceptional_readonly_files_and_directories)
+        if exec_lockdown_white_lists is not None:
+            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
         if file_integrity_monitoring is not None:
             pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
         if fork_guard_process_limit is not None:
@@ -705,6 +709,18 @@ class ContainerRuntimePolicyArgs:
         pulumi.set(self, "exceptional_readonly_files_and_directories", value)
 
     @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specify processes that will be allowed
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @exec_lockdown_white_lists.setter
+    def exec_lockdown_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exec_lockdown_white_lists", value)
+
+    @property
     @pulumi.getter(name="fileIntegrityMonitoring")
     def file_integrity_monitoring(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]:
         """
@@ -881,6 +897,7 @@ class _ContainerRuntimePolicyState:
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
@@ -935,6 +952,7 @@ class _ContainerRuntimePolicyState:
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
         :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
@@ -1029,6 +1047,8 @@ class _ContainerRuntimePolicyState:
             pulumi.set(__self__, "enforce_after_days", enforce_after_days)
         if exceptional_readonly_files_and_directories is not None:
             pulumi.set(__self__, "exceptional_readonly_files_and_directories", exceptional_readonly_files_and_directories)
+        if exec_lockdown_white_lists is not None:
+            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
         if file_integrity_monitoring is not None:
             pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
         if fork_guard_process_limit is not None:
@@ -1545,6 +1565,18 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "exceptional_readonly_files_and_directories", value)
 
     @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specify processes that will be allowed
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @exec_lockdown_white_lists.setter
+    def exec_lockdown_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exec_lockdown_white_lists", value)
+
+    @property
     @pulumi.getter(name="fileIntegrityMonitoring")
     def file_integrity_monitoring(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]:
         """
@@ -1722,6 +1754,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
@@ -1902,6 +1935,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
@@ -2101,6 +2135,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
                  exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
@@ -2161,6 +2196,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             __props__.__dict__["enforce"] = enforce
             __props__.__dict__["enforce_after_days"] = enforce_after_days
             __props__.__dict__["exceptional_readonly_files_and_directories"] = exceptional_readonly_files_and_directories
+            __props__.__dict__["exec_lockdown_white_lists"] = exec_lockdown_white_lists
             __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
             __props__.__dict__["fork_guard_process_limit"] = fork_guard_process_limit
             __props__.__dict__["limit_new_privileges"] = limit_new_privileges
@@ -2224,6 +2260,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             enforce: Optional[pulumi.Input[bool]] = None,
             enforce_after_days: Optional[pulumi.Input[int]] = None,
             exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
             fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
             limit_new_privileges: Optional[pulumi.Input[bool]] = None,
@@ -2283,6 +2320,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
@@ -2340,6 +2378,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         __props__.__dict__["enforce"] = enforce
         __props__.__dict__["enforce_after_days"] = enforce_after_days
         __props__.__dict__["exceptional_readonly_files_and_directories"] = exceptional_readonly_files_and_directories
+        __props__.__dict__["exec_lockdown_white_lists"] = exec_lockdown_white_lists
         __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
         __props__.__dict__["fork_guard_process_limit"] = fork_guard_process_limit
         __props__.__dict__["limit_new_privileges"] = limit_new_privileges
@@ -2680,6 +2719,14 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         List of files and directories to be excluded from the read-only list.
         """
         return pulumi.get(self, "exceptional_readonly_files_and_directories")
+
+    @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Specify processes that will be allowed
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
 
     @property
     @pulumi.getter(name="fileIntegrityMonitoring")

@@ -71,9 +71,21 @@ export interface GetApplicationScopeResult {
      */
     readonly ownerEmail: string;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const default = aquasec.getApplicationScope({
+ *     name: "Global",
+ * });
+ * export const scopes = _default;
+ * ```
+ */
 export function getApplicationScopeOutput(args: GetApplicationScopeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationScopeResult> {
-    return pulumi.output(args).apply(a => getApplicationScope(a, opts))
+    return pulumi.output(args).apply((a: any) => getApplicationScope(a, opts))
 }
 
 /**

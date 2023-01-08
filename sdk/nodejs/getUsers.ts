@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as aquasec from "@pulumi/aquasec";
  *
  * const users = aquasec.getUsers({});
- * export const firstUserName = users.then(users => users.users?[0]?.name);
+ * export const firstUserName = users.then(users => users.users?.[0]?.name);
  * ```
  */
 export function getUsers(opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {

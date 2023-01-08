@@ -17,12 +17,12 @@ import * as utilities from "./utilities";
  *
  * const testgateway = aquasec.getGateways({});
  * export const gatewayData = testgateway;
- * export const gatewayName = testgateway.then(testgateway => testgateway.gateways?[0]?.id);
- * export const gatewayStatus = testgateway.then(testgateway => testgateway.gateways?[0]?.status);
- * export const gatewayDescription = testgateway.then(testgateway => testgateway.gateways?[0]?.description);
- * export const gatewayVersion = testgateway.then(testgateway => testgateway.gateways?[0]?.version);
- * export const gatewayHostname = testgateway.then(testgateway => testgateway.gateways?[0]?.hostname);
- * export const gatewayGrpcAddress = testgateway.then(testgateway => testgateway.gateways?[0]?.grpcAddress);
+ * export const gatewayName = testgateway.then(testgateway => testgateway.gateways?.[0]?.id);
+ * export const gatewayStatus = testgateway.then(testgateway => testgateway.gateways?.[0]?.status);
+ * export const gatewayDescription = testgateway.then(testgateway => testgateway.gateways?.[0]?.description);
+ * export const gatewayVersion = testgateway.then(testgateway => testgateway.gateways?.[0]?.version);
+ * export const gatewayHostname = testgateway.then(testgateway => testgateway.gateways?.[0]?.hostname);
+ * export const gatewayGrpcAddress = testgateway.then(testgateway => testgateway.gateways?.[0]?.grpcAddress);
  * ```
  */
 export function getGateways(opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {

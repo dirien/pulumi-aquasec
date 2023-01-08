@@ -138,6 +138,8 @@ type LookupContainerRuntimePolicyResult struct {
 	EnforceAfterDays int `pulumi:"enforceAfterDays"`
 	// List of files and directories to be excluded from the read-only list.
 	ExceptionalReadonlyFilesAndDirectories []string `pulumi:"exceptionalReadonlyFilesAndDirectories"`
+	// Specify processes that will be allowed
+	ExecLockdownWhiteLists []string `pulumi:"execLockdownWhiteLists"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitorings []GetContainerRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
 	// Process limit for the fork guard.
@@ -407,6 +409,11 @@ func (o LookupContainerRuntimePolicyResultOutput) EnforceAfterDays() pulumi.IntO
 // List of files and directories to be excluded from the read-only list.
 func (o LookupContainerRuntimePolicyResultOutput) ExceptionalReadonlyFilesAndDirectories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.ExceptionalReadonlyFilesAndDirectories }).(pulumi.StringArrayOutput)
+}
+
+// Specify processes that will be allowed
+func (o LookupContainerRuntimePolicyResultOutput) ExecLockdownWhiteLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.ExecLockdownWhiteLists }).(pulumi.StringArrayOutput)
 }
 
 // Configuration for file integrity monitoring.

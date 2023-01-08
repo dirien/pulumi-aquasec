@@ -293,6 +293,10 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly ImmutableArray<string> ExceptionalReadonlyFilesAndDirectories;
         /// <summary>
+        /// Specify processes that will be allowed
+        /// </summary>
+        public readonly ImmutableArray<string> ExecLockdownWhiteLists;
+        /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerRuntimePolicyFileIntegrityMonitoringResult> FileIntegrityMonitorings;
@@ -425,6 +429,8 @@ namespace Pulumiverse.Aquasec
 
             ImmutableArray<string> exceptionalReadonlyFilesAndDirectories,
 
+            ImmutableArray<string> execLockdownWhiteLists,
+
             ImmutableArray<Outputs.GetContainerRuntimePolicyFileIntegrityMonitoringResult> fileIntegrityMonitorings,
 
             int forkGuardProcessLimit,
@@ -490,6 +496,7 @@ namespace Pulumiverse.Aquasec
             Enforce = enforce;
             EnforceAfterDays = enforceAfterDays;
             ExceptionalReadonlyFilesAndDirectories = exceptionalReadonlyFilesAndDirectories;
+            ExecLockdownWhiteLists = execLockdownWhiteLists;
             FileIntegrityMonitorings = fileIntegrityMonitorings;
             ForkGuardProcessLimit = forkGuardProcessLimit;
             Id = id;
