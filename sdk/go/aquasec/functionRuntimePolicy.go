@@ -106,7 +106,7 @@ func NewFunctionRuntimePolicy(ctx *pulumi.Context,
 	}
 
 	if args.HoneypotSecretKey != nil {
-		args.HoneypotSecretKey = pulumi.ToSecret(args.HoneypotSecretKey).(pulumi.StringPtrOutput)
+		args.HoneypotSecretKey = pulumi.ToSecret(args.HoneypotSecretKey).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"honeypotSecretKey",

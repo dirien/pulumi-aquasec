@@ -227,9 +227,8 @@ export interface GetKubernetesAssurancePolicyResult {
      */
     readonly whitelistedLicensesEnabled: boolean;
 }
-
 export function getKubernetesAssurancePolicyOutput(args: GetKubernetesAssurancePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAssurancePolicyResult> {
-    return pulumi.output(args).apply(a => getKubernetesAssurancePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getKubernetesAssurancePolicy(a, opts))
 }
 
 /**

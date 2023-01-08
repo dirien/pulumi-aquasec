@@ -221,6 +221,11 @@ public final class GetContainerRuntimePolicyResult {
      */
     private List<String> exceptionalReadonlyFilesAndDirectories;
     /**
+     * @return Specify processes that will be allowed
+     * 
+     */
+    private List<String> execLockdownWhiteLists;
+    /**
      * @return Configuration for file integrity monitoring.
      * 
      */
@@ -570,6 +575,13 @@ public final class GetContainerRuntimePolicyResult {
         return this.exceptionalReadonlyFilesAndDirectories;
     }
     /**
+     * @return Specify processes that will be allowed
+     * 
+     */
+    public List<String> execLockdownWhiteLists() {
+        return this.execLockdownWhiteLists;
+    }
+    /**
      * @return Configuration for file integrity monitoring.
      * 
      */
@@ -704,6 +716,7 @@ public final class GetContainerRuntimePolicyResult {
         private Boolean enforce;
         private Integer enforceAfterDays;
         private List<String> exceptionalReadonlyFilesAndDirectories;
+        private List<String> execLockdownWhiteLists;
         private List<GetContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings;
         private Integer forkGuardProcessLimit;
         private String id;
@@ -760,6 +773,7 @@ public final class GetContainerRuntimePolicyResult {
     	      this.enforce = defaults.enforce;
     	      this.enforceAfterDays = defaults.enforceAfterDays;
     	      this.exceptionalReadonlyFilesAndDirectories = defaults.exceptionalReadonlyFilesAndDirectories;
+    	      this.execLockdownWhiteLists = defaults.execLockdownWhiteLists;
     	      this.fileIntegrityMonitorings = defaults.fileIntegrityMonitorings;
     	      this.forkGuardProcessLimit = defaults.forkGuardProcessLimit;
     	      this.id = defaults.id;
@@ -1016,6 +1030,14 @@ public final class GetContainerRuntimePolicyResult {
             return exceptionalReadonlyFilesAndDirectories(List.of(exceptionalReadonlyFilesAndDirectories));
         }
         @CustomType.Setter
+        public Builder execLockdownWhiteLists(List<String> execLockdownWhiteLists) {
+            this.execLockdownWhiteLists = Objects.requireNonNull(execLockdownWhiteLists);
+            return this;
+        }
+        public Builder execLockdownWhiteLists(String... execLockdownWhiteLists) {
+            return execLockdownWhiteLists(List.of(execLockdownWhiteLists));
+        }
+        @CustomType.Setter
         public Builder fileIntegrityMonitorings(List<GetContainerRuntimePolicyFileIntegrityMonitoring> fileIntegrityMonitorings) {
             this.fileIntegrityMonitorings = Objects.requireNonNull(fileIntegrityMonitorings);
             return this;
@@ -1136,6 +1158,7 @@ public final class GetContainerRuntimePolicyResult {
             o.enforce = enforce;
             o.enforceAfterDays = enforceAfterDays;
             o.exceptionalReadonlyFilesAndDirectories = exceptionalReadonlyFilesAndDirectories;
+            o.execLockdownWhiteLists = execLockdownWhiteLists;
             o.fileIntegrityMonitorings = fileIntegrityMonitorings;
             o.forkGuardProcessLimit = forkGuardProcessLimit;
             o.id = id;

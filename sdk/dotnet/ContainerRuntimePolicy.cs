@@ -433,6 +433,12 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> ExceptionalReadonlyFilesAndDirectories { get; private set; } = null!;
 
         /// <summary>
+        /// Specify processes that will be allowed
+        /// </summary>
+        [Output("execLockdownWhiteLists")]
+        public Output<ImmutableArray<string>> ExecLockdownWhiteLists { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
         [Output("fileIntegrityMonitoring")]
@@ -857,6 +863,18 @@ namespace Pulumiverse.Aquasec
             set => _exceptionalReadonlyFilesAndDirectories = value;
         }
 
+        [Input("execLockdownWhiteLists")]
+        private InputList<string>? _execLockdownWhiteLists;
+
+        /// <summary>
+        /// Specify processes that will be allowed
+        /// </summary>
+        public InputList<string> ExecLockdownWhiteLists
+        {
+            get => _execLockdownWhiteLists ?? (_execLockdownWhiteLists = new InputList<string>());
+            set => _execLockdownWhiteLists = value;
+        }
+
         /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
@@ -1271,6 +1289,18 @@ namespace Pulumiverse.Aquasec
         {
             get => _exceptionalReadonlyFilesAndDirectories ?? (_exceptionalReadonlyFilesAndDirectories = new InputList<string>());
             set => _exceptionalReadonlyFilesAndDirectories = value;
+        }
+
+        [Input("execLockdownWhiteLists")]
+        private InputList<string>? _execLockdownWhiteLists;
+
+        /// <summary>
+        /// Specify processes that will be allowed
+        /// </summary>
+        public InputList<string> ExecLockdownWhiteLists
+        {
+            get => _execLockdownWhiteLists ?? (_execLockdownWhiteLists = new InputList<string>());
+            set => _execLockdownWhiteLists = value;
         }
 
         /// <summary>

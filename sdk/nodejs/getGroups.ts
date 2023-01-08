@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as aquasec from "@pulumi/aquasec";
  *
  * const groups = aquasec.getGroups({});
- * export const firstGroupName = groups.then(groups => groups.groups?[0]?.name);
+ * export const firstGroupName = groups.then(groups => groups.groups?.[0]?.name);
  * ```
  */
 export function getGroups(opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {

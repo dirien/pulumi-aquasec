@@ -301,9 +301,21 @@ export interface GetEnforcerGroupsResult {
      */
     readonly userAccessControl: boolean;
 }
-
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const groups = aquasec.getEnforcerGroups({
+ *     groupId: "IacGroup",
+ * });
+ * export const groupDetails = groups;
+ * ```
+ */
 export function getEnforcerGroupsOutput(args: GetEnforcerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnforcerGroupsResult> {
-    return pulumi.output(args).apply(a => getEnforcerGroups(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnforcerGroups(a, opts))
 }
 
 /**

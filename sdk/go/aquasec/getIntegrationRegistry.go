@@ -50,7 +50,8 @@ type LookupIntegrationRegistryResult struct {
 	AutoPullRescan bool `pulumi:"autoPullRescan"`
 	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 	AutoPullTime string `pulumi:"autoPullTime"`
-	Description  string `pulumi:"description"`
+	// The description of the registry
+	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Additional condition for pulling and rescanning images, Defaults to 'none'
@@ -155,6 +156,7 @@ func (o LookupIntegrationRegistryResultOutput) AutoPullTime() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.AutoPullTime }).(pulumi.StringOutput)
 }
 
+// The description of the registry
 func (o LookupIntegrationRegistryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Description }).(pulumi.StringOutput)
 }

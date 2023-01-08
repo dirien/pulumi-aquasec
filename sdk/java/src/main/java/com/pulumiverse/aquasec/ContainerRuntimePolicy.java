@@ -732,6 +732,20 @@ public class ContainerRuntimePolicy extends com.pulumi.resources.CustomResource 
         return Codegen.optional(this.exceptionalReadonlyFilesAndDirectories);
     }
     /**
+     * Specify processes that will be allowed
+     * 
+     */
+    @Export(name="execLockdownWhiteLists", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> execLockdownWhiteLists;
+
+    /**
+     * @return Specify processes that will be allowed
+     * 
+     */
+    public Output<Optional<List<String>>> execLockdownWhiteLists() {
+        return Codegen.optional(this.execLockdownWhiteLists);
+    }
+    /**
      * Configuration for file integrity monitoring.
      * 
      */

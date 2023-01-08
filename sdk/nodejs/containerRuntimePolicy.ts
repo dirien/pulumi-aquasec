@@ -326,6 +326,10 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly exceptionalReadonlyFilesAndDirectories!: pulumi.Output<string[] | undefined>;
     /**
+     * Specify processes that will be allowed
+     */
+    public readonly execLockdownWhiteLists!: pulumi.Output<string[] | undefined>;
+    /**
      * Configuration for file integrity monitoring.
      */
     public readonly fileIntegrityMonitoring!: pulumi.Output<outputs.ContainerRuntimePolicyFileIntegrityMonitoring | undefined>;
@@ -424,6 +428,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["enforce"] = state ? state.enforce : undefined;
             resourceInputs["enforceAfterDays"] = state ? state.enforceAfterDays : undefined;
             resourceInputs["exceptionalReadonlyFilesAndDirectories"] = state ? state.exceptionalReadonlyFilesAndDirectories : undefined;
+            resourceInputs["execLockdownWhiteLists"] = state ? state.execLockdownWhiteLists : undefined;
             resourceInputs["fileIntegrityMonitoring"] = state ? state.fileIntegrityMonitoring : undefined;
             resourceInputs["forkGuardProcessLimit"] = state ? state.forkGuardProcessLimit : undefined;
             resourceInputs["limitNewPrivileges"] = state ? state.limitNewPrivileges : undefined;
@@ -477,6 +482,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["enforce"] = args ? args.enforce : undefined;
             resourceInputs["enforceAfterDays"] = args ? args.enforceAfterDays : undefined;
             resourceInputs["exceptionalReadonlyFilesAndDirectories"] = args ? args.exceptionalReadonlyFilesAndDirectories : undefined;
+            resourceInputs["execLockdownWhiteLists"] = args ? args.execLockdownWhiteLists : undefined;
             resourceInputs["fileIntegrityMonitoring"] = args ? args.fileIntegrityMonitoring : undefined;
             resourceInputs["forkGuardProcessLimit"] = args ? args.forkGuardProcessLimit : undefined;
             resourceInputs["limitNewPrivileges"] = args ? args.limitNewPrivileges : undefined;
@@ -663,6 +669,10 @@ export interface ContainerRuntimePolicyState {
      * List of files and directories to be excluded from the read-only list.
      */
     exceptionalReadonlyFilesAndDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify processes that will be allowed
+     */
+    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for file integrity monitoring.
      */
@@ -873,6 +883,10 @@ export interface ContainerRuntimePolicyArgs {
      * List of files and directories to be excluded from the read-only list.
      */
     exceptionalReadonlyFilesAndDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specify processes that will be allowed
+     */
+    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Configuration for file integrity monitoring.
      */

@@ -223,9 +223,8 @@ export interface GetHostAssurancePolicyResult {
      */
     readonly whitelistedLicensesEnabled: boolean;
 }
-
 export function getHostAssurancePolicyOutput(args: GetHostAssurancePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostAssurancePolicyResult> {
-    return pulumi.output(args).apply(a => getHostAssurancePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getHostAssurancePolicy(a, opts))
 }
 
 /**

@@ -223,9 +223,8 @@ export interface GetImageAssurancePolicyResult {
      */
     readonly whitelistedLicensesEnabled: boolean;
 }
-
 export function getImageAssurancePolicyOutput(args: GetImageAssurancePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageAssurancePolicyResult> {
-    return pulumi.output(args).apply(a => getImageAssurancePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getImageAssurancePolicy(a, opts))
 }
 
 /**

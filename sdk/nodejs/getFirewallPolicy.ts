@@ -78,9 +78,8 @@ export interface GetFirewallPolicyResult {
      */
     readonly version: string;
 }
-
 export function getFirewallPolicyOutput(args: GetFirewallPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFirewallPolicyResult> {
-    return pulumi.output(args).apply(a => getFirewallPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFirewallPolicy(a, opts))
 }
 
 /**

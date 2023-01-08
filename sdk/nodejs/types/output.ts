@@ -4,7 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
-import * as utilities from "../utilities";
 
 export interface AcknowledgeIssue {
     /**
@@ -95,7 +94,7 @@ export interface ApplicationScopeCategory {
      * An artifact is an application. It can be an image (for a container, not a CF application); a serverless function; or a Tanzu Application Service (TAS) droplet.
      */
     artifacts?: outputs.ApplicationScopeCategoryArtifact[];
-    entityScopes?: outputs.ApplicationScopeCategoryEntityScope[];
+    entityScopes: outputs.ApplicationScopeCategoryEntityScope[];
     /**
      * An infrastructure resource is an element of a computing environment on which a workload is orchestrated and run. It can be a host (VM) or a Kubernetes cluster.
      */
@@ -143,13 +142,13 @@ export interface ApplicationScopeCategoryArtifactImageVariable {
 }
 
 export interface ApplicationScopeCategoryEntityScope {
-    expression?: string;
-    variables?: outputs.ApplicationScopeCategoryEntityScopeVariable[];
+    expression: string;
+    variables: outputs.ApplicationScopeCategoryEntityScopeVariable[];
 }
 
 export interface ApplicationScopeCategoryEntityScopeVariable {
-    attribute?: string;
-    value?: string;
+    attribute: string;
+    value: string;
 }
 
 export interface ApplicationScopeCategoryInfrastructure {

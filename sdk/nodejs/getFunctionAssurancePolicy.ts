@@ -223,9 +223,8 @@ export interface GetFunctionAssurancePolicyResult {
      */
     readonly whitelistedLicensesEnabled: boolean;
 }
-
 export function getFunctionAssurancePolicyOutput(args: GetFunctionAssurancePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionAssurancePolicyResult> {
-    return pulumi.output(args).apply(a => getFunctionAssurancePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunctionAssurancePolicy(a, opts))
 }
 
 /**

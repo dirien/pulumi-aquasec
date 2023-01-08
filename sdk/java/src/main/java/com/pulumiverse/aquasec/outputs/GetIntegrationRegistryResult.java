@@ -42,6 +42,10 @@ public final class GetIntegrationRegistryResult {
      * 
      */
     private String autoPullTime;
+    /**
+     * @return The description of the registry
+     * 
+     */
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -147,6 +151,10 @@ public final class GetIntegrationRegistryResult {
     public String autoPullTime() {
         return this.autoPullTime;
     }
+    /**
+     * @return The description of the registry
+     * 
+     */
     public String description() {
         return this.description;
     }

@@ -131,6 +131,9 @@ class GetIntegrationRegistryResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the registry
+        """
         return pulumi.get(self, "description")
 
     @property
