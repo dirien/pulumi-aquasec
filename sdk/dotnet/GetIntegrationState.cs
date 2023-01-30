@@ -28,7 +28,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["aquasecIntegrationState"] = integrationState.Apply(getIntegrationStateResult =&gt; getIntegrationStateResult),
+        ///         ["aquasecIntegrationState"] = integrationState,
         ///     };
         /// });
         /// ```

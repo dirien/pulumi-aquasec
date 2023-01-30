@@ -5,6 +5,7 @@ package com.pulumiverse.aquasec.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumiverse.aquasec.inputs.RoleMappingLdapArgs;
 import com.pulumiverse.aquasec.inputs.RoleMappingOauth2Args;
 import com.pulumiverse.aquasec.inputs.RoleMappingOpenidArgs;
 import com.pulumiverse.aquasec.inputs.RoleMappingSamlArgs;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class RoleMappingState extends com.pulumi.resources.ResourceArgs {
 
     public static final RoleMappingState Empty = new RoleMappingState();
+
+    /**
+     * LDAP Authentication
+     * 
+     */
+    @Import(name="ldap")
+    private @Nullable Output<RoleMappingLdapArgs> ldap;
+
+    /**
+     * @return LDAP Authentication
+     * 
+     */
+    public Optional<Output<RoleMappingLdapArgs>> ldap() {
+        return Optional.ofNullable(this.ldap);
+    }
 
     /**
      * Oauth2 Authentication
@@ -65,6 +81,7 @@ public final class RoleMappingState extends com.pulumi.resources.ResourceArgs {
     private RoleMappingState() {}
 
     private RoleMappingState(RoleMappingState $) {
+        this.ldap = $.ldap;
         this.oauth2 = $.oauth2;
         this.openid = $.openid;
         this.saml = $.saml;
@@ -86,6 +103,27 @@ public final class RoleMappingState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RoleMappingState defaults) {
             $ = new RoleMappingState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param ldap LDAP Authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ldap(@Nullable Output<RoleMappingLdapArgs> ldap) {
+            $.ldap = ldap;
+            return this;
+        }
+
+        /**
+         * @param ldap LDAP Authentication
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ldap(RoleMappingLdapArgs ldap) {
+            return ldap(Output.of(ldap));
         }
 
         /**

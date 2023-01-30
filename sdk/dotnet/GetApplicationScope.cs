@@ -31,7 +31,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["scopes"] = @default.Apply(getApplicationScopeResult =&gt; getApplicationScopeResult),
+        ///         ["scopes"] = @default,
         ///     };
         /// });
         /// ```
@@ -60,7 +60,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["scopes"] = @default.Apply(getApplicationScopeResult =&gt; getApplicationScopeResult),
+        ///         ["scopes"] = @default,
         ///     };
         /// });
         /// ```

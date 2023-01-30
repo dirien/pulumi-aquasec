@@ -30,7 +30,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["acknowledges"] = acknowledgesAcknowledges.Apply(getAcknowledgesResult =&gt; getAcknowledgesResult),
+        ///         ["acknowledges"] = acknowledgesAcknowledges,
         ///     };
         /// });
         /// ```

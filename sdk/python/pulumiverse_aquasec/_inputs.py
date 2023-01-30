@@ -86,6 +86,7 @@ __all__ = [
     'KubernetesAssurancePolicyScopeArgs',
     'KubernetesAssurancePolicyScopeVariableArgs',
     'KubernetesAssurancePolicyTrustedBaseImageArgs',
+    'RoleMappingLdapArgs',
     'RoleMappingOauth2Args',
     'RoleMappingOpenidArgs',
     'RoleMappingSamlArgs',
@@ -5663,6 +5664,28 @@ class KubernetesAssurancePolicyTrustedBaseImageArgs:
     @registry.setter
     def registry(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "registry", value)
+
+
+@pulumi.input_type
+class RoleMappingLdapArgs:
+    def __init__(__self__, *,
+                 role_mapping: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        pulumi.set(__self__, "role_mapping", role_mapping)
+
+    @property
+    @pulumi.getter(name="roleMapping")
+    def role_mapping(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        return pulumi.get(self, "role_mapping")
+
+    @role_mapping.setter
+    def role_mapping(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "role_mapping", value)
 
 
 @pulumi.input_type

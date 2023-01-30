@@ -30,7 +30,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["scopes"] = aquaLabels.Apply(getAquaLabelsResult =&gt; getAquaLabelsResult),
+        ///         ["scopes"] = aquaLabels,
         ///     };
         /// });
         /// ```

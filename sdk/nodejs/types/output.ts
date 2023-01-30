@@ -1183,6 +1183,10 @@ export interface GetPermissionsSetsPermissionsSet {
     updatedAt: string;
 }
 
+export interface GetRolesMappingLdap {
+    roleMapping: {[key: string]: string};
+}
+
 export interface GetRolesMappingOauth2 {
     roleMapping: {[key: string]: string};
 }
@@ -1774,6 +1778,13 @@ export interface KubernetesAssurancePolicyScopeVariable {
 export interface KubernetesAssurancePolicyTrustedBaseImage {
     imagename?: string;
     registry?: string;
+}
+
+export interface RoleMappingLdap {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: {[key: string]: string};
 }
 
 export interface RoleMappingOauth2 {

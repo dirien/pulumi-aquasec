@@ -132,7 +132,7 @@ class AquaLabel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The data source `get_aqua_labels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
+        The data source _get_aqua_labels_ provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -146,7 +146,7 @@ class AquaLabel(pulumi.CustomResource):
                  args: Optional[AquaLabelArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The data source `get_aqua_labels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
+        The data source _get_aqua_labels_ provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
 
         :param str resource_name: The name of the resource.
         :param AquaLabelArgs args: The arguments to use to populate this resource's properties.

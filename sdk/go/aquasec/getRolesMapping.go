@@ -46,6 +46,8 @@ func GetRolesMapping(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRole
 type GetRolesMappingResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// LDAP Authentication
+	Ldaps []GetRolesMappingLdap `pulumi:"ldaps"`
 	// Oauth2 Authentication
 	Oauth2s []GetRolesMappingOauth2 `pulumi:"oauth2s"`
 	// OpenId Authentication

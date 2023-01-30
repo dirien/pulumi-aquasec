@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumiverse.aquasec.RoleMappingArgs;
 import com.pulumiverse.aquasec.Utilities;
 import com.pulumiverse.aquasec.inputs.RoleMappingState;
+import com.pulumiverse.aquasec.outputs.RoleMappingLdap;
 import com.pulumiverse.aquasec.outputs.RoleMappingOauth2;
 import com.pulumiverse.aquasec.outputs.RoleMappingOpenid;
 import com.pulumiverse.aquasec.outputs.RoleMappingSaml;
@@ -54,6 +55,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="aquasec:index/roleMapping:RoleMapping")
 public class RoleMapping extends com.pulumi.resources.CustomResource {
+    /**
+     * LDAP Authentication
+     * 
+     */
+    @Export(name="ldap", refs={RoleMappingLdap.class}, tree="[0]")
+    private Output</* @Nullable */ RoleMappingLdap> ldap;
+
+    /**
+     * @return LDAP Authentication
+     * 
+     */
+    public Output<Optional<RoleMappingLdap>> ldap() {
+        return Codegen.optional(this.ldap);
+    }
     /**
      * Oauth2 Authentication
      * 

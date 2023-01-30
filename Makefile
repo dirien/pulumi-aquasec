@@ -22,6 +22,11 @@ WORKING_DIR     := $(shell pwd)
 OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
+ensure::
+	cd provider && go mod tidy
+	cd sdk && go mod tidy
+	cd examples && go mod tidy
+
 prepare::
 	@if test -z "${NAME}"; then echo "NAME not set"; exit 1; fi
 	@if test -z "${REPOSITORY}"; then echo "REPOSITORY not set"; exit 1; fi
@@ -43,10 +48,10 @@ prepare::
 
 .PHONY: development provider build_sdks build_nodejs build_dotnet build_go build_python cleanup
 
-development:: install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
+development:: ensure install_plugins provider lint_provider build_sdks install_sdks cleanup # Build the provider & SDKs for a development environment
 
 # Required for the codegen action that runs in pulumi/pulumi and pulumi/pulumi-terraform-bridge
-build:: install_plugins provider build_sdks install_sdks
+build:: ensure install_plugins provider build_sdks install_sdks
 only_build:: build
 
 tfgen:: install_plugins

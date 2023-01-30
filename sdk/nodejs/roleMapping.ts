@@ -50,6 +50,10 @@ export class RoleMapping extends pulumi.CustomResource {
     }
 
     /**
+     * LDAP Authentication
+     */
+    public readonly ldap!: pulumi.Output<outputs.RoleMappingLdap | undefined>;
+    /**
      * Oauth2 Authentication
      */
     public readonly oauth2!: pulumi.Output<outputs.RoleMappingOauth2 | undefined>;
@@ -75,11 +79,13 @@ export class RoleMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RoleMappingState | undefined;
+            resourceInputs["ldap"] = state ? state.ldap : undefined;
             resourceInputs["oauth2"] = state ? state.oauth2 : undefined;
             resourceInputs["openid"] = state ? state.openid : undefined;
             resourceInputs["saml"] = state ? state.saml : undefined;
         } else {
             const args = argsOrState as RoleMappingArgs | undefined;
+            resourceInputs["ldap"] = args ? args.ldap : undefined;
             resourceInputs["oauth2"] = args ? args.oauth2 : undefined;
             resourceInputs["openid"] = args ? args.openid : undefined;
             resourceInputs["saml"] = args ? args.saml : undefined;
@@ -93,6 +99,10 @@ export class RoleMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RoleMapping resources.
  */
 export interface RoleMappingState {
+    /**
+     * LDAP Authentication
+     */
+    ldap?: pulumi.Input<inputs.RoleMappingLdap>;
     /**
      * Oauth2 Authentication
      */
@@ -111,6 +121,10 @@ export interface RoleMappingState {
  * The set of arguments for constructing a RoleMapping resource.
  */
 export interface RoleMappingArgs {
+    /**
+     * LDAP Authentication
+     */
+    ldap?: pulumi.Input<inputs.RoleMappingLdap>;
     /**
      * Oauth2 Authentication
      */

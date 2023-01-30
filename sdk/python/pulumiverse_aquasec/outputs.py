@@ -87,6 +87,7 @@ __all__ = [
     'KubernetesAssurancePolicyScope',
     'KubernetesAssurancePolicyScopeVariable',
     'KubernetesAssurancePolicyTrustedBaseImage',
+    'RoleMappingLdap',
     'RoleMappingOauth2',
     'RoleMappingOpenid',
     'RoleMappingSaml',
@@ -172,6 +173,7 @@ __all__ = [
     'GetKubernetesAssurancePolicyScopeVariableResult',
     'GetKubernetesAssurancePolicyTrustedBaseImageResult',
     'GetPermissionsSetsPermissionsSetResult',
+    'GetRolesMappingLdapResult',
     'GetRolesMappingOauth2Result',
     'GetRolesMappingOpenidResult',
     'GetRolesMappingSaasRolesMappingResult',
@@ -4922,6 +4924,41 @@ class KubernetesAssurancePolicyTrustedBaseImage(dict):
 
 
 @pulumi.output_type
+class RoleMappingLdap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "roleMapping":
+            suggest = "role_mapping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoleMappingLdap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoleMappingLdap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoleMappingLdap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 role_mapping: Mapping[str, str]):
+        """
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        pulumi.set(__self__, "role_mapping", role_mapping)
+
+    @property
+    @pulumi.getter(name="roleMapping")
+    def role_mapping(self) -> Mapping[str, str]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
+        return pulumi.get(self, "role_mapping")
+
+
+@pulumi.output_type
 class RoleMappingOauth2(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8644,6 +8681,18 @@ class GetPermissionsSetsPermissionsSetResult(dict):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetRolesMappingLdapResult(dict):
+    def __init__(__self__, *,
+                 role_mapping: Mapping[str, str]):
+        pulumi.set(__self__, "role_mapping", role_mapping)
+
+    @property
+    @pulumi.getter(name="roleMapping")
+    def role_mapping(self) -> Mapping[str, str]:
+        return pulumi.get(self, "role_mapping")
 
 
 @pulumi.output_type

@@ -58,7 +58,7 @@ class AwaitableGetAcknowledgesResult(GetAcknowledgesResult):
 
 def get_acknowledges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcknowledgesResult:
     """
-    The data source `get_acknowledges` provides a method to query all acknowledges within the Aqua
+    The data source _get_acknowledges_ provides a method to query all acknowledges within the Aqua
 
     ## Example Usage
 

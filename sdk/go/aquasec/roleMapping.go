@@ -43,6 +43,8 @@ import (
 type RoleMapping struct {
 	pulumi.CustomResourceState
 
+	// LDAP Authentication
+	Ldap RoleMappingLdapPtrOutput `pulumi:"ldap"`
 	// Oauth2 Authentication
 	Oauth2 RoleMappingOauth2PtrOutput `pulumi:"oauth2"`
 	// OpenId Authentication
@@ -81,6 +83,8 @@ func GetRoleMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RoleMapping resources.
 type roleMappingState struct {
+	// LDAP Authentication
+	Ldap *RoleMappingLdap `pulumi:"ldap"`
 	// Oauth2 Authentication
 	Oauth2 *RoleMappingOauth2 `pulumi:"oauth2"`
 	// OpenId Authentication
@@ -90,6 +94,8 @@ type roleMappingState struct {
 }
 
 type RoleMappingState struct {
+	// LDAP Authentication
+	Ldap RoleMappingLdapPtrInput
 	// Oauth2 Authentication
 	Oauth2 RoleMappingOauth2PtrInput
 	// OpenId Authentication
@@ -103,6 +109,8 @@ func (RoleMappingState) ElementType() reflect.Type {
 }
 
 type roleMappingArgs struct {
+	// LDAP Authentication
+	Ldap *RoleMappingLdap `pulumi:"ldap"`
 	// Oauth2 Authentication
 	Oauth2 *RoleMappingOauth2 `pulumi:"oauth2"`
 	// OpenId Authentication
@@ -113,6 +121,8 @@ type roleMappingArgs struct {
 
 // The set of arguments for constructing a RoleMapping resource.
 type RoleMappingArgs struct {
+	// LDAP Authentication
+	Ldap RoleMappingLdapPtrInput
 	// Oauth2 Authentication
 	Oauth2 RoleMappingOauth2PtrInput
 	// OpenId Authentication
@@ -206,6 +216,11 @@ func (o RoleMappingOutput) ToRoleMappingOutput() RoleMappingOutput {
 
 func (o RoleMappingOutput) ToRoleMappingOutputWithContext(ctx context.Context) RoleMappingOutput {
 	return o
+}
+
+// LDAP Authentication
+func (o RoleMappingOutput) Ldap() RoleMappingLdapPtrOutput {
+	return o.ApplyT(func(v *RoleMapping) RoleMappingLdapPtrOutput { return v.Ldap }).(RoleMappingLdapPtrOutput)
 }
 
 // Oauth2 Authentication
