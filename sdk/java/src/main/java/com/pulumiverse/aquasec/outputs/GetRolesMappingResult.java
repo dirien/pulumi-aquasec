@@ -4,6 +4,7 @@
 package com.pulumiverse.aquasec.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumiverse.aquasec.outputs.GetRolesMappingLdap;
 import com.pulumiverse.aquasec.outputs.GetRolesMappingOauth2;
 import com.pulumiverse.aquasec.outputs.GetRolesMappingOpenid;
 import com.pulumiverse.aquasec.outputs.GetRolesMappingSaml;
@@ -18,6 +19,11 @@ public final class GetRolesMappingResult {
      * 
      */
     private String id;
+    /**
+     * @return LDAP Authentication
+     * 
+     */
+    private List<GetRolesMappingLdap> ldaps;
     /**
      * @return Oauth2 Authentication
      * 
@@ -41,6 +47,13 @@ public final class GetRolesMappingResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return LDAP Authentication
+     * 
+     */
+    public List<GetRolesMappingLdap> ldaps() {
+        return this.ldaps;
     }
     /**
      * @return Oauth2 Authentication
@@ -74,6 +87,7 @@ public final class GetRolesMappingResult {
     @CustomType.Builder
     public static final class Builder {
         private String id;
+        private List<GetRolesMappingLdap> ldaps;
         private List<GetRolesMappingOauth2> oauth2s;
         private List<GetRolesMappingOpenid> openids;
         private List<GetRolesMappingSaml> samls;
@@ -81,6 +95,7 @@ public final class GetRolesMappingResult {
         public Builder(GetRolesMappingResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
+    	      this.ldaps = defaults.ldaps;
     	      this.oauth2s = defaults.oauth2s;
     	      this.openids = defaults.openids;
     	      this.samls = defaults.samls;
@@ -90,6 +105,14 @@ public final class GetRolesMappingResult {
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
+        }
+        @CustomType.Setter
+        public Builder ldaps(List<GetRolesMappingLdap> ldaps) {
+            this.ldaps = Objects.requireNonNull(ldaps);
+            return this;
+        }
+        public Builder ldaps(GetRolesMappingLdap... ldaps) {
+            return ldaps(List.of(ldaps));
         }
         @CustomType.Setter
         public Builder oauth2s(List<GetRolesMappingOauth2> oauth2s) {
@@ -118,6 +141,7 @@ public final class GetRolesMappingResult {
         public GetRolesMappingResult build() {
             final var o = new GetRolesMappingResult();
             o.id = id;
+            o.ldaps = ldaps;
             o.oauth2s = oauth2s;
             o.openids = openids;
             o.samls = samls;

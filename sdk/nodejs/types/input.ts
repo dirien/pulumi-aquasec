@@ -1248,6 +1248,13 @@ export interface KubernetesAssurancePolicyTrustedBaseImage {
     registry?: pulumi.Input<string>;
 }
 
+export interface RoleMappingLdap {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
+    roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface RoleMappingOauth2 {
     /**
      * Role Mapping is used to define the IdP role that the user will assume in Aqua

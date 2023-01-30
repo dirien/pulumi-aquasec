@@ -55,7 +55,7 @@ class AwaitableGetUsersSaasResult(GetUsersSaasResult):
 
 def get_users_saas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersSaasResult:
     """
-    The data source `get_users_saas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
+    The data source _get_users_saas_ provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
 
     ## Example Usage
 

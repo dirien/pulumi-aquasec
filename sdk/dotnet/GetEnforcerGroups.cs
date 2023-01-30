@@ -31,7 +31,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["groupDetails"] = groups.Apply(getEnforcerGroupsResult =&gt; getEnforcerGroupsResult),
+        ///         ["groupDetails"] = groups,
         ///     };
         /// });
         /// ```
@@ -60,7 +60,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["groupDetails"] = groups.Apply(getEnforcerGroupsResult =&gt; getEnforcerGroupsResult),
+        ///         ["groupDetails"] = groups,
         ///     };
         /// });
         /// ```

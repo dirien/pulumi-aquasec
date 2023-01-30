@@ -30,7 +30,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["gatewayData"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult),
+        ///         ["gatewayData"] = testgateway,
         ///         ["gatewayName"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Id),
         ///         ["gatewayStatus"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Status),
         ///         ["gatewayDescription"] = testgateway.Apply(getGatewaysResult =&gt; getGatewaysResult.Gateways[0]?.Description),

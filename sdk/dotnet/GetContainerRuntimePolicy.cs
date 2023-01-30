@@ -31,7 +31,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["containerRuntimePolicyDetails"] = containerRuntimePolicy.Apply(getContainerRuntimePolicyResult =&gt; getContainerRuntimePolicyResult),
+        ///         ["containerRuntimePolicyDetails"] = containerRuntimePolicy,
         ///     };
         /// });
         /// ```
@@ -60,7 +60,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["containerRuntimePolicyDetails"] = containerRuntimePolicy.Apply(getContainerRuntimePolicyResult =&gt; getContainerRuntimePolicyResult),
+        ///         ["containerRuntimePolicyDetails"] = containerRuntimePolicy,
         ///     };
         /// });
         /// ```

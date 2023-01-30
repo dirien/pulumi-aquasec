@@ -55,7 +55,7 @@ class AwaitableGetRolesResult(GetRolesResult):
 
 def get_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRolesResult:
     """
-    The data source `get_roles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
+    The data source _get_roles_ provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
 
     ## Example Usage
 

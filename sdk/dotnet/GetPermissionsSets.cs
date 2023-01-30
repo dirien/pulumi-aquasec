@@ -31,10 +31,10 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissionsSets"] = testpermissionsset.Apply(getPermissionsSetsResult =&gt; getPermissionsSetsResult),
+        ///         ["permissionsSets"] = testpermissionsset,
         ///         ["permissionsSetsNames"] = new[]
         ///         {
-        ///             testpermissionsset.Apply(getPermissionsSetsResult =&gt; getPermissionsSetsResult),
+        ///             testpermissionsset,
         ///         }.Select(__item =&gt; new[]
         ///         {
         ///             __item.Apply(obj =&gt; obj.PermissionsSets),

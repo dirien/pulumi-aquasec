@@ -34,6 +34,10 @@ export interface GetRolesMappingResult {
      */
     readonly id: string;
     /**
+     * LDAP Authentication
+     */
+    readonly ldaps: outputs.GetRolesMappingLdap[];
+    /**
      * Oauth2 Authentication
      */
     readonly oauth2s: outputs.GetRolesMappingOauth2[];

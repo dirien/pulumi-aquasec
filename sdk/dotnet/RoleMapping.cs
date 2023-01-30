@@ -42,6 +42,12 @@ namespace Pulumiverse.Aquasec
     public partial class RoleMapping : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// LDAP Authentication
+        /// </summary>
+        [Output("ldap")]
+        public Output<Outputs.RoleMappingLdap?> Ldap { get; private set; } = null!;
+
+        /// <summary>
         /// Oauth2 Authentication
         /// </summary>
         [Output("oauth2")]
@@ -107,6 +113,12 @@ namespace Pulumiverse.Aquasec
     public sealed class RoleMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// LDAP Authentication
+        /// </summary>
+        [Input("ldap")]
+        public Input<Inputs.RoleMappingLdapArgs>? Ldap { get; set; }
+
+        /// <summary>
         /// Oauth2 Authentication
         /// </summary>
         [Input("oauth2")]
@@ -132,6 +144,12 @@ namespace Pulumiverse.Aquasec
 
     public sealed class RoleMappingState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// LDAP Authentication
+        /// </summary>
+        [Input("ldap")]
+        public Input<Inputs.RoleMappingLdapGetArgs>? Ldap { get; set; }
+
         /// <summary>
         /// Oauth2 Authentication
         /// </summary>

@@ -28,7 +28,7 @@ namespace Pulumiverse.Aquasec
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["roleMappingAll"] = rolesMapping.Apply(getRolesMappingResult =&gt; getRolesMappingResult),
+        ///         ["roleMappingAll"] = rolesMapping,
         ///         ["roleMappingSaml"] = rolesMapping.Apply(getRolesMappingResult =&gt; getRolesMappingResult.Samls),
         ///     };
         /// });
@@ -49,6 +49,10 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// LDAP Authentication
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRolesMappingLdapResult> Ldaps;
+        /// <summary>
         /// Oauth2 Authentication
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRolesMappingOauth2Result> Oauth2s;
@@ -65,6 +69,8 @@ namespace Pulumiverse.Aquasec
         private GetRolesMappingResult(
             string id,
 
+            ImmutableArray<Outputs.GetRolesMappingLdapResult> ldaps,
+
             ImmutableArray<Outputs.GetRolesMappingOauth2Result> oauth2s,
 
             ImmutableArray<Outputs.GetRolesMappingOpenidResult> openids,
@@ -72,6 +78,7 @@ namespace Pulumiverse.Aquasec
             ImmutableArray<Outputs.GetRolesMappingSamlResult> samls)
         {
             Id = id;
+            Ldaps = ldaps;
             Oauth2s = oauth2s;
             Openids = openids;
             Samls = samls;

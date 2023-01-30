@@ -10048,6 +10048,143 @@ func (o KubernetesAssurancePolicyTrustedBaseImageArrayOutput) Index(i pulumi.Int
 	}).(KubernetesAssurancePolicyTrustedBaseImageOutput)
 }
 
+type RoleMappingLdap struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
+	RoleMapping map[string]string `pulumi:"roleMapping"`
+}
+
+// RoleMappingLdapInput is an input type that accepts RoleMappingLdapArgs and RoleMappingLdapOutput values.
+// You can construct a concrete instance of `RoleMappingLdapInput` via:
+//
+//	RoleMappingLdapArgs{...}
+type RoleMappingLdapInput interface {
+	pulumi.Input
+
+	ToRoleMappingLdapOutput() RoleMappingLdapOutput
+	ToRoleMappingLdapOutputWithContext(context.Context) RoleMappingLdapOutput
+}
+
+type RoleMappingLdapArgs struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
+	RoleMapping pulumi.StringMapInput `pulumi:"roleMapping"`
+}
+
+func (RoleMappingLdapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleMappingLdap)(nil)).Elem()
+}
+
+func (i RoleMappingLdapArgs) ToRoleMappingLdapOutput() RoleMappingLdapOutput {
+	return i.ToRoleMappingLdapOutputWithContext(context.Background())
+}
+
+func (i RoleMappingLdapArgs) ToRoleMappingLdapOutputWithContext(ctx context.Context) RoleMappingLdapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingLdapOutput)
+}
+
+func (i RoleMappingLdapArgs) ToRoleMappingLdapPtrOutput() RoleMappingLdapPtrOutput {
+	return i.ToRoleMappingLdapPtrOutputWithContext(context.Background())
+}
+
+func (i RoleMappingLdapArgs) ToRoleMappingLdapPtrOutputWithContext(ctx context.Context) RoleMappingLdapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingLdapOutput).ToRoleMappingLdapPtrOutputWithContext(ctx)
+}
+
+// RoleMappingLdapPtrInput is an input type that accepts RoleMappingLdapArgs, RoleMappingLdapPtr and RoleMappingLdapPtrOutput values.
+// You can construct a concrete instance of `RoleMappingLdapPtrInput` via:
+//
+//	        RoleMappingLdapArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoleMappingLdapPtrInput interface {
+	pulumi.Input
+
+	ToRoleMappingLdapPtrOutput() RoleMappingLdapPtrOutput
+	ToRoleMappingLdapPtrOutputWithContext(context.Context) RoleMappingLdapPtrOutput
+}
+
+type roleMappingLdapPtrType RoleMappingLdapArgs
+
+func RoleMappingLdapPtr(v *RoleMappingLdapArgs) RoleMappingLdapPtrInput {
+	return (*roleMappingLdapPtrType)(v)
+}
+
+func (*roleMappingLdapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleMappingLdap)(nil)).Elem()
+}
+
+func (i *roleMappingLdapPtrType) ToRoleMappingLdapPtrOutput() RoleMappingLdapPtrOutput {
+	return i.ToRoleMappingLdapPtrOutputWithContext(context.Background())
+}
+
+func (i *roleMappingLdapPtrType) ToRoleMappingLdapPtrOutputWithContext(ctx context.Context) RoleMappingLdapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingLdapPtrOutput)
+}
+
+type RoleMappingLdapOutput struct{ *pulumi.OutputState }
+
+func (RoleMappingLdapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleMappingLdap)(nil)).Elem()
+}
+
+func (o RoleMappingLdapOutput) ToRoleMappingLdapOutput() RoleMappingLdapOutput {
+	return o
+}
+
+func (o RoleMappingLdapOutput) ToRoleMappingLdapOutputWithContext(ctx context.Context) RoleMappingLdapOutput {
+	return o
+}
+
+func (o RoleMappingLdapOutput) ToRoleMappingLdapPtrOutput() RoleMappingLdapPtrOutput {
+	return o.ToRoleMappingLdapPtrOutputWithContext(context.Background())
+}
+
+func (o RoleMappingLdapOutput) ToRoleMappingLdapPtrOutputWithContext(ctx context.Context) RoleMappingLdapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleMappingLdap) *RoleMappingLdap {
+		return &v
+	}).(RoleMappingLdapPtrOutput)
+}
+
+// Role Mapping is used to define the IdP role that the user will assume in Aqua
+func (o RoleMappingLdapOutput) RoleMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RoleMappingLdap) map[string]string { return v.RoleMapping }).(pulumi.StringMapOutput)
+}
+
+type RoleMappingLdapPtrOutput struct{ *pulumi.OutputState }
+
+func (RoleMappingLdapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoleMappingLdap)(nil)).Elem()
+}
+
+func (o RoleMappingLdapPtrOutput) ToRoleMappingLdapPtrOutput() RoleMappingLdapPtrOutput {
+	return o
+}
+
+func (o RoleMappingLdapPtrOutput) ToRoleMappingLdapPtrOutputWithContext(ctx context.Context) RoleMappingLdapPtrOutput {
+	return o
+}
+
+func (o RoleMappingLdapPtrOutput) Elem() RoleMappingLdapOutput {
+	return o.ApplyT(func(v *RoleMappingLdap) RoleMappingLdap {
+		if v != nil {
+			return *v
+		}
+		var ret RoleMappingLdap
+		return ret
+	}).(RoleMappingLdapOutput)
+}
+
+// Role Mapping is used to define the IdP role that the user will assume in Aqua
+func (o RoleMappingLdapPtrOutput) RoleMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RoleMappingLdap) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleMapping
+	}).(pulumi.StringMapOutput)
+}
+
 type RoleMappingOauth2 struct {
 	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping map[string]string `pulumi:"roleMapping"`
@@ -20347,6 +20484,100 @@ func (o GetPermissionsSetsPermissionsSetArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetPermissionsSetsPermissionsSetOutput)
 }
 
+type GetRolesMappingLdap struct {
+	RoleMapping map[string]string `pulumi:"roleMapping"`
+}
+
+// GetRolesMappingLdapInput is an input type that accepts GetRolesMappingLdapArgs and GetRolesMappingLdapOutput values.
+// You can construct a concrete instance of `GetRolesMappingLdapInput` via:
+//
+//	GetRolesMappingLdapArgs{...}
+type GetRolesMappingLdapInput interface {
+	pulumi.Input
+
+	ToGetRolesMappingLdapOutput() GetRolesMappingLdapOutput
+	ToGetRolesMappingLdapOutputWithContext(context.Context) GetRolesMappingLdapOutput
+}
+
+type GetRolesMappingLdapArgs struct {
+	RoleMapping pulumi.StringMapInput `pulumi:"roleMapping"`
+}
+
+func (GetRolesMappingLdapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesMappingLdap)(nil)).Elem()
+}
+
+func (i GetRolesMappingLdapArgs) ToGetRolesMappingLdapOutput() GetRolesMappingLdapOutput {
+	return i.ToGetRolesMappingLdapOutputWithContext(context.Background())
+}
+
+func (i GetRolesMappingLdapArgs) ToGetRolesMappingLdapOutputWithContext(ctx context.Context) GetRolesMappingLdapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolesMappingLdapOutput)
+}
+
+// GetRolesMappingLdapArrayInput is an input type that accepts GetRolesMappingLdapArray and GetRolesMappingLdapArrayOutput values.
+// You can construct a concrete instance of `GetRolesMappingLdapArrayInput` via:
+//
+//	GetRolesMappingLdapArray{ GetRolesMappingLdapArgs{...} }
+type GetRolesMappingLdapArrayInput interface {
+	pulumi.Input
+
+	ToGetRolesMappingLdapArrayOutput() GetRolesMappingLdapArrayOutput
+	ToGetRolesMappingLdapArrayOutputWithContext(context.Context) GetRolesMappingLdapArrayOutput
+}
+
+type GetRolesMappingLdapArray []GetRolesMappingLdapInput
+
+func (GetRolesMappingLdapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolesMappingLdap)(nil)).Elem()
+}
+
+func (i GetRolesMappingLdapArray) ToGetRolesMappingLdapArrayOutput() GetRolesMappingLdapArrayOutput {
+	return i.ToGetRolesMappingLdapArrayOutputWithContext(context.Background())
+}
+
+func (i GetRolesMappingLdapArray) ToGetRolesMappingLdapArrayOutputWithContext(ctx context.Context) GetRolesMappingLdapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRolesMappingLdapArrayOutput)
+}
+
+type GetRolesMappingLdapOutput struct{ *pulumi.OutputState }
+
+func (GetRolesMappingLdapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesMappingLdap)(nil)).Elem()
+}
+
+func (o GetRolesMappingLdapOutput) ToGetRolesMappingLdapOutput() GetRolesMappingLdapOutput {
+	return o
+}
+
+func (o GetRolesMappingLdapOutput) ToGetRolesMappingLdapOutputWithContext(ctx context.Context) GetRolesMappingLdapOutput {
+	return o
+}
+
+func (o GetRolesMappingLdapOutput) RoleMapping() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRolesMappingLdap) map[string]string { return v.RoleMapping }).(pulumi.StringMapOutput)
+}
+
+type GetRolesMappingLdapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRolesMappingLdapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRolesMappingLdap)(nil)).Elem()
+}
+
+func (o GetRolesMappingLdapArrayOutput) ToGetRolesMappingLdapArrayOutput() GetRolesMappingLdapArrayOutput {
+	return o
+}
+
+func (o GetRolesMappingLdapArrayOutput) ToGetRolesMappingLdapArrayOutputWithContext(ctx context.Context) GetRolesMappingLdapArrayOutput {
+	return o
+}
+
+func (o GetRolesMappingLdapArrayOutput) Index(i pulumi.IntInput) GetRolesMappingLdapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRolesMappingLdap {
+		return vs[0].([]GetRolesMappingLdap)[vs[1].(int)]
+	}).(GetRolesMappingLdapOutput)
+}
+
 type GetRolesMappingOauth2 struct {
 	RoleMapping map[string]string `pulumi:"roleMapping"`
 }
@@ -21686,6 +21917,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAssurancePolicyScopeVariableArrayInput)(nil)).Elem(), KubernetesAssurancePolicyScopeVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAssurancePolicyTrustedBaseImageInput)(nil)).Elem(), KubernetesAssurancePolicyTrustedBaseImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesAssurancePolicyTrustedBaseImageArrayInput)(nil)).Elem(), KubernetesAssurancePolicyTrustedBaseImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleMappingLdapInput)(nil)).Elem(), RoleMappingLdapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoleMappingLdapPtrInput)(nil)).Elem(), RoleMappingLdapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleMappingOauth2Input)(nil)).Elem(), RoleMappingOauth2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleMappingOauth2PtrInput)(nil)).Elem(), RoleMappingOauth2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoleMappingOpenidInput)(nil)).Elem(), RoleMappingOpenidArgs{})
@@ -21856,6 +22089,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAssurancePolicyTrustedBaseImageArrayInput)(nil)).Elem(), GetKubernetesAssurancePolicyTrustedBaseImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsSetsPermissionsSetInput)(nil)).Elem(), GetPermissionsSetsPermissionsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsSetsPermissionsSetArrayInput)(nil)).Elem(), GetPermissionsSetsPermissionsSetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesMappingLdapInput)(nil)).Elem(), GetRolesMappingLdapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesMappingLdapArrayInput)(nil)).Elem(), GetRolesMappingLdapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesMappingOauth2Input)(nil)).Elem(), GetRolesMappingOauth2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesMappingOauth2ArrayInput)(nil)).Elem(), GetRolesMappingOauth2Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesMappingOpenidInput)(nil)).Elem(), GetRolesMappingOpenidArgs{})
@@ -22028,6 +22263,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesAssurancePolicyScopeVariableArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesAssurancePolicyTrustedBaseImageOutput{})
 	pulumi.RegisterOutputType(KubernetesAssurancePolicyTrustedBaseImageArrayOutput{})
+	pulumi.RegisterOutputType(RoleMappingLdapOutput{})
+	pulumi.RegisterOutputType(RoleMappingLdapPtrOutput{})
 	pulumi.RegisterOutputType(RoleMappingOauth2Output{})
 	pulumi.RegisterOutputType(RoleMappingOauth2PtrOutput{})
 	pulumi.RegisterOutputType(RoleMappingOpenidOutput{})
@@ -22198,6 +22435,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesAssurancePolicyTrustedBaseImageArrayOutput{})
 	pulumi.RegisterOutputType(GetPermissionsSetsPermissionsSetOutput{})
 	pulumi.RegisterOutputType(GetPermissionsSetsPermissionsSetArrayOutput{})
+	pulumi.RegisterOutputType(GetRolesMappingLdapOutput{})
+	pulumi.RegisterOutputType(GetRolesMappingLdapArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesMappingOauth2Output{})
 	pulumi.RegisterOutputType(GetRolesMappingOauth2ArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesMappingOpenidOutput{})

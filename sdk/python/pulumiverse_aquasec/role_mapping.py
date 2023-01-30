@@ -16,21 +16,37 @@ __all__ = ['RoleMappingArgs', 'RoleMapping']
 @pulumi.input_type
 class RoleMappingArgs:
     def __init__(__self__, *,
+                 ldap: Optional[pulumi.Input['RoleMappingLdapArgs']] = None,
                  oauth2: Optional[pulumi.Input['RoleMappingOauth2Args']] = None,
                  openid: Optional[pulumi.Input['RoleMappingOpenidArgs']] = None,
                  saml: Optional[pulumi.Input['RoleMappingSamlArgs']] = None):
         """
         The set of arguments for constructing a RoleMapping resource.
+        :param pulumi.Input['RoleMappingLdapArgs'] ldap: LDAP Authentication
         :param pulumi.Input['RoleMappingOauth2Args'] oauth2: Oauth2 Authentication
         :param pulumi.Input['RoleMappingOpenidArgs'] openid: OpenId Authentication
         :param pulumi.Input['RoleMappingSamlArgs'] saml: SAML Authentication
         """
+        if ldap is not None:
+            pulumi.set(__self__, "ldap", ldap)
         if oauth2 is not None:
             pulumi.set(__self__, "oauth2", oauth2)
         if openid is not None:
             pulumi.set(__self__, "openid", openid)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
+
+    @property
+    @pulumi.getter
+    def ldap(self) -> Optional[pulumi.Input['RoleMappingLdapArgs']]:
+        """
+        LDAP Authentication
+        """
+        return pulumi.get(self, "ldap")
+
+    @ldap.setter
+    def ldap(self, value: Optional[pulumi.Input['RoleMappingLdapArgs']]):
+        pulumi.set(self, "ldap", value)
 
     @property
     @pulumi.getter
@@ -72,21 +88,37 @@ class RoleMappingArgs:
 @pulumi.input_type
 class _RoleMappingState:
     def __init__(__self__, *,
+                 ldap: Optional[pulumi.Input['RoleMappingLdapArgs']] = None,
                  oauth2: Optional[pulumi.Input['RoleMappingOauth2Args']] = None,
                  openid: Optional[pulumi.Input['RoleMappingOpenidArgs']] = None,
                  saml: Optional[pulumi.Input['RoleMappingSamlArgs']] = None):
         """
         Input properties used for looking up and filtering RoleMapping resources.
+        :param pulumi.Input['RoleMappingLdapArgs'] ldap: LDAP Authentication
         :param pulumi.Input['RoleMappingOauth2Args'] oauth2: Oauth2 Authentication
         :param pulumi.Input['RoleMappingOpenidArgs'] openid: OpenId Authentication
         :param pulumi.Input['RoleMappingSamlArgs'] saml: SAML Authentication
         """
+        if ldap is not None:
+            pulumi.set(__self__, "ldap", ldap)
         if oauth2 is not None:
             pulumi.set(__self__, "oauth2", oauth2)
         if openid is not None:
             pulumi.set(__self__, "openid", openid)
         if saml is not None:
             pulumi.set(__self__, "saml", saml)
+
+    @property
+    @pulumi.getter
+    def ldap(self) -> Optional[pulumi.Input['RoleMappingLdapArgs']]:
+        """
+        LDAP Authentication
+        """
+        return pulumi.get(self, "ldap")
+
+    @ldap.setter
+    def ldap(self, value: Optional[pulumi.Input['RoleMappingLdapArgs']]):
+        pulumi.set(self, "ldap", value)
 
     @property
     @pulumi.getter
@@ -130,6 +162,7 @@ class RoleMapping(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ldap: Optional[pulumi.Input[pulumi.InputType['RoleMappingLdapArgs']]] = None,
                  oauth2: Optional[pulumi.Input[pulumi.InputType['RoleMappingOauth2Args']]] = None,
                  openid: Optional[pulumi.Input[pulumi.InputType['RoleMappingOpenidArgs']]] = None,
                  saml: Optional[pulumi.Input[pulumi.InputType['RoleMappingSamlArgs']]] = None,
@@ -151,6 +184,7 @@ class RoleMapping(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['RoleMappingLdapArgs']] ldap: LDAP Authentication
         :param pulumi.Input[pulumi.InputType['RoleMappingOauth2Args']] oauth2: Oauth2 Authentication
         :param pulumi.Input[pulumi.InputType['RoleMappingOpenidArgs']] openid: OpenId Authentication
         :param pulumi.Input[pulumi.InputType['RoleMappingSamlArgs']] saml: SAML Authentication
@@ -191,6 +225,7 @@ class RoleMapping(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 ldap: Optional[pulumi.Input[pulumi.InputType['RoleMappingLdapArgs']]] = None,
                  oauth2: Optional[pulumi.Input[pulumi.InputType['RoleMappingOauth2Args']]] = None,
                  openid: Optional[pulumi.Input[pulumi.InputType['RoleMappingOpenidArgs']]] = None,
                  saml: Optional[pulumi.Input[pulumi.InputType['RoleMappingSamlArgs']]] = None,
@@ -203,6 +238,7 @@ class RoleMapping(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RoleMappingArgs.__new__(RoleMappingArgs)
 
+            __props__.__dict__["ldap"] = ldap
             __props__.__dict__["oauth2"] = oauth2
             __props__.__dict__["openid"] = openid
             __props__.__dict__["saml"] = saml
@@ -216,6 +252,7 @@ class RoleMapping(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            ldap: Optional[pulumi.Input[pulumi.InputType['RoleMappingLdapArgs']]] = None,
             oauth2: Optional[pulumi.Input[pulumi.InputType['RoleMappingOauth2Args']]] = None,
             openid: Optional[pulumi.Input[pulumi.InputType['RoleMappingOpenidArgs']]] = None,
             saml: Optional[pulumi.Input[pulumi.InputType['RoleMappingSamlArgs']]] = None) -> 'RoleMapping':
@@ -226,6 +263,7 @@ class RoleMapping(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['RoleMappingLdapArgs']] ldap: LDAP Authentication
         :param pulumi.Input[pulumi.InputType['RoleMappingOauth2Args']] oauth2: Oauth2 Authentication
         :param pulumi.Input[pulumi.InputType['RoleMappingOpenidArgs']] openid: OpenId Authentication
         :param pulumi.Input[pulumi.InputType['RoleMappingSamlArgs']] saml: SAML Authentication
@@ -234,10 +272,19 @@ class RoleMapping(pulumi.CustomResource):
 
         __props__ = _RoleMappingState.__new__(_RoleMappingState)
 
+        __props__.__dict__["ldap"] = ldap
         __props__.__dict__["oauth2"] = oauth2
         __props__.__dict__["openid"] = openid
         __props__.__dict__["saml"] = saml
         return RoleMapping(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def ldap(self) -> pulumi.Output[Optional['outputs.RoleMappingLdap']]:
+        """
+        LDAP Authentication
+        """
+        return pulumi.get(self, "ldap")
 
     @property
     @pulumi.getter

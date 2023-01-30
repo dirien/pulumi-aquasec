@@ -21,10 +21,13 @@ class GetRolesMappingResult:
     """
     A collection of values returned by getRolesMapping.
     """
-    def __init__(__self__, id=None, oauth2s=None, openids=None, samls=None):
+    def __init__(__self__, id=None, ldaps=None, oauth2s=None, openids=None, samls=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ldaps and not isinstance(ldaps, list):
+            raise TypeError("Expected argument 'ldaps' to be a list")
+        pulumi.set(__self__, "ldaps", ldaps)
         if oauth2s and not isinstance(oauth2s, list):
             raise TypeError("Expected argument 'oauth2s' to be a list")
         pulumi.set(__self__, "oauth2s", oauth2s)
@@ -42,6 +45,14 @@ class GetRolesMappingResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def ldaps(self) -> Sequence['outputs.GetRolesMappingLdapResult']:
+        """
+        LDAP Authentication
+        """
+        return pulumi.get(self, "ldaps")
 
     @property
     @pulumi.getter
@@ -75,6 +86,7 @@ class AwaitableGetRolesMappingResult(GetRolesMappingResult):
             yield self
         return GetRolesMappingResult(
             id=self.id,
+            ldaps=self.ldaps,
             oauth2s=self.oauth2s,
             openids=self.openids,
             samls=self.samls)
@@ -99,6 +111,7 @@ def get_roles_mapping(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
 
     return AwaitableGetRolesMappingResult(
         id=__ret__.id,
+        ldaps=__ret__.ldaps,
         oauth2s=__ret__.oauth2s,
         openids=__ret__.openids,
         samls=__ret__.samls)

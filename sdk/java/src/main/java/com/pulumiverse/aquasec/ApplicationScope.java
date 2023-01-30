@@ -99,14 +99,14 @@ public class ApplicationScope extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="categories", refs={List.class,ApplicationScopeCategory.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<ApplicationScopeCategory>> categories;
+    private Output<List<ApplicationScopeCategory>> categories;
 
     /**
      * @return Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
      * 
      */
-    public Output<Optional<List<ApplicationScopeCategory>>> categories() {
-        return Codegen.optional(this.categories);
+    public Output<List<ApplicationScopeCategory>> categories() {
+        return this.categories;
     }
     /**
      * Description of the application scope.

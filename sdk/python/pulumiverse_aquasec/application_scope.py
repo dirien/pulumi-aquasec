@@ -282,7 +282,7 @@ class ApplicationScope(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def categories(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationScopeCategory']]]:
+    def categories(self) -> pulumi.Output[Sequence['outputs.ApplicationScopeCategory']]:
         """
         Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
         """

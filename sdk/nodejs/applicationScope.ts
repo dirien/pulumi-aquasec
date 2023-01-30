@@ -41,7 +41,7 @@ export class ApplicationScope extends pulumi.CustomResource {
     /**
      * Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
      */
-    public readonly categories!: pulumi.Output<outputs.ApplicationScopeCategory[] | undefined>;
+    public readonly categories!: pulumi.Output<outputs.ApplicationScopeCategory[]>;
     /**
      * Description of the application scope.
      */
