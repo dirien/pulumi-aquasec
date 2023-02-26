@@ -120,6 +120,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aquasec_image_assurance_policy":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ImageAssurancePolicy")},
 			"aquasec_integration_registry":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IntegrationRegistry")},
 			"aquasec_kubernetes_assurance_policy": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "KubernetesAssurancePolicy")},
+			"aquasec_notification":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notification")},
 			"aquasec_notification_slack":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationSlack")},
 			"aquasec_permissions_sets":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PermissionsSets")},
 			"aquasec_role":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
@@ -156,6 +157,7 @@ func Provider() tfbridge.ProviderInfo {
 			"aquasec_kubernetes_assurance_policy": {
 				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getKubernetesAssurancePolicy"),
 			},
+			"aquasec_notifications":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotifications")},
 			"aquasec_permissions_sets":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPermissionsSets")},
 			"aquasec_roles":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRoles")},
 			"aquasec_roles_mapping":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRolesMapping")},

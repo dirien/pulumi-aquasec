@@ -254,7 +254,11 @@ class NotificationSlack(pulumi.CustomResource):
                  webhook_url: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a NotificationSlack resource with the given unique name, props, and options.
+        Provides an Aquasec Notification Slack resource
+
+        > **Note about resource deprecation**
+        Resource NotificationSlack is deprecated, please use Notification instead
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -265,7 +269,11 @@ class NotificationSlack(pulumi.CustomResource):
                  args: NotificationSlackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NotificationSlack resource with the given unique name, props, and options.
+        Provides an Aquasec Notification Slack resource
+
+        > **Note about resource deprecation**
+        Resource NotificationSlack is deprecated, please use Notification instead
+
         :param str resource_name: The name of the resource.
         :param NotificationSlackArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

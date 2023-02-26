@@ -7,10 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides an Aquasec Notification Slack resource
+//
+// > **Note about resource deprecation**
+// Resource NotificationSlack is deprecated, please use Notification instead
 type NotificationSlack struct {
 	pulumi.CustomResourceState
 

@@ -1173,6 +1173,97 @@ export interface GetKubernetesAssurancePolicyTrustedBaseImage {
     registry: string;
 }
 
+export interface GetNotificationsEmail {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
+export interface GetNotificationsJira {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
+export interface GetNotificationsServicenow {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
+export interface GetNotificationsSlack {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
+export interface GetNotificationsSplunk {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
+export interface GetNotificationsTeam {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
+export interface GetNotificationsWebhook {
+    author: string;
+    /**
+     * The ID of this resource.
+     */
+    id: number;
+    lastUpdated: string;
+    name: string;
+    properties: {[key: string]: string};
+    template: {[key: string]: string};
+    type: string;
+}
+
 export interface GetPermissionsSetsPermissionsSet {
     actions: string[];
     author: string;

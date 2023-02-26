@@ -52,6 +52,7 @@ import com.pulumiverse.aquasec.outputs.GetImageResult;
 import com.pulumiverse.aquasec.outputs.GetIntegrationRegistryResult;
 import com.pulumiverse.aquasec.outputs.GetIntegrationStateResult;
 import com.pulumiverse.aquasec.outputs.GetKubernetesAssurancePolicyResult;
+import com.pulumiverse.aquasec.outputs.GetNotificationsResult;
 import com.pulumiverse.aquasec.outputs.GetPermissionsSetsResult;
 import com.pulumiverse.aquasec.outputs.GetRolesMappingResult;
 import com.pulumiverse.aquasec.outputs.GetRolesMappingSaasResult;
@@ -1939,6 +1940,24 @@ public final class AquasecFunctions {
     }
     public static CompletableFuture<GetKubernetesAssurancePolicyResult> getKubernetesAssurancePolicyPlain(GetKubernetesAssurancePolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy", TypeShape.of(GetKubernetesAssurancePolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetNotificationsResult> getNotifications() {
+        return getNotifications(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNotificationsResult> getNotificationsPlain() {
+        return getNotificationsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetNotificationsResult> getNotifications(InvokeArgs args) {
+        return getNotifications(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetNotificationsResult> getNotificationsPlain(InvokeArgs args) {
+        return getNotificationsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetNotificationsResult> getNotifications(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aquasec:index/getNotifications:getNotifications", TypeShape.of(GetNotificationsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetNotificationsResult> getNotificationsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aquasec:index/getNotifications:getNotifications", TypeShape.of(GetNotificationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.

@@ -30,6 +30,7 @@ from .get_image_assurance_policy import *
 from .get_integration_registry import *
 from .get_integration_state import *
 from .get_kubernetes_assurance_policy import *
+from .get_notifications import *
 from .get_permissions_sets import *
 from .get_roles import *
 from .get_roles_mapping import *
@@ -44,6 +45,7 @@ from .image import *
 from .image_assurance_policy import *
 from .integration_registry import *
 from .kubernetes_assurance_policy import *
+from .notification import *
 from .notification_slack import *
 from .permissions_sets import *
 from .provider import *
@@ -184,6 +186,14 @@ _utilities.register(
   "fqn": "pulumiverse_aquasec",
   "classes": {
    "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy": "KubernetesAssurancePolicy"
+  }
+ },
+ {
+  "pkg": "aquasec",
+  "mod": "index/notification",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/notification:Notification": "Notification"
   }
  },
  {

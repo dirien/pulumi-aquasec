@@ -4,9 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * The data source `aquasec.getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
- */
 export class AquaLabel extends pulumi.CustomResource {
     /**
      * Get an existing AquaLabel resource's state with the given name, ID, and optional extra

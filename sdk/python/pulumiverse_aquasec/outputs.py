@@ -172,6 +172,13 @@ __all__ = [
     'GetKubernetesAssurancePolicyScopeResult',
     'GetKubernetesAssurancePolicyScopeVariableResult',
     'GetKubernetesAssurancePolicyTrustedBaseImageResult',
+    'GetNotificationsEmailResult',
+    'GetNotificationsJiraResult',
+    'GetNotificationsServicenowResult',
+    'GetNotificationsSlackResult',
+    'GetNotificationsSplunkResult',
+    'GetNotificationsTeamResult',
+    'GetNotificationsWebhookResult',
     'GetPermissionsSetsPermissionsSetResult',
     'GetRolesMappingLdapResult',
     'GetRolesMappingOauth2Result',
@@ -8627,6 +8634,426 @@ class GetKubernetesAssurancePolicyTrustedBaseImageResult(dict):
     @pulumi.getter
     def registry(self) -> str:
         return pulumi.get(self, "registry")
+
+
+@pulumi.output_type
+class GetNotificationsEmailResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNotificationsJiraResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNotificationsServicenowResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNotificationsSlackResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNotificationsSplunkResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNotificationsTeamResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNotificationsWebhookResult(dict):
+    def __init__(__self__, *,
+                 author: str,
+                 id: int,
+                 last_updated: str,
+                 name: str,
+                 properties: Mapping[str, str],
+                 template: Mapping[str, str],
+                 type: str):
+        """
+        :param int id: The ID of this resource.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "last_updated", last_updated)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "template", template)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def author(self) -> str:
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="lastUpdated")
+    def last_updated(self) -> str:
+        return pulumi.get(self, "last_updated")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter
+    def template(self) -> Mapping[str, str]:
+        return pulumi.get(self, "template")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

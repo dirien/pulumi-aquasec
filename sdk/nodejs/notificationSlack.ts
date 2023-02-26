@@ -4,6 +4,12 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides an Aquasec Notification Slack resource
+ *
+ * > **Note about resource deprecation**
+ * Resource aquasec.NotificationSlack is deprecated, please use aquasec.Notification instead
+ */
 export class NotificationSlack extends pulumi.CustomResource {
     /**
      * Get an existing NotificationSlack resource's state with the given name, ID, and optional extra

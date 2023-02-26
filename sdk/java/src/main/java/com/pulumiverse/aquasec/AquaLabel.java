@@ -14,10 +14,6 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * The data source `aquasec.getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
- * 
- */
 @ResourceType(type="aquasec:index/aquaLabel:AquaLabel")
 public class AquaLabel extends com.pulumi.resources.CustomResource {
     /**

@@ -10,9 +10,6 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
-    /// <summary>
-    /// The data source `aquasec.getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
-    /// </summary>
     [AquasecResourceType("aquasec:index/aquaLabel:AquaLabel")]
     public partial class AquaLabel : global::Pulumi.CustomResource
     {
