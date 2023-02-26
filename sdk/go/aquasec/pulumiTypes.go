@@ -20354,6 +20354,937 @@ func (o GetKubernetesAssurancePolicyTrustedBaseImageArrayOutput) Index(i pulumi.
 	}).(GetKubernetesAssurancePolicyTrustedBaseImageOutput)
 }
 
+type GetNotificationsEmail struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsEmailInput is an input type that accepts GetNotificationsEmailArgs and GetNotificationsEmailOutput values.
+// You can construct a concrete instance of `GetNotificationsEmailInput` via:
+//
+//	GetNotificationsEmailArgs{...}
+type GetNotificationsEmailInput interface {
+	pulumi.Input
+
+	ToGetNotificationsEmailOutput() GetNotificationsEmailOutput
+	ToGetNotificationsEmailOutputWithContext(context.Context) GetNotificationsEmailOutput
+}
+
+type GetNotificationsEmailArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsEmailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsEmail)(nil)).Elem()
+}
+
+func (i GetNotificationsEmailArgs) ToGetNotificationsEmailOutput() GetNotificationsEmailOutput {
+	return i.ToGetNotificationsEmailOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsEmailArgs) ToGetNotificationsEmailOutputWithContext(ctx context.Context) GetNotificationsEmailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsEmailOutput)
+}
+
+// GetNotificationsEmailArrayInput is an input type that accepts GetNotificationsEmailArray and GetNotificationsEmailArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsEmailArrayInput` via:
+//
+//	GetNotificationsEmailArray{ GetNotificationsEmailArgs{...} }
+type GetNotificationsEmailArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsEmailArrayOutput() GetNotificationsEmailArrayOutput
+	ToGetNotificationsEmailArrayOutputWithContext(context.Context) GetNotificationsEmailArrayOutput
+}
+
+type GetNotificationsEmailArray []GetNotificationsEmailInput
+
+func (GetNotificationsEmailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsEmail)(nil)).Elem()
+}
+
+func (i GetNotificationsEmailArray) ToGetNotificationsEmailArrayOutput() GetNotificationsEmailArrayOutput {
+	return i.ToGetNotificationsEmailArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsEmailArray) ToGetNotificationsEmailArrayOutputWithContext(ctx context.Context) GetNotificationsEmailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsEmailArrayOutput)
+}
+
+type GetNotificationsEmailOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsEmailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsEmail)(nil)).Elem()
+}
+
+func (o GetNotificationsEmailOutput) ToGetNotificationsEmailOutput() GetNotificationsEmailOutput {
+	return o
+}
+
+func (o GetNotificationsEmailOutput) ToGetNotificationsEmailOutputWithContext(ctx context.Context) GetNotificationsEmailOutput {
+	return o
+}
+
+func (o GetNotificationsEmailOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsEmailOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsEmailOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsEmailOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsEmailOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsEmailOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsEmailOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsEmail) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsEmailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsEmailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsEmail)(nil)).Elem()
+}
+
+func (o GetNotificationsEmailArrayOutput) ToGetNotificationsEmailArrayOutput() GetNotificationsEmailArrayOutput {
+	return o
+}
+
+func (o GetNotificationsEmailArrayOutput) ToGetNotificationsEmailArrayOutputWithContext(ctx context.Context) GetNotificationsEmailArrayOutput {
+	return o
+}
+
+func (o GetNotificationsEmailArrayOutput) Index(i pulumi.IntInput) GetNotificationsEmailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsEmail {
+		return vs[0].([]GetNotificationsEmail)[vs[1].(int)]
+	}).(GetNotificationsEmailOutput)
+}
+
+type GetNotificationsJira struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsJiraInput is an input type that accepts GetNotificationsJiraArgs and GetNotificationsJiraOutput values.
+// You can construct a concrete instance of `GetNotificationsJiraInput` via:
+//
+//	GetNotificationsJiraArgs{...}
+type GetNotificationsJiraInput interface {
+	pulumi.Input
+
+	ToGetNotificationsJiraOutput() GetNotificationsJiraOutput
+	ToGetNotificationsJiraOutputWithContext(context.Context) GetNotificationsJiraOutput
+}
+
+type GetNotificationsJiraArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsJiraArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsJira)(nil)).Elem()
+}
+
+func (i GetNotificationsJiraArgs) ToGetNotificationsJiraOutput() GetNotificationsJiraOutput {
+	return i.ToGetNotificationsJiraOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsJiraArgs) ToGetNotificationsJiraOutputWithContext(ctx context.Context) GetNotificationsJiraOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsJiraOutput)
+}
+
+// GetNotificationsJiraArrayInput is an input type that accepts GetNotificationsJiraArray and GetNotificationsJiraArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsJiraArrayInput` via:
+//
+//	GetNotificationsJiraArray{ GetNotificationsJiraArgs{...} }
+type GetNotificationsJiraArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsJiraArrayOutput() GetNotificationsJiraArrayOutput
+	ToGetNotificationsJiraArrayOutputWithContext(context.Context) GetNotificationsJiraArrayOutput
+}
+
+type GetNotificationsJiraArray []GetNotificationsJiraInput
+
+func (GetNotificationsJiraArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsJira)(nil)).Elem()
+}
+
+func (i GetNotificationsJiraArray) ToGetNotificationsJiraArrayOutput() GetNotificationsJiraArrayOutput {
+	return i.ToGetNotificationsJiraArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsJiraArray) ToGetNotificationsJiraArrayOutputWithContext(ctx context.Context) GetNotificationsJiraArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsJiraArrayOutput)
+}
+
+type GetNotificationsJiraOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsJiraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsJira)(nil)).Elem()
+}
+
+func (o GetNotificationsJiraOutput) ToGetNotificationsJiraOutput() GetNotificationsJiraOutput {
+	return o
+}
+
+func (o GetNotificationsJiraOutput) ToGetNotificationsJiraOutputWithContext(ctx context.Context) GetNotificationsJiraOutput {
+	return o
+}
+
+func (o GetNotificationsJiraOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsJira) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsJiraOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsJira) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsJiraOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsJira) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsJiraOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsJira) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsJiraOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsJira) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsJiraOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsJira) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsJiraOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsJira) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsJiraArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsJiraArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsJira)(nil)).Elem()
+}
+
+func (o GetNotificationsJiraArrayOutput) ToGetNotificationsJiraArrayOutput() GetNotificationsJiraArrayOutput {
+	return o
+}
+
+func (o GetNotificationsJiraArrayOutput) ToGetNotificationsJiraArrayOutputWithContext(ctx context.Context) GetNotificationsJiraArrayOutput {
+	return o
+}
+
+func (o GetNotificationsJiraArrayOutput) Index(i pulumi.IntInput) GetNotificationsJiraOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsJira {
+		return vs[0].([]GetNotificationsJira)[vs[1].(int)]
+	}).(GetNotificationsJiraOutput)
+}
+
+type GetNotificationsServicenow struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsServicenowInput is an input type that accepts GetNotificationsServicenowArgs and GetNotificationsServicenowOutput values.
+// You can construct a concrete instance of `GetNotificationsServicenowInput` via:
+//
+//	GetNotificationsServicenowArgs{...}
+type GetNotificationsServicenowInput interface {
+	pulumi.Input
+
+	ToGetNotificationsServicenowOutput() GetNotificationsServicenowOutput
+	ToGetNotificationsServicenowOutputWithContext(context.Context) GetNotificationsServicenowOutput
+}
+
+type GetNotificationsServicenowArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsServicenowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsServicenow)(nil)).Elem()
+}
+
+func (i GetNotificationsServicenowArgs) ToGetNotificationsServicenowOutput() GetNotificationsServicenowOutput {
+	return i.ToGetNotificationsServicenowOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsServicenowArgs) ToGetNotificationsServicenowOutputWithContext(ctx context.Context) GetNotificationsServicenowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsServicenowOutput)
+}
+
+// GetNotificationsServicenowArrayInput is an input type that accepts GetNotificationsServicenowArray and GetNotificationsServicenowArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsServicenowArrayInput` via:
+//
+//	GetNotificationsServicenowArray{ GetNotificationsServicenowArgs{...} }
+type GetNotificationsServicenowArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsServicenowArrayOutput() GetNotificationsServicenowArrayOutput
+	ToGetNotificationsServicenowArrayOutputWithContext(context.Context) GetNotificationsServicenowArrayOutput
+}
+
+type GetNotificationsServicenowArray []GetNotificationsServicenowInput
+
+func (GetNotificationsServicenowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsServicenow)(nil)).Elem()
+}
+
+func (i GetNotificationsServicenowArray) ToGetNotificationsServicenowArrayOutput() GetNotificationsServicenowArrayOutput {
+	return i.ToGetNotificationsServicenowArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsServicenowArray) ToGetNotificationsServicenowArrayOutputWithContext(ctx context.Context) GetNotificationsServicenowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsServicenowArrayOutput)
+}
+
+type GetNotificationsServicenowOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsServicenowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsServicenow)(nil)).Elem()
+}
+
+func (o GetNotificationsServicenowOutput) ToGetNotificationsServicenowOutput() GetNotificationsServicenowOutput {
+	return o
+}
+
+func (o GetNotificationsServicenowOutput) ToGetNotificationsServicenowOutputWithContext(ctx context.Context) GetNotificationsServicenowOutput {
+	return o
+}
+
+func (o GetNotificationsServicenowOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsServicenowOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsServicenowOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsServicenowOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsServicenowOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsServicenowOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsServicenowOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsServicenow) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsServicenowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsServicenowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsServicenow)(nil)).Elem()
+}
+
+func (o GetNotificationsServicenowArrayOutput) ToGetNotificationsServicenowArrayOutput() GetNotificationsServicenowArrayOutput {
+	return o
+}
+
+func (o GetNotificationsServicenowArrayOutput) ToGetNotificationsServicenowArrayOutputWithContext(ctx context.Context) GetNotificationsServicenowArrayOutput {
+	return o
+}
+
+func (o GetNotificationsServicenowArrayOutput) Index(i pulumi.IntInput) GetNotificationsServicenowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsServicenow {
+		return vs[0].([]GetNotificationsServicenow)[vs[1].(int)]
+	}).(GetNotificationsServicenowOutput)
+}
+
+type GetNotificationsSlack struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsSlackInput is an input type that accepts GetNotificationsSlackArgs and GetNotificationsSlackOutput values.
+// You can construct a concrete instance of `GetNotificationsSlackInput` via:
+//
+//	GetNotificationsSlackArgs{...}
+type GetNotificationsSlackInput interface {
+	pulumi.Input
+
+	ToGetNotificationsSlackOutput() GetNotificationsSlackOutput
+	ToGetNotificationsSlackOutputWithContext(context.Context) GetNotificationsSlackOutput
+}
+
+type GetNotificationsSlackArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsSlackArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsSlack)(nil)).Elem()
+}
+
+func (i GetNotificationsSlackArgs) ToGetNotificationsSlackOutput() GetNotificationsSlackOutput {
+	return i.ToGetNotificationsSlackOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsSlackArgs) ToGetNotificationsSlackOutputWithContext(ctx context.Context) GetNotificationsSlackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsSlackOutput)
+}
+
+// GetNotificationsSlackArrayInput is an input type that accepts GetNotificationsSlackArray and GetNotificationsSlackArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsSlackArrayInput` via:
+//
+//	GetNotificationsSlackArray{ GetNotificationsSlackArgs{...} }
+type GetNotificationsSlackArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsSlackArrayOutput() GetNotificationsSlackArrayOutput
+	ToGetNotificationsSlackArrayOutputWithContext(context.Context) GetNotificationsSlackArrayOutput
+}
+
+type GetNotificationsSlackArray []GetNotificationsSlackInput
+
+func (GetNotificationsSlackArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsSlack)(nil)).Elem()
+}
+
+func (i GetNotificationsSlackArray) ToGetNotificationsSlackArrayOutput() GetNotificationsSlackArrayOutput {
+	return i.ToGetNotificationsSlackArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsSlackArray) ToGetNotificationsSlackArrayOutputWithContext(ctx context.Context) GetNotificationsSlackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsSlackArrayOutput)
+}
+
+type GetNotificationsSlackOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsSlackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsSlack)(nil)).Elem()
+}
+
+func (o GetNotificationsSlackOutput) ToGetNotificationsSlackOutput() GetNotificationsSlackOutput {
+	return o
+}
+
+func (o GetNotificationsSlackOutput) ToGetNotificationsSlackOutputWithContext(ctx context.Context) GetNotificationsSlackOutput {
+	return o
+}
+
+func (o GetNotificationsSlackOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsSlackOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsSlackOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsSlackOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsSlackOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsSlackOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsSlackOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSlack) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsSlackArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsSlackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsSlack)(nil)).Elem()
+}
+
+func (o GetNotificationsSlackArrayOutput) ToGetNotificationsSlackArrayOutput() GetNotificationsSlackArrayOutput {
+	return o
+}
+
+func (o GetNotificationsSlackArrayOutput) ToGetNotificationsSlackArrayOutputWithContext(ctx context.Context) GetNotificationsSlackArrayOutput {
+	return o
+}
+
+func (o GetNotificationsSlackArrayOutput) Index(i pulumi.IntInput) GetNotificationsSlackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsSlack {
+		return vs[0].([]GetNotificationsSlack)[vs[1].(int)]
+	}).(GetNotificationsSlackOutput)
+}
+
+type GetNotificationsSplunk struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsSplunkInput is an input type that accepts GetNotificationsSplunkArgs and GetNotificationsSplunkOutput values.
+// You can construct a concrete instance of `GetNotificationsSplunkInput` via:
+//
+//	GetNotificationsSplunkArgs{...}
+type GetNotificationsSplunkInput interface {
+	pulumi.Input
+
+	ToGetNotificationsSplunkOutput() GetNotificationsSplunkOutput
+	ToGetNotificationsSplunkOutputWithContext(context.Context) GetNotificationsSplunkOutput
+}
+
+type GetNotificationsSplunkArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsSplunkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsSplunk)(nil)).Elem()
+}
+
+func (i GetNotificationsSplunkArgs) ToGetNotificationsSplunkOutput() GetNotificationsSplunkOutput {
+	return i.ToGetNotificationsSplunkOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsSplunkArgs) ToGetNotificationsSplunkOutputWithContext(ctx context.Context) GetNotificationsSplunkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsSplunkOutput)
+}
+
+// GetNotificationsSplunkArrayInput is an input type that accepts GetNotificationsSplunkArray and GetNotificationsSplunkArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsSplunkArrayInput` via:
+//
+//	GetNotificationsSplunkArray{ GetNotificationsSplunkArgs{...} }
+type GetNotificationsSplunkArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsSplunkArrayOutput() GetNotificationsSplunkArrayOutput
+	ToGetNotificationsSplunkArrayOutputWithContext(context.Context) GetNotificationsSplunkArrayOutput
+}
+
+type GetNotificationsSplunkArray []GetNotificationsSplunkInput
+
+func (GetNotificationsSplunkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsSplunk)(nil)).Elem()
+}
+
+func (i GetNotificationsSplunkArray) ToGetNotificationsSplunkArrayOutput() GetNotificationsSplunkArrayOutput {
+	return i.ToGetNotificationsSplunkArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsSplunkArray) ToGetNotificationsSplunkArrayOutputWithContext(ctx context.Context) GetNotificationsSplunkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsSplunkArrayOutput)
+}
+
+type GetNotificationsSplunkOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsSplunkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsSplunk)(nil)).Elem()
+}
+
+func (o GetNotificationsSplunkOutput) ToGetNotificationsSplunkOutput() GetNotificationsSplunkOutput {
+	return o
+}
+
+func (o GetNotificationsSplunkOutput) ToGetNotificationsSplunkOutputWithContext(ctx context.Context) GetNotificationsSplunkOutput {
+	return o
+}
+
+func (o GetNotificationsSplunkOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsSplunkOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsSplunkOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsSplunkOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsSplunkOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsSplunkOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsSplunkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsSplunk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsSplunkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsSplunkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsSplunk)(nil)).Elem()
+}
+
+func (o GetNotificationsSplunkArrayOutput) ToGetNotificationsSplunkArrayOutput() GetNotificationsSplunkArrayOutput {
+	return o
+}
+
+func (o GetNotificationsSplunkArrayOutput) ToGetNotificationsSplunkArrayOutputWithContext(ctx context.Context) GetNotificationsSplunkArrayOutput {
+	return o
+}
+
+func (o GetNotificationsSplunkArrayOutput) Index(i pulumi.IntInput) GetNotificationsSplunkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsSplunk {
+		return vs[0].([]GetNotificationsSplunk)[vs[1].(int)]
+	}).(GetNotificationsSplunkOutput)
+}
+
+type GetNotificationsTeam struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsTeamInput is an input type that accepts GetNotificationsTeamArgs and GetNotificationsTeamOutput values.
+// You can construct a concrete instance of `GetNotificationsTeamInput` via:
+//
+//	GetNotificationsTeamArgs{...}
+type GetNotificationsTeamInput interface {
+	pulumi.Input
+
+	ToGetNotificationsTeamOutput() GetNotificationsTeamOutput
+	ToGetNotificationsTeamOutputWithContext(context.Context) GetNotificationsTeamOutput
+}
+
+type GetNotificationsTeamArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsTeamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsTeam)(nil)).Elem()
+}
+
+func (i GetNotificationsTeamArgs) ToGetNotificationsTeamOutput() GetNotificationsTeamOutput {
+	return i.ToGetNotificationsTeamOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsTeamArgs) ToGetNotificationsTeamOutputWithContext(ctx context.Context) GetNotificationsTeamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsTeamOutput)
+}
+
+// GetNotificationsTeamArrayInput is an input type that accepts GetNotificationsTeamArray and GetNotificationsTeamArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsTeamArrayInput` via:
+//
+//	GetNotificationsTeamArray{ GetNotificationsTeamArgs{...} }
+type GetNotificationsTeamArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsTeamArrayOutput() GetNotificationsTeamArrayOutput
+	ToGetNotificationsTeamArrayOutputWithContext(context.Context) GetNotificationsTeamArrayOutput
+}
+
+type GetNotificationsTeamArray []GetNotificationsTeamInput
+
+func (GetNotificationsTeamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsTeam)(nil)).Elem()
+}
+
+func (i GetNotificationsTeamArray) ToGetNotificationsTeamArrayOutput() GetNotificationsTeamArrayOutput {
+	return i.ToGetNotificationsTeamArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsTeamArray) ToGetNotificationsTeamArrayOutputWithContext(ctx context.Context) GetNotificationsTeamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsTeamArrayOutput)
+}
+
+type GetNotificationsTeamOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsTeamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsTeam)(nil)).Elem()
+}
+
+func (o GetNotificationsTeamOutput) ToGetNotificationsTeamOutput() GetNotificationsTeamOutput {
+	return o
+}
+
+func (o GetNotificationsTeamOutput) ToGetNotificationsTeamOutputWithContext(ctx context.Context) GetNotificationsTeamOutput {
+	return o
+}
+
+func (o GetNotificationsTeamOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsTeamOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsTeamOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsTeamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsTeamOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsTeamOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsTeamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsTeam) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsTeamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsTeamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsTeam)(nil)).Elem()
+}
+
+func (o GetNotificationsTeamArrayOutput) ToGetNotificationsTeamArrayOutput() GetNotificationsTeamArrayOutput {
+	return o
+}
+
+func (o GetNotificationsTeamArrayOutput) ToGetNotificationsTeamArrayOutputWithContext(ctx context.Context) GetNotificationsTeamArrayOutput {
+	return o
+}
+
+func (o GetNotificationsTeamArrayOutput) Index(i pulumi.IntInput) GetNotificationsTeamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsTeam {
+		return vs[0].([]GetNotificationsTeam)[vs[1].(int)]
+	}).(GetNotificationsTeamOutput)
+}
+
+type GetNotificationsWebhook struct {
+	Author string `pulumi:"author"`
+	// The ID of this resource.
+	Id          int               `pulumi:"id"`
+	LastUpdated string            `pulumi:"lastUpdated"`
+	Name        string            `pulumi:"name"`
+	Properties  map[string]string `pulumi:"properties"`
+	Template    map[string]string `pulumi:"template"`
+	Type        string            `pulumi:"type"`
+}
+
+// GetNotificationsWebhookInput is an input type that accepts GetNotificationsWebhookArgs and GetNotificationsWebhookOutput values.
+// You can construct a concrete instance of `GetNotificationsWebhookInput` via:
+//
+//	GetNotificationsWebhookArgs{...}
+type GetNotificationsWebhookInput interface {
+	pulumi.Input
+
+	ToGetNotificationsWebhookOutput() GetNotificationsWebhookOutput
+	ToGetNotificationsWebhookOutputWithContext(context.Context) GetNotificationsWebhookOutput
+}
+
+type GetNotificationsWebhookArgs struct {
+	Author pulumi.StringInput `pulumi:"author"`
+	// The ID of this resource.
+	Id          pulumi.IntInput       `pulumi:"id"`
+	LastUpdated pulumi.StringInput    `pulumi:"lastUpdated"`
+	Name        pulumi.StringInput    `pulumi:"name"`
+	Properties  pulumi.StringMapInput `pulumi:"properties"`
+	Template    pulumi.StringMapInput `pulumi:"template"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetNotificationsWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsWebhook)(nil)).Elem()
+}
+
+func (i GetNotificationsWebhookArgs) ToGetNotificationsWebhookOutput() GetNotificationsWebhookOutput {
+	return i.ToGetNotificationsWebhookOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsWebhookArgs) ToGetNotificationsWebhookOutputWithContext(ctx context.Context) GetNotificationsWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsWebhookOutput)
+}
+
+// GetNotificationsWebhookArrayInput is an input type that accepts GetNotificationsWebhookArray and GetNotificationsWebhookArrayOutput values.
+// You can construct a concrete instance of `GetNotificationsWebhookArrayInput` via:
+//
+//	GetNotificationsWebhookArray{ GetNotificationsWebhookArgs{...} }
+type GetNotificationsWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetNotificationsWebhookArrayOutput() GetNotificationsWebhookArrayOutput
+	ToGetNotificationsWebhookArrayOutputWithContext(context.Context) GetNotificationsWebhookArrayOutput
+}
+
+type GetNotificationsWebhookArray []GetNotificationsWebhookInput
+
+func (GetNotificationsWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsWebhook)(nil)).Elem()
+}
+
+func (i GetNotificationsWebhookArray) ToGetNotificationsWebhookArrayOutput() GetNotificationsWebhookArrayOutput {
+	return i.ToGetNotificationsWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetNotificationsWebhookArray) ToGetNotificationsWebhookArrayOutputWithContext(ctx context.Context) GetNotificationsWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNotificationsWebhookArrayOutput)
+}
+
+type GetNotificationsWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsWebhook)(nil)).Elem()
+}
+
+func (o GetNotificationsWebhookOutput) ToGetNotificationsWebhookOutput() GetNotificationsWebhookOutput {
+	return o
+}
+
+func (o GetNotificationsWebhookOutput) ToGetNotificationsWebhookOutputWithContext(ctx context.Context) GetNotificationsWebhookOutput {
+	return o
+}
+
+func (o GetNotificationsWebhookOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) string { return v.Author }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o GetNotificationsWebhookOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetNotificationsWebhookOutput) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsWebhookOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsWebhookOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsWebhookOutput) Template() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) map[string]string { return v.Template }).(pulumi.StringMapOutput)
+}
+
+func (o GetNotificationsWebhookOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsWebhook) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNotificationsWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNotificationsWebhook)(nil)).Elem()
+}
+
+func (o GetNotificationsWebhookArrayOutput) ToGetNotificationsWebhookArrayOutput() GetNotificationsWebhookArrayOutput {
+	return o
+}
+
+func (o GetNotificationsWebhookArrayOutput) ToGetNotificationsWebhookArrayOutputWithContext(ctx context.Context) GetNotificationsWebhookArrayOutput {
+	return o
+}
+
+func (o GetNotificationsWebhookArrayOutput) Index(i pulumi.IntInput) GetNotificationsWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNotificationsWebhook {
+		return vs[0].([]GetNotificationsWebhook)[vs[1].(int)]
+	}).(GetNotificationsWebhookOutput)
+}
+
 type GetPermissionsSetsPermissionsSet struct {
 	Actions     []string `pulumi:"actions"`
 	Author      string   `pulumi:"author"`
@@ -22087,6 +23018,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAssurancePolicyScopeVariableArrayInput)(nil)).Elem(), GetKubernetesAssurancePolicyScopeVariableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAssurancePolicyTrustedBaseImageInput)(nil)).Elem(), GetKubernetesAssurancePolicyTrustedBaseImageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesAssurancePolicyTrustedBaseImageArrayInput)(nil)).Elem(), GetKubernetesAssurancePolicyTrustedBaseImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsEmailInput)(nil)).Elem(), GetNotificationsEmailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsEmailArrayInput)(nil)).Elem(), GetNotificationsEmailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsJiraInput)(nil)).Elem(), GetNotificationsJiraArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsJiraArrayInput)(nil)).Elem(), GetNotificationsJiraArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsServicenowInput)(nil)).Elem(), GetNotificationsServicenowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsServicenowArrayInput)(nil)).Elem(), GetNotificationsServicenowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsSlackInput)(nil)).Elem(), GetNotificationsSlackArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsSlackArrayInput)(nil)).Elem(), GetNotificationsSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsSplunkInput)(nil)).Elem(), GetNotificationsSplunkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsSplunkArrayInput)(nil)).Elem(), GetNotificationsSplunkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsTeamInput)(nil)).Elem(), GetNotificationsTeamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsTeamArrayInput)(nil)).Elem(), GetNotificationsTeamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsWebhookInput)(nil)).Elem(), GetNotificationsWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNotificationsWebhookArrayInput)(nil)).Elem(), GetNotificationsWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsSetsPermissionsSetInput)(nil)).Elem(), GetPermissionsSetsPermissionsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPermissionsSetsPermissionsSetArrayInput)(nil)).Elem(), GetPermissionsSetsPermissionsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRolesMappingLdapInput)(nil)).Elem(), GetRolesMappingLdapArgs{})
@@ -22433,6 +23378,20 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesAssurancePolicyScopeVariableArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesAssurancePolicyTrustedBaseImageOutput{})
 	pulumi.RegisterOutputType(GetKubernetesAssurancePolicyTrustedBaseImageArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsEmailOutput{})
+	pulumi.RegisterOutputType(GetNotificationsEmailArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsJiraOutput{})
+	pulumi.RegisterOutputType(GetNotificationsJiraArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsServicenowOutput{})
+	pulumi.RegisterOutputType(GetNotificationsServicenowArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsSlackOutput{})
+	pulumi.RegisterOutputType(GetNotificationsSlackArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsSplunkOutput{})
+	pulumi.RegisterOutputType(GetNotificationsSplunkArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsTeamOutput{})
+	pulumi.RegisterOutputType(GetNotificationsTeamArrayOutput{})
+	pulumi.RegisterOutputType(GetNotificationsWebhookOutput{})
+	pulumi.RegisterOutputType(GetNotificationsWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetPermissionsSetsPermissionsSetOutput{})
 	pulumi.RegisterOutputType(GetPermissionsSetsPermissionsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetRolesMappingLdapOutput{})

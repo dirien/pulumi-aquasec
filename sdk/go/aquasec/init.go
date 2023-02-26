@@ -50,6 +50,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IntegrationRegistry{}
 	case "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy":
 		r = &KubernetesAssurancePolicy{}
+	case "aquasec:index/notification:Notification":
+		r = &Notification{}
 	case "aquasec:index/notificationSlack:NotificationSlack":
 		r = &NotificationSlack{}
 	case "aquasec:index/permissionsSets:PermissionsSets":
@@ -167,6 +169,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aquasec",
 		"index/kubernetesAssurancePolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
+		"index/notification",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

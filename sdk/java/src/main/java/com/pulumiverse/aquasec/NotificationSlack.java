@@ -15,6 +15,13 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * Provides an Aquasec Notification Slack resource
+ * 
+ * &gt; **Note about resource deprecation**
+ * Resource aquasec.NotificationSlack is deprecated, please use aquasec.Notification instead
+ * 
+ */
 @ResourceType(type="aquasec:index/notificationSlack:NotificationSlack")
 public class NotificationSlack extends com.pulumi.resources.CustomResource {
     @Export(name="channel", refs={String.class}, tree="[0]")

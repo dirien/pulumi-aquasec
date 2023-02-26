@@ -125,6 +125,10 @@ export const getKubernetesAssurancePolicy: typeof import("./getKubernetesAssuran
 export const getKubernetesAssurancePolicyOutput: typeof import("./getKubernetesAssurancePolicy").getKubernetesAssurancePolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getKubernetesAssurancePolicy","getKubernetesAssurancePolicyOutput"], () => require("./getKubernetesAssurancePolicy"));
 
+export { GetNotificationsResult } from "./getNotifications";
+export const getNotifications: typeof import("./getNotifications").getNotifications = null as any;
+utilities.lazyLoad(exports, ["getNotifications"], () => require("./getNotifications"));
+
 export { GetPermissionsSetsResult } from "./getPermissionsSets";
 export const getPermissionsSets: typeof import("./getPermissionsSets").getPermissionsSets = null as any;
 utilities.lazyLoad(exports, ["getPermissionsSets"], () => require("./getPermissionsSets"));
@@ -188,6 +192,11 @@ export { KubernetesAssurancePolicyArgs, KubernetesAssurancePolicyState } from ".
 export type KubernetesAssurancePolicy = import("./kubernetesAssurancePolicy").KubernetesAssurancePolicy;
 export const KubernetesAssurancePolicy: typeof import("./kubernetesAssurancePolicy").KubernetesAssurancePolicy = null as any;
 utilities.lazyLoad(exports, ["KubernetesAssurancePolicy"], () => require("./kubernetesAssurancePolicy"));
+
+export { NotificationArgs, NotificationState } from "./notification";
+export type Notification = import("./notification").Notification;
+export const Notification: typeof import("./notification").Notification = null as any;
+utilities.lazyLoad(exports, ["Notification"], () => require("./notification"));
 
 export { NotificationSlackArgs, NotificationSlackState } from "./notificationSlack";
 export type NotificationSlack = import("./notificationSlack").NotificationSlack;
@@ -278,6 +287,8 @@ const _module = {
                 return new IntegrationRegistry(name, <any>undefined, { urn })
             case "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy":
                 return new KubernetesAssurancePolicy(name, <any>undefined, { urn })
+            case "aquasec:index/notification:Notification":
+                return new Notification(name, <any>undefined, { urn })
             case "aquasec:index/notificationSlack:NotificationSlack":
                 return new NotificationSlack(name, <any>undefined, { urn })
             case "aquasec:index/permissionsSets:PermissionsSets":
@@ -314,6 +325,7 @@ pulumi.runtime.registerResourceModule("aquasec", "index/image", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/imageAssurancePolicy", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/integrationRegistry", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/kubernetesAssurancePolicy", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/notification", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/notificationSlack", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/permissionsSets", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/role", _module)

@@ -9093,6 +9093,580 @@
                 }
             }
         },
+        "aquasec:index/getNotificationsEmail:getNotificationsEmail": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getNotificationsJira:getNotificationsJira": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getNotificationsServicenow:getNotificationsServicenow": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getNotificationsSlack:getNotificationsSlack": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getNotificationsSplunk:getNotificationsSplunk": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getNotificationsTeam:getNotificationsTeam": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aquasec:index/getNotificationsWebhook:getNotificationsWebhook": {
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The ID of this resource.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "author",
+                "id",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aquasec:index/getPermissionsSetsPermissionsSet:getPermissionsSetsPermissionsSet": {
             "properties": {
                 "actions": {
@@ -9988,7 +10562,6 @@
             }
         },
         "aquasec:index/aquaLabel:AquaLabel": {
-            "description": "The data source `aquasec.getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.\n",
             "properties": {
                 "author": {
                     "type": "string",
@@ -17388,7 +17961,108 @@
                 "type": "object"
             }
         },
+        "aquasec:index/notification:Notification": {
+            "description": "Provides a Aquasec Notification resource. This can be used to create and manage Aquasec Notification resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumiverse/aquasec\";\n\nconst teams = new aquasec.Notification(\"teams\", {\n    properties: {\n        url: \"\u003cTEAMS-URL\u003e\",\n    },\n    type: \"teams\",\n});\nconst slack = new aquasec.Notification(\"slack\", {\n    properties: {\n        url: \"\u003cSLACK-URL\u003e\",\n    },\n    type: \"slack\",\n});\nconst webhook = new aquasec.Notification(\"webhook\", {\n    properties: {\n        url: \"\u003cWEBHOOK-URL\u003e\",\n    },\n    type: \"webhook\",\n});\nconst servicenow = new aquasec.Notification(\"servicenow\", {\n    properties: {\n        board_name: \"\",\n        instance_name: \"\",\n        password: \"\u003cPASSWORD\u003e\",\n        url: \"\u003cSERVICENOW-URL\u003e\",\n        user: \"\u003cUSERNAME\u003e\",\n    },\n    type: \"serviceNow\",\n});\nconst jiraWithToken = new aquasec.Notification(\"jiraWithToken\", {\n    properties: {\n        definition_of_done: \"Done\",\n        project_key: \"\u003cJIRA_PROJECT_KEY\u003e\",\n        summary: \"SOME_TEXT\",\n        token: \"\u003cJIRA-TOKEN\u003e\",\n        url: \"\u003cJIRA-URL\u003e\",\n    },\n    type: \"jira\",\n});\nconst jiraWithCreds = new aquasec.Notification(\"jiraWithCreds\", {\n    properties: {\n        password: \"\u003cJIRA_PASSWORD\u003e\",\n        project_key: \"\u003cJIRA_PROJECT_KEY\u003e\",\n        summary: \"SOME_TEXT\",\n        url: \"\u003cJIRA-URL\u003e\",\n        user: \"\u003cJIRA_USERNAME\u003e\",\n    },\n    type: \"jira\",\n});\nconst emailWithCreds = new aquasec.Notification(\"emailWithCreds\", {\n    properties: {\n        host: \"\u003cEMAIL_HOST\u003e\",\n        password: \"\u003cEMAIL_PASSWORD\u003e\",\n        port: \"\u003cEMAIL_PORT\u003e\",\n        recipients: \"\u003cRECIPIENTS\u003e\",\n        sender: \"\u003cSENDER_EMAIL_ADDRESS\u003e\",\n        user: \"\u003cEMAIL_USERNAME\u003e\",\n    },\n    type: \"email\",\n});\nconst emailWithMx = new aquasec.Notification(\"emailWithMx\", {\n    properties: {\n        port: \"\u003cEMAIL_PORT\u003e\",\n        recipients: \"\u003cRECIPIENTS\u003e\",\n        sender: \"\u003cSENDER_EMAIL_ADDRESS\u003e\",\n        use_mx: \"true\",\n    },\n    type: \"email\",\n});\n```\n```python\nimport pulumi\nimport pulumiverse_aquasec as aquasec\n\nteams = aquasec.Notification(\"teams\",\n    properties={\n        \"url\": \"\u003cTEAMS-URL\u003e\",\n    },\n    type=\"teams\")\nslack = aquasec.Notification(\"slack\",\n    properties={\n        \"url\": \"\u003cSLACK-URL\u003e\",\n    },\n    type=\"slack\")\nwebhook = aquasec.Notification(\"webhook\",\n    properties={\n        \"url\": \"\u003cWEBHOOK-URL\u003e\",\n    },\n    type=\"webhook\")\nservicenow = aquasec.Notification(\"servicenow\",\n    properties={\n        \"board_name\": \"\",\n        \"instance_name\": \"\",\n        \"password\": \"\u003cPASSWORD\u003e\",\n        \"url\": \"\u003cSERVICENOW-URL\u003e\",\n        \"user\": \"\u003cUSERNAME\u003e\",\n    },\n    type=\"serviceNow\")\njira_with_token = aquasec.Notification(\"jiraWithToken\",\n    properties={\n        \"definition_of_done\": \"Done\",\n        \"project_key\": \"\u003cJIRA_PROJECT_KEY\u003e\",\n        \"summary\": \"SOME_TEXT\",\n        \"token\": \"\u003cJIRA-TOKEN\u003e\",\n        \"url\": \"\u003cJIRA-URL\u003e\",\n    },\n    type=\"jira\")\njira_with_creds = aquasec.Notification(\"jiraWithCreds\",\n    properties={\n        \"password\": \"\u003cJIRA_PASSWORD\u003e\",\n        \"project_key\": \"\u003cJIRA_PROJECT_KEY\u003e\",\n        \"summary\": \"SOME_TEXT\",\n        \"url\": \"\u003cJIRA-URL\u003e\",\n        \"user\": \"\u003cJIRA_USERNAME\u003e\",\n    },\n    type=\"jira\")\nemail_with_creds = aquasec.Notification(\"emailWithCreds\",\n    properties={\n        \"host\": \"\u003cEMAIL_HOST\u003e\",\n        \"password\": \"\u003cEMAIL_PASSWORD\u003e\",\n        \"port\": \"\u003cEMAIL_PORT\u003e\",\n        \"recipients\": \"\u003cRECIPIENTS\u003e\",\n        \"sender\": \"\u003cSENDER_EMAIL_ADDRESS\u003e\",\n        \"user\": \"\u003cEMAIL_USERNAME\u003e\",\n    },\n    type=\"email\")\nemail_with_mx = aquasec.Notification(\"emailWithMx\",\n    properties={\n        \"port\": \"\u003cEMAIL_PORT\u003e\",\n        \"recipients\": \"\u003cRECIPIENTS\u003e\",\n        \"sender\": \"\u003cSENDER_EMAIL_ADDRESS\u003e\",\n        \"use_mx\": \"true\",\n    },\n    type=\"email\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing Aquasec = Pulumiverse.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var teams = new Aquasec.Notification(\"teams\", new()\n    {\n        Properties = \n        {\n            { \"url\", \"\u003cTEAMS-URL\u003e\" },\n        },\n        Type = \"teams\",\n    });\n\n    var slack = new Aquasec.Notification(\"slack\", new()\n    {\n        Properties = \n        {\n            { \"url\", \"\u003cSLACK-URL\u003e\" },\n        },\n        Type = \"slack\",\n    });\n\n    var webhook = new Aquasec.Notification(\"webhook\", new()\n    {\n        Properties = \n        {\n            { \"url\", \"\u003cWEBHOOK-URL\u003e\" },\n        },\n        Type = \"webhook\",\n    });\n\n    var servicenow = new Aquasec.Notification(\"servicenow\", new()\n    {\n        Properties = \n        {\n            { \"board_name\", \"\" },\n            { \"instance_name\", \"\" },\n            { \"password\", \"\u003cPASSWORD\u003e\" },\n            { \"url\", \"\u003cSERVICENOW-URL\u003e\" },\n            { \"user\", \"\u003cUSERNAME\u003e\" },\n        },\n        Type = \"serviceNow\",\n    });\n\n    var jiraWithToken = new Aquasec.Notification(\"jiraWithToken\", new()\n    {\n        Properties = \n        {\n            { \"definition_of_done\", \"Done\" },\n            { \"project_key\", \"\u003cJIRA_PROJECT_KEY\u003e\" },\n            { \"summary\", \"SOME_TEXT\" },\n            { \"token\", \"\u003cJIRA-TOKEN\u003e\" },\n            { \"url\", \"\u003cJIRA-URL\u003e\" },\n        },\n        Type = \"jira\",\n    });\n\n    var jiraWithCreds = new Aquasec.Notification(\"jiraWithCreds\", new()\n    {\n        Properties = \n        {\n            { \"password\", \"\u003cJIRA_PASSWORD\u003e\" },\n            { \"project_key\", \"\u003cJIRA_PROJECT_KEY\u003e\" },\n            { \"summary\", \"SOME_TEXT\" },\n            { \"url\", \"\u003cJIRA-URL\u003e\" },\n            { \"user\", \"\u003cJIRA_USERNAME\u003e\" },\n        },\n        Type = \"jira\",\n    });\n\n    var emailWithCreds = new Aquasec.Notification(\"emailWithCreds\", new()\n    {\n        Properties = \n        {\n            { \"host\", \"\u003cEMAIL_HOST\u003e\" },\n            { \"password\", \"\u003cEMAIL_PASSWORD\u003e\" },\n            { \"port\", \"\u003cEMAIL_PORT\u003e\" },\n            { \"recipients\", \"\u003cRECIPIENTS\u003e\" },\n            { \"sender\", \"\u003cSENDER_EMAIL_ADDRESS\u003e\" },\n            { \"user\", \"\u003cEMAIL_USERNAME\u003e\" },\n        },\n        Type = \"email\",\n    });\n\n    var emailWithMx = new Aquasec.Notification(\"emailWithMx\", new()\n    {\n        Properties = \n        {\n            { \"port\", \"\u003cEMAIL_PORT\u003e\" },\n            { \"recipients\", \"\u003cRECIPIENTS\u003e\" },\n            { \"sender\", \"\u003cSENDER_EMAIL_ADDRESS\u003e\" },\n            { \"use_mx\", \"true\" },\n        },\n        Type = \"email\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aquasec.NewNotification(ctx, \"teams\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"url\": pulumi.String(\"\u003cTEAMS-URL\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"teams\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"slack\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"url\": pulumi.String(\"\u003cSLACK-URL\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"slack\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"webhook\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"url\": pulumi.String(\"\u003cWEBHOOK-URL\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"webhook\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"servicenow\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"board_name\":    pulumi.String(\"\"),\n\t\t\t\t\"instance_name\": pulumi.String(\"\"),\n\t\t\t\t\"password\":      pulumi.String(\"\u003cPASSWORD\u003e\"),\n\t\t\t\t\"url\":           pulumi.String(\"\u003cSERVICENOW-URL\u003e\"),\n\t\t\t\t\"user\":          pulumi.String(\"\u003cUSERNAME\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"serviceNow\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"jiraWithToken\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"definition_of_done\": pulumi.String(\"Done\"),\n\t\t\t\t\"project_key\":        pulumi.String(\"\u003cJIRA_PROJECT_KEY\u003e\"),\n\t\t\t\t\"summary\":            pulumi.String(\"SOME_TEXT\"),\n\t\t\t\t\"token\":              pulumi.String(\"\u003cJIRA-TOKEN\u003e\"),\n\t\t\t\t\"url\":                pulumi.String(\"\u003cJIRA-URL\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"jira\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"jiraWithCreds\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"password\":    pulumi.String(\"\u003cJIRA_PASSWORD\u003e\"),\n\t\t\t\t\"project_key\": pulumi.String(\"\u003cJIRA_PROJECT_KEY\u003e\"),\n\t\t\t\t\"summary\":     pulumi.String(\"SOME_TEXT\"),\n\t\t\t\t\"url\":         pulumi.String(\"\u003cJIRA-URL\u003e\"),\n\t\t\t\t\"user\":        pulumi.String(\"\u003cJIRA_USERNAME\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"jira\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"emailWithCreds\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"host\":       pulumi.String(\"\u003cEMAIL_HOST\u003e\"),\n\t\t\t\t\"password\":   pulumi.String(\"\u003cEMAIL_PASSWORD\u003e\"),\n\t\t\t\t\"port\":       pulumi.String(\"\u003cEMAIL_PORT\u003e\"),\n\t\t\t\t\"recipients\": pulumi.String(\"\u003cRECIPIENTS\u003e\"),\n\t\t\t\t\"sender\":     pulumi.String(\"\u003cSENDER_EMAIL_ADDRESS\u003e\"),\n\t\t\t\t\"user\":       pulumi.String(\"\u003cEMAIL_USERNAME\u003e\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"email\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aquasec.NewNotification(ctx, \"emailWithMx\", \u0026aquasec.NotificationArgs{\n\t\t\tProperties: pulumi.StringMap{\n\t\t\t\t\"port\":       pulumi.String(\"\u003cEMAIL_PORT\u003e\"),\n\t\t\t\t\"recipients\": pulumi.String(\"\u003cRECIPIENTS\u003e\"),\n\t\t\t\t\"sender\":     pulumi.String(\"\u003cSENDER_EMAIL_ADDRESS\u003e\"),\n\t\t\t\t\"use_mx\":     pulumi.String(\"true\"),\n\t\t\t},\n\t\t\tType: pulumi.String(\"email\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.Notification;\nimport com.pulumi.aquasec.NotificationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var teams = new Notification(\"teams\", NotificationArgs.builder()        \n            .properties(Map.of(\"url\", \"\u003cTEAMS-URL\u003e\"))\n            .type(\"teams\")\n            .build());\n\n        var slack = new Notification(\"slack\", NotificationArgs.builder()        \n            .properties(Map.of(\"url\", \"\u003cSLACK-URL\u003e\"))\n            .type(\"slack\")\n            .build());\n\n        var webhook = new Notification(\"webhook\", NotificationArgs.builder()        \n            .properties(Map.of(\"url\", \"\u003cWEBHOOK-URL\u003e\"))\n            .type(\"webhook\")\n            .build());\n\n        var servicenow = new Notification(\"servicenow\", NotificationArgs.builder()        \n            .properties(Map.ofEntries(\n                Map.entry(\"board_name\", \"\"),\n                Map.entry(\"instance_name\", \"\"),\n                Map.entry(\"password\", \"\u003cPASSWORD\u003e\"),\n                Map.entry(\"url\", \"\u003cSERVICENOW-URL\u003e\"),\n                Map.entry(\"user\", \"\u003cUSERNAME\u003e\")\n            ))\n            .type(\"serviceNow\")\n            .build());\n\n        var jiraWithToken = new Notification(\"jiraWithToken\", NotificationArgs.builder()        \n            .properties(Map.ofEntries(\n                Map.entry(\"definition_of_done\", \"Done\"),\n                Map.entry(\"project_key\", \"\u003cJIRA_PROJECT_KEY\u003e\"),\n                Map.entry(\"summary\", \"SOME_TEXT\"),\n                Map.entry(\"token\", \"\u003cJIRA-TOKEN\u003e\"),\n                Map.entry(\"url\", \"\u003cJIRA-URL\u003e\")\n            ))\n            .type(\"jira\")\n            .build());\n\n        var jiraWithCreds = new Notification(\"jiraWithCreds\", NotificationArgs.builder()        \n            .properties(Map.ofEntries(\n                Map.entry(\"password\", \"\u003cJIRA_PASSWORD\u003e\"),\n                Map.entry(\"project_key\", \"\u003cJIRA_PROJECT_KEY\u003e\"),\n                Map.entry(\"summary\", \"SOME_TEXT\"),\n                Map.entry(\"url\", \"\u003cJIRA-URL\u003e\"),\n                Map.entry(\"user\", \"\u003cJIRA_USERNAME\u003e\")\n            ))\n            .type(\"jira\")\n            .build());\n\n        var emailWithCreds = new Notification(\"emailWithCreds\", NotificationArgs.builder()        \n            .properties(Map.ofEntries(\n                Map.entry(\"host\", \"\u003cEMAIL_HOST\u003e\"),\n                Map.entry(\"password\", \"\u003cEMAIL_PASSWORD\u003e\"),\n                Map.entry(\"port\", \"\u003cEMAIL_PORT\u003e\"),\n                Map.entry(\"recipients\", \"\u003cRECIPIENTS\u003e\"),\n                Map.entry(\"sender\", \"\u003cSENDER_EMAIL_ADDRESS\u003e\"),\n                Map.entry(\"user\", \"\u003cEMAIL_USERNAME\u003e\")\n            ))\n            .type(\"email\")\n            .build());\n\n        var emailWithMx = new Notification(\"emailWithMx\", NotificationArgs.builder()        \n            .properties(Map.ofEntries(\n                Map.entry(\"port\", \"\u003cEMAIL_PORT\u003e\"),\n                Map.entry(\"recipients\", \"\u003cRECIPIENTS\u003e\"),\n                Map.entry(\"sender\", \"\u003cSENDER_EMAIL_ADDRESS\u003e\"),\n                Map.entry(\"use_mx\", true)\n            ))\n            .type(\"email\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  teams:\n    type: aquasec:Notification\n    properties:\n      properties:\n        url: \u003cTEAMS-URL\u003e\n      type: teams\n  slack:\n    type: aquasec:Notification\n    properties:\n      properties:\n        url: \u003cSLACK-URL\u003e\n      type: slack\n  webhook:\n    type: aquasec:Notification\n    properties:\n      properties:\n        url: \u003cWEBHOOK-URL\u003e\n      type: webhook\n  servicenow:\n    type: aquasec:Notification\n    properties:\n      properties:\n        board_name:\n        instance_name:\n        password: \u003cPASSWORD\u003e\n        url: \u003cSERVICENOW-URL\u003e\n        user: \u003cUSERNAME\u003e\n      type: serviceNow\n  jiraWithToken:\n    type: aquasec:Notification\n    properties:\n      properties:\n        definition_of_done: Done\n        project_key: \u003cJIRA_PROJECT_KEY\u003e\n        summary: SOME_TEXT\n        token: \u003cJIRA-TOKEN\u003e\n        url: \u003cJIRA-URL\u003e\n      type: jira\n  jiraWithCreds:\n    type: aquasec:Notification\n    properties:\n      properties:\n        password: \u003cJIRA_PASSWORD\u003e\n        project_key: \u003cJIRA_PROJECT_KEY\u003e\n        summary: SOME_TEXT\n        url: \u003cJIRA-URL\u003e\n        user: \u003cJIRA_USERNAME\u003e\n      type: jira\n  emailWithCreds:\n    type: aquasec:Notification\n    properties:\n      properties:\n        host: \u003cEMAIL_HOST\u003e\n        password: \u003cEMAIL_PASSWORD\u003e\n        port: \u003cEMAIL_PORT\u003e\n        recipients: \u003cRECIPIENTS\u003e\n        sender: \u003cSENDER_EMAIL_ADDRESS\u003e\n        user: \u003cEMAIL_USERNAME\u003e\n      type: email\n  emailWithMx:\n    type: aquasec:Notification\n    properties:\n      properties:\n        port: \u003cEMAIL_PORT\u003e\n        recipients: \u003cRECIPIENTS\u003e\n        sender: \u003cSENDER_EMAIL_ADDRESS\u003e\n        use_mx: true\n      type: email\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "author": {
+                    "type": "string",
+                    "description": "The user that created the notification\n"
+                },
+                "lastUpdated": {
+                    "type": "string",
+                    "description": "Notification last update time\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Notification name\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Notification properties, please check the examples for setting it\n"
+                },
+                "template": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Notification Template\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Notifications types, allowed values: slack\\ jira\\ email\\ teams\\ webhook\\ splunk\\ serviceNow\n"
+                }
+            },
+            "required": [
+                "author",
+                "lastUpdated",
+                "name",
+                "properties",
+                "template",
+                "type"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Notification name\n"
+                },
+                "properties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Notification properties, please check the examples for setting it\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Notifications types, allowed values: slack\\ jira\\ email\\ teams\\ webhook\\ splunk\\ serviceNow\n"
+                }
+            },
+            "requiredInputs": [
+                "properties",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Notification resources.\n",
+                "properties": {
+                    "author": {
+                        "type": "string",
+                        "description": "The user that created the notification\n"
+                    },
+                    "lastUpdated": {
+                        "type": "string",
+                        "description": "Notification last update time\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Notification name\n"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Notification properties, please check the examples for setting it\n"
+                    },
+                    "template": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Notification Template\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Notifications types, allowed values: slack\\ jira\\ email\\ teams\\ webhook\\ splunk\\ serviceNow\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "aquasec:index/notificationSlack:NotificationSlack": {
+            "description": "Provides an Aquasec Notification Slack resource\n\n\u003e **Note about resource deprecation**\nResource aquasec.NotificationSlack is deprecated, please use aquasec.Notification instead\n",
             "properties": {
                 "channel": {
                     "type": "string"
@@ -21968,6 +22642,70 @@
                     "trustedBaseImagesEnabled",
                     "whitelistedLicenses",
                     "whitelistedLicensesEnabled"
+                ]
+            }
+        },
+        "aquasec:index/getNotifications:getNotifications": {
+            "outputs": {
+                "description": "A collection of values returned by getNotifications.\n",
+                "properties": {
+                    "emails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsEmail:getNotificationsEmail"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "jiras": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsJira:getNotificationsJira"
+                        }
+                    },
+                    "servicenows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsServicenow:getNotificationsServicenow"
+                        }
+                    },
+                    "slacks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsSlack:getNotificationsSlack"
+                        }
+                    },
+                    "splunks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsSplunk:getNotificationsSplunk"
+                        }
+                    },
+                    "teams": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsTeam:getNotificationsTeam"
+                        }
+                    },
+                    "webhooks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getNotificationsWebhook:getNotificationsWebhook"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "emails",
+                    "jiras",
+                    "servicenows",
+                    "slacks",
+                    "splunks",
+                    "teams",
+                    "webhooks",
+                    "id"
                 ]
             }
         },

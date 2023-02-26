@@ -10,6 +10,12 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
+    /// <summary>
+    /// Provides an Aquasec Notification Slack resource
+    /// 
+    /// &gt; **Note about resource deprecation**
+    /// Resource aquasec.NotificationSlack is deprecated, please use aquasec.Notification instead
+    /// </summary>
     [AquasecResourceType("aquasec:index/notificationSlack:NotificationSlack")]
     public partial class NotificationSlack : global::Pulumi.CustomResource
     {
