@@ -143,8 +143,6 @@ type roleArgs struct {
 	RoleName string `pulumi:"roleName"`
 	// List of Application Scopes that will affect the users assigned to this specific Role.
 	Scopes []string `pulumi:"scopes"`
-	// The date of the last modification of the role.
-	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 // The set of arguments for constructing a Role resource.
@@ -157,8 +155,6 @@ type RoleArgs struct {
 	RoleName pulumi.StringInput
 	// List of Application Scopes that will affect the users assigned to this specific Role.
 	Scopes pulumi.StringArrayInput
-	// The date of the last modification of the role.
-	UpdatedAt pulumi.StringPtrInput
 }
 
 func (RoleArgs) ElementType() reflect.Type {

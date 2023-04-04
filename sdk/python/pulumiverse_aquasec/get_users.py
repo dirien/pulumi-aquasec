@@ -55,7 +55,7 @@ class AwaitableGetUsersResult(GetUsersResult):
 
 def get_users(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    The data source _get_users_ provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
+    The data source `get_users` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
 
     ## Example Usage
 

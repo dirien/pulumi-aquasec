@@ -58,7 +58,7 @@ class AwaitableGetGatewaysResult(GetGatewaysResult):
 
 def get_gateways(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGatewaysResult:
     """
-    The data source _get_gateways_ provides a method to query all gateways within the Aqua
+    The data source `get_gateways` provides a method to query all gateways within the Aqua
 
     ## Example Usage
 

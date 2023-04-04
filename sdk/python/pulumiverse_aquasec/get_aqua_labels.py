@@ -55,7 +55,7 @@ class AwaitableGetAquaLabelsResult(GetAquaLabelsResult):
 
 def get_aqua_labels(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAquaLabelsResult:
     """
-    The data source _get_aqua_labels_ provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
+    The data source `get_aqua_labels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
 
     ## Example Usage
 

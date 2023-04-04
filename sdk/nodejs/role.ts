@@ -74,7 +74,7 @@ export class Role extends pulumi.CustomResource {
     /**
      * The date of the last modification of the role.
      */
-    public readonly updatedAt!: pulumi.Output<string>;
+    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
 
     /**
      * Create a Role resource with the given unique name, arguments, and options.
@@ -110,8 +110,8 @@ export class Role extends pulumi.CustomResource {
             resourceInputs["permission"] = args ? args.permission : undefined;
             resourceInputs["roleName"] = args ? args.roleName : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["updatedAt"] = args ? args.updatedAt : undefined;
             resourceInputs["author"] = undefined /*out*/;
+            resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Role.__pulumiType, name, resourceInputs, opts);
@@ -168,8 +168,4 @@ export interface RoleArgs {
      * List of Application Scopes that will affect the users assigned to this specific Role.
      */
     scopes: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The date of the last modification of the role.
-     */
-    updatedAt?: pulumi.Input<string>;
 }

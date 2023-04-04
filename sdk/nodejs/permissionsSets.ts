@@ -6,69 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * The `aquasec.PermissionsSets` resource manages your Permission Set within Aqua.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumiverse/aquasec";
- *
- * const myTerraformPermSet = new aquasec.PermissionsSets("myTerraformPermSet", {
- *     actions: [
- *         "acl_policies.read",
- *         "acl_policies.write",
- *         "image_profiles.read",
- *         "image_profiles.write",
- *         "network_policies.read",
- *         "network_policies.write",
- *         "runtime_policies.read",
- *         "runtime_policies.write",
- *         "response_policies.read",
- *         "response_policies.write",
- *         "image_assurance.read",
- *         "image_assurance.write",
- *         "dashboard.read",
- *         "dashboard.write",
- *         "risk_explorer.read",
- *         "images.read",
- *         "images.write",
- *         "risks.host_images.read",
- *         "risks.host_images.write",
- *         "functions.read",
- *         "functions.write",
- *         "enforcers.read",
- *         "enforcers.write",
- *         "containers.read",
- *         "services.read",
- *         "services.write",
- *         "infrastructure.read",
- *         "infrastructure.write",
- *         "risks.vulnerabilities.read",
- *         "risks.vulnerabilities.write",
- *         "risks.benchmark.read",
- *         "risks.benchmark.write",
- *         "audits.read",
- *         "secrets.read",
- *         "secrets.write",
- *         "settings.read",
- *         "settings.write",
- *         "integrations.read",
- *         "integrations.write",
- *         "registries_integrations.read",
- *         "registries_integrations.write",
- *         "scan.read",
- *         "gateways.read",
- *         "gateways.write",
- *         "consoles.read",
- *         "web_hook.read",
- *         "incidents.read",
- *     ],
- *     author: "system",
- *     description: "Test Permissions Sets created by Terraform",
- *     isSuper: false,
- *     uiAccess: true,
- * });
- * ```
  */
 export class PermissionsSets extends pulumi.CustomResource {
     /**
@@ -105,7 +42,7 @@ export class PermissionsSets extends pulumi.CustomResource {
     /**
      * The name of the user who created the Permission Set.
      */
-    public readonly author!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly author!: pulumi.Output<string>;
     /**
      * Free text description for the Permission Set.
      */
@@ -156,11 +93,11 @@ export class PermissionsSets extends pulumi.CustomResource {
                 throw new Error("Missing required property 'uiAccess'");
             }
             resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["author"] = args ? args.author : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["isSuper"] = args ? args.isSuper : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["uiAccess"] = args ? args.uiAccess : undefined;
+            resourceInputs["author"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -210,10 +147,6 @@ export interface PermissionsSetsArgs {
      * List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
      */
     actions: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The name of the user who created the Permission Set.
-     */
-    author?: pulumi.Input<string>;
     /**
      * Free text description for the Permission Set.
      */
