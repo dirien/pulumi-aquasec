@@ -19,6 +19,7 @@ namespace Pulumiverse.Aquasec
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Aquasec = Pulumiverse.Aquasec;
     /// 
@@ -153,12 +154,6 @@ namespace Pulumiverse.Aquasec
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
-
-        /// <summary>
-        /// The date of the last modification of the role.
-        /// </summary>
-        [Input("updatedAt")]
-        public Input<string>? UpdatedAt { get; set; }
 
         public RoleArgs()
         {

@@ -17,23 +17,19 @@ class RoleArgs:
                  permission: pulumi.Input[str],
                  role_name: pulumi.Input[str],
                  scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 description: Optional[pulumi.Input[str]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None):
+                 description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Role resource.
         :param pulumi.Input[str] permission: The name of the Permission Set that will affect the users assigned to this specific Role.
         :param pulumi.Input[str] role_name: The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List of Application Scopes that will affect the users assigned to this specific Role.
         :param pulumi.Input[str] description: Free text description for the role.
-        :param pulumi.Input[str] updated_at: The date of the last modification of the role.
         """
         pulumi.set(__self__, "permission", permission)
         pulumi.set(__self__, "role_name", role_name)
         pulumi.set(__self__, "scopes", scopes)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
 
     @property
     @pulumi.getter
@@ -82,18 +78,6 @@ class RoleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[str]]:
-        """
-        The date of the last modification of the role.
-        """
-        return pulumi.get(self, "updated_at")
-
-    @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "updated_at", value)
 
 
 @pulumi.input_type
@@ -209,7 +193,6 @@ class Role(pulumi.CustomResource):
                  permission: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The `Role` resource manages your roles within Aqua.
@@ -235,7 +218,6 @@ class Role(pulumi.CustomResource):
         :param pulumi.Input[str] permission: The name of the Permission Set that will affect the users assigned to this specific Role.
         :param pulumi.Input[str] role_name: The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List of Application Scopes that will affect the users assigned to this specific Role.
-        :param pulumi.Input[str] updated_at: The date of the last modification of the role.
         """
         ...
     @overload
@@ -280,7 +262,6 @@ class Role(pulumi.CustomResource):
                  permission: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 updated_at: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,8 +281,8 @@ class Role(pulumi.CustomResource):
             if scopes is None and not opts.urn:
                 raise TypeError("Missing required property 'scopes'")
             __props__.__dict__["scopes"] = scopes
-            __props__.__dict__["updated_at"] = updated_at
             __props__.__dict__["author"] = None
+            __props__.__dict__["updated_at"] = None
         super(Role, __self__).__init__(
             'aquasec:index/role:Role',
             resource_name,

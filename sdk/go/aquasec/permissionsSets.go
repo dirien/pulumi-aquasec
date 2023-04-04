@@ -12,91 +12,13 @@ import (
 )
 
 // The `PermissionsSets` resource manages your Permission Set within Aqua.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aquasec.NewPermissionsSets(ctx, "myTerraformPermSet", &aquasec.PermissionsSetsArgs{
-//				Actions: pulumi.StringArray{
-//					pulumi.String("acl_policies.read"),
-//					pulumi.String("acl_policies.write"),
-//					pulumi.String("image_profiles.read"),
-//					pulumi.String("image_profiles.write"),
-//					pulumi.String("network_policies.read"),
-//					pulumi.String("network_policies.write"),
-//					pulumi.String("runtime_policies.read"),
-//					pulumi.String("runtime_policies.write"),
-//					pulumi.String("response_policies.read"),
-//					pulumi.String("response_policies.write"),
-//					pulumi.String("image_assurance.read"),
-//					pulumi.String("image_assurance.write"),
-//					pulumi.String("dashboard.read"),
-//					pulumi.String("dashboard.write"),
-//					pulumi.String("risk_explorer.read"),
-//					pulumi.String("images.read"),
-//					pulumi.String("images.write"),
-//					pulumi.String("risks.host_images.read"),
-//					pulumi.String("risks.host_images.write"),
-//					pulumi.String("functions.read"),
-//					pulumi.String("functions.write"),
-//					pulumi.String("enforcers.read"),
-//					pulumi.String("enforcers.write"),
-//					pulumi.String("containers.read"),
-//					pulumi.String("services.read"),
-//					pulumi.String("services.write"),
-//					pulumi.String("infrastructure.read"),
-//					pulumi.String("infrastructure.write"),
-//					pulumi.String("risks.vulnerabilities.read"),
-//					pulumi.String("risks.vulnerabilities.write"),
-//					pulumi.String("risks.benchmark.read"),
-//					pulumi.String("risks.benchmark.write"),
-//					pulumi.String("audits.read"),
-//					pulumi.String("secrets.read"),
-//					pulumi.String("secrets.write"),
-//					pulumi.String("settings.read"),
-//					pulumi.String("settings.write"),
-//					pulumi.String("integrations.read"),
-//					pulumi.String("integrations.write"),
-//					pulumi.String("registries_integrations.read"),
-//					pulumi.String("registries_integrations.write"),
-//					pulumi.String("scan.read"),
-//					pulumi.String("gateways.read"),
-//					pulumi.String("gateways.write"),
-//					pulumi.String("consoles.read"),
-//					pulumi.String("web_hook.read"),
-//					pulumi.String("incidents.read"),
-//				},
-//				Author:      pulumi.String("system"),
-//				Description: pulumi.String("Test Permissions Sets created by Terraform"),
-//				IsSuper:     pulumi.Bool(false),
-//				UiAccess:    pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type PermissionsSets struct {
 	pulumi.CustomResourceState
 
 	// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
 	Actions pulumi.StringArrayOutput `pulumi:"actions"`
 	// The name of the user who created the Permission Set.
-	Author pulumi.StringPtrOutput `pulumi:"author"`
+	Author pulumi.StringOutput `pulumi:"author"`
 	// Free text description for the Permission Set.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Give the Permission Set full access, meaning all actions are allowed without restriction.
@@ -185,8 +107,6 @@ func (PermissionsSetsState) ElementType() reflect.Type {
 type permissionsSetsArgs struct {
 	// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
 	Actions []string `pulumi:"actions"`
-	// The name of the user who created the Permission Set.
-	Author *string `pulumi:"author"`
 	// Free text description for the Permission Set.
 	Description *string `pulumi:"description"`
 	// Give the Permission Set full access, meaning all actions are allowed without restriction.
@@ -201,8 +121,6 @@ type permissionsSetsArgs struct {
 type PermissionsSetsArgs struct {
 	// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
 	Actions pulumi.StringArrayInput
-	// The name of the user who created the Permission Set.
-	Author pulumi.StringPtrInput
 	// Free text description for the Permission Set.
 	Description pulumi.StringPtrInput
 	// Give the Permission Set full access, meaning all actions are allowed without restriction.
@@ -306,8 +224,8 @@ func (o PermissionsSetsOutput) Actions() pulumi.StringArrayOutput {
 }
 
 // The name of the user who created the Permission Set.
-func (o PermissionsSetsOutput) Author() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PermissionsSets) pulumi.StringPtrOutput { return v.Author }).(pulumi.StringPtrOutput)
+func (o PermissionsSetsOutput) Author() pulumi.StringOutput {
+	return o.ApplyT(func(v *PermissionsSets) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
 }
 
 // Free text description for the Permission Set.

@@ -16,7 +16,6 @@ class PermissionsSetsArgs:
     def __init__(__self__, *,
                  actions: pulumi.Input[Sequence[pulumi.Input[str]]],
                  ui_access: pulumi.Input[bool],
-                 author: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_super: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -24,15 +23,12 @@ class PermissionsSetsArgs:
         The set of arguments for constructing a PermissionsSets resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
         :param pulumi.Input[bool] ui_access: Whether to allow UI access for users with this Permission Set.
-        :param pulumi.Input[str] author: The name of the user who created the Permission Set.
         :param pulumi.Input[str] description: Free text description for the Permission Set.
         :param pulumi.Input[bool] is_super: Give the Permission Set full access, meaning all actions are allowed without restriction.
         :param pulumi.Input[str] name: The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "ui_access", ui_access)
-        if author is not None:
-            pulumi.set(__self__, "author", author)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if is_super is not None:
@@ -63,18 +59,6 @@ class PermissionsSetsArgs:
     @ui_access.setter
     def ui_access(self, value: pulumi.Input[bool]):
         pulumi.set(self, "ui_access", value)
-
-    @property
-    @pulumi.getter
-    def author(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the user who created the Permission Set.
-        """
-        return pulumi.get(self, "author")
-
-    @author.setter
-    def author(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "author", value)
 
     @property
     @pulumi.getter
@@ -239,7 +223,6 @@ class PermissionsSets(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 author: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_super: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -248,72 +231,9 @@ class PermissionsSets(pulumi.CustomResource):
         """
         The `PermissionsSets` resource manages your Permission Set within Aqua.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_aquasec as aquasec
-
-        my_terraform_perm_set = aquasec.PermissionsSets("myTerraformPermSet",
-            actions=[
-                "acl_policies.read",
-                "acl_policies.write",
-                "image_profiles.read",
-                "image_profiles.write",
-                "network_policies.read",
-                "network_policies.write",
-                "runtime_policies.read",
-                "runtime_policies.write",
-                "response_policies.read",
-                "response_policies.write",
-                "image_assurance.read",
-                "image_assurance.write",
-                "dashboard.read",
-                "dashboard.write",
-                "risk_explorer.read",
-                "images.read",
-                "images.write",
-                "risks.host_images.read",
-                "risks.host_images.write",
-                "functions.read",
-                "functions.write",
-                "enforcers.read",
-                "enforcers.write",
-                "containers.read",
-                "services.read",
-                "services.write",
-                "infrastructure.read",
-                "infrastructure.write",
-                "risks.vulnerabilities.read",
-                "risks.vulnerabilities.write",
-                "risks.benchmark.read",
-                "risks.benchmark.write",
-                "audits.read",
-                "secrets.read",
-                "secrets.write",
-                "settings.read",
-                "settings.write",
-                "integrations.read",
-                "integrations.write",
-                "registries_integrations.read",
-                "registries_integrations.write",
-                "scan.read",
-                "gateways.read",
-                "gateways.write",
-                "consoles.read",
-                "web_hook.read",
-                "incidents.read",
-            ],
-            author="system",
-            description="Test Permissions Sets created by Terraform",
-            is_super=False,
-            ui_access=True)
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
-        :param pulumi.Input[str] author: The name of the user who created the Permission Set.
         :param pulumi.Input[str] description: Free text description for the Permission Set.
         :param pulumi.Input[bool] is_super: Give the Permission Set full access, meaning all actions are allowed without restriction.
         :param pulumi.Input[str] name: The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
@@ -327,68 +247,6 @@ class PermissionsSets(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `PermissionsSets` resource manages your Permission Set within Aqua.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_aquasec as aquasec
-
-        my_terraform_perm_set = aquasec.PermissionsSets("myTerraformPermSet",
-            actions=[
-                "acl_policies.read",
-                "acl_policies.write",
-                "image_profiles.read",
-                "image_profiles.write",
-                "network_policies.read",
-                "network_policies.write",
-                "runtime_policies.read",
-                "runtime_policies.write",
-                "response_policies.read",
-                "response_policies.write",
-                "image_assurance.read",
-                "image_assurance.write",
-                "dashboard.read",
-                "dashboard.write",
-                "risk_explorer.read",
-                "images.read",
-                "images.write",
-                "risks.host_images.read",
-                "risks.host_images.write",
-                "functions.read",
-                "functions.write",
-                "enforcers.read",
-                "enforcers.write",
-                "containers.read",
-                "services.read",
-                "services.write",
-                "infrastructure.read",
-                "infrastructure.write",
-                "risks.vulnerabilities.read",
-                "risks.vulnerabilities.write",
-                "risks.benchmark.read",
-                "risks.benchmark.write",
-                "audits.read",
-                "secrets.read",
-                "secrets.write",
-                "settings.read",
-                "settings.write",
-                "integrations.read",
-                "integrations.write",
-                "registries_integrations.read",
-                "registries_integrations.write",
-                "scan.read",
-                "gateways.read",
-                "gateways.write",
-                "consoles.read",
-                "web_hook.read",
-                "incidents.read",
-            ],
-            author="system",
-            description="Test Permissions Sets created by Terraform",
-            is_super=False,
-            ui_access=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param PermissionsSetsArgs args: The arguments to use to populate this resource's properties.
@@ -406,7 +264,6 @@ class PermissionsSets(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 author: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  is_super: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -423,13 +280,13 @@ class PermissionsSets(pulumi.CustomResource):
             if actions is None and not opts.urn:
                 raise TypeError("Missing required property 'actions'")
             __props__.__dict__["actions"] = actions
-            __props__.__dict__["author"] = author
             __props__.__dict__["description"] = description
             __props__.__dict__["is_super"] = is_super
             __props__.__dict__["name"] = name
             if ui_access is None and not opts.urn:
                 raise TypeError("Missing required property 'ui_access'")
             __props__.__dict__["ui_access"] = ui_access
+            __props__.__dict__["author"] = None
             __props__.__dict__["updated_at"] = None
         super(PermissionsSets, __self__).__init__(
             'aquasec:index/permissionsSets:PermissionsSets',
@@ -486,7 +343,7 @@ class PermissionsSets(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def author(self) -> pulumi.Output[Optional[str]]:
+    def author(self) -> pulumi.Output[str]:
         """
         The name of the user who created the Permission Set.
         """

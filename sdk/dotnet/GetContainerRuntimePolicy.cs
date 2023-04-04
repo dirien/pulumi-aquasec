@@ -19,6 +19,7 @@ namespace Pulumiverse.Aquasec
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aquasec = Pulumi.Aquasec;
         /// 
@@ -48,6 +49,7 @@ namespace Pulumiverse.Aquasec
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aquasec = Pulumi.Aquasec;
         /// 

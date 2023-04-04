@@ -55,7 +55,7 @@ class AwaitableGetGroupsResult(GetGroupsResult):
 
 def get_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
-    The data source _get_groups_ provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
+    The data source `get_groups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
 
     ## Example Usage
 
