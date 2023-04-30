@@ -6,7 +6,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 
 require (
 	github.com/aquasecurity/terraform-provider-aquasec v0.8.25
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.44.3
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.45.3
 	github.com/pulumi/pulumi/sdk/v3 v3.64.0
 )
 
