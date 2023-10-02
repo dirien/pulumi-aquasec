@@ -40,6 +40,35 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("aquasec:index/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var groups = Aquasec.GetGroups.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstGroupName"] = groups.Apply(getGroupsResult =&gt; getGroupsResult.Groups[0]?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("aquasec:index/getGroups:getGroups", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

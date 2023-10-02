@@ -75,5 +75,5 @@ def get_acknowledges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('aquasec:index/getAcknowledges:getAcknowledges', __args__, opts=opts, typ=GetAcknowledgesResult).value
 
     return AwaitableGetAcknowledgesResult(
-        acknowledges=__ret__.acknowledges,
-        id=__ret__.id)
+        acknowledges=pulumi.get(__ret__, 'acknowledges'),
+        id=pulumi.get(__ret__, 'id'))

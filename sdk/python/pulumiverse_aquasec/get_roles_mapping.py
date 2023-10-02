@@ -110,8 +110,8 @@ def get_roles_mapping(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     __ret__ = pulumi.runtime.invoke('aquasec:index/getRolesMapping:getRolesMapping', __args__, opts=opts, typ=GetRolesMappingResult).value
 
     return AwaitableGetRolesMappingResult(
-        id=__ret__.id,
-        ldaps=__ret__.ldaps,
-        oauth2s=__ret__.oauth2s,
-        openids=__ret__.openids,
-        samls=__ret__.samls)
+        id=pulumi.get(__ret__, 'id'),
+        ldaps=pulumi.get(__ret__, 'ldaps'),
+        oauth2s=pulumi.get(__ret__, 'oauth2s'),
+        openids=pulumi.get(__ret__, 'openids'),
+        samls=pulumi.get(__ret__, 'samls'))

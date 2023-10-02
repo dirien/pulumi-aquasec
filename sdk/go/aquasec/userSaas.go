@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The `UserSaas` resource manages your saas users within Aqua.
@@ -93,7 +95,7 @@ func NewUserSaas(ctx *pulumi.Context,
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UserSaas
 	err := ctx.RegisterResource("aquasec:index/userSaas:UserSaas", name, args, &resource, opts...)
 	if err != nil {
@@ -191,6 +193,12 @@ func (i *UserSaas) ToUserSaasOutputWithContext(ctx context.Context) UserSaasOutp
 	return pulumi.ToOutputWithContext(ctx, i).(UserSaasOutput)
 }
 
+func (i *UserSaas) ToOutput(ctx context.Context) pulumix.Output[*UserSaas] {
+	return pulumix.Output[*UserSaas]{
+		OutputState: i.ToUserSaasOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserSaasArrayInput is an input type that accepts UserSaasArray and UserSaasArrayOutput values.
 // You can construct a concrete instance of `UserSaasArrayInput` via:
 //
@@ -214,6 +222,12 @@ func (i UserSaasArray) ToUserSaasArrayOutput() UserSaasArrayOutput {
 
 func (i UserSaasArray) ToUserSaasArrayOutputWithContext(ctx context.Context) UserSaasArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserSaasArrayOutput)
+}
+
+func (i UserSaasArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserSaas] {
+	return pulumix.Output[[]*UserSaas]{
+		OutputState: i.ToUserSaasArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UserSaasMapInput is an input type that accepts UserSaasMap and UserSaasMapOutput values.
@@ -241,6 +255,12 @@ func (i UserSaasMap) ToUserSaasMapOutputWithContext(ctx context.Context) UserSaa
 	return pulumi.ToOutputWithContext(ctx, i).(UserSaasMapOutput)
 }
 
+func (i UserSaasMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserSaas] {
+	return pulumix.Output[map[string]*UserSaas]{
+		OutputState: i.ToUserSaasMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserSaasOutput struct{ *pulumi.OutputState }
 
 func (UserSaasOutput) ElementType() reflect.Type {
@@ -253,6 +273,12 @@ func (o UserSaasOutput) ToUserSaasOutput() UserSaasOutput {
 
 func (o UserSaasOutput) ToUserSaasOutputWithContext(ctx context.Context) UserSaasOutput {
 	return o
+}
+
+func (o UserSaasOutput) ToOutput(ctx context.Context) pulumix.Output[*UserSaas] {
+	return pulumix.Output[*UserSaas]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserSaasOutput) AccountAdmin() pulumi.BoolOutput {
@@ -325,6 +351,12 @@ func (o UserSaasArrayOutput) ToUserSaasArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o UserSaasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserSaas] {
+	return pulumix.Output[[]*UserSaas]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserSaasArrayOutput) Index(i pulumi.IntInput) UserSaasOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserSaas {
 		return vs[0].([]*UserSaas)[vs[1].(int)]
@@ -343,6 +375,12 @@ func (o UserSaasMapOutput) ToUserSaasMapOutput() UserSaasMapOutput {
 
 func (o UserSaasMapOutput) ToUserSaasMapOutputWithContext(ctx context.Context) UserSaasMapOutput {
 	return o
+}
+
+func (o UserSaasMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserSaas] {
+	return pulumix.Output[map[string]*UserSaas]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserSaasMapOutput) MapIndex(k pulumi.StringInput) UserSaasOutput {

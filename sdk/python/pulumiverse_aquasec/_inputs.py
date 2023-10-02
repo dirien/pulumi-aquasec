@@ -77,6 +77,7 @@ __all__ = [
     'ImageHistoryArgs',
     'ImageVulnerabilityArgs',
     'IntegrationRegistryOptionArgs',
+    'IntegrationRegistryWebhookArgs',
     'KubernetesAssurancePolicyAutoScanTimeArgs',
     'KubernetesAssurancePolicyCustomCheckArgs',
     'KubernetesAssurancePolicyForbiddenLabelArgs',
@@ -117,6 +118,8 @@ __all__ = [
     'GetApplicationScopeCategoryWorkloadOVariableArgs',
     'GetContainerRuntimePolicyMalwareScanOptionArgs',
     'GetFirewallPolicyOutboundNetworkArgs',
+    'GetIntegrationRegistryOptionArgs',
+    'GetIntegrationRegistryWebhookArgs',
 ]
 
 @pulumi.input_type
@@ -5100,6 +5103,65 @@ class IntegrationRegistryOptionArgs:
 
 
 @pulumi.input_type
+class IntegrationRegistryWebhookArgs:
+    def __init__(__self__, *,
+                 auth_token: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 un_quarantine: Optional[pulumi.Input[bool]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url: The URL, address or region of the registry
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if un_quarantine is not None:
+            pulumi.set(__self__, "un_quarantine", un_quarantine)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_token")
+
+    @auth_token.setter
+    def auth_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_token", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="unQuarantine")
+    def un_quarantine(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "un_quarantine")
+
+    @un_quarantine.setter
+    def un_quarantine(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "un_quarantine", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL, address or region of the registry
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
 class KubernetesAssurancePolicyAutoScanTimeArgs:
     def __init__(__self__, *,
                  iteration: Optional[pulumi.Input[int]] = None,
@@ -6697,5 +6759,93 @@ class GetFirewallPolicyOutboundNetworkArgs:
     @resource_type.setter
     def resource_type(self, value: str):
         pulumi.set(self, "resource_type", value)
+
+
+@pulumi.input_type
+class GetIntegrationRegistryOptionArgs:
+    def __init__(__self__, *,
+                 option: Optional[str] = None,
+                 value: Optional[str] = None):
+        if option is not None:
+            pulumi.set(__self__, "option", option)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def option(self) -> Optional[str]:
+        return pulumi.get(self, "option")
+
+    @option.setter
+    def option(self, value: Optional[str]):
+        pulumi.set(self, "option", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GetIntegrationRegistryWebhookArgs:
+    def __init__(__self__, *,
+                 auth_token: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 un_quarantine: Optional[bool] = None,
+                 url: Optional[str] = None):
+        """
+        :param str url: The URL, address or region of the registry
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if un_quarantine is not None:
+            pulumi.set(__self__, "un_quarantine", un_quarantine)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[str]:
+        return pulumi.get(self, "auth_token")
+
+    @auth_token.setter
+    def auth_token(self, value: Optional[str]):
+        pulumi.set(self, "auth_token", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="unQuarantine")
+    def un_quarantine(self) -> Optional[bool]:
+        return pulumi.get(self, "un_quarantine")
+
+    @un_quarantine.setter
+    def un_quarantine(self, value: Optional[bool]):
+        pulumi.set(self, "un_quarantine", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL, address or region of the registry
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[str]):
+        pulumi.set(self, "url", value)
 
 

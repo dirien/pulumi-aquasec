@@ -40,6 +40,35 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public static Task<GetAquaLabelsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAquaLabelsResult>("aquasec:index/getAquaLabels:getAquaLabels", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// The data source `aquasec.getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var aquaLabels = Aquasec.GetAquaLabels.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["scopes"] = aquaLabels,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetAquaLabelsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAquaLabelsResult>("aquasec:index/getAquaLabels:getAquaLabels", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
@@ -34,7 +35,7 @@ import (
 //
 // ```
 func GetGroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGroupsResult
 	err := ctx.Invoke("aquasec:index/getGroups:getGroups", nil, &rv, opts...)
 	if err != nil {

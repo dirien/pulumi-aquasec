@@ -746,6 +746,36 @@ export interface GetFirewallPolicyOutboundNetworkArgs {
     resourceType?: pulumi.Input<string>;
 }
 
+export interface GetIntegrationRegistryOption {
+    option?: string;
+    value?: string;
+}
+
+export interface GetIntegrationRegistryOptionArgs {
+    option?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface GetIntegrationRegistryWebhook {
+    authToken?: string;
+    enabled?: boolean;
+    unQuarantine?: boolean;
+    /**
+     * The URL, address or region of the registry
+     */
+    url?: string;
+}
+
+export interface GetIntegrationRegistryWebhookArgs {
+    authToken?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    unQuarantine?: pulumi.Input<boolean>;
+    /**
+     * The URL, address or region of the registry
+     */
+    url?: pulumi.Input<string>;
+}
+
 export interface HostAssurancePolicyAutoScanTime {
     iteration?: pulumi.Input<number>;
     iterationType?: pulumi.Input<string>;
@@ -1173,6 +1203,16 @@ export interface ImageVulnerability {
 export interface IntegrationRegistryOption {
     option?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+}
+
+export interface IntegrationRegistryWebhook {
+    authToken?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    unQuarantine?: pulumi.Input<boolean>;
+    /**
+     * The URL, address or region of the registry
+     */
+    url?: pulumi.Input<string>;
 }
 
 export interface KubernetesAssurancePolicyAutoScanTime {

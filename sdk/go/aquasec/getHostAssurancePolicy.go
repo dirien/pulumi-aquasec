@@ -8,10 +8,12 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 func LookupHostAssurancePolicy(ctx *pulumi.Context, args *LookupHostAssurancePolicyArgs, opts ...pulumi.InvokeOption) (*LookupHostAssurancePolicyResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostAssurancePolicyResult
 	err := ctx.Invoke("aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy", args, &rv, opts...)
 	if err != nil {
@@ -179,6 +181,12 @@ func (o LookupHostAssurancePolicyResultOutput) ToLookupHostAssurancePolicyResult
 
 func (o LookupHostAssurancePolicyResultOutput) ToLookupHostAssurancePolicyResultOutputWithContext(ctx context.Context) LookupHostAssurancePolicyResultOutput {
 	return o
+}
+
+func (o LookupHostAssurancePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostAssurancePolicyResult] {
+	return pulumix.Output[LookupHostAssurancePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of explicitly allowed images.

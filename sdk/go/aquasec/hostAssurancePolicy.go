@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 type HostAssurancePolicy struct {
@@ -139,7 +141,7 @@ func NewHostAssurancePolicy(ctx *pulumi.Context,
 	if args.ApplicationScopes == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationScopes'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostAssurancePolicy
 	err := ctx.RegisterResource("aquasec:index/hostAssurancePolicy:HostAssurancePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -647,6 +649,12 @@ func (i *HostAssurancePolicy) ToHostAssurancePolicyOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(HostAssurancePolicyOutput)
 }
 
+func (i *HostAssurancePolicy) ToOutput(ctx context.Context) pulumix.Output[*HostAssurancePolicy] {
+	return pulumix.Output[*HostAssurancePolicy]{
+		OutputState: i.ToHostAssurancePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostAssurancePolicyArrayInput is an input type that accepts HostAssurancePolicyArray and HostAssurancePolicyArrayOutput values.
 // You can construct a concrete instance of `HostAssurancePolicyArrayInput` via:
 //
@@ -670,6 +678,12 @@ func (i HostAssurancePolicyArray) ToHostAssurancePolicyArrayOutput() HostAssuran
 
 func (i HostAssurancePolicyArray) ToHostAssurancePolicyArrayOutputWithContext(ctx context.Context) HostAssurancePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostAssurancePolicyArrayOutput)
+}
+
+func (i HostAssurancePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostAssurancePolicy] {
+	return pulumix.Output[[]*HostAssurancePolicy]{
+		OutputState: i.ToHostAssurancePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostAssurancePolicyMapInput is an input type that accepts HostAssurancePolicyMap and HostAssurancePolicyMapOutput values.
@@ -697,6 +711,12 @@ func (i HostAssurancePolicyMap) ToHostAssurancePolicyMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HostAssurancePolicyMapOutput)
 }
 
+func (i HostAssurancePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAssurancePolicy] {
+	return pulumix.Output[map[string]*HostAssurancePolicy]{
+		OutputState: i.ToHostAssurancePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostAssurancePolicyOutput struct{ *pulumi.OutputState }
 
 func (HostAssurancePolicyOutput) ElementType() reflect.Type {
@@ -709,6 +729,12 @@ func (o HostAssurancePolicyOutput) ToHostAssurancePolicyOutput() HostAssurancePo
 
 func (o HostAssurancePolicyOutput) ToHostAssurancePolicyOutputWithContext(ctx context.Context) HostAssurancePolicyOutput {
 	return o
+}
+
+func (o HostAssurancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*HostAssurancePolicy] {
+	return pulumix.Output[*HostAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of explicitly allowed images.
@@ -1063,6 +1089,12 @@ func (o HostAssurancePolicyArrayOutput) ToHostAssurancePolicyArrayOutputWithCont
 	return o
 }
 
+func (o HostAssurancePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostAssurancePolicy] {
+	return pulumix.Output[[]*HostAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostAssurancePolicyArrayOutput) Index(i pulumi.IntInput) HostAssurancePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostAssurancePolicy {
 		return vs[0].([]*HostAssurancePolicy)[vs[1].(int)]
@@ -1081,6 +1113,12 @@ func (o HostAssurancePolicyMapOutput) ToHostAssurancePolicyMapOutput() HostAssur
 
 func (o HostAssurancePolicyMapOutput) ToHostAssurancePolicyMapOutputWithContext(ctx context.Context) HostAssurancePolicyMapOutput {
 	return o
+}
+
+func (o HostAssurancePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostAssurancePolicy] {
+	return pulumix.Output[map[string]*HostAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostAssurancePolicyMapOutput) MapIndex(k pulumi.StringInput) HostAssurancePolicyOutput {

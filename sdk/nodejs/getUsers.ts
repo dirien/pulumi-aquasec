@@ -36,3 +36,19 @@ export interface GetUsersResult {
     readonly id: string;
     readonly users: outputs.GetUsersUser[];
 }
+/**
+ * The data source `aquasec.getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const users = aquasec.getUsers({});
+ * export const firstUserName = users.then(users => users.users?.[0]?.name);
+ * ```
+ */
+export function getUsersOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(getUsers(opts))
+}

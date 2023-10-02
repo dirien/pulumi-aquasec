@@ -36,3 +36,19 @@ export interface GetGroupsResult {
      */
     readonly id: string;
 }
+/**
+ * The data source `aquasec.getGroups` provides a method to query all groups within the Aqua CSPMgroup database. The fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const groups = aquasec.getGroups({});
+ * export const firstGroupName = groups.then(groups => groups.groups?.[0]?.name);
+ * ```
+ */
+export function getGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(getGroups(opts))
+}

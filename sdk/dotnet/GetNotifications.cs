@@ -14,6 +14,9 @@ namespace Pulumiverse.Aquasec
     {
         public static Task<GetNotificationsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNotificationsResult>("aquasec:index/getNotifications:getNotifications", InvokeArgs.Empty, options.WithDefaults());
+
+        public static Output<GetNotificationsResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotificationsResult>("aquasec:index/getNotifications:getNotifications", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

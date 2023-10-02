@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // Provides an Aquasec Notification Slack resource
@@ -51,7 +53,7 @@ func NewNotificationSlack(ctx *pulumi.Context,
 	if args.WebhookUrl == nil {
 		return nil, errors.New("invalid value for required argument 'WebhookUrl'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NotificationSlack
 	err := ctx.RegisterResource("aquasec:index/notificationSlack:NotificationSlack", name, args, &resource, opts...)
 	if err != nil {
@@ -149,6 +151,12 @@ func (i *NotificationSlack) ToNotificationSlackOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationSlackOutput)
 }
 
+func (i *NotificationSlack) ToOutput(ctx context.Context) pulumix.Output[*NotificationSlack] {
+	return pulumix.Output[*NotificationSlack]{
+		OutputState: i.ToNotificationSlackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationSlackArrayInput is an input type that accepts NotificationSlackArray and NotificationSlackArrayOutput values.
 // You can construct a concrete instance of `NotificationSlackArrayInput` via:
 //
@@ -172,6 +180,12 @@ func (i NotificationSlackArray) ToNotificationSlackArrayOutput() NotificationSla
 
 func (i NotificationSlackArray) ToNotificationSlackArrayOutputWithContext(ctx context.Context) NotificationSlackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationSlackArrayOutput)
+}
+
+func (i NotificationSlackArray) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationSlack] {
+	return pulumix.Output[[]*NotificationSlack]{
+		OutputState: i.ToNotificationSlackArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NotificationSlackMapInput is an input type that accepts NotificationSlackMap and NotificationSlackMapOutput values.
@@ -199,6 +213,12 @@ func (i NotificationSlackMap) ToNotificationSlackMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationSlackMapOutput)
 }
 
+func (i NotificationSlackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationSlack] {
+	return pulumix.Output[map[string]*NotificationSlack]{
+		OutputState: i.ToNotificationSlackMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationSlackOutput struct{ *pulumi.OutputState }
 
 func (NotificationSlackOutput) ElementType() reflect.Type {
@@ -211,6 +231,12 @@ func (o NotificationSlackOutput) ToNotificationSlackOutput() NotificationSlackOu
 
 func (o NotificationSlackOutput) ToNotificationSlackOutputWithContext(ctx context.Context) NotificationSlackOutput {
 	return o
+}
+
+func (o NotificationSlackOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationSlack] {
+	return pulumix.Output[*NotificationSlack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationSlackOutput) Channel() pulumi.StringOutput {
@@ -263,6 +289,12 @@ func (o NotificationSlackArrayOutput) ToNotificationSlackArrayOutputWithContext(
 	return o
 }
 
+func (o NotificationSlackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationSlack] {
+	return pulumix.Output[[]*NotificationSlack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationSlackArrayOutput) Index(i pulumi.IntInput) NotificationSlackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NotificationSlack {
 		return vs[0].([]*NotificationSlack)[vs[1].(int)]
@@ -281,6 +313,12 @@ func (o NotificationSlackMapOutput) ToNotificationSlackMapOutput() NotificationS
 
 func (o NotificationSlackMapOutput) ToNotificationSlackMapOutputWithContext(ctx context.Context) NotificationSlackMapOutput {
 	return o
+}
+
+func (o NotificationSlackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationSlack] {
+	return pulumix.Output[map[string]*NotificationSlack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationSlackMapOutput) MapIndex(k pulumi.StringInput) NotificationSlackOutput {

@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -32,7 +33,7 @@ import (
 //
 // ```
 func GetIntegrationState(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIntegrationStateResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIntegrationStateResult
 	err := ctx.Invoke("aquasec:index/getIntegrationState:getIntegrationState", nil, &rv, opts...)
 	if err != nil {

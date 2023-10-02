@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 type FunctionAssurancePolicy struct {
@@ -139,7 +141,7 @@ func NewFunctionAssurancePolicy(ctx *pulumi.Context,
 	if args.ApplicationScopes == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationScopes'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FunctionAssurancePolicy
 	err := ctx.RegisterResource("aquasec:index/functionAssurancePolicy:FunctionAssurancePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -647,6 +649,12 @@ func (i *FunctionAssurancePolicy) ToFunctionAssurancePolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAssurancePolicyOutput)
 }
 
+func (i *FunctionAssurancePolicy) ToOutput(ctx context.Context) pulumix.Output[*FunctionAssurancePolicy] {
+	return pulumix.Output[*FunctionAssurancePolicy]{
+		OutputState: i.ToFunctionAssurancePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FunctionAssurancePolicyArrayInput is an input type that accepts FunctionAssurancePolicyArray and FunctionAssurancePolicyArrayOutput values.
 // You can construct a concrete instance of `FunctionAssurancePolicyArrayInput` via:
 //
@@ -670,6 +678,12 @@ func (i FunctionAssurancePolicyArray) ToFunctionAssurancePolicyArrayOutput() Fun
 
 func (i FunctionAssurancePolicyArray) ToFunctionAssurancePolicyArrayOutputWithContext(ctx context.Context) FunctionAssurancePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAssurancePolicyArrayOutput)
+}
+
+func (i FunctionAssurancePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionAssurancePolicy] {
+	return pulumix.Output[[]*FunctionAssurancePolicy]{
+		OutputState: i.ToFunctionAssurancePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FunctionAssurancePolicyMapInput is an input type that accepts FunctionAssurancePolicyMap and FunctionAssurancePolicyMapOutput values.
@@ -697,6 +711,12 @@ func (i FunctionAssurancePolicyMap) ToFunctionAssurancePolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionAssurancePolicyMapOutput)
 }
 
+func (i FunctionAssurancePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionAssurancePolicy] {
+	return pulumix.Output[map[string]*FunctionAssurancePolicy]{
+		OutputState: i.ToFunctionAssurancePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FunctionAssurancePolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionAssurancePolicyOutput) ElementType() reflect.Type {
@@ -709,6 +729,12 @@ func (o FunctionAssurancePolicyOutput) ToFunctionAssurancePolicyOutput() Functio
 
 func (o FunctionAssurancePolicyOutput) ToFunctionAssurancePolicyOutputWithContext(ctx context.Context) FunctionAssurancePolicyOutput {
 	return o
+}
+
+func (o FunctionAssurancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionAssurancePolicy] {
+	return pulumix.Output[*FunctionAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of explicitly allowed images.
@@ -1069,6 +1095,12 @@ func (o FunctionAssurancePolicyArrayOutput) ToFunctionAssurancePolicyArrayOutput
 	return o
 }
 
+func (o FunctionAssurancePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionAssurancePolicy] {
+	return pulumix.Output[[]*FunctionAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FunctionAssurancePolicyArrayOutput) Index(i pulumi.IntInput) FunctionAssurancePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FunctionAssurancePolicy {
 		return vs[0].([]*FunctionAssurancePolicy)[vs[1].(int)]
@@ -1087,6 +1119,12 @@ func (o FunctionAssurancePolicyMapOutput) ToFunctionAssurancePolicyMapOutput() F
 
 func (o FunctionAssurancePolicyMapOutput) ToFunctionAssurancePolicyMapOutputWithContext(ctx context.Context) FunctionAssurancePolicyMapOutput {
 	return o
+}
+
+func (o FunctionAssurancePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionAssurancePolicy] {
+	return pulumix.Output[map[string]*FunctionAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FunctionAssurancePolicyMapOutput) MapIndex(k pulumi.StringInput) FunctionAssurancePolicyOutput {

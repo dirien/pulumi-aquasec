@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -223,7 +225,7 @@ func NewEnforcerGroups(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnforcerGroups
 	err := ctx.RegisterResource("aquasec:index/enforcerGroups:EnforcerGroups", name, args, &resource, opts...)
 	if err != nil {
@@ -721,6 +723,12 @@ func (i *EnforcerGroups) ToEnforcerGroupsOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EnforcerGroupsOutput)
 }
 
+func (i *EnforcerGroups) ToOutput(ctx context.Context) pulumix.Output[*EnforcerGroups] {
+	return pulumix.Output[*EnforcerGroups]{
+		OutputState: i.ToEnforcerGroupsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EnforcerGroupsArrayInput is an input type that accepts EnforcerGroupsArray and EnforcerGroupsArrayOutput values.
 // You can construct a concrete instance of `EnforcerGroupsArrayInput` via:
 //
@@ -744,6 +752,12 @@ func (i EnforcerGroupsArray) ToEnforcerGroupsArrayOutput() EnforcerGroupsArrayOu
 
 func (i EnforcerGroupsArray) ToEnforcerGroupsArrayOutputWithContext(ctx context.Context) EnforcerGroupsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EnforcerGroupsArrayOutput)
+}
+
+func (i EnforcerGroupsArray) ToOutput(ctx context.Context) pulumix.Output[[]*EnforcerGroups] {
+	return pulumix.Output[[]*EnforcerGroups]{
+		OutputState: i.ToEnforcerGroupsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EnforcerGroupsMapInput is an input type that accepts EnforcerGroupsMap and EnforcerGroupsMapOutput values.
@@ -771,6 +785,12 @@ func (i EnforcerGroupsMap) ToEnforcerGroupsMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EnforcerGroupsMapOutput)
 }
 
+func (i EnforcerGroupsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnforcerGroups] {
+	return pulumix.Output[map[string]*EnforcerGroups]{
+		OutputState: i.ToEnforcerGroupsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EnforcerGroupsOutput struct{ *pulumi.OutputState }
 
 func (EnforcerGroupsOutput) ElementType() reflect.Type {
@@ -783,6 +803,12 @@ func (o EnforcerGroupsOutput) ToEnforcerGroupsOutput() EnforcerGroupsOutput {
 
 func (o EnforcerGroupsOutput) ToEnforcerGroupsOutputWithContext(ctx context.Context) EnforcerGroupsOutput {
 	return o
+}
+
+func (o EnforcerGroupsOutput) ToOutput(ctx context.Context) pulumix.Output[*EnforcerGroups] {
+	return pulumix.Output[*EnforcerGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Selecting this option will allow the KubeEnforcer to block the deployment of container images that have failed any of these Container Runtime Policy controls:\
@@ -1110,6 +1136,12 @@ func (o EnforcerGroupsArrayOutput) ToEnforcerGroupsArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o EnforcerGroupsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EnforcerGroups] {
+	return pulumix.Output[[]*EnforcerGroups]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o EnforcerGroupsArrayOutput) Index(i pulumi.IntInput) EnforcerGroupsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EnforcerGroups {
 		return vs[0].([]*EnforcerGroups)[vs[1].(int)]
@@ -1128,6 +1160,12 @@ func (o EnforcerGroupsMapOutput) ToEnforcerGroupsMapOutput() EnforcerGroupsMapOu
 
 func (o EnforcerGroupsMapOutput) ToEnforcerGroupsMapOutputWithContext(ctx context.Context) EnforcerGroupsMapOutput {
 	return o
+}
+
+func (o EnforcerGroupsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EnforcerGroups] {
+	return pulumix.Output[map[string]*EnforcerGroups]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EnforcerGroupsMapOutput) MapIndex(k pulumi.StringInput) EnforcerGroupsOutput {

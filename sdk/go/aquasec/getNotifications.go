@@ -5,10 +5,11 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 func GetNotifications(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNotificationsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNotificationsResult
 	err := ctx.Invoke("aquasec:index/getNotifications:getNotifications", nil, &rv, opts...)
 	if err != nil {

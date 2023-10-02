@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -225,7 +227,7 @@ func NewHostRuntimePolicy(ctx *pulumi.Context,
 		args = &HostRuntimePolicyArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostRuntimePolicy
 	err := ctx.RegisterResource("aquasec:index/hostRuntimePolicy:HostRuntimePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -531,6 +533,12 @@ func (i *HostRuntimePolicy) ToHostRuntimePolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(HostRuntimePolicyOutput)
 }
 
+func (i *HostRuntimePolicy) ToOutput(ctx context.Context) pulumix.Output[*HostRuntimePolicy] {
+	return pulumix.Output[*HostRuntimePolicy]{
+		OutputState: i.ToHostRuntimePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostRuntimePolicyArrayInput is an input type that accepts HostRuntimePolicyArray and HostRuntimePolicyArrayOutput values.
 // You can construct a concrete instance of `HostRuntimePolicyArrayInput` via:
 //
@@ -554,6 +562,12 @@ func (i HostRuntimePolicyArray) ToHostRuntimePolicyArrayOutput() HostRuntimePoli
 
 func (i HostRuntimePolicyArray) ToHostRuntimePolicyArrayOutputWithContext(ctx context.Context) HostRuntimePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostRuntimePolicyArrayOutput)
+}
+
+func (i HostRuntimePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostRuntimePolicy] {
+	return pulumix.Output[[]*HostRuntimePolicy]{
+		OutputState: i.ToHostRuntimePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostRuntimePolicyMapInput is an input type that accepts HostRuntimePolicyMap and HostRuntimePolicyMapOutput values.
@@ -581,6 +595,12 @@ func (i HostRuntimePolicyMap) ToHostRuntimePolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostRuntimePolicyMapOutput)
 }
 
+func (i HostRuntimePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostRuntimePolicy] {
+	return pulumix.Output[map[string]*HostRuntimePolicy]{
+		OutputState: i.ToHostRuntimePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostRuntimePolicyOutput struct{ *pulumi.OutputState }
 
 func (HostRuntimePolicyOutput) ElementType() reflect.Type {
@@ -593,6 +613,12 @@ func (o HostRuntimePolicyOutput) ToHostRuntimePolicyOutput() HostRuntimePolicyOu
 
 func (o HostRuntimePolicyOutput) ToHostRuntimePolicyOutputWithContext(ctx context.Context) HostRuntimePolicyOutput {
 	return o
+}
+
+func (o HostRuntimePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*HostRuntimePolicy] {
+	return pulumix.Output[*HostRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the application scope of the service.
@@ -770,6 +796,12 @@ func (o HostRuntimePolicyArrayOutput) ToHostRuntimePolicyArrayOutputWithContext(
 	return o
 }
 
+func (o HostRuntimePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostRuntimePolicy] {
+	return pulumix.Output[[]*HostRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostRuntimePolicyArrayOutput) Index(i pulumi.IntInput) HostRuntimePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostRuntimePolicy {
 		return vs[0].([]*HostRuntimePolicy)[vs[1].(int)]
@@ -788,6 +820,12 @@ func (o HostRuntimePolicyMapOutput) ToHostRuntimePolicyMapOutput() HostRuntimePo
 
 func (o HostRuntimePolicyMapOutput) ToHostRuntimePolicyMapOutputWithContext(ctx context.Context) HostRuntimePolicyMapOutput {
 	return o
+}
+
+func (o HostRuntimePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostRuntimePolicy] {
+	return pulumix.Output[map[string]*HostRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostRuntimePolicyMapOutput) MapIndex(k pulumi.StringInput) HostRuntimePolicyOutput {

@@ -36,3 +36,19 @@ export interface GetRolesResult {
     readonly id: string;
     readonly roles: outputs.GetRolesRole[];
 }
+/**
+ * The data source `aquasec.getRoles` provides a method to query all roles within the Aqua account managementrole database. The fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const roles = aquasec.getRoles({});
+ * export const firstUserName = roles.then(roles => roles.roles?.[0]);
+ * ```
+ */
+export function getRolesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+    return pulumi.output(getRoles(opts))
+}

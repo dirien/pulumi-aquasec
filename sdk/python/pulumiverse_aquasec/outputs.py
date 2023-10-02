@@ -78,6 +78,7 @@ __all__ = [
     'ImageHistory',
     'ImageVulnerability',
     'IntegrationRegistryOption',
+    'IntegrationRegistryWebhook',
     'KubernetesAssurancePolicyAutoScanTime',
     'KubernetesAssurancePolicyCustomCheck',
     'KubernetesAssurancePolicyForbiddenLabel',
@@ -163,6 +164,8 @@ __all__ = [
     'GetImageAssurancePolicyTrustedBaseImageResult',
     'GetImageHistoryResult',
     'GetImageVulnerabilityResult',
+    'GetIntegrationRegistryOptionResult',
+    'GetIntegrationRegistryWebhookResult',
     'GetKubernetesAssurancePolicyAutoScanTimeResult',
     'GetKubernetesAssurancePolicyCustomCheckResult',
     'GetKubernetesAssurancePolicyForbiddenLabelResult',
@@ -4462,6 +4465,68 @@ class IntegrationRegistryOption(dict):
 
 
 @pulumi.output_type
+class IntegrationRegistryWebhook(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authToken":
+            suggest = "auth_token"
+        elif key == "unQuarantine":
+            suggest = "un_quarantine"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegrationRegistryWebhook. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegrationRegistryWebhook.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegrationRegistryWebhook.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_token: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 un_quarantine: Optional[bool] = None,
+                 url: Optional[str] = None):
+        """
+        :param str url: The URL, address or region of the registry
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if un_quarantine is not None:
+            pulumi.set(__self__, "un_quarantine", un_quarantine)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[str]:
+        return pulumi.get(self, "auth_token")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="unQuarantine")
+    def un_quarantine(self) -> Optional[bool]:
+        return pulumi.get(self, "un_quarantine")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL, address or region of the registry
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
 class KubernetesAssurancePolicyAutoScanTime(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8281,6 +8346,70 @@ class GetImageVulnerabilityResult(dict):
     @pulumi.getter(name="vendorUrl")
     def vendor_url(self) -> str:
         return pulumi.get(self, "vendor_url")
+
+
+@pulumi.output_type
+class GetIntegrationRegistryOptionResult(dict):
+    def __init__(__self__, *,
+                 option: Optional[str] = None,
+                 value: Optional[str] = None):
+        if option is not None:
+            pulumi.set(__self__, "option", option)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def option(self) -> Optional[str]:
+        return pulumi.get(self, "option")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetIntegrationRegistryWebhookResult(dict):
+    def __init__(__self__, *,
+                 auth_token: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 un_quarantine: Optional[bool] = None,
+                 url: Optional[str] = None):
+        """
+        :param str url: The URL, address or region of the registry
+        """
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if un_quarantine is not None:
+            pulumi.set(__self__, "un_quarantine", un_quarantine)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[str]:
+        return pulumi.get(self, "auth_token")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="unQuarantine")
+    def un_quarantine(self) -> Optional[bool]:
+        return pulumi.get(self, "un_quarantine")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL, address or region of the registry
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

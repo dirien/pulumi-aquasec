@@ -81,5 +81,5 @@ def get_gateways(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGat
     __ret__ = pulumi.runtime.invoke('aquasec:index/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult).value
 
     return AwaitableGetGatewaysResult(
-        gateways=__ret__.gateways,
-        id=__ret__.id)
+        gateways=pulumi.get(__ret__, 'gateways'),
+        id=pulumi.get(__ret__, 'id'))

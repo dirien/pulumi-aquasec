@@ -231,6 +231,67 @@ class PermissionsSets(pulumi.CustomResource):
         """
         The `PermissionsSets` resource manages your Permission Set within Aqua.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_aquasec as aquasec
+
+        my_terraform_perm_set = aquasec.PermissionsSets("myTerraformPermSet",
+            actions=[
+                "acl_policies.read",
+                "acl_policies.write",
+                "image_profiles.read",
+                "image_profiles.write",
+                "network_policies.read",
+                "network_policies.write",
+                "runtime_policies.read",
+                "runtime_policies.write",
+                "response_policies.read",
+                "response_policies.write",
+                "image_assurance.read",
+                "image_assurance.write",
+                "dashboard.read",
+                "dashboard.write",
+                "risk_explorer.read",
+                "images.read",
+                "images.write",
+                "risks.host_images.read",
+                "risks.host_images.write",
+                "functions.read",
+                "functions.write",
+                "enforcers.read",
+                "enforcers.write",
+                "containers.read",
+                "services.read",
+                "services.write",
+                "infrastructure.read",
+                "infrastructure.write",
+                "risks.vulnerabilities.read",
+                "risks.vulnerabilities.write",
+                "risks.benchmark.read",
+                "risks.benchmark.write",
+                "audits.read",
+                "secrets.read",
+                "secrets.write",
+                "settings.read",
+                "settings.write",
+                "integrations.read",
+                "integrations.write",
+                "registries_integrations.read",
+                "registries_integrations.write",
+                "scan.read",
+                "gateways.read",
+                "gateways.write",
+                "consoles.read",
+                "web_hook.read",
+                "incidents.read",
+            ],
+            description="Test Permissions Sets created by Terraform",
+            is_super=False,
+            ui_access=True)
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
@@ -247,6 +308,67 @@ class PermissionsSets(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The `PermissionsSets` resource manages your Permission Set within Aqua.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumiverse_aquasec as aquasec
+
+        my_terraform_perm_set = aquasec.PermissionsSets("myTerraformPermSet",
+            actions=[
+                "acl_policies.read",
+                "acl_policies.write",
+                "image_profiles.read",
+                "image_profiles.write",
+                "network_policies.read",
+                "network_policies.write",
+                "runtime_policies.read",
+                "runtime_policies.write",
+                "response_policies.read",
+                "response_policies.write",
+                "image_assurance.read",
+                "image_assurance.write",
+                "dashboard.read",
+                "dashboard.write",
+                "risk_explorer.read",
+                "images.read",
+                "images.write",
+                "risks.host_images.read",
+                "risks.host_images.write",
+                "functions.read",
+                "functions.write",
+                "enforcers.read",
+                "enforcers.write",
+                "containers.read",
+                "services.read",
+                "services.write",
+                "infrastructure.read",
+                "infrastructure.write",
+                "risks.vulnerabilities.read",
+                "risks.vulnerabilities.write",
+                "risks.benchmark.read",
+                "risks.benchmark.write",
+                "audits.read",
+                "secrets.read",
+                "secrets.write",
+                "settings.read",
+                "settings.write",
+                "integrations.read",
+                "integrations.write",
+                "registries_integrations.read",
+                "registries_integrations.write",
+                "scan.read",
+                "gateways.read",
+                "gateways.write",
+                "consoles.read",
+                "web_hook.read",
+                "incidents.read",
+            ],
+            description="Test Permissions Sets created by Terraform",
+            is_super=False,
+            ui_access=True)
+        ```
 
         :param str resource_name: The name of the resource.
         :param PermissionsSetsArgs args: The arguments to use to populate this resource's properties.

@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `getUsers` provides a method to query all users within the Aqua users database. The fields returned from this query are detailed in the Schema section below.
@@ -34,7 +35,7 @@ import (
 //
 // ```
 func GetUsers(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
 	err := ctx.Invoke("aquasec:index/getUsers:getUsers", nil, &rv, opts...)
 	if err != nil {

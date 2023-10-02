@@ -6,6 +6,70 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumiverse/aquasec";
+ *
+ * const integrationRegistry = new aquasec.IntegrationRegistry("integrationRegistry", {
+ *     advancedSettingsCleanup: false,
+ *     alwaysPullPatterns: [
+ *         ":latest",
+ *         ":v1",
+ *     ],
+ *     author: "aqua@aquasec.com",
+ *     autoCleanup: false,
+ *     autoPull: true,
+ *     autoPullInterval: 1,
+ *     autoPullMax: 100,
+ *     autoPullRescan: false,
+ *     autoPullTime: "08:45",
+ *     description: "Automatically discovered registry",
+ *     imageCreationDateCondition: "image_count",
+ *     options: [
+ *         {
+ *             option: "ARNRole",
+ *             value: "arn:aws:iam::111111111111:role/terraform",
+ *         },
+ *         {
+ *             option: "sts:ExternalId",
+ *             value: "test1-test2-test3",
+ *         },
+ *         {
+ *             option: "TestImagePull",
+ *             value: "nginx:latest",
+ *         },
+ *     ],
+ *     prefixes: ["111111111111.dkr.ecr.us-east-1.amazonaws.com"],
+ *     pullImageAge: "0D",
+ *     pullImageCount: 3,
+ *     pullImageTagPatterns: [
+ *         ":Latest",
+ *         ":latest",
+ *     ],
+ *     pullRepoPatternsExcludeds: [
+ *         ":xyz",
+ *         ":onlytest",
+ *     ],
+ *     scannerNames: [
+ *         "aqua-scanner-645f867c4f-4sbtj",
+ *         "aqua-scanner-645f867c4f-8pkdd",
+ *     ],
+ *     scannerType: "specific",
+ *     type: "AWS",
+ *     url: "us-east-1",
+ *     username: "",
+ *     webhooks: [{
+ *         authToken: "test1-test2-test3",
+ *         enabled: true,
+ *         unQuarantine: false,
+ *         url: "https://aquasec.com/",
+ *     }],
+ * });
+ * ```
+ */
 export class IntegrationRegistry extends pulumi.CustomResource {
     /**
      * Get an existing IntegrationRegistry resource's state with the given name, ID, and optional extra
@@ -34,6 +98,14 @@ export class IntegrationRegistry extends pulumi.CustomResource {
         return obj['__pulumiType'] === IntegrationRegistry.__pulumiType;
     }
 
+    /**
+     * Automatically clean up that don't match the pull criteria
+     */
+    public readonly advancedSettingsCleanup!: pulumi.Output<boolean | undefined>;
+    /**
+     * List of image patterns to pull always
+     */
+    public readonly alwaysPullPatterns!: pulumi.Output<string[] | undefined>;
     /**
      * The username of the user who created or last modified the registry
      */
@@ -73,7 +145,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
     /**
      * The last time the registry was modified in UNIX time
      */
-    public readonly lastUpdated!: pulumi.Output<string>;
+    public readonly lastupdate!: pulumi.Output<number>;
     /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
@@ -96,6 +168,18 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      */
     public readonly pullImageCount!: pulumi.Output<number>;
     /**
+     * List of image tags patterns to pull
+     */
+    public readonly pullImageTagPatterns!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of image patterns to exclude
+     */
+    public readonly pullRepoPatternsExcludeds!: pulumi.Output<string[] | undefined>;
+    /**
+     * Registry scan timeout in Minutes
+     */
+    public readonly registryScanTimeout!: pulumi.Output<number | undefined>;
+    /**
      * List of scanner names
      */
     public readonly scannerNames!: pulumi.Output<string[] | undefined>;
@@ -115,6 +199,10 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      * The username for registry authentication.
      */
     public readonly username!: pulumi.Output<string | undefined>;
+    /**
+     * When enabled, registry events are sent to the given Aqua webhook url
+     */
+    public readonly webhooks!: pulumi.Output<outputs.IntegrationRegistryWebhook[]>;
 
     /**
      * Create a IntegrationRegistry resource with the given unique name, arguments, and options.
@@ -129,6 +217,8 @@ export class IntegrationRegistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntegrationRegistryState | undefined;
+            resourceInputs["advancedSettingsCleanup"] = state ? state.advancedSettingsCleanup : undefined;
+            resourceInputs["alwaysPullPatterns"] = state ? state.alwaysPullPatterns : undefined;
             resourceInputs["author"] = state ? state.author : undefined;
             resourceInputs["autoCleanup"] = state ? state.autoCleanup : undefined;
             resourceInputs["autoPull"] = state ? state.autoPull : undefined;
@@ -138,23 +228,29 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["autoPullTime"] = state ? state.autoPullTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["imageCreationDateCondition"] = state ? state.imageCreationDateCondition : undefined;
-            resourceInputs["lastUpdated"] = state ? state.lastUpdated : undefined;
+            resourceInputs["lastupdate"] = state ? state.lastupdate : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["options"] = state ? state.options : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["prefixes"] = state ? state.prefixes : undefined;
             resourceInputs["pullImageAge"] = state ? state.pullImageAge : undefined;
             resourceInputs["pullImageCount"] = state ? state.pullImageCount : undefined;
+            resourceInputs["pullImageTagPatterns"] = state ? state.pullImageTagPatterns : undefined;
+            resourceInputs["pullRepoPatternsExcludeds"] = state ? state.pullRepoPatternsExcludeds : undefined;
+            resourceInputs["registryScanTimeout"] = state ? state.registryScanTimeout : undefined;
             resourceInputs["scannerNames"] = state ? state.scannerNames : undefined;
             resourceInputs["scannerType"] = state ? state.scannerType : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["url"] = state ? state.url : undefined;
             resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["webhooks"] = state ? state.webhooks : undefined;
         } else {
             const args = argsOrState as IntegrationRegistryArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["advancedSettingsCleanup"] = args ? args.advancedSettingsCleanup : undefined;
+            resourceInputs["alwaysPullPatterns"] = args ? args.alwaysPullPatterns : undefined;
             resourceInputs["author"] = args ? args.author : undefined;
             resourceInputs["autoCleanup"] = args ? args.autoCleanup : undefined;
             resourceInputs["autoPull"] = args ? args.autoPull : undefined;
@@ -164,18 +260,22 @@ export class IntegrationRegistry extends pulumi.CustomResource {
             resourceInputs["autoPullTime"] = args ? args.autoPullTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["imageCreationDateCondition"] = args ? args.imageCreationDateCondition : undefined;
-            resourceInputs["lastUpdated"] = args ? args.lastUpdated : undefined;
+            resourceInputs["lastupdate"] = args ? args.lastupdate : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["options"] = args ? args.options : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["prefixes"] = args ? args.prefixes : undefined;
             resourceInputs["pullImageAge"] = args ? args.pullImageAge : undefined;
             resourceInputs["pullImageCount"] = args ? args.pullImageCount : undefined;
+            resourceInputs["pullImageTagPatterns"] = args ? args.pullImageTagPatterns : undefined;
+            resourceInputs["pullRepoPatternsExcludeds"] = args ? args.pullRepoPatternsExcludeds : undefined;
+            resourceInputs["registryScanTimeout"] = args ? args.registryScanTimeout : undefined;
             resourceInputs["scannerNames"] = args ? args.scannerNames : undefined;
             resourceInputs["scannerType"] = args ? args.scannerType : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["url"] = args ? args.url : undefined;
             resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["webhooks"] = args ? args.webhooks : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IntegrationRegistry.__pulumiType, name, resourceInputs, opts);
@@ -186,6 +286,14 @@ export class IntegrationRegistry extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IntegrationRegistry resources.
  */
 export interface IntegrationRegistryState {
+    /**
+     * Automatically clean up that don't match the pull criteria
+     */
+    advancedSettingsCleanup?: pulumi.Input<boolean>;
+    /**
+     * List of image patterns to pull always
+     */
+    alwaysPullPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The username of the user who created or last modified the registry
      */
@@ -225,7 +333,7 @@ export interface IntegrationRegistryState {
     /**
      * The last time the registry was modified in UNIX time
      */
-    lastUpdated?: pulumi.Input<string>;
+    lastupdate?: pulumi.Input<number>;
     /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
@@ -247,6 +355,18 @@ export interface IntegrationRegistryState {
      * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `imageCreationDateCondition = "imageCount"`
      */
     pullImageCount?: pulumi.Input<number>;
+    /**
+     * List of image tags patterns to pull
+     */
+    pullImageTagPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of image patterns to exclude
+     */
+    pullRepoPatternsExcludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Registry scan timeout in Minutes
+     */
+    registryScanTimeout?: pulumi.Input<number>;
     /**
      * List of scanner names
      */
@@ -267,12 +387,24 @@ export interface IntegrationRegistryState {
      * The username for registry authentication.
      */
     username?: pulumi.Input<string>;
+    /**
+     * When enabled, registry events are sent to the given Aqua webhook url
+     */
+    webhooks?: pulumi.Input<pulumi.Input<inputs.IntegrationRegistryWebhook>[]>;
 }
 
 /**
  * The set of arguments for constructing a IntegrationRegistry resource.
  */
 export interface IntegrationRegistryArgs {
+    /**
+     * Automatically clean up that don't match the pull criteria
+     */
+    advancedSettingsCleanup?: pulumi.Input<boolean>;
+    /**
+     * List of image patterns to pull always
+     */
+    alwaysPullPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The username of the user who created or last modified the registry
      */
@@ -312,7 +444,7 @@ export interface IntegrationRegistryArgs {
     /**
      * The last time the registry was modified in UNIX time
      */
-    lastUpdated?: pulumi.Input<string>;
+    lastupdate?: pulumi.Input<number>;
     /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
@@ -335,6 +467,18 @@ export interface IntegrationRegistryArgs {
      */
     pullImageCount?: pulumi.Input<number>;
     /**
+     * List of image tags patterns to pull
+     */
+    pullImageTagPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of image patterns to exclude
+     */
+    pullRepoPatternsExcludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Registry scan timeout in Minutes
+     */
+    registryScanTimeout?: pulumi.Input<number>;
+    /**
      * List of scanner names
      */
     scannerNames?: pulumi.Input<pulumi.Input<string>[]>;
@@ -354,4 +498,8 @@ export interface IntegrationRegistryArgs {
      * The username for registry authentication.
      */
     username?: pulumi.Input<string>;
+    /**
+     * When enabled, registry events are sent to the given Aqua webhook url
+     */
+    webhooks?: pulumi.Input<pulumi.Input<inputs.IntegrationRegistryWebhook>[]>;
 }

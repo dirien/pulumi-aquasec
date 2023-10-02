@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -37,7 +39,7 @@ import (
 //
 // ```
 func LookupEnforcerGroups(ctx *pulumi.Context, args *LookupEnforcerGroupsArgs, opts ...pulumi.InvokeOption) (*LookupEnforcerGroupsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnforcerGroupsResult
 	err := ctx.Invoke("aquasec:index/getEnforcerGroups:getEnforcerGroups", args, &rv, opts...)
 	if err != nil {
@@ -227,6 +229,12 @@ func (o LookupEnforcerGroupsResultOutput) ToLookupEnforcerGroupsResultOutput() L
 
 func (o LookupEnforcerGroupsResultOutput) ToLookupEnforcerGroupsResultOutputWithContext(ctx context.Context) LookupEnforcerGroupsResultOutput {
 	return o
+}
+
+func (o LookupEnforcerGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnforcerGroupsResult] {
+	return pulumix.Output[LookupEnforcerGroupsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Selecting this option will allow the KubeEnforcer to block the deployment of container images that have failed any of these Container Runtime Policy controls:\

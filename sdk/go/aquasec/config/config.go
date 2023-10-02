@@ -6,7 +6,10 @@ package config
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.
 func GetAquaUrl(ctx *pulumi.Context) string {

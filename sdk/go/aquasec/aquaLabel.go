@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 type AquaLabel struct {
@@ -30,7 +32,7 @@ func NewAquaLabel(ctx *pulumi.Context,
 		args = &AquaLabelArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AquaLabel
 	err := ctx.RegisterResource("aquasec:index/aquaLabel:AquaLabel", name, args, &resource, opts...)
 	if err != nil {
@@ -116,6 +118,12 @@ func (i *AquaLabel) ToAquaLabelOutputWithContext(ctx context.Context) AquaLabelO
 	return pulumi.ToOutputWithContext(ctx, i).(AquaLabelOutput)
 }
 
+func (i *AquaLabel) ToOutput(ctx context.Context) pulumix.Output[*AquaLabel] {
+	return pulumix.Output[*AquaLabel]{
+		OutputState: i.ToAquaLabelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AquaLabelArrayInput is an input type that accepts AquaLabelArray and AquaLabelArrayOutput values.
 // You can construct a concrete instance of `AquaLabelArrayInput` via:
 //
@@ -139,6 +147,12 @@ func (i AquaLabelArray) ToAquaLabelArrayOutput() AquaLabelArrayOutput {
 
 func (i AquaLabelArray) ToAquaLabelArrayOutputWithContext(ctx context.Context) AquaLabelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AquaLabelArrayOutput)
+}
+
+func (i AquaLabelArray) ToOutput(ctx context.Context) pulumix.Output[[]*AquaLabel] {
+	return pulumix.Output[[]*AquaLabel]{
+		OutputState: i.ToAquaLabelArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AquaLabelMapInput is an input type that accepts AquaLabelMap and AquaLabelMapOutput values.
@@ -166,6 +180,12 @@ func (i AquaLabelMap) ToAquaLabelMapOutputWithContext(ctx context.Context) AquaL
 	return pulumi.ToOutputWithContext(ctx, i).(AquaLabelMapOutput)
 }
 
+func (i AquaLabelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AquaLabel] {
+	return pulumix.Output[map[string]*AquaLabel]{
+		OutputState: i.ToAquaLabelMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AquaLabelOutput struct{ *pulumi.OutputState }
 
 func (AquaLabelOutput) ElementType() reflect.Type {
@@ -178,6 +198,12 @@ func (o AquaLabelOutput) ToAquaLabelOutput() AquaLabelOutput {
 
 func (o AquaLabelOutput) ToAquaLabelOutputWithContext(ctx context.Context) AquaLabelOutput {
 	return o
+}
+
+func (o AquaLabelOutput) ToOutput(ctx context.Context) pulumix.Output[*AquaLabel] {
+	return pulumix.Output[*AquaLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The name of the user who created the Aqua label.
@@ -214,6 +240,12 @@ func (o AquaLabelArrayOutput) ToAquaLabelArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o AquaLabelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AquaLabel] {
+	return pulumix.Output[[]*AquaLabel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AquaLabelArrayOutput) Index(i pulumi.IntInput) AquaLabelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AquaLabel {
 		return vs[0].([]*AquaLabel)[vs[1].(int)]
@@ -232,6 +264,12 @@ func (o AquaLabelMapOutput) ToAquaLabelMapOutput() AquaLabelMapOutput {
 
 func (o AquaLabelMapOutput) ToAquaLabelMapOutputWithContext(ctx context.Context) AquaLabelMapOutput {
 	return o
+}
+
+func (o AquaLabelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AquaLabel] {
+	return pulumix.Output[map[string]*AquaLabel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AquaLabelMapOutput) MapIndex(k pulumi.StringInput) AquaLabelOutput {

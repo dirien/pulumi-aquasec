@@ -50,3 +50,18 @@ export interface GetRolesMappingResult {
      */
     readonly samls: outputs.GetRolesMappingSaml[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const rolesMapping = aquasec.getRolesMapping({});
+ * export const roleMappingAll = rolesMapping;
+ * export const roleMappingSaml = rolesMapping.then(rolesMapping => rolesMapping.samls);
+ * ```
+ */
+export function getRolesMappingOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesMappingResult> {
+    return pulumi.output(getRolesMapping(opts))
+}

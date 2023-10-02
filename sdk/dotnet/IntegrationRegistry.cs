@@ -10,9 +10,107 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aquasec = Pulumiverse.Aquasec;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var integrationRegistry = new Aquasec.IntegrationRegistry("integrationRegistry", new()
+    ///     {
+    ///         AdvancedSettingsCleanup = false,
+    ///         AlwaysPullPatterns = new[]
+    ///         {
+    ///             ":latest",
+    ///             ":v1",
+    ///         },
+    ///         Author = "aqua@aquasec.com",
+    ///         AutoCleanup = false,
+    ///         AutoPull = true,
+    ///         AutoPullInterval = 1,
+    ///         AutoPullMax = 100,
+    ///         AutoPullRescan = false,
+    ///         AutoPullTime = "08:45",
+    ///         Description = "Automatically discovered registry",
+    ///         ImageCreationDateCondition = "image_count",
+    ///         Options = new[]
+    ///         {
+    ///             new Aquasec.Inputs.IntegrationRegistryOptionArgs
+    ///             {
+    ///                 Option = "ARNRole",
+    ///                 Value = "arn:aws:iam::111111111111:role/terraform",
+    ///             },
+    ///             new Aquasec.Inputs.IntegrationRegistryOptionArgs
+    ///             {
+    ///                 Option = "sts:ExternalId",
+    ///                 Value = "test1-test2-test3",
+    ///             },
+    ///             new Aquasec.Inputs.IntegrationRegistryOptionArgs
+    ///             {
+    ///                 Option = "TestImagePull",
+    ///                 Value = "nginx:latest",
+    ///             },
+    ///         },
+    ///         Prefixes = new[]
+    ///         {
+    ///             "111111111111.dkr.ecr.us-east-1.amazonaws.com",
+    ///         },
+    ///         PullImageAge = "0D",
+    ///         PullImageCount = 3,
+    ///         PullImageTagPatterns = new[]
+    ///         {
+    ///             ":Latest",
+    ///             ":latest",
+    ///         },
+    ///         PullRepoPatternsExcludeds = new[]
+    ///         {
+    ///             ":xyz",
+    ///             ":onlytest",
+    ///         },
+    ///         ScannerNames = new[]
+    ///         {
+    ///             "aqua-scanner-645f867c4f-4sbtj",
+    ///             "aqua-scanner-645f867c4f-8pkdd",
+    ///         },
+    ///         ScannerType = "specific",
+    ///         Type = "AWS",
+    ///         Url = "us-east-1",
+    ///         Username = "",
+    ///         Webhooks = new[]
+    ///         {
+    ///             new Aquasec.Inputs.IntegrationRegistryWebhookArgs
+    ///             {
+    ///                 AuthToken = "test1-test2-test3",
+    ///                 Enabled = true,
+    ///                 UnQuarantine = false,
+    ///                 Url = "https://aquasec.com/",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [AquasecResourceType("aquasec:index/integrationRegistry:IntegrationRegistry")]
     public partial class IntegrationRegistry : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Automatically clean up that don't match the pull criteria
+        /// </summary>
+        [Output("advancedSettingsCleanup")]
+        public Output<bool?> AdvancedSettingsCleanup { get; private set; } = null!;
+
+        /// <summary>
+        /// List of image patterns to pull always
+        /// </summary>
+        [Output("alwaysPullPatterns")]
+        public Output<ImmutableArray<string>> AlwaysPullPatterns { get; private set; } = null!;
+
         /// <summary>
         /// The username of the user who created or last modified the registry
         /// </summary>
@@ -70,8 +168,8 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The last time the registry was modified in UNIX time
         /// </summary>
-        [Output("lastUpdated")]
-        public Output<string> LastUpdated { get; private set; } = null!;
+        [Output("lastupdate")]
+        public Output<int> Lastupdate { get; private set; } = null!;
 
         /// <summary>
         /// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -107,6 +205,24 @@ namespace Pulumiverse.Aquasec
         public Output<int> PullImageCount { get; private set; } = null!;
 
         /// <summary>
+        /// List of image tags patterns to pull
+        /// </summary>
+        [Output("pullImageTagPatterns")]
+        public Output<ImmutableArray<string>> PullImageTagPatterns { get; private set; } = null!;
+
+        /// <summary>
+        /// List of image patterns to exclude
+        /// </summary>
+        [Output("pullRepoPatternsExcludeds")]
+        public Output<ImmutableArray<string>> PullRepoPatternsExcludeds { get; private set; } = null!;
+
+        /// <summary>
+        /// Registry scan timeout in Minutes
+        /// </summary>
+        [Output("registryScanTimeout")]
+        public Output<int?> RegistryScanTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// List of scanner names
         /// </summary>
         [Output("scannerNames")]
@@ -135,6 +251,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("username")]
         public Output<string?> Username { get; private set; } = null!;
+
+        /// <summary>
+        /// When enabled, registry events are sent to the given Aqua webhook url
+        /// </summary>
+        [Output("webhooks")]
+        public Output<ImmutableArray<Outputs.IntegrationRegistryWebhook>> Webhooks { get; private set; } = null!;
 
 
         /// <summary>
@@ -184,6 +306,24 @@ namespace Pulumiverse.Aquasec
     public sealed class IntegrationRegistryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Automatically clean up that don't match the pull criteria
+        /// </summary>
+        [Input("advancedSettingsCleanup")]
+        public Input<bool>? AdvancedSettingsCleanup { get; set; }
+
+        [Input("alwaysPullPatterns")]
+        private InputList<string>? _alwaysPullPatterns;
+
+        /// <summary>
+        /// List of image patterns to pull always
+        /// </summary>
+        public InputList<string> AlwaysPullPatterns
+        {
+            get => _alwaysPullPatterns ?? (_alwaysPullPatterns = new InputList<string>());
+            set => _alwaysPullPatterns = value;
+        }
+
+        /// <summary>
         /// The username of the user who created or last modified the registry
         /// </summary>
         [Input("author")]
@@ -240,8 +380,8 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The last time the registry was modified in UNIX time
         /// </summary>
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
 
         /// <summary>
         /// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -287,6 +427,36 @@ namespace Pulumiverse.Aquasec
         [Input("pullImageCount")]
         public Input<int>? PullImageCount { get; set; }
 
+        [Input("pullImageTagPatterns")]
+        private InputList<string>? _pullImageTagPatterns;
+
+        /// <summary>
+        /// List of image tags patterns to pull
+        /// </summary>
+        public InputList<string> PullImageTagPatterns
+        {
+            get => _pullImageTagPatterns ?? (_pullImageTagPatterns = new InputList<string>());
+            set => _pullImageTagPatterns = value;
+        }
+
+        [Input("pullRepoPatternsExcludeds")]
+        private InputList<string>? _pullRepoPatternsExcludeds;
+
+        /// <summary>
+        /// List of image patterns to exclude
+        /// </summary>
+        public InputList<string> PullRepoPatternsExcludeds
+        {
+            get => _pullRepoPatternsExcludeds ?? (_pullRepoPatternsExcludeds = new InputList<string>());
+            set => _pullRepoPatternsExcludeds = value;
+        }
+
+        /// <summary>
+        /// Registry scan timeout in Minutes
+        /// </summary>
+        [Input("registryScanTimeout")]
+        public Input<int>? RegistryScanTimeout { get; set; }
+
         [Input("scannerNames")]
         private InputList<string>? _scannerNames;
 
@@ -323,6 +493,18 @@ namespace Pulumiverse.Aquasec
         [Input("username")]
         public Input<string>? Username { get; set; }
 
+        [Input("webhooks")]
+        private InputList<Inputs.IntegrationRegistryWebhookArgs>? _webhooks;
+
+        /// <summary>
+        /// When enabled, registry events are sent to the given Aqua webhook url
+        /// </summary>
+        public InputList<Inputs.IntegrationRegistryWebhookArgs> Webhooks
+        {
+            get => _webhooks ?? (_webhooks = new InputList<Inputs.IntegrationRegistryWebhookArgs>());
+            set => _webhooks = value;
+        }
+
         public IntegrationRegistryArgs()
         {
         }
@@ -331,6 +513,24 @@ namespace Pulumiverse.Aquasec
 
     public sealed class IntegrationRegistryState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically clean up that don't match the pull criteria
+        /// </summary>
+        [Input("advancedSettingsCleanup")]
+        public Input<bool>? AdvancedSettingsCleanup { get; set; }
+
+        [Input("alwaysPullPatterns")]
+        private InputList<string>? _alwaysPullPatterns;
+
+        /// <summary>
+        /// List of image patterns to pull always
+        /// </summary>
+        public InputList<string> AlwaysPullPatterns
+        {
+            get => _alwaysPullPatterns ?? (_alwaysPullPatterns = new InputList<string>());
+            set => _alwaysPullPatterns = value;
+        }
+
         /// <summary>
         /// The username of the user who created or last modified the registry
         /// </summary>
@@ -388,8 +588,8 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The last time the registry was modified in UNIX time
         /// </summary>
-        [Input("lastUpdated")]
-        public Input<string>? LastUpdated { get; set; }
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
 
         /// <summary>
         /// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
@@ -435,6 +635,36 @@ namespace Pulumiverse.Aquasec
         [Input("pullImageCount")]
         public Input<int>? PullImageCount { get; set; }
 
+        [Input("pullImageTagPatterns")]
+        private InputList<string>? _pullImageTagPatterns;
+
+        /// <summary>
+        /// List of image tags patterns to pull
+        /// </summary>
+        public InputList<string> PullImageTagPatterns
+        {
+            get => _pullImageTagPatterns ?? (_pullImageTagPatterns = new InputList<string>());
+            set => _pullImageTagPatterns = value;
+        }
+
+        [Input("pullRepoPatternsExcludeds")]
+        private InputList<string>? _pullRepoPatternsExcludeds;
+
+        /// <summary>
+        /// List of image patterns to exclude
+        /// </summary>
+        public InputList<string> PullRepoPatternsExcludeds
+        {
+            get => _pullRepoPatternsExcludeds ?? (_pullRepoPatternsExcludeds = new InputList<string>());
+            set => _pullRepoPatternsExcludeds = value;
+        }
+
+        /// <summary>
+        /// Registry scan timeout in Minutes
+        /// </summary>
+        [Input("registryScanTimeout")]
+        public Input<int>? RegistryScanTimeout { get; set; }
+
         [Input("scannerNames")]
         private InputList<string>? _scannerNames;
 
@@ -470,6 +700,18 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
+
+        [Input("webhooks")]
+        private InputList<Inputs.IntegrationRegistryWebhookGetArgs>? _webhooks;
+
+        /// <summary>
+        /// When enabled, registry events are sent to the given Aqua webhook url
+        /// </summary>
+        public InputList<Inputs.IntegrationRegistryWebhookGetArgs> Webhooks
+        {
+            get => _webhooks ?? (_webhooks = new InputList<Inputs.IntegrationRegistryWebhookGetArgs>());
+            set => _webhooks = value;
+        }
 
         public IntegrationRegistryState()
         {

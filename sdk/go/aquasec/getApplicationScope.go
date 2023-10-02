@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -37,7 +39,7 @@ import (
 //
 // ```
 func LookupApplicationScope(ctx *pulumi.Context, args *LookupApplicationScopeArgs, opts ...pulumi.InvokeOption) (*LookupApplicationScopeResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationScopeResult
 	err := ctx.Invoke("aquasec:index/getApplicationScope:getApplicationScope", args, &rv, opts...)
 	if err != nil {
@@ -108,6 +110,12 @@ func (o LookupApplicationScopeResultOutput) ToLookupApplicationScopeResultOutput
 
 func (o LookupApplicationScopeResultOutput) ToLookupApplicationScopeResultOutputWithContext(ctx context.Context) LookupApplicationScopeResultOutput {
 	return o
+}
+
+func (o LookupApplicationScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationScopeResult] {
+	return pulumix.Output[LookupApplicationScopeResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Username of the account that created the service.

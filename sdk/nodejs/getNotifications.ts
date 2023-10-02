@@ -29,3 +29,6 @@ export interface GetNotificationsResult {
     readonly teams: outputs.GetNotificationsTeam[];
     readonly webhooks: outputs.GetNotificationsWebhook[];
 }
+export function getNotificationsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationsResult> {
+    return pulumi.output(getNotifications(opts))
+}

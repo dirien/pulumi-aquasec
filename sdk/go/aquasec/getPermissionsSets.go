@@ -5,11 +5,42 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// testpermissionsset, err := aquasec.LookupPermissionsSets(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("permissionsSets", testpermissionsset)
+// var splat0 [][]*string
+// for _, val0 := range []aquasec.GetPermissionsSetsResult{
+// testpermissionsset,
+// } {
+// splat0 = append(splat0, %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-aquasec:index-getPermissionsSets:getPermissionsSets.pp:5,31-58))
+// }
+// ctx.Export("permissionsSetsNames", splat0)
+// return nil
+// })
+// }
+// ```
 func LookupPermissionsSets(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*LookupPermissionsSetsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPermissionsSetsResult
 	err := ctx.Invoke("aquasec:index/getPermissionsSets:getPermissionsSets", nil, &rv, opts...)
 	if err != nil {

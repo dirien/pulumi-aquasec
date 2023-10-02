@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `getUsersSaas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
@@ -34,7 +35,7 @@ import (
 //
 // ```
 func GetUsersSaas(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUsersSaasResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersSaasResult
 	err := ctx.Invoke("aquasec:index/getUsersSaas:getUsersSaas", nil, &rv, opts...)
 	if err != nil {

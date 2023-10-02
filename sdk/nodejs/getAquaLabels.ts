@@ -36,3 +36,19 @@ export interface GetAquaLabelsResult {
      */
     readonly id: string;
 }
+/**
+ * The data source `aquasec.getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const aquaLabels = aquasec.getAquaLabels({});
+ * export const scopes = aquaLabels;
+ * ```
+ */
+export function getAquaLabelsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAquaLabelsResult> {
+    return pulumi.output(getAquaLabels(opts))
+}

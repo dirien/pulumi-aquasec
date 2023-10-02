@@ -70,5 +70,5 @@ def get_roles_mapping_saas(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     __ret__ = pulumi.runtime.invoke('aquasec:index/getRolesMappingSaas:getRolesMappingSaas', __args__, opts=opts, typ=GetRolesMappingSaasResult).value
 
     return AwaitableGetRolesMappingSaasResult(
-        id=__ret__.id,
-        roles_mappings=__ret__.roles_mappings)
+        id=pulumi.get(__ret__, 'id'),
+        roles_mappings=pulumi.get(__ret__, 'roles_mappings'))

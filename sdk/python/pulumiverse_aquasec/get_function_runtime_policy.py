@@ -259,23 +259,23 @@ def get_function_runtime_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy', __args__, opts=opts, typ=GetFunctionRuntimePolicyResult).value
 
     return AwaitableGetFunctionRuntimePolicyResult(
-        application_scopes=__ret__.application_scopes,
-        author=__ret__.author,
-        block_malicious_executables=__ret__.block_malicious_executables,
-        block_malicious_executables_allowed_processes=__ret__.block_malicious_executables_allowed_processes,
-        block_running_executables_in_tmp_folder=__ret__.block_running_executables_in_tmp_folder,
-        blocked_executables=__ret__.blocked_executables,
-        description=__ret__.description,
-        enabled=__ret__.enabled,
-        enforce=__ret__.enforce,
-        honeypot_access_key=__ret__.honeypot_access_key,
-        honeypot_apply_ons=__ret__.honeypot_apply_ons,
-        honeypot_secret_key=__ret__.honeypot_secret_key,
-        honeypot_serverless_app_name=__ret__.honeypot_serverless_app_name,
-        id=__ret__.id,
-        name=__ret__.name,
-        scope_expression=__ret__.scope_expression,
-        scope_variables=__ret__.scope_variables)
+        application_scopes=pulumi.get(__ret__, 'application_scopes'),
+        author=pulumi.get(__ret__, 'author'),
+        block_malicious_executables=pulumi.get(__ret__, 'block_malicious_executables'),
+        block_malicious_executables_allowed_processes=pulumi.get(__ret__, 'block_malicious_executables_allowed_processes'),
+        block_running_executables_in_tmp_folder=pulumi.get(__ret__, 'block_running_executables_in_tmp_folder'),
+        blocked_executables=pulumi.get(__ret__, 'blocked_executables'),
+        description=pulumi.get(__ret__, 'description'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        enforce=pulumi.get(__ret__, 'enforce'),
+        honeypot_access_key=pulumi.get(__ret__, 'honeypot_access_key'),
+        honeypot_apply_ons=pulumi.get(__ret__, 'honeypot_apply_ons'),
+        honeypot_secret_key=pulumi.get(__ret__, 'honeypot_secret_key'),
+        honeypot_serverless_app_name=pulumi.get(__ret__, 'honeypot_serverless_app_name'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        scope_expression=pulumi.get(__ret__, 'scope_expression'),
+        scope_variables=pulumi.get(__ret__, 'scope_variables'))
 
 
 @_utilities.lift_output_func(get_function_runtime_policy)

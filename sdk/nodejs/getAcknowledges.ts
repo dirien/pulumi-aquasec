@@ -39,3 +39,19 @@ export interface GetAcknowledgesResult {
      */
     readonly id: string;
 }
+/**
+ * The data source `aquasec.getAcknowledges` provides a method to query all acknowledges within the Aqua
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const acknowledgesAcknowledges = aquasec.getAcknowledges({});
+ * export const acknowledges = acknowledgesAcknowledges;
+ * ```
+ */
+export function getAcknowledgesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAcknowledgesResult> {
+    return pulumi.output(getAcknowledges(opts))
+}

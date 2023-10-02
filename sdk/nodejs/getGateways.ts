@@ -45,3 +45,25 @@ export interface GetGatewaysResult {
      */
     readonly id: string;
 }
+/**
+ * The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const testgateway = aquasec.getGateways({});
+ * export const gatewayData = testgateway;
+ * export const gatewayName = testgateway.then(testgateway => testgateway.gateways?.[0]?.id);
+ * export const gatewayStatus = testgateway.then(testgateway => testgateway.gateways?.[0]?.status);
+ * export const gatewayDescription = testgateway.then(testgateway => testgateway.gateways?.[0]?.description);
+ * export const gatewayVersion = testgateway.then(testgateway => testgateway.gateways?.[0]?.version);
+ * export const gatewayHostname = testgateway.then(testgateway => testgateway.gateways?.[0]?.hostname);
+ * export const gatewayGrpcAddress = testgateway.then(testgateway => testgateway.gateways?.[0]?.grpcAddress);
+ * ```
+ */
+export function getGatewaysOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+    return pulumi.output(getGateways(opts))
+}

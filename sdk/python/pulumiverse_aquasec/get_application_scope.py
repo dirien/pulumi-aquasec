@@ -131,12 +131,12 @@ def get_application_scope(categories: Optional[Sequence[pulumi.InputType['GetApp
     __ret__ = pulumi.runtime.invoke('aquasec:index/getApplicationScope:getApplicationScope', __args__, opts=opts, typ=GetApplicationScopeResult).value
 
     return AwaitableGetApplicationScopeResult(
-        author=__ret__.author,
-        categories=__ret__.categories,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        owner_email=__ret__.owner_email)
+        author=pulumi.get(__ret__, 'author'),
+        categories=pulumi.get(__ret__, 'categories'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        owner_email=pulumi.get(__ret__, 'owner_email'))
 
 
 @_utilities.lift_output_func(get_application_scope)

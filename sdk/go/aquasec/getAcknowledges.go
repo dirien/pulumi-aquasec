@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `getAcknowledges` provides a method to query all acknowledges within the Aqua
@@ -34,7 +35,7 @@ import (
 //
 // ```
 func GetAcknowledges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAcknowledgesResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAcknowledgesResult
 	err := ctx.Invoke("aquasec:index/getAcknowledges:getAcknowledges", nil, &rv, opts...)
 	if err != nil {

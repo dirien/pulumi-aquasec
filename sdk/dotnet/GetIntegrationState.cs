@@ -38,6 +38,33 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public static Task<GetIntegrationStateResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationStateResult>("aquasec:index/getIntegrationState:getIntegrationState", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var integrationState = Aquasec.GetIntegrationState.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["aquasecIntegrationState"] = integrationState,
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetIntegrationStateResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIntegrationStateResult>("aquasec:index/getIntegrationState:getIntegrationState", InvokeArgs.Empty, options.WithDefaults());
     }
 
 
