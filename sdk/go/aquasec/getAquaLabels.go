@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `getAquaLabels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
@@ -34,7 +35,7 @@ import (
 //
 // ```
 func GetAquaLabels(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAquaLabelsResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAquaLabelsResult
 	err := ctx.Invoke("aquasec:index/getAquaLabels:getAquaLabels", nil, &rv, opts...)
 	if err != nil {

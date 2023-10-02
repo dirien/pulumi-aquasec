@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -282,7 +284,7 @@ func NewContainerRuntimePolicy(ctx *pulumi.Context,
 		args = &ContainerRuntimePolicyArgs{}
 	}
 
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ContainerRuntimePolicy
 	err := ctx.RegisterResource("aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -764,6 +766,12 @@ func (i *ContainerRuntimePolicy) ToContainerRuntimePolicyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRuntimePolicyOutput)
 }
 
+func (i *ContainerRuntimePolicy) ToOutput(ctx context.Context) pulumix.Output[*ContainerRuntimePolicy] {
+	return pulumix.Output[*ContainerRuntimePolicy]{
+		OutputState: i.ToContainerRuntimePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ContainerRuntimePolicyArrayInput is an input type that accepts ContainerRuntimePolicyArray and ContainerRuntimePolicyArrayOutput values.
 // You can construct a concrete instance of `ContainerRuntimePolicyArrayInput` via:
 //
@@ -787,6 +795,12 @@ func (i ContainerRuntimePolicyArray) ToContainerRuntimePolicyArrayOutput() Conta
 
 func (i ContainerRuntimePolicyArray) ToContainerRuntimePolicyArrayOutputWithContext(ctx context.Context) ContainerRuntimePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRuntimePolicyArrayOutput)
+}
+
+func (i ContainerRuntimePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRuntimePolicy] {
+	return pulumix.Output[[]*ContainerRuntimePolicy]{
+		OutputState: i.ToContainerRuntimePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ContainerRuntimePolicyMapInput is an input type that accepts ContainerRuntimePolicyMap and ContainerRuntimePolicyMapOutput values.
@@ -814,6 +828,12 @@ func (i ContainerRuntimePolicyMap) ToContainerRuntimePolicyMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRuntimePolicyMapOutput)
 }
 
+func (i ContainerRuntimePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRuntimePolicy] {
+	return pulumix.Output[map[string]*ContainerRuntimePolicy]{
+		OutputState: i.ToContainerRuntimePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ContainerRuntimePolicyOutput struct{ *pulumi.OutputState }
 
 func (ContainerRuntimePolicyOutput) ElementType() reflect.Type {
@@ -826,6 +846,12 @@ func (o ContainerRuntimePolicyOutput) ToContainerRuntimePolicyOutput() Container
 
 func (o ContainerRuntimePolicyOutput) ToContainerRuntimePolicyOutputWithContext(ctx context.Context) ContainerRuntimePolicyOutput {
 	return o
+}
+
+func (o ContainerRuntimePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ContainerRuntimePolicy] {
+	return pulumix.Output[*ContainerRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of executables that are allowed for the user.
@@ -1115,6 +1141,12 @@ func (o ContainerRuntimePolicyArrayOutput) ToContainerRuntimePolicyArrayOutputWi
 	return o
 }
 
+func (o ContainerRuntimePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ContainerRuntimePolicy] {
+	return pulumix.Output[[]*ContainerRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ContainerRuntimePolicyArrayOutput) Index(i pulumi.IntInput) ContainerRuntimePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ContainerRuntimePolicy {
 		return vs[0].([]*ContainerRuntimePolicy)[vs[1].(int)]
@@ -1133,6 +1165,12 @@ func (o ContainerRuntimePolicyMapOutput) ToContainerRuntimePolicyMapOutput() Con
 
 func (o ContainerRuntimePolicyMapOutput) ToContainerRuntimePolicyMapOutputWithContext(ctx context.Context) ContainerRuntimePolicyMapOutput {
 	return o
+}
+
+func (o ContainerRuntimePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ContainerRuntimePolicy] {
+	return pulumix.Output[map[string]*ContainerRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ContainerRuntimePolicyMapOutput) MapIndex(k pulumi.StringInput) ContainerRuntimePolicyOutput {

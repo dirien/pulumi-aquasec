@@ -1100,6 +1100,21 @@ export interface GetImageVulnerability {
     vendorUrl: string;
 }
 
+export interface GetIntegrationRegistryOption {
+    option?: string;
+    value?: string;
+}
+
+export interface GetIntegrationRegistryWebhook {
+    authToken?: string;
+    enabled?: boolean;
+    unQuarantine?: boolean;
+    /**
+     * The URL, address or region of the registry
+     */
+    url?: string;
+}
+
 export interface GetKubernetesAssurancePolicyAutoScanTime {
     iteration: number;
     iterationType: string;
@@ -1796,6 +1811,16 @@ export interface ImageVulnerability {
 export interface IntegrationRegistryOption {
     option?: string;
     value?: string;
+}
+
+export interface IntegrationRegistryWebhook {
+    authToken?: string;
+    enabled: boolean;
+    unQuarantine: boolean;
+    /**
+     * The URL, address or region of the registry
+     */
+    url?: string;
 }
 
 export interface KubernetesAssurancePolicyAutoScanTime {

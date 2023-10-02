@@ -116,11 +116,11 @@ def get_notifications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     __ret__ = pulumi.runtime.invoke('aquasec:index/getNotifications:getNotifications', __args__, opts=opts, typ=GetNotificationsResult).value
 
     return AwaitableGetNotificationsResult(
-        emails=__ret__.emails,
-        id=__ret__.id,
-        jiras=__ret__.jiras,
-        servicenows=__ret__.servicenows,
-        slacks=__ret__.slacks,
-        splunks=__ret__.splunks,
-        teams=__ret__.teams,
-        webhooks=__ret__.webhooks)
+        emails=pulumi.get(__ret__, 'emails'),
+        id=pulumi.get(__ret__, 'id'),
+        jiras=pulumi.get(__ret__, 'jiras'),
+        servicenows=pulumi.get(__ret__, 'servicenows'),
+        slacks=pulumi.get(__ret__, 'slacks'),
+        splunks=pulumi.get(__ret__, 'splunks'),
+        teams=pulumi.get(__ret__, 'teams'),
+        webhooks=pulumi.get(__ret__, 'webhooks'))

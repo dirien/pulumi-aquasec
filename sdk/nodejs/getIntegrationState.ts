@@ -43,3 +43,17 @@ export interface GetIntegrationStateResult {
      */
     readonly samlSettings: boolean;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const integrationState = aquasec.getIntegrationState({});
+ * export const aquasecIntegrationState = integrationState;
+ * ```
+ */
+export function getIntegrationStateOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationStateResult> {
+    return pulumi.output(getIntegrationState(opts))
+}

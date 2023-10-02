@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -37,7 +39,7 @@ import (
 //
 // ```
 func LookupHostRuntimePolicy(ctx *pulumi.Context, args *LookupHostRuntimePolicyArgs, opts ...pulumi.InvokeOption) (*LookupHostRuntimePolicyResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostRuntimePolicyResult
 	err := ctx.Invoke("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args, &rv, opts...)
 	if err != nil {
@@ -156,6 +158,12 @@ func (o LookupHostRuntimePolicyResultOutput) ToLookupHostRuntimePolicyResultOutp
 
 func (o LookupHostRuntimePolicyResultOutput) ToLookupHostRuntimePolicyResultOutputWithContext(ctx context.Context) LookupHostRuntimePolicyResultOutput {
 	return o
+}
+
+func (o LookupHostRuntimePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostRuntimePolicyResult] {
+	return pulumix.Output[LookupHostRuntimePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the application scope of the service.

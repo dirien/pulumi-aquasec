@@ -65,7 +65,7 @@ def get_permissions_sets(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
 
     testpermissionsset = aquasec.get_permissions_sets()
     pulumi.export("permissionsSets", testpermissionsset)
-    pulumi.export("permissionsSetsNames", [[__item.name for __item in [__item.permissions_sets]] for __item in [testpermissionsset]])
+    pulumi.export("permissionsSetsNames", [[__item.name for __item in __item.permissions_sets] for __item in [testpermissionsset]])
     ```
     """
     __args__ = dict()
@@ -73,5 +73,5 @@ def get_permissions_sets(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     __ret__ = pulumi.runtime.invoke('aquasec:index/getPermissionsSets:getPermissionsSets', __args__, opts=opts, typ=GetPermissionsSetsResult).value
 
     return AwaitableGetPermissionsSetsResult(
-        id=__ret__.id,
-        permissions_sets=__ret__.permissions_sets)
+        id=pulumi.get(__ret__, 'id'),
+        permissions_sets=pulumi.get(__ret__, 'permissions_sets'))

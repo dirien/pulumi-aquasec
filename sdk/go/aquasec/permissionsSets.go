@@ -9,9 +9,88 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The `PermissionsSets` resource manages your Permission Set within Aqua.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aquasec.NewPermissionsSets(ctx, "myTerraformPermSet", &aquasec.PermissionsSetsArgs{
+//				Actions: pulumi.StringArray{
+//					pulumi.String("acl_policies.read"),
+//					pulumi.String("acl_policies.write"),
+//					pulumi.String("image_profiles.read"),
+//					pulumi.String("image_profiles.write"),
+//					pulumi.String("network_policies.read"),
+//					pulumi.String("network_policies.write"),
+//					pulumi.String("runtime_policies.read"),
+//					pulumi.String("runtime_policies.write"),
+//					pulumi.String("response_policies.read"),
+//					pulumi.String("response_policies.write"),
+//					pulumi.String("image_assurance.read"),
+//					pulumi.String("image_assurance.write"),
+//					pulumi.String("dashboard.read"),
+//					pulumi.String("dashboard.write"),
+//					pulumi.String("risk_explorer.read"),
+//					pulumi.String("images.read"),
+//					pulumi.String("images.write"),
+//					pulumi.String("risks.host_images.read"),
+//					pulumi.String("risks.host_images.write"),
+//					pulumi.String("functions.read"),
+//					pulumi.String("functions.write"),
+//					pulumi.String("enforcers.read"),
+//					pulumi.String("enforcers.write"),
+//					pulumi.String("containers.read"),
+//					pulumi.String("services.read"),
+//					pulumi.String("services.write"),
+//					pulumi.String("infrastructure.read"),
+//					pulumi.String("infrastructure.write"),
+//					pulumi.String("risks.vulnerabilities.read"),
+//					pulumi.String("risks.vulnerabilities.write"),
+//					pulumi.String("risks.benchmark.read"),
+//					pulumi.String("risks.benchmark.write"),
+//					pulumi.String("audits.read"),
+//					pulumi.String("secrets.read"),
+//					pulumi.String("secrets.write"),
+//					pulumi.String("settings.read"),
+//					pulumi.String("settings.write"),
+//					pulumi.String("integrations.read"),
+//					pulumi.String("integrations.write"),
+//					pulumi.String("registries_integrations.read"),
+//					pulumi.String("registries_integrations.write"),
+//					pulumi.String("scan.read"),
+//					pulumi.String("gateways.read"),
+//					pulumi.String("gateways.write"),
+//					pulumi.String("consoles.read"),
+//					pulumi.String("web_hook.read"),
+//					pulumi.String("incidents.read"),
+//				},
+//				Description: pulumi.String("Test Permissions Sets created by Terraform"),
+//				IsSuper:     pulumi.Bool(false),
+//				UiAccess:    pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type PermissionsSets struct {
 	pulumi.CustomResourceState
 
@@ -44,7 +123,7 @@ func NewPermissionsSets(ctx *pulumi.Context,
 	if args.UiAccess == nil {
 		return nil, errors.New("invalid value for required argument 'UiAccess'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PermissionsSets
 	err := ctx.RegisterResource("aquasec:index/permissionsSets:PermissionsSets", name, args, &resource, opts...)
 	if err != nil {
@@ -154,6 +233,12 @@ func (i *PermissionsSets) ToPermissionsSetsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionsSetsOutput)
 }
 
+func (i *PermissionsSets) ToOutput(ctx context.Context) pulumix.Output[*PermissionsSets] {
+	return pulumix.Output[*PermissionsSets]{
+		OutputState: i.ToPermissionsSetsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PermissionsSetsArrayInput is an input type that accepts PermissionsSetsArray and PermissionsSetsArrayOutput values.
 // You can construct a concrete instance of `PermissionsSetsArrayInput` via:
 //
@@ -177,6 +262,12 @@ func (i PermissionsSetsArray) ToPermissionsSetsArrayOutput() PermissionsSetsArra
 
 func (i PermissionsSetsArray) ToPermissionsSetsArrayOutputWithContext(ctx context.Context) PermissionsSetsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionsSetsArrayOutput)
+}
+
+func (i PermissionsSetsArray) ToOutput(ctx context.Context) pulumix.Output[[]*PermissionsSets] {
+	return pulumix.Output[[]*PermissionsSets]{
+		OutputState: i.ToPermissionsSetsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PermissionsSetsMapInput is an input type that accepts PermissionsSetsMap and PermissionsSetsMapOutput values.
@@ -204,6 +295,12 @@ func (i PermissionsSetsMap) ToPermissionsSetsMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionsSetsMapOutput)
 }
 
+func (i PermissionsSetsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PermissionsSets] {
+	return pulumix.Output[map[string]*PermissionsSets]{
+		OutputState: i.ToPermissionsSetsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PermissionsSetsOutput struct{ *pulumi.OutputState }
 
 func (PermissionsSetsOutput) ElementType() reflect.Type {
@@ -216,6 +313,12 @@ func (o PermissionsSetsOutput) ToPermissionsSetsOutput() PermissionsSetsOutput {
 
 func (o PermissionsSetsOutput) ToPermissionsSetsOutputWithContext(ctx context.Context) PermissionsSetsOutput {
 	return o
+}
+
+func (o PermissionsSetsOutput) ToOutput(ctx context.Context) pulumix.Output[*PermissionsSets] {
+	return pulumix.Output[*PermissionsSets]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
@@ -267,6 +370,12 @@ func (o PermissionsSetsArrayOutput) ToPermissionsSetsArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o PermissionsSetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PermissionsSets] {
+	return pulumix.Output[[]*PermissionsSets]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PermissionsSetsArrayOutput) Index(i pulumi.IntInput) PermissionsSetsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PermissionsSets {
 		return vs[0].([]*PermissionsSets)[vs[1].(int)]
@@ -285,6 +394,12 @@ func (o PermissionsSetsMapOutput) ToPermissionsSetsMapOutput() PermissionsSetsMa
 
 func (o PermissionsSetsMapOutput) ToPermissionsSetsMapOutputWithContext(ctx context.Context) PermissionsSetsMapOutput {
 	return o
+}
+
+func (o PermissionsSetsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PermissionsSets] {
+	return pulumix.Output[map[string]*PermissionsSets]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PermissionsSetsMapOutput) MapIndex(k pulumi.StringInput) PermissionsSetsOutput {

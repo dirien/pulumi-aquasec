@@ -182,17 +182,17 @@ def get_firewall_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aquasec:index/getFirewallPolicy:getFirewallPolicy', __args__, opts=opts, typ=GetFirewallPolicyResult).value
 
     return AwaitableGetFirewallPolicyResult(
-        author=__ret__.author,
-        block_icmp_ping=__ret__.block_icmp_ping,
-        block_metadata_service=__ret__.block_metadata_service,
-        description=__ret__.description,
-        id=__ret__.id,
-        inbound_networks=__ret__.inbound_networks,
-        lastupdate=__ret__.lastupdate,
-        name=__ret__.name,
-        outbound_networks=__ret__.outbound_networks,
-        type=__ret__.type,
-        version=__ret__.version)
+        author=pulumi.get(__ret__, 'author'),
+        block_icmp_ping=pulumi.get(__ret__, 'block_icmp_ping'),
+        block_metadata_service=pulumi.get(__ret__, 'block_metadata_service'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        inbound_networks=pulumi.get(__ret__, 'inbound_networks'),
+        lastupdate=pulumi.get(__ret__, 'lastupdate'),
+        name=pulumi.get(__ret__, 'name'),
+        outbound_networks=pulumi.get(__ret__, 'outbound_networks'),
+        type=pulumi.get(__ret__, 'type'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_firewall_policy)

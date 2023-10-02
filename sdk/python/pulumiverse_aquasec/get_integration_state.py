@@ -96,7 +96,7 @@ def get_integration_state(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     __ret__ = pulumi.runtime.invoke('aquasec:index/getIntegrationState:getIntegrationState', __args__, opts=opts, typ=GetIntegrationStateResult).value
 
     return AwaitableGetIntegrationStateResult(
-        id=__ret__.id,
-        oidc_settings=__ret__.oidc_settings,
-        openid_settings=__ret__.openid_settings,
-        saml_settings=__ret__.saml_settings)
+        id=pulumi.get(__ret__, 'id'),
+        oidc_settings=pulumi.get(__ret__, 'oidc_settings'),
+        openid_settings=pulumi.get(__ret__, 'openid_settings'),
+        saml_settings=pulumi.get(__ret__, 'saml_settings'))

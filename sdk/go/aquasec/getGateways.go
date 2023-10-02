@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // The data source `getGateways` provides a method to query all gateways within the Aqua
@@ -40,7 +41,7 @@ import (
 //
 // ```
 func GetGateways(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetGatewaysResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewaysResult
 	err := ctx.Invoke("aquasec:index/getGateways:getGateways", nil, &rv, opts...)
 	if err != nil {

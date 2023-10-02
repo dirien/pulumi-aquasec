@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 type KubernetesAssurancePolicy struct {
@@ -139,7 +141,7 @@ func NewKubernetesAssurancePolicy(ctx *pulumi.Context,
 	if args.ApplicationScopes == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationScopes'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KubernetesAssurancePolicy
 	err := ctx.RegisterResource("aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -647,6 +649,12 @@ func (i *KubernetesAssurancePolicy) ToKubernetesAssurancePolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAssurancePolicyOutput)
 }
 
+func (i *KubernetesAssurancePolicy) ToOutput(ctx context.Context) pulumix.Output[*KubernetesAssurancePolicy] {
+	return pulumix.Output[*KubernetesAssurancePolicy]{
+		OutputState: i.ToKubernetesAssurancePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // KubernetesAssurancePolicyArrayInput is an input type that accepts KubernetesAssurancePolicyArray and KubernetesAssurancePolicyArrayOutput values.
 // You can construct a concrete instance of `KubernetesAssurancePolicyArrayInput` via:
 //
@@ -670,6 +678,12 @@ func (i KubernetesAssurancePolicyArray) ToKubernetesAssurancePolicyArrayOutput()
 
 func (i KubernetesAssurancePolicyArray) ToKubernetesAssurancePolicyArrayOutputWithContext(ctx context.Context) KubernetesAssurancePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAssurancePolicyArrayOutput)
+}
+
+func (i KubernetesAssurancePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesAssurancePolicy] {
+	return pulumix.Output[[]*KubernetesAssurancePolicy]{
+		OutputState: i.ToKubernetesAssurancePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // KubernetesAssurancePolicyMapInput is an input type that accepts KubernetesAssurancePolicyMap and KubernetesAssurancePolicyMapOutput values.
@@ -697,6 +711,12 @@ func (i KubernetesAssurancePolicyMap) ToKubernetesAssurancePolicyMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(KubernetesAssurancePolicyMapOutput)
 }
 
+func (i KubernetesAssurancePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesAssurancePolicy] {
+	return pulumix.Output[map[string]*KubernetesAssurancePolicy]{
+		OutputState: i.ToKubernetesAssurancePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type KubernetesAssurancePolicyOutput struct{ *pulumi.OutputState }
 
 func (KubernetesAssurancePolicyOutput) ElementType() reflect.Type {
@@ -709,6 +729,12 @@ func (o KubernetesAssurancePolicyOutput) ToKubernetesAssurancePolicyOutput() Kub
 
 func (o KubernetesAssurancePolicyOutput) ToKubernetesAssurancePolicyOutputWithContext(ctx context.Context) KubernetesAssurancePolicyOutput {
 	return o
+}
+
+func (o KubernetesAssurancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*KubernetesAssurancePolicy] {
+	return pulumix.Output[*KubernetesAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of explicitly allowed images.
@@ -1071,6 +1097,12 @@ func (o KubernetesAssurancePolicyArrayOutput) ToKubernetesAssurancePolicyArrayOu
 	return o
 }
 
+func (o KubernetesAssurancePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*KubernetesAssurancePolicy] {
+	return pulumix.Output[[]*KubernetesAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o KubernetesAssurancePolicyArrayOutput) Index(i pulumi.IntInput) KubernetesAssurancePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *KubernetesAssurancePolicy {
 		return vs[0].([]*KubernetesAssurancePolicy)[vs[1].(int)]
@@ -1089,6 +1121,12 @@ func (o KubernetesAssurancePolicyMapOutput) ToKubernetesAssurancePolicyMapOutput
 
 func (o KubernetesAssurancePolicyMapOutput) ToKubernetesAssurancePolicyMapOutputWithContext(ctx context.Context) KubernetesAssurancePolicyMapOutput {
 	return o
+}
+
+func (o KubernetesAssurancePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*KubernetesAssurancePolicy] {
+	return pulumix.Output[map[string]*KubernetesAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o KubernetesAssurancePolicyMapOutput) MapIndex(k pulumi.StringInput) KubernetesAssurancePolicyOutput {

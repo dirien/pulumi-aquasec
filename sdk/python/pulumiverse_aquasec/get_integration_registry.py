@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetIntegrationRegistryResult',
@@ -21,7 +23,13 @@ class GetIntegrationRegistryResult:
     """
     A collection of values returned by getIntegrationRegistry.
     """
-    def __init__(__self__, auto_cleanup=None, auto_pull=None, auto_pull_interval=None, auto_pull_max=None, auto_pull_rescan=None, auto_pull_time=None, description=None, id=None, image_creation_date_condition=None, name=None, password=None, prefixes=None, pull_image_age=None, pull_image_count=None, scanner_names=None, scanner_type=None, type=None, url=None, username=None):
+    def __init__(__self__, advanced_settings_cleanup=None, always_pull_patterns=None, auto_cleanup=None, auto_pull=None, auto_pull_interval=None, auto_pull_max=None, auto_pull_rescan=None, auto_pull_time=None, description=None, id=None, image_creation_date_condition=None, lastupdate=None, name=None, options=None, password=None, prefixes=None, pull_image_age=None, pull_image_count=None, pull_image_tag_patterns=None, pull_repo_patterns_excludeds=None, registry_scan_timeout=None, scanner_names=None, scanner_type=None, type=None, url=None, username=None, webhooks=None):
+        if advanced_settings_cleanup and not isinstance(advanced_settings_cleanup, bool):
+            raise TypeError("Expected argument 'advanced_settings_cleanup' to be a bool")
+        pulumi.set(__self__, "advanced_settings_cleanup", advanced_settings_cleanup)
+        if always_pull_patterns and not isinstance(always_pull_patterns, list):
+            raise TypeError("Expected argument 'always_pull_patterns' to be a list")
+        pulumi.set(__self__, "always_pull_patterns", always_pull_patterns)
         if auto_cleanup and not isinstance(auto_cleanup, bool):
             raise TypeError("Expected argument 'auto_cleanup' to be a bool")
         pulumi.set(__self__, "auto_cleanup", auto_cleanup)
@@ -49,9 +57,15 @@ class GetIntegrationRegistryResult:
         if image_creation_date_condition and not isinstance(image_creation_date_condition, str):
             raise TypeError("Expected argument 'image_creation_date_condition' to be a str")
         pulumi.set(__self__, "image_creation_date_condition", image_creation_date_condition)
+        if lastupdate and not isinstance(lastupdate, int):
+            raise TypeError("Expected argument 'lastupdate' to be a int")
+        pulumi.set(__self__, "lastupdate", lastupdate)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if options and not isinstance(options, list):
+            raise TypeError("Expected argument 'options' to be a list")
+        pulumi.set(__self__, "options", options)
         if password and not isinstance(password, str):
             raise TypeError("Expected argument 'password' to be a str")
         pulumi.set(__self__, "password", password)
@@ -64,6 +78,15 @@ class GetIntegrationRegistryResult:
         if pull_image_count and not isinstance(pull_image_count, int):
             raise TypeError("Expected argument 'pull_image_count' to be a int")
         pulumi.set(__self__, "pull_image_count", pull_image_count)
+        if pull_image_tag_patterns and not isinstance(pull_image_tag_patterns, list):
+            raise TypeError("Expected argument 'pull_image_tag_patterns' to be a list")
+        pulumi.set(__self__, "pull_image_tag_patterns", pull_image_tag_patterns)
+        if pull_repo_patterns_excludeds and not isinstance(pull_repo_patterns_excludeds, list):
+            raise TypeError("Expected argument 'pull_repo_patterns_excludeds' to be a list")
+        pulumi.set(__self__, "pull_repo_patterns_excludeds", pull_repo_patterns_excludeds)
+        if registry_scan_timeout and not isinstance(registry_scan_timeout, int):
+            raise TypeError("Expected argument 'registry_scan_timeout' to be a int")
+        pulumi.set(__self__, "registry_scan_timeout", registry_scan_timeout)
         if scanner_names and not isinstance(scanner_names, list):
             raise TypeError("Expected argument 'scanner_names' to be a list")
         pulumi.set(__self__, "scanner_names", scanner_names)
@@ -79,6 +102,25 @@ class GetIntegrationRegistryResult:
         if username and not isinstance(username, str):
             raise TypeError("Expected argument 'username' to be a str")
         pulumi.set(__self__, "username", username)
+        if webhooks and not isinstance(webhooks, list):
+            raise TypeError("Expected argument 'webhooks' to be a list")
+        pulumi.set(__self__, "webhooks", webhooks)
+
+    @property
+    @pulumi.getter(name="advancedSettingsCleanup")
+    def advanced_settings_cleanup(self) -> Optional[bool]:
+        """
+        Automatically clean up that don't match the pull criteria
+        """
+        return pulumi.get(self, "advanced_settings_cleanup")
+
+    @property
+    @pulumi.getter(name="alwaysPullPatterns")
+    def always_pull_patterns(self) -> Optional[Sequence[str]]:
+        """
+        List of image patterns to pull always
+        """
+        return pulumi.get(self, "always_pull_patterns")
 
     @property
     @pulumi.getter(name="autoCleanup")
@@ -154,11 +196,24 @@ class GetIntegrationRegistryResult:
 
     @property
     @pulumi.getter
+    def lastupdate(self) -> int:
+        """
+        The last time the registry was modified in UNIX time
+        """
+        return pulumi.get(self, "lastupdate")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[Sequence['outputs.GetIntegrationRegistryOptionResult']]:
+        return pulumi.get(self, "options")
 
     @property
     @pulumi.getter
@@ -191,6 +246,30 @@ class GetIntegrationRegistryResult:
         When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
         """
         return pulumi.get(self, "pull_image_count")
+
+    @property
+    @pulumi.getter(name="pullImageTagPatterns")
+    def pull_image_tag_patterns(self) -> Optional[Sequence[str]]:
+        """
+        List of image tags patterns to pull
+        """
+        return pulumi.get(self, "pull_image_tag_patterns")
+
+    @property
+    @pulumi.getter(name="pullRepoPatternsExcludeds")
+    def pull_repo_patterns_excludeds(self) -> Optional[Sequence[str]]:
+        """
+        List of image patterns to exclude
+        """
+        return pulumi.get(self, "pull_repo_patterns_excludeds")
+
+    @property
+    @pulumi.getter(name="registryScanTimeout")
+    def registry_scan_timeout(self) -> Optional[int]:
+        """
+        Registry scan timeout in Minutes
+        """
+        return pulumi.get(self, "registry_scan_timeout")
 
     @property
     @pulumi.getter(name="scannerNames")
@@ -232,6 +311,14 @@ class GetIntegrationRegistryResult:
         """
         return pulumi.get(self, "username")
 
+    @property
+    @pulumi.getter
+    def webhooks(self) -> Optional[Sequence['outputs.GetIntegrationRegistryWebhookResult']]:
+        """
+        When enabled, registry events are sent to the given Aqua webhook url
+        """
+        return pulumi.get(self, "webhooks")
+
 
 class AwaitableGetIntegrationRegistryResult(GetIntegrationRegistryResult):
     # pylint: disable=using-constant-test
@@ -239,6 +326,8 @@ class AwaitableGetIntegrationRegistryResult(GetIntegrationRegistryResult):
         if False:
             yield self
         return GetIntegrationRegistryResult(
+            advanced_settings_cleanup=self.advanced_settings_cleanup,
+            always_pull_patterns=self.always_pull_patterns,
             auto_cleanup=self.auto_cleanup,
             auto_pull=self.auto_pull,
             auto_pull_interval=self.auto_pull_interval,
@@ -248,83 +337,135 @@ class AwaitableGetIntegrationRegistryResult(GetIntegrationRegistryResult):
             description=self.description,
             id=self.id,
             image_creation_date_condition=self.image_creation_date_condition,
+            lastupdate=self.lastupdate,
             name=self.name,
+            options=self.options,
             password=self.password,
             prefixes=self.prefixes,
             pull_image_age=self.pull_image_age,
             pull_image_count=self.pull_image_count,
+            pull_image_tag_patterns=self.pull_image_tag_patterns,
+            pull_repo_patterns_excludeds=self.pull_repo_patterns_excludeds,
+            registry_scan_timeout=self.registry_scan_timeout,
             scanner_names=self.scanner_names,
             scanner_type=self.scanner_type,
             type=self.type,
             url=self.url,
-            username=self.username)
+            username=self.username,
+            webhooks=self.webhooks)
 
 
-def get_integration_registry(image_creation_date_condition: Optional[str] = None,
+def get_integration_registry(advanced_settings_cleanup: Optional[bool] = None,
+                             always_pull_patterns: Optional[Sequence[str]] = None,
+                             image_creation_date_condition: Optional[str] = None,
+                             lastupdate: Optional[int] = None,
                              name: Optional[str] = None,
+                             options: Optional[Sequence[pulumi.InputType['GetIntegrationRegistryOptionArgs']]] = None,
                              pull_image_age: Optional[str] = None,
                              pull_image_count: Optional[int] = None,
+                             pull_image_tag_patterns: Optional[Sequence[str]] = None,
+                             pull_repo_patterns_excludeds: Optional[Sequence[str]] = None,
+                             registry_scan_timeout: Optional[int] = None,
                              scanner_names: Optional[Sequence[str]] = None,
                              scanner_type: Optional[str] = None,
+                             webhooks: Optional[Sequence[pulumi.InputType['GetIntegrationRegistryWebhookArgs']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIntegrationRegistryResult:
     """
     Use this data source to access information about an existing resource.
 
+    :param bool advanced_settings_cleanup: Automatically clean up that don't match the pull criteria
+    :param Sequence[str] always_pull_patterns: List of image patterns to pull always
     :param str image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
+    :param int lastupdate: The last time the registry was modified in UNIX time
     :param str name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
     :param str pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images
     :param int pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+    :param Sequence[str] pull_image_tag_patterns: List of image tags patterns to pull
+    :param Sequence[str] pull_repo_patterns_excludeds: List of image patterns to exclude
+    :param int registry_scan_timeout: Registry scan timeout in Minutes
     :param Sequence[str] scanner_names: List of scanner names
     :param str scanner_type: Scanner type
+    :param Sequence[pulumi.InputType['GetIntegrationRegistryWebhookArgs']] webhooks: When enabled, registry events are sent to the given Aqua webhook url
     """
     __args__ = dict()
+    __args__['advancedSettingsCleanup'] = advanced_settings_cleanup
+    __args__['alwaysPullPatterns'] = always_pull_patterns
     __args__['imageCreationDateCondition'] = image_creation_date_condition
+    __args__['lastupdate'] = lastupdate
     __args__['name'] = name
+    __args__['options'] = options
     __args__['pullImageAge'] = pull_image_age
     __args__['pullImageCount'] = pull_image_count
+    __args__['pullImageTagPatterns'] = pull_image_tag_patterns
+    __args__['pullRepoPatternsExcludeds'] = pull_repo_patterns_excludeds
+    __args__['registryScanTimeout'] = registry_scan_timeout
     __args__['scannerNames'] = scanner_names
     __args__['scannerType'] = scanner_type
+    __args__['webhooks'] = webhooks
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getIntegrationRegistry:getIntegrationRegistry', __args__, opts=opts, typ=GetIntegrationRegistryResult).value
 
     return AwaitableGetIntegrationRegistryResult(
-        auto_cleanup=__ret__.auto_cleanup,
-        auto_pull=__ret__.auto_pull,
-        auto_pull_interval=__ret__.auto_pull_interval,
-        auto_pull_max=__ret__.auto_pull_max,
-        auto_pull_rescan=__ret__.auto_pull_rescan,
-        auto_pull_time=__ret__.auto_pull_time,
-        description=__ret__.description,
-        id=__ret__.id,
-        image_creation_date_condition=__ret__.image_creation_date_condition,
-        name=__ret__.name,
-        password=__ret__.password,
-        prefixes=__ret__.prefixes,
-        pull_image_age=__ret__.pull_image_age,
-        pull_image_count=__ret__.pull_image_count,
-        scanner_names=__ret__.scanner_names,
-        scanner_type=__ret__.scanner_type,
-        type=__ret__.type,
-        url=__ret__.url,
-        username=__ret__.username)
+        advanced_settings_cleanup=pulumi.get(__ret__, 'advanced_settings_cleanup'),
+        always_pull_patterns=pulumi.get(__ret__, 'always_pull_patterns'),
+        auto_cleanup=pulumi.get(__ret__, 'auto_cleanup'),
+        auto_pull=pulumi.get(__ret__, 'auto_pull'),
+        auto_pull_interval=pulumi.get(__ret__, 'auto_pull_interval'),
+        auto_pull_max=pulumi.get(__ret__, 'auto_pull_max'),
+        auto_pull_rescan=pulumi.get(__ret__, 'auto_pull_rescan'),
+        auto_pull_time=pulumi.get(__ret__, 'auto_pull_time'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        image_creation_date_condition=pulumi.get(__ret__, 'image_creation_date_condition'),
+        lastupdate=pulumi.get(__ret__, 'lastupdate'),
+        name=pulumi.get(__ret__, 'name'),
+        options=pulumi.get(__ret__, 'options'),
+        password=pulumi.get(__ret__, 'password'),
+        prefixes=pulumi.get(__ret__, 'prefixes'),
+        pull_image_age=pulumi.get(__ret__, 'pull_image_age'),
+        pull_image_count=pulumi.get(__ret__, 'pull_image_count'),
+        pull_image_tag_patterns=pulumi.get(__ret__, 'pull_image_tag_patterns'),
+        pull_repo_patterns_excludeds=pulumi.get(__ret__, 'pull_repo_patterns_excludeds'),
+        registry_scan_timeout=pulumi.get(__ret__, 'registry_scan_timeout'),
+        scanner_names=pulumi.get(__ret__, 'scanner_names'),
+        scanner_type=pulumi.get(__ret__, 'scanner_type'),
+        type=pulumi.get(__ret__, 'type'),
+        url=pulumi.get(__ret__, 'url'),
+        username=pulumi.get(__ret__, 'username'),
+        webhooks=pulumi.get(__ret__, 'webhooks'))
 
 
 @_utilities.lift_output_func(get_integration_registry)
-def get_integration_registry_output(image_creation_date_condition: Optional[pulumi.Input[Optional[str]]] = None,
+def get_integration_registry_output(advanced_settings_cleanup: Optional[pulumi.Input[Optional[bool]]] = None,
+                                    always_pull_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    image_creation_date_condition: Optional[pulumi.Input[Optional[str]]] = None,
+                                    lastupdate: Optional[pulumi.Input[Optional[int]]] = None,
                                     name: Optional[pulumi.Input[str]] = None,
+                                    options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIntegrationRegistryOptionArgs']]]]] = None,
                                     pull_image_age: Optional[pulumi.Input[Optional[str]]] = None,
                                     pull_image_count: Optional[pulumi.Input[Optional[int]]] = None,
+                                    pull_image_tag_patterns: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    pull_repo_patterns_excludeds: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                    registry_scan_timeout: Optional[pulumi.Input[Optional[int]]] = None,
                                     scanner_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     scanner_type: Optional[pulumi.Input[Optional[str]]] = None,
+                                    webhooks: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetIntegrationRegistryWebhookArgs']]]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIntegrationRegistryResult]:
     """
     Use this data source to access information about an existing resource.
 
+    :param bool advanced_settings_cleanup: Automatically clean up that don't match the pull criteria
+    :param Sequence[str] always_pull_patterns: List of image patterns to pull always
     :param str image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
+    :param int lastupdate: The last time the registry was modified in UNIX time
     :param str name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
     :param str pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images
     :param int pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
+    :param Sequence[str] pull_image_tag_patterns: List of image tags patterns to pull
+    :param Sequence[str] pull_repo_patterns_excludeds: List of image patterns to exclude
+    :param int registry_scan_timeout: Registry scan timeout in Minutes
     :param Sequence[str] scanner_names: List of scanner names
     :param str scanner_type: Scanner type
+    :param Sequence[pulumi.InputType['GetIntegrationRegistryWebhookArgs']] webhooks: When enabled, registry events are sent to the given Aqua webhook url
     """
     ...

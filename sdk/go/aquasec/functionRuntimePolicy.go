@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -112,7 +114,7 @@ func NewFunctionRuntimePolicy(ctx *pulumi.Context,
 		"honeypotSecretKey",
 	})
 	opts = append(opts, secrets)
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FunctionRuntimePolicy
 	err := ctx.RegisterResource("aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -298,6 +300,12 @@ func (i *FunctionRuntimePolicy) ToFunctionRuntimePolicyOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionRuntimePolicyOutput)
 }
 
+func (i *FunctionRuntimePolicy) ToOutput(ctx context.Context) pulumix.Output[*FunctionRuntimePolicy] {
+	return pulumix.Output[*FunctionRuntimePolicy]{
+		OutputState: i.ToFunctionRuntimePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FunctionRuntimePolicyArrayInput is an input type that accepts FunctionRuntimePolicyArray and FunctionRuntimePolicyArrayOutput values.
 // You can construct a concrete instance of `FunctionRuntimePolicyArrayInput` via:
 //
@@ -321,6 +329,12 @@ func (i FunctionRuntimePolicyArray) ToFunctionRuntimePolicyArrayOutput() Functio
 
 func (i FunctionRuntimePolicyArray) ToFunctionRuntimePolicyArrayOutputWithContext(ctx context.Context) FunctionRuntimePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionRuntimePolicyArrayOutput)
+}
+
+func (i FunctionRuntimePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionRuntimePolicy] {
+	return pulumix.Output[[]*FunctionRuntimePolicy]{
+		OutputState: i.ToFunctionRuntimePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FunctionRuntimePolicyMapInput is an input type that accepts FunctionRuntimePolicyMap and FunctionRuntimePolicyMapOutput values.
@@ -348,6 +362,12 @@ func (i FunctionRuntimePolicyMap) ToFunctionRuntimePolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionRuntimePolicyMapOutput)
 }
 
+func (i FunctionRuntimePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionRuntimePolicy] {
+	return pulumix.Output[map[string]*FunctionRuntimePolicy]{
+		OutputState: i.ToFunctionRuntimePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FunctionRuntimePolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionRuntimePolicyOutput) ElementType() reflect.Type {
@@ -360,6 +380,12 @@ func (o FunctionRuntimePolicyOutput) ToFunctionRuntimePolicyOutput() FunctionRun
 
 func (o FunctionRuntimePolicyOutput) ToFunctionRuntimePolicyOutputWithContext(ctx context.Context) FunctionRuntimePolicyOutput {
 	return o
+}
+
+func (o FunctionRuntimePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionRuntimePolicy] {
+	return pulumix.Output[*FunctionRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Indicates the application scope of the service.
@@ -458,6 +484,12 @@ func (o FunctionRuntimePolicyArrayOutput) ToFunctionRuntimePolicyArrayOutputWith
 	return o
 }
 
+func (o FunctionRuntimePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionRuntimePolicy] {
+	return pulumix.Output[[]*FunctionRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FunctionRuntimePolicyArrayOutput) Index(i pulumi.IntInput) FunctionRuntimePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FunctionRuntimePolicy {
 		return vs[0].([]*FunctionRuntimePolicy)[vs[1].(int)]
@@ -476,6 +508,12 @@ func (o FunctionRuntimePolicyMapOutput) ToFunctionRuntimePolicyMapOutput() Funct
 
 func (o FunctionRuntimePolicyMapOutput) ToFunctionRuntimePolicyMapOutputWithContext(ctx context.Context) FunctionRuntimePolicyMapOutput {
 	return o
+}
+
+func (o FunctionRuntimePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionRuntimePolicy] {
+	return pulumix.Output[map[string]*FunctionRuntimePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FunctionRuntimePolicyMapOutput) MapIndex(k pulumi.StringInput) FunctionRuntimePolicyOutput {

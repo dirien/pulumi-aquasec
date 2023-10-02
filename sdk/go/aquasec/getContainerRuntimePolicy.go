@@ -8,6 +8,8 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -37,7 +39,7 @@ import (
 //
 // ```
 func LookupContainerRuntimePolicy(ctx *pulumi.Context, args *LookupContainerRuntimePolicyArgs, opts ...pulumi.InvokeOption) (*LookupContainerRuntimePolicyResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupContainerRuntimePolicyResult
 	err := ctx.Invoke("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args, &rv, opts...)
 	if err != nil {
@@ -204,6 +206,12 @@ func (o LookupContainerRuntimePolicyResultOutput) ToLookupContainerRuntimePolicy
 
 func (o LookupContainerRuntimePolicyResultOutput) ToLookupContainerRuntimePolicyResultOutputWithContext(ctx context.Context) LookupContainerRuntimePolicyResultOutput {
 	return o
+}
+
+func (o LookupContainerRuntimePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRuntimePolicyResult] {
+	return pulumix.Output[LookupContainerRuntimePolicyResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of executables that are allowed for the user.

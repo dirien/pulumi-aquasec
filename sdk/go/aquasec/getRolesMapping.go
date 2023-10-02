@@ -5,6 +5,7 @@ package aquasec
 
 import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 // ## Example Usage
@@ -33,7 +34,7 @@ import (
 //
 // ```
 func GetRolesMapping(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRolesMappingResult, error) {
-	opts = pkgInvokeDefaultOpts(opts)
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRolesMappingResult
 	err := ctx.Invoke("aquasec:index/getRolesMapping:getRolesMapping", nil, &rv, opts...)
 	if err != nil {

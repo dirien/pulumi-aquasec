@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const testpermissionsset = aquasec.getPermissionsSets({});
  * export const permissionsSets = testpermissionsset;
- * export const permissionsSetsNames = [testpermissionsset].map(__item => [__item.then(obj => obj.permissionsSets)].map(__item => __item?.name));
+ * export const permissionsSetsNames = [testpermissionsset].map(__item => _arg0_.permissionsSets.map(__item => __item.name));
  * ```
  */
 export function getPermissionsSets(opts?: pulumi.InvokeOptions): Promise<GetPermissionsSetsResult> {
@@ -36,4 +36,21 @@ export interface GetPermissionsSetsResult {
      */
     readonly id: string;
     readonly permissionsSets: outputs.GetPermissionsSetsPermissionsSet[];
+}
+/**
+ * The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const testpermissionsset = aquasec.getPermissionsSets({});
+ * export const permissionsSets = testpermissionsset;
+ * export const permissionsSetsNames = [testpermissionsset].map(__item => _arg0_.permissionsSets.map(__item => __item.name));
+ * ```
+ */
+export function getPermissionsSetsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionsSetsResult> {
+    return pulumi.output(getPermissionsSets(opts))
 }

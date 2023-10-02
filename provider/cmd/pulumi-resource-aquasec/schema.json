@@ -18,25 +18,27 @@
     },
     "language": {
         "csharp": {
-            "compatibility": "tfbridge20",
-            "namespaces": null,
             "packageReferences": {
                 "Pulumi": "3.*"
             },
+            "compatibility": "tfbridge20",
             "rootNamespace": "Pulumiverse"
         },
         "go": {
-            "generateExtraInputTypes": true,
+            "importBasePath": "github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec",
             "generateResourceContainerTypes": true,
-            "importBasePath": "github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
+            "generateExtraInputTypes": true
         },
         "java": {
             "basePackage": "com.pulumiverse",
             "buildFiles": "",
-            "gradleNexusPublishPluginVersion": ""
+            "gradleNexusPublishPluginVersion": "",
+            "gradleTest": ""
         },
         "nodejs": {
-            "compatibility": "tfbridge20",
+            "packageName": "@pulumiverse/aquasec",
+            "packageDescription": "A Pulumi package for creating and managing Aquasec cloud resources.",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aquasecurity/terraform-provider-aquasec)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aquasec` repo](https://github.com/pulumiverse/pulumi-aquasec/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aquasec` repo](https://github.com/aquasecurity/terraform-provider-aquasec/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -44,19 +46,17 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^10.0.0"
             },
-            "disableUnionOutputTypes": true,
-            "packageDescription": "A Pulumi package for creating and managing Aquasec cloud resources.",
-            "packageName": "@pulumiverse/aquasec",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aquasecurity/terraform-provider-aquasec)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aquasec` repo](https://github.com/pulumiverse/pulumi-aquasec/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aquasec` repo](https://github.com/aquasecurity/terraform-provider-aquasec/issues).",
-            "typescriptVersion": ""
+            "compatibility": "tfbridge20",
+            "disableUnionOutputTypes": true
         },
         "python": {
-            "compatibility": "tfbridge20",
             "packageName": "pulumiverse_aquasec",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aquasecurity/terraform-provider-aquasec)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aquasec` repo](https://github.com/pulumiverse/pulumi-aquasec/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aquasec` repo](https://github.com/aquasecurity/terraform-provider-aquasec/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
-            }
+            },
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/aquasecurity/terraform-provider-aquasec)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-aquasec` repo](https://github.com/pulumiverse/pulumi-aquasec/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-aquasec` repo](https://github.com/aquasecurity/terraform-provider-aquasec/issues).",
+            "compatibility": "tfbridge20",
+            "pyproject": {}
         }
     },
     "config": {
@@ -2006,6 +2006,32 @@
                 }
             },
             "type": "object"
+        },
+        "aquasec:index/IntegrationRegistryWebhook:IntegrationRegistryWebhook": {
+            "properties": {
+                "authToken": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "unQuarantine": {
+                    "type": "boolean"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL, address or region of the registry\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "unQuarantine"
+                    ]
+                }
+            }
         },
         "aquasec:index/KubernetesAssurancePolicyAutoScanTime:KubernetesAssurancePolicyAutoScanTime": {
             "properties": {
@@ -4743,6 +4769,35 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption": {
+            "properties": {
+                "option": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook": {
+            "properties": {
+                "authToken": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "unQuarantine": {
+                    "type": "boolean"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL, address or region of the registry\n"
+                }
+            },
+            "type": "object"
         },
         "aquasec:index/getKubernetesAssurancePolicyAutoScanTime:getKubernetesAssurancePolicyAutoScanTime": {
             "properties": {
@@ -12061,8 +12116,19 @@
             }
         },
         "aquasec:index/integrationRegistry:IntegrationRegistry": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.IntegrationRegistry;\nimport com.pulumi.aquasec.IntegrationRegistryArgs;\nimport com.pulumi.aquasec.inputs.IntegrationRegistryOptionArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var integrationRegistry = new IntegrationRegistry(\"integrationRegistry\", IntegrationRegistryArgs.builder()        \n            .type(\"AWS\")\n            .advancedSettingsCleanup(false)\n            .alwaysPullPatterns()\n            .author(\"aqua@aquasec.com\")\n            .autoCleanup(false)\n            .autoPull(true)\n            .autoPullInterval(1)\n            .autoPullLatestXffEnabled(false)\n            .autoPullMax(100)\n            .autoPullRescan(false)\n            .autoPullTime(\"08:45\")\n            .description(\"Automatically discovered registry\")\n            .detectedType(4)\n            .imageCreationDateCondition(\"image_count\")\n            .options(            \n                IntegrationRegistryOptionArgs.builder()\n                    .option(\"ARNRole\")\n                    .value(\"arn:aws:iam::000000000000:role/aqua-AAAAABBBBCCCDDD-EEEEFFFFGGGG\")\n                    .build(),\n                IntegrationRegistryOptionArgs.builder()\n                    .option(\"TestImagePull\")\n                    .build(),\n                IntegrationRegistryOptionArgs.builder()\n                    .option(\"sts:ExternalId\")\n                    .value(\"00000e2a-5353-4ddd-bbbb-ccc\")\n                    .build())\n            .permission(\"\")\n            .prefixes(\"111111111111.dkr.ecr.us-east-1.amazonaws.com\")\n            .pullImageAge(\"0D\")\n            .pullImageCount(3)\n            .pullImageTagPattern()\n            .pullMaxTags(0)\n            .pullRepoPatterns(null)\n            .pullRepoPatternsExcluded()\n            .pullTagPatterns(null)\n            .registriesType(\"cloud\")\n            .registryScanTimeout(0)\n            .scannerNames(            \n                \"aqua-scanner-222222-cl9qx\",\n                \"aqua-scanner-111111-fstrc\",\n                \"513882222222\")\n            .scannerType(\"specific\")\n            .url(\"ap-northeast-1\")\n            .username(\"\")\n            .webhook(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  integrationRegistry:\n    type: aquasec:IntegrationRegistry\n    properties:\n      type: AWS\n      advancedSettingsCleanup: false\n      alwaysPullPatterns: []\n      author: aqua@aquasec.com\n      autoCleanup: false\n      autoPull: true\n      autoPullInterval: 1\n      autoPullLatestXffEnabled: false\n      autoPullMax: 100\n      autoPullRescan: false\n      autoPullTime: 08:45\n      description: Automatically discovered registry\n      detectedType: 4\n      imageCreationDateCondition: image_count\n      options:\n        - option: ARNRole\n          value: arn:aws:iam::000000000000:role/aqua-AAAAABBBBCCCDDD-EEEEFFFFGGGG\n        - option: TestImagePull\n        - option: sts:ExternalId\n          value: 00000e2a-5353-4ddd-bbbb-ccc\n      permission:\n      prefixes:\n        - 111111111111.dkr.ecr.us-east-1.amazonaws.com\n      pullImageAge: 0D\n      pullImageCount: 3\n      pullImageTagPattern: []\n      pullMaxTags: 0\n      pullRepoPatterns: null\n      pullRepoPatternsExcluded: []\n      pullTagPatterns: null\n      registriesType: cloud\n      registryScanTimeout: 0\n      scannerNames:\n        - aqua-scanner-222222-cl9qx\n        - aqua-scanner-111111-fstrc\n        - '513882222222'\n      scannerType: specific\n      url: ap-northeast-1\n      username:\n      webhook:\n        - authToken:\n          enabled: false\n          unQuarantine: false\n          url:\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumiverse/aquasec\";\n\nconst integrationRegistry = new aquasec.IntegrationRegistry(\"integrationRegistry\", {\n    advancedSettingsCleanup: false,\n    alwaysPullPatterns: [\n        \":latest\",\n        \":v1\",\n    ],\n    author: \"aqua@aquasec.com\",\n    autoCleanup: false,\n    autoPull: true,\n    autoPullInterval: 1,\n    autoPullMax: 100,\n    autoPullRescan: false,\n    autoPullTime: \"08:45\",\n    description: \"Automatically discovered registry\",\n    imageCreationDateCondition: \"image_count\",\n    options: [\n        {\n            option: \"ARNRole\",\n            value: \"arn:aws:iam::111111111111:role/terraform\",\n        },\n        {\n            option: \"sts:ExternalId\",\n            value: \"test1-test2-test3\",\n        },\n        {\n            option: \"TestImagePull\",\n            value: \"nginx:latest\",\n        },\n    ],\n    prefixes: [\"111111111111.dkr.ecr.us-east-1.amazonaws.com\"],\n    pullImageAge: \"0D\",\n    pullImageCount: 3,\n    pullImageTagPatterns: [\n        \":Latest\",\n        \":latest\",\n    ],\n    pullRepoPatternsExcludeds: [\n        \":xyz\",\n        \":onlytest\",\n    ],\n    scannerNames: [\n        \"aqua-scanner-645f867c4f-4sbtj\",\n        \"aqua-scanner-645f867c4f-8pkdd\",\n    ],\n    scannerType: \"specific\",\n    type: \"AWS\",\n    url: \"us-east-1\",\n    username: \"\",\n    webhooks: [{\n        authToken: \"test1-test2-test3\",\n        enabled: true,\n        unQuarantine: false,\n        url: \"https://aquasec.com/\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumiverse_aquasec as aquasec\n\nintegration_registry = aquasec.IntegrationRegistry(\"integrationRegistry\",\n    advanced_settings_cleanup=False,\n    always_pull_patterns=[\n        \":latest\",\n        \":v1\",\n    ],\n    author=\"aqua@aquasec.com\",\n    auto_cleanup=False,\n    auto_pull=True,\n    auto_pull_interval=1,\n    auto_pull_max=100,\n    auto_pull_rescan=False,\n    auto_pull_time=\"08:45\",\n    description=\"Automatically discovered registry\",\n    image_creation_date_condition=\"image_count\",\n    options=[\n        aquasec.IntegrationRegistryOptionArgs(\n            option=\"ARNRole\",\n            value=\"arn:aws:iam::111111111111:role/terraform\",\n        ),\n        aquasec.IntegrationRegistryOptionArgs(\n            option=\"sts:ExternalId\",\n            value=\"test1-test2-test3\",\n        ),\n        aquasec.IntegrationRegistryOptionArgs(\n            option=\"TestImagePull\",\n            value=\"nginx:latest\",\n        ),\n    ],\n    prefixes=[\"111111111111.dkr.ecr.us-east-1.amazonaws.com\"],\n    pull_image_age=\"0D\",\n    pull_image_count=3,\n    pull_image_tag_patterns=[\n        \":Latest\",\n        \":latest\",\n    ],\n    pull_repo_patterns_excludeds=[\n        \":xyz\",\n        \":onlytest\",\n    ],\n    scanner_names=[\n        \"aqua-scanner-645f867c4f-4sbtj\",\n        \"aqua-scanner-645f867c4f-8pkdd\",\n    ],\n    scanner_type=\"specific\",\n    type=\"AWS\",\n    url=\"us-east-1\",\n    username=\"\",\n    webhooks=[aquasec.IntegrationRegistryWebhookArgs(\n        auth_token=\"test1-test2-test3\",\n        enabled=True,\n        un_quarantine=False,\n        url=\"https://aquasec.com/\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aquasec = Pulumiverse.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var integrationRegistry = new Aquasec.IntegrationRegistry(\"integrationRegistry\", new()\n    {\n        AdvancedSettingsCleanup = false,\n        AlwaysPullPatterns = new[]\n        {\n            \":latest\",\n            \":v1\",\n        },\n        Author = \"aqua@aquasec.com\",\n        AutoCleanup = false,\n        AutoPull = true,\n        AutoPullInterval = 1,\n        AutoPullMax = 100,\n        AutoPullRescan = false,\n        AutoPullTime = \"08:45\",\n        Description = \"Automatically discovered registry\",\n        ImageCreationDateCondition = \"image_count\",\n        Options = new[]\n        {\n            new Aquasec.Inputs.IntegrationRegistryOptionArgs\n            {\n                Option = \"ARNRole\",\n                Value = \"arn:aws:iam::111111111111:role/terraform\",\n            },\n            new Aquasec.Inputs.IntegrationRegistryOptionArgs\n            {\n                Option = \"sts:ExternalId\",\n                Value = \"test1-test2-test3\",\n            },\n            new Aquasec.Inputs.IntegrationRegistryOptionArgs\n            {\n                Option = \"TestImagePull\",\n                Value = \"nginx:latest\",\n            },\n        },\n        Prefixes = new[]\n        {\n            \"111111111111.dkr.ecr.us-east-1.amazonaws.com\",\n        },\n        PullImageAge = \"0D\",\n        PullImageCount = 3,\n        PullImageTagPatterns = new[]\n        {\n            \":Latest\",\n            \":latest\",\n        },\n        PullRepoPatternsExcludeds = new[]\n        {\n            \":xyz\",\n            \":onlytest\",\n        },\n        ScannerNames = new[]\n        {\n            \"aqua-scanner-645f867c4f-4sbtj\",\n            \"aqua-scanner-645f867c4f-8pkdd\",\n        },\n        ScannerType = \"specific\",\n        Type = \"AWS\",\n        Url = \"us-east-1\",\n        Username = \"\",\n        Webhooks = new[]\n        {\n            new Aquasec.Inputs.IntegrationRegistryWebhookArgs\n            {\n                AuthToken = \"test1-test2-test3\",\n                Enabled = true,\n                UnQuarantine = false,\n                Url = \"https://aquasec.com/\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aquasec.NewIntegrationRegistry(ctx, \"integrationRegistry\", \u0026aquasec.IntegrationRegistryArgs{\n\t\t\tAdvancedSettingsCleanup: pulumi.Bool(false),\n\t\t\tAlwaysPullPatterns: pulumi.StringArray{\n\t\t\t\tpulumi.String(\":latest\"),\n\t\t\t\tpulumi.String(\":v1\"),\n\t\t\t},\n\t\t\tAuthor:                     pulumi.String(\"aqua@aquasec.com\"),\n\t\t\tAutoCleanup:                pulumi.Bool(false),\n\t\t\tAutoPull:                   pulumi.Bool(true),\n\t\t\tAutoPullInterval:           pulumi.Int(1),\n\t\t\tAutoPullMax:                pulumi.Int(100),\n\t\t\tAutoPullRescan:             pulumi.Bool(false),\n\t\t\tAutoPullTime:               pulumi.String(\"08:45\"),\n\t\t\tDescription:                pulumi.String(\"Automatically discovered registry\"),\n\t\t\tImageCreationDateCondition: pulumi.String(\"image_count\"),\n\t\t\tOptions: aquasec.IntegrationRegistryOptionArray{\n\t\t\t\t\u0026aquasec.IntegrationRegistryOptionArgs{\n\t\t\t\t\tOption: pulumi.String(\"ARNRole\"),\n\t\t\t\t\tValue:  pulumi.String(\"arn:aws:iam::111111111111:role/terraform\"),\n\t\t\t\t},\n\t\t\t\t\u0026aquasec.IntegrationRegistryOptionArgs{\n\t\t\t\t\tOption: pulumi.String(\"sts:ExternalId\"),\n\t\t\t\t\tValue:  pulumi.String(\"test1-test2-test3\"),\n\t\t\t\t},\n\t\t\t\t\u0026aquasec.IntegrationRegistryOptionArgs{\n\t\t\t\t\tOption: pulumi.String(\"TestImagePull\"),\n\t\t\t\t\tValue:  pulumi.String(\"nginx:latest\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tPrefixes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"111111111111.dkr.ecr.us-east-1.amazonaws.com\"),\n\t\t\t},\n\t\t\tPullImageAge:   pulumi.String(\"0D\"),\n\t\t\tPullImageCount: pulumi.Int(3),\n\t\t\tPullImageTagPatterns: pulumi.StringArray{\n\t\t\t\tpulumi.String(\":Latest\"),\n\t\t\t\tpulumi.String(\":latest\"),\n\t\t\t},\n\t\t\tPullRepoPatternsExcludeds: pulumi.StringArray{\n\t\t\t\tpulumi.String(\":xyz\"),\n\t\t\t\tpulumi.String(\":onlytest\"),\n\t\t\t},\n\t\t\tScannerNames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"aqua-scanner-645f867c4f-4sbtj\"),\n\t\t\t\tpulumi.String(\"aqua-scanner-645f867c4f-8pkdd\"),\n\t\t\t},\n\t\t\tScannerType: pulumi.String(\"specific\"),\n\t\t\tType:        pulumi.String(\"AWS\"),\n\t\t\tUrl:         pulumi.String(\"us-east-1\"),\n\t\t\tUsername:    pulumi.String(\"\"),\n\t\t\tWebhooks: aquasec.IntegrationRegistryWebhookArray{\n\t\t\t\t\u0026aquasec.IntegrationRegistryWebhookArgs{\n\t\t\t\t\tAuthToken:    pulumi.String(\"test1-test2-test3\"),\n\t\t\t\t\tEnabled:      pulumi.Bool(true),\n\t\t\t\t\tUnQuarantine: pulumi.Bool(false),\n\t\t\t\t\tUrl:          pulumi.String(\"https://aquasec.com/\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.IntegrationRegistry;\nimport com.pulumi.aquasec.IntegrationRegistryArgs;\nimport com.pulumi.aquasec.inputs.IntegrationRegistryOptionArgs;\nimport com.pulumi.aquasec.inputs.IntegrationRegistryWebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var integrationRegistry = new IntegrationRegistry(\"integrationRegistry\", IntegrationRegistryArgs.builder()        \n            .advancedSettingsCleanup(false)\n            .alwaysPullPatterns(            \n                \":latest\",\n                \":v1\")\n            .author(\"aqua@aquasec.com\")\n            .autoCleanup(false)\n            .autoPull(true)\n            .autoPullInterval(1)\n            .autoPullMax(100)\n            .autoPullRescan(false)\n            .autoPullTime(\"08:45\")\n            .description(\"Automatically discovered registry\")\n            .imageCreationDateCondition(\"image_count\")\n            .options(            \n                IntegrationRegistryOptionArgs.builder()\n                    .option(\"ARNRole\")\n                    .value(\"arn:aws:iam::111111111111:role/terraform\")\n                    .build(),\n                IntegrationRegistryOptionArgs.builder()\n                    .option(\"sts:ExternalId\")\n                    .value(\"test1-test2-test3\")\n                    .build(),\n                IntegrationRegistryOptionArgs.builder()\n                    .option(\"TestImagePull\")\n                    .value(\"nginx:latest\")\n                    .build())\n            .prefixes(\"111111111111.dkr.ecr.us-east-1.amazonaws.com\")\n            .pullImageAge(\"0D\")\n            .pullImageCount(3)\n            .pullImageTagPatterns(            \n                \":Latest\",\n                \":latest\")\n            .pullRepoPatternsExcludeds(            \n                \":xyz\",\n                \":onlytest\")\n            .scannerNames(            \n                \"aqua-scanner-645f867c4f-4sbtj\",\n                \"aqua-scanner-645f867c4f-8pkdd\")\n            .scannerType(\"specific\")\n            .type(\"AWS\")\n            .url(\"us-east-1\")\n            .username(\"\")\n            .webhooks(IntegrationRegistryWebhookArgs.builder()\n                .authToken(\"test1-test2-test3\")\n                .enabled(true)\n                .unQuarantine(false)\n                .url(\"https://aquasec.com/\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  integrationRegistry:\n    type: aquasec:IntegrationRegistry\n    properties:\n      advancedSettingsCleanup: false\n      alwaysPullPatterns:\n        - :latest\n        - :v1\n      author: aqua@aquasec.com\n      autoCleanup: false\n      autoPull: true\n      autoPullInterval: 1\n      autoPullMax: 100\n      autoPullRescan: false\n      autoPullTime: 08:45\n      description: Automatically discovered registry\n      imageCreationDateCondition: image_count\n      options:\n        - option: ARNRole\n          value: arn:aws:iam::111111111111:role/terraform\n        - option: sts:ExternalId\n          value: test1-test2-test3\n        - option: TestImagePull\n          value: nginx:latest\n      prefixes:\n        - 111111111111.dkr.ecr.us-east-1.amazonaws.com\n      pullImageAge: 0D\n      pullImageCount: 3\n      pullImageTagPatterns:\n        - :Latest\n        - :latest\n      pullRepoPatternsExcludeds:\n        - :xyz\n        - :onlytest\n      scannerNames:\n        - aqua-scanner-645f867c4f-4sbtj\n        - aqua-scanner-645f867c4f-8pkdd\n      scannerType: specific\n      type: AWS\n      url: us-east-1\n      username:\n      webhooks:\n        - authToken: test1-test2-test3\n          enabled: true\n          unQuarantine: false\n          url: https://aquasec.com/\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "advancedSettingsCleanup": {
+                    "type": "boolean",
+                    "description": "Automatically clean up that don't match the pull criteria\n"
+                },
+                "alwaysPullPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of image patterns to pull always\n"
+                },
                 "author": {
                     "type": "string",
                     "description": "The username of the user who created or last modified the registry\n"
@@ -12099,8 +12165,8 @@
                     "type": "string",
                     "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                 },
-                "lastUpdated": {
-                    "type": "string",
+                "lastupdate": {
+                    "type": "integer",
                     "description": "The last time the registry was modified in UNIX time\n"
                 },
                 "name": {
@@ -12132,6 +12198,24 @@
                     "type": "integer",
                     "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = \"image_count\"`\n"
                 },
+                "pullImageTagPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of image tags patterns to pull\n"
+                },
+                "pullRepoPatternsExcludeds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of image patterns to exclude\n"
+                },
+                "registryScanTimeout": {
+                    "type": "integer",
+                    "description": "Registry scan timeout in Minutes\n"
+                },
                 "scannerNames": {
                     "type": "array",
                     "items": {
@@ -12154,21 +12238,40 @@
                 "username": {
                     "type": "string",
                     "description": "The username for registry authentication.\n"
+                },
+                "webhooks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/IntegrationRegistryWebhook:IntegrationRegistryWebhook"
+                    },
+                    "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
                 }
             },
             "required": [
                 "author",
                 "imageCreationDateCondition",
-                "lastUpdated",
+                "lastupdate",
                 "name",
                 "prefixes",
                 "pullImageAge",
                 "pullImageCount",
                 "scannerType",
                 "type",
-                "url"
+                "url",
+                "webhooks"
             ],
             "inputProperties": {
+                "advancedSettingsCleanup": {
+                    "type": "boolean",
+                    "description": "Automatically clean up that don't match the pull criteria\n"
+                },
+                "alwaysPullPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of image patterns to pull always\n"
+                },
                 "author": {
                     "type": "string",
                     "description": "The username of the user who created or last modified the registry\n"
@@ -12205,8 +12308,8 @@
                     "type": "string",
                     "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                 },
-                "lastUpdated": {
-                    "type": "string",
+                "lastupdate": {
+                    "type": "integer",
                     "description": "The last time the registry was modified in UNIX time\n"
                 },
                 "name": {
@@ -12239,6 +12342,24 @@
                     "type": "integer",
                     "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = \"image_count\"`\n"
                 },
+                "pullImageTagPatterns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of image tags patterns to pull\n"
+                },
+                "pullRepoPatternsExcludeds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of image patterns to exclude\n"
+                },
+                "registryScanTimeout": {
+                    "type": "integer",
+                    "description": "Registry scan timeout in Minutes\n"
+                },
                 "scannerNames": {
                     "type": "array",
                     "items": {
@@ -12261,6 +12382,13 @@
                 "username": {
                     "type": "string",
                     "description": "The username for registry authentication.\n"
+                },
+                "webhooks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aquasec:index/IntegrationRegistryWebhook:IntegrationRegistryWebhook"
+                    },
+                    "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
                 }
             },
             "requiredInputs": [
@@ -12269,6 +12397,17 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering IntegrationRegistry resources.\n",
                 "properties": {
+                    "advancedSettingsCleanup": {
+                        "type": "boolean",
+                        "description": "Automatically clean up that don't match the pull criteria\n"
+                    },
+                    "alwaysPullPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image patterns to pull always\n"
+                    },
                     "author": {
                         "type": "string",
                         "description": "The username of the user who created or last modified the registry\n"
@@ -12305,8 +12444,8 @@
                         "type": "string",
                         "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                     },
-                    "lastUpdated": {
-                        "type": "string",
+                    "lastupdate": {
+                        "type": "integer",
                         "description": "The last time the registry was modified in UNIX time\n"
                     },
                     "name": {
@@ -12339,6 +12478,24 @@
                         "type": "integer",
                         "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository (based on image creation date) Requires `image_creation_date_condition = \"image_count\"`\n"
                     },
+                    "pullImageTagPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image tags patterns to pull\n"
+                    },
+                    "pullRepoPatternsExcludeds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image patterns to exclude\n"
+                    },
+                    "registryScanTimeout": {
+                        "type": "integer",
+                        "description": "Registry scan timeout in Minutes\n"
+                    },
                     "scannerNames": {
                         "type": "array",
                         "items": {
@@ -12361,6 +12518,13 @@
                     "username": {
                         "type": "string",
                         "description": "The username for registry authentication.\n"
+                    },
+                    "webhooks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/IntegrationRegistryWebhook:IntegrationRegistryWebhook"
+                        },
+                        "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
                     }
                 },
                 "type": "object"
@@ -13578,7 +13742,7 @@
             }
         },
         "aquasec:index/permissionsSets:PermissionsSets": {
-            "description": "The `aquasec.PermissionsSets` resource manages your Permission Set within Aqua.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.PermissionsSets;\nimport com.pulumi.aquasec.PermissionsSetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTerraformPermSet = new PermissionsSets(\"myTerraformPermSet\", PermissionsSetsArgs.builder()        \n            .actions(            \n                \"acl_policies.read\",\n                \"acl_policies.write\",\n                \"image_profiles.read\",\n                \"image_profiles.write\",\n                \"network_policies.read\",\n                \"network_policies.write\",\n                \"runtime_policies.read\",\n                \"runtime_policies.write\",\n                \"response_policies.read\",\n                \"response_policies.write\",\n                \"image_assurance.read\",\n                \"image_assurance.write\",\n                \"dashboard.read\",\n                \"dashboard.write\",\n                \"risk_explorer.read\",\n                \"images.read\",\n                \"images.write\",\n                \"risks.host_images.read\",\n                \"risks.host_images.write\",\n                \"functions.read\",\n                \"functions.write\",\n                \"enforcers.read\",\n                \"enforcers.write\",\n                \"containers.read\",\n                \"services.read\",\n                \"services.write\",\n                \"infrastructure.read\",\n                \"infrastructure.write\",\n                \"risks.vulnerabilities.read\",\n                \"risks.vulnerabilities.write\",\n                \"risks.benchmark.read\",\n                \"risks.benchmark.write\",\n                \"audits.read\",\n                \"secrets.read\",\n                \"secrets.write\",\n                \"settings.read\",\n                \"settings.write\",\n                \"integrations.read\",\n                \"integrations.write\",\n                \"registries_integrations.read\",\n                \"registries_integrations.write\",\n                \"scan.read\",\n                \"gateways.read\",\n                \"gateways.write\",\n                \"consoles.read\",\n                \"web_hook.read\",\n                \"incidents.read\")\n            .author(\"system\")\n            .description(\"Test Permissions Sets created by Terraform\")\n            .isSuper(false)\n            .uiAccess(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTerraformPermSet:\n    type: aquasec:PermissionsSets\n    properties:\n      actions:\n        - acl_policies.read\n        - acl_policies.write\n        - image_profiles.read\n        - image_profiles.write\n        - network_policies.read\n        - network_policies.write\n        - runtime_policies.read\n        - runtime_policies.write\n        - response_policies.read\n        - response_policies.write\n        - image_assurance.read\n        - image_assurance.write\n        - dashboard.read\n        - dashboard.write\n        - risk_explorer.read\n        - images.read\n        - images.write\n        - risks.host_images.read\n        - risks.host_images.write\n        - functions.read\n        - functions.write\n        - enforcers.read\n        - enforcers.write\n        - containers.read\n        - services.read\n        - services.write\n        - infrastructure.read\n        - infrastructure.write\n        - risks.vulnerabilities.read\n        - risks.vulnerabilities.write\n        - risks.benchmark.read\n        - risks.benchmark.write\n        - audits.read\n        - secrets.read\n        - secrets.write\n        - settings.read\n        - settings.write\n        - integrations.read\n        - integrations.write\n        - registries_integrations.read\n        - registries_integrations.write\n        - scan.read\n        - gateways.read\n        - gateways.write\n        - consoles.read\n        - web_hook.read\n        - incidents.read\n      author: system\n      description: Test Permissions Sets created by Terraform\n      isSuper: false\n      uiAccess: true\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The `aquasec.PermissionsSets` resource manages your Permission Set within Aqua.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumiverse/aquasec\";\n\nconst myTerraformPermSet = new aquasec.PermissionsSets(\"myTerraformPermSet\", {\n    actions: [\n        \"acl_policies.read\",\n        \"acl_policies.write\",\n        \"image_profiles.read\",\n        \"image_profiles.write\",\n        \"network_policies.read\",\n        \"network_policies.write\",\n        \"runtime_policies.read\",\n        \"runtime_policies.write\",\n        \"response_policies.read\",\n        \"response_policies.write\",\n        \"image_assurance.read\",\n        \"image_assurance.write\",\n        \"dashboard.read\",\n        \"dashboard.write\",\n        \"risk_explorer.read\",\n        \"images.read\",\n        \"images.write\",\n        \"risks.host_images.read\",\n        \"risks.host_images.write\",\n        \"functions.read\",\n        \"functions.write\",\n        \"enforcers.read\",\n        \"enforcers.write\",\n        \"containers.read\",\n        \"services.read\",\n        \"services.write\",\n        \"infrastructure.read\",\n        \"infrastructure.write\",\n        \"risks.vulnerabilities.read\",\n        \"risks.vulnerabilities.write\",\n        \"risks.benchmark.read\",\n        \"risks.benchmark.write\",\n        \"audits.read\",\n        \"secrets.read\",\n        \"secrets.write\",\n        \"settings.read\",\n        \"settings.write\",\n        \"integrations.read\",\n        \"integrations.write\",\n        \"registries_integrations.read\",\n        \"registries_integrations.write\",\n        \"scan.read\",\n        \"gateways.read\",\n        \"gateways.write\",\n        \"consoles.read\",\n        \"web_hook.read\",\n        \"incidents.read\",\n    ],\n    description: \"Test Permissions Sets created by Terraform\",\n    isSuper: false,\n    uiAccess: true,\n});\n```\n```python\nimport pulumi\nimport pulumiverse_aquasec as aquasec\n\nmy_terraform_perm_set = aquasec.PermissionsSets(\"myTerraformPermSet\",\n    actions=[\n        \"acl_policies.read\",\n        \"acl_policies.write\",\n        \"image_profiles.read\",\n        \"image_profiles.write\",\n        \"network_policies.read\",\n        \"network_policies.write\",\n        \"runtime_policies.read\",\n        \"runtime_policies.write\",\n        \"response_policies.read\",\n        \"response_policies.write\",\n        \"image_assurance.read\",\n        \"image_assurance.write\",\n        \"dashboard.read\",\n        \"dashboard.write\",\n        \"risk_explorer.read\",\n        \"images.read\",\n        \"images.write\",\n        \"risks.host_images.read\",\n        \"risks.host_images.write\",\n        \"functions.read\",\n        \"functions.write\",\n        \"enforcers.read\",\n        \"enforcers.write\",\n        \"containers.read\",\n        \"services.read\",\n        \"services.write\",\n        \"infrastructure.read\",\n        \"infrastructure.write\",\n        \"risks.vulnerabilities.read\",\n        \"risks.vulnerabilities.write\",\n        \"risks.benchmark.read\",\n        \"risks.benchmark.write\",\n        \"audits.read\",\n        \"secrets.read\",\n        \"secrets.write\",\n        \"settings.read\",\n        \"settings.write\",\n        \"integrations.read\",\n        \"integrations.write\",\n        \"registries_integrations.read\",\n        \"registries_integrations.write\",\n        \"scan.read\",\n        \"gateways.read\",\n        \"gateways.write\",\n        \"consoles.read\",\n        \"web_hook.read\",\n        \"incidents.read\",\n    ],\n    description=\"Test Permissions Sets created by Terraform\",\n    is_super=False,\n    ui_access=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aquasec = Pulumiverse.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var myTerraformPermSet = new Aquasec.PermissionsSets(\"myTerraformPermSet\", new()\n    {\n        Actions = new[]\n        {\n            \"acl_policies.read\",\n            \"acl_policies.write\",\n            \"image_profiles.read\",\n            \"image_profiles.write\",\n            \"network_policies.read\",\n            \"network_policies.write\",\n            \"runtime_policies.read\",\n            \"runtime_policies.write\",\n            \"response_policies.read\",\n            \"response_policies.write\",\n            \"image_assurance.read\",\n            \"image_assurance.write\",\n            \"dashboard.read\",\n            \"dashboard.write\",\n            \"risk_explorer.read\",\n            \"images.read\",\n            \"images.write\",\n            \"risks.host_images.read\",\n            \"risks.host_images.write\",\n            \"functions.read\",\n            \"functions.write\",\n            \"enforcers.read\",\n            \"enforcers.write\",\n            \"containers.read\",\n            \"services.read\",\n            \"services.write\",\n            \"infrastructure.read\",\n            \"infrastructure.write\",\n            \"risks.vulnerabilities.read\",\n            \"risks.vulnerabilities.write\",\n            \"risks.benchmark.read\",\n            \"risks.benchmark.write\",\n            \"audits.read\",\n            \"secrets.read\",\n            \"secrets.write\",\n            \"settings.read\",\n            \"settings.write\",\n            \"integrations.read\",\n            \"integrations.write\",\n            \"registries_integrations.read\",\n            \"registries_integrations.write\",\n            \"scan.read\",\n            \"gateways.read\",\n            \"gateways.write\",\n            \"consoles.read\",\n            \"web_hook.read\",\n            \"incidents.read\",\n        },\n        Description = \"Test Permissions Sets created by Terraform\",\n        IsSuper = false,\n        UiAccess = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aquasec.NewPermissionsSets(ctx, \"myTerraformPermSet\", \u0026aquasec.PermissionsSetsArgs{\n\t\t\tActions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"acl_policies.read\"),\n\t\t\t\tpulumi.String(\"acl_policies.write\"),\n\t\t\t\tpulumi.String(\"image_profiles.read\"),\n\t\t\t\tpulumi.String(\"image_profiles.write\"),\n\t\t\t\tpulumi.String(\"network_policies.read\"),\n\t\t\t\tpulumi.String(\"network_policies.write\"),\n\t\t\t\tpulumi.String(\"runtime_policies.read\"),\n\t\t\t\tpulumi.String(\"runtime_policies.write\"),\n\t\t\t\tpulumi.String(\"response_policies.read\"),\n\t\t\t\tpulumi.String(\"response_policies.write\"),\n\t\t\t\tpulumi.String(\"image_assurance.read\"),\n\t\t\t\tpulumi.String(\"image_assurance.write\"),\n\t\t\t\tpulumi.String(\"dashboard.read\"),\n\t\t\t\tpulumi.String(\"dashboard.write\"),\n\t\t\t\tpulumi.String(\"risk_explorer.read\"),\n\t\t\t\tpulumi.String(\"images.read\"),\n\t\t\t\tpulumi.String(\"images.write\"),\n\t\t\t\tpulumi.String(\"risks.host_images.read\"),\n\t\t\t\tpulumi.String(\"risks.host_images.write\"),\n\t\t\t\tpulumi.String(\"functions.read\"),\n\t\t\t\tpulumi.String(\"functions.write\"),\n\t\t\t\tpulumi.String(\"enforcers.read\"),\n\t\t\t\tpulumi.String(\"enforcers.write\"),\n\t\t\t\tpulumi.String(\"containers.read\"),\n\t\t\t\tpulumi.String(\"services.read\"),\n\t\t\t\tpulumi.String(\"services.write\"),\n\t\t\t\tpulumi.String(\"infrastructure.read\"),\n\t\t\t\tpulumi.String(\"infrastructure.write\"),\n\t\t\t\tpulumi.String(\"risks.vulnerabilities.read\"),\n\t\t\t\tpulumi.String(\"risks.vulnerabilities.write\"),\n\t\t\t\tpulumi.String(\"risks.benchmark.read\"),\n\t\t\t\tpulumi.String(\"risks.benchmark.write\"),\n\t\t\t\tpulumi.String(\"audits.read\"),\n\t\t\t\tpulumi.String(\"secrets.read\"),\n\t\t\t\tpulumi.String(\"secrets.write\"),\n\t\t\t\tpulumi.String(\"settings.read\"),\n\t\t\t\tpulumi.String(\"settings.write\"),\n\t\t\t\tpulumi.String(\"integrations.read\"),\n\t\t\t\tpulumi.String(\"integrations.write\"),\n\t\t\t\tpulumi.String(\"registries_integrations.read\"),\n\t\t\t\tpulumi.String(\"registries_integrations.write\"),\n\t\t\t\tpulumi.String(\"scan.read\"),\n\t\t\t\tpulumi.String(\"gateways.read\"),\n\t\t\t\tpulumi.String(\"gateways.write\"),\n\t\t\t\tpulumi.String(\"consoles.read\"),\n\t\t\t\tpulumi.String(\"web_hook.read\"),\n\t\t\t\tpulumi.String(\"incidents.read\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Test Permissions Sets created by Terraform\"),\n\t\t\tIsSuper:     pulumi.Bool(false),\n\t\t\tUiAccess:    pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.PermissionsSets;\nimport com.pulumi.aquasec.PermissionsSetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myTerraformPermSet = new PermissionsSets(\"myTerraformPermSet\", PermissionsSetsArgs.builder()        \n            .actions(            \n                \"acl_policies.read\",\n                \"acl_policies.write\",\n                \"image_profiles.read\",\n                \"image_profiles.write\",\n                \"network_policies.read\",\n                \"network_policies.write\",\n                \"runtime_policies.read\",\n                \"runtime_policies.write\",\n                \"response_policies.read\",\n                \"response_policies.write\",\n                \"image_assurance.read\",\n                \"image_assurance.write\",\n                \"dashboard.read\",\n                \"dashboard.write\",\n                \"risk_explorer.read\",\n                \"images.read\",\n                \"images.write\",\n                \"risks.host_images.read\",\n                \"risks.host_images.write\",\n                \"functions.read\",\n                \"functions.write\",\n                \"enforcers.read\",\n                \"enforcers.write\",\n                \"containers.read\",\n                \"services.read\",\n                \"services.write\",\n                \"infrastructure.read\",\n                \"infrastructure.write\",\n                \"risks.vulnerabilities.read\",\n                \"risks.vulnerabilities.write\",\n                \"risks.benchmark.read\",\n                \"risks.benchmark.write\",\n                \"audits.read\",\n                \"secrets.read\",\n                \"secrets.write\",\n                \"settings.read\",\n                \"settings.write\",\n                \"integrations.read\",\n                \"integrations.write\",\n                \"registries_integrations.read\",\n                \"registries_integrations.write\",\n                \"scan.read\",\n                \"gateways.read\",\n                \"gateways.write\",\n                \"consoles.read\",\n                \"web_hook.read\",\n                \"incidents.read\")\n            .description(\"Test Permissions Sets created by Terraform\")\n            .isSuper(false)\n            .uiAccess(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  myTerraformPermSet:\n    type: aquasec:PermissionsSets\n    properties:\n      actions:\n        - acl_policies.read\n        - acl_policies.write\n        - image_profiles.read\n        - image_profiles.write\n        - network_policies.read\n        - network_policies.write\n        - runtime_policies.read\n        - runtime_policies.write\n        - response_policies.read\n        - response_policies.write\n        - image_assurance.read\n        - image_assurance.write\n        - dashboard.read\n        - dashboard.write\n        - risk_explorer.read\n        - images.read\n        - images.write\n        - risks.host_images.read\n        - risks.host_images.write\n        - functions.read\n        - functions.write\n        - enforcers.read\n        - enforcers.write\n        - containers.read\n        - services.read\n        - services.write\n        - infrastructure.read\n        - infrastructure.write\n        - risks.vulnerabilities.read\n        - risks.vulnerabilities.write\n        - risks.benchmark.read\n        - risks.benchmark.write\n        - audits.read\n        - secrets.read\n        - secrets.write\n        - settings.read\n        - settings.write\n        - integrations.read\n        - integrations.write\n        - registries_integrations.read\n        - registries_integrations.write\n        - scan.read\n        - gateways.read\n        - gateways.write\n        - consoles.read\n        - web_hook.read\n        - incidents.read\n      description: Test Permissions Sets created by Terraform\n      isSuper: false\n      uiAccess: true\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "actions": {
                     "type": "array",
@@ -17438,13 +17602,34 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getIntegrationRegistry.\n",
                 "properties": {
+                    "advancedSettingsCleanup": {
+                        "type": "boolean",
+                        "description": "Automatically clean up that don't match the pull criteria\n"
+                    },
+                    "alwaysPullPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image patterns to pull always\n"
+                    },
                     "imageCreationDateCondition": {
                         "type": "string",
                         "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                     },
+                    "lastupdate": {
+                        "type": "integer",
+                        "description": "The last time the registry was modified in UNIX time\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces\n"
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption"
+                        }
                     },
                     "pullImageAge": {
                         "type": "string",
@@ -17453,6 +17638,24 @@
                     "pullImageCount": {
                         "type": "integer",
                         "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.\n"
+                    },
+                    "pullImageTagPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image tags patterns to pull\n"
+                    },
+                    "pullRepoPatternsExcludeds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image patterns to exclude\n"
+                    },
+                    "registryScanTimeout": {
+                        "type": "integer",
+                        "description": "Registry scan timeout in Minutes\n"
                     },
                     "scannerNames": {
                         "type": "array",
@@ -17464,6 +17667,13 @@
                     "scannerType": {
                         "type": "string",
                         "description": "Scanner type\n"
+                    },
+                    "webhooks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook"
+                        },
+                        "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
                     }
                 },
                 "type": "object",
@@ -17474,6 +17684,17 @@
             "outputs": {
                 "description": "A collection of values returned by getIntegrationRegistry.\n",
                 "properties": {
+                    "advancedSettingsCleanup": {
+                        "type": "boolean",
+                        "description": "Automatically clean up that don't match the pull criteria\n"
+                    },
+                    "alwaysPullPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image patterns to pull always\n"
+                    },
                     "autoCleanup": {
                         "type": "boolean",
                         "description": "Automatically clean up images and repositories which are no longer present in the registry from Aqua console\n"
@@ -17510,9 +17731,19 @@
                         "type": "string",
                         "description": "Additional condition for pulling and rescanning images, Defaults to 'none'\n"
                     },
+                    "lastupdate": {
+                        "type": "integer",
+                        "description": "The last time the registry was modified in UNIX time\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces\n"
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption"
+                        }
                     },
                     "password": {
                         "type": "string",
@@ -17532,6 +17763,24 @@
                     "pullImageCount": {
                         "type": "integer",
                         "description": "When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.\n"
+                    },
+                    "pullImageTagPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image tags patterns to pull\n"
+                    },
+                    "pullRepoPatternsExcludeds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of image patterns to exclude\n"
+                    },
+                    "registryScanTimeout": {
+                        "type": "integer",
+                        "description": "Registry scan timeout in Minutes\n"
                     },
                     "scannerNames": {
                         "type": "array",
@@ -17555,6 +17804,13 @@
                     "username": {
                         "type": "string",
                         "description": "The username for registry authentication.\n"
+                    },
+                    "webhooks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook"
+                        },
+                        "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
                     }
                 },
                 "type": "object",
@@ -17567,6 +17823,7 @@
                     "autoPullTime",
                     "description",
                     "imageCreationDateCondition",
+                    "lastupdate",
                     "name",
                     "password",
                     "prefixes",
@@ -18110,7 +18367,7 @@
             }
         },
         "aquasec:index/getPermissionsSets:getPermissionsSets": {
-            "description": "The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumi/aquasec\";\n\nconst testpermissionsset = aquasec.getPermissionsSets({});\nexport const permissionsSets = testpermissionsset;\nexport const permissionsSetsNames = [testpermissionsset].map(__item =\u003e [__item.then(obj =\u003e obj.permissionsSets)].map(__item =\u003e __item?.name));\n```\n```python\nimport pulumi\nimport pulumi_aquasec as aquasec\n\ntestpermissionsset = aquasec.get_permissions_sets()\npulumi.export(\"permissionsSets\", testpermissionsset)\npulumi.export(\"permissionsSetsNames\", [[__item.name for __item in [__item.permissions_sets]] for __item in [testpermissionsset]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aquasec = Pulumi.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testpermissionsset = Aquasec.GetPermissionsSets.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"permissionsSets\"] = testpermissionsset,\n        [\"permissionsSetsNames\"] = new[]\n        {\n            testpermissionsset,\n        }.Select(__item =\u003e new[]\n        {\n            __item.Apply(obj =\u003e obj.PermissionsSets),\n        }.Select(__item =\u003e __item?.Name).ToList()).ToList(),\n    };\n});\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.AquasecFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var testpermissionsset = AquasecFunctions.getPermissionsSets();\n\n        ctx.export(\"permissionsSets\", testpermissionsset.applyValue(getPermissionsSetsResult -\u003e getPermissionsSetsResult));\n        ctx.export(\"permissionsSetsNames\", testpermissionsset.applyValue(getPermissionsSetsResult -\u003e getPermissionsSetsResult).stream().map(element -\u003e element.permissionsSets().stream().map(element -\u003e element.name()).collect(toList())).collect(toList()));\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "The data source `aquasec.PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aquasec from \"@pulumi/aquasec\";\n\nconst testpermissionsset = aquasec.getPermissionsSets({});\nexport const permissionsSets = testpermissionsset;\nexport const permissionsSetsNames = [testpermissionsset].map(__item =\u003e _arg0_.permissionsSets.map(__item =\u003e __item.name));\n```\n```python\nimport pulumi\nimport pulumi_aquasec as aquasec\n\ntestpermissionsset = aquasec.get_permissions_sets()\npulumi.export(\"permissionsSets\", testpermissionsset)\npulumi.export(\"permissionsSetsNames\", [[__item.name for __item in __item.permissions_sets] for __item in [testpermissionsset]])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aquasec = Pulumi.Aquasec;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testpermissionsset = Aquasec.GetPermissionsSets.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"permissionsSets\"] = testpermissionsset,\n        [\"permissionsSetsNames\"] = new[]\n        {\n            testpermissionsset,\n        }.Select(__item =\u003e _arg0_.PermissionsSets.Select(__item =\u003e __item.Name).ToList()).ToList(),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n\t\"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\ntestpermissionsset, err := aquasec.LookupPermissionsSets(ctx, nil, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"permissionsSets\", testpermissionsset)\nvar splat0 [][]*string\nfor _, val0 := range []aquasec.GetPermissionsSetsResult{\ntestpermissionsset,\n} {\nsplat0 = append(splat0, %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-aquasec:index-getPermissionsSets:getPermissionsSets.pp:5,31-58))\n}\nctx.Export(\"permissionsSetsNames\", splat0)\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aquasec.AquasecFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var testpermissionsset = AquasecFunctions.getPermissionsSets();\n\n        ctx.export(\"permissionsSets\", testpermissionsset.applyValue(getPermissionsSetsResult -\u003e getPermissionsSetsResult));\n        ctx.export(\"permissionsSetsNames\", testpermissionsset.applyValue(getPermissionsSetsResult -\u003e getPermissionsSetsResult).stream().map(element -\u003e element.permissionsSets().stream().map(element -\u003e element.name()).collect(toList())).collect(toList()));\n    }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
                 "description": "A collection of values returned by getPermissionsSets.\n",
                 "properties": {

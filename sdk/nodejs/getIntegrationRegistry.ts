@@ -2,18 +2,28 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRegistryResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", {
+        "advancedSettingsCleanup": args.advancedSettingsCleanup,
+        "alwaysPullPatterns": args.alwaysPullPatterns,
         "imageCreationDateCondition": args.imageCreationDateCondition,
+        "lastupdate": args.lastupdate,
         "name": args.name,
+        "options": args.options,
         "pullImageAge": args.pullImageAge,
         "pullImageCount": args.pullImageCount,
+        "pullImageTagPatterns": args.pullImageTagPatterns,
+        "pullRepoPatternsExcludeds": args.pullRepoPatternsExcludeds,
+        "registryScanTimeout": args.registryScanTimeout,
         "scannerNames": args.scannerNames,
         "scannerType": args.scannerType,
+        "webhooks": args.webhooks,
     }, opts);
 }
 
@@ -22,13 +32,26 @@ export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: 
  */
 export interface GetIntegrationRegistryArgs {
     /**
+     * Automatically clean up that don't match the pull criteria
+     */
+    advancedSettingsCleanup?: boolean;
+    /**
+     * List of image patterns to pull always
+     */
+    alwaysPullPatterns?: string[];
+    /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */
     imageCreationDateCondition?: string;
     /**
+     * The last time the registry was modified in UNIX time
+     */
+    lastupdate?: number;
+    /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     name: string;
+    options?: inputs.GetIntegrationRegistryOption[];
     /**
      * When auto pull image enabled, sets maximum age of auto pulled images
      */
@@ -38,6 +61,18 @@ export interface GetIntegrationRegistryArgs {
      */
     pullImageCount?: number;
     /**
+     * List of image tags patterns to pull
+     */
+    pullImageTagPatterns?: string[];
+    /**
+     * List of image patterns to exclude
+     */
+    pullRepoPatternsExcludeds?: string[];
+    /**
+     * Registry scan timeout in Minutes
+     */
+    registryScanTimeout?: number;
+    /**
      * List of scanner names
      */
     scannerNames?: string[];
@@ -45,12 +80,24 @@ export interface GetIntegrationRegistryArgs {
      * Scanner type
      */
     scannerType?: string;
+    /**
+     * When enabled, registry events are sent to the given Aqua webhook url
+     */
+    webhooks?: inputs.GetIntegrationRegistryWebhook[];
 }
 
 /**
  * A collection of values returned by getIntegrationRegistry.
  */
 export interface GetIntegrationRegistryResult {
+    /**
+     * Automatically clean up that don't match the pull criteria
+     */
+    readonly advancedSettingsCleanup?: boolean;
+    /**
+     * List of image patterns to pull always
+     */
+    readonly alwaysPullPatterns?: string[];
     /**
      * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
      */
@@ -88,9 +135,14 @@ export interface GetIntegrationRegistryResult {
      */
     readonly imageCreationDateCondition: string;
     /**
+     * The last time the registry was modified in UNIX time
+     */
+    readonly lastupdate: number;
+    /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     readonly name: string;
+    readonly options?: outputs.GetIntegrationRegistryOption[];
     /**
      * The password for registry authentication
      */
@@ -107,6 +159,18 @@ export interface GetIntegrationRegistryResult {
      * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
      */
     readonly pullImageCount: number;
+    /**
+     * List of image tags patterns to pull
+     */
+    readonly pullImageTagPatterns?: string[];
+    /**
+     * List of image patterns to exclude
+     */
+    readonly pullRepoPatternsExcludeds?: string[];
+    /**
+     * Registry scan timeout in Minutes
+     */
+    readonly registryScanTimeout?: number;
     /**
      * List of scanner names
      */
@@ -127,6 +191,10 @@ export interface GetIntegrationRegistryResult {
      * The username for registry authentication.
      */
     readonly username: string;
+    /**
+     * When enabled, registry events are sent to the given Aqua webhook url
+     */
+    readonly webhooks?: outputs.GetIntegrationRegistryWebhook[];
 }
 export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRegistryResult> {
     return pulumi.output(args).apply((a: any) => getIntegrationRegistry(a, opts))
@@ -137,13 +205,26 @@ export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputA
  */
 export interface GetIntegrationRegistryOutputArgs {
     /**
+     * Automatically clean up that don't match the pull criteria
+     */
+    advancedSettingsCleanup?: pulumi.Input<boolean>;
+    /**
+     * List of image patterns to pull always
+     */
+    alwaysPullPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Additional condition for pulling and rescanning images, Defaults to 'none'
      */
     imageCreationDateCondition?: pulumi.Input<string>;
     /**
+     * The last time the registry was modified in UNIX time
+     */
+    lastupdate?: pulumi.Input<number>;
+    /**
      * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
      */
     name: pulumi.Input<string>;
+    options?: pulumi.Input<pulumi.Input<inputs.GetIntegrationRegistryOptionArgs>[]>;
     /**
      * When auto pull image enabled, sets maximum age of auto pulled images
      */
@@ -153,6 +234,18 @@ export interface GetIntegrationRegistryOutputArgs {
      */
     pullImageCount?: pulumi.Input<number>;
     /**
+     * List of image tags patterns to pull
+     */
+    pullImageTagPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of image patterns to exclude
+     */
+    pullRepoPatternsExcludeds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Registry scan timeout in Minutes
+     */
+    registryScanTimeout?: pulumi.Input<number>;
+    /**
      * List of scanner names
      */
     scannerNames?: pulumi.Input<pulumi.Input<string>[]>;
@@ -160,4 +253,8 @@ export interface GetIntegrationRegistryOutputArgs {
      * Scanner type
      */
     scannerType?: pulumi.Input<string>;
+    /**
+     * When enabled, registry events are sent to the given Aqua webhook url
+     */
+    webhooks?: pulumi.Input<pulumi.Input<inputs.GetIntegrationRegistryWebhookArgs>[]>;
 }

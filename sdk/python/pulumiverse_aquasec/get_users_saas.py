@@ -72,5 +72,5 @@ def get_users_saas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetU
     __ret__ = pulumi.runtime.invoke('aquasec:index/getUsersSaas:getUsersSaas', __args__, opts=opts, typ=GetUsersSaasResult).value
 
     return AwaitableGetUsersSaasResult(
-        id=__ret__.id,
-        users=__ret__.users)
+        id=pulumi.get(__ret__, 'id'),
+        users=pulumi.get(__ret__, 'users'))

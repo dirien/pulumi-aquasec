@@ -47,7 +47,8 @@ utilities.lazyLoad(exports, ["FunctionRuntimePolicy"], () => require("./function
 
 export { GetAcknowledgesResult } from "./getAcknowledges";
 export const getAcknowledges: typeof import("./getAcknowledges").getAcknowledges = null as any;
-utilities.lazyLoad(exports, ["getAcknowledges"], () => require("./getAcknowledges"));
+export const getAcknowledgesOutput: typeof import("./getAcknowledges").getAcknowledgesOutput = null as any;
+utilities.lazyLoad(exports, ["getAcknowledges","getAcknowledgesOutput"], () => require("./getAcknowledges"));
 
 export { GetApplicationScopeArgs, GetApplicationScopeResult, GetApplicationScopeOutputArgs } from "./getApplicationScope";
 export const getApplicationScope: typeof import("./getApplicationScope").getApplicationScope = null as any;
@@ -56,7 +57,8 @@ utilities.lazyLoad(exports, ["getApplicationScope","getApplicationScopeOutput"],
 
 export { GetAquaLabelsResult } from "./getAquaLabels";
 export const getAquaLabels: typeof import("./getAquaLabels").getAquaLabels = null as any;
-utilities.lazyLoad(exports, ["getAquaLabels"], () => require("./getAquaLabels"));
+export const getAquaLabelsOutput: typeof import("./getAquaLabels").getAquaLabelsOutput = null as any;
+utilities.lazyLoad(exports, ["getAquaLabels","getAquaLabelsOutput"], () => require("./getAquaLabels"));
 
 export { GetContainerRuntimePolicyArgs, GetContainerRuntimePolicyResult, GetContainerRuntimePolicyOutputArgs } from "./getContainerRuntimePolicy";
 export const getContainerRuntimePolicy: typeof import("./getContainerRuntimePolicy").getContainerRuntimePolicy = null as any;
@@ -85,11 +87,13 @@ utilities.lazyLoad(exports, ["getFunctionRuntimePolicy","getFunctionRuntimePolic
 
 export { GetGatewaysResult } from "./getGateways";
 export const getGateways: typeof import("./getGateways").getGateways = null as any;
-utilities.lazyLoad(exports, ["getGateways"], () => require("./getGateways"));
+export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;
+utilities.lazyLoad(exports, ["getGateways","getGatewaysOutput"], () => require("./getGateways"));
 
 export { GetGroupsResult } from "./getGroups";
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
-utilities.lazyLoad(exports, ["getGroups"], () => require("./getGroups"));
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
 
 export { GetHostAssurancePolicyArgs, GetHostAssurancePolicyResult, GetHostAssurancePolicyOutputArgs } from "./getHostAssurancePolicy";
 export const getHostAssurancePolicy: typeof import("./getHostAssurancePolicy").getHostAssurancePolicy = null as any;
@@ -118,7 +122,8 @@ utilities.lazyLoad(exports, ["getIntegrationRegistry","getIntegrationRegistryOut
 
 export { GetIntegrationStateResult } from "./getIntegrationState";
 export const getIntegrationState: typeof import("./getIntegrationState").getIntegrationState = null as any;
-utilities.lazyLoad(exports, ["getIntegrationState"], () => require("./getIntegrationState"));
+export const getIntegrationStateOutput: typeof import("./getIntegrationState").getIntegrationStateOutput = null as any;
+utilities.lazyLoad(exports, ["getIntegrationState","getIntegrationStateOutput"], () => require("./getIntegrationState"));
 
 export { GetKubernetesAssurancePolicyArgs, GetKubernetesAssurancePolicyResult, GetKubernetesAssurancePolicyOutputArgs } from "./getKubernetesAssurancePolicy";
 export const getKubernetesAssurancePolicy: typeof import("./getKubernetesAssurancePolicy").getKubernetesAssurancePolicy = null as any;
@@ -127,23 +132,28 @@ utilities.lazyLoad(exports, ["getKubernetesAssurancePolicy","getKubernetesAssura
 
 export { GetNotificationsResult } from "./getNotifications";
 export const getNotifications: typeof import("./getNotifications").getNotifications = null as any;
-utilities.lazyLoad(exports, ["getNotifications"], () => require("./getNotifications"));
+export const getNotificationsOutput: typeof import("./getNotifications").getNotificationsOutput = null as any;
+utilities.lazyLoad(exports, ["getNotifications","getNotificationsOutput"], () => require("./getNotifications"));
 
 export { GetPermissionsSetsResult } from "./getPermissionsSets";
 export const getPermissionsSets: typeof import("./getPermissionsSets").getPermissionsSets = null as any;
-utilities.lazyLoad(exports, ["getPermissionsSets"], () => require("./getPermissionsSets"));
+export const getPermissionsSetsOutput: typeof import("./getPermissionsSets").getPermissionsSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getPermissionsSets","getPermissionsSetsOutput"], () => require("./getPermissionsSets"));
 
 export { GetRolesResult } from "./getRoles";
 export const getRoles: typeof import("./getRoles").getRoles = null as any;
-utilities.lazyLoad(exports, ["getRoles"], () => require("./getRoles"));
+export const getRolesOutput: typeof import("./getRoles").getRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getRoles","getRolesOutput"], () => require("./getRoles"));
 
 export { GetRolesMappingResult } from "./getRolesMapping";
 export const getRolesMapping: typeof import("./getRolesMapping").getRolesMapping = null as any;
-utilities.lazyLoad(exports, ["getRolesMapping"], () => require("./getRolesMapping"));
+export const getRolesMappingOutput: typeof import("./getRolesMapping").getRolesMappingOutput = null as any;
+utilities.lazyLoad(exports, ["getRolesMapping","getRolesMappingOutput"], () => require("./getRolesMapping"));
 
 export { GetRolesMappingSaasResult } from "./getRolesMappingSaas";
 export const getRolesMappingSaas: typeof import("./getRolesMappingSaas").getRolesMappingSaas = null as any;
-utilities.lazyLoad(exports, ["getRolesMappingSaas"], () => require("./getRolesMappingSaas"));
+export const getRolesMappingSaasOutput: typeof import("./getRolesMappingSaas").getRolesMappingSaasOutput = null as any;
+utilities.lazyLoad(exports, ["getRolesMappingSaas","getRolesMappingSaasOutput"], () => require("./getRolesMappingSaas"));
 
 export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
 export const getService: typeof import("./getService").getService = null as any;
@@ -152,11 +162,13 @@ utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./
 
 export { GetUsersResult } from "./getUsers";
 export const getUsers: typeof import("./getUsers").getUsers = null as any;
-utilities.lazyLoad(exports, ["getUsers"], () => require("./getUsers"));
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
 
 export { GetUsersSaasResult } from "./getUsersSaas";
 export const getUsersSaas: typeof import("./getUsersSaas").getUsersSaas = null as any;
-utilities.lazyLoad(exports, ["getUsersSaas"], () => require("./getUsersSaas"));
+export const getUsersSaasOutput: typeof import("./getUsersSaas").getUsersSaasOutput = null as any;
+utilities.lazyLoad(exports, ["getUsersSaas","getUsersSaasOutput"], () => require("./getUsersSaas"));
 
 export { GroupArgs, GroupState } from "./group";
 export type Group = import("./group").Group;

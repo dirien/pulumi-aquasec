@@ -72,5 +72,5 @@ def get_aqua_labels(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     __ret__ = pulumi.runtime.invoke('aquasec:index/getAquaLabels:getAquaLabels', __args__, opts=opts, typ=GetAquaLabelsResult).value
 
     return AwaitableGetAquaLabelsResult(
-        aqua_labels=__ret__.aqua_labels,
-        id=__ret__.id)
+        aqua_labels=pulumi.get(__ret__, 'aqua_labels'),
+        id=pulumi.get(__ret__, 'id'))

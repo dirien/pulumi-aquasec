@@ -34,3 +34,17 @@ export interface GetRolesMappingSaasResult {
     readonly id: string;
     readonly rolesMappings: outputs.GetRolesMappingSaasRolesMapping[];
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aquasec from "@pulumi/aquasec";
+ *
+ * const rolesMappingSaas = aquasec.getRolesMappingSaas({});
+ * export const roleMapping = rolesMappingSaas.then(rolesMappingSaas => rolesMappingSaas.rolesMappings);
+ * ```
+ */
+export function getRolesMappingSaasOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesMappingSaasResult> {
+    return pulumi.output(getRolesMappingSaas(opts))
+}

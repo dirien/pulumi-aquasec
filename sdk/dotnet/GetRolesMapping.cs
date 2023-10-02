@@ -39,6 +39,34 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public static Task<GetRolesMappingResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesMappingResult>("aquasec:index/getRolesMapping:getRolesMapping", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aquasec = Pulumi.Aquasec;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rolesMapping = Aquasec.GetRolesMapping.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roleMappingAll"] = rolesMapping,
+        ///         ["roleMappingSaml"] = rolesMapping.Apply(getRolesMappingResult =&gt; getRolesMappingResult.Samls),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetRolesMappingResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRolesMappingResult>("aquasec:index/getRolesMapping:getRolesMapping", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

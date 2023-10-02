@@ -9,6 +9,8 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
+	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
 type ImageAssurancePolicy struct {
@@ -139,7 +141,7 @@ func NewImageAssurancePolicy(ctx *pulumi.Context,
 	if args.ApplicationScopes == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationScopes'")
 	}
-	opts = pkgResourceDefaultOpts(opts)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ImageAssurancePolicy
 	err := ctx.RegisterResource("aquasec:index/imageAssurancePolicy:ImageAssurancePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -647,6 +649,12 @@ func (i *ImageAssurancePolicy) ToImageAssurancePolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssurancePolicyOutput)
 }
 
+func (i *ImageAssurancePolicy) ToOutput(ctx context.Context) pulumix.Output[*ImageAssurancePolicy] {
+	return pulumix.Output[*ImageAssurancePolicy]{
+		OutputState: i.ToImageAssurancePolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ImageAssurancePolicyArrayInput is an input type that accepts ImageAssurancePolicyArray and ImageAssurancePolicyArrayOutput values.
 // You can construct a concrete instance of `ImageAssurancePolicyArrayInput` via:
 //
@@ -670,6 +678,12 @@ func (i ImageAssurancePolicyArray) ToImageAssurancePolicyArrayOutput() ImageAssu
 
 func (i ImageAssurancePolicyArray) ToImageAssurancePolicyArrayOutputWithContext(ctx context.Context) ImageAssurancePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssurancePolicyArrayOutput)
+}
+
+func (i ImageAssurancePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageAssurancePolicy] {
+	return pulumix.Output[[]*ImageAssurancePolicy]{
+		OutputState: i.ToImageAssurancePolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ImageAssurancePolicyMapInput is an input type that accepts ImageAssurancePolicyMap and ImageAssurancePolicyMapOutput values.
@@ -697,6 +711,12 @@ func (i ImageAssurancePolicyMap) ToImageAssurancePolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssurancePolicyMapOutput)
 }
 
+func (i ImageAssurancePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageAssurancePolicy] {
+	return pulumix.Output[map[string]*ImageAssurancePolicy]{
+		OutputState: i.ToImageAssurancePolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ImageAssurancePolicyOutput struct{ *pulumi.OutputState }
 
 func (ImageAssurancePolicyOutput) ElementType() reflect.Type {
@@ -709,6 +729,12 @@ func (o ImageAssurancePolicyOutput) ToImageAssurancePolicyOutput() ImageAssuranc
 
 func (o ImageAssurancePolicyOutput) ToImageAssurancePolicyOutputWithContext(ctx context.Context) ImageAssurancePolicyOutput {
 	return o
+}
+
+func (o ImageAssurancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageAssurancePolicy] {
+	return pulumix.Output[*ImageAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of explicitly allowed images.
@@ -1063,6 +1089,12 @@ func (o ImageAssurancePolicyArrayOutput) ToImageAssurancePolicyArrayOutputWithCo
 	return o
 }
 
+func (o ImageAssurancePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageAssurancePolicy] {
+	return pulumix.Output[[]*ImageAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ImageAssurancePolicyArrayOutput) Index(i pulumi.IntInput) ImageAssurancePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageAssurancePolicy {
 		return vs[0].([]*ImageAssurancePolicy)[vs[1].(int)]
@@ -1081,6 +1113,12 @@ func (o ImageAssurancePolicyMapOutput) ToImageAssurancePolicyMapOutput() ImageAs
 
 func (o ImageAssurancePolicyMapOutput) ToImageAssurancePolicyMapOutputWithContext(ctx context.Context) ImageAssurancePolicyMapOutput {
 	return o
+}
+
+func (o ImageAssurancePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageAssurancePolicy] {
+	return pulumix.Output[map[string]*ImageAssurancePolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ImageAssurancePolicyMapOutput) MapIndex(k pulumi.StringInput) ImageAssurancePolicyOutput {
