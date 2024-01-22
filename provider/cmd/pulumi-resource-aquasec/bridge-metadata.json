@@ -1,0 +1,3524 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "aquasec_acknowledge": {
+                "current": "aquasec:index/acknowledge:Acknowledge",
+                "fields": {
+                    "issues": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_application_scope": {
+                "current": "aquasec:index/applicationScope:ApplicationScope",
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "artifacts": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cf": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "function": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "image": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "entity_scope": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "variables": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "infrastructure": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "kubernetes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "os": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "workloads": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cf": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kubernetes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "os": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_aqua_label": {
+                "current": "aquasec:index/aquaLabel:AquaLabel"
+            },
+            "aquasec_container_runtime_policy": {
+                "current": "aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy",
+                "fields": {
+                    "allowed_executables": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_registries": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_executables": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_files": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_inbound_ports": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_outbound_ports": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_packages": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_volumes": {
+                        "maxItemsOne": false
+                    },
+                    "container_exec_allowed_processes": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_readonly_files_and_directories": {
+                        "maxItemsOne": false
+                    },
+                    "exec_lockdown_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "file_integrity_monitoring": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "malware_scan_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exclude_directories": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_processes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "readonly_files_and_directories": {
+                        "maxItemsOne": false
+                    },
+                    "reverse_shell_allowed_ips": {
+                        "maxItemsOne": false
+                    },
+                    "reverse_shell_allowed_processes": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_enforcer_groups": {
+                "current": "aquasec:index/enforcerGroups:EnforcerGroups",
+                "fields": {
+                    "allowed_applications": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_labels": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_registries": {
+                        "maxItemsOne": false
+                    },
+                    "command": {
+                        "maxItemsOne": false
+                    },
+                    "gateways": {
+                        "maxItemsOne": false
+                    },
+                    "orchestrator": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_firewall_policy": {
+                "current": "aquasec:index/firewallPolicy:FirewallPolicy",
+                "fields": {
+                    "inbound_networks": {
+                        "maxItemsOne": false
+                    },
+                    "outbound_networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_function_assurance_policy": {
+                "current": "aquasec:index/functionAssurancePolicy:FunctionAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_function_runtime_policy": {
+                "current": "aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy",
+                "fields": {
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "block_malicious_executables_allowed_processes": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_executables": {
+                        "maxItemsOne": false
+                    },
+                    "honeypot_apply_on": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_group": {
+                "current": "aquasec:index/group:Group"
+            },
+            "aquasec_host_assurance_policy": {
+                "current": "aquasec:index/hostAssurancePolicy:HostAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_host_runtime_policy": {
+                "current": "aquasec:index/hostRuntimePolicy:HostRuntimePolicy",
+                "fields": {
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_files": {
+                        "maxItemsOne": false
+                    },
+                    "file_integrity_monitoring": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "malware_scan_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "exclude_directories": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_processes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "os_groups_allowed": {
+                        "maxItemsOne": false
+                    },
+                    "os_groups_blocked": {
+                        "maxItemsOne": false
+                    },
+                    "os_users_allowed": {
+                        "maxItemsOne": false
+                    },
+                    "os_users_blocked": {
+                        "maxItemsOne": false
+                    },
+                    "package_block": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    },
+                    "windows_registry_monitoring": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "windows_registry_protection": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_image": {
+                "current": "aquasec:index/image:Image",
+                "fields": {
+                    "assurance_checks_performed": {
+                        "maxItemsOne": false
+                    },
+                    "docker_labels": {
+                        "maxItemsOne": false
+                    },
+                    "environment_variables": {
+                        "maxItemsOne": false
+                    },
+                    "history": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "repo_digests": {
+                        "maxItemsOne": false
+                    },
+                    "vulnerabilities": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "resource_licenses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_image_assurance_policy": {
+                "current": "aquasec:index/imageAssurancePolicy:ImageAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_integration_registry": {
+                "current": "aquasec:index/integrationRegistry:IntegrationRegistry",
+                "fields": {
+                    "always_pull_patterns": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "maxItemsOne": false
+                    },
+                    "prefixes": {
+                        "maxItemsOne": false
+                    },
+                    "pull_image_tag_pattern": {
+                        "maxItemsOne": false
+                    },
+                    "pull_repo_patterns_excluded": {
+                        "maxItemsOne": false
+                    },
+                    "scanner_name": {
+                        "maxItemsOne": false
+                    },
+                    "webhook": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_kubernetes_assurance_policy": {
+                "current": "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "kubernetes_controls_names": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_notification": {
+                "current": "aquasec:index/notification:Notification"
+            },
+            "aquasec_notification_slack": {
+                "current": "aquasec:index/notificationSlack:NotificationSlack"
+            },
+            "aquasec_permissions_sets": {
+                "current": "aquasec:index/permissionsSets:PermissionsSets",
+                "fields": {
+                    "actions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_role": {
+                "current": "aquasec:index/role:Role",
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_role_mapping": {
+                "current": "aquasec:index/roleMapping:RoleMapping",
+                "fields": {
+                    "ldap": {
+                        "maxItemsOne": true
+                    },
+                    "oauth2": {
+                        "maxItemsOne": true
+                    },
+                    "openid": {
+                        "maxItemsOne": true
+                    },
+                    "saml": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "aquasec_role_mapping_saas": {
+                "current": "aquasec:index/roleMappingSaas:RoleMappingSaas",
+                "fields": {
+                    "saml_groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_service": {
+                "current": "aquasec:index/service:Service",
+                "fields": {
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "policies": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_user": {
+                "current": "aquasec:index/user:User",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_user_saas": {
+                "current": "aquasec:index/userSaas:UserSaas",
+                "fields": {
+                    "csp_roles": {
+                        "maxItemsOne": false
+                    },
+                    "groups": {
+                        "maxItemsOne": false
+                    },
+                    "logins": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "aquasec_acknowledges": {
+                "current": "aquasec:index/getAcknowledges:getAcknowledges",
+                "fields": {
+                    "acknowledges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_application_scope": {
+                "current": "aquasec:index/getApplicationScope:getApplicationScope",
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "artifacts": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cf": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "function": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "image": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "entity_scope": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "variables": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "infrastructure": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "kubernetes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "os": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "workloads": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cf": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "kubernetes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "os": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "variables": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_aqua_labels": {
+                "current": "aquasec:index/getAquaLabels:getAquaLabels",
+                "fields": {
+                    "aqua_labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_container_runtime_policy": {
+                "current": "aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy",
+                "fields": {
+                    "allowed_executables": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_registries": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_capabilities": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_executables": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_files": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_inbound_ports": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_outbound_ports": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_packages": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_volumes": {
+                        "maxItemsOne": false
+                    },
+                    "container_exec_allowed_processes": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_readonly_files_and_directories": {
+                        "maxItemsOne": false
+                    },
+                    "exec_lockdown_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "file_integrity_monitoring": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "malware_scan_options": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "exclude_directories": {
+                                    "maxItemsOne": false
+                                },
+                                "exclude_processes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "readonly_files_and_directories": {
+                        "maxItemsOne": false
+                    },
+                    "reverse_shell_allowed_ips": {
+                        "maxItemsOne": false
+                    },
+                    "reverse_shell_allowed_processes": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_enforcer_groups": {
+                "current": "aquasec:index/getEnforcerGroups:getEnforcerGroups",
+                "fields": {
+                    "allowed_applications": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_labels": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_registries": {
+                        "maxItemsOne": false
+                    },
+                    "command": {
+                        "maxItemsOne": false
+                    },
+                    "gateways": {
+                        "maxItemsOne": false
+                    },
+                    "orchestrator": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_firewall_policy": {
+                "current": "aquasec:index/getFirewallPolicy:getFirewallPolicy",
+                "fields": {
+                    "inbound_networks": {
+                        "maxItemsOne": false
+                    },
+                    "outbound_networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_function_assurance_policy": {
+                "current": "aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_function_runtime_policy": {
+                "current": "aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy",
+                "fields": {
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "block_malicious_executables_allowed_processes": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_executables": {
+                        "maxItemsOne": false
+                    },
+                    "honeypot_apply_on": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_gateways": {
+                "current": "aquasec:index/getGateways:getGateways",
+                "fields": {
+                    "gateways": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_groups": {
+                "current": "aquasec:index/getGroups:getGroups",
+                "fields": {
+                    "groups": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_host_assurance_policy": {
+                "current": "aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_host_runtime_policy": {
+                "current": "aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy",
+                "fields": {
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "blocked_files": {
+                        "maxItemsOne": false
+                    },
+                    "file_integrity_monitoring": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "malware_scan_options": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "exclude_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "include_directories": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "os_groups_allowed": {
+                        "maxItemsOne": false
+                    },
+                    "os_groups_blocked": {
+                        "maxItemsOne": false
+                    },
+                    "os_users_allowed": {
+                        "maxItemsOne": false
+                    },
+                    "os_users_blocked": {
+                        "maxItemsOne": false
+                    },
+                    "package_block": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    },
+                    "windows_registry_monitoring": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "monitored_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "windows_registry_protection": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "excluded_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "excluded_users": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_paths": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_processes": {
+                                    "maxItemsOne": false
+                                },
+                                "protected_users": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_image": {
+                "current": "aquasec:index/getImage:getImage",
+                "fields": {
+                    "assurance_checks_performed": {
+                        "maxItemsOne": false
+                    },
+                    "docker_labels": {
+                        "maxItemsOne": false
+                    },
+                    "environment_variables": {
+                        "maxItemsOne": false
+                    },
+                    "history": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "repo_digests": {
+                        "maxItemsOne": false
+                    },
+                    "vulnerabilities": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "resource_licenses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_image_assurance_policy": {
+                "current": "aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_integration_registries": {
+                "current": "aquasec:index/getIntegrationRegistry:getIntegrationRegistry",
+                "fields": {
+                    "always_pull_patterns": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "maxItemsOne": false
+                    },
+                    "prefixes": {
+                        "maxItemsOne": false
+                    },
+                    "pull_image_tag_pattern": {
+                        "maxItemsOne": false
+                    },
+                    "pull_repo_patterns_excluded": {
+                        "maxItemsOne": false
+                    },
+                    "scanner_name": {
+                        "maxItemsOne": false
+                    },
+                    "webhook": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_integration_state": {
+                "current": "aquasec:index/getIntegrationState:getIntegrationState"
+            },
+            "aquasec_kubernetes_assurance_policy": {
+                "current": "aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy",
+                "fields": {
+                    "allowed_images": {
+                        "maxItemsOne": false
+                    },
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "auto_scan_time": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "week_days": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "blacklist_permissions": {
+                        "maxItemsOne": false
+                    },
+                    "blacklisted_licenses": {
+                        "maxItemsOne": false
+                    },
+                    "custom_checks": {
+                        "maxItemsOne": false
+                    },
+                    "cves_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "cves_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "exceptional_monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_labels": {
+                        "maxItemsOne": false
+                    },
+                    "ignored_risk_resources": {
+                        "maxItemsOne": false
+                    },
+                    "images": {
+                        "maxItemsOne": false
+                    },
+                    "kubernetes_controls_names": {
+                        "maxItemsOne": false
+                    },
+                    "labels": {
+                        "maxItemsOne": false
+                    },
+                    "monitored_malware_paths": {
+                        "maxItemsOne": false
+                    },
+                    "packages_black_list": {
+                        "maxItemsOne": false
+                    },
+                    "packages_white_list": {
+                        "maxItemsOne": false
+                    },
+                    "registries": {
+                        "maxItemsOne": false
+                    },
+                    "required_labels": {
+                        "maxItemsOne": false
+                    },
+                    "scap_files": {
+                        "maxItemsOne": false
+                    },
+                    "scope": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "variables": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "trusted_base_images": {
+                        "maxItemsOne": false
+                    },
+                    "whitelisted_licenses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_notifications": {
+                "current": "aquasec:index/getNotifications:getNotifications",
+                "fields": {
+                    "email": {
+                        "maxItemsOne": false
+                    },
+                    "jira": {
+                        "maxItemsOne": false
+                    },
+                    "servicenow": {
+                        "maxItemsOne": false
+                    },
+                    "slack": {
+                        "maxItemsOne": false
+                    },
+                    "splunk": {
+                        "maxItemsOne": false
+                    },
+                    "teams": {
+                        "maxItemsOne": false
+                    },
+                    "webhook": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_permissions_sets": {
+                "current": "aquasec:index/getPermissionsSets:getPermissionsSets",
+                "fields": {
+                    "permissions_sets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_roles": {
+                "current": "aquasec:index/getRoles:getRoles",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_roles_mapping": {
+                "current": "aquasec:index/getRolesMapping:getRolesMapping",
+                "fields": {
+                    "ldap": {
+                        "maxItemsOne": false
+                    },
+                    "oauth2": {
+                        "maxItemsOne": false
+                    },
+                    "openid": {
+                        "maxItemsOne": false
+                    },
+                    "saml": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_roles_mapping_saas": {
+                "current": "aquasec:index/getRolesMappingSaas:getRolesMappingSaas",
+                "fields": {
+                    "roles_mapping": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "saml_groups": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_service": {
+                "current": "aquasec:index/getService:getService",
+                "fields": {
+                    "application_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "policies": {
+                        "maxItemsOne": false
+                    },
+                    "scope_variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "aquasec_users": {
+                "current": "aquasec:index/getUsers:getUsers",
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "aquasec_users_saas": {
+                "current": "aquasec:index/getUsersSaas:getUsersSaas",
+                "fields": {
+                    "users": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "csp_roles": {
+                                    "maxItemsOne": false
+                                },
+                                "groups": {
+                                    "maxItemsOne": false
+                                },
+                                "logins": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {},
+    "renames": {
+        "resources": {
+            "aquasec:index/acknowledge:Acknowledge": "aquasec_acknowledge",
+            "aquasec:index/applicationScope:ApplicationScope": "aquasec_application_scope",
+            "aquasec:index/aquaLabel:AquaLabel": "aquasec_aqua_label",
+            "aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy": "aquasec_container_runtime_policy",
+            "aquasec:index/enforcerGroups:EnforcerGroups": "aquasec_enforcer_groups",
+            "aquasec:index/firewallPolicy:FirewallPolicy": "aquasec_firewall_policy",
+            "aquasec:index/functionAssurancePolicy:FunctionAssurancePolicy": "aquasec_function_assurance_policy",
+            "aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy": "aquasec_function_runtime_policy",
+            "aquasec:index/group:Group": "aquasec_group",
+            "aquasec:index/hostAssurancePolicy:HostAssurancePolicy": "aquasec_host_assurance_policy",
+            "aquasec:index/hostRuntimePolicy:HostRuntimePolicy": "aquasec_host_runtime_policy",
+            "aquasec:index/image:Image": "aquasec_image",
+            "aquasec:index/imageAssurancePolicy:ImageAssurancePolicy": "aquasec_image_assurance_policy",
+            "aquasec:index/integrationRegistry:IntegrationRegistry": "aquasec_integration_registry",
+            "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy": "aquasec_kubernetes_assurance_policy",
+            "aquasec:index/notification:Notification": "aquasec_notification",
+            "aquasec:index/notificationSlack:NotificationSlack": "aquasec_notification_slack",
+            "aquasec:index/permissionsSets:PermissionsSets": "aquasec_permissions_sets",
+            "aquasec:index/role:Role": "aquasec_role",
+            "aquasec:index/roleMapping:RoleMapping": "aquasec_role_mapping",
+            "aquasec:index/roleMappingSaas:RoleMappingSaas": "aquasec_role_mapping_saas",
+            "aquasec:index/service:Service": "aquasec_service",
+            "aquasec:index/user:User": "aquasec_user",
+            "aquasec:index/userSaas:UserSaas": "aquasec_user_saas"
+        },
+        "functions": {
+            "aquasec:index/getAcknowledges:getAcknowledges": "aquasec_acknowledges",
+            "aquasec:index/getApplicationScope:getApplicationScope": "aquasec_application_scope",
+            "aquasec:index/getAquaLabels:getAquaLabels": "aquasec_aqua_labels",
+            "aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy": "aquasec_container_runtime_policy",
+            "aquasec:index/getEnforcerGroups:getEnforcerGroups": "aquasec_enforcer_groups",
+            "aquasec:index/getFirewallPolicy:getFirewallPolicy": "aquasec_firewall_policy",
+            "aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy": "aquasec_function_assurance_policy",
+            "aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy": "aquasec_function_runtime_policy",
+            "aquasec:index/getGateways:getGateways": "aquasec_gateways",
+            "aquasec:index/getGroups:getGroups": "aquasec_groups",
+            "aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy": "aquasec_host_assurance_policy",
+            "aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy": "aquasec_host_runtime_policy",
+            "aquasec:index/getImage:getImage": "aquasec_image",
+            "aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy": "aquasec_image_assurance_policy",
+            "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": "aquasec_integration_registries",
+            "aquasec:index/getIntegrationState:getIntegrationState": "aquasec_integration_state",
+            "aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy": "aquasec_kubernetes_assurance_policy",
+            "aquasec:index/getNotifications:getNotifications": "aquasec_notifications",
+            "aquasec:index/getPermissionsSets:getPermissionsSets": "aquasec_permissions_sets",
+            "aquasec:index/getRoles:getRoles": "aquasec_roles",
+            "aquasec:index/getRolesMapping:getRolesMapping": "aquasec_roles_mapping",
+            "aquasec:index/getRolesMappingSaas:getRolesMappingSaas": "aquasec_roles_mapping_saas",
+            "aquasec:index/getService:getService": "aquasec_service",
+            "aquasec:index/getUsers:getUsers": "aquasec_users",
+            "aquasec:index/getUsersSaas:getUsersSaas": "aquasec_users_saas"
+        },
+        "renamedProperties": {
+            "aquasec:index/AcknowledgeIssue:AcknowledgeIssue": {
+                "dockerId": "docker_id",
+                "expirationConfiguredAt": "expiration_configured_at",
+                "expirationConfiguredBy": "expiration_configured_by",
+                "expirationDays": "expiration_days",
+                "fixVersion": "fix_version",
+                "imageName": "image_name",
+                "issueName": "issue_name",
+                "issueType": "issue_type",
+                "osVersion": "os_version",
+                "registryName": "registry_name",
+                "resourceCpe": "resource_cpe",
+                "resourceFormat": "resource_format",
+                "resourceHash": "resource_hash",
+                "resourceName": "resource_name",
+                "resourcePath": "resource_path",
+                "resourceType": "resource_type",
+                "resourceVersion": "resource_version"
+            },
+            "aquasec:index/ApplicationScopeCategory:ApplicationScopeCategory": {
+                "entityScopes": "entity_scope",
+                "infrastructures": "infrastructure"
+            },
+            "aquasec:index/ApplicationScopeCategoryArtifact:ApplicationScopeCategoryArtifact": {
+                "cfs": "cf",
+                "functions": "function",
+                "images": "image"
+            },
+            "aquasec:index/ApplicationScopeCategoryWorkload:ApplicationScopeCategoryWorkload": {
+                "cfs": "cf"
+            },
+            "aquasec:index/ContainerRuntimePolicyFileIntegrityMonitoring:ContainerRuntimePolicyFileIntegrityMonitoring": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "monitorAttributes": "monitor_attributes",
+                "monitorCreate": "monitor_create",
+                "monitorDelete": "monitor_delete",
+                "monitorModify": "monitor_modify",
+                "monitorRead": "monitor_read",
+                "monitoredPaths": "monitored_paths",
+                "monitoredProcesses": "monitored_processes",
+                "monitoredUsers": "monitored_users"
+            },
+            "aquasec:index/ContainerRuntimePolicyMalwareScanOptions:ContainerRuntimePolicyMalwareScanOptions": {
+                "excludeDirectories": "exclude_directories",
+                "excludeProcesses": "exclude_processes"
+            },
+            "aquasec:index/EnforcerGroupsOrchestrator:EnforcerGroupsOrchestrator": {
+                "serviceAccount": "service_account"
+            },
+            "aquasec:index/FirewallPolicyInboundNetwork:FirewallPolicyInboundNetwork": {
+                "portRange": "port_range",
+                "resourceType": "resource_type"
+            },
+            "aquasec:index/FirewallPolicyOutboundNetwork:FirewallPolicyOutboundNetwork": {
+                "portRange": "port_range",
+                "resourceType": "resource_type"
+            },
+            "aquasec:index/FunctionAssurancePolicyAutoScanTime:FunctionAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/FunctionAssurancePolicyCustomCheck:FunctionAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/FunctionAssurancePolicyPackagesBlackList:FunctionAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/FunctionAssurancePolicyPackagesWhiteList:FunctionAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/HostAssurancePolicyAutoScanTime:HostAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/HostAssurancePolicyCustomCheck:HostAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/HostAssurancePolicyPackagesBlackList:HostAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/HostAssurancePolicyPackagesWhiteList:HostAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/HostRuntimePolicyFileIntegrityMonitoring:HostRuntimePolicyFileIntegrityMonitoring": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "monitorAttributes": "monitor_attributes",
+                "monitorCreate": "monitor_create",
+                "monitorDelete": "monitor_delete",
+                "monitorModify": "monitor_modify",
+                "monitorRead": "monitor_read",
+                "monitoredPaths": "monitored_paths",
+                "monitoredProcesses": "monitored_processes",
+                "monitoredUsers": "monitored_users"
+            },
+            "aquasec:index/HostRuntimePolicyMalwareScanOptions:HostRuntimePolicyMalwareScanOptions": {
+                "excludeDirectories": "exclude_directories",
+                "excludeProcesses": "exclude_processes"
+            },
+            "aquasec:index/HostRuntimePolicyWindowsRegistryMonitoring:HostRuntimePolicyWindowsRegistryMonitoring": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "monitorAttributes": "monitor_attributes",
+                "monitorCreate": "monitor_create",
+                "monitorDelete": "monitor_delete",
+                "monitorModify": "monitor_modify",
+                "monitorRead": "monitor_read",
+                "monitoredPaths": "monitored_paths",
+                "monitoredProcesses": "monitored_processes",
+                "monitoredUsers": "monitored_users"
+            },
+            "aquasec:index/HostRuntimePolicyWindowsRegistryProtection:HostRuntimePolicyWindowsRegistryProtection": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "protectedPaths": "protected_paths",
+                "protectedProcesses": "protected_processes",
+                "protectedUsers": "protected_users"
+            },
+            "aquasec:index/ImageAssuranceChecksPerformed:ImageAssuranceChecksPerformed": {
+                "assuranceType": "assurance_type",
+                "dtaSkipped": "dta_skipped",
+                "dtaSkippedReason": "dta_skipped_reason",
+                "policyName": "policy_name"
+            },
+            "aquasec:index/ImageAssurancePolicyAutoScanTime:ImageAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/ImageAssurancePolicyCustomCheck:ImageAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/ImageAssurancePolicyPackagesBlackList:ImageAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/ImageAssurancePolicyPackagesWhiteList:ImageAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/ImageHistory:ImageHistory": {
+                "createdBy": "created_by"
+            },
+            "aquasec:index/ImageVulnerability:ImageVulnerability": {
+                "ackAuthor": "ack_author",
+                "ackComment": "ack_comment",
+                "ackExpirationConfiguredAt": "ack_expiration_configured_at",
+                "ackExpirationConfiguredBy": "ack_expiration_configured_by",
+                "ackExpirationDays": "ack_expiration_days",
+                "ackScope": "ack_scope",
+                "acknowledgeDate": "acknowledge_date",
+                "ancestorPkg": "ancestor_pkg",
+                "aquaScore": "aqua_score",
+                "aquaScoreClassification": "aqua_score_classification",
+                "aquaScoringSystem": "aqua_scoring_system",
+                "aquaSeverity": "aqua_severity",
+                "aquaSeverityClassification": "aqua_severity_classification",
+                "aquaVectors": "aqua_vectors",
+                "auditEventsCount": "audit_events_count",
+                "blockEventsCount": "block_events_count",
+                "exploitReference": "exploit_reference",
+                "exploitType": "exploit_type",
+                "firstFoundDate": "first_found_date",
+                "fixVersion": "fix_version",
+                "imageName": "image_name",
+                "lastFoundDate": "last_found_date",
+                "modificationDate": "modification_date",
+                "nvdCvss2Score": "nvd_cvss2_score",
+                "nvdCvss2Vectors": "nvd_cvss2_vectors",
+                "nvdCvss3Score": "nvd_cvss3_score",
+                "nvdCvss3Severity": "nvd_cvss3_severity",
+                "nvdCvss3Vectors": "nvd_cvss3_vectors",
+                "nvdSeverity": "nvd_severity",
+                "nvdUrl": "nvd_url",
+                "osVersion": "os_version",
+                "publishDate": "publish_date",
+                "resourceArchitecture": "resource_architecture",
+                "resourceCpe": "resource_cpe",
+                "resourceFormat": "resource_format",
+                "resourceHash": "resource_hash",
+                "resourceLicenses": "resource_licenses",
+                "resourceName": "resource_name",
+                "resourcePath": "resource_path",
+                "resourceType": "resource_type",
+                "resourceVersion": "resource_version",
+                "severityClassification": "severity_classification",
+                "temporalVector": "temporal_vector",
+                "vPatchAppliedBy": "v_patch_applied_by",
+                "vPatchAppliedOn": "v_patch_applied_on",
+                "vPatchEnforcedBy": "v_patch_enforced_by",
+                "vPatchEnforcedOn": "v_patch_enforced_on",
+                "vPatchPolicyEnforce": "v_patch_policy_enforce",
+                "vPatchPolicyName": "v_patch_policy_name",
+                "vPatchRevertedBy": "v_patch_reverted_by",
+                "vPatchRevertedOn": "v_patch_reverted_on",
+                "vPatchStatus": "v_patch_status",
+                "vendorCvss2Score": "vendor_cvss2_score",
+                "vendorCvss2Vectors": "vendor_cvss2_vectors",
+                "vendorSeverity": "vendor_severity",
+                "vendorStatement": "vendor_statement",
+                "vendorUrl": "vendor_url"
+            },
+            "aquasec:index/IntegrationRegistryWebhook:IntegrationRegistryWebhook": {
+                "authToken": "auth_token",
+                "unQuarantine": "un_quarantine"
+            },
+            "aquasec:index/KubernetesAssurancePolicyAutoScanTime:KubernetesAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/KubernetesAssurancePolicyCustomCheck:KubernetesAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/KubernetesAssurancePolicyPackagesBlackList:KubernetesAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/KubernetesAssurancePolicyPackagesWhiteList:KubernetesAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/RoleMappingLdap:RoleMappingLdap": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/RoleMappingOauth2:RoleMappingOauth2": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/RoleMappingOpenid:RoleMappingOpenid": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/RoleMappingSaml:RoleMappingSaml": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/UserSaasGroup:UserSaasGroup": {
+                "groupAdmin": "group_admin"
+            },
+            "aquasec:index/UserSaasLogin:UserSaasLogin": {
+                "ipAddress": "ip_address",
+                "userId": "user_id"
+            },
+            "aquasec:index/applicationScope:ApplicationScope": {
+                "ownerEmail": "owner_email"
+            },
+            "aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy": {
+                "allowedExecutables": "allowed_executables",
+                "allowedRegistries": "allowed_registries",
+                "applicationScopes": "application_scopes",
+                "auditAllNetworkActivity": "audit_all_network_activity",
+                "auditAllProcessesActivity": "audit_all_processes_activity",
+                "auditFullCommandArguments": "audit_full_command_arguments",
+                "blockAccessHostNetwork": "block_access_host_network",
+                "blockAddingCapabilities": "block_adding_capabilities",
+                "blockContainerExec": "block_container_exec",
+                "blockCryptocurrencyMining": "block_cryptocurrency_mining",
+                "blockFilelessExec": "block_fileless_exec",
+                "blockLowPortBinding": "block_low_port_binding",
+                "blockNonCompliantImages": "block_non_compliant_images",
+                "blockNonCompliantWorkloads": "block_non_compliant_workloads",
+                "blockNonK8sContainers": "block_non_k8s_containers",
+                "blockPrivilegedContainers": "block_privileged_containers",
+                "blockReverseShell": "block_reverse_shell",
+                "blockRootUser": "block_root_user",
+                "blockUnregisteredImages": "block_unregistered_images",
+                "blockUseIpcNamespace": "block_use_ipc_namespace",
+                "blockUsePidNamespace": "block_use_pid_namespace",
+                "blockUseUserNamespace": "block_use_user_namespace",
+                "blockUseUtsNamespace": "block_use_uts_namespace",
+                "blockedCapabilities": "blocked_capabilities",
+                "blockedExecutables": "blocked_executables",
+                "blockedFiles": "blocked_files",
+                "blockedInboundPorts": "blocked_inbound_ports",
+                "blockedOutboundPorts": "blocked_outbound_ports",
+                "blockedPackages": "blocked_packages",
+                "blockedVolumes": "blocked_volumes",
+                "containerExecAllowedProcesses": "container_exec_allowed_processes",
+                "enableDriftPrevention": "enable_drift_prevention",
+                "enableForkGuard": "enable_fork_guard",
+                "enableIpReputationSecurity": "enable_ip_reputation_security",
+                "enablePortScanDetection": "enable_port_scan_detection",
+                "enforceAfterDays": "enforce_after_days",
+                "exceptionalReadonlyFilesAndDirectories": "exceptional_readonly_files_and_directories",
+                "execLockdownWhiteLists": "exec_lockdown_white_list",
+                "fileIntegrityMonitoring": "file_integrity_monitoring",
+                "forkGuardProcessLimit": "fork_guard_process_limit",
+                "limitNewPrivileges": "limit_new_privileges",
+                "malwareScanOptions": "malware_scan_options",
+                "monitorSystemTimeChanges": "monitor_system_time_changes",
+                "readonlyFilesAndDirectories": "readonly_files_and_directories",
+                "reverseShellAllowedIps": "reverse_shell_allowed_ips",
+                "reverseShellAllowedProcesses": "reverse_shell_allowed_processes",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables"
+            },
+            "aquasec:index/enforcerGroups:EnforcerGroups": {
+                "admissionControl": "admission_control",
+                "allowKubeEnforcerAudit": "allow_kube_enforcer_audit",
+                "allowedApplications": "allowed_applications",
+                "allowedLabels": "allowed_labels",
+                "allowedRegistries": "allowed_registries",
+                "antivirusProtection": "antivirus_protection",
+                "aquaVersion": "aqua_version",
+                "auditAll": "audit_all",
+                "autoCopySecrets": "auto_copy_secrets",
+                "autoDiscoverConfigureRegistries": "auto_discover_configure_registries",
+                "autoDiscoveryEnabled": "auto_discovery_enabled",
+                "autoScanDiscoveredImagesRunningContainers": "auto_scan_discovered_images_running_containers",
+                "behavioralEngine": "behavioral_engine",
+                "blockAdmissionControl": "block_admission_control",
+                "commands": "command",
+                "connectedCount": "connected_count",
+                "containerActivityProtection": "container_activity_protection",
+                "containerAntivirusProtection": "container_antivirus_protection",
+                "disconnectedCount": "disconnected_count",
+                "enforcerImageName": "enforcer_image_name",
+                "gatewayAddress": "gateway_address",
+                "gatewayName": "gateway_name",
+                "groupId": "group_id",
+                "highVulns": "high_vulns",
+                "hostAssurance": "host_assurance",
+                "hostBehavioralEngine": "host_behavioral_engine",
+                "hostForensics": "host_forensics",
+                "hostNetworkProtection": "host_network_protection",
+                "hostOs": "host_os",
+                "hostProtection": "host_protection",
+                "hostUserProtection": "host_user_protection",
+                "hostsCount": "hosts_count",
+                "imageAssurance": "image_assurance",
+                "installCommand": "install_command",
+                "kubeBenchImageName": "kube_bench_image_name",
+                "lastUpdate": "last_update",
+                "logicalName": "logical_name",
+                "lowVulns": "low_vulns",
+                "medVulns": "med_vulns",
+                "microEnforcerCertsSecretsName": "micro_enforcer_certs_secrets_name",
+                "microEnforcerImageName": "micro_enforcer_image_name",
+                "microEnforcerInjection": "micro_enforcer_injection",
+                "microEnforcerSecretsName": "micro_enforcer_secrets_name",
+                "negVulns": "neg_vulns",
+                "networkProtection": "network_protection",
+                "orchestrators": "orchestrator",
+                "pasDeploymentLink": "pas_deployment_link",
+                "riskExplorerAutoDiscovery": "risk_explorer_auto_discovery",
+                "runtimePolicyName": "runtime_policy_name",
+                "runtimeType": "runtime_type",
+                "syncHostImages": "sync_host_images",
+                "syscallEnabled": "syscall_enabled",
+                "userAccessControl": "user_access_control"
+            },
+            "aquasec:index/firewallPolicy:FirewallPolicy": {
+                "blockIcmpPing": "block_icmp_ping",
+                "blockMetadataService": "block_metadata_service",
+                "inboundNetworks": "inbound_networks",
+                "outboundNetworks": "outbound_networks"
+            },
+            "aquasec:index/functionAssurancePolicy:FunctionAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy": {
+                "applicationScopes": "application_scopes",
+                "blockMaliciousExecutables": "block_malicious_executables",
+                "blockMaliciousExecutablesAllowedProcesses": "block_malicious_executables_allowed_processes",
+                "blockRunningExecutablesInTmpFolder": "block_running_executables_in_tmp_folder",
+                "blockedExecutables": "blocked_executables",
+                "honeypotAccessKey": "honeypot_access_key",
+                "honeypotApplyOns": "honeypot_apply_on",
+                "honeypotSecretKey": "honeypot_secret_key",
+                "honeypotServerlessAppName": "honeypot_serverless_app_name",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables"
+            },
+            "aquasec:index/getAcknowledgesAcknowledge:getAcknowledgesAcknowledge": {
+                "dockerId": "docker_id",
+                "expirationConfiguredAt": "expiration_configured_at",
+                "expirationConfiguredBy": "expiration_configured_by",
+                "expirationDays": "expiration_days",
+                "fixVersion": "fix_version",
+                "imageName": "image_name",
+                "issueName": "issue_name",
+                "issueType": "issue_type",
+                "osVersion": "os_version",
+                "registryName": "registry_name",
+                "resourceCpe": "resource_cpe",
+                "resourceFormat": "resource_format",
+                "resourceHash": "resource_hash",
+                "resourceName": "resource_name",
+                "resourcePath": "resource_path",
+                "resourceType": "resource_type",
+                "resourceVersion": "resource_version"
+            },
+            "aquasec:index/getApplicationScope:getApplicationScope": {
+                "ownerEmail": "owner_email"
+            },
+            "aquasec:index/getApplicationScopeCategory:getApplicationScopeCategory": {
+                "entityScopes": "entity_scope",
+                "infrastructures": "infrastructure"
+            },
+            "aquasec:index/getApplicationScopeCategoryArtifact:getApplicationScopeCategoryArtifact": {
+                "cfs": "cf",
+                "functions": "function",
+                "images": "image"
+            },
+            "aquasec:index/getApplicationScopeCategoryWorkload:getApplicationScopeCategoryWorkload": {
+                "cfs": "cf"
+            },
+            "aquasec:index/getAquaLabels:getAquaLabels": {
+                "aquaLabels": "aqua_labels"
+            },
+            "aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy": {
+                "allowedExecutables": "allowed_executables",
+                "allowedRegistries": "allowed_registries",
+                "applicationScopes": "application_scopes",
+                "auditAllNetworkActivity": "audit_all_network_activity",
+                "auditAllProcessesActivity": "audit_all_processes_activity",
+                "auditFullCommandArguments": "audit_full_command_arguments",
+                "blockAccessHostNetwork": "block_access_host_network",
+                "blockAddingCapabilities": "block_adding_capabilities",
+                "blockContainerExec": "block_container_exec",
+                "blockCryptocurrencyMining": "block_cryptocurrency_mining",
+                "blockFilelessExec": "block_fileless_exec",
+                "blockLowPortBinding": "block_low_port_binding",
+                "blockNonCompliantImages": "block_non_compliant_images",
+                "blockNonCompliantWorkloads": "block_non_compliant_workloads",
+                "blockNonK8sContainers": "block_non_k8s_containers",
+                "blockPrivilegedContainers": "block_privileged_containers",
+                "blockReverseShell": "block_reverse_shell",
+                "blockRootUser": "block_root_user",
+                "blockUnregisteredImages": "block_unregistered_images",
+                "blockUseIpcNamespace": "block_use_ipc_namespace",
+                "blockUsePidNamespace": "block_use_pid_namespace",
+                "blockUseUserNamespace": "block_use_user_namespace",
+                "blockUseUtsNamespace": "block_use_uts_namespace",
+                "blockedCapabilities": "blocked_capabilities",
+                "blockedExecutables": "blocked_executables",
+                "blockedFiles": "blocked_files",
+                "blockedInboundPorts": "blocked_inbound_ports",
+                "blockedOutboundPorts": "blocked_outbound_ports",
+                "blockedPackages": "blocked_packages",
+                "blockedVolumes": "blocked_volumes",
+                "containerExecAllowedProcesses": "container_exec_allowed_processes",
+                "enableDriftPrevention": "enable_drift_prevention",
+                "enableForkGuard": "enable_fork_guard",
+                "enableIpReputationSecurity": "enable_ip_reputation_security",
+                "enablePortScanDetection": "enable_port_scan_detection",
+                "enforceAfterDays": "enforce_after_days",
+                "exceptionalReadonlyFilesAndDirectories": "exceptional_readonly_files_and_directories",
+                "execLockdownWhiteLists": "exec_lockdown_white_list",
+                "fileIntegrityMonitorings": "file_integrity_monitoring",
+                "forkGuardProcessLimit": "fork_guard_process_limit",
+                "limitNewPrivileges": "limit_new_privileges",
+                "malwareScanOptions": "malware_scan_options",
+                "monitorSystemTimeChanges": "monitor_system_time_changes",
+                "readonlyFilesAndDirectories": "readonly_files_and_directories",
+                "reverseShellAllowedIps": "reverse_shell_allowed_ips",
+                "reverseShellAllowedProcesses": "reverse_shell_allowed_processes",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables"
+            },
+            "aquasec:index/getContainerRuntimePolicyFileIntegrityMonitoring:getContainerRuntimePolicyFileIntegrityMonitoring": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "monitorAttributes": "monitor_attributes",
+                "monitorCreate": "monitor_create",
+                "monitorDelete": "monitor_delete",
+                "monitorModify": "monitor_modify",
+                "monitorRead": "monitor_read",
+                "monitoredPaths": "monitored_paths",
+                "monitoredProcesses": "monitored_processes",
+                "monitoredUsers": "monitored_users"
+            },
+            "aquasec:index/getContainerRuntimePolicyMalwareScanOption:getContainerRuntimePolicyMalwareScanOption": {
+                "excludeDirectories": "exclude_directories",
+                "excludeProcesses": "exclude_processes"
+            },
+            "aquasec:index/getEnforcerGroups:getEnforcerGroups": {
+                "admissionControl": "admission_control",
+                "allowKubeEnforcerAudit": "allow_kube_enforcer_audit",
+                "allowedApplications": "allowed_applications",
+                "allowedLabels": "allowed_labels",
+                "allowedRegistries": "allowed_registries",
+                "antivirusProtection": "antivirus_protection",
+                "aquaVersion": "aqua_version",
+                "auditAll": "audit_all",
+                "autoCopySecrets": "auto_copy_secrets",
+                "autoDiscoverConfigureRegistries": "auto_discover_configure_registries",
+                "autoDiscoveryEnabled": "auto_discovery_enabled",
+                "autoScanDiscoveredImagesRunningContainers": "auto_scan_discovered_images_running_containers",
+                "behavioralEngine": "behavioral_engine",
+                "blockAdmissionControl": "block_admission_control",
+                "commands": "command",
+                "connectedCount": "connected_count",
+                "containerActivityProtection": "container_activity_protection",
+                "containerAntivirusProtection": "container_antivirus_protection",
+                "disconnectedCount": "disconnected_count",
+                "enforcerImageName": "enforcer_image_name",
+                "gatewayAddress": "gateway_address",
+                "gatewayName": "gateway_name",
+                "groupId": "group_id",
+                "highVulns": "high_vulns",
+                "hostAssurance": "host_assurance",
+                "hostBehavioralEngine": "host_behavioral_engine",
+                "hostForensics": "host_forensics",
+                "hostNetworkProtection": "host_network_protection",
+                "hostOs": "host_os",
+                "hostProtection": "host_protection",
+                "hostUserProtection": "host_user_protection",
+                "hostsCount": "hosts_count",
+                "imageAssurance": "image_assurance",
+                "installCommand": "install_command",
+                "kubeBenchImageName": "kube_bench_image_name",
+                "lastUpdate": "last_update",
+                "logicalName": "logical_name",
+                "lowVulns": "low_vulns",
+                "medVulns": "med_vulns",
+                "microEnforcerCertsSecretsName": "micro_enforcer_certs_secrets_name",
+                "microEnforcerImageName": "micro_enforcer_image_name",
+                "microEnforcerInjection": "micro_enforcer_injection",
+                "microEnforcerSecretsName": "micro_enforcer_secrets_name",
+                "negVulns": "neg_vulns",
+                "networkProtection": "network_protection",
+                "orchestrators": "orchestrator",
+                "pasDeploymentLink": "pas_deployment_link",
+                "riskExplorerAutoDiscovery": "risk_explorer_auto_discovery",
+                "runtimePolicyName": "runtime_policy_name",
+                "runtimeType": "runtime_type",
+                "syncHostImages": "sync_host_images",
+                "syscallEnabled": "syscall_enabled",
+                "userAccessControl": "user_access_control"
+            },
+            "aquasec:index/getEnforcerGroupsOrchestrator:getEnforcerGroupsOrchestrator": {
+                "serviceAccount": "service_account"
+            },
+            "aquasec:index/getFirewallPolicy:getFirewallPolicy": {
+                "blockIcmpPing": "block_icmp_ping",
+                "blockMetadataService": "block_metadata_service",
+                "inboundNetworks": "inbound_networks",
+                "outboundNetworks": "outbound_networks"
+            },
+            "aquasec:index/getFirewallPolicyInboundNetwork:getFirewallPolicyInboundNetwork": {
+                "portRange": "port_range",
+                "resourceType": "resource_type"
+            },
+            "aquasec:index/getFirewallPolicyOutboundNetwork:getFirewallPolicyOutboundNetwork": {
+                "portRange": "port_range",
+                "resourceType": "resource_type"
+            },
+            "aquasec:index/getFunctionAssurancePolicy:getFunctionAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/getFunctionAssurancePolicyAutoScanTime:getFunctionAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/getFunctionAssurancePolicyCustomCheck:getFunctionAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/getFunctionAssurancePolicyPackagesBlackList:getFunctionAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getFunctionAssurancePolicyPackagesWhiteList:getFunctionAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy": {
+                "applicationScopes": "application_scopes",
+                "blockMaliciousExecutables": "block_malicious_executables",
+                "blockMaliciousExecutablesAllowedProcesses": "block_malicious_executables_allowed_processes",
+                "blockRunningExecutablesInTmpFolder": "block_running_executables_in_tmp_folder",
+                "blockedExecutables": "blocked_executables",
+                "honeypotAccessKey": "honeypot_access_key",
+                "honeypotApplyOns": "honeypot_apply_on",
+                "honeypotSecretKey": "honeypot_secret_key",
+                "honeypotServerlessAppName": "honeypot_serverless_app_name",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables"
+            },
+            "aquasec:index/getGatewaysGateway:getGatewaysGateway": {
+                "grpcAddress": "grpc_address",
+                "publicAddress": "public_address"
+            },
+            "aquasec:index/getGroupsGroup:getGroupsGroup": {
+                "groupId": "group_id"
+            },
+            "aquasec:index/getHostAssurancePolicy:getHostAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/getHostAssurancePolicyAutoScanTime:getHostAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/getHostAssurancePolicyCustomCheck:getHostAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/getHostAssurancePolicyPackagesBlackList:getHostAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getHostAssurancePolicyPackagesWhiteList:getHostAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy": {
+                "applicationScopes": "application_scopes",
+                "auditAllOsUserActivity": "audit_all_os_user_activity",
+                "auditBruteForceLogin": "audit_brute_force_login",
+                "auditFullCommandArguments": "audit_full_command_arguments",
+                "auditHostFailedLoginEvents": "audit_host_failed_login_events",
+                "auditHostSuccessfulLoginEvents": "audit_host_successful_login_events",
+                "auditUserAccountManagement": "audit_user_account_management",
+                "blockCryptocurrencyMining": "block_cryptocurrency_mining",
+                "blockedFiles": "blocked_files",
+                "enableIpReputationSecurity": "enable_ip_reputation_security",
+                "enforceAfterDays": "enforce_after_days",
+                "fileIntegrityMonitorings": "file_integrity_monitoring",
+                "malwareScanOptions": "malware_scan_options",
+                "monitorSystemLogIntegrity": "monitor_system_log_integrity",
+                "monitorSystemTimeChanges": "monitor_system_time_changes",
+                "monitorWindowsServices": "monitor_windows_services",
+                "osGroupsAlloweds": "os_groups_allowed",
+                "osGroupsBlockeds": "os_groups_blocked",
+                "osUsersAlloweds": "os_users_allowed",
+                "osUsersBlockeds": "os_users_blocked",
+                "packageBlocks": "package_block",
+                "portScanningDetection": "port_scanning_detection",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables",
+                "windowsRegistryMonitorings": "windows_registry_monitoring",
+                "windowsRegistryProtections": "windows_registry_protection"
+            },
+            "aquasec:index/getHostRuntimePolicyFileIntegrityMonitoring:getHostRuntimePolicyFileIntegrityMonitoring": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "monitorAttributes": "monitor_attributes",
+                "monitorCreate": "monitor_create",
+                "monitorDelete": "monitor_delete",
+                "monitorModify": "monitor_modify",
+                "monitorRead": "monitor_read",
+                "monitoredPaths": "monitored_paths",
+                "monitoredProcesses": "monitored_processes",
+                "monitoredUsers": "monitored_users"
+            },
+            "aquasec:index/getHostRuntimePolicyMalwareScanOption:getHostRuntimePolicyMalwareScanOption": {
+                "excludeProcesses": "exclude_processes",
+                "includeDirectories": "include_directories"
+            },
+            "aquasec:index/getHostRuntimePolicyWindowsRegistryMonitoring:getHostRuntimePolicyWindowsRegistryMonitoring": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "monitorAttributes": "monitor_attributes",
+                "monitorCreate": "monitor_create",
+                "monitorDelete": "monitor_delete",
+                "monitorModify": "monitor_modify",
+                "monitorRead": "monitor_read",
+                "monitoredPaths": "monitored_paths",
+                "monitoredProcesses": "monitored_processes",
+                "monitoredUsers": "monitored_users"
+            },
+            "aquasec:index/getHostRuntimePolicyWindowsRegistryProtection:getHostRuntimePolicyWindowsRegistryProtection": {
+                "excludedPaths": "excluded_paths",
+                "excludedProcesses": "excluded_processes",
+                "excludedUsers": "excluded_users",
+                "protectedPaths": "protected_paths",
+                "protectedProcesses": "protected_processes",
+                "protectedUsers": "protected_users"
+            },
+            "aquasec:index/getImage:getImage": {
+                "assuranceChecksPerformeds": "assurance_checks_performed",
+                "criticalVulnerabilities": "critical_vulnerabilities",
+                "defaultUser": "default_user",
+                "disallowedByAssuranceChecks": "disallowed_by_assurance_checks",
+                "dockerId": "docker_id",
+                "dockerLabels": "docker_labels",
+                "dockerVersion": "docker_version",
+                "dtaSeverityScore": "dta_severity_score",
+                "dtaSkipped": "dta_skipped",
+                "dtaSkippedReason": "dta_skipped_reason",
+                "environmentVariables": "environment_variables",
+                "highVulnerabilities": "high_vulnerabilities",
+                "histories": "history",
+                "imageSize": "image_size",
+                "imageType": "image_type",
+                "lowVulnerabilities": "low_vulnerabilities",
+                "mediumVulnerabilities": "medium_vulnerabilities",
+                "negligibleVulnerabilities": "negligible_vulnerabilities",
+                "newerImageExists": "newer_image_exists",
+                "osVersion": "os_version",
+                "partialResults": "partial_results",
+                "pendingDisallowed": "pending_disallowed",
+                "permissionAuthor": "permission_author",
+                "permissionComment": "permission_comment",
+                "registryType": "registry_type",
+                "repoDigests": "repo_digests",
+                "scanDate": "scan_date",
+                "scanError": "scan_error",
+                "scanStatus": "scan_status",
+                "sensitiveData": "sensitive_data",
+                "totalVulnerabilities": "total_vulnerabilities",
+                "virtualSize": "virtual_size"
+            },
+            "aquasec:index/getImageAssuranceChecksPerformed:getImageAssuranceChecksPerformed": {
+                "assuranceType": "assurance_type",
+                "dtaSkipped": "dta_skipped",
+                "dtaSkippedReason": "dta_skipped_reason",
+                "policyName": "policy_name"
+            },
+            "aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/getImageAssurancePolicyAutoScanTime:getImageAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/getImageAssurancePolicyCustomCheck:getImageAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/getImageAssurancePolicyPackagesBlackList:getImageAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getImageAssurancePolicyPackagesWhiteList:getImageAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getImageHistory:getImageHistory": {
+                "createdBy": "created_by"
+            },
+            "aquasec:index/getImageVulnerability:getImageVulnerability": {
+                "ackAuthor": "ack_author",
+                "ackComment": "ack_comment",
+                "ackExpirationConfiguredAt": "ack_expiration_configured_at",
+                "ackExpirationConfiguredBy": "ack_expiration_configured_by",
+                "ackExpirationDays": "ack_expiration_days",
+                "ackScope": "ack_scope",
+                "acknowledgeDate": "acknowledge_date",
+                "ancestorPkg": "ancestor_pkg",
+                "aquaScore": "aqua_score",
+                "aquaScoreClassification": "aqua_score_classification",
+                "aquaScoringSystem": "aqua_scoring_system",
+                "aquaSeverity": "aqua_severity",
+                "aquaSeverityClassification": "aqua_severity_classification",
+                "aquaVectors": "aqua_vectors",
+                "auditEventsCount": "audit_events_count",
+                "blockEventsCount": "block_events_count",
+                "exploitReference": "exploit_reference",
+                "exploitType": "exploit_type",
+                "firstFoundDate": "first_found_date",
+                "fixVersion": "fix_version",
+                "imageName": "image_name",
+                "lastFoundDate": "last_found_date",
+                "modificationDate": "modification_date",
+                "nvdCvss2Score": "nvd_cvss2_score",
+                "nvdCvss2Vectors": "nvd_cvss2_vectors",
+                "nvdCvss3Score": "nvd_cvss3_score",
+                "nvdCvss3Severity": "nvd_cvss3_severity",
+                "nvdCvss3Vectors": "nvd_cvss3_vectors",
+                "nvdSeverity": "nvd_severity",
+                "nvdUrl": "nvd_url",
+                "osVersion": "os_version",
+                "publishDate": "publish_date",
+                "resourceArchitecture": "resource_architecture",
+                "resourceCpe": "resource_cpe",
+                "resourceFormat": "resource_format",
+                "resourceHash": "resource_hash",
+                "resourceLicenses": "resource_licenses",
+                "resourceName": "resource_name",
+                "resourcePath": "resource_path",
+                "resourceType": "resource_type",
+                "resourceVersion": "resource_version",
+                "severityClassification": "severity_classification",
+                "temporalVector": "temporal_vector",
+                "vPatchAppliedBy": "v_patch_applied_by",
+                "vPatchAppliedOn": "v_patch_applied_on",
+                "vPatchEnforcedBy": "v_patch_enforced_by",
+                "vPatchEnforcedOn": "v_patch_enforced_on",
+                "vPatchPolicyEnforce": "v_patch_policy_enforce",
+                "vPatchPolicyName": "v_patch_policy_name",
+                "vPatchRevertedBy": "v_patch_reverted_by",
+                "vPatchRevertedOn": "v_patch_reverted_on",
+                "vPatchStatus": "v_patch_status",
+                "vendorCvss2Score": "vendor_cvss2_score",
+                "vendorCvss2Vectors": "vendor_cvss2_vectors",
+                "vendorSeverity": "vendor_severity",
+                "vendorStatement": "vendor_statement",
+                "vendorUrl": "vendor_url"
+            },
+            "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": {
+                "advancedSettingsCleanup": "advanced_settings_cleanup",
+                "alwaysPullPatterns": "always_pull_patterns",
+                "autoCleanup": "auto_cleanup",
+                "autoPull": "auto_pull",
+                "autoPullInterval": "auto_pull_interval",
+                "autoPullMax": "auto_pull_max",
+                "autoPullRescan": "auto_pull_rescan",
+                "autoPullTime": "auto_pull_time",
+                "imageCreationDateCondition": "image_creation_date_condition",
+                "pullImageAge": "pull_image_age",
+                "pullImageCount": "pull_image_count",
+                "pullImageTagPatterns": "pull_image_tag_pattern",
+                "pullRepoPatternsExcludeds": "pull_repo_patterns_excluded",
+                "registryScanTimeout": "registry_scan_timeout",
+                "scannerNames": "scanner_name",
+                "scannerType": "scanner_type",
+                "webhooks": "webhook"
+            },
+            "aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook": {
+                "authToken": "auth_token",
+                "unQuarantine": "un_quarantine"
+            },
+            "aquasec:index/getIntegrationState:getIntegrationState": {
+                "oidcSettings": "oidc_settings",
+                "openidSettings": "openid_settings",
+                "samlSettings": "saml_settings"
+            },
+            "aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "kubernetesControlsNames": "kubernetes_controls_names",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/getKubernetesAssurancePolicyAutoScanTime:getKubernetesAssurancePolicyAutoScanTime": {
+                "iterationType": "iteration_type",
+                "weekDays": "week_days"
+            },
+            "aquasec:index/getKubernetesAssurancePolicyCustomCheck:getKubernetesAssurancePolicyCustomCheck": {
+                "lastModified": "last_modified",
+                "readOnly": "read_only",
+                "scriptId": "script_id"
+            },
+            "aquasec:index/getKubernetesAssurancePolicyPackagesBlackList:getKubernetesAssurancePolicyPackagesBlackList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getKubernetesAssurancePolicyPackagesWhiteList:getKubernetesAssurancePolicyPackagesWhiteList": {
+                "versionRange": "version_range"
+            },
+            "aquasec:index/getNotifications:getNotifications": {
+                "emails": "email",
+                "jiras": "jira",
+                "servicenows": "servicenow",
+                "slacks": "slack",
+                "splunks": "splunk",
+                "webhooks": "webhook"
+            },
+            "aquasec:index/getNotificationsEmail:getNotificationsEmail": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getNotificationsJira:getNotificationsJira": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getNotificationsServicenow:getNotificationsServicenow": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getNotificationsSlack:getNotificationsSlack": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getNotificationsSplunk:getNotificationsSplunk": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getNotificationsTeam:getNotificationsTeam": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getNotificationsWebhook:getNotificationsWebhook": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/getPermissionsSets:getPermissionsSets": {
+                "permissionsSets": "permissions_sets"
+            },
+            "aquasec:index/getPermissionsSetsPermissionsSet:getPermissionsSetsPermissionsSet": {
+                "isSuper": "is_super",
+                "uiAccess": "ui_access",
+                "updatedAt": "updated_at"
+            },
+            "aquasec:index/getRolesMapping:getRolesMapping": {
+                "ldaps": "ldap",
+                "oauth2s": "oauth2",
+                "openids": "openid",
+                "samls": "saml"
+            },
+            "aquasec:index/getRolesMappingLdap:getRolesMappingLdap": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/getRolesMappingOauth2:getRolesMappingOauth2": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/getRolesMappingOpenid:getRolesMappingOpenid": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/getRolesMappingSaas:getRolesMappingSaas": {
+                "rolesMappings": "roles_mapping"
+            },
+            "aquasec:index/getRolesMappingSaasRolesMapping:getRolesMappingSaasRolesMapping": {
+                "accountId": "account_id",
+                "cspRole": "csp_role",
+                "samlGroups": "saml_groups"
+            },
+            "aquasec:index/getRolesMappingSaml:getRolesMappingSaml": {
+                "roleMapping": "role_mapping"
+            },
+            "aquasec:index/getRolesRole:getRolesRole": {
+                "updatedAt": "updated_at"
+            },
+            "aquasec:index/getService:getService": {
+                "applicationScopes": "application_scopes",
+                "containersCount": "containers_count",
+                "isRegistered": "is_registered",
+                "notEvaluatedCount": "not_evaluated_count",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables",
+                "unregisteredCount": "unregistered_count",
+                "vulnerabilitiesHigh": "vulnerabilities_high",
+                "vulnerabilitiesLow": "vulnerabilities_low",
+                "vulnerabilitiesMalware": "vulnerabilities_malware",
+                "vulnerabilitiesMedium": "vulnerabilities_medium",
+                "vulnerabilitiesNegligible": "vulnerabilities_negligible",
+                "vulnerabilitiesScoreAverage": "vulnerabilities_score_average",
+                "vulnerabilitiesSensitive": "vulnerabilities_sensitive",
+                "vulnerabilitiesTotal": "vulnerabilities_total"
+            },
+            "aquasec:index/getUsersSaasUser:getUsersSaasUser": {
+                "accountAdmin": "account_admin",
+                "cspRoles": "csp_roles",
+                "passwordReset": "password_reset",
+                "sendAnnouncements": "send_announcements",
+                "sendNewPlugins": "send_new_plugins",
+                "sendNewRisks": "send_new_risks",
+                "sendScanResults": "send_scan_results",
+                "userId": "user_id"
+            },
+            "aquasec:index/getUsersSaasUserLogin:getUsersSaasUserLogin": {
+                "ipAddress": "ip_address",
+                "userId": "user_id"
+            },
+            "aquasec:index/getUsersUser:getUsersUser": {
+                "firstTime": "first_time",
+                "isSuper": "is_super",
+                "uiAccess": "ui_access",
+                "userId": "user_id"
+            },
+            "aquasec:index/group:Group": {
+                "groupId": "group_id"
+            },
+            "aquasec:index/hostAssurancePolicy:HostAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/hostRuntimePolicy:HostRuntimePolicy": {
+                "applicationScopes": "application_scopes",
+                "auditAllOsUserActivity": "audit_all_os_user_activity",
+                "auditBruteForceLogin": "audit_brute_force_login",
+                "auditFullCommandArguments": "audit_full_command_arguments",
+                "auditHostFailedLoginEvents": "audit_host_failed_login_events",
+                "auditHostSuccessfulLoginEvents": "audit_host_successful_login_events",
+                "auditUserAccountManagement": "audit_user_account_management",
+                "blockCryptocurrencyMining": "block_cryptocurrency_mining",
+                "blockedFiles": "blocked_files",
+                "enableIpReputationSecurity": "enable_ip_reputation_security",
+                "enforceAfterDays": "enforce_after_days",
+                "fileIntegrityMonitoring": "file_integrity_monitoring",
+                "malwareScanOptions": "malware_scan_options",
+                "monitorSystemLogIntegrity": "monitor_system_log_integrity",
+                "monitorSystemTimeChanges": "monitor_system_time_changes",
+                "monitorWindowsServices": "monitor_windows_services",
+                "osGroupsAlloweds": "os_groups_allowed",
+                "osGroupsBlockeds": "os_groups_blocked",
+                "osUsersAlloweds": "os_users_allowed",
+                "osUsersBlockeds": "os_users_blocked",
+                "packageBlocks": "package_block",
+                "portScanningDetection": "port_scanning_detection",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables",
+                "windowsRegistryMonitoring": "windows_registry_monitoring",
+                "windowsRegistryProtection": "windows_registry_protection"
+            },
+            "aquasec:index/image:Image": {
+                "allowImage": "allow_image",
+                "assuranceChecksPerformeds": "assurance_checks_performed",
+                "blockImage": "block_image",
+                "criticalVulnerabilities": "critical_vulnerabilities",
+                "defaultUser": "default_user",
+                "disallowedByAssuranceChecks": "disallowed_by_assurance_checks",
+                "dockerId": "docker_id",
+                "dockerLabels": "docker_labels",
+                "dockerVersion": "docker_version",
+                "dtaSeverityScore": "dta_severity_score",
+                "dtaSkipped": "dta_skipped",
+                "dtaSkippedReason": "dta_skipped_reason",
+                "environmentVariables": "environment_variables",
+                "highVulnerabilities": "high_vulnerabilities",
+                "histories": "history",
+                "imageSize": "image_size",
+                "imageType": "image_type",
+                "lowVulnerabilities": "low_vulnerabilities",
+                "mediumVulnerabilities": "medium_vulnerabilities",
+                "negligibleVulnerabilities": "negligible_vulnerabilities",
+                "newerImageExists": "newer_image_exists",
+                "osVersion": "os_version",
+                "partialResults": "partial_results",
+                "pendingDisallowed": "pending_disallowed",
+                "permissionAuthor": "permission_author",
+                "permissionComment": "permission_comment",
+                "permissionModificationComment": "permission_modification_comment",
+                "registryType": "registry_type",
+                "repoDigests": "repo_digests",
+                "scanDate": "scan_date",
+                "scanError": "scan_error",
+                "scanStatus": "scan_status",
+                "sensitiveData": "sensitive_data",
+                "totalVulnerabilities": "total_vulnerabilities",
+                "virtualSize": "virtual_size"
+            },
+            "aquasec:index/imageAssurancePolicy:ImageAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "failCicd": "fail_cicd",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/integrationRegistry:IntegrationRegistry": {
+                "advancedSettingsCleanup": "advanced_settings_cleanup",
+                "alwaysPullPatterns": "always_pull_patterns",
+                "autoCleanup": "auto_cleanup",
+                "autoPull": "auto_pull",
+                "autoPullInterval": "auto_pull_interval",
+                "autoPullMax": "auto_pull_max",
+                "autoPullRescan": "auto_pull_rescan",
+                "autoPullTime": "auto_pull_time",
+                "imageCreationDateCondition": "image_creation_date_condition",
+                "pullImageAge": "pull_image_age",
+                "pullImageCount": "pull_image_count",
+                "pullImageTagPatterns": "pull_image_tag_pattern",
+                "pullRepoPatternsExcludeds": "pull_repo_patterns_excluded",
+                "registryScanTimeout": "registry_scan_timeout",
+                "scannerNames": "scanner_name",
+                "scannerType": "scanner_type",
+                "webhooks": "webhook"
+            },
+            "aquasec:index/kubernetesAssurancePolicy:KubernetesAssurancePolicy": {
+                "allowedImages": "allowed_images",
+                "applicationScopes": "application_scopes",
+                "auditOnFailure": "audit_on_failure",
+                "autoScanConfigured": "auto_scan_configured",
+                "autoScanEnabled": "auto_scan_enabled",
+                "autoScanTimes": "auto_scan_time",
+                "blacklistPermissions": "blacklist_permissions",
+                "blacklistPermissionsEnabled": "blacklist_permissions_enabled",
+                "blacklistedLicenses": "blacklisted_licenses",
+                "blacklistedLicensesEnabled": "blacklisted_licenses_enabled",
+                "blockFailed": "block_failed",
+                "controlExcludeNoFix": "control_exclude_no_fix",
+                "customChecks": "custom_checks",
+                "customChecksEnabled": "custom_checks_enabled",
+                "customSeverityEnabled": "custom_severity_enabled",
+                "cvesBlackListEnabled": "cves_black_list_enabled",
+                "cvesBlackLists": "cves_black_list",
+                "cvesWhiteListEnabled": "cves_white_list_enabled",
+                "cvesWhiteLists": "cves_white_list",
+                "cvssSeverity": "cvss_severity",
+                "cvssSeverityEnabled": "cvss_severity_enabled",
+                "cvssSeverityExcludeNoFix": "cvss_severity_exclude_no_fix",
+                "disallowMalware": "disallow_malware",
+                "dockerCisEnabled": "docker_cis_enabled",
+                "domainName": "domain_name",
+                "dtaEnabled": "dta_enabled",
+                "dtaSeverity": "dta_severity",
+                "enforceAfterDays": "enforce_after_days",
+                "enforceExcessivePermissions": "enforce_excessive_permissions",
+                "exceptionalMonitoredMalwarePaths": "exceptional_monitored_malware_paths",
+                "forbiddenLabels": "forbidden_labels",
+                "forbiddenLabelsEnabled": "forbidden_labels_enabled",
+                "forceMicroenforcer": "force_microenforcer",
+                "functionIntegrityEnabled": "function_integrity_enabled",
+                "ignoreRecentlyPublishedVln": "ignore_recently_published_vln",
+                "ignoreRecentlyPublishedVlnPeriod": "ignore_recently_published_vln_period",
+                "ignoreRiskResourcesEnabled": "ignore_risk_resources_enabled",
+                "ignoredRiskResources": "ignored_risk_resources",
+                "kubeCisEnabled": "kube_cis_enabled",
+                "kubernetesControlsNames": "kubernetes_controls_names",
+                "malwareAction": "malware_action",
+                "maximumScore": "maximum_score",
+                "maximumScoreEnabled": "maximum_score_enabled",
+                "maximumScoreExcludeNoFix": "maximum_score_exclude_no_fix",
+                "monitoredMalwarePaths": "monitored_malware_paths",
+                "onlyNoneRootUsers": "only_none_root_users",
+                "packagesBlackListEnabled": "packages_black_list_enabled",
+                "packagesBlackLists": "packages_black_list",
+                "packagesWhiteListEnabled": "packages_white_list_enabled",
+                "packagesWhiteLists": "packages_white_list",
+                "partialResultsImageFail": "partial_results_image_fail",
+                "readOnly": "read_only",
+                "requiredLabels": "required_labels",
+                "requiredLabelsEnabled": "required_labels_enabled",
+                "scanNfsMounts": "scan_nfs_mounts",
+                "scanSensitiveData": "scan_sensitive_data",
+                "scapEnabled": "scap_enabled",
+                "scapFiles": "scap_files",
+                "scopes": "scope",
+                "trustedBaseImages": "trusted_base_images",
+                "trustedBaseImagesEnabled": "trusted_base_images_enabled",
+                "whitelistedLicenses": "whitelisted_licenses",
+                "whitelistedLicensesEnabled": "whitelisted_licenses_enabled"
+            },
+            "aquasec:index/notification:Notification": {
+                "lastUpdated": "last_updated"
+            },
+            "aquasec:index/notificationSlack:NotificationSlack": {
+                "mainText": "main_text",
+                "serviceKey": "service_key",
+                "userName": "user_name",
+                "webhookUrl": "webhook_url"
+            },
+            "aquasec:index/permissionsSets:PermissionsSets": {
+                "isSuper": "is_super",
+                "uiAccess": "ui_access",
+                "updatedAt": "updated_at"
+            },
+            "aquasec:index/role:Role": {
+                "roleName": "role_name",
+                "updatedAt": "updated_at"
+            },
+            "aquasec:index/roleMappingSaas:RoleMappingSaas": {
+                "accountId": "account_id",
+                "cspRole": "csp_role",
+                "roleMappingId": "role_mapping_id",
+                "samlGroups": "saml_groups"
+            },
+            "aquasec:index/service:Service": {
+                "applicationScopes": "application_scopes",
+                "containersCount": "containers_count",
+                "isRegistered": "is_registered",
+                "notEvaluatedCount": "not_evaluated_count",
+                "scopeExpression": "scope_expression",
+                "scopeVariables": "scope_variables",
+                "unregisteredCount": "unregistered_count",
+                "vulnerabilitiesHigh": "vulnerabilities_high",
+                "vulnerabilitiesLow": "vulnerabilities_low",
+                "vulnerabilitiesMalware": "vulnerabilities_malware",
+                "vulnerabilitiesMedium": "vulnerabilities_medium",
+                "vulnerabilitiesNegligible": "vulnerabilities_negligible",
+                "vulnerabilitiesScoreAverage": "vulnerabilities_score_average",
+                "vulnerabilitiesSensitive": "vulnerabilities_sensitive",
+                "vulnerabilitiesTotal": "vulnerabilities_total"
+            },
+            "aquasec:index/user:User": {
+                "firstTime": "first_time",
+                "isSuper": "is_super",
+                "passwordConfirm": "password_confirm",
+                "uiAccess": "ui_access",
+                "userId": "user_id"
+            },
+            "aquasec:index/userSaas:UserSaas": {
+                "accountAdmin": "account_admin",
+                "cspRoles": "csp_roles",
+                "passwordReset": "password_reset",
+                "sendAnnouncements": "send_announcements",
+                "sendNewPlugins": "send_new_plugins",
+                "sendNewRisks": "send_new_risks",
+                "sendScanResults": "send_scan_results",
+                "userId": "user_id"
+            },
+            "aquasec:index:Provider": {
+                "aquaUrl": "aqua_url",
+                "caCertificatePath": "ca_certificate_path",
+                "configPath": "config_path",
+                "verifyTls": "verify_tls"
+            }
+        },
+        "renamedConfigProperties": {
+            "aquaUrl": "aqua_url",
+            "caCertificatePath": "ca_certificate_path",
+            "configPath": "config_path",
+            "verifyTls": "verify_tls"
+        }
+    }
+}

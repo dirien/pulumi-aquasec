@@ -15,11 +15,13 @@
 package aquasec
 
 import (
+	_ "embed"
 	"fmt"
 	"path/filepath"
 
 	"github.com/aquasecurity/terraform-provider-aquasec/aquasec"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -43,10 +45,13 @@ func preConfigureCallback(vars resource.PropertyMap, c shim.ResourceConfig) erro
 	return nil
 }
 
+//go:embed cmd/pulumi-resource-aquasec/bridge-metadata.json
+var metadata []byte
+
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(aquasec.Provider(""))
+	p := shimv2.NewProvider(aquasec.Provider(version.Version))
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -74,10 +79,12 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"pulumi", "aquasec", "category/utility"},
-		License:    "Apache-2.0",
-		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumiverse/pulumi-aquasec",
+		Keywords:     []string{"pulumi", "aquasec", "category/utility"},
+		License:      "Apache-2.0",
+		Homepage:     "https://www.pulumi.com",
+		Repository:   "https://github.com/pulumiverse/pulumi-aquasec",
+		Version:      version.Version,
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "aquasecurity",
@@ -207,7 +214,10 @@ func Provider() tfbridge.ProviderInfo {
 			BasePackage: "com.pulumiverse",
 		},
 	}
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("aquasec_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
 
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov

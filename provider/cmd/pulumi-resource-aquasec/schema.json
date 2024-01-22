@@ -248,13 +248,15 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aquasec:index/ApplicationScopeCategoryArtifactFunction:ApplicationScopeCategoryArtifactFunction"
-                    }
+                    },
+                    "description": "Function name\n"
                 },
                 "images": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/aquasec:index/ApplicationScopeCategoryArtifactImage:ApplicationScopeCategoryArtifactImage"
-                    }
+                    },
+                    "description": "Name of a registry as defined in Aqua\n"
                 }
             },
             "type": "object"
@@ -696,8 +698,7 @@
                     "description": "May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).\n"
                 },
                 "type": {
-                    "type": "string",
-                    "description": "Enforcer Type.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1444,12 +1445,10 @@
                     "type": "string"
                 },
                 "dtaSkipped": {
-                    "type": "boolean",
-                    "description": "If DTA was skipped.\n"
+                    "type": "boolean"
                 },
                 "dtaSkippedReason": {
-                    "type": "string",
-                    "description": "The reason why DTA was skipped.\n"
+                    "type": "string"
                 },
                 "failed": {
                     "type": "boolean"
@@ -1680,19 +1679,16 @@
         "aquasec:index/ImageHistory:ImageHistory": {
             "properties": {
                 "comment": {
-                    "type": "string",
-                    "description": "The image creation comment.\n"
+                    "type": "string"
                 },
                 "created": {
-                    "type": "string",
-                    "description": "The date and time when the image was registered.\n"
+                    "type": "string"
                 },
                 "createdBy": {
                     "type": "string"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "size": {
                     "type": "integer"
@@ -1768,8 +1764,7 @@
                     "type": "string"
                 },
                 "digest": {
-                    "type": "string",
-                    "description": "The content digest of the image.\n"
+                    "type": "string"
                 },
                 "exploitReference": {
                     "type": "string"
@@ -1793,8 +1788,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the image.\n"
+                    "type": "string"
                 },
                 "nvdCvss2Score": {
                     "type": "number"
@@ -1818,27 +1812,22 @@
                     "type": "string"
                 },
                 "os": {
-                    "type": "string",
-                    "description": "The operating system detected in the image\n"
+                    "type": "string"
                 },
                 "osVersion": {
-                    "type": "string",
-                    "description": "The version of the OS detected in the image.\n"
+                    "type": "string"
                 },
                 "permission": {
-                    "type": "string",
-                    "description": "Permission of the image.\n"
+                    "type": "string"
                 },
                 "publishDate": {
                     "type": "string"
                 },
                 "registry": {
-                    "type": "string",
-                    "description": "The name of the registry where the image is stored.\n"
+                    "type": "string"
                 },
                 "repository": {
-                    "type": "string",
-                    "description": "The name of the image's repository.\n"
+                    "type": "string"
                 },
                 "resourceArchitecture": {
                     "type": "string"
@@ -2019,8 +2008,7 @@
                     "type": "boolean"
                 },
                 "url": {
-                    "type": "string",
-                    "description": "The URL, address or region of the registry\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -2335,8 +2323,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "ipAddress": {
                     "type": "string"
@@ -3057,8 +3044,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Name of the container runtime policy\n"
+                    "type": "string"
                 },
                 "value": {
                     "type": "string"
@@ -3116,8 +3102,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "type": "string",
-                    "description": "Enforcer Type.\n"
+                    "type": "string"
                 }
             },
             "type": "object",
@@ -3227,8 +3212,7 @@
         "aquasec:index/getFunctionAssurancePolicyCustomCheck:getFunctionAssurancePolicyCustomCheck": {
             "properties": {
                 "author": {
-                    "type": "string",
-                    "description": "Name of user account that created the policy.\n"
+                    "type": "string"
                 },
                 "description": {
                     "type": "string"
@@ -3485,8 +3469,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Name of the function runtime policy\n"
+                    "type": "string"
                 },
                 "value": {
                     "type": "string"
@@ -3516,8 +3499,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "logicalname": {
                     "type": "string"
@@ -3607,8 +3589,7 @@
         "aquasec:index/getHostAssurancePolicyCustomCheck:getHostAssurancePolicyCustomCheck": {
             "properties": {
                 "author": {
-                    "type": "string",
-                    "description": "Name of user account that created the policy.\n"
+                    "type": "string"
                 },
                 "description": {
                     "type": "string"
@@ -3939,8 +3920,7 @@
                     "type": "string"
                 },
                 "enabled": {
-                    "type": "boolean",
-                    "description": "Indicates if the runtime policy is enabled or not.\n"
+                    "type": "boolean"
                 },
                 "excludeProcesses": {
                     "type": "array",
@@ -3974,8 +3954,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "Name of the host runtime policy\n"
+                    "type": "string"
                 },
                 "value": {
                     "type": "string"
@@ -4133,12 +4112,10 @@
                     "type": "string"
                 },
                 "dtaSkipped": {
-                    "type": "boolean",
-                    "description": "If DTA was skipped.\n"
+                    "type": "boolean"
                 },
                 "dtaSkippedReason": {
-                    "type": "string",
-                    "description": "The reason why DTA was skipped.\n"
+                    "type": "string"
                 },
                 "failed": {
                     "type": "boolean"
@@ -4197,8 +4174,7 @@
         "aquasec:index/getImageAssurancePolicyCustomCheck:getImageAssurancePolicyCustomCheck": {
             "properties": {
                 "author": {
-                    "type": "string",
-                    "description": "Name of user account that created the policy.\n"
+                    "type": "string"
                 },
                 "description": {
                     "type": "string"
@@ -4452,19 +4428,16 @@
         "aquasec:index/getImageHistory:getImageHistory": {
             "properties": {
                 "comment": {
-                    "type": "string",
-                    "description": "The image creation comment.\n"
+                    "type": "string"
                 },
                 "created": {
-                    "type": "string",
-                    "description": "The date and time when the image was registered.\n"
+                    "type": "string"
                 },
                 "createdBy": {
                     "type": "string"
                 },
                 "id": {
-                    "type": "string",
-                    "description": "The ID of this resource.\n"
+                    "type": "string"
                 },
                 "size": {
                     "type": "integer"
@@ -4541,8 +4514,7 @@
                     "type": "string"
                 },
                 "digest": {
-                    "type": "string",
-                    "description": "The content digest of the image.\n"
+                    "type": "string"
                 },
                 "exploitReference": {
                     "type": "string"
@@ -4566,8 +4538,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the image.\n"
+                    "type": "string"
                 },
                 "nvdCvss2Score": {
                     "type": "number"
@@ -4591,27 +4562,22 @@
                     "type": "string"
                 },
                 "os": {
-                    "type": "string",
-                    "description": "The operating system detected in the image\n"
+                    "type": "string"
                 },
                 "osVersion": {
-                    "type": "string",
-                    "description": "The version of the OS detected in the image.\n"
+                    "type": "string"
                 },
                 "permission": {
-                    "type": "string",
-                    "description": "Permission of the image.\n"
+                    "type": "string"
                 },
                 "publishDate": {
                     "type": "string"
                 },
                 "registry": {
-                    "type": "string",
-                    "description": "The name of the registry where the image is stored.\n"
+                    "type": "string"
                 },
                 "repository": {
-                    "type": "string",
-                    "description": "The name of the image's repository.\n"
+                    "type": "string"
                 },
                 "resourceArchitecture": {
                     "type": "string"
@@ -4793,8 +4759,7 @@
                     "type": "boolean"
                 },
                 "url": {
-                    "type": "string",
-                    "description": "The URL, address or region of the registry\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4833,8 +4798,7 @@
         "aquasec:index/getKubernetesAssurancePolicyCustomCheck:getKubernetesAssurancePolicyCustomCheck": {
             "properties": {
                 "author": {
-                    "type": "string",
-                    "description": "Name of user account that created the policy.\n"
+                    "type": "string"
                 },
                 "description": {
                     "type": "string"
@@ -5091,8 +5055,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5138,8 +5101,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5185,8 +5147,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5232,8 +5193,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5279,8 +5239,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5326,8 +5285,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5373,8 +5331,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "lastUpdated": {
                     "type": "string"
@@ -5526,8 +5483,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "samlGroups": {
                     "type": "array",
@@ -5610,8 +5566,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "type": "string",
-                    "description": "The name of the service. It is recommended not to use whitespace characters in the name.\n"
+                    "type": "string"
                 },
                 "value": {
                     "type": "string"
@@ -5720,8 +5675,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string"
@@ -5745,8 +5699,7 @@
                     "type": "string"
                 },
                 "id": {
-                    "type": "integer",
-                    "description": "The ID of this resource.\n"
+                    "type": "integer"
                 },
                 "ipAddress": {
                     "type": "string"
@@ -6266,7 +6219,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Indicates if the runtime policy is enabled or not.\n"
+                    "description": "Defines if enabled or not\n"
                 },
                 "enforce": {
                     "type": "boolean",
@@ -6312,7 +6265,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the container runtime policy\n"
+                    "description": "Name assigned to the attribute.\n"
                 },
                 "readonlyFilesAndDirectories": {
                     "type": "array",
@@ -6534,7 +6487,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Indicates if the runtime policy is enabled or not.\n"
+                    "description": "Defines if enabled or not\n"
                 },
                 "enforce": {
                     "type": "boolean",
@@ -6580,7 +6533,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the container runtime policy\n",
+                    "description": "Name assigned to the attribute.\n",
                     "willReplaceOnChanges": true
                 },
                 "readonlyFilesAndDirectories": {
@@ -6802,7 +6755,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Indicates if the runtime policy is enabled or not.\n"
+                        "description": "Defines if enabled or not\n"
                     },
                     "enforce": {
                         "type": "boolean",
@@ -6848,7 +6801,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the container runtime policy\n",
+                        "description": "Name assigned to the attribute.\n",
                         "willReplaceOnChanges": true
                     },
                     "readonlyFilesAndDirectories": {
@@ -8867,7 +8820,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the function runtime policy\n"
+                    "description": "Name assigned to the attribute.\n"
                 },
                 "scopeExpression": {
                     "type": "string",
@@ -8952,7 +8905,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the function runtime policy\n",
+                    "description": "Name assigned to the attribute.\n",
                     "willReplaceOnChanges": true
                 },
                 "scopeExpression": {
@@ -9037,7 +8990,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the function runtime policy\n",
+                        "description": "Name assigned to the attribute.\n",
                         "willReplaceOnChanges": true
                     },
                     "scopeExpression": {
@@ -10154,7 +10107,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Indicates if the runtime policy is enabled or not.\n"
+                    "description": "Defines if enabled or not\n"
                 },
                 "enforce": {
                     "type": "boolean",
@@ -10186,7 +10139,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the host runtime policy\n"
+                    "description": "Name assigned to the attribute.\n"
                 },
                 "osGroupsAlloweds": {
                     "type": "array",
@@ -10307,7 +10260,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Indicates if the runtime policy is enabled or not.\n"
+                    "description": "Defines if enabled or not\n"
                 },
                 "enforce": {
                     "type": "boolean",
@@ -10339,7 +10292,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the host runtime policy\n",
+                    "description": "Name assigned to the attribute.\n",
                     "willReplaceOnChanges": true
                 },
                 "osGroupsAlloweds": {
@@ -10460,7 +10413,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Indicates if the runtime policy is enabled or not.\n"
+                        "description": "Defines if enabled or not\n"
                     },
                     "enforce": {
                         "type": "boolean",
@@ -10492,7 +10445,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the host runtime policy\n",
+                        "description": "Name assigned to the attribute.\n",
                         "willReplaceOnChanges": true
                     },
                     "osGroupsAlloweds": {
@@ -14127,7 +14080,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the service. It is recommended not to use whitespace characters in the name.\n"
+                    "description": "Name assigned to the attribute.\n"
                 },
                 "notEvaluatedCount": {
                     "type": "integer",
@@ -14239,7 +14192,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the service. It is recommended not to use whitespace characters in the name.\n",
+                    "description": "Name assigned to the attribute.\n",
                     "willReplaceOnChanges": true
                 },
                 "policies": {
@@ -14318,7 +14271,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the service. It is recommended not to use whitespace characters in the name.\n",
+                        "description": "Name assigned to the attribute.\n",
                         "willReplaceOnChanges": true
                     },
                     "notEvaluatedCount": {
@@ -14834,8 +14787,7 @@
                         "description": "Configuration for Real-Time Malware Protection.\n"
                     },
                     "name": {
-                        "type": "string",
-                        "description": "Name of the container runtime policy\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -16053,8 +16005,7 @@
                 "description": "A collection of arguments for invoking getFunctionRuntimePolicy.\n",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "description": "Name of the function runtime policy\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -16650,8 +16601,7 @@
                 "description": "A collection of arguments for invoking getHostRuntimePolicy.\n",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "description": "Name of the host runtime policy\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",
@@ -16869,12 +16819,10 @@
                 "description": "A collection of arguments for invoking getImage.\n",
                 "properties": {
                     "registry": {
-                        "type": "string",
-                        "description": "The name of the registry where the image is stored.\n"
+                        "type": "string"
                     },
                     "repository": {
-                        "type": "string",
-                        "description": "The name of the image's repository.\n"
+                        "type": "string"
                     },
                     "tag": {
                         "type": "string",
@@ -18488,8 +18436,7 @@
                 "description": "A collection of arguments for invoking getService.\n",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "description": "The name of the service. It is recommended not to use whitespace characters in the name.\n"
+                        "type": "string"
                     }
                 },
                 "type": "object",

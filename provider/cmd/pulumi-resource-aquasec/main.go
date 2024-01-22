@@ -17,16 +17,22 @@
 package main
 
 import (
+	"context"
 	_ "embed"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	aquasec "github.com/pulumiverse/pulumi-aquasec/provider"
-	"github.com/pulumiverse/pulumi-aquasec/provider/pkg/version"
 )
 
 //go:embed schema-embed.json
 var pulumiSchema []byte
 
+//go:embed bridge-metadata.json
+var bridgeMetadata []byte
+
 func main() {
-	// Modify the path to point to the new provider
-	tfbridge.Main("aquasec", version.Version, aquasec.Provider(), pulumiSchema)
+	meta := tfbridge.ProviderMetadata{
+		PackageSchema:  pulumiSchema,
+		BridgeMetadata: bridgeMetadata,
+	}
+	tfbridge.Main(context.Background(), "aquasec", aquasec.Provider(), meta)
 }
