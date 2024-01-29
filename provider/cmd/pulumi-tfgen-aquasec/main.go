@@ -15,11 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	aquasec "github.com/pulumiverse/pulumi-aquasec/provider"
+	"github.com/pulumiverse/pulumi-aquasec/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("aquasec", aquasec.Provider())
+	tfgen.Main("aquasec", version.Version, aquasec.Provider())
 }
