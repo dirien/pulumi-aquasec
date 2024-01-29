@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -50,8 +49,11 @@ func LookupFunctionRuntimePolicy(ctx *pulumi.Context, args *LookupFunctionRuntim
 
 // A collection of arguments for invoking getFunctionRuntimePolicy.
 type LookupFunctionRuntimePolicyArgs struct {
-	// Name of the function runtime policy
-	Name string `pulumi:"name"`
+	// Drift prevention configuration.
+	DriftPreventions []GetFunctionRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists []GetFunctionRuntimePolicyExecutableBlacklist `pulumi:"executableBlacklists"`
+	Name                 string                                        `pulumi:"name"`
 }
 
 // A collection of values returned by getFunctionRuntimePolicy.
@@ -70,10 +72,14 @@ type LookupFunctionRuntimePolicyResult struct {
 	BlockedExecutables []string `pulumi:"blockedExecutables"`
 	// The description of the function runtime policy
 	Description string `pulumi:"description"`
+	// Drift prevention configuration.
+	DriftPreventions []GetFunctionRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
 	// Indicates if the runtime policy is enabled or not.
 	Enabled bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce bool `pulumi:"enforce"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists []GetFunctionRuntimePolicyExecutableBlacklist `pulumi:"executableBlacklists"`
 	// Honeypot User ID (Access Key)
 	HoneypotAccessKey string `pulumi:"honeypotAccessKey"`
 	// List of options to apply the honeypot on (Environment Vairable, Layer, File)
@@ -107,8 +113,11 @@ func LookupFunctionRuntimePolicyOutput(ctx *pulumi.Context, args LookupFunctionR
 
 // A collection of arguments for invoking getFunctionRuntimePolicy.
 type LookupFunctionRuntimePolicyOutputArgs struct {
-	// Name of the function runtime policy
-	Name pulumi.StringInput `pulumi:"name"`
+	// Drift prevention configuration.
+	DriftPreventions GetFunctionRuntimePolicyDriftPreventionArrayInput `pulumi:"driftPreventions"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists GetFunctionRuntimePolicyExecutableBlacklistArrayInput `pulumi:"executableBlacklists"`
+	Name                 pulumi.StringInput                                    `pulumi:"name"`
 }
 
 func (LookupFunctionRuntimePolicyOutputArgs) ElementType() reflect.Type {
@@ -128,12 +137,6 @@ func (o LookupFunctionRuntimePolicyResultOutput) ToLookupFunctionRuntimePolicyRe
 
 func (o LookupFunctionRuntimePolicyResultOutput) ToLookupFunctionRuntimePolicyResultOutputWithContext(ctx context.Context) LookupFunctionRuntimePolicyResultOutput {
 	return o
-}
-
-func (o LookupFunctionRuntimePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupFunctionRuntimePolicyResult] {
-	return pulumix.Output[LookupFunctionRuntimePolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the application scope of the service.
@@ -171,6 +174,13 @@ func (o LookupFunctionRuntimePolicyResultOutput) Description() pulumi.StringOutp
 	return o.ApplyT(func(v LookupFunctionRuntimePolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Drift prevention configuration.
+func (o LookupFunctionRuntimePolicyResultOutput) DriftPreventions() GetFunctionRuntimePolicyDriftPreventionArrayOutput {
+	return o.ApplyT(func(v LookupFunctionRuntimePolicyResult) []GetFunctionRuntimePolicyDriftPrevention {
+		return v.DriftPreventions
+	}).(GetFunctionRuntimePolicyDriftPreventionArrayOutput)
+}
+
 // Indicates if the runtime policy is enabled or not.
 func (o LookupFunctionRuntimePolicyResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFunctionRuntimePolicyResult) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -179,6 +189,13 @@ func (o LookupFunctionRuntimePolicyResultOutput) Enabled() pulumi.BoolOutput {
 // Indicates that policy should effect container execution (not just for audit).
 func (o LookupFunctionRuntimePolicyResultOutput) Enforce() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFunctionRuntimePolicyResult) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+// Executable blacklist configuration.
+func (o LookupFunctionRuntimePolicyResultOutput) ExecutableBlacklists() GetFunctionRuntimePolicyExecutableBlacklistArrayOutput {
+	return o.ApplyT(func(v LookupFunctionRuntimePolicyResult) []GetFunctionRuntimePolicyExecutableBlacklist {
+		return v.ExecutableBlacklists
+	}).(GetFunctionRuntimePolicyExecutableBlacklistArrayOutput)
 }
 
 // Honeypot User ID (Access Key)

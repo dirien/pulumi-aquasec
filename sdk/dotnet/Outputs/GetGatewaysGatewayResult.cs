@@ -17,9 +17,6 @@ namespace Pulumiverse.Aquasec.Outputs
         public readonly string Description;
         public readonly string GrpcAddress;
         public readonly string Hostname;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         public readonly string Logicalname;
         public readonly string PublicAddress;

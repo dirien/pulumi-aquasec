@@ -45,7 +45,7 @@ class IntegrationRegistryArgs:
                  webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryWebhookArgs']]]] = None):
         """
         The set of arguments for constructing a IntegrationRegistry resource.
-        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         :param pulumi.Input[bool] advanced_settings_cleanup: Automatically clean up that don't match the pull criteria
         :param pulumi.Input[Sequence[pulumi.Input[str]]] always_pull_patterns: List of image patterns to pull always
         :param pulumi.Input[str] author: The username of the user who created or last modified the registry
@@ -130,7 +130,7 @@ class IntegrationRegistryArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         """
         return pulumi.get(self, "type")
 
@@ -502,7 +502,7 @@ class _IntegrationRegistryState:
         :param pulumi.Input[int] registry_scan_timeout: Registry scan timeout in Minutes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
-        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         :param pulumi.Input[str] url: The URL, address or region of the registry
         :param pulumi.Input[str] username: The username for registry authentication.
         :param pulumi.Input[Sequence[pulumi.Input['IntegrationRegistryWebhookArgs']]] webhooks: When enabled, registry events are sent to the given Aqua webhook url
@@ -839,7 +839,7 @@ class _IntegrationRegistryState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         """
         return pulumi.get(self, "type")
 
@@ -953,6 +953,7 @@ class IntegrationRegistry(pulumi.CustomResource):
                     value="nginx:latest",
                 ),
             ],
+            password="",
             prefixes=["111111111111.dkr.ecr.us-east-1.amazonaws.com"],
             pull_image_age="0D",
             pull_image_count=3,
@@ -964,11 +965,8 @@ class IntegrationRegistry(pulumi.CustomResource):
                 ":xyz",
                 ":onlytest",
             ],
-            scanner_names=[
-                "aqua-scanner-645f867c4f-4sbtj",
-                "aqua-scanner-645f867c4f-8pkdd",
-            ],
-            scanner_type="specific",
+            scanner_names=[],
+            scanner_type="any",
             type="AWS",
             url="us-east-1",
             username="",
@@ -1004,7 +1002,7 @@ class IntegrationRegistry(pulumi.CustomResource):
         :param pulumi.Input[int] registry_scan_timeout: Registry scan timeout in Minutes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
-        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         :param pulumi.Input[str] url: The URL, address or region of the registry
         :param pulumi.Input[str] username: The username for registry authentication.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationRegistryWebhookArgs']]]] webhooks: When enabled, registry events are sent to the given Aqua webhook url
@@ -1051,6 +1049,7 @@ class IntegrationRegistry(pulumi.CustomResource):
                     value="nginx:latest",
                 ),
             ],
+            password="",
             prefixes=["111111111111.dkr.ecr.us-east-1.amazonaws.com"],
             pull_image_age="0D",
             pull_image_count=3,
@@ -1062,11 +1061,8 @@ class IntegrationRegistry(pulumi.CustomResource):
                 ":xyz",
                 ":onlytest",
             ],
-            scanner_names=[
-                "aqua-scanner-645f867c4f-4sbtj",
-                "aqua-scanner-645f867c4f-8pkdd",
-            ],
-            scanner_type="specific",
+            scanner_names=[],
+            scanner_type="any",
             type="AWS",
             url="us-east-1",
             username="",
@@ -1224,7 +1220,7 @@ class IntegrationRegistry(pulumi.CustomResource):
         :param pulumi.Input[int] registry_scan_timeout: Registry scan timeout in Minutes
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scanner_names: List of scanner names
         :param pulumi.Input[str] scanner_type: The Scanner type
-        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        :param pulumi.Input[str] type: Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         :param pulumi.Input[str] url: The URL, address or region of the registry
         :param pulumi.Input[str] username: The username for registry authentication.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IntegrationRegistryWebhookArgs']]]] webhooks: When enabled, registry events are sent to the given Aqua webhook url
@@ -1447,7 +1443,7 @@ class IntegrationRegistry(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         """
         return pulumi.get(self, "type")
 

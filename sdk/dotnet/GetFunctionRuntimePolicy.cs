@@ -76,9 +76,30 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetFunctionRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("driftPreventions")]
+        private List<Inputs.GetFunctionRuntimePolicyDriftPreventionArgs>? _driftPreventions;
+
         /// <summary>
-        /// Name of the function runtime policy
+        /// Drift prevention configuration.
         /// </summary>
+        public List<Inputs.GetFunctionRuntimePolicyDriftPreventionArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new List<Inputs.GetFunctionRuntimePolicyDriftPreventionArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("executableBlacklists")]
+        private List<Inputs.GetFunctionRuntimePolicyExecutableBlacklistArgs>? _executableBlacklists;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public List<Inputs.GetFunctionRuntimePolicyExecutableBlacklistArgs> ExecutableBlacklists
+        {
+            get => _executableBlacklists ?? (_executableBlacklists = new List<Inputs.GetFunctionRuntimePolicyExecutableBlacklistArgs>());
+            set => _executableBlacklists = value;
+        }
+
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -90,9 +111,30 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetFunctionRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("driftPreventions")]
+        private InputList<Inputs.GetFunctionRuntimePolicyDriftPreventionInputArgs>? _driftPreventions;
+
         /// <summary>
-        /// Name of the function runtime policy
+        /// Drift prevention configuration.
         /// </summary>
+        public InputList<Inputs.GetFunctionRuntimePolicyDriftPreventionInputArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.GetFunctionRuntimePolicyDriftPreventionInputArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("executableBlacklists")]
+        private InputList<Inputs.GetFunctionRuntimePolicyExecutableBlacklistInputArgs>? _executableBlacklists;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public InputList<Inputs.GetFunctionRuntimePolicyExecutableBlacklistInputArgs> ExecutableBlacklists
+        {
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.GetFunctionRuntimePolicyExecutableBlacklistInputArgs>());
+            set => _executableBlacklists = value;
+        }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -135,6 +177,10 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Drift prevention configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFunctionRuntimePolicyDriftPreventionResult> DriftPreventions;
+        /// <summary>
         /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         public readonly bool Enabled;
@@ -142,6 +188,10 @@ namespace Pulumiverse.Aquasec
         /// Indicates that policy should effect container execution (not just for audit).
         /// </summary>
         public readonly bool Enforce;
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFunctionRuntimePolicyExecutableBlacklistResult> ExecutableBlacklists;
         /// <summary>
         /// Honeypot User ID (Access Key)
         /// </summary>
@@ -191,9 +241,13 @@ namespace Pulumiverse.Aquasec
 
             string description,
 
+            ImmutableArray<Outputs.GetFunctionRuntimePolicyDriftPreventionResult> driftPreventions,
+
             bool enabled,
 
             bool enforce,
+
+            ImmutableArray<Outputs.GetFunctionRuntimePolicyExecutableBlacklistResult> executableBlacklists,
 
             string honeypotAccessKey,
 
@@ -218,8 +272,10 @@ namespace Pulumiverse.Aquasec
             BlockRunningExecutablesInTmpFolder = blockRunningExecutablesInTmpFolder;
             BlockedExecutables = blockedExecutables;
             Description = description;
+            DriftPreventions = driftPreventions;
             Enabled = enabled;
             Enforce = enforce;
+            ExecutableBlacklists = executableBlacklists;
             HoneypotAccessKey = honeypotAccessKey;
             HoneypotApplyOns = honeypotApplyOns;
             HoneypotSecretKey = honeypotSecretKey;

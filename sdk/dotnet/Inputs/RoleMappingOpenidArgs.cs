@@ -17,7 +17,7 @@ namespace Pulumiverse.Aquasec.Inputs
         private InputMap<string>? _roleMapping;
 
         /// <summary>
-        /// Role Mapping is used to define the IdP role that the user will assume in Aqua
+        /// Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         /// </summary>
         public InputMap<string> RoleMapping
         {

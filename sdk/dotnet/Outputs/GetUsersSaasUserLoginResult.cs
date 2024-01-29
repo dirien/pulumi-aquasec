@@ -15,9 +15,6 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class GetUsersSaasUserLoginResult
     {
         public readonly string Created;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string IpAddress;
         public readonly int UserId;

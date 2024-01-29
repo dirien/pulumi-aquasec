@@ -23,7 +23,7 @@ class GetContainerRuntimePolicyResult:
     """
     A collection of values returned by getContainerRuntimePolicy.
     """
-    def __init__(__self__, allowed_executables=None, allowed_registries=None, application_scopes=None, audit_all_network_activity=None, audit_all_processes_activity=None, audit_full_command_arguments=None, author=None, block_access_host_network=None, block_adding_capabilities=None, block_container_exec=None, block_cryptocurrency_mining=None, block_fileless_exec=None, block_low_port_binding=None, block_non_compliant_images=None, block_non_compliant_workloads=None, block_non_k8s_containers=None, block_privileged_containers=None, block_reverse_shell=None, block_root_user=None, block_unregistered_images=None, block_use_ipc_namespace=None, block_use_pid_namespace=None, block_use_user_namespace=None, block_use_uts_namespace=None, blocked_capabilities=None, blocked_executables=None, blocked_files=None, blocked_inbound_ports=None, blocked_outbound_ports=None, blocked_packages=None, blocked_volumes=None, container_exec_allowed_processes=None, description=None, enable_drift_prevention=None, enable_fork_guard=None, enable_ip_reputation_security=None, enable_port_scan_detection=None, enabled=None, enforce=None, enforce_after_days=None, exceptional_readonly_files_and_directories=None, exec_lockdown_white_lists=None, file_integrity_monitorings=None, fork_guard_process_limit=None, id=None, limit_new_privileges=None, malware_scan_options=None, monitor_system_time_changes=None, name=None, readonly_files_and_directories=None, reverse_shell_allowed_ips=None, reverse_shell_allowed_processes=None, scope_expression=None, scope_variables=None):
+    def __init__(__self__, allowed_executables=None, allowed_registries=None, application_scopes=None, audit_all_network_activity=None, audit_all_processes_activity=None, audit_full_command_arguments=None, auditing=None, author=None, block_access_host_network=None, block_adding_capabilities=None, block_container_exec=None, block_cryptocurrency_mining=None, block_fileless_exec=None, block_low_port_binding=None, block_non_compliant_images=None, block_non_compliant_workloads=None, block_non_k8s_containers=None, block_privileged_containers=None, block_reverse_shell=None, block_root_user=None, block_unregistered_images=None, block_use_ipc_namespace=None, block_use_pid_namespace=None, block_use_user_namespace=None, block_use_uts_namespace=None, blocked_capabilities=None, blocked_executables=None, blocked_files=None, blocked_inbound_ports=None, blocked_outbound_ports=None, blocked_packages=None, blocked_volumes=None, container_exec=None, container_exec_allowed_processes=None, description=None, enable_drift_prevention=None, enable_fork_guard=None, enable_ip_reputation_security=None, enable_port_scan_detection=None, enabled=None, enforce=None, enforce_after_days=None, exceptional_readonly_files_and_directories=None, exec_lockdown_white_lists=None, file_block=None, file_integrity_monitorings=None, fork_guard_process_limit=None, id=None, limit_container_privileges=None, limit_new_privileges=None, malware_scan_options=None, monitor_system_time_changes=None, name=None, port_block=None, readonly_files=None, readonly_files_and_directories=None, restricted_volumes=None, reverse_shell_allowed_ips=None, reverse_shell_allowed_processes=None, scope_expression=None, scope_variables=None):
         if allowed_executables and not isinstance(allowed_executables, list):
             raise TypeError("Expected argument 'allowed_executables' to be a list")
         pulumi.set(__self__, "allowed_executables", allowed_executables)
@@ -42,6 +42,9 @@ class GetContainerRuntimePolicyResult:
         if audit_full_command_arguments and not isinstance(audit_full_command_arguments, bool):
             raise TypeError("Expected argument 'audit_full_command_arguments' to be a bool")
         pulumi.set(__self__, "audit_full_command_arguments", audit_full_command_arguments)
+        if auditing and not isinstance(auditing, dict):
+            raise TypeError("Expected argument 'auditing' to be a dict")
+        pulumi.set(__self__, "auditing", auditing)
         if author and not isinstance(author, str):
             raise TypeError("Expected argument 'author' to be a str")
         pulumi.set(__self__, "author", author)
@@ -117,6 +120,9 @@ class GetContainerRuntimePolicyResult:
         if blocked_volumes and not isinstance(blocked_volumes, list):
             raise TypeError("Expected argument 'blocked_volumes' to be a list")
         pulumi.set(__self__, "blocked_volumes", blocked_volumes)
+        if container_exec and not isinstance(container_exec, dict):
+            raise TypeError("Expected argument 'container_exec' to be a dict")
+        pulumi.set(__self__, "container_exec", container_exec)
         if container_exec_allowed_processes and not isinstance(container_exec_allowed_processes, list):
             raise TypeError("Expected argument 'container_exec_allowed_processes' to be a list")
         pulumi.set(__self__, "container_exec_allowed_processes", container_exec_allowed_processes)
@@ -150,6 +156,9 @@ class GetContainerRuntimePolicyResult:
         if exec_lockdown_white_lists and not isinstance(exec_lockdown_white_lists, list):
             raise TypeError("Expected argument 'exec_lockdown_white_lists' to be a list")
         pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
+        if file_block and not isinstance(file_block, dict):
+            raise TypeError("Expected argument 'file_block' to be a dict")
+        pulumi.set(__self__, "file_block", file_block)
         if file_integrity_monitorings and not isinstance(file_integrity_monitorings, list):
             raise TypeError("Expected argument 'file_integrity_monitorings' to be a list")
         pulumi.set(__self__, "file_integrity_monitorings", file_integrity_monitorings)
@@ -159,6 +168,9 @@ class GetContainerRuntimePolicyResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if limit_container_privileges and not isinstance(limit_container_privileges, list):
+            raise TypeError("Expected argument 'limit_container_privileges' to be a list")
+        pulumi.set(__self__, "limit_container_privileges", limit_container_privileges)
         if limit_new_privileges and not isinstance(limit_new_privileges, bool):
             raise TypeError("Expected argument 'limit_new_privileges' to be a bool")
         pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
@@ -171,9 +183,18 @@ class GetContainerRuntimePolicyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if port_block and not isinstance(port_block, dict):
+            raise TypeError("Expected argument 'port_block' to be a dict")
+        pulumi.set(__self__, "port_block", port_block)
+        if readonly_files and not isinstance(readonly_files, dict):
+            raise TypeError("Expected argument 'readonly_files' to be a dict")
+        pulumi.set(__self__, "readonly_files", readonly_files)
         if readonly_files_and_directories and not isinstance(readonly_files_and_directories, list):
             raise TypeError("Expected argument 'readonly_files_and_directories' to be a list")
         pulumi.set(__self__, "readonly_files_and_directories", readonly_files_and_directories)
+        if restricted_volumes and not isinstance(restricted_volumes, list):
+            raise TypeError("Expected argument 'restricted_volumes' to be a list")
+        pulumi.set(__self__, "restricted_volumes", restricted_volumes)
         if reverse_shell_allowed_ips and not isinstance(reverse_shell_allowed_ips, list):
             raise TypeError("Expected argument 'reverse_shell_allowed_ips' to be a list")
         pulumi.set(__self__, "reverse_shell_allowed_ips", reverse_shell_allowed_ips)
@@ -189,17 +210,17 @@ class GetContainerRuntimePolicyResult:
 
     @property
     @pulumi.getter(name="allowedExecutables")
-    def allowed_executables(self) -> Sequence[str]:
+    def allowed_executables(self) -> Optional[Sequence['outputs.GetContainerRuntimePolicyAllowedExecutableResult']]:
         """
-        List of executables that are allowed for the user.
+        Allowed executables configuration.
         """
         return pulumi.get(self, "allowed_executables")
 
     @property
     @pulumi.getter(name="allowedRegistries")
-    def allowed_registries(self) -> Sequence[str]:
+    def allowed_registries(self) -> Optional[Sequence['outputs.GetContainerRuntimePolicyAllowedRegistryResult']]:
         """
-        List of registries that allowed for running containers.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -234,6 +255,11 @@ class GetContainerRuntimePolicyResult:
         If true, full command arguments will be audited.
         """
         return pulumi.get(self, "audit_full_command_arguments")
+
+    @property
+    @pulumi.getter
+    def auditing(self) -> Optional['outputs.GetContainerRuntimePolicyAuditingResult']:
+        return pulumi.get(self, "auditing")
 
     @property
     @pulumi.getter
@@ -436,6 +462,11 @@ class GetContainerRuntimePolicyResult:
         return pulumi.get(self, "blocked_volumes")
 
     @property
+    @pulumi.getter(name="containerExec")
+    def container_exec(self) -> Optional['outputs.GetContainerRuntimePolicyContainerExecResult']:
+        return pulumi.get(self, "container_exec")
+
+    @property
     @pulumi.getter(name="containerExecAllowedProcesses")
     def container_exec_allowed_processes(self) -> Sequence[str]:
         """
@@ -524,8 +555,13 @@ class GetContainerRuntimePolicyResult:
         return pulumi.get(self, "exec_lockdown_white_lists")
 
     @property
+    @pulumi.getter(name="fileBlock")
+    def file_block(self) -> Optional['outputs.GetContainerRuntimePolicyFileBlockResult']:
+        return pulumi.get(self, "file_block")
+
+    @property
     @pulumi.getter(name="fileIntegrityMonitorings")
-    def file_integrity_monitorings(self) -> Sequence['outputs.GetContainerRuntimePolicyFileIntegrityMonitoringResult']:
+    def file_integrity_monitorings(self) -> Optional[Sequence['outputs.GetContainerRuntimePolicyFileIntegrityMonitoringResult']]:
         """
         Configuration for file integrity monitoring.
         """
@@ -548,6 +584,14 @@ class GetContainerRuntimePolicyResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="limitContainerPrivileges")
+    def limit_container_privileges(self) -> Optional[Sequence['outputs.GetContainerRuntimePolicyLimitContainerPrivilegeResult']]:
+        """
+        Container privileges configuration.
+        """
+        return pulumi.get(self, "limit_container_privileges")
+
+    @property
     @pulumi.getter(name="limitNewPrivileges")
     def limit_new_privileges(self) -> bool:
         """
@@ -557,7 +601,7 @@ class GetContainerRuntimePolicyResult:
 
     @property
     @pulumi.getter(name="malwareScanOptions")
-    def malware_scan_options(self) -> Sequence['outputs.GetContainerRuntimePolicyMalwareScanOptionResult']:
+    def malware_scan_options(self) -> Optional[Sequence['outputs.GetContainerRuntimePolicyMalwareScanOptionResult']]:
         """
         Configuration for Real-Time Malware Protection.
         """
@@ -580,12 +624,30 @@ class GetContainerRuntimePolicyResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="portBlock")
+    def port_block(self) -> Optional['outputs.GetContainerRuntimePolicyPortBlockResult']:
+        return pulumi.get(self, "port_block")
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional['outputs.GetContainerRuntimePolicyReadonlyFilesResult']:
+        return pulumi.get(self, "readonly_files")
+
+    @property
     @pulumi.getter(name="readonlyFilesAndDirectories")
     def readonly_files_and_directories(self) -> Sequence[str]:
         """
         List of files and directories to be restricted as read-only
         """
         return pulumi.get(self, "readonly_files_and_directories")
+
+    @property
+    @pulumi.getter(name="restrictedVolumes")
+    def restricted_volumes(self) -> Optional[Sequence['outputs.GetContainerRuntimePolicyRestrictedVolumeResult']]:
+        """
+        Restricted volumes configuration.
+        """
+        return pulumi.get(self, "restricted_volumes")
 
     @property
     @pulumi.getter(name="reverseShellAllowedIps")
@@ -632,6 +694,7 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             audit_all_network_activity=self.audit_all_network_activity,
             audit_all_processes_activity=self.audit_all_processes_activity,
             audit_full_command_arguments=self.audit_full_command_arguments,
+            auditing=self.auditing,
             author=self.author,
             block_access_host_network=self.block_access_host_network,
             block_adding_capabilities=self.block_adding_capabilities,
@@ -657,6 +720,7 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             blocked_outbound_ports=self.blocked_outbound_ports,
             blocked_packages=self.blocked_packages,
             blocked_volumes=self.blocked_volumes,
+            container_exec=self.container_exec,
             container_exec_allowed_processes=self.container_exec_allowed_processes,
             description=self.description,
             enable_drift_prevention=self.enable_drift_prevention,
@@ -668,22 +732,37 @@ class AwaitableGetContainerRuntimePolicyResult(GetContainerRuntimePolicyResult):
             enforce_after_days=self.enforce_after_days,
             exceptional_readonly_files_and_directories=self.exceptional_readonly_files_and_directories,
             exec_lockdown_white_lists=self.exec_lockdown_white_lists,
+            file_block=self.file_block,
             file_integrity_monitorings=self.file_integrity_monitorings,
             fork_guard_process_limit=self.fork_guard_process_limit,
             id=self.id,
+            limit_container_privileges=self.limit_container_privileges,
             limit_new_privileges=self.limit_new_privileges,
             malware_scan_options=self.malware_scan_options,
             monitor_system_time_changes=self.monitor_system_time_changes,
             name=self.name,
+            port_block=self.port_block,
+            readonly_files=self.readonly_files,
             readonly_files_and_directories=self.readonly_files_and_directories,
+            restricted_volumes=self.restricted_volumes,
             reverse_shell_allowed_ips=self.reverse_shell_allowed_ips,
             reverse_shell_allowed_processes=self.reverse_shell_allowed_processes,
             scope_expression=self.scope_expression,
             scope_variables=self.scope_variables)
 
 
-def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']]] = None,
+def get_container_runtime_policy(allowed_executables: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedExecutableArgs']]] = None,
+                                 allowed_registries: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']]] = None,
+                                 auditing: Optional[pulumi.InputType['GetContainerRuntimePolicyAuditingArgs']] = None,
+                                 container_exec: Optional[pulumi.InputType['GetContainerRuntimePolicyContainerExecArgs']] = None,
+                                 file_block: Optional[pulumi.InputType['GetContainerRuntimePolicyFileBlockArgs']] = None,
+                                 file_integrity_monitorings: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
+                                 limit_container_privileges: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyLimitContainerPrivilegeArgs']]] = None,
+                                 malware_scan_options: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']]] = None,
                                  name: Optional[str] = None,
+                                 port_block: Optional[pulumi.InputType['GetContainerRuntimePolicyPortBlockArgs']] = None,
+                                 readonly_files: Optional[pulumi.InputType['GetContainerRuntimePolicyReadonlyFilesArgs']] = None,
+                                 restricted_volumes: Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyRestrictedVolumeArgs']]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRuntimePolicyResult:
     """
     ## Example Usage
@@ -697,12 +776,26 @@ def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.
     ```
 
 
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedExecutableArgs']] allowed_executables: Allowed executables configuration.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']] allowed_registries: List of allowed registries.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitorings: Configuration for file integrity monitoring.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyLimitContainerPrivilegeArgs']] limit_container_privileges: Container privileges configuration.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
-    :param str name: Name of the container runtime policy
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyRestrictedVolumeArgs']] restricted_volumes: Restricted volumes configuration.
     """
     __args__ = dict()
+    __args__['allowedExecutables'] = allowed_executables
+    __args__['allowedRegistries'] = allowed_registries
+    __args__['auditing'] = auditing
+    __args__['containerExec'] = container_exec
+    __args__['fileBlock'] = file_block
+    __args__['fileIntegrityMonitorings'] = file_integrity_monitorings
+    __args__['limitContainerPrivileges'] = limit_container_privileges
     __args__['malwareScanOptions'] = malware_scan_options
     __args__['name'] = name
+    __args__['portBlock'] = port_block
+    __args__['readonlyFiles'] = readonly_files
+    __args__['restrictedVolumes'] = restricted_volumes
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy', __args__, opts=opts, typ=GetContainerRuntimePolicyResult).value
 
@@ -713,6 +806,7 @@ def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.
         audit_all_network_activity=pulumi.get(__ret__, 'audit_all_network_activity'),
         audit_all_processes_activity=pulumi.get(__ret__, 'audit_all_processes_activity'),
         audit_full_command_arguments=pulumi.get(__ret__, 'audit_full_command_arguments'),
+        auditing=pulumi.get(__ret__, 'auditing'),
         author=pulumi.get(__ret__, 'author'),
         block_access_host_network=pulumi.get(__ret__, 'block_access_host_network'),
         block_adding_capabilities=pulumi.get(__ret__, 'block_adding_capabilities'),
@@ -738,6 +832,7 @@ def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.
         blocked_outbound_ports=pulumi.get(__ret__, 'blocked_outbound_ports'),
         blocked_packages=pulumi.get(__ret__, 'blocked_packages'),
         blocked_volumes=pulumi.get(__ret__, 'blocked_volumes'),
+        container_exec=pulumi.get(__ret__, 'container_exec'),
         container_exec_allowed_processes=pulumi.get(__ret__, 'container_exec_allowed_processes'),
         description=pulumi.get(__ret__, 'description'),
         enable_drift_prevention=pulumi.get(__ret__, 'enable_drift_prevention'),
@@ -749,14 +844,19 @@ def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.
         enforce_after_days=pulumi.get(__ret__, 'enforce_after_days'),
         exceptional_readonly_files_and_directories=pulumi.get(__ret__, 'exceptional_readonly_files_and_directories'),
         exec_lockdown_white_lists=pulumi.get(__ret__, 'exec_lockdown_white_lists'),
+        file_block=pulumi.get(__ret__, 'file_block'),
         file_integrity_monitorings=pulumi.get(__ret__, 'file_integrity_monitorings'),
         fork_guard_process_limit=pulumi.get(__ret__, 'fork_guard_process_limit'),
         id=pulumi.get(__ret__, 'id'),
+        limit_container_privileges=pulumi.get(__ret__, 'limit_container_privileges'),
         limit_new_privileges=pulumi.get(__ret__, 'limit_new_privileges'),
         malware_scan_options=pulumi.get(__ret__, 'malware_scan_options'),
         monitor_system_time_changes=pulumi.get(__ret__, 'monitor_system_time_changes'),
         name=pulumi.get(__ret__, 'name'),
+        port_block=pulumi.get(__ret__, 'port_block'),
+        readonly_files=pulumi.get(__ret__, 'readonly_files'),
         readonly_files_and_directories=pulumi.get(__ret__, 'readonly_files_and_directories'),
+        restricted_volumes=pulumi.get(__ret__, 'restricted_volumes'),
         reverse_shell_allowed_ips=pulumi.get(__ret__, 'reverse_shell_allowed_ips'),
         reverse_shell_allowed_processes=pulumi.get(__ret__, 'reverse_shell_allowed_processes'),
         scope_expression=pulumi.get(__ret__, 'scope_expression'),
@@ -764,8 +864,18 @@ def get_container_runtime_policy(malware_scan_options: Optional[Sequence[pulumi.
 
 
 @_utilities.lift_output_func(get_container_runtime_policy)
-def get_container_runtime_policy_output(malware_scan_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']]]]] = None,
+def get_container_runtime_policy_output(allowed_executables: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedExecutableArgs']]]]] = None,
+                                        allowed_registries: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']]]]] = None,
+                                        auditing: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyAuditingArgs']]]] = None,
+                                        container_exec: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyContainerExecArgs']]]] = None,
+                                        file_block: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyFileBlockArgs']]]] = None,
+                                        file_integrity_monitorings: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyFileIntegrityMonitoringArgs']]]]] = None,
+                                        limit_container_privileges: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]] = None,
+                                        malware_scan_options: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']]]]] = None,
                                         name: Optional[pulumi.Input[str]] = None,
+                                        port_block: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyPortBlockArgs']]]] = None,
+                                        readonly_files: Optional[pulumi.Input[Optional[pulumi.InputType['GetContainerRuntimePolicyReadonlyFilesArgs']]]] = None,
+                                        restricted_volumes: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetContainerRuntimePolicyRestrictedVolumeArgs']]]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerRuntimePolicyResult]:
     """
     ## Example Usage
@@ -779,7 +889,11 @@ def get_container_runtime_policy_output(malware_scan_options: Optional[pulumi.In
     ```
 
 
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedExecutableArgs']] allowed_executables: Allowed executables configuration.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']] allowed_registries: List of allowed registries.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitorings: Configuration for file integrity monitoring.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyLimitContainerPrivilegeArgs']] limit_container_privileges: Container privileges configuration.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
-    :param str name: Name of the container runtime policy
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyRestrictedVolumeArgs']] restricted_volumes: Restricted volumes configuration.
     """
     ...

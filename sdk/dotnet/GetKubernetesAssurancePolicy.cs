@@ -75,7 +75,7 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly ImmutableArray<string> BlacklistedLicenses;
         /// <summary>
-        /// Lndicates if license blacklist is relevant.
+        /// Indicates if license blacklist is relevant.
         /// </summary>
         public readonly bool BlacklistedLicensesEnabled;
         /// <summary>
@@ -93,31 +93,31 @@ namespace Pulumiverse.Aquasec
         public readonly bool CustomChecksEnabled;
         public readonly bool CustomSeverityEnabled;
         /// <summary>
-        /// Indicates if cves blacklist is relevant.
+        /// Indicates if CVEs blacklist is relevant.
         /// </summary>
         public readonly bool CvesBlackListEnabled;
         /// <summary>
-        /// List of cves blacklisted items.
+        /// List of CVEs blacklisted items.
         /// </summary>
         public readonly ImmutableArray<string> CvesBlackLists;
         /// <summary>
-        /// Indicates if cves whitelist is relevant.
+        /// Indicates if CVEs whitelist is relevant.
         /// </summary>
         public readonly bool CvesWhiteListEnabled;
         /// <summary>
-        /// List of cves whitelisted licenses
+        /// List of CVEs whitelisted licenses
         /// </summary>
         public readonly ImmutableArray<string> CvesWhiteLists;
         /// <summary>
-        /// Identifier of the cvss severity.
+        /// Identifier of the CVSS severity.
         /// </summary>
         public readonly string CvssSeverity;
         /// <summary>
-        /// Indicates if the cvss severity is scanned.
+        /// Indicates if the CVSS severity is scanned.
         /// </summary>
         public readonly bool CvssSeverityEnabled;
         /// <summary>
-        /// Indicates that policy should ignore cvss cases that do not have a known fix.
+        /// Indicates that policy should ignore CVSS cases that do not have a known fix.
         /// </summary>
         public readonly bool CvssSeverityExcludeNoFix;
         public readonly string Description;
@@ -125,6 +125,9 @@ namespace Pulumiverse.Aquasec
         /// Indicates if malware should block the image.
         /// </summary>
         public readonly bool DisallowMalware;
+        /// <summary>
+        /// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        /// </summary>
         public readonly bool DockerCisEnabled;
         /// <summary>
         /// Name of the container image.
@@ -137,9 +140,12 @@ namespace Pulumiverse.Aquasec
         public readonly bool Enforce;
         public readonly int EnforceAfterDays;
         public readonly bool EnforceExcessivePermissions;
+        /// <summary>
+        /// Directories to be excluded from monitoring.
+        /// </summary>
         public readonly ImmutableArray<string> ExceptionalMonitoredMalwarePaths;
         /// <summary>
-        /// Indicates if cicd failures will fail the image.
+        /// Indicates if CI/CD failures will fail the image.
         /// </summary>
         public readonly bool FailCicd;
         public readonly ImmutableArray<Outputs.GetKubernetesAssurancePolicyForbiddenLabelResult> ForbiddenLabels;
@@ -164,6 +170,9 @@ namespace Pulumiverse.Aquasec
         /// List of images.
         /// </summary>
         public readonly ImmutableArray<string> Images;
+        /// <summary>
+        /// Performs a Kubernetes CIS benchmark check for the host.
+        /// </summary>
         public readonly bool KubeCisEnabled;
         /// <summary>
         /// List of kubernetes control names
@@ -186,6 +195,9 @@ namespace Pulumiverse.Aquasec
         /// Indicates that policy should ignore cases that do not have a known fix.
         /// </summary>
         public readonly bool MaximumScoreExcludeNoFix;
+        /// <summary>
+        /// Directories to be monitored.
+        /// </summary>
         public readonly ImmutableArray<string> MonitoredMalwarePaths;
         public readonly string Name;
         /// <summary>
@@ -197,7 +209,7 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly bool PackagesBlackListEnabled;
         /// <summary>
-        /// List of backlisted images.
+        /// List of blacklisted images.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesAssurancePolicyPackagesBlackListResult> PackagesBlackLists;
         /// <summary>
@@ -223,7 +235,7 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly bool ScanSensitiveData;
         /// <summary>
-        /// Indicates if scanning should include scap.
+        /// Indicates if scanning should include SCAP.
         /// </summary>
         public readonly bool ScapEnabled;
         /// <summary>

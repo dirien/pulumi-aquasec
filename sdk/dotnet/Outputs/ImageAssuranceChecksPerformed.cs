@@ -17,13 +17,7 @@ namespace Pulumiverse.Aquasec.Outputs
         public readonly string? AssuranceType;
         public readonly bool? Blocking;
         public readonly string? Control;
-        /// <summary>
-        /// If DTA was skipped.
-        /// </summary>
         public readonly bool? DtaSkipped;
-        /// <summary>
-        /// The reason why DTA was skipped.
-        /// </summary>
         public readonly string? DtaSkippedReason;
         public readonly bool? Failed;
         public readonly string? PolicyName;

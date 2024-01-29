@@ -10,194 +10,20 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aquasec = Pulumiverse.Aquasec;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var containerRuntimePolicy = new Aquasec.ContainerRuntimePolicy("containerRuntimePolicy", new()
-    ///     {
-    ///         AllowedExecutables = new[]
-    ///         {
-    ///             "exe",
-    ///             "bin",
-    ///         },
-    ///         AllowedRegistries = new[]
-    ///         {
-    ///             "registry1",
-    ///             "registry2",
-    ///         },
-    ///         ApplicationScopes = new[]
-    ///         {
-    ///             "Global",
-    ///         },
-    ///         AuditAllNetworkActivity = true,
-    ///         AuditAllProcessesActivity = true,
-    ///         AuditFullCommandArguments = true,
-    ///         BlockAccessHostNetwork = true,
-    ///         BlockAddingCapabilities = true,
-    ///         BlockContainerExec = true,
-    ///         BlockCryptocurrencyMining = true,
-    ///         BlockFilelessExec = true,
-    ///         BlockLowPortBinding = true,
-    ///         BlockNonCompliantImages = true,
-    ///         BlockNonCompliantWorkloads = true,
-    ///         BlockNonK8sContainers = true,
-    ///         BlockPrivilegedContainers = true,
-    ///         BlockReverseShell = true,
-    ///         BlockRootUser = true,
-    ///         BlockUnregisteredImages = true,
-    ///         BlockUseIpcNamespace = true,
-    ///         BlockUsePidNamespace = true,
-    ///         BlockUseUserNamespace = true,
-    ///         BlockUseUtsNamespace = true,
-    ///         BlockedCapabilities = new[]
-    ///         {
-    ///             "AUDIT_CONTROL",
-    ///             "AUDIT_WRITE",
-    ///         },
-    ///         BlockedExecutables = new[]
-    ///         {
-    ///             "exe1",
-    ///             "exe2",
-    ///         },
-    ///         BlockedFiles = new[]
-    ///         {
-    ///             "test1",
-    ///             "test2",
-    ///         },
-    ///         BlockedInboundPorts = new[]
-    ///         {
-    ///             "80",
-    ///             "8080",
-    ///         },
-    ///         BlockedOutboundPorts = new[]
-    ///         {
-    ///             "90",
-    ///             "9090",
-    ///         },
-    ///         BlockedPackages = new[]
-    ///         {
-    ///             "pkg",
-    ///             "pkg2",
-    ///         },
-    ///         BlockedVolumes = new[]
-    ///         {
-    ///             "blocked",
-    ///             "vol",
-    ///         },
-    ///         ContainerExecAllowedProcesses = new[]
-    ///         {
-    ///             "proc1",
-    ///             "proc2",
-    ///         },
-    ///         Description = "container_runtime_policy",
-    ///         EnableDriftPrevention = true,
-    ///         EnableForkGuard = true,
-    ///         EnableIpReputationSecurity = true,
-    ///         EnablePortScanDetection = true,
-    ///         Enabled = true,
-    ///         Enforce = false,
-    ///         ExceptionalReadonlyFilesAndDirectories = new[]
-    ///         {
-    ///             "readonly2",
-    ///             "/dir2/",
-    ///         },
-    ///         FileIntegrityMonitoring = new Aquasec.Inputs.ContainerRuntimePolicyFileIntegrityMonitoringArgs
-    ///         {
-    ///             ExcludedPaths = new[]
-    ///             {
-    ///                 "expaths",
-    ///             },
-    ///             ExcludedProcesses = new[]
-    ///             {
-    ///                 "exprocess",
-    ///             },
-    ///             ExcludedUsers = new[]
-    ///             {
-    ///                 "expuser",
-    ///             },
-    ///             MonitorAttributes = true,
-    ///             MonitorCreate = true,
-    ///             MonitorDelete = true,
-    ///             MonitorModify = true,
-    ///             MonitorRead = true,
-    ///             MonitoredPaths = new[]
-    ///             {
-    ///                 "paths",
-    ///             },
-    ///             MonitoredProcesses = new[]
-    ///             {
-    ///                 "process",
-    ///             },
-    ///             MonitoredUsers = new[]
-    ///             {
-    ///                 "user",
-    ///             },
-    ///         },
-    ///         ForkGuardProcessLimit = 13,
-    ///         LimitNewPrivileges = true,
-    ///         MalwareScanOptions = new Aquasec.Inputs.ContainerRuntimePolicyMalwareScanOptionsArgs
-    ///         {
-    ///             Action = "alert",
-    ///             Enabled = true,
-    ///         },
-    ///         MonitorSystemTimeChanges = true,
-    ///         ReadonlyFilesAndDirectories = new[]
-    ///         {
-    ///             "readonly",
-    ///             "/dir/",
-    ///         },
-    ///         ReverseShellAllowedIps = new[]
-    ///         {
-    ///             "ip1",
-    ///             "ip2",
-    ///         },
-    ///         ReverseShellAllowedProcesses = new[]
-    ///         {
-    ///             "proc1",
-    ///             "proc2",
-    ///         },
-    ///         ScopeExpression = "v1 || v2",
-    ///         ScopeVariables = new[]
-    ///         {
-    ///             new Aquasec.Inputs.ContainerRuntimePolicyScopeVariableArgs
-    ///             {
-    ///                 Attribute = "kubernetes.cluster",
-    ///                 Value = "default",
-    ///             },
-    ///             new Aquasec.Inputs.ContainerRuntimePolicyScopeVariableArgs
-    ///             {
-    ///                 Attribute = "kubernetes.label",
-    ///                 Name = "app",
-    ///                 Value = "aqua",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [AquasecResourceType("aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy")]
     public partial class ContainerRuntimePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of executables that are allowed for the user.
+        /// Allowed executables configuration.
         /// </summary>
         [Output("allowedExecutables")]
-        public Output<ImmutableArray<string>> AllowedExecutables { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyAllowedExecutable>> AllowedExecutables { get; private set; } = null!;
 
         /// <summary>
-        /// List of registries that allowed for running containers.
+        /// List of allowed registries.
         /// </summary>
         [Output("allowedRegistries")]
-        public Output<ImmutableArray<string>> AllowedRegistries { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyAllowedRegistry>> AllowedRegistries { get; private set; } = null!;
 
         /// <summary>
         /// Indicates the application scope of the service.
@@ -218,16 +44,28 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> AuditAllProcessesActivity { get; private set; } = null!;
 
         /// <summary>
+        /// Detects brute force login attempts
+        /// </summary>
+        [Output("auditBruteForceLogin")]
+        public Output<bool?> AuditBruteForceLogin { get; private set; } = null!;
+
+        /// <summary>
         /// If true, full command arguments will be audited.
         /// </summary>
         [Output("auditFullCommandArguments")]
         public Output<bool?> AuditFullCommandArguments { get; private set; } = null!;
+
+        [Output("auditing")]
+        public Output<Outputs.ContainerRuntimePolicyAuditing> Auditing { get; private set; } = null!;
 
         /// <summary>
         /// Username of the account that created the service.
         /// </summary>
         [Output("author")]
         public Output<string> Author { get; private set; } = null!;
+
+        [Output("blacklistedOsUsers")]
+        public Output<Outputs.ContainerRuntimePolicyBlacklistedOsUsers> BlacklistedOsUsers { get; private set; } = null!;
 
         /// <summary>
         /// If true, prevent containers from running with access to host network.
@@ -253,6 +91,9 @@ namespace Pulumiverse.Aquasec
         [Output("blockCryptocurrencyMining")]
         public Output<bool?> BlockCryptocurrencyMining { get; private set; } = null!;
 
+        [Output("blockDisallowedImages")]
+        public Output<bool?> BlockDisallowedImages { get; private set; } = null!;
+
         /// <summary>
         /// Detect and prevent running in-memory execution
         /// </summary>
@@ -264,12 +105,6 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("blockLowPortBinding")]
         public Output<bool?> BlockLowPortBinding { get; private set; } = null!;
-
-        /// <summary>
-        /// If true, running non-compliant image in the container is prevented.
-        /// </summary>
-        [Output("blockNonCompliantImages")]
-        public Output<bool?> BlockNonCompliantImages { get; private set; } = null!;
 
         /// <summary>
         /// If true, running containers in non-compliant pods is prevented.
@@ -290,22 +125,10 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> BlockPrivilegedContainers { get; private set; } = null!;
 
         /// <summary>
-        /// If true, reverse shell is prevented.
-        /// </summary>
-        [Output("blockReverseShell")]
-        public Output<bool?> BlockReverseShell { get; private set; } = null!;
-
-        /// <summary>
         /// If true, prevent containers from running with root user.
         /// </summary>
         [Output("blockRootUser")]
         public Output<bool?> BlockRootUser { get; private set; } = null!;
-
-        /// <summary>
-        /// If true, running images in the container that are not registered in Aqua is prevented.
-        /// </summary>
-        [Output("blockUnregisteredImages")]
-        public Output<bool?> BlockUnregisteredImages { get; private set; } = null!;
 
         /// <summary>
         /// If true, prevent containers from running with the privilege to use the IPC namespace.
@@ -374,10 +197,28 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> BlockedVolumes { get; private set; } = null!;
 
         /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        [Output("bypassScopes")]
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyBypassScope>> BypassScopes { get; private set; } = null!;
+
+        [Output("containerExec")]
+        public Output<Outputs.ContainerRuntimePolicyContainerExec> ContainerExec { get; private set; } = null!;
+
+        /// <summary>
         /// List of processes that will be allowed.
         /// </summary>
         [Output("containerExecAllowedProcesses")]
         public Output<ImmutableArray<string>> ContainerExecAllowedProcesses { get; private set; } = null!;
+
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        [Output("cve")]
+        public Output<string?> Cve { get; private set; } = null!;
+
+        [Output("defaultSecurityProfile")]
+        public Output<string?> DefaultSecurityProfile { get; private set; } = null!;
 
         /// <summary>
         /// The description of the container runtime policy
@@ -385,11 +226,17 @@ namespace Pulumiverse.Aquasec
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("digest")]
+        public Output<string?> Digest { get; private set; } = null!;
+
         /// <summary>
-        /// If true, executables that are not in the original image is prevented from running.
+        /// Drift prevention configuration.
         /// </summary>
-        [Output("enableDriftPrevention")]
-        public Output<bool?> EnableDriftPrevention { get; private set; } = null!;
+        [Output("driftPreventions")]
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyDriftPrevention>> DriftPreventions { get; private set; } = null!;
+
+        [Output("enableCryptoMiningDns")]
+        public Output<bool?> EnableCryptoMiningDns { get; private set; } = null!;
 
         /// <summary>
         /// If true, fork bombs are prevented in the containers.
@@ -397,20 +244,14 @@ namespace Pulumiverse.Aquasec
         [Output("enableForkGuard")]
         public Output<bool?> EnableForkGuard { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        /// </summary>
-        [Output("enableIpReputationSecurity")]
-        public Output<bool?> EnableIpReputationSecurity { get; private set; } = null!;
+        [Output("enableIpReputation")]
+        public Output<bool?> EnableIpReputation { get; private set; } = null!;
+
+        [Output("enablePortScanProtection")]
+        public Output<bool?> EnablePortScanProtection { get; private set; } = null!;
 
         /// <summary>
-        /// If true, detects port scanning behavior in the container.
-        /// </summary>
-        [Output("enablePortScanDetection")]
-        public Output<bool?> EnablePortScanDetection { get; private set; } = null!;
-
-        /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -427,23 +268,32 @@ namespace Pulumiverse.Aquasec
         [Output("enforceAfterDays")]
         public Output<int?> EnforceAfterDays { get; private set; } = null!;
 
-        /// <summary>
-        /// List of files and directories to be excluded from the read-only list.
-        /// </summary>
-        [Output("exceptionalReadonlyFilesAndDirectories")]
-        public Output<ImmutableArray<string>> ExceptionalReadonlyFilesAndDirectories { get; private set; } = null!;
+        [Output("enforceSchedulerAddedOn")]
+        public Output<int> EnforceSchedulerAddedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Specify processes that will be allowed
+        /// List of excluded application scopes.
         /// </summary>
-        [Output("execLockdownWhiteLists")]
-        public Output<ImmutableArray<string>> ExecLockdownWhiteLists { get; private set; } = null!;
+        [Output("excludeApplicationScopes")]
+        public Output<ImmutableArray<string>> ExcludeApplicationScopes { get; private set; } = null!;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        [Output("executableBlacklists")]
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyExecutableBlacklist>> ExecutableBlacklists { get; private set; } = null!;
+
+        [Output("failedKubernetesChecks")]
+        public Output<Outputs.ContainerRuntimePolicyFailedKubernetesChecks> FailedKubernetesChecks { get; private set; } = null!;
+
+        [Output("fileBlock")]
+        public Output<Outputs.ContainerRuntimePolicyFileBlock> FileBlock { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
         [Output("fileIntegrityMonitoring")]
-        public Output<Outputs.ContainerRuntimePolicyFileIntegrityMonitoring?> FileIntegrityMonitoring { get; private set; } = null!;
+        public Output<Outputs.ContainerRuntimePolicyFileIntegrityMonitoring> FileIntegrityMonitoring { get; private set; } = null!;
 
         /// <summary>
         /// Process limit for the fork guard.
@@ -451,17 +301,41 @@ namespace Pulumiverse.Aquasec
         [Output("forkGuardProcessLimit")]
         public Output<int?> ForkGuardProcessLimit { get; private set; } = null!;
 
+        [Output("imageName")]
+        public Output<string?> ImageName { get; private set; } = null!;
+
+        [Output("isAuditChecked")]
+        public Output<bool?> IsAuditChecked { get; private set; } = null!;
+
+        [Output("isAutoGenerated")]
+        public Output<bool?> IsAutoGenerated { get; private set; } = null!;
+
+        [Output("isOotbPolicy")]
+        public Output<bool?> IsOotbPolicy { get; private set; } = null!;
+
+        [Output("lastupdate")]
+        public Output<int> Lastupdate { get; private set; } = null!;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        [Output("limitContainerPrivileges")]
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyLimitContainerPrivilege>> LimitContainerPrivileges { get; private set; } = null!;
+
         /// <summary>
         /// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         /// </summary>
         [Output("limitNewPrivileges")]
         public Output<bool?> LimitNewPrivileges { get; private set; } = null!;
 
+        [Output("linuxCapabilities")]
+        public Output<Outputs.ContainerRuntimePolicyLinuxCapabilities> LinuxCapabilities { get; private set; } = null!;
+
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
         /// </summary>
         [Output("malwareScanOptions")]
-        public Output<Outputs.ContainerRuntimePolicyMalwareScanOptions?> MalwareScanOptions { get; private set; } = null!;
+        public Output<Outputs.ContainerRuntimePolicyMalwareScanOptions> MalwareScanOptions { get; private set; } = null!;
 
         /// <summary>
         /// If true, system time changes will be monitored.
@@ -470,28 +344,61 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> MonitorSystemTimeChanges { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the container runtime policy
+        /// Name assigned to the attribute.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
-        /// <summary>
-        /// List of files and directories to be restricted as read-only
-        /// </summary>
-        [Output("readonlyFilesAndDirectories")]
-        public Output<ImmutableArray<string>> ReadonlyFilesAndDirectories { get; private set; } = null!;
+        [Output("noNewPrivileges")]
+        public Output<bool?> NoNewPrivileges { get; private set; } = null!;
+
+        [Output("onlyRegisteredImages")]
+        public Output<bool?> OnlyRegisteredImages { get; private set; } = null!;
+
+        [Output("packageBlock")]
+        public Output<Outputs.ContainerRuntimePolicyPackageBlock> PackageBlock { get; private set; } = null!;
+
+        [Output("permission")]
+        public Output<string?> Permission { get; private set; } = null!;
+
+        [Output("portBlock")]
+        public Output<Outputs.ContainerRuntimePolicyPortBlock> PortBlock { get; private set; } = null!;
+
+        [Output("readonlyFiles")]
+        public Output<Outputs.ContainerRuntimePolicyReadonlyFiles> ReadonlyFiles { get; private set; } = null!;
+
+        [Output("readonlyRegistry")]
+        public Output<Outputs.ContainerRuntimePolicyReadonlyRegistry> ReadonlyRegistry { get; private set; } = null!;
+
+        [Output("registry")]
+        public Output<string?> Registry { get; private set; } = null!;
+
+        [Output("registryAccessMonitoring")]
+        public Output<Outputs.ContainerRuntimePolicyRegistryAccessMonitoring> RegistryAccessMonitoring { get; private set; } = null!;
+
+        [Output("repoName")]
+        public Output<string?> RepoName { get; private set; } = null!;
+
+        [Output("resourceName")]
+        public Output<string?> ResourceName { get; private set; } = null!;
+
+        [Output("resourceType")]
+        public Output<string?> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// List of IPs/ CIDRs that will be allowed
+        /// Restricted volumes configuration.
         /// </summary>
-        [Output("reverseShellAllowedIps")]
-        public Output<ImmutableArray<string>> ReverseShellAllowedIps { get; private set; } = null!;
+        [Output("restrictedVolumes")]
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyRestrictedVolume>> RestrictedVolumes { get; private set; } = null!;
 
-        /// <summary>
-        /// List of processes that will be allowed
-        /// </summary>
-        [Output("reverseShellAllowedProcesses")]
-        public Output<ImmutableArray<string>> ReverseShellAllowedProcesses { get; private set; } = null!;
+        [Output("reverseShell")]
+        public Output<Outputs.ContainerRuntimePolicyReverseShell> ReverseShell { get; private set; } = null!;
+
+        [Output("runtimeMode")]
+        public Output<int?> RuntimeMode { get; private set; } = null!;
+
+        [Output("runtimeType")]
+        public Output<string?> RuntimeType { get; private set; } = null!;
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -504,6 +411,33 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("scopeVariables")]
         public Output<ImmutableArray<Outputs.ContainerRuntimePolicyScopeVariable>> ScopeVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Scope configuration.
+        /// </summary>
+        [Output("scopes")]
+        public Output<ImmutableArray<Outputs.ContainerRuntimePolicyScope>> Scopes { get; private set; } = null!;
+
+        [Output("systemIntegrityProtection")]
+        public Output<Outputs.ContainerRuntimePolicySystemIntegrityProtection> SystemIntegrityProtection { get; private set; } = null!;
+
+        [Output("tripwire")]
+        public Output<Outputs.ContainerRuntimePolicyTripwire> Tripwire { get; private set; } = null!;
+
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
+
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
+
+        [Output("version")]
+        public Output<string?> Version { get; private set; } = null!;
+
+        [Output("vpatchVersion")]
+        public Output<string?> VpatchVersion { get; private set; } = null!;
+
+        [Output("whitelistedOsUsers")]
+        public Output<Outputs.ContainerRuntimePolicyWhitelistedOsUsers> WhitelistedOsUsers { get; private set; } = null!;
 
 
         /// <summary>
@@ -553,26 +487,26 @@ namespace Pulumiverse.Aquasec
     public sealed class ContainerRuntimePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedExecutables")]
-        private InputList<string>? _allowedExecutables;
+        private InputList<Inputs.ContainerRuntimePolicyAllowedExecutableArgs>? _allowedExecutables;
 
         /// <summary>
-        /// List of executables that are allowed for the user.
+        /// Allowed executables configuration.
         /// </summary>
-        public InputList<string> AllowedExecutables
+        public InputList<Inputs.ContainerRuntimePolicyAllowedExecutableArgs> AllowedExecutables
         {
-            get => _allowedExecutables ?? (_allowedExecutables = new InputList<string>());
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.ContainerRuntimePolicyAllowedExecutableArgs>());
             set => _allowedExecutables = value;
         }
 
         [Input("allowedRegistries")]
-        private InputList<string>? _allowedRegistries;
+        private InputList<Inputs.ContainerRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of registries that allowed for running containers.
+        /// List of allowed registries.
         /// </summary>
-        public InputList<string> AllowedRegistries
+        public InputList<Inputs.ContainerRuntimePolicyAllowedRegistryArgs> AllowedRegistries
         {
-            get => _allowedRegistries ?? (_allowedRegistries = new InputList<string>());
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.ContainerRuntimePolicyAllowedRegistryArgs>());
             set => _allowedRegistries = value;
         }
 
@@ -601,10 +535,28 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? AuditAllProcessesActivity { get; set; }
 
         /// <summary>
+        /// Detects brute force login attempts
+        /// </summary>
+        [Input("auditBruteForceLogin")]
+        public Input<bool>? AuditBruteForceLogin { get; set; }
+
+        /// <summary>
         /// If true, full command arguments will be audited.
         /// </summary>
         [Input("auditFullCommandArguments")]
         public Input<bool>? AuditFullCommandArguments { get; set; }
+
+        [Input("auditing")]
+        public Input<Inputs.ContainerRuntimePolicyAuditingArgs>? Auditing { get; set; }
+
+        /// <summary>
+        /// Username of the account that created the service.
+        /// </summary>
+        [Input("author")]
+        public Input<string>? Author { get; set; }
+
+        [Input("blacklistedOsUsers")]
+        public Input<Inputs.ContainerRuntimePolicyBlacklistedOsUsersArgs>? BlacklistedOsUsers { get; set; }
 
         /// <summary>
         /// If true, prevent containers from running with access to host network.
@@ -630,6 +582,9 @@ namespace Pulumiverse.Aquasec
         [Input("blockCryptocurrencyMining")]
         public Input<bool>? BlockCryptocurrencyMining { get; set; }
 
+        [Input("blockDisallowedImages")]
+        public Input<bool>? BlockDisallowedImages { get; set; }
+
         /// <summary>
         /// Detect and prevent running in-memory execution
         /// </summary>
@@ -641,12 +596,6 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("blockLowPortBinding")]
         public Input<bool>? BlockLowPortBinding { get; set; }
-
-        /// <summary>
-        /// If true, running non-compliant image in the container is prevented.
-        /// </summary>
-        [Input("blockNonCompliantImages")]
-        public Input<bool>? BlockNonCompliantImages { get; set; }
 
         /// <summary>
         /// If true, running containers in non-compliant pods is prevented.
@@ -667,22 +616,10 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? BlockPrivilegedContainers { get; set; }
 
         /// <summary>
-        /// If true, reverse shell is prevented.
-        /// </summary>
-        [Input("blockReverseShell")]
-        public Input<bool>? BlockReverseShell { get; set; }
-
-        /// <summary>
         /// If true, prevent containers from running with root user.
         /// </summary>
         [Input("blockRootUser")]
         public Input<bool>? BlockRootUser { get; set; }
-
-        /// <summary>
-        /// If true, running images in the container that are not registered in Aqua is prevented.
-        /// </summary>
-        [Input("blockUnregisteredImages")]
-        public Input<bool>? BlockUnregisteredImages { get; set; }
 
         /// <summary>
         /// If true, prevent containers from running with the privilege to use the IPC namespace.
@@ -792,6 +729,21 @@ namespace Pulumiverse.Aquasec
             set => _blockedVolumes = value;
         }
 
+        [Input("bypassScopes")]
+        private InputList<Inputs.ContainerRuntimePolicyBypassScopeArgs>? _bypassScopes;
+
+        /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        public InputList<Inputs.ContainerRuntimePolicyBypassScopeArgs> BypassScopes
+        {
+            get => _bypassScopes ?? (_bypassScopes = new InputList<Inputs.ContainerRuntimePolicyBypassScopeArgs>());
+            set => _bypassScopes = value;
+        }
+
+        [Input("containerExec")]
+        public Input<Inputs.ContainerRuntimePolicyContainerExecArgs>? ContainerExec { get; set; }
+
         [Input("containerExecAllowedProcesses")]
         private InputList<string>? _containerExecAllowedProcesses;
 
@@ -804,17 +756,38 @@ namespace Pulumiverse.Aquasec
             set => _containerExecAllowedProcesses = value;
         }
 
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
+        [Input("cve")]
+        public Input<string>? Cve { get; set; }
+
+        [Input("defaultSecurityProfile")]
+        public Input<string>? DefaultSecurityProfile { get; set; }
+
         /// <summary>
         /// The description of the container runtime policy
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("driftPreventions")]
+        private InputList<Inputs.ContainerRuntimePolicyDriftPreventionArgs>? _driftPreventions;
+
         /// <summary>
-        /// If true, executables that are not in the original image is prevented from running.
+        /// Drift prevention configuration.
         /// </summary>
-        [Input("enableDriftPrevention")]
-        public Input<bool>? EnableDriftPrevention { get; set; }
+        public InputList<Inputs.ContainerRuntimePolicyDriftPreventionArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.ContainerRuntimePolicyDriftPreventionArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("enableCryptoMiningDns")]
+        public Input<bool>? EnableCryptoMiningDns { get; set; }
 
         /// <summary>
         /// If true, fork bombs are prevented in the containers.
@@ -822,20 +795,14 @@ namespace Pulumiverse.Aquasec
         [Input("enableForkGuard")]
         public Input<bool>? EnableForkGuard { get; set; }
 
-        /// <summary>
-        /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        /// </summary>
-        [Input("enableIpReputationSecurity")]
-        public Input<bool>? EnableIpReputationSecurity { get; set; }
+        [Input("enableIpReputation")]
+        public Input<bool>? EnableIpReputation { get; set; }
+
+        [Input("enablePortScanProtection")]
+        public Input<bool>? EnablePortScanProtection { get; set; }
 
         /// <summary>
-        /// If true, detects port scanning behavior in the container.
-        /// </summary>
-        [Input("enablePortScanDetection")]
-        public Input<bool>? EnablePortScanDetection { get; set; }
-
-        /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -852,29 +819,38 @@ namespace Pulumiverse.Aquasec
         [Input("enforceAfterDays")]
         public Input<int>? EnforceAfterDays { get; set; }
 
-        [Input("exceptionalReadonlyFilesAndDirectories")]
-        private InputList<string>? _exceptionalReadonlyFilesAndDirectories;
+        [Input("enforceSchedulerAddedOn")]
+        public Input<int>? EnforceSchedulerAddedOn { get; set; }
+
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
 
         /// <summary>
-        /// List of files and directories to be excluded from the read-only list.
+        /// List of excluded application scopes.
         /// </summary>
-        public InputList<string> ExceptionalReadonlyFilesAndDirectories
+        public InputList<string> ExcludeApplicationScopes
         {
-            get => _exceptionalReadonlyFilesAndDirectories ?? (_exceptionalReadonlyFilesAndDirectories = new InputList<string>());
-            set => _exceptionalReadonlyFilesAndDirectories = value;
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
         }
 
-        [Input("execLockdownWhiteLists")]
-        private InputList<string>? _execLockdownWhiteLists;
+        [Input("executableBlacklists")]
+        private InputList<Inputs.ContainerRuntimePolicyExecutableBlacklistArgs>? _executableBlacklists;
 
         /// <summary>
-        /// Specify processes that will be allowed
+        /// Executable blacklist configuration.
         /// </summary>
-        public InputList<string> ExecLockdownWhiteLists
+        public InputList<Inputs.ContainerRuntimePolicyExecutableBlacklistArgs> ExecutableBlacklists
         {
-            get => _execLockdownWhiteLists ?? (_execLockdownWhiteLists = new InputList<string>());
-            set => _execLockdownWhiteLists = value;
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.ContainerRuntimePolicyExecutableBlacklistArgs>());
+            set => _executableBlacklists = value;
         }
+
+        [Input("failedKubernetesChecks")]
+        public Input<Inputs.ContainerRuntimePolicyFailedKubernetesChecksArgs>? FailedKubernetesChecks { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.ContainerRuntimePolicyFileBlockArgs>? FileBlock { get; set; }
 
         /// <summary>
         /// Configuration for file integrity monitoring.
@@ -888,11 +864,41 @@ namespace Pulumiverse.Aquasec
         [Input("forkGuardProcessLimit")]
         public Input<int>? ForkGuardProcessLimit { get; set; }
 
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        [Input("isAuditChecked")]
+        public Input<bool>? IsAuditChecked { get; set; }
+
+        [Input("isAutoGenerated")]
+        public Input<bool>? IsAutoGenerated { get; set; }
+
+        [Input("isOotbPolicy")]
+        public Input<bool>? IsOotbPolicy { get; set; }
+
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.ContainerRuntimePolicyLimitContainerPrivilegeArgs>? _limitContainerPrivileges;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.ContainerRuntimePolicyLimitContainerPrivilegeArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.ContainerRuntimePolicyLimitContainerPrivilegeArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
         /// <summary>
         /// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         /// </summary>
         [Input("limitNewPrivileges")]
         public Input<bool>? LimitNewPrivileges { get; set; }
+
+        [Input("linuxCapabilities")]
+        public Input<Inputs.ContainerRuntimePolicyLinuxCapabilitiesArgs>? LinuxCapabilities { get; set; }
 
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
@@ -907,46 +913,67 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorSystemTimeChanges { get; set; }
 
         /// <summary>
-        /// Name of the container runtime policy
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("readonlyFilesAndDirectories")]
-        private InputList<string>? _readonlyFilesAndDirectories;
+        [Input("noNewPrivileges")]
+        public Input<bool>? NoNewPrivileges { get; set; }
+
+        [Input("onlyRegisteredImages")]
+        public Input<bool>? OnlyRegisteredImages { get; set; }
+
+        [Input("packageBlock")]
+        public Input<Inputs.ContainerRuntimePolicyPackageBlockArgs>? PackageBlock { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("portBlock")]
+        public Input<Inputs.ContainerRuntimePolicyPortBlockArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.ContainerRuntimePolicyReadonlyFilesArgs>? ReadonlyFiles { get; set; }
+
+        [Input("readonlyRegistry")]
+        public Input<Inputs.ContainerRuntimePolicyReadonlyRegistryArgs>? ReadonlyRegistry { get; set; }
+
+        [Input("registry")]
+        public Input<string>? Registry { get; set; }
+
+        [Input("registryAccessMonitoring")]
+        public Input<Inputs.ContainerRuntimePolicyRegistryAccessMonitoringArgs>? RegistryAccessMonitoring { get; set; }
+
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.ContainerRuntimePolicyRestrictedVolumeArgs>? _restrictedVolumes;
 
         /// <summary>
-        /// List of files and directories to be restricted as read-only
+        /// Restricted volumes configuration.
         /// </summary>
-        public InputList<string> ReadonlyFilesAndDirectories
+        public InputList<Inputs.ContainerRuntimePolicyRestrictedVolumeArgs> RestrictedVolumes
         {
-            get => _readonlyFilesAndDirectories ?? (_readonlyFilesAndDirectories = new InputList<string>());
-            set => _readonlyFilesAndDirectories = value;
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.ContainerRuntimePolicyRestrictedVolumeArgs>());
+            set => _restrictedVolumes = value;
         }
 
-        [Input("reverseShellAllowedIps")]
-        private InputList<string>? _reverseShellAllowedIps;
+        [Input("reverseShell")]
+        public Input<Inputs.ContainerRuntimePolicyReverseShellArgs>? ReverseShell { get; set; }
 
-        /// <summary>
-        /// List of IPs/ CIDRs that will be allowed
-        /// </summary>
-        public InputList<string> ReverseShellAllowedIps
-        {
-            get => _reverseShellAllowedIps ?? (_reverseShellAllowedIps = new InputList<string>());
-            set => _reverseShellAllowedIps = value;
-        }
+        [Input("runtimeMode")]
+        public Input<int>? RuntimeMode { get; set; }
 
-        [Input("reverseShellAllowedProcesses")]
-        private InputList<string>? _reverseShellAllowedProcesses;
-
-        /// <summary>
-        /// List of processes that will be allowed
-        /// </summary>
-        public InputList<string> ReverseShellAllowedProcesses
-        {
-            get => _reverseShellAllowedProcesses ?? (_reverseShellAllowedProcesses = new InputList<string>());
-            set => _reverseShellAllowedProcesses = value;
-        }
+        [Input("runtimeType")]
+        public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -966,6 +993,39 @@ namespace Pulumiverse.Aquasec
             set => _scopeVariables = value;
         }
 
+        [Input("scopes")]
+        private InputList<Inputs.ContainerRuntimePolicyScopeArgs>? _scopes;
+
+        /// <summary>
+        /// Scope configuration.
+        /// </summary>
+        public InputList<Inputs.ContainerRuntimePolicyScopeArgs> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<Inputs.ContainerRuntimePolicyScopeArgs>());
+            set => _scopes = value;
+        }
+
+        [Input("systemIntegrityProtection")]
+        public Input<Inputs.ContainerRuntimePolicySystemIntegrityProtectionArgs>? SystemIntegrityProtection { get; set; }
+
+        [Input("tripwire")]
+        public Input<Inputs.ContainerRuntimePolicyTripwireArgs>? Tripwire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("vpatchVersion")]
+        public Input<string>? VpatchVersion { get; set; }
+
+        [Input("whitelistedOsUsers")]
+        public Input<Inputs.ContainerRuntimePolicyWhitelistedOsUsersArgs>? WhitelistedOsUsers { get; set; }
+
         public ContainerRuntimePolicyArgs()
         {
         }
@@ -975,26 +1035,26 @@ namespace Pulumiverse.Aquasec
     public sealed class ContainerRuntimePolicyState : global::Pulumi.ResourceArgs
     {
         [Input("allowedExecutables")]
-        private InputList<string>? _allowedExecutables;
+        private InputList<Inputs.ContainerRuntimePolicyAllowedExecutableGetArgs>? _allowedExecutables;
 
         /// <summary>
-        /// List of executables that are allowed for the user.
+        /// Allowed executables configuration.
         /// </summary>
-        public InputList<string> AllowedExecutables
+        public InputList<Inputs.ContainerRuntimePolicyAllowedExecutableGetArgs> AllowedExecutables
         {
-            get => _allowedExecutables ?? (_allowedExecutables = new InputList<string>());
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.ContainerRuntimePolicyAllowedExecutableGetArgs>());
             set => _allowedExecutables = value;
         }
 
         [Input("allowedRegistries")]
-        private InputList<string>? _allowedRegistries;
+        private InputList<Inputs.ContainerRuntimePolicyAllowedRegistryGetArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of registries that allowed for running containers.
+        /// List of allowed registries.
         /// </summary>
-        public InputList<string> AllowedRegistries
+        public InputList<Inputs.ContainerRuntimePolicyAllowedRegistryGetArgs> AllowedRegistries
         {
-            get => _allowedRegistries ?? (_allowedRegistries = new InputList<string>());
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.ContainerRuntimePolicyAllowedRegistryGetArgs>());
             set => _allowedRegistries = value;
         }
 
@@ -1023,16 +1083,28 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? AuditAllProcessesActivity { get; set; }
 
         /// <summary>
+        /// Detects brute force login attempts
+        /// </summary>
+        [Input("auditBruteForceLogin")]
+        public Input<bool>? AuditBruteForceLogin { get; set; }
+
+        /// <summary>
         /// If true, full command arguments will be audited.
         /// </summary>
         [Input("auditFullCommandArguments")]
         public Input<bool>? AuditFullCommandArguments { get; set; }
+
+        [Input("auditing")]
+        public Input<Inputs.ContainerRuntimePolicyAuditingGetArgs>? Auditing { get; set; }
 
         /// <summary>
         /// Username of the account that created the service.
         /// </summary>
         [Input("author")]
         public Input<string>? Author { get; set; }
+
+        [Input("blacklistedOsUsers")]
+        public Input<Inputs.ContainerRuntimePolicyBlacklistedOsUsersGetArgs>? BlacklistedOsUsers { get; set; }
 
         /// <summary>
         /// If true, prevent containers from running with access to host network.
@@ -1058,6 +1130,9 @@ namespace Pulumiverse.Aquasec
         [Input("blockCryptocurrencyMining")]
         public Input<bool>? BlockCryptocurrencyMining { get; set; }
 
+        [Input("blockDisallowedImages")]
+        public Input<bool>? BlockDisallowedImages { get; set; }
+
         /// <summary>
         /// Detect and prevent running in-memory execution
         /// </summary>
@@ -1069,12 +1144,6 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("blockLowPortBinding")]
         public Input<bool>? BlockLowPortBinding { get; set; }
-
-        /// <summary>
-        /// If true, running non-compliant image in the container is prevented.
-        /// </summary>
-        [Input("blockNonCompliantImages")]
-        public Input<bool>? BlockNonCompliantImages { get; set; }
 
         /// <summary>
         /// If true, running containers in non-compliant pods is prevented.
@@ -1095,22 +1164,10 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? BlockPrivilegedContainers { get; set; }
 
         /// <summary>
-        /// If true, reverse shell is prevented.
-        /// </summary>
-        [Input("blockReverseShell")]
-        public Input<bool>? BlockReverseShell { get; set; }
-
-        /// <summary>
         /// If true, prevent containers from running with root user.
         /// </summary>
         [Input("blockRootUser")]
         public Input<bool>? BlockRootUser { get; set; }
-
-        /// <summary>
-        /// If true, running images in the container that are not registered in Aqua is prevented.
-        /// </summary>
-        [Input("blockUnregisteredImages")]
-        public Input<bool>? BlockUnregisteredImages { get; set; }
 
         /// <summary>
         /// If true, prevent containers from running with the privilege to use the IPC namespace.
@@ -1220,6 +1277,21 @@ namespace Pulumiverse.Aquasec
             set => _blockedVolumes = value;
         }
 
+        [Input("bypassScopes")]
+        private InputList<Inputs.ContainerRuntimePolicyBypassScopeGetArgs>? _bypassScopes;
+
+        /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        public InputList<Inputs.ContainerRuntimePolicyBypassScopeGetArgs> BypassScopes
+        {
+            get => _bypassScopes ?? (_bypassScopes = new InputList<Inputs.ContainerRuntimePolicyBypassScopeGetArgs>());
+            set => _bypassScopes = value;
+        }
+
+        [Input("containerExec")]
+        public Input<Inputs.ContainerRuntimePolicyContainerExecGetArgs>? ContainerExec { get; set; }
+
         [Input("containerExecAllowedProcesses")]
         private InputList<string>? _containerExecAllowedProcesses;
 
@@ -1232,17 +1304,38 @@ namespace Pulumiverse.Aquasec
             set => _containerExecAllowedProcesses = value;
         }
 
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
+        [Input("cve")]
+        public Input<string>? Cve { get; set; }
+
+        [Input("defaultSecurityProfile")]
+        public Input<string>? DefaultSecurityProfile { get; set; }
+
         /// <summary>
         /// The description of the container runtime policy
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("driftPreventions")]
+        private InputList<Inputs.ContainerRuntimePolicyDriftPreventionGetArgs>? _driftPreventions;
+
         /// <summary>
-        /// If true, executables that are not in the original image is prevented from running.
+        /// Drift prevention configuration.
         /// </summary>
-        [Input("enableDriftPrevention")]
-        public Input<bool>? EnableDriftPrevention { get; set; }
+        public InputList<Inputs.ContainerRuntimePolicyDriftPreventionGetArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.ContainerRuntimePolicyDriftPreventionGetArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("enableCryptoMiningDns")]
+        public Input<bool>? EnableCryptoMiningDns { get; set; }
 
         /// <summary>
         /// If true, fork bombs are prevented in the containers.
@@ -1250,20 +1343,14 @@ namespace Pulumiverse.Aquasec
         [Input("enableForkGuard")]
         public Input<bool>? EnableForkGuard { get; set; }
 
-        /// <summary>
-        /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        /// </summary>
-        [Input("enableIpReputationSecurity")]
-        public Input<bool>? EnableIpReputationSecurity { get; set; }
+        [Input("enableIpReputation")]
+        public Input<bool>? EnableIpReputation { get; set; }
+
+        [Input("enablePortScanProtection")]
+        public Input<bool>? EnablePortScanProtection { get; set; }
 
         /// <summary>
-        /// If true, detects port scanning behavior in the container.
-        /// </summary>
-        [Input("enablePortScanDetection")]
-        public Input<bool>? EnablePortScanDetection { get; set; }
-
-        /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -1280,29 +1367,38 @@ namespace Pulumiverse.Aquasec
         [Input("enforceAfterDays")]
         public Input<int>? EnforceAfterDays { get; set; }
 
-        [Input("exceptionalReadonlyFilesAndDirectories")]
-        private InputList<string>? _exceptionalReadonlyFilesAndDirectories;
+        [Input("enforceSchedulerAddedOn")]
+        public Input<int>? EnforceSchedulerAddedOn { get; set; }
+
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
 
         /// <summary>
-        /// List of files and directories to be excluded from the read-only list.
+        /// List of excluded application scopes.
         /// </summary>
-        public InputList<string> ExceptionalReadonlyFilesAndDirectories
+        public InputList<string> ExcludeApplicationScopes
         {
-            get => _exceptionalReadonlyFilesAndDirectories ?? (_exceptionalReadonlyFilesAndDirectories = new InputList<string>());
-            set => _exceptionalReadonlyFilesAndDirectories = value;
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
         }
 
-        [Input("execLockdownWhiteLists")]
-        private InputList<string>? _execLockdownWhiteLists;
+        [Input("executableBlacklists")]
+        private InputList<Inputs.ContainerRuntimePolicyExecutableBlacklistGetArgs>? _executableBlacklists;
 
         /// <summary>
-        /// Specify processes that will be allowed
+        /// Executable blacklist configuration.
         /// </summary>
-        public InputList<string> ExecLockdownWhiteLists
+        public InputList<Inputs.ContainerRuntimePolicyExecutableBlacklistGetArgs> ExecutableBlacklists
         {
-            get => _execLockdownWhiteLists ?? (_execLockdownWhiteLists = new InputList<string>());
-            set => _execLockdownWhiteLists = value;
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.ContainerRuntimePolicyExecutableBlacklistGetArgs>());
+            set => _executableBlacklists = value;
         }
+
+        [Input("failedKubernetesChecks")]
+        public Input<Inputs.ContainerRuntimePolicyFailedKubernetesChecksGetArgs>? FailedKubernetesChecks { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.ContainerRuntimePolicyFileBlockGetArgs>? FileBlock { get; set; }
 
         /// <summary>
         /// Configuration for file integrity monitoring.
@@ -1316,11 +1412,41 @@ namespace Pulumiverse.Aquasec
         [Input("forkGuardProcessLimit")]
         public Input<int>? ForkGuardProcessLimit { get; set; }
 
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        [Input("isAuditChecked")]
+        public Input<bool>? IsAuditChecked { get; set; }
+
+        [Input("isAutoGenerated")]
+        public Input<bool>? IsAutoGenerated { get; set; }
+
+        [Input("isOotbPolicy")]
+        public Input<bool>? IsOotbPolicy { get; set; }
+
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.ContainerRuntimePolicyLimitContainerPrivilegeGetArgs>? _limitContainerPrivileges;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.ContainerRuntimePolicyLimitContainerPrivilegeGetArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.ContainerRuntimePolicyLimitContainerPrivilegeGetArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
         /// <summary>
         /// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         /// </summary>
         [Input("limitNewPrivileges")]
         public Input<bool>? LimitNewPrivileges { get; set; }
+
+        [Input("linuxCapabilities")]
+        public Input<Inputs.ContainerRuntimePolicyLinuxCapabilitiesGetArgs>? LinuxCapabilities { get; set; }
 
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
@@ -1335,46 +1461,67 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorSystemTimeChanges { get; set; }
 
         /// <summary>
-        /// Name of the container runtime policy
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("readonlyFilesAndDirectories")]
-        private InputList<string>? _readonlyFilesAndDirectories;
+        [Input("noNewPrivileges")]
+        public Input<bool>? NoNewPrivileges { get; set; }
+
+        [Input("onlyRegisteredImages")]
+        public Input<bool>? OnlyRegisteredImages { get; set; }
+
+        [Input("packageBlock")]
+        public Input<Inputs.ContainerRuntimePolicyPackageBlockGetArgs>? PackageBlock { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("portBlock")]
+        public Input<Inputs.ContainerRuntimePolicyPortBlockGetArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.ContainerRuntimePolicyReadonlyFilesGetArgs>? ReadonlyFiles { get; set; }
+
+        [Input("readonlyRegistry")]
+        public Input<Inputs.ContainerRuntimePolicyReadonlyRegistryGetArgs>? ReadonlyRegistry { get; set; }
+
+        [Input("registry")]
+        public Input<string>? Registry { get; set; }
+
+        [Input("registryAccessMonitoring")]
+        public Input<Inputs.ContainerRuntimePolicyRegistryAccessMonitoringGetArgs>? RegistryAccessMonitoring { get; set; }
+
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.ContainerRuntimePolicyRestrictedVolumeGetArgs>? _restrictedVolumes;
 
         /// <summary>
-        /// List of files and directories to be restricted as read-only
+        /// Restricted volumes configuration.
         /// </summary>
-        public InputList<string> ReadonlyFilesAndDirectories
+        public InputList<Inputs.ContainerRuntimePolicyRestrictedVolumeGetArgs> RestrictedVolumes
         {
-            get => _readonlyFilesAndDirectories ?? (_readonlyFilesAndDirectories = new InputList<string>());
-            set => _readonlyFilesAndDirectories = value;
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.ContainerRuntimePolicyRestrictedVolumeGetArgs>());
+            set => _restrictedVolumes = value;
         }
 
-        [Input("reverseShellAllowedIps")]
-        private InputList<string>? _reverseShellAllowedIps;
+        [Input("reverseShell")]
+        public Input<Inputs.ContainerRuntimePolicyReverseShellGetArgs>? ReverseShell { get; set; }
 
-        /// <summary>
-        /// List of IPs/ CIDRs that will be allowed
-        /// </summary>
-        public InputList<string> ReverseShellAllowedIps
-        {
-            get => _reverseShellAllowedIps ?? (_reverseShellAllowedIps = new InputList<string>());
-            set => _reverseShellAllowedIps = value;
-        }
+        [Input("runtimeMode")]
+        public Input<int>? RuntimeMode { get; set; }
 
-        [Input("reverseShellAllowedProcesses")]
-        private InputList<string>? _reverseShellAllowedProcesses;
-
-        /// <summary>
-        /// List of processes that will be allowed
-        /// </summary>
-        public InputList<string> ReverseShellAllowedProcesses
-        {
-            get => _reverseShellAllowedProcesses ?? (_reverseShellAllowedProcesses = new InputList<string>());
-            set => _reverseShellAllowedProcesses = value;
-        }
+        [Input("runtimeType")]
+        public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -1393,6 +1540,39 @@ namespace Pulumiverse.Aquasec
             get => _scopeVariables ?? (_scopeVariables = new InputList<Inputs.ContainerRuntimePolicyScopeVariableGetArgs>());
             set => _scopeVariables = value;
         }
+
+        [Input("scopes")]
+        private InputList<Inputs.ContainerRuntimePolicyScopeGetArgs>? _scopes;
+
+        /// <summary>
+        /// Scope configuration.
+        /// </summary>
+        public InputList<Inputs.ContainerRuntimePolicyScopeGetArgs> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<Inputs.ContainerRuntimePolicyScopeGetArgs>());
+            set => _scopes = value;
+        }
+
+        [Input("systemIntegrityProtection")]
+        public Input<Inputs.ContainerRuntimePolicySystemIntegrityProtectionGetArgs>? SystemIntegrityProtection { get; set; }
+
+        [Input("tripwire")]
+        public Input<Inputs.ContainerRuntimePolicyTripwireGetArgs>? Tripwire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("vpatchVersion")]
+        public Input<string>? VpatchVersion { get; set; }
+
+        [Input("whitelistedOsUsers")]
+        public Input<Inputs.ContainerRuntimePolicyWhitelistedOsUsersGetArgs>? WhitelistedOsUsers { get; set; }
 
         public ContainerRuntimePolicyState()
         {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -110,12 +109,6 @@ func (o LookupApplicationScopeResultOutput) ToLookupApplicationScopeResultOutput
 
 func (o LookupApplicationScopeResultOutput) ToLookupApplicationScopeResultOutputWithContext(ctx context.Context) LookupApplicationScopeResultOutput {
 	return o
-}
-
-func (o LookupApplicationScopeResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupApplicationScopeResult] {
-	return pulumix.Output[LookupApplicationScopeResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Username of the account that created the service.

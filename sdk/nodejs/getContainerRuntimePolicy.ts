@@ -23,8 +23,18 @@ export function getContainerRuntimePolicy(args: GetContainerRuntimePolicyArgs, o
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", {
+        "allowedExecutables": args.allowedExecutables,
+        "allowedRegistries": args.allowedRegistries,
+        "auditing": args.auditing,
+        "containerExec": args.containerExec,
+        "fileBlock": args.fileBlock,
+        "fileIntegrityMonitorings": args.fileIntegrityMonitorings,
+        "limitContainerPrivileges": args.limitContainerPrivileges,
         "malwareScanOptions": args.malwareScanOptions,
         "name": args.name,
+        "portBlock": args.portBlock,
+        "readonlyFiles": args.readonlyFiles,
+        "restrictedVolumes": args.restrictedVolumes,
     }, opts);
 }
 
@@ -33,13 +43,35 @@ export function getContainerRuntimePolicy(args: GetContainerRuntimePolicyArgs, o
  */
 export interface GetContainerRuntimePolicyArgs {
     /**
+     * Allowed executables configuration.
+     */
+    allowedExecutables?: inputs.GetContainerRuntimePolicyAllowedExecutable[];
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: inputs.GetContainerRuntimePolicyAllowedRegistry[];
+    auditing?: inputs.GetContainerRuntimePolicyAuditing;
+    containerExec?: inputs.GetContainerRuntimePolicyContainerExec;
+    fileBlock?: inputs.GetContainerRuntimePolicyFileBlock;
+    /**
+     * Configuration for file integrity monitoring.
+     */
+    fileIntegrityMonitorings?: inputs.GetContainerRuntimePolicyFileIntegrityMonitoring[];
+    /**
+     * Container privileges configuration.
+     */
+    limitContainerPrivileges?: inputs.GetContainerRuntimePolicyLimitContainerPrivilege[];
+    /**
      * Configuration for Real-Time Malware Protection.
      */
     malwareScanOptions?: inputs.GetContainerRuntimePolicyMalwareScanOption[];
-    /**
-     * Name of the container runtime policy
-     */
     name: string;
+    portBlock?: inputs.GetContainerRuntimePolicyPortBlock;
+    readonlyFiles?: inputs.GetContainerRuntimePolicyReadonlyFiles;
+    /**
+     * Restricted volumes configuration.
+     */
+    restrictedVolumes?: inputs.GetContainerRuntimePolicyRestrictedVolume[];
 }
 
 /**
@@ -47,13 +79,13 @@ export interface GetContainerRuntimePolicyArgs {
  */
 export interface GetContainerRuntimePolicyResult {
     /**
-     * List of executables that are allowed for the user.
+     * Allowed executables configuration.
      */
-    readonly allowedExecutables: string[];
+    readonly allowedExecutables?: outputs.GetContainerRuntimePolicyAllowedExecutable[];
     /**
-     * List of registries that allowed for running containers.
+     * Allowed registries configuration.
      */
-    readonly allowedRegistries: string[];
+    readonly allowedRegistries?: outputs.GetContainerRuntimePolicyAllowedRegistry[];
     /**
      * Indicates the application scope of the service.
      */
@@ -70,6 +102,7 @@ export interface GetContainerRuntimePolicyResult {
      * If true, full command arguments will be audited.
      */
     readonly auditFullCommandArguments: boolean;
+    readonly auditing?: outputs.GetContainerRuntimePolicyAuditing;
     /**
      * Username of the account that created the service.
      */
@@ -170,6 +203,7 @@ export interface GetContainerRuntimePolicyResult {
      * List of volumes that are prevented from being mounted in the containers.
      */
     readonly blockedVolumes: string[];
+    readonly containerExec?: outputs.GetContainerRuntimePolicyContainerExec;
     /**
      * List of processes that will be allowed.
      */
@@ -214,10 +248,11 @@ export interface GetContainerRuntimePolicyResult {
      * Specify processes that will be allowed
      */
     readonly execLockdownWhiteLists: string[];
+    readonly fileBlock?: outputs.GetContainerRuntimePolicyFileBlock;
     /**
      * Configuration for file integrity monitoring.
      */
-    readonly fileIntegrityMonitorings: outputs.GetContainerRuntimePolicyFileIntegrityMonitoring[];
+    readonly fileIntegrityMonitorings?: outputs.GetContainerRuntimePolicyFileIntegrityMonitoring[];
     /**
      * Process limit for the fork guard.
      */
@@ -227,13 +262,17 @@ export interface GetContainerRuntimePolicyResult {
      */
     readonly id: string;
     /**
+     * Container privileges configuration.
+     */
+    readonly limitContainerPrivileges?: outputs.GetContainerRuntimePolicyLimitContainerPrivilege[];
+    /**
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      */
     readonly limitNewPrivileges: boolean;
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    readonly malwareScanOptions: outputs.GetContainerRuntimePolicyMalwareScanOption[];
+    readonly malwareScanOptions?: outputs.GetContainerRuntimePolicyMalwareScanOption[];
     /**
      * If true, system time changes will be monitored.
      */
@@ -242,10 +281,16 @@ export interface GetContainerRuntimePolicyResult {
      * Name of the container runtime policy
      */
     readonly name: string;
+    readonly portBlock?: outputs.GetContainerRuntimePolicyPortBlock;
+    readonly readonlyFiles?: outputs.GetContainerRuntimePolicyReadonlyFiles;
     /**
      * List of files and directories to be restricted as read-only
      */
     readonly readonlyFilesAndDirectories: string[];
+    /**
+     * Restricted volumes configuration.
+     */
+    readonly restrictedVolumes?: outputs.GetContainerRuntimePolicyRestrictedVolume[];
     /**
      * List of IPs/ CIDRs that will be allowed
      */
@@ -285,11 +330,33 @@ export function getContainerRuntimePolicyOutput(args: GetContainerRuntimePolicyO
  */
 export interface GetContainerRuntimePolicyOutputArgs {
     /**
+     * Allowed executables configuration.
+     */
+    allowedExecutables?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyAllowedExecutableArgs>[]>;
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyAllowedRegistryArgs>[]>;
+    auditing?: pulumi.Input<inputs.GetContainerRuntimePolicyAuditingArgs>;
+    containerExec?: pulumi.Input<inputs.GetContainerRuntimePolicyContainerExecArgs>;
+    fileBlock?: pulumi.Input<inputs.GetContainerRuntimePolicyFileBlockArgs>;
+    /**
+     * Configuration for file integrity monitoring.
+     */
+    fileIntegrityMonitorings?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyFileIntegrityMonitoringArgs>[]>;
+    /**
+     * Container privileges configuration.
+     */
+    limitContainerPrivileges?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyLimitContainerPrivilegeArgs>[]>;
+    /**
      * Configuration for Real-Time Malware Protection.
      */
     malwareScanOptions?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyMalwareScanOptionArgs>[]>;
-    /**
-     * Name of the container runtime policy
-     */
     name: pulumi.Input<string>;
+    portBlock?: pulumi.Input<inputs.GetContainerRuntimePolicyPortBlockArgs>;
+    readonlyFiles?: pulumi.Input<inputs.GetContainerRuntimePolicyReadonlyFilesArgs>;
+    /**
+     * Restricted volumes configuration.
+     */
+    restrictedVolumes?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyRestrictedVolumeArgs>[]>;
 }

@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
+// The data source `EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+//
 // ## Example Usage
 //
 // ```go
@@ -229,12 +230,6 @@ func (o LookupEnforcerGroupsResultOutput) ToLookupEnforcerGroupsResultOutput() L
 
 func (o LookupEnforcerGroupsResultOutput) ToLookupEnforcerGroupsResultOutputWithContext(ctx context.Context) LookupEnforcerGroupsResultOutput {
 	return o
-}
-
-func (o LookupEnforcerGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupEnforcerGroupsResult] {
-	return pulumix.Output[LookupEnforcerGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Selecting this option will allow the KubeEnforcer to block the deployment of container images that have failed any of these Container Runtime Policy controls:\

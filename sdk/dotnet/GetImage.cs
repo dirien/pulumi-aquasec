@@ -22,15 +22,9 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the registry where the image is stored.
-        /// </summary>
         [Input("registry", required: true)]
         public string Registry { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the image's repository.
-        /// </summary>
         [Input("repository", required: true)]
         public string Repository { get; set; } = null!;
 
@@ -48,15 +42,9 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the registry where the image is stored.
-        /// </summary>
         [Input("registry", required: true)]
         public Input<string> Registry { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the image's repository.
-        /// </summary>
         [Input("repository", required: true)]
         public Input<string> Repository { get; set; } = null!;
 

@@ -17,9 +17,6 @@ namespace Pulumiverse.Aquasec.Outputs
         public readonly bool Master;
         public readonly string Namespace;
         public readonly string ServiceAccount;
-        /// <summary>
-        /// Enforcer Type.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

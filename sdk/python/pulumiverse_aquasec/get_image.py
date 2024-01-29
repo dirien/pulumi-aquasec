@@ -652,8 +652,6 @@ def get_image(registry: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str registry: The name of the registry where the image is stored.
-    :param str repository: The name of the image's repository.
     :param str tag: The tag of the image.
     """
     __args__ = dict()
@@ -725,8 +723,6 @@ def get_image_output(registry: Optional[pulumi.Input[str]] = None,
     """
     Use this data source to access information about an existing resource.
 
-    :param str registry: The name of the registry where the image is stored.
-    :param str repository: The name of the image's repository.
     :param str tag: The tag of the image.
     """
     ...

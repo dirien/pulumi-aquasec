@@ -54,7 +54,7 @@ export interface GetKubernetesAssurancePolicyResult {
      */
     readonly blacklistedLicenses: string[];
     /**
-     * Lndicates if license blacklist is relevant.
+     * Indicates if license blacklist is relevant.
      */
     readonly blacklistedLicensesEnabled: boolean;
     /**
@@ -72,31 +72,31 @@ export interface GetKubernetesAssurancePolicyResult {
     readonly customChecksEnabled: boolean;
     readonly customSeverityEnabled: boolean;
     /**
-     * Indicates if cves blacklist is relevant.
+     * Indicates if CVEs blacklist is relevant.
      */
     readonly cvesBlackListEnabled: boolean;
     /**
-     * List of cves blacklisted items.
+     * List of CVEs blacklisted items.
      */
     readonly cvesBlackLists: string[];
     /**
-     * Indicates if cves whitelist is relevant.
+     * Indicates if CVEs whitelist is relevant.
      */
     readonly cvesWhiteListEnabled: boolean;
     /**
-     * List of cves whitelisted licenses
+     * List of CVEs whitelisted licenses
      */
     readonly cvesWhiteLists: string[];
     /**
-     * Identifier of the cvss severity.
+     * Identifier of the CVSS severity.
      */
     readonly cvssSeverity: string;
     /**
-     * Indicates if the cvss severity is scanned.
+     * Indicates if the CVSS severity is scanned.
      */
     readonly cvssSeverityEnabled: boolean;
     /**
-     * Indicates that policy should ignore cvss cases that do not have a known fix.
+     * Indicates that policy should ignore CVSS cases that do not have a known fix.
      */
     readonly cvssSeverityExcludeNoFix: boolean;
     readonly description: string;
@@ -104,6 +104,9 @@ export interface GetKubernetesAssurancePolicyResult {
      * Indicates if malware should block the image.
      */
     readonly disallowMalware: boolean;
+    /**
+     * Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+     */
     readonly dockerCisEnabled: boolean;
     /**
      * Name of the container image.
@@ -116,9 +119,12 @@ export interface GetKubernetesAssurancePolicyResult {
     readonly enforce: boolean;
     readonly enforceAfterDays: number;
     readonly enforceExcessivePermissions: boolean;
+    /**
+     * Directories to be excluded from monitoring.
+     */
     readonly exceptionalMonitoredMalwarePaths: string[];
     /**
-     * Indicates if cicd failures will fail the image.
+     * Indicates if CI/CD failures will fail the image.
      */
     readonly failCicd: boolean;
     readonly forbiddenLabels: outputs.GetKubernetesAssurancePolicyForbiddenLabel[];
@@ -143,6 +149,9 @@ export interface GetKubernetesAssurancePolicyResult {
      * List of images.
      */
     readonly images: string[];
+    /**
+     * Performs a Kubernetes CIS benchmark check for the host.
+     */
     readonly kubeCisEnabled: boolean;
     /**
      * List of kubernetes control names
@@ -165,6 +174,9 @@ export interface GetKubernetesAssurancePolicyResult {
      * Indicates that policy should ignore cases that do not have a known fix.
      */
     readonly maximumScoreExcludeNoFix: boolean;
+    /**
+     * Directories to be monitored.
+     */
     readonly monitoredMalwarePaths: string[];
     readonly name: string;
     /**
@@ -176,7 +188,7 @@ export interface GetKubernetesAssurancePolicyResult {
      */
     readonly packagesBlackListEnabled: boolean;
     /**
-     * List of backlisted images.
+     * List of blacklisted images.
      */
     readonly packagesBlackLists: outputs.GetKubernetesAssurancePolicyPackagesBlackList[];
     /**
@@ -202,7 +214,7 @@ export interface GetKubernetesAssurancePolicyResult {
      */
     readonly scanSensitiveData: boolean;
     /**
-     * Indicates if scanning should include scap.
+     * Indicates if scanning should include SCAP.
      */
     readonly scapEnabled: boolean;
     /**

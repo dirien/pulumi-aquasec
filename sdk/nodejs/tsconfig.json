@@ -37,6 +37,7 @@
         "getHostRuntimePolicy.ts",
         "getImage.ts",
         "getImageAssurancePolicy.ts",
+        "getIntegrationRegistries.ts",
         "getIntegrationRegistry.ts",
         "getIntegrationState.ts",
         "getKubernetesAssurancePolicy.ts",
@@ -69,6 +70,7 @@
         "types/output.ts",
         "user.ts",
         "userSaas.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "vmwareAssurancePolicy.ts"
     ]
 }

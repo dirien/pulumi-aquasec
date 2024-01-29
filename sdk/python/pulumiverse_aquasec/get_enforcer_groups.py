@@ -775,6 +775,8 @@ def get_enforcer_groups(forensics: Optional[bool] = None,
                         host_forensics: Optional[bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnforcerGroupsResult:
     """
+    The data source `EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+
     ## Example Usage
 
     ```python
@@ -867,6 +869,8 @@ def get_enforcer_groups_output(forensics: Optional[pulumi.Input[Optional[bool]]]
                                host_forensics: Optional[pulumi.Input[Optional[bool]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnforcerGroupsResult]:
     """
+    The data source `EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+
     ## Example Usage
 
     ```python

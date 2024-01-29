@@ -23,7 +23,11 @@ export function getHostRuntimePolicy(args: GetHostRuntimePolicyArgs, opts?: pulu
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", {
+        "auditing": args.auditing,
+        "fileIntegrityMonitorings": args.fileIntegrityMonitorings,
+        "malwareScanOptions": args.malwareScanOptions,
         "name": args.name,
+        "packageBlocks": args.packageBlocks,
     }, opts);
 }
 
@@ -31,10 +35,17 @@ export function getHostRuntimePolicy(args: GetHostRuntimePolicyArgs, opts?: pulu
  * A collection of arguments for invoking getHostRuntimePolicy.
  */
 export interface GetHostRuntimePolicyArgs {
+    auditing?: inputs.GetHostRuntimePolicyAuditing;
     /**
-     * Name of the host runtime policy
+     * Configuration for file integrity monitoring.
      */
+    fileIntegrityMonitorings?: inputs.GetHostRuntimePolicyFileIntegrityMonitoring[];
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: inputs.GetHostRuntimePolicyMalwareScanOption[];
     name: string;
+    packageBlocks?: inputs.GetHostRuntimePolicyPackageBlock[];
 }
 
 /**
@@ -69,6 +80,7 @@ export interface GetHostRuntimePolicyResult {
      * If true, account management will be audited.
      */
     readonly auditUserAccountManagement: boolean;
+    readonly auditing?: outputs.GetHostRuntimePolicyAuditing;
     /**
      * Username of the account that created the service.
      */
@@ -88,7 +100,7 @@ export interface GetHostRuntimePolicyResult {
     /**
      * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
      */
-    readonly enableIpReputationSecurity: boolean;
+    readonly enableIpReputation: boolean;
     /**
      * Indicates if the runtime policy is enabled or not.
      */
@@ -104,7 +116,7 @@ export interface GetHostRuntimePolicyResult {
     /**
      * Configuration for file integrity monitoring.
      */
-    readonly fileIntegrityMonitorings: outputs.GetHostRuntimePolicyFileIntegrityMonitoring[];
+    readonly fileIntegrityMonitorings?: outputs.GetHostRuntimePolicyFileIntegrityMonitoring[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -112,7 +124,7 @@ export interface GetHostRuntimePolicyResult {
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    readonly malwareScanOptions: outputs.GetHostRuntimePolicyMalwareScanOption[];
+    readonly malwareScanOptions?: outputs.GetHostRuntimePolicyMalwareScanOption[];
     /**
      * If true, system log will be monitored.
      */
@@ -145,10 +157,7 @@ export interface GetHostRuntimePolicyResult {
      * List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
      */
     readonly osUsersBlockeds: string[];
-    /**
-     * List of packages that are not allowed read, write or execute all files that under the packages.
-     */
-    readonly packageBlocks: string[];
+    readonly packageBlocks?: outputs.GetHostRuntimePolicyPackageBlock[];
     /**
      * If true, port scanning behaviors will be audited.
      */
@@ -191,8 +200,15 @@ export function getHostRuntimePolicyOutput(args: GetHostRuntimePolicyOutputArgs,
  * A collection of arguments for invoking getHostRuntimePolicy.
  */
 export interface GetHostRuntimePolicyOutputArgs {
+    auditing?: pulumi.Input<inputs.GetHostRuntimePolicyAuditingArgs>;
     /**
-     * Name of the host runtime policy
+     * Configuration for file integrity monitoring.
      */
+    fileIntegrityMonitorings?: pulumi.Input<pulumi.Input<inputs.GetHostRuntimePolicyFileIntegrityMonitoringArgs>[]>;
+    /**
+     * Configuration for Real-Time Malware Protection.
+     */
+    malwareScanOptions?: pulumi.Input<pulumi.Input<inputs.GetHostRuntimePolicyMalwareScanOptionArgs>[]>;
     name: pulumi.Input<string>;
+    packageBlocks?: pulumi.Input<pulumi.Input<inputs.GetHostRuntimePolicyPackageBlockArgs>[]>;
 }

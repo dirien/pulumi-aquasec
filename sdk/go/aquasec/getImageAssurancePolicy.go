@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -45,7 +44,7 @@ type LookupImageAssurancePolicyResult struct {
 	BlacklistPermissionsEnabled bool `pulumi:"blacklistPermissionsEnabled"`
 	// List of blacklisted licenses.
 	BlacklistedLicenses []string `pulumi:"blacklistedLicenses"`
-	// Lndicates if license blacklist is relevant.
+	// Indicates if license blacklist is relevant.
 	BlacklistedLicensesEnabled bool `pulumi:"blacklistedLicensesEnabled"`
 	// Indicates if failed images are blocked.
 	BlockFailed         bool `pulumi:"blockFailed"`
@@ -55,11 +54,11 @@ type LookupImageAssurancePolicyResult struct {
 	// Indicates if scanning should include custom checks.
 	CustomChecksEnabled   bool `pulumi:"customChecksEnabled"`
 	CustomSeverityEnabled bool `pulumi:"customSeverityEnabled"`
-	// Indicates if cves blacklist is relevant.
+	// Indicates if CVEs blacklist is relevant.
 	CvesBlackListEnabled bool `pulumi:"cvesBlackListEnabled"`
-	// List of cves blacklisted items.
+	// List of CVEs blacklisted items.
 	CvesBlackLists []string `pulumi:"cvesBlackLists"`
-	// Indicates if cves whitelist is relevant.
+	// Indicates if CVEs whitelist is relevant.
 	CvesWhiteListEnabled bool `pulumi:"cvesWhiteListEnabled"`
 	// List of cves whitelisted licenses
 	CvesWhiteLists []string `pulumi:"cvesWhiteLists"`
@@ -71,7 +70,8 @@ type LookupImageAssurancePolicyResult struct {
 	CvssSeverityExcludeNoFix bool   `pulumi:"cvssSeverityExcludeNoFix"`
 	Description              string `pulumi:"description"`
 	// Indicates if malware should block the image.
-	DisallowMalware  bool `pulumi:"disallowMalware"`
+	DisallowMalware bool `pulumi:"disallowMalware"`
+	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled bool `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
 	Domain                           string   `pulumi:"domain"`
@@ -98,8 +98,9 @@ type LookupImageAssurancePolicyResult struct {
 	// List of ignored risk resources.
 	IgnoredRiskResources []string `pulumi:"ignoredRiskResources"`
 	// List of images.
-	Images         []string `pulumi:"images"`
-	KubeCisEnabled bool     `pulumi:"kubeCisEnabled"`
+	Images []string `pulumi:"images"`
+	// Performs a Kubernetes CIS benchmark check for the host.
+	KubeCisEnabled bool `pulumi:"kubeCisEnabled"`
 	// List of labels.
 	Labels        []string `pulumi:"labels"`
 	MalwareAction string   `pulumi:"malwareAction"`
@@ -115,7 +116,7 @@ type LookupImageAssurancePolicyResult struct {
 	OnlyNoneRootUsers bool `pulumi:"onlyNoneRootUsers"`
 	// Indicates if packages blacklist is relevant.
 	PackagesBlackListEnabled bool `pulumi:"packagesBlackListEnabled"`
-	// List of backlisted images.
+	// List of blacklisted images.
 	PackagesBlackLists []GetImageAssurancePolicyPackagesBlackList `pulumi:"packagesBlackLists"`
 	// Indicates if packages whitelist is relevant.
 	PackagesWhiteListEnabled bool `pulumi:"packagesWhiteListEnabled"`
@@ -183,12 +184,6 @@ func (o LookupImageAssurancePolicyResultOutput) ToLookupImageAssurancePolicyResu
 	return o
 }
 
-func (o LookupImageAssurancePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImageAssurancePolicyResult] {
-	return pulumix.Output[LookupImageAssurancePolicyResult]{
-		OutputState: o.OutputState,
-	}
-}
-
 // List of explicitly allowed images.
 func (o LookupImageAssurancePolicyResultOutput) AllowedImages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) []string { return v.AllowedImages }).(pulumi.StringArrayOutput)
@@ -235,7 +230,7 @@ func (o LookupImageAssurancePolicyResultOutput) BlacklistedLicenses() pulumi.Str
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) []string { return v.BlacklistedLicenses }).(pulumi.StringArrayOutput)
 }
 
-// Lndicates if license blacklist is relevant.
+// Indicates if license blacklist is relevant.
 func (o LookupImageAssurancePolicyResultOutput) BlacklistedLicensesEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.BlacklistedLicensesEnabled }).(pulumi.BoolOutput)
 }
@@ -263,17 +258,17 @@ func (o LookupImageAssurancePolicyResultOutput) CustomSeverityEnabled() pulumi.B
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.CustomSeverityEnabled }).(pulumi.BoolOutput)
 }
 
-// Indicates if cves blacklist is relevant.
+// Indicates if CVEs blacklist is relevant.
 func (o LookupImageAssurancePolicyResultOutput) CvesBlackListEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.CvesBlackListEnabled }).(pulumi.BoolOutput)
 }
 
-// List of cves blacklisted items.
+// List of CVEs blacklisted items.
 func (o LookupImageAssurancePolicyResultOutput) CvesBlackLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) []string { return v.CvesBlackLists }).(pulumi.StringArrayOutput)
 }
 
-// Indicates if cves whitelist is relevant.
+// Indicates if CVEs whitelist is relevant.
 func (o LookupImageAssurancePolicyResultOutput) CvesWhiteListEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.CvesWhiteListEnabled }).(pulumi.BoolOutput)
 }
@@ -307,6 +302,7 @@ func (o LookupImageAssurancePolicyResultOutput) DisallowMalware() pulumi.BoolOut
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.DisallowMalware }).(pulumi.BoolOutput)
 }
 
+// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 func (o LookupImageAssurancePolicyResultOutput) DockerCisEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.DockerCisEnabled }).(pulumi.BoolOutput)
 }
@@ -399,6 +395,7 @@ func (o LookupImageAssurancePolicyResultOutput) Images() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) []string { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// Performs a Kubernetes CIS benchmark check for the host.
 func (o LookupImageAssurancePolicyResultOutput) KubeCisEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.KubeCisEnabled }).(pulumi.BoolOutput)
 }
@@ -445,7 +442,7 @@ func (o LookupImageAssurancePolicyResultOutput) PackagesBlackListEnabled() pulum
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) bool { return v.PackagesBlackListEnabled }).(pulumi.BoolOutput)
 }
 
-// List of backlisted images.
+// List of blacklisted images.
 func (o LookupImageAssurancePolicyResultOutput) PackagesBlackLists() GetImageAssurancePolicyPackagesBlackListArrayOutput {
 	return o.ApplyT(func(v LookupImageAssurancePolicyResult) []GetImageAssurancePolicyPackagesBlackList {
 		return v.PackagesBlackLists

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -132,12 +131,6 @@ func (i *ApplicationScope) ToApplicationScopeOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScopeOutput)
 }
 
-func (i *ApplicationScope) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScope] {
-	return pulumix.Output[*ApplicationScope]{
-		OutputState: i.ToApplicationScopeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApplicationScopeArrayInput is an input type that accepts ApplicationScopeArray and ApplicationScopeArrayOutput values.
 // You can construct a concrete instance of `ApplicationScopeArrayInput` via:
 //
@@ -161,12 +154,6 @@ func (i ApplicationScopeArray) ToApplicationScopeArrayOutput() ApplicationScopeA
 
 func (i ApplicationScopeArray) ToApplicationScopeArrayOutputWithContext(ctx context.Context) ApplicationScopeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScopeArrayOutput)
-}
-
-func (i ApplicationScopeArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationScope] {
-	return pulumix.Output[[]*ApplicationScope]{
-		OutputState: i.ToApplicationScopeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApplicationScopeMapInput is an input type that accepts ApplicationScopeMap and ApplicationScopeMapOutput values.
@@ -194,12 +181,6 @@ func (i ApplicationScopeMap) ToApplicationScopeMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationScopeMapOutput)
 }
 
-func (i ApplicationScopeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationScope] {
-	return pulumix.Output[map[string]*ApplicationScope]{
-		OutputState: i.ToApplicationScopeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApplicationScopeOutput struct{ *pulumi.OutputState }
 
 func (ApplicationScopeOutput) ElementType() reflect.Type {
@@ -212,12 +193,6 @@ func (o ApplicationScopeOutput) ToApplicationScopeOutput() ApplicationScopeOutpu
 
 func (o ApplicationScopeOutput) ToApplicationScopeOutputWithContext(ctx context.Context) ApplicationScopeOutput {
 	return o
-}
-
-func (o ApplicationScopeOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationScope] {
-	return pulumix.Output[*ApplicationScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Username of the account that created the service.
@@ -259,12 +234,6 @@ func (o ApplicationScopeArrayOutput) ToApplicationScopeArrayOutputWithContext(ct
 	return o
 }
 
-func (o ApplicationScopeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationScope] {
-	return pulumix.Output[[]*ApplicationScope]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApplicationScopeArrayOutput) Index(i pulumi.IntInput) ApplicationScopeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationScope {
 		return vs[0].([]*ApplicationScope)[vs[1].(int)]
@@ -283,12 +252,6 @@ func (o ApplicationScopeMapOutput) ToApplicationScopeMapOutput() ApplicationScop
 
 func (o ApplicationScopeMapOutput) ToApplicationScopeMapOutputWithContext(ctx context.Context) ApplicationScopeMapOutput {
 	return o
-}
-
-func (o ApplicationScopeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationScope] {
-	return pulumix.Output[map[string]*ApplicationScope]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApplicationScopeMapOutput) MapIndex(k pulumi.StringInput) ApplicationScopeOutput {

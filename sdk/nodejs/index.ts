@@ -115,6 +115,11 @@ export const getImageAssurancePolicy: typeof import("./getImageAssurancePolicy")
 export const getImageAssurancePolicyOutput: typeof import("./getImageAssurancePolicy").getImageAssurancePolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getImageAssurancePolicy","getImageAssurancePolicyOutput"], () => require("./getImageAssurancePolicy"));
 
+export { GetIntegrationRegistriesArgs, GetIntegrationRegistriesResult, GetIntegrationRegistriesOutputArgs } from "./getIntegrationRegistries";
+export const getIntegrationRegistries: typeof import("./getIntegrationRegistries").getIntegrationRegistries = null as any;
+export const getIntegrationRegistriesOutput: typeof import("./getIntegrationRegistries").getIntegrationRegistriesOutput = null as any;
+utilities.lazyLoad(exports, ["getIntegrationRegistries","getIntegrationRegistriesOutput"], () => require("./getIntegrationRegistries"));
+
 export { GetIntegrationRegistryArgs, GetIntegrationRegistryResult, GetIntegrationRegistryOutputArgs } from "./getIntegrationRegistry";
 export const getIntegrationRegistry: typeof import("./getIntegrationRegistry").getIntegrationRegistry = null as any;
 export const getIntegrationRegistryOutput: typeof import("./getIntegrationRegistry").getIntegrationRegistryOutput = null as any;
@@ -255,6 +260,11 @@ export type UserSaas = import("./userSaas").UserSaas;
 export const UserSaas: typeof import("./userSaas").UserSaas = null as any;
 utilities.lazyLoad(exports, ["UserSaas"], () => require("./userSaas"));
 
+export { VmwareAssurancePolicyArgs, VmwareAssurancePolicyState } from "./vmwareAssurancePolicy";
+export type VmwareAssurancePolicy = import("./vmwareAssurancePolicy").VmwareAssurancePolicy;
+export const VmwareAssurancePolicy: typeof import("./vmwareAssurancePolicy").VmwareAssurancePolicy = null as any;
+utilities.lazyLoad(exports, ["VmwareAssurancePolicy"], () => require("./vmwareAssurancePolicy"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -317,6 +327,8 @@ const _module = {
                 return new User(name, <any>undefined, { urn })
             case "aquasec:index/userSaas:UserSaas":
                 return new UserSaas(name, <any>undefined, { urn })
+            case "aquasec:index/vmwareAssurancePolicy:VmwareAssurancePolicy":
+                return new VmwareAssurancePolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -346,6 +358,7 @@ pulumi.runtime.registerResourceModule("aquasec", "index/roleMappingSaas", _modul
 pulumi.runtime.registerResourceModule("aquasec", "index/service", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/user", _module)
 pulumi.runtime.registerResourceModule("aquasec", "index/userSaas", _module)
+pulumi.runtime.registerResourceModule("aquasec", "index/vmwareAssurancePolicy", _module)
 pulumi.runtime.registerResourcePackage("aquasec", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

@@ -8,158 +8,18 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aquasec.NewHostRuntimePolicy(ctx, "hostRuntimePolicy", &aquasec.HostRuntimePolicyArgs{
-//				ApplicationScopes: pulumi.StringArray{
-//					pulumi.String("Global"),
-//				},
-//				AuditAllOsUserActivity:         pulumi.Bool(true),
-//				AuditBruteForceLogin:           pulumi.Bool(true),
-//				AuditFullCommandArguments:      pulumi.Bool(true),
-//				AuditHostFailedLoginEvents:     pulumi.Bool(true),
-//				AuditHostSuccessfulLoginEvents: pulumi.Bool(true),
-//				AuditUserAccountManagement:     pulumi.Bool(true),
-//				BlockCryptocurrencyMining:      pulumi.Bool(true),
-//				BlockedFiles: pulumi.StringArray{
-//					pulumi.String("blocked"),
-//				},
-//				Description:                pulumi.String("host_runtime_policy"),
-//				EnableIpReputationSecurity: pulumi.Bool(true),
-//				Enabled:                    pulumi.Bool(true),
-//				Enforce:                    pulumi.Bool(false),
-//				FileIntegrityMonitoring: &aquasec.HostRuntimePolicyFileIntegrityMonitoringArgs{
-//					ExcludedPaths: pulumi.StringArray{
-//						pulumi.String("expaths"),
-//					},
-//					ExcludedProcesses: pulumi.StringArray{
-//						pulumi.String("exprocess"),
-//					},
-//					ExcludedUsers: pulumi.StringArray{
-//						pulumi.String("expuser"),
-//					},
-//					MonitorAttributes: pulumi.Bool(true),
-//					MonitorCreate:     pulumi.Bool(true),
-//					MonitorDelete:     pulumi.Bool(true),
-//					MonitorModify:     pulumi.Bool(true),
-//					MonitorRead:       pulumi.Bool(true),
-//					MonitoredPaths: pulumi.StringArray{
-//						pulumi.String("paths"),
-//					},
-//					MonitoredProcesses: pulumi.StringArray{
-//						pulumi.String("process"),
-//					},
-//					MonitoredUsers: pulumi.StringArray{
-//						pulumi.String("user"),
-//					},
-//				},
-//				MonitorSystemLogIntegrity: pulumi.Bool(true),
-//				MonitorSystemTimeChanges:  pulumi.Bool(true),
-//				MonitorWindowsServices:    pulumi.Bool(true),
-//				OsGroupsAlloweds: pulumi.StringArray{
-//					pulumi.String("group1"),
-//				},
-//				OsGroupsBlockeds: pulumi.StringArray{
-//					pulumi.String("group2"),
-//				},
-//				OsUsersAlloweds: pulumi.StringArray{
-//					pulumi.String("user1"),
-//				},
-//				OsUsersBlockeds: pulumi.StringArray{
-//					pulumi.String("user2"),
-//				},
-//				PackageBlocks: pulumi.StringArray{
-//					pulumi.String("package1"),
-//				},
-//				PortScanningDetection: pulumi.Bool(true),
-//				ScopeVariables: aquasec.HostRuntimePolicyScopeVariableArray{
-//					&aquasec.HostRuntimePolicyScopeVariableArgs{
-//						Attribute: pulumi.String("kubernetes.cluster"),
-//						Value:     pulumi.String("default"),
-//					},
-//					&aquasec.HostRuntimePolicyScopeVariableArgs{
-//						Attribute: pulumi.String("kubernetes.label"),
-//						Name:      pulumi.String("app"),
-//						Value:     pulumi.String("aqua"),
-//					},
-//				},
-//				WindowsRegistryMonitoring: &aquasec.HostRuntimePolicyWindowsRegistryMonitoringArgs{
-//					ExcludedPaths: pulumi.StringArray{
-//						pulumi.String("expaths"),
-//					},
-//					ExcludedProcesses: pulumi.StringArray{
-//						pulumi.String("exprocess"),
-//					},
-//					ExcludedUsers: pulumi.StringArray{
-//						pulumi.String("expuser"),
-//					},
-//					MonitorAttributes: pulumi.Bool(true),
-//					MonitorCreate:     pulumi.Bool(true),
-//					MonitorDelete:     pulumi.Bool(true),
-//					MonitorModify:     pulumi.Bool(true),
-//					MonitorRead:       pulumi.Bool(true),
-//					MonitoredPaths: pulumi.StringArray{
-//						pulumi.String("paths"),
-//					},
-//					MonitoredProcesses: pulumi.StringArray{
-//						pulumi.String("process"),
-//					},
-//					MonitoredUsers: pulumi.StringArray{
-//						pulumi.String("user"),
-//					},
-//				},
-//				WindowsRegistryProtection: &aquasec.HostRuntimePolicyWindowsRegistryProtectionArgs{
-//					ExcludedPaths: pulumi.StringArray{
-//						pulumi.String("expaths"),
-//					},
-//					ExcludedProcesses: pulumi.StringArray{
-//						pulumi.String("exprocess"),
-//					},
-//					ExcludedUsers: pulumi.StringArray{
-//						pulumi.String("expuser"),
-//					},
-//					ProtectedPaths: pulumi.StringArray{
-//						pulumi.String("paths"),
-//					},
-//					ProtectedProcesses: pulumi.StringArray{
-//						pulumi.String("process"),
-//					},
-//					ProtectedUsers: pulumi.StringArray{
-//						pulumi.String("user"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type HostRuntimePolicy struct {
 	pulumi.CustomResourceState
 
+	// Allowed executables configuration.
+	AllowedExecutables HostRuntimePolicyAllowedExecutableArrayOutput `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries HostRuntimePolicyAllowedRegistryArrayOutput `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayOutput `pulumi:"applicationScopes"`
-	// If true, all process activity will be audited.
-	AuditAllOsUserActivity pulumi.BoolPtrOutput `pulumi:"auditAllOsUserActivity"`
 	// Detects brute force login attempts
 	AuditBruteForceLogin pulumi.BoolPtrOutput `pulumi:"auditBruteForceLogin"`
 	// If true, full command arguments will be audited.
@@ -169,35 +29,71 @@ type HostRuntimePolicy struct {
 	// If true, host successful logins will be audited.
 	AuditHostSuccessfulLoginEvents pulumi.BoolPtrOutput `pulumi:"auditHostSuccessfulLoginEvents"`
 	// If true, account management will be audited.
-	AuditUserAccountManagement pulumi.BoolPtrOutput `pulumi:"auditUserAccountManagement"`
+	AuditUserAccountManagement pulumi.BoolPtrOutput            `pulumi:"auditUserAccountManagement"`
+	Auditing                   HostRuntimePolicyAuditingOutput `pulumi:"auditing"`
 	// Username of the account that created the service.
-	Author pulumi.StringOutput `pulumi:"author"`
+	Author             pulumi.StringOutput                       `pulumi:"author"`
+	BlacklistedOsUsers HostRuntimePolicyBlacklistedOsUsersOutput `pulumi:"blacklistedOsUsers"`
+	BlockContainerExec pulumi.BoolPtrOutput                      `pulumi:"blockContainerExec"`
 	// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-	BlockCryptocurrencyMining pulumi.BoolPtrOutput `pulumi:"blockCryptocurrencyMining"`
+	BlockCryptocurrencyMining  pulumi.BoolPtrOutput `pulumi:"blockCryptocurrencyMining"`
+	BlockDisallowedImages      pulumi.BoolPtrOutput `pulumi:"blockDisallowedImages"`
+	BlockFilelessExec          pulumi.BoolPtrOutput `pulumi:"blockFilelessExec"`
+	BlockNonCompliantWorkloads pulumi.BoolPtrOutput `pulumi:"blockNonCompliantWorkloads"`
+	BlockNonK8sContainers      pulumi.BoolPtrOutput `pulumi:"blockNonK8sContainers"`
 	// List of files that are prevented from being read, modified and executed in the containers.
 	BlockedFiles pulumi.StringArrayOutput `pulumi:"blockedFiles"`
+	// Bypass scope configuration.
+	BypassScopes           HostRuntimePolicyBypassScopeArrayOutput `pulumi:"bypassScopes"`
+	ContainerExec          HostRuntimePolicyContainerExecOutput    `pulumi:"containerExec"`
+	Created                pulumi.StringOutput                     `pulumi:"created"`
+	Cve                    pulumi.StringPtrOutput                  `pulumi:"cve"`
+	DefaultSecurityProfile pulumi.StringPtrOutput                  `pulumi:"defaultSecurityProfile"`
 	// The description of the host runtime policy
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-	EnableIpReputationSecurity pulumi.BoolPtrOutput `pulumi:"enableIpReputationSecurity"`
-	// Indicates if the runtime policy is enabled or not.
+	Digest      pulumi.StringPtrOutput `pulumi:"digest"`
+	// Drift prevention configuration.
+	DriftPreventions         HostRuntimePolicyDriftPreventionArrayOutput `pulumi:"driftPreventions"`
+	EnableCryptoMiningDns    pulumi.BoolPtrOutput                        `pulumi:"enableCryptoMiningDns"`
+	EnableForkGuard          pulumi.BoolPtrOutput                        `pulumi:"enableForkGuard"`
+	EnableIpReputation       pulumi.BoolPtrOutput                        `pulumi:"enableIpReputation"`
+	EnablePortScanProtection pulumi.BoolPtrOutput                        `pulumi:"enablePortScanProtection"`
+	// Whether allowed executables configuration is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrOutput `pulumi:"enforce"`
 	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
-	EnforceAfterDays pulumi.IntPtrOutput `pulumi:"enforceAfterDays"`
+	EnforceAfterDays        pulumi.IntPtrOutput `pulumi:"enforceAfterDays"`
+	EnforceSchedulerAddedOn pulumi.IntOutput    `pulumi:"enforceSchedulerAddedOn"`
+	// List of excluded application scopes.
+	ExcludeApplicationScopes pulumi.StringArrayOutput `pulumi:"excludeApplicationScopes"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists   HostRuntimePolicyExecutableBlacklistArrayOutput `pulumi:"executableBlacklists"`
+	FailedKubernetesChecks HostRuntimePolicyFailedKubernetesChecksOutput   `pulumi:"failedKubernetesChecks"`
+	FileBlock              HostRuntimePolicyFileBlockOutput                `pulumi:"fileBlock"`
 	// Configuration for file integrity monitoring.
-	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringPtrOutput `pulumi:"fileIntegrityMonitoring"`
+	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringOutput `pulumi:"fileIntegrityMonitoring"`
+	ForkGuardProcessLimit   pulumi.IntPtrOutput                            `pulumi:"forkGuardProcessLimit"`
+	ImageName               pulumi.StringPtrOutput                         `pulumi:"imageName"`
+	IsAuditChecked          pulumi.BoolPtrOutput                           `pulumi:"isAuditChecked"`
+	IsAutoGenerated         pulumi.BoolPtrOutput                           `pulumi:"isAutoGenerated"`
+	IsOotbPolicy            pulumi.BoolPtrOutput                           `pulumi:"isOotbPolicy"`
+	Lastupdate              pulumi.IntOutput                               `pulumi:"lastupdate"`
+	// Container privileges configuration.
+	LimitContainerPrivileges HostRuntimePolicyLimitContainerPrivilegeArrayOutput `pulumi:"limitContainerPrivileges"`
+	LinuxCapabilities        HostRuntimePolicyLinuxCapabilitiesOutput            `pulumi:"linuxCapabilities"`
 	// Configuration for Real-Time Malware Protection.
-	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsPtrOutput `pulumi:"malwareScanOptions"`
+	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsOutput `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
 	MonitorSystemLogIntegrity pulumi.BoolPtrOutput `pulumi:"monitorSystemLogIntegrity"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrOutput `pulumi:"monitorSystemTimeChanges"`
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices pulumi.BoolPtrOutput `pulumi:"monitorWindowsServices"`
-	// Name of the host runtime policy
-	Name pulumi.StringOutput `pulumi:"name"`
+	// Name assigned to the attribute.
+	Name                 pulumi.StringOutput  `pulumi:"name"`
+	NoNewPrivileges      pulumi.BoolPtrOutput `pulumi:"noNewPrivileges"`
+	OnlyRegisteredImages pulumi.BoolPtrOutput `pulumi:"onlyRegisteredImages"`
 	// List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
 	OsGroupsAlloweds pulumi.StringArrayOutput `pulumi:"osGroupsAlloweds"`
 	// List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -205,19 +101,35 @@ type HostRuntimePolicy struct {
 	// List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
 	OsUsersAlloweds pulumi.StringArrayOutput `pulumi:"osUsersAlloweds"`
 	// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
-	OsUsersBlockeds pulumi.StringArrayOutput `pulumi:"osUsersBlockeds"`
-	// List of packages that are not allowed read, write or execute all files that under the packages.
-	PackageBlocks pulumi.StringArrayOutput `pulumi:"packageBlocks"`
-	// If true, port scanning behaviors will be audited.
-	PortScanningDetection pulumi.BoolPtrOutput `pulumi:"portScanningDetection"`
+	OsUsersBlockeds          pulumi.StringArrayOutput                        `pulumi:"osUsersBlockeds"`
+	PackageBlocks            HostRuntimePolicyPackageBlockArrayOutput        `pulumi:"packageBlocks"`
+	Permission               pulumi.StringPtrOutput                          `pulumi:"permission"`
+	PortBlock                HostRuntimePolicyPortBlockOutput                `pulumi:"portBlock"`
+	ReadonlyFiles            HostRuntimePolicyReadonlyFilesOutput            `pulumi:"readonlyFiles"`
+	ReadonlyRegistry         HostRuntimePolicyReadonlyRegistryOutput         `pulumi:"readonlyRegistry"`
+	Registry                 pulumi.StringPtrOutput                          `pulumi:"registry"`
+	RegistryAccessMonitoring HostRuntimePolicyRegistryAccessMonitoringOutput `pulumi:"registryAccessMonitoring"`
+	RepoName                 pulumi.StringPtrOutput                          `pulumi:"repoName"`
+	ResourceName             pulumi.StringPtrOutput                          `pulumi:"resourceName"`
+	ResourceType             pulumi.StringPtrOutput                          `pulumi:"resourceType"`
+	// Restricted volumes configuration.
+	RestrictedVolumes HostRuntimePolicyRestrictedVolumeArrayOutput `pulumi:"restrictedVolumes"`
+	ReverseShell      HostRuntimePolicyReverseShellOutput          `pulumi:"reverseShell"`
+	RuntimeMode       pulumi.IntPtrOutput                          `pulumi:"runtimeMode"`
+	RuntimeType       pulumi.StringOutput                          `pulumi:"runtimeType"`
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression pulumi.StringOutput `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables HostRuntimePolicyScopeVariableArrayOutput `pulumi:"scopeVariables"`
-	// Configuration for windows registry monitoring.
-	WindowsRegistryMonitoring HostRuntimePolicyWindowsRegistryMonitoringPtrOutput `pulumi:"windowsRegistryMonitoring"`
-	// Configuration for windows registry protection.
-	WindowsRegistryProtection HostRuntimePolicyWindowsRegistryProtectionPtrOutput `pulumi:"windowsRegistryProtection"`
+	// Scope configuration.
+	Scopes                    HostRuntimePolicyScopeArrayOutput                `pulumi:"scopes"`
+	SystemIntegrityProtection HostRuntimePolicySystemIntegrityProtectionOutput `pulumi:"systemIntegrityProtection"`
+	Tripwire                  HostRuntimePolicyTripwireOutput                  `pulumi:"tripwire"`
+	Type                      pulumi.StringOutput                              `pulumi:"type"`
+	Updated                   pulumi.StringOutput                              `pulumi:"updated"`
+	Version                   pulumi.StringPtrOutput                           `pulumi:"version"`
+	VpatchVersion             pulumi.StringPtrOutput                           `pulumi:"vpatchVersion"`
+	WhitelistedOsUsers        HostRuntimePolicyWhitelistedOsUsersOutput        `pulumi:"whitelistedOsUsers"`
 }
 
 // NewHostRuntimePolicy registers a new resource with the given unique name, arguments, and options.
@@ -250,10 +162,12 @@ func GetHostRuntimePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HostRuntimePolicy resources.
 type hostRuntimePolicyState struct {
+	// Allowed executables configuration.
+	AllowedExecutables []HostRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries []HostRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
-	// If true, all process activity will be audited.
-	AuditAllOsUserActivity *bool `pulumi:"auditAllOsUserActivity"`
 	// Detects brute force login attempts
 	AuditBruteForceLogin *bool `pulumi:"auditBruteForceLogin"`
 	// If true, full command arguments will be audited.
@@ -263,25 +177,59 @@ type hostRuntimePolicyState struct {
 	// If true, host successful logins will be audited.
 	AuditHostSuccessfulLoginEvents *bool `pulumi:"auditHostSuccessfulLoginEvents"`
 	// If true, account management will be audited.
-	AuditUserAccountManagement *bool `pulumi:"auditUserAccountManagement"`
+	AuditUserAccountManagement *bool                      `pulumi:"auditUserAccountManagement"`
+	Auditing                   *HostRuntimePolicyAuditing `pulumi:"auditing"`
 	// Username of the account that created the service.
-	Author *string `pulumi:"author"`
+	Author             *string                              `pulumi:"author"`
+	BlacklistedOsUsers *HostRuntimePolicyBlacklistedOsUsers `pulumi:"blacklistedOsUsers"`
+	BlockContainerExec *bool                                `pulumi:"blockContainerExec"`
 	// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-	BlockCryptocurrencyMining *bool `pulumi:"blockCryptocurrencyMining"`
+	BlockCryptocurrencyMining  *bool `pulumi:"blockCryptocurrencyMining"`
+	BlockDisallowedImages      *bool `pulumi:"blockDisallowedImages"`
+	BlockFilelessExec          *bool `pulumi:"blockFilelessExec"`
+	BlockNonCompliantWorkloads *bool `pulumi:"blockNonCompliantWorkloads"`
+	BlockNonK8sContainers      *bool `pulumi:"blockNonK8sContainers"`
 	// List of files that are prevented from being read, modified and executed in the containers.
 	BlockedFiles []string `pulumi:"blockedFiles"`
+	// Bypass scope configuration.
+	BypassScopes           []HostRuntimePolicyBypassScope  `pulumi:"bypassScopes"`
+	ContainerExec          *HostRuntimePolicyContainerExec `pulumi:"containerExec"`
+	Created                *string                         `pulumi:"created"`
+	Cve                    *string                         `pulumi:"cve"`
+	DefaultSecurityProfile *string                         `pulumi:"defaultSecurityProfile"`
 	// The description of the host runtime policy
 	Description *string `pulumi:"description"`
-	// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-	EnableIpReputationSecurity *bool `pulumi:"enableIpReputationSecurity"`
-	// Indicates if the runtime policy is enabled or not.
+	Digest      *string `pulumi:"digest"`
+	// Drift prevention configuration.
+	DriftPreventions         []HostRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
+	EnableCryptoMiningDns    *bool                              `pulumi:"enableCryptoMiningDns"`
+	EnableForkGuard          *bool                              `pulumi:"enableForkGuard"`
+	EnableIpReputation       *bool                              `pulumi:"enableIpReputation"`
+	EnablePortScanProtection *bool                              `pulumi:"enablePortScanProtection"`
+	// Whether allowed executables configuration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
 	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
-	EnforceAfterDays *int `pulumi:"enforceAfterDays"`
+	EnforceAfterDays        *int `pulumi:"enforceAfterDays"`
+	EnforceSchedulerAddedOn *int `pulumi:"enforceSchedulerAddedOn"`
+	// List of excluded application scopes.
+	ExcludeApplicationScopes []string `pulumi:"excludeApplicationScopes"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists   []HostRuntimePolicyExecutableBlacklist   `pulumi:"executableBlacklists"`
+	FailedKubernetesChecks *HostRuntimePolicyFailedKubernetesChecks `pulumi:"failedKubernetesChecks"`
+	FileBlock              *HostRuntimePolicyFileBlock              `pulumi:"fileBlock"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring *HostRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitoring"`
+	ForkGuardProcessLimit   *int                                      `pulumi:"forkGuardProcessLimit"`
+	ImageName               *string                                   `pulumi:"imageName"`
+	IsAuditChecked          *bool                                     `pulumi:"isAuditChecked"`
+	IsAutoGenerated         *bool                                     `pulumi:"isAutoGenerated"`
+	IsOotbPolicy            *bool                                     `pulumi:"isOotbPolicy"`
+	Lastupdate              *int                                      `pulumi:"lastupdate"`
+	// Container privileges configuration.
+	LimitContainerPrivileges []HostRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
+	LinuxCapabilities        *HostRuntimePolicyLinuxCapabilities        `pulumi:"linuxCapabilities"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions *HostRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
@@ -290,8 +238,10 @@ type hostRuntimePolicyState struct {
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices *bool `pulumi:"monitorWindowsServices"`
-	// Name of the host runtime policy
-	Name *string `pulumi:"name"`
+	// Name assigned to the attribute.
+	Name                 *string `pulumi:"name"`
+	NoNewPrivileges      *bool   `pulumi:"noNewPrivileges"`
+	OnlyRegisteredImages *bool   `pulumi:"onlyRegisteredImages"`
 	// List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
 	OsGroupsAlloweds []string `pulumi:"osGroupsAlloweds"`
 	// List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -299,26 +249,44 @@ type hostRuntimePolicyState struct {
 	// List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
 	OsUsersAlloweds []string `pulumi:"osUsersAlloweds"`
 	// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
-	OsUsersBlockeds []string `pulumi:"osUsersBlockeds"`
-	// List of packages that are not allowed read, write or execute all files that under the packages.
-	PackageBlocks []string `pulumi:"packageBlocks"`
-	// If true, port scanning behaviors will be audited.
-	PortScanningDetection *bool `pulumi:"portScanningDetection"`
+	OsUsersBlockeds          []string                                   `pulumi:"osUsersBlockeds"`
+	PackageBlocks            []HostRuntimePolicyPackageBlock            `pulumi:"packageBlocks"`
+	Permission               *string                                    `pulumi:"permission"`
+	PortBlock                *HostRuntimePolicyPortBlock                `pulumi:"portBlock"`
+	ReadonlyFiles            *HostRuntimePolicyReadonlyFiles            `pulumi:"readonlyFiles"`
+	ReadonlyRegistry         *HostRuntimePolicyReadonlyRegistry         `pulumi:"readonlyRegistry"`
+	Registry                 *string                                    `pulumi:"registry"`
+	RegistryAccessMonitoring *HostRuntimePolicyRegistryAccessMonitoring `pulumi:"registryAccessMonitoring"`
+	RepoName                 *string                                    `pulumi:"repoName"`
+	ResourceName             *string                                    `pulumi:"resourceName"`
+	ResourceType             *string                                    `pulumi:"resourceType"`
+	// Restricted volumes configuration.
+	RestrictedVolumes []HostRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
+	ReverseShell      *HostRuntimePolicyReverseShell      `pulumi:"reverseShell"`
+	RuntimeMode       *int                                `pulumi:"runtimeMode"`
+	RuntimeType       *string                             `pulumi:"runtimeType"`
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression *string `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables []HostRuntimePolicyScopeVariable `pulumi:"scopeVariables"`
-	// Configuration for windows registry monitoring.
-	WindowsRegistryMonitoring *HostRuntimePolicyWindowsRegistryMonitoring `pulumi:"windowsRegistryMonitoring"`
-	// Configuration for windows registry protection.
-	WindowsRegistryProtection *HostRuntimePolicyWindowsRegistryProtection `pulumi:"windowsRegistryProtection"`
+	// Scope configuration.
+	Scopes                    []HostRuntimePolicyScope                    `pulumi:"scopes"`
+	SystemIntegrityProtection *HostRuntimePolicySystemIntegrityProtection `pulumi:"systemIntegrityProtection"`
+	Tripwire                  *HostRuntimePolicyTripwire                  `pulumi:"tripwire"`
+	Type                      *string                                     `pulumi:"type"`
+	Updated                   *string                                     `pulumi:"updated"`
+	Version                   *string                                     `pulumi:"version"`
+	VpatchVersion             *string                                     `pulumi:"vpatchVersion"`
+	WhitelistedOsUsers        *HostRuntimePolicyWhitelistedOsUsers        `pulumi:"whitelistedOsUsers"`
 }
 
 type HostRuntimePolicyState struct {
+	// Allowed executables configuration.
+	AllowedExecutables HostRuntimePolicyAllowedExecutableArrayInput
+	// List of allowed registries.
+	AllowedRegistries HostRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
-	// If true, all process activity will be audited.
-	AuditAllOsUserActivity pulumi.BoolPtrInput
 	// Detects brute force login attempts
 	AuditBruteForceLogin pulumi.BoolPtrInput
 	// If true, full command arguments will be audited.
@@ -329,24 +297,58 @@ type HostRuntimePolicyState struct {
 	AuditHostSuccessfulLoginEvents pulumi.BoolPtrInput
 	// If true, account management will be audited.
 	AuditUserAccountManagement pulumi.BoolPtrInput
+	Auditing                   HostRuntimePolicyAuditingPtrInput
 	// Username of the account that created the service.
-	Author pulumi.StringPtrInput
+	Author             pulumi.StringPtrInput
+	BlacklistedOsUsers HostRuntimePolicyBlacklistedOsUsersPtrInput
+	BlockContainerExec pulumi.BoolPtrInput
 	// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-	BlockCryptocurrencyMining pulumi.BoolPtrInput
+	BlockCryptocurrencyMining  pulumi.BoolPtrInput
+	BlockDisallowedImages      pulumi.BoolPtrInput
+	BlockFilelessExec          pulumi.BoolPtrInput
+	BlockNonCompliantWorkloads pulumi.BoolPtrInput
+	BlockNonK8sContainers      pulumi.BoolPtrInput
 	// List of files that are prevented from being read, modified and executed in the containers.
 	BlockedFiles pulumi.StringArrayInput
+	// Bypass scope configuration.
+	BypassScopes           HostRuntimePolicyBypassScopeArrayInput
+	ContainerExec          HostRuntimePolicyContainerExecPtrInput
+	Created                pulumi.StringPtrInput
+	Cve                    pulumi.StringPtrInput
+	DefaultSecurityProfile pulumi.StringPtrInput
 	// The description of the host runtime policy
 	Description pulumi.StringPtrInput
-	// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-	EnableIpReputationSecurity pulumi.BoolPtrInput
-	// Indicates if the runtime policy is enabled or not.
+	Digest      pulumi.StringPtrInput
+	// Drift prevention configuration.
+	DriftPreventions         HostRuntimePolicyDriftPreventionArrayInput
+	EnableCryptoMiningDns    pulumi.BoolPtrInput
+	EnableForkGuard          pulumi.BoolPtrInput
+	EnableIpReputation       pulumi.BoolPtrInput
+	EnablePortScanProtection pulumi.BoolPtrInput
+	// Whether allowed executables configuration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
 	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
-	EnforceAfterDays pulumi.IntPtrInput
+	EnforceAfterDays        pulumi.IntPtrInput
+	EnforceSchedulerAddedOn pulumi.IntPtrInput
+	// List of excluded application scopes.
+	ExcludeApplicationScopes pulumi.StringArrayInput
+	// Executable blacklist configuration.
+	ExecutableBlacklists   HostRuntimePolicyExecutableBlacklistArrayInput
+	FailedKubernetesChecks HostRuntimePolicyFailedKubernetesChecksPtrInput
+	FileBlock              HostRuntimePolicyFileBlockPtrInput
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringPtrInput
+	ForkGuardProcessLimit   pulumi.IntPtrInput
+	ImageName               pulumi.StringPtrInput
+	IsAuditChecked          pulumi.BoolPtrInput
+	IsAutoGenerated         pulumi.BoolPtrInput
+	IsOotbPolicy            pulumi.BoolPtrInput
+	Lastupdate              pulumi.IntPtrInput
+	// Container privileges configuration.
+	LimitContainerPrivileges HostRuntimePolicyLimitContainerPrivilegeArrayInput
+	LinuxCapabilities        HostRuntimePolicyLinuxCapabilitiesPtrInput
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system log will be monitored.
@@ -355,8 +357,10 @@ type HostRuntimePolicyState struct {
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices pulumi.BoolPtrInput
-	// Name of the host runtime policy
-	Name pulumi.StringPtrInput
+	// Name assigned to the attribute.
+	Name                 pulumi.StringPtrInput
+	NoNewPrivileges      pulumi.BoolPtrInput
+	OnlyRegisteredImages pulumi.BoolPtrInput
 	// List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
 	OsGroupsAlloweds pulumi.StringArrayInput
 	// List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -364,19 +368,35 @@ type HostRuntimePolicyState struct {
 	// List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
 	OsUsersAlloweds pulumi.StringArrayInput
 	// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
-	OsUsersBlockeds pulumi.StringArrayInput
-	// List of packages that are not allowed read, write or execute all files that under the packages.
-	PackageBlocks pulumi.StringArrayInput
-	// If true, port scanning behaviors will be audited.
-	PortScanningDetection pulumi.BoolPtrInput
+	OsUsersBlockeds          pulumi.StringArrayInput
+	PackageBlocks            HostRuntimePolicyPackageBlockArrayInput
+	Permission               pulumi.StringPtrInput
+	PortBlock                HostRuntimePolicyPortBlockPtrInput
+	ReadonlyFiles            HostRuntimePolicyReadonlyFilesPtrInput
+	ReadonlyRegistry         HostRuntimePolicyReadonlyRegistryPtrInput
+	Registry                 pulumi.StringPtrInput
+	RegistryAccessMonitoring HostRuntimePolicyRegistryAccessMonitoringPtrInput
+	RepoName                 pulumi.StringPtrInput
+	ResourceName             pulumi.StringPtrInput
+	ResourceType             pulumi.StringPtrInput
+	// Restricted volumes configuration.
+	RestrictedVolumes HostRuntimePolicyRestrictedVolumeArrayInput
+	ReverseShell      HostRuntimePolicyReverseShellPtrInput
+	RuntimeMode       pulumi.IntPtrInput
+	RuntimeType       pulumi.StringPtrInput
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression pulumi.StringPtrInput
 	// List of scope attributes.
 	ScopeVariables HostRuntimePolicyScopeVariableArrayInput
-	// Configuration for windows registry monitoring.
-	WindowsRegistryMonitoring HostRuntimePolicyWindowsRegistryMonitoringPtrInput
-	// Configuration for windows registry protection.
-	WindowsRegistryProtection HostRuntimePolicyWindowsRegistryProtectionPtrInput
+	// Scope configuration.
+	Scopes                    HostRuntimePolicyScopeArrayInput
+	SystemIntegrityProtection HostRuntimePolicySystemIntegrityProtectionPtrInput
+	Tripwire                  HostRuntimePolicyTripwirePtrInput
+	Type                      pulumi.StringPtrInput
+	Updated                   pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
+	VpatchVersion             pulumi.StringPtrInput
+	WhitelistedOsUsers        HostRuntimePolicyWhitelistedOsUsersPtrInput
 }
 
 func (HostRuntimePolicyState) ElementType() reflect.Type {
@@ -384,10 +404,12 @@ func (HostRuntimePolicyState) ElementType() reflect.Type {
 }
 
 type hostRuntimePolicyArgs struct {
+	// Allowed executables configuration.
+	AllowedExecutables []HostRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries []HostRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
-	// If true, all process activity will be audited.
-	AuditAllOsUserActivity *bool `pulumi:"auditAllOsUserActivity"`
 	// Detects brute force login attempts
 	AuditBruteForceLogin *bool `pulumi:"auditBruteForceLogin"`
 	// If true, full command arguments will be audited.
@@ -397,23 +419,59 @@ type hostRuntimePolicyArgs struct {
 	// If true, host successful logins will be audited.
 	AuditHostSuccessfulLoginEvents *bool `pulumi:"auditHostSuccessfulLoginEvents"`
 	// If true, account management will be audited.
-	AuditUserAccountManagement *bool `pulumi:"auditUserAccountManagement"`
+	AuditUserAccountManagement *bool                      `pulumi:"auditUserAccountManagement"`
+	Auditing                   *HostRuntimePolicyAuditing `pulumi:"auditing"`
+	// Username of the account that created the service.
+	Author             *string                              `pulumi:"author"`
+	BlacklistedOsUsers *HostRuntimePolicyBlacklistedOsUsers `pulumi:"blacklistedOsUsers"`
+	BlockContainerExec *bool                                `pulumi:"blockContainerExec"`
 	// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-	BlockCryptocurrencyMining *bool `pulumi:"blockCryptocurrencyMining"`
+	BlockCryptocurrencyMining  *bool `pulumi:"blockCryptocurrencyMining"`
+	BlockDisallowedImages      *bool `pulumi:"blockDisallowedImages"`
+	BlockFilelessExec          *bool `pulumi:"blockFilelessExec"`
+	BlockNonCompliantWorkloads *bool `pulumi:"blockNonCompliantWorkloads"`
+	BlockNonK8sContainers      *bool `pulumi:"blockNonK8sContainers"`
 	// List of files that are prevented from being read, modified and executed in the containers.
 	BlockedFiles []string `pulumi:"blockedFiles"`
+	// Bypass scope configuration.
+	BypassScopes           []HostRuntimePolicyBypassScope  `pulumi:"bypassScopes"`
+	ContainerExec          *HostRuntimePolicyContainerExec `pulumi:"containerExec"`
+	Created                *string                         `pulumi:"created"`
+	Cve                    *string                         `pulumi:"cve"`
+	DefaultSecurityProfile *string                         `pulumi:"defaultSecurityProfile"`
 	// The description of the host runtime policy
 	Description *string `pulumi:"description"`
-	// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-	EnableIpReputationSecurity *bool `pulumi:"enableIpReputationSecurity"`
-	// Indicates if the runtime policy is enabled or not.
+	Digest      *string `pulumi:"digest"`
+	// Drift prevention configuration.
+	DriftPreventions         []HostRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
+	EnableCryptoMiningDns    *bool                              `pulumi:"enableCryptoMiningDns"`
+	EnableForkGuard          *bool                              `pulumi:"enableForkGuard"`
+	EnableIpReputation       *bool                              `pulumi:"enableIpReputation"`
+	EnablePortScanProtection *bool                              `pulumi:"enablePortScanProtection"`
+	// Whether allowed executables configuration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
 	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
-	EnforceAfterDays *int `pulumi:"enforceAfterDays"`
+	EnforceAfterDays        *int `pulumi:"enforceAfterDays"`
+	EnforceSchedulerAddedOn *int `pulumi:"enforceSchedulerAddedOn"`
+	// List of excluded application scopes.
+	ExcludeApplicationScopes []string `pulumi:"excludeApplicationScopes"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists   []HostRuntimePolicyExecutableBlacklist   `pulumi:"executableBlacklists"`
+	FailedKubernetesChecks *HostRuntimePolicyFailedKubernetesChecks `pulumi:"failedKubernetesChecks"`
+	FileBlock              *HostRuntimePolicyFileBlock              `pulumi:"fileBlock"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring *HostRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitoring"`
+	ForkGuardProcessLimit   *int                                      `pulumi:"forkGuardProcessLimit"`
+	ImageName               *string                                   `pulumi:"imageName"`
+	IsAuditChecked          *bool                                     `pulumi:"isAuditChecked"`
+	IsAutoGenerated         *bool                                     `pulumi:"isAutoGenerated"`
+	IsOotbPolicy            *bool                                     `pulumi:"isOotbPolicy"`
+	Lastupdate              *int                                      `pulumi:"lastupdate"`
+	// Container privileges configuration.
+	LimitContainerPrivileges []HostRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
+	LinuxCapabilities        *HostRuntimePolicyLinuxCapabilities        `pulumi:"linuxCapabilities"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions *HostRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system log will be monitored.
@@ -422,8 +480,10 @@ type hostRuntimePolicyArgs struct {
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices *bool `pulumi:"monitorWindowsServices"`
-	// Name of the host runtime policy
-	Name *string `pulumi:"name"`
+	// Name assigned to the attribute.
+	Name                 *string `pulumi:"name"`
+	NoNewPrivileges      *bool   `pulumi:"noNewPrivileges"`
+	OnlyRegisteredImages *bool   `pulumi:"onlyRegisteredImages"`
 	// List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
 	OsGroupsAlloweds []string `pulumi:"osGroupsAlloweds"`
 	// List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -431,27 +491,45 @@ type hostRuntimePolicyArgs struct {
 	// List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
 	OsUsersAlloweds []string `pulumi:"osUsersAlloweds"`
 	// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
-	OsUsersBlockeds []string `pulumi:"osUsersBlockeds"`
-	// List of packages that are not allowed read, write or execute all files that under the packages.
-	PackageBlocks []string `pulumi:"packageBlocks"`
-	// If true, port scanning behaviors will be audited.
-	PortScanningDetection *bool `pulumi:"portScanningDetection"`
+	OsUsersBlockeds          []string                                   `pulumi:"osUsersBlockeds"`
+	PackageBlocks            []HostRuntimePolicyPackageBlock            `pulumi:"packageBlocks"`
+	Permission               *string                                    `pulumi:"permission"`
+	PortBlock                *HostRuntimePolicyPortBlock                `pulumi:"portBlock"`
+	ReadonlyFiles            *HostRuntimePolicyReadonlyFiles            `pulumi:"readonlyFiles"`
+	ReadonlyRegistry         *HostRuntimePolicyReadonlyRegistry         `pulumi:"readonlyRegistry"`
+	Registry                 *string                                    `pulumi:"registry"`
+	RegistryAccessMonitoring *HostRuntimePolicyRegistryAccessMonitoring `pulumi:"registryAccessMonitoring"`
+	RepoName                 *string                                    `pulumi:"repoName"`
+	ResourceName             *string                                    `pulumi:"resourceName"`
+	ResourceType             *string                                    `pulumi:"resourceType"`
+	// Restricted volumes configuration.
+	RestrictedVolumes []HostRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
+	ReverseShell      *HostRuntimePolicyReverseShell      `pulumi:"reverseShell"`
+	RuntimeMode       *int                                `pulumi:"runtimeMode"`
+	RuntimeType       *string                             `pulumi:"runtimeType"`
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression *string `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables []HostRuntimePolicyScopeVariable `pulumi:"scopeVariables"`
-	// Configuration for windows registry monitoring.
-	WindowsRegistryMonitoring *HostRuntimePolicyWindowsRegistryMonitoring `pulumi:"windowsRegistryMonitoring"`
-	// Configuration for windows registry protection.
-	WindowsRegistryProtection *HostRuntimePolicyWindowsRegistryProtection `pulumi:"windowsRegistryProtection"`
+	// Scope configuration.
+	Scopes                    []HostRuntimePolicyScope                    `pulumi:"scopes"`
+	SystemIntegrityProtection *HostRuntimePolicySystemIntegrityProtection `pulumi:"systemIntegrityProtection"`
+	Tripwire                  *HostRuntimePolicyTripwire                  `pulumi:"tripwire"`
+	Type                      *string                                     `pulumi:"type"`
+	Updated                   *string                                     `pulumi:"updated"`
+	Version                   *string                                     `pulumi:"version"`
+	VpatchVersion             *string                                     `pulumi:"vpatchVersion"`
+	WhitelistedOsUsers        *HostRuntimePolicyWhitelistedOsUsers        `pulumi:"whitelistedOsUsers"`
 }
 
 // The set of arguments for constructing a HostRuntimePolicy resource.
 type HostRuntimePolicyArgs struct {
+	// Allowed executables configuration.
+	AllowedExecutables HostRuntimePolicyAllowedExecutableArrayInput
+	// List of allowed registries.
+	AllowedRegistries HostRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
-	// If true, all process activity will be audited.
-	AuditAllOsUserActivity pulumi.BoolPtrInput
 	// Detects brute force login attempts
 	AuditBruteForceLogin pulumi.BoolPtrInput
 	// If true, full command arguments will be audited.
@@ -462,22 +540,58 @@ type HostRuntimePolicyArgs struct {
 	AuditHostSuccessfulLoginEvents pulumi.BoolPtrInput
 	// If true, account management will be audited.
 	AuditUserAccountManagement pulumi.BoolPtrInput
+	Auditing                   HostRuntimePolicyAuditingPtrInput
+	// Username of the account that created the service.
+	Author             pulumi.StringPtrInput
+	BlacklistedOsUsers HostRuntimePolicyBlacklistedOsUsersPtrInput
+	BlockContainerExec pulumi.BoolPtrInput
 	// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-	BlockCryptocurrencyMining pulumi.BoolPtrInput
+	BlockCryptocurrencyMining  pulumi.BoolPtrInput
+	BlockDisallowedImages      pulumi.BoolPtrInput
+	BlockFilelessExec          pulumi.BoolPtrInput
+	BlockNonCompliantWorkloads pulumi.BoolPtrInput
+	BlockNonK8sContainers      pulumi.BoolPtrInput
 	// List of files that are prevented from being read, modified and executed in the containers.
 	BlockedFiles pulumi.StringArrayInput
+	// Bypass scope configuration.
+	BypassScopes           HostRuntimePolicyBypassScopeArrayInput
+	ContainerExec          HostRuntimePolicyContainerExecPtrInput
+	Created                pulumi.StringPtrInput
+	Cve                    pulumi.StringPtrInput
+	DefaultSecurityProfile pulumi.StringPtrInput
 	// The description of the host runtime policy
 	Description pulumi.StringPtrInput
-	// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-	EnableIpReputationSecurity pulumi.BoolPtrInput
-	// Indicates if the runtime policy is enabled or not.
+	Digest      pulumi.StringPtrInput
+	// Drift prevention configuration.
+	DriftPreventions         HostRuntimePolicyDriftPreventionArrayInput
+	EnableCryptoMiningDns    pulumi.BoolPtrInput
+	EnableForkGuard          pulumi.BoolPtrInput
+	EnableIpReputation       pulumi.BoolPtrInput
+	EnablePortScanProtection pulumi.BoolPtrInput
+	// Whether allowed executables configuration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
 	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
-	EnforceAfterDays pulumi.IntPtrInput
+	EnforceAfterDays        pulumi.IntPtrInput
+	EnforceSchedulerAddedOn pulumi.IntPtrInput
+	// List of excluded application scopes.
+	ExcludeApplicationScopes pulumi.StringArrayInput
+	// Executable blacklist configuration.
+	ExecutableBlacklists   HostRuntimePolicyExecutableBlacklistArrayInput
+	FailedKubernetesChecks HostRuntimePolicyFailedKubernetesChecksPtrInput
+	FileBlock              HostRuntimePolicyFileBlockPtrInput
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitoring HostRuntimePolicyFileIntegrityMonitoringPtrInput
+	ForkGuardProcessLimit   pulumi.IntPtrInput
+	ImageName               pulumi.StringPtrInput
+	IsAuditChecked          pulumi.BoolPtrInput
+	IsAutoGenerated         pulumi.BoolPtrInput
+	IsOotbPolicy            pulumi.BoolPtrInput
+	Lastupdate              pulumi.IntPtrInput
+	// Container privileges configuration.
+	LimitContainerPrivileges HostRuntimePolicyLimitContainerPrivilegeArrayInput
+	LinuxCapabilities        HostRuntimePolicyLinuxCapabilitiesPtrInput
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions HostRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system log will be monitored.
@@ -486,8 +600,10 @@ type HostRuntimePolicyArgs struct {
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices pulumi.BoolPtrInput
-	// Name of the host runtime policy
-	Name pulumi.StringPtrInput
+	// Name assigned to the attribute.
+	Name                 pulumi.StringPtrInput
+	NoNewPrivileges      pulumi.BoolPtrInput
+	OnlyRegisteredImages pulumi.BoolPtrInput
 	// List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
 	OsGroupsAlloweds pulumi.StringArrayInput
 	// List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -495,19 +611,35 @@ type HostRuntimePolicyArgs struct {
 	// List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
 	OsUsersAlloweds pulumi.StringArrayInput
 	// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
-	OsUsersBlockeds pulumi.StringArrayInput
-	// List of packages that are not allowed read, write or execute all files that under the packages.
-	PackageBlocks pulumi.StringArrayInput
-	// If true, port scanning behaviors will be audited.
-	PortScanningDetection pulumi.BoolPtrInput
+	OsUsersBlockeds          pulumi.StringArrayInput
+	PackageBlocks            HostRuntimePolicyPackageBlockArrayInput
+	Permission               pulumi.StringPtrInput
+	PortBlock                HostRuntimePolicyPortBlockPtrInput
+	ReadonlyFiles            HostRuntimePolicyReadonlyFilesPtrInput
+	ReadonlyRegistry         HostRuntimePolicyReadonlyRegistryPtrInput
+	Registry                 pulumi.StringPtrInput
+	RegistryAccessMonitoring HostRuntimePolicyRegistryAccessMonitoringPtrInput
+	RepoName                 pulumi.StringPtrInput
+	ResourceName             pulumi.StringPtrInput
+	ResourceType             pulumi.StringPtrInput
+	// Restricted volumes configuration.
+	RestrictedVolumes HostRuntimePolicyRestrictedVolumeArrayInput
+	ReverseShell      HostRuntimePolicyReverseShellPtrInput
+	RuntimeMode       pulumi.IntPtrInput
+	RuntimeType       pulumi.StringPtrInput
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression pulumi.StringPtrInput
 	// List of scope attributes.
 	ScopeVariables HostRuntimePolicyScopeVariableArrayInput
-	// Configuration for windows registry monitoring.
-	WindowsRegistryMonitoring HostRuntimePolicyWindowsRegistryMonitoringPtrInput
-	// Configuration for windows registry protection.
-	WindowsRegistryProtection HostRuntimePolicyWindowsRegistryProtectionPtrInput
+	// Scope configuration.
+	Scopes                    HostRuntimePolicyScopeArrayInput
+	SystemIntegrityProtection HostRuntimePolicySystemIntegrityProtectionPtrInput
+	Tripwire                  HostRuntimePolicyTripwirePtrInput
+	Type                      pulumi.StringPtrInput
+	Updated                   pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
+	VpatchVersion             pulumi.StringPtrInput
+	WhitelistedOsUsers        HostRuntimePolicyWhitelistedOsUsersPtrInput
 }
 
 func (HostRuntimePolicyArgs) ElementType() reflect.Type {
@@ -531,12 +663,6 @@ func (i *HostRuntimePolicy) ToHostRuntimePolicyOutput() HostRuntimePolicyOutput 
 
 func (i *HostRuntimePolicy) ToHostRuntimePolicyOutputWithContext(ctx context.Context) HostRuntimePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostRuntimePolicyOutput)
-}
-
-func (i *HostRuntimePolicy) ToOutput(ctx context.Context) pulumix.Output[*HostRuntimePolicy] {
-	return pulumix.Output[*HostRuntimePolicy]{
-		OutputState: i.ToHostRuntimePolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostRuntimePolicyArrayInput is an input type that accepts HostRuntimePolicyArray and HostRuntimePolicyArrayOutput values.
@@ -564,12 +690,6 @@ func (i HostRuntimePolicyArray) ToHostRuntimePolicyArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(HostRuntimePolicyArrayOutput)
 }
 
-func (i HostRuntimePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostRuntimePolicy] {
-	return pulumix.Output[[]*HostRuntimePolicy]{
-		OutputState: i.ToHostRuntimePolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostRuntimePolicyMapInput is an input type that accepts HostRuntimePolicyMap and HostRuntimePolicyMapOutput values.
 // You can construct a concrete instance of `HostRuntimePolicyMapInput` via:
 //
@@ -595,12 +715,6 @@ func (i HostRuntimePolicyMap) ToHostRuntimePolicyMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(HostRuntimePolicyMapOutput)
 }
 
-func (i HostRuntimePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostRuntimePolicy] {
-	return pulumix.Output[map[string]*HostRuntimePolicy]{
-		OutputState: i.ToHostRuntimePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostRuntimePolicyOutput struct{ *pulumi.OutputState }
 
 func (HostRuntimePolicyOutput) ElementType() reflect.Type {
@@ -615,20 +729,19 @@ func (o HostRuntimePolicyOutput) ToHostRuntimePolicyOutputWithContext(ctx contex
 	return o
 }
 
-func (o HostRuntimePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*HostRuntimePolicy] {
-	return pulumix.Output[*HostRuntimePolicy]{
-		OutputState: o.OutputState,
-	}
+// Allowed executables configuration.
+func (o HostRuntimePolicyOutput) AllowedExecutables() HostRuntimePolicyAllowedExecutableArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyAllowedExecutableArrayOutput { return v.AllowedExecutables }).(HostRuntimePolicyAllowedExecutableArrayOutput)
+}
+
+// List of allowed registries.
+func (o HostRuntimePolicyOutput) AllowedRegistries() HostRuntimePolicyAllowedRegistryArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyAllowedRegistryArrayOutput { return v.AllowedRegistries }).(HostRuntimePolicyAllowedRegistryArrayOutput)
 }
 
 // Indicates the application scope of the service.
 func (o HostRuntimePolicyOutput) ApplicationScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringArrayOutput { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
-}
-
-// If true, all process activity will be audited.
-func (o HostRuntimePolicyOutput) AuditAllOsUserActivity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.AuditAllOsUserActivity }).(pulumi.BoolPtrOutput)
 }
 
 // Detects brute force login attempts
@@ -656,9 +769,21 @@ func (o HostRuntimePolicyOutput) AuditUserAccountManagement() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.AuditUserAccountManagement }).(pulumi.BoolPtrOutput)
 }
 
+func (o HostRuntimePolicyOutput) Auditing() HostRuntimePolicyAuditingOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyAuditingOutput { return v.Auditing }).(HostRuntimePolicyAuditingOutput)
+}
+
 // Username of the account that created the service.
 func (o HostRuntimePolicyOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
+}
+
+func (o HostRuntimePolicyOutput) BlacklistedOsUsers() HostRuntimePolicyBlacklistedOsUsersOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyBlacklistedOsUsersOutput { return v.BlacklistedOsUsers }).(HostRuntimePolicyBlacklistedOsUsersOutput)
+}
+
+func (o HostRuntimePolicyOutput) BlockContainerExec() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockContainerExec }).(pulumi.BoolPtrOutput)
 }
 
 // Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
@@ -666,9 +791,46 @@ func (o HostRuntimePolicyOutput) BlockCryptocurrencyMining() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockCryptocurrencyMining }).(pulumi.BoolPtrOutput)
 }
 
+func (o HostRuntimePolicyOutput) BlockDisallowedImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockDisallowedImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) BlockFilelessExec() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockFilelessExec }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) BlockNonCompliantWorkloads() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockNonCompliantWorkloads }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) BlockNonK8sContainers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockNonK8sContainers }).(pulumi.BoolPtrOutput)
+}
+
 // List of files that are prevented from being read, modified and executed in the containers.
 func (o HostRuntimePolicyOutput) BlockedFiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringArrayOutput { return v.BlockedFiles }).(pulumi.StringArrayOutput)
+}
+
+// Bypass scope configuration.
+func (o HostRuntimePolicyOutput) BypassScopes() HostRuntimePolicyBypassScopeArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyBypassScopeArrayOutput { return v.BypassScopes }).(HostRuntimePolicyBypassScopeArrayOutput)
+}
+
+func (o HostRuntimePolicyOutput) ContainerExec() HostRuntimePolicyContainerExecOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyContainerExecOutput { return v.ContainerExec }).(HostRuntimePolicyContainerExecOutput)
+}
+
+func (o HostRuntimePolicyOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o HostRuntimePolicyOutput) Cve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.Cve }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) DefaultSecurityProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.DefaultSecurityProfile }).(pulumi.StringPtrOutput)
 }
 
 // The description of the host runtime policy
@@ -676,12 +838,32 @@ func (o HostRuntimePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-func (o HostRuntimePolicyOutput) EnableIpReputationSecurity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableIpReputationSecurity }).(pulumi.BoolPtrOutput)
+func (o HostRuntimePolicyOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.Digest }).(pulumi.StringPtrOutput)
 }
 
-// Indicates if the runtime policy is enabled or not.
+// Drift prevention configuration.
+func (o HostRuntimePolicyOutput) DriftPreventions() HostRuntimePolicyDriftPreventionArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyDriftPreventionArrayOutput { return v.DriftPreventions }).(HostRuntimePolicyDriftPreventionArrayOutput)
+}
+
+func (o HostRuntimePolicyOutput) EnableCryptoMiningDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableCryptoMiningDns }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) EnableForkGuard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableForkGuard }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) EnableIpReputation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableIpReputation }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) EnablePortScanProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.EnablePortScanProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether allowed executables configuration is enabled.
 func (o HostRuntimePolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -696,16 +878,77 @@ func (o HostRuntimePolicyOutput) EnforceAfterDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.IntPtrOutput { return v.EnforceAfterDays }).(pulumi.IntPtrOutput)
 }
 
+func (o HostRuntimePolicyOutput) EnforceSchedulerAddedOn() pulumi.IntOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.IntOutput { return v.EnforceSchedulerAddedOn }).(pulumi.IntOutput)
+}
+
+// List of excluded application scopes.
+func (o HostRuntimePolicyOutput) ExcludeApplicationScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringArrayOutput { return v.ExcludeApplicationScopes }).(pulumi.StringArrayOutput)
+}
+
+// Executable blacklist configuration.
+func (o HostRuntimePolicyOutput) ExecutableBlacklists() HostRuntimePolicyExecutableBlacklistArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyExecutableBlacklistArrayOutput {
+		return v.ExecutableBlacklists
+	}).(HostRuntimePolicyExecutableBlacklistArrayOutput)
+}
+
+func (o HostRuntimePolicyOutput) FailedKubernetesChecks() HostRuntimePolicyFailedKubernetesChecksOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyFailedKubernetesChecksOutput {
+		return v.FailedKubernetesChecks
+	}).(HostRuntimePolicyFailedKubernetesChecksOutput)
+}
+
+func (o HostRuntimePolicyOutput) FileBlock() HostRuntimePolicyFileBlockOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyFileBlockOutput { return v.FileBlock }).(HostRuntimePolicyFileBlockOutput)
+}
+
 // Configuration for file integrity monitoring.
-func (o HostRuntimePolicyOutput) FileIntegrityMonitoring() HostRuntimePolicyFileIntegrityMonitoringPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyFileIntegrityMonitoringPtrOutput {
+func (o HostRuntimePolicyOutput) FileIntegrityMonitoring() HostRuntimePolicyFileIntegrityMonitoringOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyFileIntegrityMonitoringOutput {
 		return v.FileIntegrityMonitoring
-	}).(HostRuntimePolicyFileIntegrityMonitoringPtrOutput)
+	}).(HostRuntimePolicyFileIntegrityMonitoringOutput)
+}
+
+func (o HostRuntimePolicyOutput) ForkGuardProcessLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.IntPtrOutput { return v.ForkGuardProcessLimit }).(pulumi.IntPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) IsAuditChecked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.IsAuditChecked }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) IsAutoGenerated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.IsAutoGenerated }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) IsOotbPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.IsOotbPolicy }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) Lastupdate() pulumi.IntOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.IntOutput { return v.Lastupdate }).(pulumi.IntOutput)
+}
+
+// Container privileges configuration.
+func (o HostRuntimePolicyOutput) LimitContainerPrivileges() HostRuntimePolicyLimitContainerPrivilegeArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyLimitContainerPrivilegeArrayOutput {
+		return v.LimitContainerPrivileges
+	}).(HostRuntimePolicyLimitContainerPrivilegeArrayOutput)
+}
+
+func (o HostRuntimePolicyOutput) LinuxCapabilities() HostRuntimePolicyLinuxCapabilitiesOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyLinuxCapabilitiesOutput { return v.LinuxCapabilities }).(HostRuntimePolicyLinuxCapabilitiesOutput)
 }
 
 // Configuration for Real-Time Malware Protection.
-func (o HostRuntimePolicyOutput) MalwareScanOptions() HostRuntimePolicyMalwareScanOptionsPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyMalwareScanOptionsPtrOutput { return v.MalwareScanOptions }).(HostRuntimePolicyMalwareScanOptionsPtrOutput)
+func (o HostRuntimePolicyOutput) MalwareScanOptions() HostRuntimePolicyMalwareScanOptionsOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyMalwareScanOptionsOutput { return v.MalwareScanOptions }).(HostRuntimePolicyMalwareScanOptionsOutput)
 }
 
 // If true, system log will be monitored.
@@ -723,9 +966,17 @@ func (o HostRuntimePolicyOutput) MonitorWindowsServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.MonitorWindowsServices }).(pulumi.BoolPtrOutput)
 }
 
-// Name of the host runtime policy
+// Name assigned to the attribute.
 func (o HostRuntimePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o HostRuntimePolicyOutput) NoNewPrivileges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.NoNewPrivileges }).(pulumi.BoolPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) OnlyRegisteredImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.OnlyRegisteredImages }).(pulumi.BoolPtrOutput)
 }
 
 // List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -748,14 +999,63 @@ func (o HostRuntimePolicyOutput) OsUsersBlockeds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringArrayOutput { return v.OsUsersBlockeds }).(pulumi.StringArrayOutput)
 }
 
-// List of packages that are not allowed read, write or execute all files that under the packages.
-func (o HostRuntimePolicyOutput) PackageBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringArrayOutput { return v.PackageBlocks }).(pulumi.StringArrayOutput)
+func (o HostRuntimePolicyOutput) PackageBlocks() HostRuntimePolicyPackageBlockArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyPackageBlockArrayOutput { return v.PackageBlocks }).(HostRuntimePolicyPackageBlockArrayOutput)
 }
 
-// If true, port scanning behaviors will be audited.
-func (o HostRuntimePolicyOutput) PortScanningDetection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.PortScanningDetection }).(pulumi.BoolPtrOutput)
+func (o HostRuntimePolicyOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) PortBlock() HostRuntimePolicyPortBlockOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyPortBlockOutput { return v.PortBlock }).(HostRuntimePolicyPortBlockOutput)
+}
+
+func (o HostRuntimePolicyOutput) ReadonlyFiles() HostRuntimePolicyReadonlyFilesOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyReadonlyFilesOutput { return v.ReadonlyFiles }).(HostRuntimePolicyReadonlyFilesOutput)
+}
+
+func (o HostRuntimePolicyOutput) ReadonlyRegistry() HostRuntimePolicyReadonlyRegistryOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyReadonlyRegistryOutput { return v.ReadonlyRegistry }).(HostRuntimePolicyReadonlyRegistryOutput)
+}
+
+func (o HostRuntimePolicyOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) RegistryAccessMonitoring() HostRuntimePolicyRegistryAccessMonitoringOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyRegistryAccessMonitoringOutput {
+		return v.RegistryAccessMonitoring
+	}).(HostRuntimePolicyRegistryAccessMonitoringOutput)
+}
+
+func (o HostRuntimePolicyOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.RepoName }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Restricted volumes configuration.
+func (o HostRuntimePolicyOutput) RestrictedVolumes() HostRuntimePolicyRestrictedVolumeArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyRestrictedVolumeArrayOutput { return v.RestrictedVolumes }).(HostRuntimePolicyRestrictedVolumeArrayOutput)
+}
+
+func (o HostRuntimePolicyOutput) ReverseShell() HostRuntimePolicyReverseShellOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyReverseShellOutput { return v.ReverseShell }).(HostRuntimePolicyReverseShellOutput)
+}
+
+func (o HostRuntimePolicyOutput) RuntimeMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.IntPtrOutput { return v.RuntimeMode }).(pulumi.IntPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) RuntimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.RuntimeType }).(pulumi.StringOutput)
 }
 
 // Logical expression of how to compute the dependency of the scope variables.
@@ -768,18 +1068,39 @@ func (o HostRuntimePolicyOutput) ScopeVariables() HostRuntimePolicyScopeVariable
 	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyScopeVariableArrayOutput { return v.ScopeVariables }).(HostRuntimePolicyScopeVariableArrayOutput)
 }
 
-// Configuration for windows registry monitoring.
-func (o HostRuntimePolicyOutput) WindowsRegistryMonitoring() HostRuntimePolicyWindowsRegistryMonitoringPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyWindowsRegistryMonitoringPtrOutput {
-		return v.WindowsRegistryMonitoring
-	}).(HostRuntimePolicyWindowsRegistryMonitoringPtrOutput)
+// Scope configuration.
+func (o HostRuntimePolicyOutput) Scopes() HostRuntimePolicyScopeArrayOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyScopeArrayOutput { return v.Scopes }).(HostRuntimePolicyScopeArrayOutput)
 }
 
-// Configuration for windows registry protection.
-func (o HostRuntimePolicyOutput) WindowsRegistryProtection() HostRuntimePolicyWindowsRegistryProtectionPtrOutput {
-	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyWindowsRegistryProtectionPtrOutput {
-		return v.WindowsRegistryProtection
-	}).(HostRuntimePolicyWindowsRegistryProtectionPtrOutput)
+func (o HostRuntimePolicyOutput) SystemIntegrityProtection() HostRuntimePolicySystemIntegrityProtectionOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicySystemIntegrityProtectionOutput {
+		return v.SystemIntegrityProtection
+	}).(HostRuntimePolicySystemIntegrityProtectionOutput)
+}
+
+func (o HostRuntimePolicyOutput) Tripwire() HostRuntimePolicyTripwireOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyTripwireOutput { return v.Tripwire }).(HostRuntimePolicyTripwireOutput)
+}
+
+func (o HostRuntimePolicyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o HostRuntimePolicyOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+func (o HostRuntimePolicyOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) VpatchVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringPtrOutput { return v.VpatchVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o HostRuntimePolicyOutput) WhitelistedOsUsers() HostRuntimePolicyWhitelistedOsUsersOutput {
+	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyWhitelistedOsUsersOutput { return v.WhitelistedOsUsers }).(HostRuntimePolicyWhitelistedOsUsersOutput)
 }
 
 type HostRuntimePolicyArrayOutput struct{ *pulumi.OutputState }
@@ -794,12 +1115,6 @@ func (o HostRuntimePolicyArrayOutput) ToHostRuntimePolicyArrayOutput() HostRunti
 
 func (o HostRuntimePolicyArrayOutput) ToHostRuntimePolicyArrayOutputWithContext(ctx context.Context) HostRuntimePolicyArrayOutput {
 	return o
-}
-
-func (o HostRuntimePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostRuntimePolicy] {
-	return pulumix.Output[[]*HostRuntimePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostRuntimePolicyArrayOutput) Index(i pulumi.IntInput) HostRuntimePolicyOutput {
@@ -820,12 +1135,6 @@ func (o HostRuntimePolicyMapOutput) ToHostRuntimePolicyMapOutput() HostRuntimePo
 
 func (o HostRuntimePolicyMapOutput) ToHostRuntimePolicyMapOutputWithContext(ctx context.Context) HostRuntimePolicyMapOutput {
 	return o
-}
-
-func (o HostRuntimePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostRuntimePolicy] {
-	return pulumix.Output[map[string]*HostRuntimePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostRuntimePolicyMapOutput) MapIndex(k pulumi.StringInput) HostRuntimePolicyOutput {

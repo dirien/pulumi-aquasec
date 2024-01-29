@@ -13,6 +13,8 @@ namespace Pulumiverse.Aquasec
     public static class GetEnforcerGroups
     {
         /// <summary>
+        /// The data source `aquasec.EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -43,6 +45,8 @@ namespace Pulumiverse.Aquasec
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// The data source `aquasec.EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

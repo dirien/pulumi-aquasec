@@ -15,7 +15,13 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class ApplicationScopeCategoryArtifact
     {
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryArtifactCf> Cfs;
+        /// <summary>
+        /// Function name
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryArtifactFunction> Functions;
+        /// <summary>
+        /// Name of a registry as defined in Aqua
+        /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationScopeCategoryArtifactImage> Images;
 
         [OutputConstructor]

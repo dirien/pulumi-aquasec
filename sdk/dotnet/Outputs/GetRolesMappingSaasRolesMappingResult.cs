@@ -17,9 +17,6 @@ namespace Pulumiverse.Aquasec.Outputs
         public readonly int AccountId;
         public readonly string Created;
         public readonly string CspRole;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly ImmutableArray<string> SamlGroups;
 

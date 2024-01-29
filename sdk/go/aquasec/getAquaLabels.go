@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -49,4 +52,43 @@ type GetAquaLabelsResult struct {
 	AquaLabels []GetAquaLabelsAquaLabel `pulumi:"aquaLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetAquaLabelsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAquaLabelsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAquaLabelsResult, error) {
+		r, err := GetAquaLabels(ctx, opts...)
+		var s GetAquaLabelsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetAquaLabelsResultOutput)
+}
+
+// A collection of values returned by getAquaLabels.
+type GetAquaLabelsResultOutput struct{ *pulumi.OutputState }
+
+func (GetAquaLabelsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAquaLabelsResult)(nil)).Elem()
+}
+
+func (o GetAquaLabelsResultOutput) ToGetAquaLabelsResultOutput() GetAquaLabelsResultOutput {
+	return o
+}
+
+func (o GetAquaLabelsResultOutput) ToGetAquaLabelsResultOutputWithContext(ctx context.Context) GetAquaLabelsResultOutput {
+	return o
+}
+
+func (o GetAquaLabelsResultOutput) AquaLabels() GetAquaLabelsAquaLabelArrayOutput {
+	return o.ApplyT(func(v GetAquaLabelsResult) []GetAquaLabelsAquaLabel { return v.AquaLabels }).(GetAquaLabelsAquaLabelArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAquaLabelsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAquaLabelsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAquaLabelsResultOutput{})
 }

@@ -6,84 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumiverse/aquasec";
- *
- * const hostRuntimePolicy = new aquasec.HostRuntimePolicy("hostRuntimePolicy", {
- *     applicationScopes: ["Global"],
- *     auditAllOsUserActivity: true,
- *     auditBruteForceLogin: true,
- *     auditFullCommandArguments: true,
- *     auditHostFailedLoginEvents: true,
- *     auditHostSuccessfulLoginEvents: true,
- *     auditUserAccountManagement: true,
- *     blockCryptocurrencyMining: true,
- *     blockedFiles: ["blocked"],
- *     description: "host_runtime_policy",
- *     enableIpReputationSecurity: true,
- *     enabled: true,
- *     enforce: false,
- *     fileIntegrityMonitoring: {
- *         excludedPaths: ["expaths"],
- *         excludedProcesses: ["exprocess"],
- *         excludedUsers: ["expuser"],
- *         monitorAttributes: true,
- *         monitorCreate: true,
- *         monitorDelete: true,
- *         monitorModify: true,
- *         monitorRead: true,
- *         monitoredPaths: ["paths"],
- *         monitoredProcesses: ["process"],
- *         monitoredUsers: ["user"],
- *     },
- *     monitorSystemLogIntegrity: true,
- *     monitorSystemTimeChanges: true,
- *     monitorWindowsServices: true,
- *     osGroupsAlloweds: ["group1"],
- *     osGroupsBlockeds: ["group2"],
- *     osUsersAlloweds: ["user1"],
- *     osUsersBlockeds: ["user2"],
- *     packageBlocks: ["package1"],
- *     portScanningDetection: true,
- *     scopeVariables: [
- *         {
- *             attribute: "kubernetes.cluster",
- *             value: "default",
- *         },
- *         {
- *             attribute: "kubernetes.label",
- *             name: "app",
- *             value: "aqua",
- *         },
- *     ],
- *     windowsRegistryMonitoring: {
- *         excludedPaths: ["expaths"],
- *         excludedProcesses: ["exprocess"],
- *         excludedUsers: ["expuser"],
- *         monitorAttributes: true,
- *         monitorCreate: true,
- *         monitorDelete: true,
- *         monitorModify: true,
- *         monitorRead: true,
- *         monitoredPaths: ["paths"],
- *         monitoredProcesses: ["process"],
- *         monitoredUsers: ["user"],
- *     },
- *     windowsRegistryProtection: {
- *         excludedPaths: ["expaths"],
- *         excludedProcesses: ["exprocess"],
- *         excludedUsers: ["expuser"],
- *         protectedPaths: ["paths"],
- *         protectedProcesses: ["process"],
- *         protectedUsers: ["user"],
- *     },
- * });
- * ```
- */
 export class HostRuntimePolicy extends pulumi.CustomResource {
     /**
      * Get an existing HostRuntimePolicy resource's state with the given name, ID, and optional extra
@@ -113,13 +35,17 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Allowed executables configuration.
+     */
+    public readonly allowedExecutables!: pulumi.Output<outputs.HostRuntimePolicyAllowedExecutable[]>;
+    /**
+     * List of allowed registries.
+     */
+    public readonly allowedRegistries!: pulumi.Output<outputs.HostRuntimePolicyAllowedRegistry[]>;
+    /**
      * Indicates the application scope of the service.
      */
     public readonly applicationScopes!: pulumi.Output<string[]>;
-    /**
-     * If true, all process activity will be audited.
-     */
-    public readonly auditAllOsUserActivity!: pulumi.Output<boolean | undefined>;
     /**
      * Detects brute force login attempts
      */
@@ -140,28 +66,48 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
      * If true, account management will be audited.
      */
     public readonly auditUserAccountManagement!: pulumi.Output<boolean | undefined>;
+    public readonly auditing!: pulumi.Output<outputs.HostRuntimePolicyAuditing>;
     /**
      * Username of the account that created the service.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    public readonly author!: pulumi.Output<string>;
+    public readonly blacklistedOsUsers!: pulumi.Output<outputs.HostRuntimePolicyBlacklistedOsUsers>;
+    public readonly blockContainerExec!: pulumi.Output<boolean | undefined>;
     /**
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      */
     public readonly blockCryptocurrencyMining!: pulumi.Output<boolean | undefined>;
+    public readonly blockDisallowedImages!: pulumi.Output<boolean | undefined>;
+    public readonly blockFilelessExec!: pulumi.Output<boolean | undefined>;
+    public readonly blockNonCompliantWorkloads!: pulumi.Output<boolean | undefined>;
+    public readonly blockNonK8sContainers!: pulumi.Output<boolean | undefined>;
     /**
      * List of files that are prevented from being read, modified and executed in the containers.
      */
     public readonly blockedFiles!: pulumi.Output<string[] | undefined>;
     /**
+     * Bypass scope configuration.
+     */
+    public readonly bypassScopes!: pulumi.Output<outputs.HostRuntimePolicyBypassScope[] | undefined>;
+    public readonly containerExec!: pulumi.Output<outputs.HostRuntimePolicyContainerExec>;
+    public readonly created!: pulumi.Output<string>;
+    public readonly cve!: pulumi.Output<string | undefined>;
+    public readonly defaultSecurityProfile!: pulumi.Output<string | undefined>;
+    /**
      * The description of the host runtime policy
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly digest!: pulumi.Output<string | undefined>;
     /**
-     * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
+     * Drift prevention configuration.
      */
-    public readonly enableIpReputationSecurity!: pulumi.Output<boolean | undefined>;
+    public readonly driftPreventions!: pulumi.Output<outputs.HostRuntimePolicyDriftPrevention[]>;
+    public readonly enableCryptoMiningDns!: pulumi.Output<boolean | undefined>;
+    public readonly enableForkGuard!: pulumi.Output<boolean | undefined>;
+    public readonly enableIpReputation!: pulumi.Output<boolean | undefined>;
+    public readonly enablePortScanProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates if the runtime policy is enabled or not.
+     * Whether allowed executables configuration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -172,14 +118,36 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      */
     public readonly enforceAfterDays!: pulumi.Output<number | undefined>;
+    public readonly enforceSchedulerAddedOn!: pulumi.Output<number>;
+    /**
+     * List of excluded application scopes.
+     */
+    public readonly excludeApplicationScopes!: pulumi.Output<string[] | undefined>;
+    /**
+     * Executable blacklist configuration.
+     */
+    public readonly executableBlacklists!: pulumi.Output<outputs.HostRuntimePolicyExecutableBlacklist[]>;
+    public readonly failedKubernetesChecks!: pulumi.Output<outputs.HostRuntimePolicyFailedKubernetesChecks>;
+    public readonly fileBlock!: pulumi.Output<outputs.HostRuntimePolicyFileBlock>;
     /**
      * Configuration for file integrity monitoring.
      */
-    public readonly fileIntegrityMonitoring!: pulumi.Output<outputs.HostRuntimePolicyFileIntegrityMonitoring | undefined>;
+    public readonly fileIntegrityMonitoring!: pulumi.Output<outputs.HostRuntimePolicyFileIntegrityMonitoring>;
+    public readonly forkGuardProcessLimit!: pulumi.Output<number | undefined>;
+    public readonly imageName!: pulumi.Output<string | undefined>;
+    public readonly isAuditChecked!: pulumi.Output<boolean | undefined>;
+    public readonly isAutoGenerated!: pulumi.Output<boolean | undefined>;
+    public readonly isOotbPolicy!: pulumi.Output<boolean | undefined>;
+    public readonly lastupdate!: pulumi.Output<number>;
+    /**
+     * Container privileges configuration.
+     */
+    public readonly limitContainerPrivileges!: pulumi.Output<outputs.HostRuntimePolicyLimitContainerPrivilege[]>;
+    public readonly linuxCapabilities!: pulumi.Output<outputs.HostRuntimePolicyLinuxCapabilities>;
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    public readonly malwareScanOptions!: pulumi.Output<outputs.HostRuntimePolicyMalwareScanOptions | undefined>;
+    public readonly malwareScanOptions!: pulumi.Output<outputs.HostRuntimePolicyMalwareScanOptions>;
     /**
      * If true, system log will be monitored.
      */
@@ -193,9 +161,11 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly monitorWindowsServices!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the host runtime policy
+     * Name assigned to the attribute.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly noNewPrivileges!: pulumi.Output<boolean | undefined>;
+    public readonly onlyRegisteredImages!: pulumi.Output<boolean | undefined>;
     /**
      * List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      */
@@ -212,14 +182,23 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
      * List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
      */
     public readonly osUsersBlockeds!: pulumi.Output<string[] | undefined>;
+    public readonly packageBlocks!: pulumi.Output<outputs.HostRuntimePolicyPackageBlock[]>;
+    public readonly permission!: pulumi.Output<string | undefined>;
+    public readonly portBlock!: pulumi.Output<outputs.HostRuntimePolicyPortBlock>;
+    public readonly readonlyFiles!: pulumi.Output<outputs.HostRuntimePolicyReadonlyFiles>;
+    public readonly readonlyRegistry!: pulumi.Output<outputs.HostRuntimePolicyReadonlyRegistry>;
+    public readonly registry!: pulumi.Output<string | undefined>;
+    public readonly registryAccessMonitoring!: pulumi.Output<outputs.HostRuntimePolicyRegistryAccessMonitoring>;
+    public readonly repoName!: pulumi.Output<string | undefined>;
+    public readonly resourceName!: pulumi.Output<string | undefined>;
+    public readonly resourceType!: pulumi.Output<string | undefined>;
     /**
-     * List of packages that are not allowed read, write or execute all files that under the packages.
+     * Restricted volumes configuration.
      */
-    public readonly packageBlocks!: pulumi.Output<string[] | undefined>;
-    /**
-     * If true, port scanning behaviors will be audited.
-     */
-    public readonly portScanningDetection!: pulumi.Output<boolean | undefined>;
+    public readonly restrictedVolumes!: pulumi.Output<outputs.HostRuntimePolicyRestrictedVolume[]>;
+    public readonly reverseShell!: pulumi.Output<outputs.HostRuntimePolicyReverseShell>;
+    public readonly runtimeMode!: pulumi.Output<number | undefined>;
+    public readonly runtimeType!: pulumi.Output<string>;
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
@@ -229,13 +208,16 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly scopeVariables!: pulumi.Output<outputs.HostRuntimePolicyScopeVariable[]>;
     /**
-     * Configuration for windows registry monitoring.
+     * Scope configuration.
      */
-    public readonly windowsRegistryMonitoring!: pulumi.Output<outputs.HostRuntimePolicyWindowsRegistryMonitoring | undefined>;
-    /**
-     * Configuration for windows registry protection.
-     */
-    public readonly windowsRegistryProtection!: pulumi.Output<outputs.HostRuntimePolicyWindowsRegistryProtection | undefined>;
+    public readonly scopes!: pulumi.Output<outputs.HostRuntimePolicyScope[] | undefined>;
+    public readonly systemIntegrityProtection!: pulumi.Output<outputs.HostRuntimePolicySystemIntegrityProtection>;
+    public readonly tripwire!: pulumi.Output<outputs.HostRuntimePolicyTripwire>;
+    public readonly type!: pulumi.Output<string>;
+    public readonly updated!: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string | undefined>;
+    public readonly vpatchVersion!: pulumi.Output<string | undefined>;
+    public readonly whitelistedOsUsers!: pulumi.Output<outputs.HostRuntimePolicyWhitelistedOsUsers>;
 
     /**
      * Create a HostRuntimePolicy resource with the given unique name, arguments, and options.
@@ -250,70 +232,172 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostRuntimePolicyState | undefined;
+            resourceInputs["allowedExecutables"] = state ? state.allowedExecutables : undefined;
+            resourceInputs["allowedRegistries"] = state ? state.allowedRegistries : undefined;
             resourceInputs["applicationScopes"] = state ? state.applicationScopes : undefined;
-            resourceInputs["auditAllOsUserActivity"] = state ? state.auditAllOsUserActivity : undefined;
             resourceInputs["auditBruteForceLogin"] = state ? state.auditBruteForceLogin : undefined;
             resourceInputs["auditFullCommandArguments"] = state ? state.auditFullCommandArguments : undefined;
             resourceInputs["auditHostFailedLoginEvents"] = state ? state.auditHostFailedLoginEvents : undefined;
             resourceInputs["auditHostSuccessfulLoginEvents"] = state ? state.auditHostSuccessfulLoginEvents : undefined;
             resourceInputs["auditUserAccountManagement"] = state ? state.auditUserAccountManagement : undefined;
+            resourceInputs["auditing"] = state ? state.auditing : undefined;
             resourceInputs["author"] = state ? state.author : undefined;
+            resourceInputs["blacklistedOsUsers"] = state ? state.blacklistedOsUsers : undefined;
+            resourceInputs["blockContainerExec"] = state ? state.blockContainerExec : undefined;
             resourceInputs["blockCryptocurrencyMining"] = state ? state.blockCryptocurrencyMining : undefined;
+            resourceInputs["blockDisallowedImages"] = state ? state.blockDisallowedImages : undefined;
+            resourceInputs["blockFilelessExec"] = state ? state.blockFilelessExec : undefined;
+            resourceInputs["blockNonCompliantWorkloads"] = state ? state.blockNonCompliantWorkloads : undefined;
+            resourceInputs["blockNonK8sContainers"] = state ? state.blockNonK8sContainers : undefined;
             resourceInputs["blockedFiles"] = state ? state.blockedFiles : undefined;
+            resourceInputs["bypassScopes"] = state ? state.bypassScopes : undefined;
+            resourceInputs["containerExec"] = state ? state.containerExec : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["cve"] = state ? state.cve : undefined;
+            resourceInputs["defaultSecurityProfile"] = state ? state.defaultSecurityProfile : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableIpReputationSecurity"] = state ? state.enableIpReputationSecurity : undefined;
+            resourceInputs["digest"] = state ? state.digest : undefined;
+            resourceInputs["driftPreventions"] = state ? state.driftPreventions : undefined;
+            resourceInputs["enableCryptoMiningDns"] = state ? state.enableCryptoMiningDns : undefined;
+            resourceInputs["enableForkGuard"] = state ? state.enableForkGuard : undefined;
+            resourceInputs["enableIpReputation"] = state ? state.enableIpReputation : undefined;
+            resourceInputs["enablePortScanProtection"] = state ? state.enablePortScanProtection : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["enforce"] = state ? state.enforce : undefined;
             resourceInputs["enforceAfterDays"] = state ? state.enforceAfterDays : undefined;
+            resourceInputs["enforceSchedulerAddedOn"] = state ? state.enforceSchedulerAddedOn : undefined;
+            resourceInputs["excludeApplicationScopes"] = state ? state.excludeApplicationScopes : undefined;
+            resourceInputs["executableBlacklists"] = state ? state.executableBlacklists : undefined;
+            resourceInputs["failedKubernetesChecks"] = state ? state.failedKubernetesChecks : undefined;
+            resourceInputs["fileBlock"] = state ? state.fileBlock : undefined;
             resourceInputs["fileIntegrityMonitoring"] = state ? state.fileIntegrityMonitoring : undefined;
+            resourceInputs["forkGuardProcessLimit"] = state ? state.forkGuardProcessLimit : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["isAuditChecked"] = state ? state.isAuditChecked : undefined;
+            resourceInputs["isAutoGenerated"] = state ? state.isAutoGenerated : undefined;
+            resourceInputs["isOotbPolicy"] = state ? state.isOotbPolicy : undefined;
+            resourceInputs["lastupdate"] = state ? state.lastupdate : undefined;
+            resourceInputs["limitContainerPrivileges"] = state ? state.limitContainerPrivileges : undefined;
+            resourceInputs["linuxCapabilities"] = state ? state.linuxCapabilities : undefined;
             resourceInputs["malwareScanOptions"] = state ? state.malwareScanOptions : undefined;
             resourceInputs["monitorSystemLogIntegrity"] = state ? state.monitorSystemLogIntegrity : undefined;
             resourceInputs["monitorSystemTimeChanges"] = state ? state.monitorSystemTimeChanges : undefined;
             resourceInputs["monitorWindowsServices"] = state ? state.monitorWindowsServices : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["noNewPrivileges"] = state ? state.noNewPrivileges : undefined;
+            resourceInputs["onlyRegisteredImages"] = state ? state.onlyRegisteredImages : undefined;
             resourceInputs["osGroupsAlloweds"] = state ? state.osGroupsAlloweds : undefined;
             resourceInputs["osGroupsBlockeds"] = state ? state.osGroupsBlockeds : undefined;
             resourceInputs["osUsersAlloweds"] = state ? state.osUsersAlloweds : undefined;
             resourceInputs["osUsersBlockeds"] = state ? state.osUsersBlockeds : undefined;
             resourceInputs["packageBlocks"] = state ? state.packageBlocks : undefined;
-            resourceInputs["portScanningDetection"] = state ? state.portScanningDetection : undefined;
+            resourceInputs["permission"] = state ? state.permission : undefined;
+            resourceInputs["portBlock"] = state ? state.portBlock : undefined;
+            resourceInputs["readonlyFiles"] = state ? state.readonlyFiles : undefined;
+            resourceInputs["readonlyRegistry"] = state ? state.readonlyRegistry : undefined;
+            resourceInputs["registry"] = state ? state.registry : undefined;
+            resourceInputs["registryAccessMonitoring"] = state ? state.registryAccessMonitoring : undefined;
+            resourceInputs["repoName"] = state ? state.repoName : undefined;
+            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["restrictedVolumes"] = state ? state.restrictedVolumes : undefined;
+            resourceInputs["reverseShell"] = state ? state.reverseShell : undefined;
+            resourceInputs["runtimeMode"] = state ? state.runtimeMode : undefined;
+            resourceInputs["runtimeType"] = state ? state.runtimeType : undefined;
             resourceInputs["scopeExpression"] = state ? state.scopeExpression : undefined;
             resourceInputs["scopeVariables"] = state ? state.scopeVariables : undefined;
-            resourceInputs["windowsRegistryMonitoring"] = state ? state.windowsRegistryMonitoring : undefined;
-            resourceInputs["windowsRegistryProtection"] = state ? state.windowsRegistryProtection : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["systemIntegrityProtection"] = state ? state.systemIntegrityProtection : undefined;
+            resourceInputs["tripwire"] = state ? state.tripwire : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vpatchVersion"] = state ? state.vpatchVersion : undefined;
+            resourceInputs["whitelistedOsUsers"] = state ? state.whitelistedOsUsers : undefined;
         } else {
             const args = argsOrState as HostRuntimePolicyArgs | undefined;
+            resourceInputs["allowedExecutables"] = args ? args.allowedExecutables : undefined;
+            resourceInputs["allowedRegistries"] = args ? args.allowedRegistries : undefined;
             resourceInputs["applicationScopes"] = args ? args.applicationScopes : undefined;
-            resourceInputs["auditAllOsUserActivity"] = args ? args.auditAllOsUserActivity : undefined;
             resourceInputs["auditBruteForceLogin"] = args ? args.auditBruteForceLogin : undefined;
             resourceInputs["auditFullCommandArguments"] = args ? args.auditFullCommandArguments : undefined;
             resourceInputs["auditHostFailedLoginEvents"] = args ? args.auditHostFailedLoginEvents : undefined;
             resourceInputs["auditHostSuccessfulLoginEvents"] = args ? args.auditHostSuccessfulLoginEvents : undefined;
             resourceInputs["auditUserAccountManagement"] = args ? args.auditUserAccountManagement : undefined;
+            resourceInputs["auditing"] = args ? args.auditing : undefined;
+            resourceInputs["author"] = args ? args.author : undefined;
+            resourceInputs["blacklistedOsUsers"] = args ? args.blacklistedOsUsers : undefined;
+            resourceInputs["blockContainerExec"] = args ? args.blockContainerExec : undefined;
             resourceInputs["blockCryptocurrencyMining"] = args ? args.blockCryptocurrencyMining : undefined;
+            resourceInputs["blockDisallowedImages"] = args ? args.blockDisallowedImages : undefined;
+            resourceInputs["blockFilelessExec"] = args ? args.blockFilelessExec : undefined;
+            resourceInputs["blockNonCompliantWorkloads"] = args ? args.blockNonCompliantWorkloads : undefined;
+            resourceInputs["blockNonK8sContainers"] = args ? args.blockNonK8sContainers : undefined;
             resourceInputs["blockedFiles"] = args ? args.blockedFiles : undefined;
+            resourceInputs["bypassScopes"] = args ? args.bypassScopes : undefined;
+            resourceInputs["containerExec"] = args ? args.containerExec : undefined;
+            resourceInputs["created"] = args ? args.created : undefined;
+            resourceInputs["cve"] = args ? args.cve : undefined;
+            resourceInputs["defaultSecurityProfile"] = args ? args.defaultSecurityProfile : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableIpReputationSecurity"] = args ? args.enableIpReputationSecurity : undefined;
+            resourceInputs["digest"] = args ? args.digest : undefined;
+            resourceInputs["driftPreventions"] = args ? args.driftPreventions : undefined;
+            resourceInputs["enableCryptoMiningDns"] = args ? args.enableCryptoMiningDns : undefined;
+            resourceInputs["enableForkGuard"] = args ? args.enableForkGuard : undefined;
+            resourceInputs["enableIpReputation"] = args ? args.enableIpReputation : undefined;
+            resourceInputs["enablePortScanProtection"] = args ? args.enablePortScanProtection : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["enforce"] = args ? args.enforce : undefined;
             resourceInputs["enforceAfterDays"] = args ? args.enforceAfterDays : undefined;
+            resourceInputs["enforceSchedulerAddedOn"] = args ? args.enforceSchedulerAddedOn : undefined;
+            resourceInputs["excludeApplicationScopes"] = args ? args.excludeApplicationScopes : undefined;
+            resourceInputs["executableBlacklists"] = args ? args.executableBlacklists : undefined;
+            resourceInputs["failedKubernetesChecks"] = args ? args.failedKubernetesChecks : undefined;
+            resourceInputs["fileBlock"] = args ? args.fileBlock : undefined;
             resourceInputs["fileIntegrityMonitoring"] = args ? args.fileIntegrityMonitoring : undefined;
+            resourceInputs["forkGuardProcessLimit"] = args ? args.forkGuardProcessLimit : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["isAuditChecked"] = args ? args.isAuditChecked : undefined;
+            resourceInputs["isAutoGenerated"] = args ? args.isAutoGenerated : undefined;
+            resourceInputs["isOotbPolicy"] = args ? args.isOotbPolicy : undefined;
+            resourceInputs["lastupdate"] = args ? args.lastupdate : undefined;
+            resourceInputs["limitContainerPrivileges"] = args ? args.limitContainerPrivileges : undefined;
+            resourceInputs["linuxCapabilities"] = args ? args.linuxCapabilities : undefined;
             resourceInputs["malwareScanOptions"] = args ? args.malwareScanOptions : undefined;
             resourceInputs["monitorSystemLogIntegrity"] = args ? args.monitorSystemLogIntegrity : undefined;
             resourceInputs["monitorSystemTimeChanges"] = args ? args.monitorSystemTimeChanges : undefined;
             resourceInputs["monitorWindowsServices"] = args ? args.monitorWindowsServices : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["noNewPrivileges"] = args ? args.noNewPrivileges : undefined;
+            resourceInputs["onlyRegisteredImages"] = args ? args.onlyRegisteredImages : undefined;
             resourceInputs["osGroupsAlloweds"] = args ? args.osGroupsAlloweds : undefined;
             resourceInputs["osGroupsBlockeds"] = args ? args.osGroupsBlockeds : undefined;
             resourceInputs["osUsersAlloweds"] = args ? args.osUsersAlloweds : undefined;
             resourceInputs["osUsersBlockeds"] = args ? args.osUsersBlockeds : undefined;
             resourceInputs["packageBlocks"] = args ? args.packageBlocks : undefined;
-            resourceInputs["portScanningDetection"] = args ? args.portScanningDetection : undefined;
+            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["portBlock"] = args ? args.portBlock : undefined;
+            resourceInputs["readonlyFiles"] = args ? args.readonlyFiles : undefined;
+            resourceInputs["readonlyRegistry"] = args ? args.readonlyRegistry : undefined;
+            resourceInputs["registry"] = args ? args.registry : undefined;
+            resourceInputs["registryAccessMonitoring"] = args ? args.registryAccessMonitoring : undefined;
+            resourceInputs["repoName"] = args ? args.repoName : undefined;
+            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["restrictedVolumes"] = args ? args.restrictedVolumes : undefined;
+            resourceInputs["reverseShell"] = args ? args.reverseShell : undefined;
+            resourceInputs["runtimeMode"] = args ? args.runtimeMode : undefined;
+            resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
             resourceInputs["scopeExpression"] = args ? args.scopeExpression : undefined;
             resourceInputs["scopeVariables"] = args ? args.scopeVariables : undefined;
-            resourceInputs["windowsRegistryMonitoring"] = args ? args.windowsRegistryMonitoring : undefined;
-            resourceInputs["windowsRegistryProtection"] = args ? args.windowsRegistryProtection : undefined;
-            resourceInputs["author"] = undefined /*out*/;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["systemIntegrityProtection"] = args ? args.systemIntegrityProtection : undefined;
+            resourceInputs["tripwire"] = args ? args.tripwire : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["updated"] = args ? args.updated : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["vpatchVersion"] = args ? args.vpatchVersion : undefined;
+            resourceInputs["whitelistedOsUsers"] = args ? args.whitelistedOsUsers : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostRuntimePolicy.__pulumiType, name, resourceInputs, opts);
@@ -325,13 +409,17 @@ export class HostRuntimePolicy extends pulumi.CustomResource {
  */
 export interface HostRuntimePolicyState {
     /**
+     * Allowed executables configuration.
+     */
+    allowedExecutables?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyAllowedExecutable>[]>;
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyAllowedRegistry>[]>;
+    /**
      * Indicates the application scope of the service.
      */
     applicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If true, all process activity will be audited.
-     */
-    auditAllOsUserActivity?: pulumi.Input<boolean>;
     /**
      * Detects brute force login attempts
      */
@@ -352,28 +440,48 @@ export interface HostRuntimePolicyState {
      * If true, account management will be audited.
      */
     auditUserAccountManagement?: pulumi.Input<boolean>;
+    auditing?: pulumi.Input<inputs.HostRuntimePolicyAuditing>;
     /**
      * Username of the account that created the service.
      */
     author?: pulumi.Input<string>;
+    blacklistedOsUsers?: pulumi.Input<inputs.HostRuntimePolicyBlacklistedOsUsers>;
+    blockContainerExec?: pulumi.Input<boolean>;
     /**
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      */
     blockCryptocurrencyMining?: pulumi.Input<boolean>;
+    blockDisallowedImages?: pulumi.Input<boolean>;
+    blockFilelessExec?: pulumi.Input<boolean>;
+    blockNonCompliantWorkloads?: pulumi.Input<boolean>;
+    blockNonK8sContainers?: pulumi.Input<boolean>;
     /**
      * List of files that are prevented from being read, modified and executed in the containers.
      */
     blockedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Bypass scope configuration.
+     */
+    bypassScopes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyBypassScope>[]>;
+    containerExec?: pulumi.Input<inputs.HostRuntimePolicyContainerExec>;
+    created?: pulumi.Input<string>;
+    cve?: pulumi.Input<string>;
+    defaultSecurityProfile?: pulumi.Input<string>;
+    /**
      * The description of the host runtime policy
      */
     description?: pulumi.Input<string>;
+    digest?: pulumi.Input<string>;
     /**
-     * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
+     * Drift prevention configuration.
      */
-    enableIpReputationSecurity?: pulumi.Input<boolean>;
+    driftPreventions?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyDriftPrevention>[]>;
+    enableCryptoMiningDns?: pulumi.Input<boolean>;
+    enableForkGuard?: pulumi.Input<boolean>;
+    enableIpReputation?: pulumi.Input<boolean>;
+    enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * Indicates if the runtime policy is enabled or not.
+     * Whether allowed executables configuration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -384,10 +492,32 @@ export interface HostRuntimePolicyState {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      */
     enforceAfterDays?: pulumi.Input<number>;
+    enforceSchedulerAddedOn?: pulumi.Input<number>;
+    /**
+     * List of excluded application scopes.
+     */
+    excludeApplicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Executable blacklist configuration.
+     */
+    executableBlacklists?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyExecutableBlacklist>[]>;
+    failedKubernetesChecks?: pulumi.Input<inputs.HostRuntimePolicyFailedKubernetesChecks>;
+    fileBlock?: pulumi.Input<inputs.HostRuntimePolicyFileBlock>;
     /**
      * Configuration for file integrity monitoring.
      */
     fileIntegrityMonitoring?: pulumi.Input<inputs.HostRuntimePolicyFileIntegrityMonitoring>;
+    forkGuardProcessLimit?: pulumi.Input<number>;
+    imageName?: pulumi.Input<string>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    isAutoGenerated?: pulumi.Input<boolean>;
+    isOotbPolicy?: pulumi.Input<boolean>;
+    lastupdate?: pulumi.Input<number>;
+    /**
+     * Container privileges configuration.
+     */
+    limitContainerPrivileges?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyLimitContainerPrivilege>[]>;
+    linuxCapabilities?: pulumi.Input<inputs.HostRuntimePolicyLinuxCapabilities>;
     /**
      * Configuration for Real-Time Malware Protection.
      */
@@ -405,9 +535,11 @@ export interface HostRuntimePolicyState {
      */
     monitorWindowsServices?: pulumi.Input<boolean>;
     /**
-     * Name of the host runtime policy
+     * Name assigned to the attribute.
      */
     name?: pulumi.Input<string>;
+    noNewPrivileges?: pulumi.Input<boolean>;
+    onlyRegisteredImages?: pulumi.Input<boolean>;
     /**
      * List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      */
@@ -424,14 +556,23 @@ export interface HostRuntimePolicyState {
      * List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
      */
     osUsersBlockeds?: pulumi.Input<pulumi.Input<string>[]>;
+    packageBlocks?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyPackageBlock>[]>;
+    permission?: pulumi.Input<string>;
+    portBlock?: pulumi.Input<inputs.HostRuntimePolicyPortBlock>;
+    readonlyFiles?: pulumi.Input<inputs.HostRuntimePolicyReadonlyFiles>;
+    readonlyRegistry?: pulumi.Input<inputs.HostRuntimePolicyReadonlyRegistry>;
+    registry?: pulumi.Input<string>;
+    registryAccessMonitoring?: pulumi.Input<inputs.HostRuntimePolicyRegistryAccessMonitoring>;
+    repoName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
-     * List of packages that are not allowed read, write or execute all files that under the packages.
+     * Restricted volumes configuration.
      */
-    packageBlocks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If true, port scanning behaviors will be audited.
-     */
-    portScanningDetection?: pulumi.Input<boolean>;
+    restrictedVolumes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyRestrictedVolume>[]>;
+    reverseShell?: pulumi.Input<inputs.HostRuntimePolicyReverseShell>;
+    runtimeMode?: pulumi.Input<number>;
+    runtimeType?: pulumi.Input<string>;
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
@@ -441,13 +582,16 @@ export interface HostRuntimePolicyState {
      */
     scopeVariables?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyScopeVariable>[]>;
     /**
-     * Configuration for windows registry monitoring.
+     * Scope configuration.
      */
-    windowsRegistryMonitoring?: pulumi.Input<inputs.HostRuntimePolicyWindowsRegistryMonitoring>;
-    /**
-     * Configuration for windows registry protection.
-     */
-    windowsRegistryProtection?: pulumi.Input<inputs.HostRuntimePolicyWindowsRegistryProtection>;
+    scopes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyScope>[]>;
+    systemIntegrityProtection?: pulumi.Input<inputs.HostRuntimePolicySystemIntegrityProtection>;
+    tripwire?: pulumi.Input<inputs.HostRuntimePolicyTripwire>;
+    type?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    vpatchVersion?: pulumi.Input<string>;
+    whitelistedOsUsers?: pulumi.Input<inputs.HostRuntimePolicyWhitelistedOsUsers>;
 }
 
 /**
@@ -455,13 +599,17 @@ export interface HostRuntimePolicyState {
  */
 export interface HostRuntimePolicyArgs {
     /**
+     * Allowed executables configuration.
+     */
+    allowedExecutables?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyAllowedExecutable>[]>;
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyAllowedRegistry>[]>;
+    /**
      * Indicates the application scope of the service.
      */
     applicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If true, all process activity will be audited.
-     */
-    auditAllOsUserActivity?: pulumi.Input<boolean>;
     /**
      * Detects brute force login attempts
      */
@@ -482,24 +630,48 @@ export interface HostRuntimePolicyArgs {
      * If true, account management will be audited.
      */
     auditUserAccountManagement?: pulumi.Input<boolean>;
+    auditing?: pulumi.Input<inputs.HostRuntimePolicyAuditing>;
+    /**
+     * Username of the account that created the service.
+     */
+    author?: pulumi.Input<string>;
+    blacklistedOsUsers?: pulumi.Input<inputs.HostRuntimePolicyBlacklistedOsUsers>;
+    blockContainerExec?: pulumi.Input<boolean>;
     /**
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      */
     blockCryptocurrencyMining?: pulumi.Input<boolean>;
+    blockDisallowedImages?: pulumi.Input<boolean>;
+    blockFilelessExec?: pulumi.Input<boolean>;
+    blockNonCompliantWorkloads?: pulumi.Input<boolean>;
+    blockNonK8sContainers?: pulumi.Input<boolean>;
     /**
      * List of files that are prevented from being read, modified and executed in the containers.
      */
     blockedFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Bypass scope configuration.
+     */
+    bypassScopes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyBypassScope>[]>;
+    containerExec?: pulumi.Input<inputs.HostRuntimePolicyContainerExec>;
+    created?: pulumi.Input<string>;
+    cve?: pulumi.Input<string>;
+    defaultSecurityProfile?: pulumi.Input<string>;
+    /**
      * The description of the host runtime policy
      */
     description?: pulumi.Input<string>;
+    digest?: pulumi.Input<string>;
     /**
-     * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
+     * Drift prevention configuration.
      */
-    enableIpReputationSecurity?: pulumi.Input<boolean>;
+    driftPreventions?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyDriftPrevention>[]>;
+    enableCryptoMiningDns?: pulumi.Input<boolean>;
+    enableForkGuard?: pulumi.Input<boolean>;
+    enableIpReputation?: pulumi.Input<boolean>;
+    enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * Indicates if the runtime policy is enabled or not.
+     * Whether allowed executables configuration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -510,10 +682,32 @@ export interface HostRuntimePolicyArgs {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      */
     enforceAfterDays?: pulumi.Input<number>;
+    enforceSchedulerAddedOn?: pulumi.Input<number>;
+    /**
+     * List of excluded application scopes.
+     */
+    excludeApplicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Executable blacklist configuration.
+     */
+    executableBlacklists?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyExecutableBlacklist>[]>;
+    failedKubernetesChecks?: pulumi.Input<inputs.HostRuntimePolicyFailedKubernetesChecks>;
+    fileBlock?: pulumi.Input<inputs.HostRuntimePolicyFileBlock>;
     /**
      * Configuration for file integrity monitoring.
      */
     fileIntegrityMonitoring?: pulumi.Input<inputs.HostRuntimePolicyFileIntegrityMonitoring>;
+    forkGuardProcessLimit?: pulumi.Input<number>;
+    imageName?: pulumi.Input<string>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    isAutoGenerated?: pulumi.Input<boolean>;
+    isOotbPolicy?: pulumi.Input<boolean>;
+    lastupdate?: pulumi.Input<number>;
+    /**
+     * Container privileges configuration.
+     */
+    limitContainerPrivileges?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyLimitContainerPrivilege>[]>;
+    linuxCapabilities?: pulumi.Input<inputs.HostRuntimePolicyLinuxCapabilities>;
     /**
      * Configuration for Real-Time Malware Protection.
      */
@@ -531,9 +725,11 @@ export interface HostRuntimePolicyArgs {
      */
     monitorWindowsServices?: pulumi.Input<boolean>;
     /**
-     * Name of the host runtime policy
+     * Name assigned to the attribute.
      */
     name?: pulumi.Input<string>;
+    noNewPrivileges?: pulumi.Input<boolean>;
+    onlyRegisteredImages?: pulumi.Input<boolean>;
     /**
      * List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
      */
@@ -550,14 +746,23 @@ export interface HostRuntimePolicyArgs {
      * List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
      */
     osUsersBlockeds?: pulumi.Input<pulumi.Input<string>[]>;
+    packageBlocks?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyPackageBlock>[]>;
+    permission?: pulumi.Input<string>;
+    portBlock?: pulumi.Input<inputs.HostRuntimePolicyPortBlock>;
+    readonlyFiles?: pulumi.Input<inputs.HostRuntimePolicyReadonlyFiles>;
+    readonlyRegistry?: pulumi.Input<inputs.HostRuntimePolicyReadonlyRegistry>;
+    registry?: pulumi.Input<string>;
+    registryAccessMonitoring?: pulumi.Input<inputs.HostRuntimePolicyRegistryAccessMonitoring>;
+    repoName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
-     * List of packages that are not allowed read, write or execute all files that under the packages.
+     * Restricted volumes configuration.
      */
-    packageBlocks?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If true, port scanning behaviors will be audited.
-     */
-    portScanningDetection?: pulumi.Input<boolean>;
+    restrictedVolumes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyRestrictedVolume>[]>;
+    reverseShell?: pulumi.Input<inputs.HostRuntimePolicyReverseShell>;
+    runtimeMode?: pulumi.Input<number>;
+    runtimeType?: pulumi.Input<string>;
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
@@ -567,11 +772,14 @@ export interface HostRuntimePolicyArgs {
      */
     scopeVariables?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyScopeVariable>[]>;
     /**
-     * Configuration for windows registry monitoring.
+     * Scope configuration.
      */
-    windowsRegistryMonitoring?: pulumi.Input<inputs.HostRuntimePolicyWindowsRegistryMonitoring>;
-    /**
-     * Configuration for windows registry protection.
-     */
-    windowsRegistryProtection?: pulumi.Input<inputs.HostRuntimePolicyWindowsRegistryProtection>;
+    scopes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyScope>[]>;
+    systemIntegrityProtection?: pulumi.Input<inputs.HostRuntimePolicySystemIntegrityProtection>;
+    tripwire?: pulumi.Input<inputs.HostRuntimePolicyTripwire>;
+    type?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    vpatchVersion?: pulumi.Input<string>;
+    whitelistedOsUsers?: pulumi.Input<inputs.HostRuntimePolicyWhitelistedOsUsers>;
 }

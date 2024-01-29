@@ -34,7 +34,7 @@ class ServiceArgs:
         :param pulumi.Input[str] description: A textual description of the service record; maximum 500 characters.
         :param pulumi.Input[bool] enforce: Enforcement status of the service.
         :param pulumi.Input[bool] monitoring: Indicates if monitoring is enabled or not
-        :param pulumi.Input[str] name: The name of the service. It is recommended not to use whitespace characters in the name.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         :param pulumi.Input[int] priority: Rules priority, must be between 1-100.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceScopeVariableArgs']]] scope_variables: List of scope attributes.
@@ -133,7 +133,7 @@ class ServiceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service. It is recommended not to use whitespace characters in the name.
+        Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
 
@@ -217,7 +217,7 @@ class _ServiceState:
         :param pulumi.Input[bool] is_registered: Indicates if registered or not.
         :param pulumi.Input[int] lastupdate: Timestamp of the last update in Unix time format.
         :param pulumi.Input[bool] monitoring: Indicates if monitoring is enabled or not
-        :param pulumi.Input[str] name: The name of the service. It is recommended not to use whitespace characters in the name.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         :param pulumi.Input[int] not_evaluated_count: The number of container that are not evaluated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The service's policies; an array of container firewall policy names.
         :param pulumi.Input[int] priority: Rules priority, must be between 1-100.
@@ -397,7 +397,7 @@ class _ServiceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service. It is recommended not to use whitespace characters in the name.
+        Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
 
@@ -610,7 +610,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: A textual description of the service record; maximum 500 characters.
         :param pulumi.Input[bool] enforce: Enforcement status of the service.
         :param pulumi.Input[bool] monitoring: Indicates if monitoring is enabled or not
-        :param pulumi.Input[str] name: The name of the service. It is recommended not to use whitespace characters in the name.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The service's policies; an array of container firewall policy names.
         :param pulumi.Input[int] priority: Rules priority, must be between 1-100.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
@@ -741,7 +741,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[bool] is_registered: Indicates if registered or not.
         :param pulumi.Input[int] lastupdate: Timestamp of the last update in Unix time format.
         :param pulumi.Input[bool] monitoring: Indicates if monitoring is enabled or not
-        :param pulumi.Input[str] name: The name of the service. It is recommended not to use whitespace characters in the name.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
         :param pulumi.Input[int] not_evaluated_count: The number of container that are not evaluated.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The service's policies; an array of container firewall policy names.
         :param pulumi.Input[int] priority: Rules priority, must be between 1-100.
@@ -865,7 +865,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the service. It is recommended not to use whitespace characters in the name.
+        Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
 

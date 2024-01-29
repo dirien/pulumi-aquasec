@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetFunctionRuntimePolicyResult',
@@ -22,7 +23,7 @@ class GetFunctionRuntimePolicyResult:
     """
     A collection of values returned by getFunctionRuntimePolicy.
     """
-    def __init__(__self__, application_scopes=None, author=None, block_malicious_executables=None, block_malicious_executables_allowed_processes=None, block_running_executables_in_tmp_folder=None, blocked_executables=None, description=None, enabled=None, enforce=None, honeypot_access_key=None, honeypot_apply_ons=None, honeypot_secret_key=None, honeypot_serverless_app_name=None, id=None, name=None, scope_expression=None, scope_variables=None):
+    def __init__(__self__, application_scopes=None, author=None, block_malicious_executables=None, block_malicious_executables_allowed_processes=None, block_running_executables_in_tmp_folder=None, blocked_executables=None, description=None, drift_preventions=None, enabled=None, enforce=None, executable_blacklists=None, honeypot_access_key=None, honeypot_apply_ons=None, honeypot_secret_key=None, honeypot_serverless_app_name=None, id=None, name=None, scope_expression=None, scope_variables=None):
         if application_scopes and not isinstance(application_scopes, list):
             raise TypeError("Expected argument 'application_scopes' to be a list")
         pulumi.set(__self__, "application_scopes", application_scopes)
@@ -44,12 +45,18 @@ class GetFunctionRuntimePolicyResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if drift_preventions and not isinstance(drift_preventions, list):
+            raise TypeError("Expected argument 'drift_preventions' to be a list")
+        pulumi.set(__self__, "drift_preventions", drift_preventions)
         if enabled and not isinstance(enabled, bool):
             raise TypeError("Expected argument 'enabled' to be a bool")
         pulumi.set(__self__, "enabled", enabled)
         if enforce and not isinstance(enforce, bool):
             raise TypeError("Expected argument 'enforce' to be a bool")
         pulumi.set(__self__, "enforce", enforce)
+        if executable_blacklists and not isinstance(executable_blacklists, list):
+            raise TypeError("Expected argument 'executable_blacklists' to be a list")
+        pulumi.set(__self__, "executable_blacklists", executable_blacklists)
         if honeypot_access_key and not isinstance(honeypot_access_key, str):
             raise TypeError("Expected argument 'honeypot_access_key' to be a str")
         pulumi.set(__self__, "honeypot_access_key", honeypot_access_key)
@@ -132,6 +139,14 @@ class GetFunctionRuntimePolicyResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="driftPreventions")
+    def drift_preventions(self) -> Optional[Sequence['outputs.GetFunctionRuntimePolicyDriftPreventionResult']]:
+        """
+        Drift prevention configuration.
+        """
+        return pulumi.get(self, "drift_preventions")
+
+    @property
     @pulumi.getter
     def enabled(self) -> bool:
         """
@@ -146,6 +161,14 @@ class GetFunctionRuntimePolicyResult:
         Indicates that policy should effect container execution (not just for audit).
         """
         return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter(name="executableBlacklists")
+    def executable_blacklists(self) -> Optional[Sequence['outputs.GetFunctionRuntimePolicyExecutableBlacklistResult']]:
+        """
+        Executable blacklist configuration.
+        """
+        return pulumi.get(self, "executable_blacklists")
 
     @property
     @pulumi.getter(name="honeypotAccessKey")
@@ -225,8 +248,10 @@ class AwaitableGetFunctionRuntimePolicyResult(GetFunctionRuntimePolicyResult):
             block_running_executables_in_tmp_folder=self.block_running_executables_in_tmp_folder,
             blocked_executables=self.blocked_executables,
             description=self.description,
+            drift_preventions=self.drift_preventions,
             enabled=self.enabled,
             enforce=self.enforce,
+            executable_blacklists=self.executable_blacklists,
             honeypot_access_key=self.honeypot_access_key,
             honeypot_apply_ons=self.honeypot_apply_ons,
             honeypot_secret_key=self.honeypot_secret_key,
@@ -237,7 +262,9 @@ class AwaitableGetFunctionRuntimePolicyResult(GetFunctionRuntimePolicyResult):
             scope_variables=self.scope_variables)
 
 
-def get_function_runtime_policy(name: Optional[str] = None,
+def get_function_runtime_policy(drift_preventions: Optional[Sequence[pulumi.InputType['GetFunctionRuntimePolicyDriftPreventionArgs']]] = None,
+                                executable_blacklists: Optional[Sequence[pulumi.InputType['GetFunctionRuntimePolicyExecutableBlacklistArgs']]] = None,
+                                name: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFunctionRuntimePolicyResult:
     """
     ## Example Usage
@@ -251,9 +278,12 @@ def get_function_runtime_policy(name: Optional[str] = None,
     ```
 
 
-    :param str name: Name of the function runtime policy
+    :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyDriftPreventionArgs']] drift_preventions: Drift prevention configuration.
+    :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyExecutableBlacklistArgs']] executable_blacklists: Executable blacklist configuration.
     """
     __args__ = dict()
+    __args__['driftPreventions'] = drift_preventions
+    __args__['executableBlacklists'] = executable_blacklists
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy', __args__, opts=opts, typ=GetFunctionRuntimePolicyResult).value
@@ -266,8 +296,10 @@ def get_function_runtime_policy(name: Optional[str] = None,
         block_running_executables_in_tmp_folder=pulumi.get(__ret__, 'block_running_executables_in_tmp_folder'),
         blocked_executables=pulumi.get(__ret__, 'blocked_executables'),
         description=pulumi.get(__ret__, 'description'),
+        drift_preventions=pulumi.get(__ret__, 'drift_preventions'),
         enabled=pulumi.get(__ret__, 'enabled'),
         enforce=pulumi.get(__ret__, 'enforce'),
+        executable_blacklists=pulumi.get(__ret__, 'executable_blacklists'),
         honeypot_access_key=pulumi.get(__ret__, 'honeypot_access_key'),
         honeypot_apply_ons=pulumi.get(__ret__, 'honeypot_apply_ons'),
         honeypot_secret_key=pulumi.get(__ret__, 'honeypot_secret_key'),
@@ -279,7 +311,9 @@ def get_function_runtime_policy(name: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_function_runtime_policy)
-def get_function_runtime_policy_output(name: Optional[pulumi.Input[str]] = None,
+def get_function_runtime_policy_output(drift_preventions: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFunctionRuntimePolicyDriftPreventionArgs']]]]] = None,
+                                       executable_blacklists: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetFunctionRuntimePolicyExecutableBlacklistArgs']]]]] = None,
+                                       name: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionRuntimePolicyResult]:
     """
     ## Example Usage
@@ -293,6 +327,7 @@ def get_function_runtime_policy_output(name: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str name: Name of the function runtime policy
+    :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyDriftPreventionArgs']] drift_preventions: Drift prevention configuration.
+    :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyExecutableBlacklistArgs']] executable_blacklists: Executable blacklist configuration.
     """
     ...

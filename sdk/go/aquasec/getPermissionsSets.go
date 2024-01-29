@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -54,4 +57,43 @@ type LookupPermissionsSetsResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                             `pulumi:"id"`
 	PermissionsSets []GetPermissionsSetsPermissionsSet `pulumi:"permissionsSets"`
+}
+
+func LookupPermissionsSetsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) LookupPermissionsSetsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (LookupPermissionsSetsResult, error) {
+		r, err := LookupPermissionsSets(ctx, opts...)
+		var s LookupPermissionsSetsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(LookupPermissionsSetsResultOutput)
+}
+
+// A collection of values returned by getPermissionsSets.
+type LookupPermissionsSetsResultOutput struct{ *pulumi.OutputState }
+
+func (LookupPermissionsSetsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupPermissionsSetsResult)(nil)).Elem()
+}
+
+func (o LookupPermissionsSetsResultOutput) ToLookupPermissionsSetsResultOutput() LookupPermissionsSetsResultOutput {
+	return o
+}
+
+func (o LookupPermissionsSetsResultOutput) ToLookupPermissionsSetsResultOutputWithContext(ctx context.Context) LookupPermissionsSetsResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupPermissionsSetsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPermissionsSetsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupPermissionsSetsResultOutput) PermissionsSets() GetPermissionsSetsPermissionsSetArrayOutput {
+	return o.ApplyT(func(v LookupPermissionsSetsResult) []GetPermissionsSetsPermissionsSet { return v.PermissionsSets }).(GetPermissionsSetsPermissionsSetArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupPermissionsSetsResultOutput{})
 }

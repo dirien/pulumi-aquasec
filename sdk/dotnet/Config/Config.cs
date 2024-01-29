@@ -8,7 +8,7 @@ namespace Pulumiverse.Aquasec
 {
     public static class Config
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "IDE1006", Justification = 
         "Double underscore prefix used to avoid conflicts with variable names.")]
         private sealed class __Value<T>
         {
@@ -32,7 +32,7 @@ namespace Pulumiverse.Aquasec
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("aquasec");
 
-        private static readonly __Value<string?> _aquaUrl = new __Value<string?>(() => __config.Get("aquaUrl"));
+        private static readonly __Value<string?> _aquaUrl = new __Value<string?>(() => __config.Get("aquaUrl") ?? Utilities.GetEnv("AQUA_URL"));
         /// <summary>
         /// This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.
         /// </summary>
@@ -42,7 +42,7 @@ namespace Pulumiverse.Aquasec
             set => _aquaUrl.Set(value);
         }
 
-        private static readonly __Value<string?> _caCertificatePath = new __Value<string?>(() => __config.Get("caCertificatePath"));
+        private static readonly __Value<string?> _caCertificatePath = new __Value<string?>(() => __config.Get("caCertificatePath") ?? Utilities.GetEnv("AQUA_CA_CERT_PATH"));
         /// <summary>
         /// This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced
         /// from the `AQUA_CA_CERT_PATH` environment variable.
@@ -53,7 +53,7 @@ namespace Pulumiverse.Aquasec
             set => _caCertificatePath.Set(value);
         }
 
-        private static readonly __Value<string?> _configPath = new __Value<string?>(() => __config.Get("configPath"));
+        private static readonly __Value<string?> _configPath = new __Value<string?>(() => __config.Get("configPath") ?? Utilities.GetEnv("AQUA_CONFIG"));
         /// <summary>
         /// This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can
         /// alternatively be sourced from the `AQUA_CONFIG` environment variable.
@@ -64,7 +64,7 @@ namespace Pulumiverse.Aquasec
             set => _configPath.Set(value);
         }
 
-        private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password"));
+        private static readonly __Value<string?> _password = new __Value<string?>(() => __config.Get("password") ?? Utilities.GetEnv("AQUA_PASSWORD"));
         /// <summary>
         /// This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`
         /// environment variable.
@@ -75,7 +75,7 @@ namespace Pulumiverse.Aquasec
             set => _password.Set(value);
         }
 
-        private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username"));
+        private static readonly __Value<string?> _username = new __Value<string?>(() => __config.Get("username") ?? Utilities.GetEnv("AQUA_USER"));
         /// <summary>
         /// This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`
         /// environment variable.
@@ -86,7 +86,7 @@ namespace Pulumiverse.Aquasec
             set => _username.Set(value);
         }
 
-        private static readonly __Value<bool?> _verifyTls = new __Value<bool?>(() => __config.GetBoolean("verifyTls"));
+        private static readonly __Value<bool?> _verifyTls = new __Value<bool?>(() => __config.GetBoolean("verifyTls") ?? Utilities.GetEnvBoolean("AQUA_TLS_VERIFY") ?? true);
         /// <summary>
         /// If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can
         /// alternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.

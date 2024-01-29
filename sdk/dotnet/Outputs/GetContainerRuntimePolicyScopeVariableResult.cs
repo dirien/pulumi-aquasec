@@ -15,9 +15,6 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class GetContainerRuntimePolicyScopeVariableResult
     {
         public readonly string Attribute;
-        /// <summary>
-        /// Name of the container runtime policy
-        /// </summary>
         public readonly string Name;
         public readonly string Value;
 

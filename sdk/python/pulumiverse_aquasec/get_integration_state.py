@@ -13,6 +13,7 @@ __all__ = [
     'GetIntegrationStateResult',
     'AwaitableGetIntegrationStateResult',
     'get_integration_state',
+    'get_integration_state_output',
 ]
 
 @pulumi.output_type
@@ -100,3 +101,19 @@ def get_integration_state(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
         oidc_settings=pulumi.get(__ret__, 'oidc_settings'),
         openid_settings=pulumi.get(__ret__, 'openid_settings'),
         saml_settings=pulumi.get(__ret__, 'saml_settings'))
+
+
+@_utilities.lift_output_func(get_integration_state)
+def get_integration_state_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIntegrationStateResult]:
+    """
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    integration_state = aquasec.get_integration_state()
+    pulumi.export("aquasecIntegrationState", integration_state)
+    ```
+    """
+    ...

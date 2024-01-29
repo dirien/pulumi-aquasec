@@ -28,6 +28,7 @@ namespace Pulumiverse.Aquasec
     ///             RoleMapping = 
     ///             {
     ///                 { "Administrator", "group1" },
+    ///                 { "Scanner", "group2|group3" },
     ///             },
     ///         },
     ///     });

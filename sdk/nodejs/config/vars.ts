@@ -13,7 +13,7 @@ const __config = new pulumi.Config("aquasec");
 export declare const aquaUrl: string | undefined;
 Object.defineProperty(exports, "aquaUrl", {
     get() {
-        return __config.get("aquaUrl");
+        return __config.get("aquaUrl") ?? utilities.getEnv("AQUA_URL");
     },
     enumerable: true,
 });
@@ -25,7 +25,7 @@ Object.defineProperty(exports, "aquaUrl", {
 export declare const caCertificatePath: string | undefined;
 Object.defineProperty(exports, "caCertificatePath", {
     get() {
-        return __config.get("caCertificatePath");
+        return __config.get("caCertificatePath") ?? utilities.getEnv("AQUA_CA_CERT_PATH");
     },
     enumerable: true,
 });
@@ -37,7 +37,7 @@ Object.defineProperty(exports, "caCertificatePath", {
 export declare const configPath: string | undefined;
 Object.defineProperty(exports, "configPath", {
     get() {
-        return __config.get("configPath");
+        return __config.get("configPath") ?? utilities.getEnv("AQUA_CONFIG");
     },
     enumerable: true,
 });
@@ -49,7 +49,7 @@ Object.defineProperty(exports, "configPath", {
 export declare const password: string | undefined;
 Object.defineProperty(exports, "password", {
     get() {
-        return __config.get("password");
+        return __config.get("password") ?? utilities.getEnv("AQUA_PASSWORD");
     },
     enumerable: true,
 });
@@ -61,7 +61,7 @@ Object.defineProperty(exports, "password", {
 export declare const username: string | undefined;
 Object.defineProperty(exports, "username", {
     get() {
-        return __config.get("username");
+        return __config.get("username") ?? utilities.getEnv("AQUA_USER");
     },
     enumerable: true,
 });
@@ -70,10 +70,10 @@ Object.defineProperty(exports, "username", {
  * If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can
  * alternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.
  */
-export declare const verifyTls: boolean | undefined;
+export declare const verifyTls: boolean;
 Object.defineProperty(exports, "verifyTls", {
     get() {
-        return __config.getObject<boolean>("verifyTls");
+        return __config.getObject<boolean>("verifyTls") ?? (utilities.getEnvBoolean("AQUA_TLS_VERIFY") || true);
     },
     enumerable: true,
 });

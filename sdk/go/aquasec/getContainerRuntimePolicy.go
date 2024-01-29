@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -50,18 +49,32 @@ func LookupContainerRuntimePolicy(ctx *pulumi.Context, args *LookupContainerRunt
 
 // A collection of arguments for invoking getContainerRuntimePolicy.
 type LookupContainerRuntimePolicyArgs struct {
+	// Allowed executables configuration.
+	AllowedExecutables []GetContainerRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries []GetContainerRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
+	Auditing          *GetContainerRuntimePolicyAuditing         `pulumi:"auditing"`
+	ContainerExec     *GetContainerRuntimePolicyContainerExec    `pulumi:"containerExec"`
+	FileBlock         *GetContainerRuntimePolicyFileBlock        `pulumi:"fileBlock"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings []GetContainerRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
+	// Container privileges configuration.
+	LimitContainerPrivileges []GetContainerRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions []GetContainerRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
-	// Name of the container runtime policy
-	Name string `pulumi:"name"`
+	Name               string                                       `pulumi:"name"`
+	PortBlock          *GetContainerRuntimePolicyPortBlock          `pulumi:"portBlock"`
+	ReadonlyFiles      *GetContainerRuntimePolicyReadonlyFiles      `pulumi:"readonlyFiles"`
+	// Restricted volumes configuration.
+	RestrictedVolumes []GetContainerRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
 }
 
 // A collection of values returned by getContainerRuntimePolicy.
 type LookupContainerRuntimePolicyResult struct {
-	// List of executables that are allowed for the user.
-	AllowedExecutables []string `pulumi:"allowedExecutables"`
-	// List of registries that allowed for running containers.
-	AllowedRegistries []string `pulumi:"allowedRegistries"`
+	// Allowed executables configuration.
+	AllowedExecutables []GetContainerRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
+	// Allowed registries configuration.
+	AllowedRegistries []GetContainerRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
 	// If true, all network activity will be audited.
@@ -69,7 +82,8 @@ type LookupContainerRuntimePolicyResult struct {
 	// If true, all process activity will be audited.
 	AuditAllProcessesActivity bool `pulumi:"auditAllProcessesActivity"`
 	// If true, full command arguments will be audited.
-	AuditFullCommandArguments bool `pulumi:"auditFullCommandArguments"`
+	AuditFullCommandArguments bool                               `pulumi:"auditFullCommandArguments"`
+	Auditing                  *GetContainerRuntimePolicyAuditing `pulumi:"auditing"`
 	// Username of the account that created the service.
 	Author string `pulumi:"author"`
 	// If true, prevent containers from running with access to host network.
@@ -119,7 +133,8 @@ type LookupContainerRuntimePolicyResult struct {
 	// Prevent containers from reading, writing, or executing all files in the list of packages.
 	BlockedPackages []string `pulumi:"blockedPackages"`
 	// List of volumes that are prevented from being mounted in the containers.
-	BlockedVolumes []string `pulumi:"blockedVolumes"`
+	BlockedVolumes []string                                `pulumi:"blockedVolumes"`
+	ContainerExec  *GetContainerRuntimePolicyContainerExec `pulumi:"containerExec"`
 	// List of processes that will be allowed.
 	ContainerExecAllowedProcesses []string `pulumi:"containerExecAllowedProcesses"`
 	// The description of the container runtime policy
@@ -141,13 +156,16 @@ type LookupContainerRuntimePolicyResult struct {
 	// List of files and directories to be excluded from the read-only list.
 	ExceptionalReadonlyFilesAndDirectories []string `pulumi:"exceptionalReadonlyFilesAndDirectories"`
 	// Specify processes that will be allowed
-	ExecLockdownWhiteLists []string `pulumi:"execLockdownWhiteLists"`
+	ExecLockdownWhiteLists []string                            `pulumi:"execLockdownWhiteLists"`
+	FileBlock              *GetContainerRuntimePolicyFileBlock `pulumi:"fileBlock"`
 	// Configuration for file integrity monitoring.
 	FileIntegrityMonitorings []GetContainerRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
 	// Process limit for the fork guard.
 	ForkGuardProcessLimit int `pulumi:"forkGuardProcessLimit"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// Container privileges configuration.
+	LimitContainerPrivileges []GetContainerRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
 	// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
 	LimitNewPrivileges bool `pulumi:"limitNewPrivileges"`
 	// Configuration for Real-Time Malware Protection.
@@ -155,9 +173,13 @@ type LookupContainerRuntimePolicyResult struct {
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges bool `pulumi:"monitorSystemTimeChanges"`
 	// Name of the container runtime policy
-	Name string `pulumi:"name"`
+	Name          string                                  `pulumi:"name"`
+	PortBlock     *GetContainerRuntimePolicyPortBlock     `pulumi:"portBlock"`
+	ReadonlyFiles *GetContainerRuntimePolicyReadonlyFiles `pulumi:"readonlyFiles"`
 	// List of files and directories to be restricted as read-only
 	ReadonlyFilesAndDirectories []string `pulumi:"readonlyFilesAndDirectories"`
+	// Restricted volumes configuration.
+	RestrictedVolumes []GetContainerRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
 	// List of IPs/ CIDRs that will be allowed
 	ReverseShellAllowedIps []string `pulumi:"reverseShellAllowedIps"`
 	// List of processes that will be allowed
@@ -183,10 +205,24 @@ func LookupContainerRuntimePolicyOutput(ctx *pulumi.Context, args LookupContaine
 
 // A collection of arguments for invoking getContainerRuntimePolicy.
 type LookupContainerRuntimePolicyOutputArgs struct {
+	// Allowed executables configuration.
+	AllowedExecutables GetContainerRuntimePolicyAllowedExecutableArrayInput `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries GetContainerRuntimePolicyAllowedRegistryArrayInput `pulumi:"allowedRegistries"`
+	Auditing          GetContainerRuntimePolicyAuditingPtrInput          `pulumi:"auditing"`
+	ContainerExec     GetContainerRuntimePolicyContainerExecPtrInput     `pulumi:"containerExec"`
+	FileBlock         GetContainerRuntimePolicyFileBlockPtrInput         `pulumi:"fileBlock"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings GetContainerRuntimePolicyFileIntegrityMonitoringArrayInput `pulumi:"fileIntegrityMonitorings"`
+	// Container privileges configuration.
+	LimitContainerPrivileges GetContainerRuntimePolicyLimitContainerPrivilegeArrayInput `pulumi:"limitContainerPrivileges"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions GetContainerRuntimePolicyMalwareScanOptionArrayInput `pulumi:"malwareScanOptions"`
-	// Name of the container runtime policy
-	Name pulumi.StringInput `pulumi:"name"`
+	Name               pulumi.StringInput                                   `pulumi:"name"`
+	PortBlock          GetContainerRuntimePolicyPortBlockPtrInput           `pulumi:"portBlock"`
+	ReadonlyFiles      GetContainerRuntimePolicyReadonlyFilesPtrInput       `pulumi:"readonlyFiles"`
+	// Restricted volumes configuration.
+	RestrictedVolumes GetContainerRuntimePolicyRestrictedVolumeArrayInput `pulumi:"restrictedVolumes"`
 }
 
 func (LookupContainerRuntimePolicyOutputArgs) ElementType() reflect.Type {
@@ -208,20 +244,18 @@ func (o LookupContainerRuntimePolicyResultOutput) ToLookupContainerRuntimePolicy
 	return o
 }
 
-func (o LookupContainerRuntimePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupContainerRuntimePolicyResult] {
-	return pulumix.Output[LookupContainerRuntimePolicyResult]{
-		OutputState: o.OutputState,
-	}
+// Allowed executables configuration.
+func (o LookupContainerRuntimePolicyResultOutput) AllowedExecutables() GetContainerRuntimePolicyAllowedExecutableArrayOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []GetContainerRuntimePolicyAllowedExecutable {
+		return v.AllowedExecutables
+	}).(GetContainerRuntimePolicyAllowedExecutableArrayOutput)
 }
 
-// List of executables that are allowed for the user.
-func (o LookupContainerRuntimePolicyResultOutput) AllowedExecutables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.AllowedExecutables }).(pulumi.StringArrayOutput)
-}
-
-// List of registries that allowed for running containers.
-func (o LookupContainerRuntimePolicyResultOutput) AllowedRegistries() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.AllowedRegistries }).(pulumi.StringArrayOutput)
+// Allowed registries configuration.
+func (o LookupContainerRuntimePolicyResultOutput) AllowedRegistries() GetContainerRuntimePolicyAllowedRegistryArrayOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []GetContainerRuntimePolicyAllowedRegistry {
+		return v.AllowedRegistries
+	}).(GetContainerRuntimePolicyAllowedRegistryArrayOutput)
 }
 
 // Indicates the application scope of the service.
@@ -242,6 +276,10 @@ func (o LookupContainerRuntimePolicyResultOutput) AuditAllProcessesActivity() pu
 // If true, full command arguments will be audited.
 func (o LookupContainerRuntimePolicyResultOutput) AuditFullCommandArguments() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) bool { return v.AuditFullCommandArguments }).(pulumi.BoolOutput)
+}
+
+func (o LookupContainerRuntimePolicyResultOutput) Auditing() GetContainerRuntimePolicyAuditingPtrOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) *GetContainerRuntimePolicyAuditing { return v.Auditing }).(GetContainerRuntimePolicyAuditingPtrOutput)
 }
 
 // Username of the account that created the service.
@@ -369,6 +407,12 @@ func (o LookupContainerRuntimePolicyResultOutput) BlockedVolumes() pulumi.String
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.BlockedVolumes }).(pulumi.StringArrayOutput)
 }
 
+func (o LookupContainerRuntimePolicyResultOutput) ContainerExec() GetContainerRuntimePolicyContainerExecPtrOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) *GetContainerRuntimePolicyContainerExec {
+		return v.ContainerExec
+	}).(GetContainerRuntimePolicyContainerExecPtrOutput)
+}
+
 // List of processes that will be allowed.
 func (o LookupContainerRuntimePolicyResultOutput) ContainerExecAllowedProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.ContainerExecAllowedProcesses }).(pulumi.StringArrayOutput)
@@ -424,6 +468,10 @@ func (o LookupContainerRuntimePolicyResultOutput) ExecLockdownWhiteLists() pulum
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.ExecLockdownWhiteLists }).(pulumi.StringArrayOutput)
 }
 
+func (o LookupContainerRuntimePolicyResultOutput) FileBlock() GetContainerRuntimePolicyFileBlockPtrOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) *GetContainerRuntimePolicyFileBlock { return v.FileBlock }).(GetContainerRuntimePolicyFileBlockPtrOutput)
+}
+
 // Configuration for file integrity monitoring.
 func (o LookupContainerRuntimePolicyResultOutput) FileIntegrityMonitorings() GetContainerRuntimePolicyFileIntegrityMonitoringArrayOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []GetContainerRuntimePolicyFileIntegrityMonitoring {
@@ -439,6 +487,13 @@ func (o LookupContainerRuntimePolicyResultOutput) ForkGuardProcessLimit() pulumi
 // The provider-assigned unique ID for this managed resource.
 func (o LookupContainerRuntimePolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Container privileges configuration.
+func (o LookupContainerRuntimePolicyResultOutput) LimitContainerPrivileges() GetContainerRuntimePolicyLimitContainerPrivilegeArrayOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []GetContainerRuntimePolicyLimitContainerPrivilege {
+		return v.LimitContainerPrivileges
+	}).(GetContainerRuntimePolicyLimitContainerPrivilegeArrayOutput)
 }
 
 // If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
@@ -463,9 +518,26 @@ func (o LookupContainerRuntimePolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupContainerRuntimePolicyResultOutput) PortBlock() GetContainerRuntimePolicyPortBlockPtrOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) *GetContainerRuntimePolicyPortBlock { return v.PortBlock }).(GetContainerRuntimePolicyPortBlockPtrOutput)
+}
+
+func (o LookupContainerRuntimePolicyResultOutput) ReadonlyFiles() GetContainerRuntimePolicyReadonlyFilesPtrOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) *GetContainerRuntimePolicyReadonlyFiles {
+		return v.ReadonlyFiles
+	}).(GetContainerRuntimePolicyReadonlyFilesPtrOutput)
+}
+
 // List of files and directories to be restricted as read-only
 func (o LookupContainerRuntimePolicyResultOutput) ReadonlyFilesAndDirectories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []string { return v.ReadonlyFilesAndDirectories }).(pulumi.StringArrayOutput)
+}
+
+// Restricted volumes configuration.
+func (o LookupContainerRuntimePolicyResultOutput) RestrictedVolumes() GetContainerRuntimePolicyRestrictedVolumeArrayOutput {
+	return o.ApplyT(func(v LookupContainerRuntimePolicyResult) []GetContainerRuntimePolicyRestrictedVolume {
+		return v.RestrictedVolumes
+	}).(GetContainerRuntimePolicyRestrictedVolumeArrayOutput)
 }
 
 // List of IPs/ CIDRs that will be allowed

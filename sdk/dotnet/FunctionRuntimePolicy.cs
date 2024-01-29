@@ -10,60 +10,21 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aquasec = Pulumiverse.Aquasec;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var functionRuntimePolicy = new Aquasec.FunctionRuntimePolicy("functionRuntimePolicy", new()
-    ///     {
-    ///         ApplicationScopes = new[]
-    ///         {
-    ///             "Global",
-    ///         },
-    ///         BlockMaliciousExecutables = true,
-    ///         BlockMaliciousExecutablesAllowedProcesses = new[]
-    ///         {
-    ///             "proc1",
-    ///             "proc2",
-    ///         },
-    ///         BlockRunningExecutablesInTmpFolder = true,
-    ///         BlockedExecutables = new[]
-    ///         {
-    ///             "exe1",
-    ///             "exe2",
-    ///         },
-    ///         Description = "function_runtime_policy",
-    ///         Enabled = true,
-    ///         Enforce = false,
-    ///         ScopeVariables = new[]
-    ///         {
-    ///             new Aquasec.Inputs.FunctionRuntimePolicyScopeVariableArgs
-    ///             {
-    ///                 Attribute = "kubernetes.cluster",
-    ///                 Value = "default",
-    ///             },
-    ///             new Aquasec.Inputs.FunctionRuntimePolicyScopeVariableArgs
-    ///             {
-    ///                 Attribute = "kubernetes.label",
-    ///                 Name = "app",
-    ///                 Value = "aqua",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [AquasecResourceType("aquasec:index/functionRuntimePolicy:FunctionRuntimePolicy")]
     public partial class FunctionRuntimePolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        [Output("allowedExecutables")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyAllowedExecutable>> AllowedExecutables { get; private set; } = null!;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        [Output("allowedRegistries")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyAllowedRegistry>> AllowedRegistries { get; private set; } = null!;
+
         /// <summary>
         /// Indicates the application scope of the service.
         /// </summary>
@@ -71,34 +32,55 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> ApplicationScopes { get; private set; } = null!;
 
         /// <summary>
+        /// Detects brute force login attempts
+        /// </summary>
+        [Output("auditBruteForceLogin")]
+        public Output<bool?> AuditBruteForceLogin { get; private set; } = null!;
+
+        [Output("auditing")]
+        public Output<Outputs.FunctionRuntimePolicyAuditing> Auditing { get; private set; } = null!;
+
+        /// <summary>
         /// Username of the account that created the service.
         /// </summary>
         [Output("author")]
         public Output<string> Author { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-        /// </summary>
-        [Output("blockMaliciousExecutables")]
-        public Output<bool?> BlockMaliciousExecutables { get; private set; } = null!;
+        [Output("blacklistedOsUsers")]
+        public Output<Outputs.FunctionRuntimePolicyBlacklistedOsUsers> BlacklistedOsUsers { get; private set; } = null!;
+
+        [Output("blockContainerExec")]
+        public Output<bool?> BlockContainerExec { get; private set; } = null!;
+
+        [Output("blockDisallowedImages")]
+        public Output<bool?> BlockDisallowedImages { get; private set; } = null!;
+
+        [Output("blockFilelessExec")]
+        public Output<bool?> BlockFilelessExec { get; private set; } = null!;
+
+        [Output("blockNonCompliantWorkloads")]
+        public Output<bool?> BlockNonCompliantWorkloads { get; private set; } = null!;
+
+        [Output("blockNonK8sContainers")]
+        public Output<bool?> BlockNonK8sContainers { get; private set; } = null!;
 
         /// <summary>
-        /// List of processes that will be allowed
+        /// Bypass scope configuration.
         /// </summary>
-        [Output("blockMaliciousExecutablesAllowedProcesses")]
-        public Output<ImmutableArray<string>> BlockMaliciousExecutablesAllowedProcesses { get; private set; } = null!;
+        [Output("bypassScopes")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyBypassScope>> BypassScopes { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-        /// </summary>
-        [Output("blockRunningExecutablesInTmpFolder")]
-        public Output<bool?> BlockRunningExecutablesInTmpFolder { get; private set; } = null!;
+        [Output("containerExec")]
+        public Output<Outputs.FunctionRuntimePolicyContainerExec> ContainerExec { get; private set; } = null!;
 
-        /// <summary>
-        /// List of executables that are prevented from running in containers.
-        /// </summary>
-        [Output("blockedExecutables")]
-        public Output<ImmutableArray<string>> BlockedExecutables { get; private set; } = null!;
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        [Output("cve")]
+        public Output<string?> Cve { get; private set; } = null!;
+
+        [Output("defaultSecurityProfile")]
+        public Output<string?> DefaultSecurityProfile { get; private set; } = null!;
 
         /// <summary>
         /// The description of the function runtime policy
@@ -106,8 +88,29 @@ namespace Pulumiverse.Aquasec
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("digest")]
+        public Output<string?> Digest { get; private set; } = null!;
+
         /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Drift prevention configuration.
+        /// </summary>
+        [Output("driftPreventions")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyDriftPrevention>> DriftPreventions { get; private set; } = null!;
+
+        [Output("enableCryptoMiningDns")]
+        public Output<bool?> EnableCryptoMiningDns { get; private set; } = null!;
+
+        [Output("enableForkGuard")]
+        public Output<bool?> EnableForkGuard { get; private set; } = null!;
+
+        [Output("enableIpReputation")]
+        public Output<bool?> EnableIpReputation { get; private set; } = null!;
+
+        [Output("enablePortScanProtection")]
+        public Output<bool?> EnablePortScanProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -117,6 +120,42 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("enforce")]
         public Output<bool?> Enforce { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+        /// </summary>
+        [Output("enforceAfterDays")]
+        public Output<int?> EnforceAfterDays { get; private set; } = null!;
+
+        [Output("enforceSchedulerAddedOn")]
+        public Output<int?> EnforceSchedulerAddedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// List of excluded application scopes.
+        /// </summary>
+        [Output("excludeApplicationScopes")]
+        public Output<ImmutableArray<string>> ExcludeApplicationScopes { get; private set; } = null!;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        [Output("executableBlacklists")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyExecutableBlacklist>> ExecutableBlacklists { get; private set; } = null!;
+
+        [Output("failedKubernetesChecks")]
+        public Output<Outputs.FunctionRuntimePolicyFailedKubernetesChecks> FailedKubernetesChecks { get; private set; } = null!;
+
+        [Output("fileBlock")]
+        public Output<Outputs.FunctionRuntimePolicyFileBlock> FileBlock { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for file integrity monitoring.
+        /// </summary>
+        [Output("fileIntegrityMonitorings")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyFileIntegrityMonitoring>> FileIntegrityMonitorings { get; private set; } = null!;
+
+        [Output("forkGuardProcessLimit")]
+        public Output<int?> ForkGuardProcessLimit { get; private set; } = null!;
 
         /// <summary>
         /// Honeypot User ID (Access Key)
@@ -142,11 +181,92 @@ namespace Pulumiverse.Aquasec
         [Output("honeypotServerlessAppName")]
         public Output<string?> HoneypotServerlessAppName { get; private set; } = null!;
 
+        [Output("imageName")]
+        public Output<string?> ImageName { get; private set; } = null!;
+
+        [Output("isAuditChecked")]
+        public Output<bool?> IsAuditChecked { get; private set; } = null!;
+
+        [Output("isAutoGenerated")]
+        public Output<bool?> IsAutoGenerated { get; private set; } = null!;
+
+        [Output("isOotbPolicy")]
+        public Output<bool?> IsOotbPolicy { get; private set; } = null!;
+
+        [Output("lastupdate")]
+        public Output<int> Lastupdate { get; private set; } = null!;
+
         /// <summary>
-        /// Name of the function runtime policy
+        /// Container privileges configuration.
+        /// </summary>
+        [Output("limitContainerPrivileges")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyLimitContainerPrivilege>> LimitContainerPrivileges { get; private set; } = null!;
+
+        [Output("linuxCapabilities")]
+        public Output<Outputs.FunctionRuntimePolicyLinuxCapabilities> LinuxCapabilities { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Output("malwareScanOptions")]
+        public Output<Outputs.FunctionRuntimePolicyMalwareScanOptions?> MalwareScanOptions { get; private set; } = null!;
+
+        /// <summary>
+        /// Name assigned to the attribute.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("noNewPrivileges")]
+        public Output<bool?> NoNewPrivileges { get; private set; } = null!;
+
+        [Output("onlyRegisteredImages")]
+        public Output<bool?> OnlyRegisteredImages { get; private set; } = null!;
+
+        [Output("packageBlock")]
+        public Output<Outputs.FunctionRuntimePolicyPackageBlock> PackageBlock { get; private set; } = null!;
+
+        [Output("permission")]
+        public Output<string?> Permission { get; private set; } = null!;
+
+        [Output("portBlock")]
+        public Output<Outputs.FunctionRuntimePolicyPortBlock> PortBlock { get; private set; } = null!;
+
+        [Output("readonlyFiles")]
+        public Output<Outputs.FunctionRuntimePolicyReadonlyFiles> ReadonlyFiles { get; private set; } = null!;
+
+        [Output("readonlyRegistry")]
+        public Output<Outputs.FunctionRuntimePolicyReadonlyRegistry> ReadonlyRegistry { get; private set; } = null!;
+
+        [Output("registry")]
+        public Output<string?> Registry { get; private set; } = null!;
+
+        [Output("registryAccessMonitoring")]
+        public Output<Outputs.FunctionRuntimePolicyRegistryAccessMonitoring> RegistryAccessMonitoring { get; private set; } = null!;
+
+        [Output("repoName")]
+        public Output<string?> RepoName { get; private set; } = null!;
+
+        [Output("resourceName")]
+        public Output<string?> ResourceName { get; private set; } = null!;
+
+        [Output("resourceType")]
+        public Output<string?> ResourceType { get; private set; } = null!;
+
+        /// <summary>
+        /// Restricted volumes configuration.
+        /// </summary>
+        [Output("restrictedVolumes")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyRestrictedVolume>> RestrictedVolumes { get; private set; } = null!;
+
+        [Output("reverseShell")]
+        public Output<Outputs.FunctionRuntimePolicyReverseShell> ReverseShell { get; private set; } = null!;
+
+        [Output("runtimeMode")]
+        public Output<int?> RuntimeMode { get; private set; } = null!;
+
+        [Output("runtimeType")]
+        public Output<string?> RuntimeType { get; private set; } = null!;
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -159,6 +279,33 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("scopeVariables")]
         public Output<ImmutableArray<Outputs.FunctionRuntimePolicyScopeVariable>> ScopeVariables { get; private set; } = null!;
+
+        /// <summary>
+        /// Scope configuration.
+        /// </summary>
+        [Output("scopes")]
+        public Output<ImmutableArray<Outputs.FunctionRuntimePolicyScope>> Scopes { get; private set; } = null!;
+
+        [Output("systemIntegrityProtection")]
+        public Output<Outputs.FunctionRuntimePolicySystemIntegrityProtection> SystemIntegrityProtection { get; private set; } = null!;
+
+        [Output("tripwire")]
+        public Output<Outputs.FunctionRuntimePolicyTripwire> Tripwire { get; private set; } = null!;
+
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
+
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
+
+        [Output("version")]
+        public Output<string?> Version { get; private set; } = null!;
+
+        [Output("vpatchVersion")]
+        public Output<string?> VpatchVersion { get; private set; } = null!;
+
+        [Output("whitelistedOsUsers")]
+        public Output<Outputs.FunctionRuntimePolicyWhitelistedOsUsers> WhitelistedOsUsers { get; private set; } = null!;
 
 
         /// <summary>
@@ -211,6 +358,30 @@ namespace Pulumiverse.Aquasec
 
     public sealed class FunctionRuntimePolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedExecutables")]
+        private InputList<Inputs.FunctionRuntimePolicyAllowedExecutableArgs>? _allowedExecutables;
+
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyAllowedExecutableArgs> AllowedExecutables
+        {
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.FunctionRuntimePolicyAllowedExecutableArgs>());
+            set => _allowedExecutables = value;
+        }
+
+        [Input("allowedRegistries")]
+        private InputList<Inputs.FunctionRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyAllowedRegistryArgs> AllowedRegistries
+        {
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.FunctionRuntimePolicyAllowedRegistryArgs>());
+            set => _allowedRegistries = value;
+        }
+
         [Input("applicationScopes")]
         private InputList<string>? _applicationScopes;
 
@@ -224,40 +395,61 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// If true, prevent creation of malicious executables in functions during their runtime post invocation.
+        /// Detects brute force login attempts
         /// </summary>
-        [Input("blockMaliciousExecutables")]
-        public Input<bool>? BlockMaliciousExecutables { get; set; }
+        [Input("auditBruteForceLogin")]
+        public Input<bool>? AuditBruteForceLogin { get; set; }
 
-        [Input("blockMaliciousExecutablesAllowedProcesses")]
-        private InputList<string>? _blockMaliciousExecutablesAllowedProcesses;
+        [Input("auditing")]
+        public Input<Inputs.FunctionRuntimePolicyAuditingArgs>? Auditing { get; set; }
 
         /// <summary>
-        /// List of processes that will be allowed
+        /// Username of the account that created the service.
         /// </summary>
-        public InputList<string> BlockMaliciousExecutablesAllowedProcesses
+        [Input("author")]
+        public Input<string>? Author { get; set; }
+
+        [Input("blacklistedOsUsers")]
+        public Input<Inputs.FunctionRuntimePolicyBlacklistedOsUsersArgs>? BlacklistedOsUsers { get; set; }
+
+        [Input("blockContainerExec")]
+        public Input<bool>? BlockContainerExec { get; set; }
+
+        [Input("blockDisallowedImages")]
+        public Input<bool>? BlockDisallowedImages { get; set; }
+
+        [Input("blockFilelessExec")]
+        public Input<bool>? BlockFilelessExec { get; set; }
+
+        [Input("blockNonCompliantWorkloads")]
+        public Input<bool>? BlockNonCompliantWorkloads { get; set; }
+
+        [Input("blockNonK8sContainers")]
+        public Input<bool>? BlockNonK8sContainers { get; set; }
+
+        [Input("bypassScopes")]
+        private InputList<Inputs.FunctionRuntimePolicyBypassScopeArgs>? _bypassScopes;
+
+        /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyBypassScopeArgs> BypassScopes
         {
-            get => _blockMaliciousExecutablesAllowedProcesses ?? (_blockMaliciousExecutablesAllowedProcesses = new InputList<string>());
-            set => _blockMaliciousExecutablesAllowedProcesses = value;
+            get => _bypassScopes ?? (_bypassScopes = new InputList<Inputs.FunctionRuntimePolicyBypassScopeArgs>());
+            set => _bypassScopes = value;
         }
 
-        /// <summary>
-        /// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-        /// </summary>
-        [Input("blockRunningExecutablesInTmpFolder")]
-        public Input<bool>? BlockRunningExecutablesInTmpFolder { get; set; }
+        [Input("containerExec")]
+        public Input<Inputs.FunctionRuntimePolicyContainerExecArgs>? ContainerExec { get; set; }
 
-        [Input("blockedExecutables")]
-        private InputList<string>? _blockedExecutables;
+        [Input("created")]
+        public Input<string>? Created { get; set; }
 
-        /// <summary>
-        /// List of executables that are prevented from running in containers.
-        /// </summary>
-        public InputList<string> BlockedExecutables
-        {
-            get => _blockedExecutables ?? (_blockedExecutables = new InputList<string>());
-            set => _blockedExecutables = value;
-        }
+        [Input("cve")]
+        public Input<string>? Cve { get; set; }
+
+        [Input("defaultSecurityProfile")]
+        public Input<string>? DefaultSecurityProfile { get; set; }
 
         /// <summary>
         /// The description of the function runtime policy
@@ -265,8 +457,35 @@ namespace Pulumiverse.Aquasec
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("driftPreventions")]
+        private InputList<Inputs.FunctionRuntimePolicyDriftPreventionArgs>? _driftPreventions;
+
         /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Drift prevention configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyDriftPreventionArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.FunctionRuntimePolicyDriftPreventionArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("enableCryptoMiningDns")]
+        public Input<bool>? EnableCryptoMiningDns { get; set; }
+
+        [Input("enableForkGuard")]
+        public Input<bool>? EnableForkGuard { get; set; }
+
+        [Input("enableIpReputation")]
+        public Input<bool>? EnableIpReputation { get; set; }
+
+        [Input("enablePortScanProtection")]
+        public Input<bool>? EnablePortScanProtection { get; set; }
+
+        /// <summary>
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -276,6 +495,60 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("enforce")]
         public Input<bool>? Enforce { get; set; }
+
+        /// <summary>
+        /// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+        /// </summary>
+        [Input("enforceAfterDays")]
+        public Input<int>? EnforceAfterDays { get; set; }
+
+        [Input("enforceSchedulerAddedOn")]
+        public Input<int>? EnforceSchedulerAddedOn { get; set; }
+
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
+
+        /// <summary>
+        /// List of excluded application scopes.
+        /// </summary>
+        public InputList<string> ExcludeApplicationScopes
+        {
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
+        }
+
+        [Input("executableBlacklists")]
+        private InputList<Inputs.FunctionRuntimePolicyExecutableBlacklistArgs>? _executableBlacklists;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyExecutableBlacklistArgs> ExecutableBlacklists
+        {
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.FunctionRuntimePolicyExecutableBlacklistArgs>());
+            set => _executableBlacklists = value;
+        }
+
+        [Input("failedKubernetesChecks")]
+        public Input<Inputs.FunctionRuntimePolicyFailedKubernetesChecksArgs>? FailedKubernetesChecks { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.FunctionRuntimePolicyFileBlockArgs>? FileBlock { get; set; }
+
+        [Input("fileIntegrityMonitorings")]
+        private InputList<Inputs.FunctionRuntimePolicyFileIntegrityMonitoringArgs>? _fileIntegrityMonitorings;
+
+        /// <summary>
+        /// Configuration for file integrity monitoring.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyFileIntegrityMonitoringArgs> FileIntegrityMonitorings
+        {
+            get => _fileIntegrityMonitorings ?? (_fileIntegrityMonitorings = new InputList<Inputs.FunctionRuntimePolicyFileIntegrityMonitoringArgs>());
+            set => _fileIntegrityMonitorings = value;
+        }
+
+        [Input("forkGuardProcessLimit")]
+        public Input<int>? ForkGuardProcessLimit { get; set; }
 
         /// <summary>
         /// Honeypot User ID (Access Key)
@@ -317,11 +590,104 @@ namespace Pulumiverse.Aquasec
         [Input("honeypotServerlessAppName")]
         public Input<string>? HoneypotServerlessAppName { get; set; }
 
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        [Input("isAuditChecked")]
+        public Input<bool>? IsAuditChecked { get; set; }
+
+        [Input("isAutoGenerated")]
+        public Input<bool>? IsAutoGenerated { get; set; }
+
+        [Input("isOotbPolicy")]
+        public Input<bool>? IsOotbPolicy { get; set; }
+
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.FunctionRuntimePolicyLimitContainerPrivilegeArgs>? _limitContainerPrivileges;
+
         /// <summary>
-        /// Name of the function runtime policy
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyLimitContainerPrivilegeArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.FunctionRuntimePolicyLimitContainerPrivilegeArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
+        [Input("linuxCapabilities")]
+        public Input<Inputs.FunctionRuntimePolicyLinuxCapabilitiesArgs>? LinuxCapabilities { get; set; }
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.FunctionRuntimePolicyMalwareScanOptionsArgs>? MalwareScanOptions { get; set; }
+
+        /// <summary>
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("noNewPrivileges")]
+        public Input<bool>? NoNewPrivileges { get; set; }
+
+        [Input("onlyRegisteredImages")]
+        public Input<bool>? OnlyRegisteredImages { get; set; }
+
+        [Input("packageBlock")]
+        public Input<Inputs.FunctionRuntimePolicyPackageBlockArgs>? PackageBlock { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("portBlock")]
+        public Input<Inputs.FunctionRuntimePolicyPortBlockArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.FunctionRuntimePolicyReadonlyFilesArgs>? ReadonlyFiles { get; set; }
+
+        [Input("readonlyRegistry")]
+        public Input<Inputs.FunctionRuntimePolicyReadonlyRegistryArgs>? ReadonlyRegistry { get; set; }
+
+        [Input("registry")]
+        public Input<string>? Registry { get; set; }
+
+        [Input("registryAccessMonitoring")]
+        public Input<Inputs.FunctionRuntimePolicyRegistryAccessMonitoringArgs>? RegistryAccessMonitoring { get; set; }
+
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.FunctionRuntimePolicyRestrictedVolumeArgs>? _restrictedVolumes;
+
+        /// <summary>
+        /// Restricted volumes configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyRestrictedVolumeArgs> RestrictedVolumes
+        {
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.FunctionRuntimePolicyRestrictedVolumeArgs>());
+            set => _restrictedVolumes = value;
+        }
+
+        [Input("reverseShell")]
+        public Input<Inputs.FunctionRuntimePolicyReverseShellArgs>? ReverseShell { get; set; }
+
+        [Input("runtimeMode")]
+        public Input<int>? RuntimeMode { get; set; }
+
+        [Input("runtimeType")]
+        public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -341,6 +707,39 @@ namespace Pulumiverse.Aquasec
             set => _scopeVariables = value;
         }
 
+        [Input("scopes")]
+        private InputList<Inputs.FunctionRuntimePolicyScopeArgs>? _scopes;
+
+        /// <summary>
+        /// Scope configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyScopeArgs> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<Inputs.FunctionRuntimePolicyScopeArgs>());
+            set => _scopes = value;
+        }
+
+        [Input("systemIntegrityProtection")]
+        public Input<Inputs.FunctionRuntimePolicySystemIntegrityProtectionArgs>? SystemIntegrityProtection { get; set; }
+
+        [Input("tripwire")]
+        public Input<Inputs.FunctionRuntimePolicyTripwireArgs>? Tripwire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("vpatchVersion")]
+        public Input<string>? VpatchVersion { get; set; }
+
+        [Input("whitelistedOsUsers")]
+        public Input<Inputs.FunctionRuntimePolicyWhitelistedOsUsersArgs>? WhitelistedOsUsers { get; set; }
+
         public FunctionRuntimePolicyArgs()
         {
         }
@@ -349,6 +748,30 @@ namespace Pulumiverse.Aquasec
 
     public sealed class FunctionRuntimePolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedExecutables")]
+        private InputList<Inputs.FunctionRuntimePolicyAllowedExecutableGetArgs>? _allowedExecutables;
+
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyAllowedExecutableGetArgs> AllowedExecutables
+        {
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.FunctionRuntimePolicyAllowedExecutableGetArgs>());
+            set => _allowedExecutables = value;
+        }
+
+        [Input("allowedRegistries")]
+        private InputList<Inputs.FunctionRuntimePolicyAllowedRegistryGetArgs>? _allowedRegistries;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyAllowedRegistryGetArgs> AllowedRegistries
+        {
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.FunctionRuntimePolicyAllowedRegistryGetArgs>());
+            set => _allowedRegistries = value;
+        }
+
         [Input("applicationScopes")]
         private InputList<string>? _applicationScopes;
 
@@ -362,46 +785,61 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
+        /// Detects brute force login attempts
+        /// </summary>
+        [Input("auditBruteForceLogin")]
+        public Input<bool>? AuditBruteForceLogin { get; set; }
+
+        [Input("auditing")]
+        public Input<Inputs.FunctionRuntimePolicyAuditingGetArgs>? Auditing { get; set; }
+
+        /// <summary>
         /// Username of the account that created the service.
         /// </summary>
         [Input("author")]
         public Input<string>? Author { get; set; }
 
-        /// <summary>
-        /// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-        /// </summary>
-        [Input("blockMaliciousExecutables")]
-        public Input<bool>? BlockMaliciousExecutables { get; set; }
+        [Input("blacklistedOsUsers")]
+        public Input<Inputs.FunctionRuntimePolicyBlacklistedOsUsersGetArgs>? BlacklistedOsUsers { get; set; }
 
-        [Input("blockMaliciousExecutablesAllowedProcesses")]
-        private InputList<string>? _blockMaliciousExecutablesAllowedProcesses;
+        [Input("blockContainerExec")]
+        public Input<bool>? BlockContainerExec { get; set; }
+
+        [Input("blockDisallowedImages")]
+        public Input<bool>? BlockDisallowedImages { get; set; }
+
+        [Input("blockFilelessExec")]
+        public Input<bool>? BlockFilelessExec { get; set; }
+
+        [Input("blockNonCompliantWorkloads")]
+        public Input<bool>? BlockNonCompliantWorkloads { get; set; }
+
+        [Input("blockNonK8sContainers")]
+        public Input<bool>? BlockNonK8sContainers { get; set; }
+
+        [Input("bypassScopes")]
+        private InputList<Inputs.FunctionRuntimePolicyBypassScopeGetArgs>? _bypassScopes;
 
         /// <summary>
-        /// List of processes that will be allowed
+        /// Bypass scope configuration.
         /// </summary>
-        public InputList<string> BlockMaliciousExecutablesAllowedProcesses
+        public InputList<Inputs.FunctionRuntimePolicyBypassScopeGetArgs> BypassScopes
         {
-            get => _blockMaliciousExecutablesAllowedProcesses ?? (_blockMaliciousExecutablesAllowedProcesses = new InputList<string>());
-            set => _blockMaliciousExecutablesAllowedProcesses = value;
+            get => _bypassScopes ?? (_bypassScopes = new InputList<Inputs.FunctionRuntimePolicyBypassScopeGetArgs>());
+            set => _bypassScopes = value;
         }
 
-        /// <summary>
-        /// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-        /// </summary>
-        [Input("blockRunningExecutablesInTmpFolder")]
-        public Input<bool>? BlockRunningExecutablesInTmpFolder { get; set; }
+        [Input("containerExec")]
+        public Input<Inputs.FunctionRuntimePolicyContainerExecGetArgs>? ContainerExec { get; set; }
 
-        [Input("blockedExecutables")]
-        private InputList<string>? _blockedExecutables;
+        [Input("created")]
+        public Input<string>? Created { get; set; }
 
-        /// <summary>
-        /// List of executables that are prevented from running in containers.
-        /// </summary>
-        public InputList<string> BlockedExecutables
-        {
-            get => _blockedExecutables ?? (_blockedExecutables = new InputList<string>());
-            set => _blockedExecutables = value;
-        }
+        [Input("cve")]
+        public Input<string>? Cve { get; set; }
+
+        [Input("defaultSecurityProfile")]
+        public Input<string>? DefaultSecurityProfile { get; set; }
 
         /// <summary>
         /// The description of the function runtime policy
@@ -409,8 +847,35 @@ namespace Pulumiverse.Aquasec
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("driftPreventions")]
+        private InputList<Inputs.FunctionRuntimePolicyDriftPreventionGetArgs>? _driftPreventions;
+
         /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Drift prevention configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyDriftPreventionGetArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.FunctionRuntimePolicyDriftPreventionGetArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("enableCryptoMiningDns")]
+        public Input<bool>? EnableCryptoMiningDns { get; set; }
+
+        [Input("enableForkGuard")]
+        public Input<bool>? EnableForkGuard { get; set; }
+
+        [Input("enableIpReputation")]
+        public Input<bool>? EnableIpReputation { get; set; }
+
+        [Input("enablePortScanProtection")]
+        public Input<bool>? EnablePortScanProtection { get; set; }
+
+        /// <summary>
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -420,6 +885,60 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("enforce")]
         public Input<bool>? Enforce { get; set; }
+
+        /// <summary>
+        /// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+        /// </summary>
+        [Input("enforceAfterDays")]
+        public Input<int>? EnforceAfterDays { get; set; }
+
+        [Input("enforceSchedulerAddedOn")]
+        public Input<int>? EnforceSchedulerAddedOn { get; set; }
+
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
+
+        /// <summary>
+        /// List of excluded application scopes.
+        /// </summary>
+        public InputList<string> ExcludeApplicationScopes
+        {
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
+        }
+
+        [Input("executableBlacklists")]
+        private InputList<Inputs.FunctionRuntimePolicyExecutableBlacklistGetArgs>? _executableBlacklists;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyExecutableBlacklistGetArgs> ExecutableBlacklists
+        {
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.FunctionRuntimePolicyExecutableBlacklistGetArgs>());
+            set => _executableBlacklists = value;
+        }
+
+        [Input("failedKubernetesChecks")]
+        public Input<Inputs.FunctionRuntimePolicyFailedKubernetesChecksGetArgs>? FailedKubernetesChecks { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.FunctionRuntimePolicyFileBlockGetArgs>? FileBlock { get; set; }
+
+        [Input("fileIntegrityMonitorings")]
+        private InputList<Inputs.FunctionRuntimePolicyFileIntegrityMonitoringGetArgs>? _fileIntegrityMonitorings;
+
+        /// <summary>
+        /// Configuration for file integrity monitoring.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyFileIntegrityMonitoringGetArgs> FileIntegrityMonitorings
+        {
+            get => _fileIntegrityMonitorings ?? (_fileIntegrityMonitorings = new InputList<Inputs.FunctionRuntimePolicyFileIntegrityMonitoringGetArgs>());
+            set => _fileIntegrityMonitorings = value;
+        }
+
+        [Input("forkGuardProcessLimit")]
+        public Input<int>? ForkGuardProcessLimit { get; set; }
 
         /// <summary>
         /// Honeypot User ID (Access Key)
@@ -461,11 +980,104 @@ namespace Pulumiverse.Aquasec
         [Input("honeypotServerlessAppName")]
         public Input<string>? HoneypotServerlessAppName { get; set; }
 
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        [Input("isAuditChecked")]
+        public Input<bool>? IsAuditChecked { get; set; }
+
+        [Input("isAutoGenerated")]
+        public Input<bool>? IsAutoGenerated { get; set; }
+
+        [Input("isOotbPolicy")]
+        public Input<bool>? IsOotbPolicy { get; set; }
+
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.FunctionRuntimePolicyLimitContainerPrivilegeGetArgs>? _limitContainerPrivileges;
+
         /// <summary>
-        /// Name of the function runtime policy
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyLimitContainerPrivilegeGetArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.FunctionRuntimePolicyLimitContainerPrivilegeGetArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
+        [Input("linuxCapabilities")]
+        public Input<Inputs.FunctionRuntimePolicyLinuxCapabilitiesGetArgs>? LinuxCapabilities { get; set; }
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        [Input("malwareScanOptions")]
+        public Input<Inputs.FunctionRuntimePolicyMalwareScanOptionsGetArgs>? MalwareScanOptions { get; set; }
+
+        /// <summary>
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("noNewPrivileges")]
+        public Input<bool>? NoNewPrivileges { get; set; }
+
+        [Input("onlyRegisteredImages")]
+        public Input<bool>? OnlyRegisteredImages { get; set; }
+
+        [Input("packageBlock")]
+        public Input<Inputs.FunctionRuntimePolicyPackageBlockGetArgs>? PackageBlock { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("portBlock")]
+        public Input<Inputs.FunctionRuntimePolicyPortBlockGetArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.FunctionRuntimePolicyReadonlyFilesGetArgs>? ReadonlyFiles { get; set; }
+
+        [Input("readonlyRegistry")]
+        public Input<Inputs.FunctionRuntimePolicyReadonlyRegistryGetArgs>? ReadonlyRegistry { get; set; }
+
+        [Input("registry")]
+        public Input<string>? Registry { get; set; }
+
+        [Input("registryAccessMonitoring")]
+        public Input<Inputs.FunctionRuntimePolicyRegistryAccessMonitoringGetArgs>? RegistryAccessMonitoring { get; set; }
+
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.FunctionRuntimePolicyRestrictedVolumeGetArgs>? _restrictedVolumes;
+
+        /// <summary>
+        /// Restricted volumes configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyRestrictedVolumeGetArgs> RestrictedVolumes
+        {
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.FunctionRuntimePolicyRestrictedVolumeGetArgs>());
+            set => _restrictedVolumes = value;
+        }
+
+        [Input("reverseShell")]
+        public Input<Inputs.FunctionRuntimePolicyReverseShellGetArgs>? ReverseShell { get; set; }
+
+        [Input("runtimeMode")]
+        public Input<int>? RuntimeMode { get; set; }
+
+        [Input("runtimeType")]
+        public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -484,6 +1096,39 @@ namespace Pulumiverse.Aquasec
             get => _scopeVariables ?? (_scopeVariables = new InputList<Inputs.FunctionRuntimePolicyScopeVariableGetArgs>());
             set => _scopeVariables = value;
         }
+
+        [Input("scopes")]
+        private InputList<Inputs.FunctionRuntimePolicyScopeGetArgs>? _scopes;
+
+        /// <summary>
+        /// Scope configuration.
+        /// </summary>
+        public InputList<Inputs.FunctionRuntimePolicyScopeGetArgs> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<Inputs.FunctionRuntimePolicyScopeGetArgs>());
+            set => _scopes = value;
+        }
+
+        [Input("systemIntegrityProtection")]
+        public Input<Inputs.FunctionRuntimePolicySystemIntegrityProtectionGetArgs>? SystemIntegrityProtection { get; set; }
+
+        [Input("tripwire")]
+        public Input<Inputs.FunctionRuntimePolicyTripwireGetArgs>? Tripwire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("vpatchVersion")]
+        public Input<string>? VpatchVersion { get; set; }
+
+        [Input("whitelistedOsUsers")]
+        public Input<Inputs.FunctionRuntimePolicyWhitelistedOsUsersGetArgs>? WhitelistedOsUsers { get; set; }
 
         public FunctionRuntimePolicyState()
         {

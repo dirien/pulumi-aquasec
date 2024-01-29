@@ -177,6 +177,7 @@ class RoleMapping(pulumi.CustomResource):
         role_mapping_role_mapping = aquasec.RoleMapping("roleMappingRoleMapping", saml=aquasec.RoleMappingSamlArgs(
             role_mapping={
                 "Administrator": "group1",
+                "Scanner": "group2|group3",
             },
         ))
         pulumi.export("roleMapping", role_mapping_role_mapping)
@@ -205,6 +206,7 @@ class RoleMapping(pulumi.CustomResource):
         role_mapping_role_mapping = aquasec.RoleMapping("roleMappingRoleMapping", saml=aquasec.RoleMappingSamlArgs(
             role_mapping={
                 "Administrator": "group1",
+                "Scanner": "group2|group3",
             },
         ))
         pulumi.export("roleMapping", role_mapping_role_mapping)

@@ -318,7 +318,7 @@ class GetFunctionAssurancePolicyResult:
     @pulumi.getter(name="blacklistedLicensesEnabled")
     def blacklisted_licenses_enabled(self) -> bool:
         """
-        Lndicates if license blacklist is relevant.
+        Indicates if license blacklist is relevant.
         """
         return pulumi.get(self, "blacklisted_licenses_enabled")
 
@@ -360,7 +360,7 @@ class GetFunctionAssurancePolicyResult:
     @pulumi.getter(name="cvesBlackListEnabled")
     def cves_black_list_enabled(self) -> bool:
         """
-        Indicates if cves blacklist is relevant.
+        Indicates if CVEs blacklist is relevant.
         """
         return pulumi.get(self, "cves_black_list_enabled")
 
@@ -368,7 +368,7 @@ class GetFunctionAssurancePolicyResult:
     @pulumi.getter(name="cvesBlackLists")
     def cves_black_lists(self) -> Sequence[str]:
         """
-        List of cves blacklisted items.
+        List of CVEs blacklisted items.
         """
         return pulumi.get(self, "cves_black_lists")
 
@@ -376,7 +376,7 @@ class GetFunctionAssurancePolicyResult:
     @pulumi.getter(name="cvesWhiteListEnabled")
     def cves_white_list_enabled(self) -> bool:
         """
-        Indicates if cves whitelist is relevant.
+        Indicates if CVEs whitelist is relevant.
         """
         return pulumi.get(self, "cves_white_list_enabled")
 
@@ -428,6 +428,9 @@ class GetFunctionAssurancePolicyResult:
     @property
     @pulumi.getter(name="dockerCisEnabled")
     def docker_cis_enabled(self) -> bool:
+        """
+        Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        """
         return pulumi.get(self, "docker_cis_enabled")
 
     @property
@@ -551,6 +554,9 @@ class GetFunctionAssurancePolicyResult:
     @property
     @pulumi.getter(name="kubeCisEnabled")
     def kube_cis_enabled(self) -> bool:
+        """
+        Performs a Kubernetes CIS benchmark check for the host.
+        """
         return pulumi.get(self, "kube_cis_enabled")
 
     @property
@@ -620,7 +626,7 @@ class GetFunctionAssurancePolicyResult:
     @pulumi.getter(name="packagesBlackLists")
     def packages_black_lists(self) -> Sequence['outputs.GetFunctionAssurancePolicyPackagesBlackListResult']:
         """
-        List of backlisted images.
+        List of blacklisted images.
         """
         return pulumi.get(self, "packages_black_lists")
 

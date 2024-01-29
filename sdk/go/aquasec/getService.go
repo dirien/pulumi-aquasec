@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -24,7 +23,6 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
-	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name string `pulumi:"name"`
 }
 
@@ -99,7 +97,6 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
-	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -120,12 +117,6 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutput() LookupServiceRe
 
 func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx context.Context) LookupServiceResultOutput {
 	return o
-}
-
-func (o LookupServiceResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupServiceResult] {
-	return pulumix.Output[LookupServiceResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the application scope of the service.

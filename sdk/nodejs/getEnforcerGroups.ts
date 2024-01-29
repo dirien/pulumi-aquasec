@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * The data source `aquasec.EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -302,6 +304,8 @@ export interface GetEnforcerGroupsResult {
     readonly userAccessControl: boolean;
 }
 /**
+ * The data source `aquasec.EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
+ *
  * ## Example Usage
  *
  * ```typescript

@@ -38,7 +38,7 @@ This is the user id that should be used to make the connection. Can alternativel
 environment variable.
 """
 
-verifyTls: Optional[bool]
+verifyTls: bool
 """
 If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can
 alternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.

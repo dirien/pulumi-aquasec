@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -42,6 +41,36 @@ func NewProvider(ctx *pulumi.Context,
 		args = &ProviderArgs{}
 	}
 
+	if args.AquaUrl == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "AQUA_URL"); d != nil {
+			args.AquaUrl = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.CaCertificatePath == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "AQUA_CA_CERT_PATH"); d != nil {
+			args.CaCertificatePath = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.ConfigPath == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "AQUA_CONFIG"); d != nil {
+			args.ConfigPath = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Password == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "AQUA_PASSWORD"); d != nil {
+			args.Password = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.Username == nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "AQUA_USER"); d != nil {
+			args.Username = pulumi.StringPtr(d.(string))
+		}
+	}
+	if args.VerifyTls == nil {
+		if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "AQUA_TLS_VERIFY"); d != nil {
+			args.VerifyTls = pulumi.BoolPtr(d.(bool))
+		}
+	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
 	}
@@ -126,12 +155,6 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
-func (i *Provider) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: i.ToProviderOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ProviderOutput struct{ *pulumi.OutputState }
 
 func (ProviderOutput) ElementType() reflect.Type {
@@ -144,12 +167,6 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
-}
-
-func (o ProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*Provider] {
-	return pulumix.Output[*Provider]{
-		OutputState: o.OutputState,
-	}
 }
 
 // This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.

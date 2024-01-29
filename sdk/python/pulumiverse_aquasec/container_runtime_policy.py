@@ -16,25 +16,27 @@ __all__ = ['ContainerRuntimePolicyArgs', 'ContainerRuntimePolicy']
 @pulumi.input_type
 class ContainerRuntimePolicyArgs:
     def __init__(__self__, *,
-                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]]] = None,
+                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]]] = None,
                  application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  audit_all_network_activity: Optional[pulumi.Input[bool]] = None,
                  audit_all_processes_activity: Optional[pulumi.Input[bool]] = None,
+                 audit_brute_force_login: Optional[pulumi.Input[bool]] = None,
                  audit_full_command_arguments: Optional[pulumi.Input[bool]] = None,
+                 auditing: Optional[pulumi.Input['ContainerRuntimePolicyAuditingArgs']] = None,
+                 author: Optional[pulumi.Input[str]] = None,
+                 blacklisted_os_users: Optional[pulumi.Input['ContainerRuntimePolicyBlacklistedOsUsersArgs']] = None,
                  block_access_host_network: Optional[pulumi.Input[bool]] = None,
                  block_adding_capabilities: Optional[pulumi.Input[bool]] = None,
                  block_container_exec: Optional[pulumi.Input[bool]] = None,
                  block_cryptocurrency_mining: Optional[pulumi.Input[bool]] = None,
+                 block_disallowed_images: Optional[pulumi.Input[bool]] = None,
                  block_fileless_exec: Optional[pulumi.Input[bool]] = None,
                  block_low_port_binding: Optional[pulumi.Input[bool]] = None,
-                 block_non_compliant_images: Optional[pulumi.Input[bool]] = None,
                  block_non_compliant_workloads: Optional[pulumi.Input[bool]] = None,
                  block_non_k8s_containers: Optional[pulumi.Input[bool]] = None,
                  block_privileged_containers: Optional[pulumi.Input[bool]] = None,
-                 block_reverse_shell: Optional[pulumi.Input[bool]] = None,
                  block_root_user: Optional[pulumi.Input[bool]] = None,
-                 block_unregistered_images: Optional[pulumi.Input[bool]] = None,
                  block_use_ipc_namespace: Optional[pulumi.Input[bool]] = None,
                  block_use_pid_namespace: Optional[pulumi.Input[bool]] = None,
                  block_use_user_namespace: Optional[pulumi.Input[bool]] = None,
@@ -46,876 +48,74 @@ class ContainerRuntimePolicyArgs:
                  blocked_outbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bypass_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]]] = None,
+                 container_exec: Optional[pulumi.Input['ContainerRuntimePolicyContainerExecArgs']] = None,
                  container_exec_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 created: Optional[pulumi.Input[str]] = None,
+                 cve: Optional[pulumi.Input[str]] = None,
+                 default_security_profile: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_drift_prevention: Optional[pulumi.Input[bool]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 drift_preventions: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]]] = None,
+                 enable_crypto_mining_dns: Optional[pulumi.Input[bool]] = None,
                  enable_fork_guard: Optional[pulumi.Input[bool]] = None,
-                 enable_ip_reputation_security: Optional[pulumi.Input[bool]] = None,
-                 enable_port_scan_detection: Optional[pulumi.Input[bool]] = None,
+                 enable_ip_reputation: Optional[pulumi.Input[bool]] = None,
+                 enable_port_scan_protection: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
-                 exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enforce_scheduler_added_on: Optional[pulumi.Input[int]] = None,
+                 exclude_application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 executable_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]]] = None,
+                 failed_kubernetes_checks: Optional[pulumi.Input['ContainerRuntimePolicyFailedKubernetesChecksArgs']] = None,
+                 file_block: Optional[pulumi.Input['ContainerRuntimePolicyFileBlockArgs']] = None,
                  file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 is_audit_checked: Optional[pulumi.Input[bool]] = None,
+                 is_auto_generated: Optional[pulumi.Input[bool]] = None,
+                 is_ootb_policy: Optional[pulumi.Input[bool]] = None,
+                 lastupdate: Optional[pulumi.Input[int]] = None,
+                 limit_container_privileges: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 linux_capabilities: Optional[pulumi.Input['ContainerRuntimePolicyLinuxCapabilitiesArgs']] = None,
                  malware_scan_options: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 no_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 only_registered_images: Optional[pulumi.Input[bool]] = None,
+                 package_block: Optional[pulumi.Input['ContainerRuntimePolicyPackageBlockArgs']] = None,
+                 permission: Optional[pulumi.Input[str]] = None,
+                 port_block: Optional[pulumi.Input['ContainerRuntimePolicyPortBlockArgs']] = None,
+                 readonly_files: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyFilesArgs']] = None,
+                 readonly_registry: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyRegistryArgs']] = None,
+                 registry: Optional[pulumi.Input[str]] = None,
+                 registry_access_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyRegistryAccessMonitoringArgs']] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 restricted_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]]] = None,
+                 reverse_shell: Optional[pulumi.Input['ContainerRuntimePolicyReverseShellArgs']] = None,
+                 runtime_mode: Optional[pulumi.Input[int]] = None,
+                 runtime_type: Optional[pulumi.Input[str]] = None,
                  scope_expression: Optional[pulumi.Input[str]] = None,
-                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]] = None):
+                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]]] = None,
+                 system_integrity_protection: Optional[pulumi.Input['ContainerRuntimePolicySystemIntegrityProtectionArgs']] = None,
+                 tripwire: Optional[pulumi.Input['ContainerRuntimePolicyTripwireArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpatch_version: Optional[pulumi.Input[str]] = None,
+                 whitelisted_os_users: Optional[pulumi.Input['ContainerRuntimePolicyWhitelistedOsUsersArgs']] = None):
         """
         The set of arguments for constructing a ContainerRuntimePolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_executables: List of executables that are allowed for the user.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_registries: List of registries that allowed for running containers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]] allowed_executables: Allowed executables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]] allowed_registries: List of allowed registries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_all_network_activity: If true, all network activity will be audited.
         :param pulumi.Input[bool] audit_all_processes_activity: If true, all process activity will be audited.
-        :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
-        :param pulumi.Input[bool] block_access_host_network: If true, prevent containers from running with access to host network.
-        :param pulumi.Input[bool] block_adding_capabilities: If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
-        :param pulumi.Input[bool] block_container_exec: If true, exec into a container is prevented.
-        :param pulumi.Input[bool] block_cryptocurrency_mining: Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-        :param pulumi.Input[bool] block_fileless_exec: Detect and prevent running in-memory execution
-        :param pulumi.Input[bool] block_low_port_binding: If true, prevent containers from running with the capability to bind in port lower than 1024.
-        :param pulumi.Input[bool] block_non_compliant_images: If true, running non-compliant image in the container is prevented.
-        :param pulumi.Input[bool] block_non_compliant_workloads: If true, running containers in non-compliant pods is prevented.
-        :param pulumi.Input[bool] block_non_k8s_containers: If true, running non-kubernetes containers is prevented.
-        :param pulumi.Input[bool] block_privileged_containers: If true, prevent containers from running with privileged container capability.
-        :param pulumi.Input[bool] block_reverse_shell: If true, reverse shell is prevented.
-        :param pulumi.Input[bool] block_root_user: If true, prevent containers from running with root user.
-        :param pulumi.Input[bool] block_unregistered_images: If true, running images in the container that are not registered in Aqua is prevented.
-        :param pulumi.Input[bool] block_use_ipc_namespace: If true, prevent containers from running with the privilege to use the IPC namespace.
-        :param pulumi.Input[bool] block_use_pid_namespace: If true, prevent containers from running with the privilege to use the PID namespace.
-        :param pulumi.Input[bool] block_use_user_namespace: If true, prevent containers from running with the privilege to use the user namespace.
-        :param pulumi.Input[bool] block_use_uts_namespace: If true, prevent containers from running with the privilege to use the UTS namespace.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_capabilities: If true, prevents containers from using specific Unix capabilities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_executables: List of executables that are prevented from running in containers.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_files: List of files that are prevented from being read, modified and executed in the containers.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_inbound_ports: List of blocked inbound ports.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_outbound_ports: List of blocked outbound ports.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_packages: Prevent containers from reading, writing, or executing all files in the list of packages.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_volumes: List of volumes that are prevented from being mounted in the containers.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] container_exec_allowed_processes: List of processes that will be allowed.
-        :param pulumi.Input[str] description: The description of the container runtime policy
-        :param pulumi.Input[bool] enable_drift_prevention: If true, executables that are not in the original image is prevented from running.
-        :param pulumi.Input[bool] enable_fork_guard: If true, fork bombs are prevented in the containers.
-        :param pulumi.Input[bool] enable_ip_reputation_security: If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        :param pulumi.Input[bool] enable_port_scan_detection: If true, detects port scanning behavior in the container.
-        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
-        :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
-        :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
-        :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
-        :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
-        :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
-        :param pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
-        :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
-        :param pulumi.Input[str] name: Name of the container runtime policy
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_ips: List of IPs/ CIDRs that will be allowed
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_processes: List of processes that will be allowed
-        :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]] scope_variables: List of scope attributes.
-        """
-        if allowed_executables is not None:
-            pulumi.set(__self__, "allowed_executables", allowed_executables)
-        if allowed_registries is not None:
-            pulumi.set(__self__, "allowed_registries", allowed_registries)
-        if application_scopes is not None:
-            pulumi.set(__self__, "application_scopes", application_scopes)
-        if audit_all_network_activity is not None:
-            pulumi.set(__self__, "audit_all_network_activity", audit_all_network_activity)
-        if audit_all_processes_activity is not None:
-            pulumi.set(__self__, "audit_all_processes_activity", audit_all_processes_activity)
-        if audit_full_command_arguments is not None:
-            pulumi.set(__self__, "audit_full_command_arguments", audit_full_command_arguments)
-        if block_access_host_network is not None:
-            pulumi.set(__self__, "block_access_host_network", block_access_host_network)
-        if block_adding_capabilities is not None:
-            pulumi.set(__self__, "block_adding_capabilities", block_adding_capabilities)
-        if block_container_exec is not None:
-            pulumi.set(__self__, "block_container_exec", block_container_exec)
-        if block_cryptocurrency_mining is not None:
-            pulumi.set(__self__, "block_cryptocurrency_mining", block_cryptocurrency_mining)
-        if block_fileless_exec is not None:
-            pulumi.set(__self__, "block_fileless_exec", block_fileless_exec)
-        if block_low_port_binding is not None:
-            pulumi.set(__self__, "block_low_port_binding", block_low_port_binding)
-        if block_non_compliant_images is not None:
-            pulumi.set(__self__, "block_non_compliant_images", block_non_compliant_images)
-        if block_non_compliant_workloads is not None:
-            pulumi.set(__self__, "block_non_compliant_workloads", block_non_compliant_workloads)
-        if block_non_k8s_containers is not None:
-            pulumi.set(__self__, "block_non_k8s_containers", block_non_k8s_containers)
-        if block_privileged_containers is not None:
-            pulumi.set(__self__, "block_privileged_containers", block_privileged_containers)
-        if block_reverse_shell is not None:
-            pulumi.set(__self__, "block_reverse_shell", block_reverse_shell)
-        if block_root_user is not None:
-            pulumi.set(__self__, "block_root_user", block_root_user)
-        if block_unregistered_images is not None:
-            pulumi.set(__self__, "block_unregistered_images", block_unregistered_images)
-        if block_use_ipc_namespace is not None:
-            pulumi.set(__self__, "block_use_ipc_namespace", block_use_ipc_namespace)
-        if block_use_pid_namespace is not None:
-            pulumi.set(__self__, "block_use_pid_namespace", block_use_pid_namespace)
-        if block_use_user_namespace is not None:
-            pulumi.set(__self__, "block_use_user_namespace", block_use_user_namespace)
-        if block_use_uts_namespace is not None:
-            pulumi.set(__self__, "block_use_uts_namespace", block_use_uts_namespace)
-        if blocked_capabilities is not None:
-            pulumi.set(__self__, "blocked_capabilities", blocked_capabilities)
-        if blocked_executables is not None:
-            pulumi.set(__self__, "blocked_executables", blocked_executables)
-        if blocked_files is not None:
-            pulumi.set(__self__, "blocked_files", blocked_files)
-        if blocked_inbound_ports is not None:
-            pulumi.set(__self__, "blocked_inbound_ports", blocked_inbound_ports)
-        if blocked_outbound_ports is not None:
-            pulumi.set(__self__, "blocked_outbound_ports", blocked_outbound_ports)
-        if blocked_packages is not None:
-            pulumi.set(__self__, "blocked_packages", blocked_packages)
-        if blocked_volumes is not None:
-            pulumi.set(__self__, "blocked_volumes", blocked_volumes)
-        if container_exec_allowed_processes is not None:
-            pulumi.set(__self__, "container_exec_allowed_processes", container_exec_allowed_processes)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if enable_drift_prevention is not None:
-            pulumi.set(__self__, "enable_drift_prevention", enable_drift_prevention)
-        if enable_fork_guard is not None:
-            pulumi.set(__self__, "enable_fork_guard", enable_fork_guard)
-        if enable_ip_reputation_security is not None:
-            pulumi.set(__self__, "enable_ip_reputation_security", enable_ip_reputation_security)
-        if enable_port_scan_detection is not None:
-            pulumi.set(__self__, "enable_port_scan_detection", enable_port_scan_detection)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if enforce is not None:
-            pulumi.set(__self__, "enforce", enforce)
-        if enforce_after_days is not None:
-            pulumi.set(__self__, "enforce_after_days", enforce_after_days)
-        if exceptional_readonly_files_and_directories is not None:
-            pulumi.set(__self__, "exceptional_readonly_files_and_directories", exceptional_readonly_files_and_directories)
-        if exec_lockdown_white_lists is not None:
-            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
-        if file_integrity_monitoring is not None:
-            pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
-        if fork_guard_process_limit is not None:
-            pulumi.set(__self__, "fork_guard_process_limit", fork_guard_process_limit)
-        if limit_new_privileges is not None:
-            pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
-        if malware_scan_options is not None:
-            pulumi.set(__self__, "malware_scan_options", malware_scan_options)
-        if monitor_system_time_changes is not None:
-            pulumi.set(__self__, "monitor_system_time_changes", monitor_system_time_changes)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if readonly_files_and_directories is not None:
-            pulumi.set(__self__, "readonly_files_and_directories", readonly_files_and_directories)
-        if reverse_shell_allowed_ips is not None:
-            pulumi.set(__self__, "reverse_shell_allowed_ips", reverse_shell_allowed_ips)
-        if reverse_shell_allowed_processes is not None:
-            pulumi.set(__self__, "reverse_shell_allowed_processes", reverse_shell_allowed_processes)
-        if scope_expression is not None:
-            pulumi.set(__self__, "scope_expression", scope_expression)
-        if scope_variables is not None:
-            pulumi.set(__self__, "scope_variables", scope_variables)
-
-    @property
-    @pulumi.getter(name="allowedExecutables")
-    def allowed_executables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of executables that are allowed for the user.
-        """
-        return pulumi.get(self, "allowed_executables")
-
-    @allowed_executables.setter
-    def allowed_executables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowed_executables", value)
-
-    @property
-    @pulumi.getter(name="allowedRegistries")
-    def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of registries that allowed for running containers.
-        """
-        return pulumi.get(self, "allowed_registries")
-
-    @allowed_registries.setter
-    def allowed_registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowed_registries", value)
-
-    @property
-    @pulumi.getter(name="applicationScopes")
-    def application_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Indicates the application scope of the service.
-        """
-        return pulumi.get(self, "application_scopes")
-
-    @application_scopes.setter
-    def application_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "application_scopes", value)
-
-    @property
-    @pulumi.getter(name="auditAllNetworkActivity")
-    def audit_all_network_activity(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, all network activity will be audited.
-        """
-        return pulumi.get(self, "audit_all_network_activity")
-
-    @audit_all_network_activity.setter
-    def audit_all_network_activity(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "audit_all_network_activity", value)
-
-    @property
-    @pulumi.getter(name="auditAllProcessesActivity")
-    def audit_all_processes_activity(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, all process activity will be audited.
-        """
-        return pulumi.get(self, "audit_all_processes_activity")
-
-    @audit_all_processes_activity.setter
-    def audit_all_processes_activity(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "audit_all_processes_activity", value)
-
-    @property
-    @pulumi.getter(name="auditFullCommandArguments")
-    def audit_full_command_arguments(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, full command arguments will be audited.
-        """
-        return pulumi.get(self, "audit_full_command_arguments")
-
-    @audit_full_command_arguments.setter
-    def audit_full_command_arguments(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "audit_full_command_arguments", value)
-
-    @property
-    @pulumi.getter(name="blockAccessHostNetwork")
-    def block_access_host_network(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with access to host network.
-        """
-        return pulumi.get(self, "block_access_host_network")
-
-    @block_access_host_network.setter
-    def block_access_host_network(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_access_host_network", value)
-
-    @property
-    @pulumi.getter(name="blockAddingCapabilities")
-    def block_adding_capabilities(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
-        """
-        return pulumi.get(self, "block_adding_capabilities")
-
-    @block_adding_capabilities.setter
-    def block_adding_capabilities(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_adding_capabilities", value)
-
-    @property
-    @pulumi.getter(name="blockContainerExec")
-    def block_container_exec(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, exec into a container is prevented.
-        """
-        return pulumi.get(self, "block_container_exec")
-
-    @block_container_exec.setter
-    def block_container_exec(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_container_exec", value)
-
-    @property
-    @pulumi.getter(name="blockCryptocurrencyMining")
-    def block_cryptocurrency_mining(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
-        """
-        return pulumi.get(self, "block_cryptocurrency_mining")
-
-    @block_cryptocurrency_mining.setter
-    def block_cryptocurrency_mining(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_cryptocurrency_mining", value)
-
-    @property
-    @pulumi.getter(name="blockFilelessExec")
-    def block_fileless_exec(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Detect and prevent running in-memory execution
-        """
-        return pulumi.get(self, "block_fileless_exec")
-
-    @block_fileless_exec.setter
-    def block_fileless_exec(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_fileless_exec", value)
-
-    @property
-    @pulumi.getter(name="blockLowPortBinding")
-    def block_low_port_binding(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with the capability to bind in port lower than 1024.
-        """
-        return pulumi.get(self, "block_low_port_binding")
-
-    @block_low_port_binding.setter
-    def block_low_port_binding(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_low_port_binding", value)
-
-    @property
-    @pulumi.getter(name="blockNonCompliantImages")
-    def block_non_compliant_images(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, running non-compliant image in the container is prevented.
-        """
-        return pulumi.get(self, "block_non_compliant_images")
-
-    @block_non_compliant_images.setter
-    def block_non_compliant_images(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_non_compliant_images", value)
-
-    @property
-    @pulumi.getter(name="blockNonCompliantWorkloads")
-    def block_non_compliant_workloads(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, running containers in non-compliant pods is prevented.
-        """
-        return pulumi.get(self, "block_non_compliant_workloads")
-
-    @block_non_compliant_workloads.setter
-    def block_non_compliant_workloads(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_non_compliant_workloads", value)
-
-    @property
-    @pulumi.getter(name="blockNonK8sContainers")
-    def block_non_k8s_containers(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, running non-kubernetes containers is prevented.
-        """
-        return pulumi.get(self, "block_non_k8s_containers")
-
-    @block_non_k8s_containers.setter
-    def block_non_k8s_containers(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_non_k8s_containers", value)
-
-    @property
-    @pulumi.getter(name="blockPrivilegedContainers")
-    def block_privileged_containers(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with privileged container capability.
-        """
-        return pulumi.get(self, "block_privileged_containers")
-
-    @block_privileged_containers.setter
-    def block_privileged_containers(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_privileged_containers", value)
-
-    @property
-    @pulumi.getter(name="blockReverseShell")
-    def block_reverse_shell(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, reverse shell is prevented.
-        """
-        return pulumi.get(self, "block_reverse_shell")
-
-    @block_reverse_shell.setter
-    def block_reverse_shell(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_reverse_shell", value)
-
-    @property
-    @pulumi.getter(name="blockRootUser")
-    def block_root_user(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with root user.
-        """
-        return pulumi.get(self, "block_root_user")
-
-    @block_root_user.setter
-    def block_root_user(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_root_user", value)
-
-    @property
-    @pulumi.getter(name="blockUnregisteredImages")
-    def block_unregistered_images(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, running images in the container that are not registered in Aqua is prevented.
-        """
-        return pulumi.get(self, "block_unregistered_images")
-
-    @block_unregistered_images.setter
-    def block_unregistered_images(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_unregistered_images", value)
-
-    @property
-    @pulumi.getter(name="blockUseIpcNamespace")
-    def block_use_ipc_namespace(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with the privilege to use the IPC namespace.
-        """
-        return pulumi.get(self, "block_use_ipc_namespace")
-
-    @block_use_ipc_namespace.setter
-    def block_use_ipc_namespace(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_use_ipc_namespace", value)
-
-    @property
-    @pulumi.getter(name="blockUsePidNamespace")
-    def block_use_pid_namespace(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with the privilege to use the PID namespace.
-        """
-        return pulumi.get(self, "block_use_pid_namespace")
-
-    @block_use_pid_namespace.setter
-    def block_use_pid_namespace(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_use_pid_namespace", value)
-
-    @property
-    @pulumi.getter(name="blockUseUserNamespace")
-    def block_use_user_namespace(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with the privilege to use the user namespace.
-        """
-        return pulumi.get(self, "block_use_user_namespace")
-
-    @block_use_user_namespace.setter
-    def block_use_user_namespace(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_use_user_namespace", value)
-
-    @property
-    @pulumi.getter(name="blockUseUtsNamespace")
-    def block_use_uts_namespace(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevent containers from running with the privilege to use the UTS namespace.
-        """
-        return pulumi.get(self, "block_use_uts_namespace")
-
-    @block_use_uts_namespace.setter
-    def block_use_uts_namespace(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_use_uts_namespace", value)
-
-    @property
-    @pulumi.getter(name="blockedCapabilities")
-    def blocked_capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        If true, prevents containers from using specific Unix capabilities.
-        """
-        return pulumi.get(self, "blocked_capabilities")
-
-    @blocked_capabilities.setter
-    def blocked_capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_capabilities", value)
-
-    @property
-    @pulumi.getter(name="blockedExecutables")
-    def blocked_executables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of executables that are prevented from running in containers.
-        """
-        return pulumi.get(self, "blocked_executables")
-
-    @blocked_executables.setter
-    def blocked_executables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_executables", value)
-
-    @property
-    @pulumi.getter(name="blockedFiles")
-    def blocked_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of files that are prevented from being read, modified and executed in the containers.
-        """
-        return pulumi.get(self, "blocked_files")
-
-    @blocked_files.setter
-    def blocked_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_files", value)
-
-    @property
-    @pulumi.getter(name="blockedInboundPorts")
-    def blocked_inbound_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of blocked inbound ports.
-        """
-        return pulumi.get(self, "blocked_inbound_ports")
-
-    @blocked_inbound_ports.setter
-    def blocked_inbound_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_inbound_ports", value)
-
-    @property
-    @pulumi.getter(name="blockedOutboundPorts")
-    def blocked_outbound_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of blocked outbound ports.
-        """
-        return pulumi.get(self, "blocked_outbound_ports")
-
-    @blocked_outbound_ports.setter
-    def blocked_outbound_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_outbound_ports", value)
-
-    @property
-    @pulumi.getter(name="blockedPackages")
-    def blocked_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Prevent containers from reading, writing, or executing all files in the list of packages.
-        """
-        return pulumi.get(self, "blocked_packages")
-
-    @blocked_packages.setter
-    def blocked_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_packages", value)
-
-    @property
-    @pulumi.getter(name="blockedVolumes")
-    def blocked_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of volumes that are prevented from being mounted in the containers.
-        """
-        return pulumi.get(self, "blocked_volumes")
-
-    @blocked_volumes.setter
-    def blocked_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "blocked_volumes", value)
-
-    @property
-    @pulumi.getter(name="containerExecAllowedProcesses")
-    def container_exec_allowed_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of processes that will be allowed.
-        """
-        return pulumi.get(self, "container_exec_allowed_processes")
-
-    @container_exec_allowed_processes.setter
-    def container_exec_allowed_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "container_exec_allowed_processes", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the container runtime policy
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="enableDriftPrevention")
-    def enable_drift_prevention(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, executables that are not in the original image is prevented from running.
-        """
-        return pulumi.get(self, "enable_drift_prevention")
-
-    @enable_drift_prevention.setter
-    def enable_drift_prevention(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_drift_prevention", value)
-
-    @property
-    @pulumi.getter(name="enableForkGuard")
-    def enable_fork_guard(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, fork bombs are prevented in the containers.
-        """
-        return pulumi.get(self, "enable_fork_guard")
-
-    @enable_fork_guard.setter
-    def enable_fork_guard(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_fork_guard", value)
-
-    @property
-    @pulumi.getter(name="enableIpReputationSecurity")
-    def enable_ip_reputation_security(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        """
-        return pulumi.get(self, "enable_ip_reputation_security")
-
-    @enable_ip_reputation_security.setter
-    def enable_ip_reputation_security(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_ip_reputation_security", value)
-
-    @property
-    @pulumi.getter(name="enablePortScanDetection")
-    def enable_port_scan_detection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, detects port scanning behavior in the container.
-        """
-        return pulumi.get(self, "enable_port_scan_detection")
-
-    @enable_port_scan_detection.setter
-    def enable_port_scan_detection(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_port_scan_detection", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates if the runtime policy is enabled or not.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Indicates that policy should effect container execution (not just for audit).
-        """
-        return pulumi.get(self, "enforce")
-
-    @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enforce", value)
-
-    @property
-    @pulumi.getter(name="enforceAfterDays")
-    def enforce_after_days(self) -> Optional[pulumi.Input[int]]:
-        """
-        Indicates the number of days after which the runtime policy will be changed to enforce mode.
-        """
-        return pulumi.get(self, "enforce_after_days")
-
-    @enforce_after_days.setter
-    def enforce_after_days(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "enforce_after_days", value)
-
-    @property
-    @pulumi.getter(name="exceptionalReadonlyFilesAndDirectories")
-    def exceptional_readonly_files_and_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of files and directories to be excluded from the read-only list.
-        """
-        return pulumi.get(self, "exceptional_readonly_files_and_directories")
-
-    @exceptional_readonly_files_and_directories.setter
-    def exceptional_readonly_files_and_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "exceptional_readonly_files_and_directories", value)
-
-    @property
-    @pulumi.getter(name="execLockdownWhiteLists")
-    def exec_lockdown_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Specify processes that will be allowed
-        """
-        return pulumi.get(self, "exec_lockdown_white_lists")
-
-    @exec_lockdown_white_lists.setter
-    def exec_lockdown_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "exec_lockdown_white_lists", value)
-
-    @property
-    @pulumi.getter(name="fileIntegrityMonitoring")
-    def file_integrity_monitoring(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]:
-        """
-        Configuration for file integrity monitoring.
-        """
-        return pulumi.get(self, "file_integrity_monitoring")
-
-    @file_integrity_monitoring.setter
-    def file_integrity_monitoring(self, value: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]):
-        pulumi.set(self, "file_integrity_monitoring", value)
-
-    @property
-    @pulumi.getter(name="forkGuardProcessLimit")
-    def fork_guard_process_limit(self) -> Optional[pulumi.Input[int]]:
-        """
-        Process limit for the fork guard.
-        """
-        return pulumi.get(self, "fork_guard_process_limit")
-
-    @fork_guard_process_limit.setter
-    def fork_guard_process_limit(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "fork_guard_process_limit", value)
-
-    @property
-    @pulumi.getter(name="limitNewPrivileges")
-    def limit_new_privileges(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
-        """
-        return pulumi.get(self, "limit_new_privileges")
-
-    @limit_new_privileges.setter
-    def limit_new_privileges(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "limit_new_privileges", value)
-
-    @property
-    @pulumi.getter(name="malwareScanOptions")
-    def malware_scan_options(self) -> Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]:
-        """
-        Configuration for Real-Time Malware Protection.
-        """
-        return pulumi.get(self, "malware_scan_options")
-
-    @malware_scan_options.setter
-    def malware_scan_options(self, value: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]):
-        pulumi.set(self, "malware_scan_options", value)
-
-    @property
-    @pulumi.getter(name="monitorSystemTimeChanges")
-    def monitor_system_time_changes(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, system time changes will be monitored.
-        """
-        return pulumi.get(self, "monitor_system_time_changes")
-
-    @monitor_system_time_changes.setter
-    def monitor_system_time_changes(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "monitor_system_time_changes", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the container runtime policy
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="readonlyFilesAndDirectories")
-    def readonly_files_and_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of files and directories to be restricted as read-only
-        """
-        return pulumi.get(self, "readonly_files_and_directories")
-
-    @readonly_files_and_directories.setter
-    def readonly_files_and_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "readonly_files_and_directories", value)
-
-    @property
-    @pulumi.getter(name="reverseShellAllowedIps")
-    def reverse_shell_allowed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of IPs/ CIDRs that will be allowed
-        """
-        return pulumi.get(self, "reverse_shell_allowed_ips")
-
-    @reverse_shell_allowed_ips.setter
-    def reverse_shell_allowed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "reverse_shell_allowed_ips", value)
-
-    @property
-    @pulumi.getter(name="reverseShellAllowedProcesses")
-    def reverse_shell_allowed_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of processes that will be allowed
-        """
-        return pulumi.get(self, "reverse_shell_allowed_processes")
-
-    @reverse_shell_allowed_processes.setter
-    def reverse_shell_allowed_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "reverse_shell_allowed_processes", value)
-
-    @property
-    @pulumi.getter(name="scopeExpression")
-    def scope_expression(self) -> Optional[pulumi.Input[str]]:
-        """
-        Logical expression of how to compute the dependency of the scope variables.
-        """
-        return pulumi.get(self, "scope_expression")
-
-    @scope_expression.setter
-    def scope_expression(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "scope_expression", value)
-
-    @property
-    @pulumi.getter(name="scopeVariables")
-    def scope_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]]:
-        """
-        List of scope attributes.
-        """
-        return pulumi.get(self, "scope_variables")
-
-    @scope_variables.setter
-    def scope_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]]):
-        pulumi.set(self, "scope_variables", value)
-
-
-@pulumi.input_type
-class _ContainerRuntimePolicyState:
-    def __init__(__self__, *,
-                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 audit_all_network_activity: Optional[pulumi.Input[bool]] = None,
-                 audit_all_processes_activity: Optional[pulumi.Input[bool]] = None,
-                 audit_full_command_arguments: Optional[pulumi.Input[bool]] = None,
-                 author: Optional[pulumi.Input[str]] = None,
-                 block_access_host_network: Optional[pulumi.Input[bool]] = None,
-                 block_adding_capabilities: Optional[pulumi.Input[bool]] = None,
-                 block_container_exec: Optional[pulumi.Input[bool]] = None,
-                 block_cryptocurrency_mining: Optional[pulumi.Input[bool]] = None,
-                 block_fileless_exec: Optional[pulumi.Input[bool]] = None,
-                 block_low_port_binding: Optional[pulumi.Input[bool]] = None,
-                 block_non_compliant_images: Optional[pulumi.Input[bool]] = None,
-                 block_non_compliant_workloads: Optional[pulumi.Input[bool]] = None,
-                 block_non_k8s_containers: Optional[pulumi.Input[bool]] = None,
-                 block_privileged_containers: Optional[pulumi.Input[bool]] = None,
-                 block_reverse_shell: Optional[pulumi.Input[bool]] = None,
-                 block_root_user: Optional[pulumi.Input[bool]] = None,
-                 block_unregistered_images: Optional[pulumi.Input[bool]] = None,
-                 block_use_ipc_namespace: Optional[pulumi.Input[bool]] = None,
-                 block_use_pid_namespace: Optional[pulumi.Input[bool]] = None,
-                 block_use_user_namespace: Optional[pulumi.Input[bool]] = None,
-                 block_use_uts_namespace: Optional[pulumi.Input[bool]] = None,
-                 blocked_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 blocked_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 blocked_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 blocked_inbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 blocked_outbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 blocked_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 blocked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 container_exec_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
-                 enable_drift_prevention: Optional[pulumi.Input[bool]] = None,
-                 enable_fork_guard: Optional[pulumi.Input[bool]] = None,
-                 enable_ip_reputation_security: Optional[pulumi.Input[bool]] = None,
-                 enable_port_scan_detection: Optional[pulumi.Input[bool]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
-                 enforce: Optional[pulumi.Input[bool]] = None,
-                 enforce_after_days: Optional[pulumi.Input[int]] = None,
-                 exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
-                 fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
-                 limit_new_privileges: Optional[pulumi.Input[bool]] = None,
-                 malware_scan_options: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
-                 monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 scope_expression: Optional[pulumi.Input[str]] = None,
-                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]] = None):
-        """
-        Input properties used for looking up and filtering ContainerRuntimePolicy resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_executables: List of executables that are allowed for the user.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_registries: List of registries that allowed for running containers.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
-        :param pulumi.Input[bool] audit_all_network_activity: If true, all network activity will be audited.
-        :param pulumi.Input[bool] audit_all_processes_activity: If true, all process activity will be audited.
+        :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
         :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[bool] block_access_host_network: If true, prevent containers from running with access to host network.
@@ -924,13 +124,10 @@ class _ContainerRuntimePolicyState:
         :param pulumi.Input[bool] block_cryptocurrency_mining: Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
         :param pulumi.Input[bool] block_fileless_exec: Detect and prevent running in-memory execution
         :param pulumi.Input[bool] block_low_port_binding: If true, prevent containers from running with the capability to bind in port lower than 1024.
-        :param pulumi.Input[bool] block_non_compliant_images: If true, running non-compliant image in the container is prevented.
         :param pulumi.Input[bool] block_non_compliant_workloads: If true, running containers in non-compliant pods is prevented.
         :param pulumi.Input[bool] block_non_k8s_containers: If true, running non-kubernetes containers is prevented.
         :param pulumi.Input[bool] block_privileged_containers: If true, prevent containers from running with privileged container capability.
-        :param pulumi.Input[bool] block_reverse_shell: If true, reverse shell is prevented.
         :param pulumi.Input[bool] block_root_user: If true, prevent containers from running with root user.
-        :param pulumi.Input[bool] block_unregistered_images: If true, running images in the container that are not registered in Aqua is prevented.
         :param pulumi.Input[bool] block_use_ipc_namespace: If true, prevent containers from running with the privilege to use the IPC namespace.
         :param pulumi.Input[bool] block_use_pid_namespace: If true, prevent containers from running with the privilege to use the PID namespace.
         :param pulumi.Input[bool] block_use_user_namespace: If true, prevent containers from running with the privilege to use the user namespace.
@@ -942,28 +139,27 @@ class _ContainerRuntimePolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_outbound_ports: List of blocked outbound ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_packages: Prevent containers from reading, writing, or executing all files in the list of packages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_volumes: List of volumes that are prevented from being mounted in the containers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] container_exec_allowed_processes: List of processes that will be allowed.
         :param pulumi.Input[str] description: The description of the container runtime policy
-        :param pulumi.Input[bool] enable_drift_prevention: If true, executables that are not in the original image is prevented from running.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]] drift_preventions: Drift prevention configuration.
         :param pulumi.Input[bool] enable_fork_guard: If true, fork bombs are prevented in the containers.
-        :param pulumi.Input[bool] enable_ip_reputation_security: If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        :param pulumi.Input[bool] enable_port_scan_detection: If true, detects port scanning behavior in the container.
-        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
+        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]] executable_blacklists: Executable blacklist configuration.
         :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         :param pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
-        :param pulumi.Input[str] name: Name of the container runtime policy
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_ips: List of IPs/ CIDRs that will be allowed
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_processes: List of processes that will be allowed
+        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]] scope_variables: List of scope attributes.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]] scopes: Scope configuration.
         """
         if allowed_executables is not None:
             pulumi.set(__self__, "allowed_executables", allowed_executables)
@@ -975,10 +171,16 @@ class _ContainerRuntimePolicyState:
             pulumi.set(__self__, "audit_all_network_activity", audit_all_network_activity)
         if audit_all_processes_activity is not None:
             pulumi.set(__self__, "audit_all_processes_activity", audit_all_processes_activity)
+        if audit_brute_force_login is not None:
+            pulumi.set(__self__, "audit_brute_force_login", audit_brute_force_login)
         if audit_full_command_arguments is not None:
             pulumi.set(__self__, "audit_full_command_arguments", audit_full_command_arguments)
+        if auditing is not None:
+            pulumi.set(__self__, "auditing", auditing)
         if author is not None:
             pulumi.set(__self__, "author", author)
+        if blacklisted_os_users is not None:
+            pulumi.set(__self__, "blacklisted_os_users", blacklisted_os_users)
         if block_access_host_network is not None:
             pulumi.set(__self__, "block_access_host_network", block_access_host_network)
         if block_adding_capabilities is not None:
@@ -987,24 +189,20 @@ class _ContainerRuntimePolicyState:
             pulumi.set(__self__, "block_container_exec", block_container_exec)
         if block_cryptocurrency_mining is not None:
             pulumi.set(__self__, "block_cryptocurrency_mining", block_cryptocurrency_mining)
+        if block_disallowed_images is not None:
+            pulumi.set(__self__, "block_disallowed_images", block_disallowed_images)
         if block_fileless_exec is not None:
             pulumi.set(__self__, "block_fileless_exec", block_fileless_exec)
         if block_low_port_binding is not None:
             pulumi.set(__self__, "block_low_port_binding", block_low_port_binding)
-        if block_non_compliant_images is not None:
-            pulumi.set(__self__, "block_non_compliant_images", block_non_compliant_images)
         if block_non_compliant_workloads is not None:
             pulumi.set(__self__, "block_non_compliant_workloads", block_non_compliant_workloads)
         if block_non_k8s_containers is not None:
             pulumi.set(__self__, "block_non_k8s_containers", block_non_k8s_containers)
         if block_privileged_containers is not None:
             pulumi.set(__self__, "block_privileged_containers", block_privileged_containers)
-        if block_reverse_shell is not None:
-            pulumi.set(__self__, "block_reverse_shell", block_reverse_shell)
         if block_root_user is not None:
             pulumi.set(__self__, "block_root_user", block_root_user)
-        if block_unregistered_images is not None:
-            pulumi.set(__self__, "block_unregistered_images", block_unregistered_images)
         if block_use_ipc_namespace is not None:
             pulumi.set(__self__, "block_use_ipc_namespace", block_use_ipc_namespace)
         if block_use_pid_namespace is not None:
@@ -1027,73 +225,149 @@ class _ContainerRuntimePolicyState:
             pulumi.set(__self__, "blocked_packages", blocked_packages)
         if blocked_volumes is not None:
             pulumi.set(__self__, "blocked_volumes", blocked_volumes)
+        if bypass_scopes is not None:
+            pulumi.set(__self__, "bypass_scopes", bypass_scopes)
+        if container_exec is not None:
+            pulumi.set(__self__, "container_exec", container_exec)
         if container_exec_allowed_processes is not None:
             pulumi.set(__self__, "container_exec_allowed_processes", container_exec_allowed_processes)
+        if created is not None:
+            pulumi.set(__self__, "created", created)
+        if cve is not None:
+            pulumi.set(__self__, "cve", cve)
+        if default_security_profile is not None:
+            pulumi.set(__self__, "default_security_profile", default_security_profile)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if enable_drift_prevention is not None:
-            pulumi.set(__self__, "enable_drift_prevention", enable_drift_prevention)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if drift_preventions is not None:
+            pulumi.set(__self__, "drift_preventions", drift_preventions)
+        if enable_crypto_mining_dns is not None:
+            pulumi.set(__self__, "enable_crypto_mining_dns", enable_crypto_mining_dns)
         if enable_fork_guard is not None:
             pulumi.set(__self__, "enable_fork_guard", enable_fork_guard)
-        if enable_ip_reputation_security is not None:
-            pulumi.set(__self__, "enable_ip_reputation_security", enable_ip_reputation_security)
-        if enable_port_scan_detection is not None:
-            pulumi.set(__self__, "enable_port_scan_detection", enable_port_scan_detection)
+        if enable_ip_reputation is not None:
+            pulumi.set(__self__, "enable_ip_reputation", enable_ip_reputation)
+        if enable_port_scan_protection is not None:
+            pulumi.set(__self__, "enable_port_scan_protection", enable_port_scan_protection)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if enforce is not None:
             pulumi.set(__self__, "enforce", enforce)
         if enforce_after_days is not None:
             pulumi.set(__self__, "enforce_after_days", enforce_after_days)
-        if exceptional_readonly_files_and_directories is not None:
-            pulumi.set(__self__, "exceptional_readonly_files_and_directories", exceptional_readonly_files_and_directories)
-        if exec_lockdown_white_lists is not None:
-            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
+        if enforce_scheduler_added_on is not None:
+            pulumi.set(__self__, "enforce_scheduler_added_on", enforce_scheduler_added_on)
+        if exclude_application_scopes is not None:
+            pulumi.set(__self__, "exclude_application_scopes", exclude_application_scopes)
+        if executable_blacklists is not None:
+            pulumi.set(__self__, "executable_blacklists", executable_blacklists)
+        if failed_kubernetes_checks is not None:
+            pulumi.set(__self__, "failed_kubernetes_checks", failed_kubernetes_checks)
+        if file_block is not None:
+            pulumi.set(__self__, "file_block", file_block)
         if file_integrity_monitoring is not None:
             pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
         if fork_guard_process_limit is not None:
             pulumi.set(__self__, "fork_guard_process_limit", fork_guard_process_limit)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if is_auto_generated is not None:
+            pulumi.set(__self__, "is_auto_generated", is_auto_generated)
+        if is_ootb_policy is not None:
+            pulumi.set(__self__, "is_ootb_policy", is_ootb_policy)
+        if lastupdate is not None:
+            pulumi.set(__self__, "lastupdate", lastupdate)
+        if limit_container_privileges is not None:
+            pulumi.set(__self__, "limit_container_privileges", limit_container_privileges)
         if limit_new_privileges is not None:
             pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
+        if linux_capabilities is not None:
+            pulumi.set(__self__, "linux_capabilities", linux_capabilities)
         if malware_scan_options is not None:
             pulumi.set(__self__, "malware_scan_options", malware_scan_options)
         if monitor_system_time_changes is not None:
             pulumi.set(__self__, "monitor_system_time_changes", monitor_system_time_changes)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if readonly_files_and_directories is not None:
-            pulumi.set(__self__, "readonly_files_and_directories", readonly_files_and_directories)
-        if reverse_shell_allowed_ips is not None:
-            pulumi.set(__self__, "reverse_shell_allowed_ips", reverse_shell_allowed_ips)
-        if reverse_shell_allowed_processes is not None:
-            pulumi.set(__self__, "reverse_shell_allowed_processes", reverse_shell_allowed_processes)
+        if no_new_privileges is not None:
+            pulumi.set(__self__, "no_new_privileges", no_new_privileges)
+        if only_registered_images is not None:
+            pulumi.set(__self__, "only_registered_images", only_registered_images)
+        if package_block is not None:
+            pulumi.set(__self__, "package_block", package_block)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+        if port_block is not None:
+            pulumi.set(__self__, "port_block", port_block)
+        if readonly_files is not None:
+            pulumi.set(__self__, "readonly_files", readonly_files)
+        if readonly_registry is not None:
+            pulumi.set(__self__, "readonly_registry", readonly_registry)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+        if registry_access_monitoring is not None:
+            pulumi.set(__self__, "registry_access_monitoring", registry_access_monitoring)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if restricted_volumes is not None:
+            pulumi.set(__self__, "restricted_volumes", restricted_volumes)
+        if reverse_shell is not None:
+            pulumi.set(__self__, "reverse_shell", reverse_shell)
+        if runtime_mode is not None:
+            pulumi.set(__self__, "runtime_mode", runtime_mode)
+        if runtime_type is not None:
+            pulumi.set(__self__, "runtime_type", runtime_type)
         if scope_expression is not None:
             pulumi.set(__self__, "scope_expression", scope_expression)
         if scope_variables is not None:
             pulumi.set(__self__, "scope_variables", scope_variables)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if system_integrity_protection is not None:
+            pulumi.set(__self__, "system_integrity_protection", system_integrity_protection)
+        if tripwire is not None:
+            pulumi.set(__self__, "tripwire", tripwire)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if updated is not None:
+            pulumi.set(__self__, "updated", updated)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if vpatch_version is not None:
+            pulumi.set(__self__, "vpatch_version", vpatch_version)
+        if whitelisted_os_users is not None:
+            pulumi.set(__self__, "whitelisted_os_users", whitelisted_os_users)
 
     @property
     @pulumi.getter(name="allowedExecutables")
-    def allowed_executables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def allowed_executables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]]]:
         """
-        List of executables that are allowed for the user.
+        Allowed executables configuration.
         """
         return pulumi.get(self, "allowed_executables")
 
     @allowed_executables.setter
-    def allowed_executables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def allowed_executables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]]]):
         pulumi.set(self, "allowed_executables", value)
 
     @property
     @pulumi.getter(name="allowedRegistries")
-    def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]]]:
         """
-        List of registries that allowed for running containers.
+        List of allowed registries.
         """
         return pulumi.get(self, "allowed_registries")
 
     @allowed_registries.setter
-    def allowed_registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def allowed_registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]]]):
         pulumi.set(self, "allowed_registries", value)
 
     @property
@@ -1133,6 +407,18 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "audit_all_processes_activity", value)
 
     @property
+    @pulumi.getter(name="auditBruteForceLogin")
+    def audit_brute_force_login(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Detects brute force login attempts
+        """
+        return pulumi.get(self, "audit_brute_force_login")
+
+    @audit_brute_force_login.setter
+    def audit_brute_force_login(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit_brute_force_login", value)
+
+    @property
     @pulumi.getter(name="auditFullCommandArguments")
     def audit_full_command_arguments(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1143,6 +429,15 @@ class _ContainerRuntimePolicyState:
     @audit_full_command_arguments.setter
     def audit_full_command_arguments(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "audit_full_command_arguments", value)
+
+    @property
+    @pulumi.getter
+    def auditing(self) -> Optional[pulumi.Input['ContainerRuntimePolicyAuditingArgs']]:
+        return pulumi.get(self, "auditing")
+
+    @auditing.setter
+    def auditing(self, value: Optional[pulumi.Input['ContainerRuntimePolicyAuditingArgs']]):
+        pulumi.set(self, "auditing", value)
 
     @property
     @pulumi.getter
@@ -1157,6 +452,15 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "author", value)
 
     @property
+    @pulumi.getter(name="blacklistedOsUsers")
+    def blacklisted_os_users(self) -> Optional[pulumi.Input['ContainerRuntimePolicyBlacklistedOsUsersArgs']]:
+        return pulumi.get(self, "blacklisted_os_users")
+
+    @blacklisted_os_users.setter
+    def blacklisted_os_users(self, value: Optional[pulumi.Input['ContainerRuntimePolicyBlacklistedOsUsersArgs']]):
+        pulumi.set(self, "blacklisted_os_users", value)
+
+    @property
     @pulumi.getter(name="blockAccessHostNetwork")
     def block_access_host_network(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1205,6 +509,15 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "block_cryptocurrency_mining", value)
 
     @property
+    @pulumi.getter(name="blockDisallowedImages")
+    def block_disallowed_images(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "block_disallowed_images")
+
+    @block_disallowed_images.setter
+    def block_disallowed_images(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_disallowed_images", value)
+
+    @property
     @pulumi.getter(name="blockFilelessExec")
     def block_fileless_exec(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1227,18 +540,6 @@ class _ContainerRuntimePolicyState:
     @block_low_port_binding.setter
     def block_low_port_binding(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "block_low_port_binding", value)
-
-    @property
-    @pulumi.getter(name="blockNonCompliantImages")
-    def block_non_compliant_images(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, running non-compliant image in the container is prevented.
-        """
-        return pulumi.get(self, "block_non_compliant_images")
-
-    @block_non_compliant_images.setter
-    def block_non_compliant_images(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_non_compliant_images", value)
 
     @property
     @pulumi.getter(name="blockNonCompliantWorkloads")
@@ -1277,18 +578,6 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "block_privileged_containers", value)
 
     @property
-    @pulumi.getter(name="blockReverseShell")
-    def block_reverse_shell(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, reverse shell is prevented.
-        """
-        return pulumi.get(self, "block_reverse_shell")
-
-    @block_reverse_shell.setter
-    def block_reverse_shell(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_reverse_shell", value)
-
-    @property
     @pulumi.getter(name="blockRootUser")
     def block_root_user(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1299,18 +588,6 @@ class _ContainerRuntimePolicyState:
     @block_root_user.setter
     def block_root_user(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "block_root_user", value)
-
-    @property
-    @pulumi.getter(name="blockUnregisteredImages")
-    def block_unregistered_images(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, running images in the container that are not registered in Aqua is prevented.
-        """
-        return pulumi.get(self, "block_unregistered_images")
-
-    @block_unregistered_images.setter
-    def block_unregistered_images(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "block_unregistered_images", value)
 
     @property
     @pulumi.getter(name="blockUseIpcNamespace")
@@ -1445,6 +722,27 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "blocked_volumes", value)
 
     @property
+    @pulumi.getter(name="bypassScopes")
+    def bypass_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]]]:
+        """
+        Bypass scope configuration.
+        """
+        return pulumi.get(self, "bypass_scopes")
+
+    @bypass_scopes.setter
+    def bypass_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]]]):
+        pulumi.set(self, "bypass_scopes", value)
+
+    @property
+    @pulumi.getter(name="containerExec")
+    def container_exec(self) -> Optional[pulumi.Input['ContainerRuntimePolicyContainerExecArgs']]:
+        return pulumi.get(self, "container_exec")
+
+    @container_exec.setter
+    def container_exec(self, value: Optional[pulumi.Input['ContainerRuntimePolicyContainerExecArgs']]):
+        pulumi.set(self, "container_exec", value)
+
+    @property
     @pulumi.getter(name="containerExecAllowedProcesses")
     def container_exec_allowed_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1455,6 +753,33 @@ class _ContainerRuntimePolicyState:
     @container_exec_allowed_processes.setter
     def container_exec_allowed_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "container_exec_allowed_processes", value)
+
+    @property
+    @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def cve(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cve")
+
+    @cve.setter
+    def cve(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cve", value)
+
+    @property
+    @pulumi.getter(name="defaultSecurityProfile")
+    def default_security_profile(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_security_profile")
+
+    @default_security_profile.setter
+    def default_security_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_security_profile", value)
 
     @property
     @pulumi.getter
@@ -1469,16 +794,34 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="enableDriftPrevention")
-    def enable_drift_prevention(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, executables that are not in the original image is prevented from running.
-        """
-        return pulumi.get(self, "enable_drift_prevention")
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "digest")
 
-    @enable_drift_prevention.setter
-    def enable_drift_prevention(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_drift_prevention", value)
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="driftPreventions")
+    def drift_preventions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]]]:
+        """
+        Drift prevention configuration.
+        """
+        return pulumi.get(self, "drift_preventions")
+
+    @drift_preventions.setter
+    def drift_preventions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]]]):
+        pulumi.set(self, "drift_preventions", value)
+
+    @property
+    @pulumi.getter(name="enableCryptoMiningDns")
+    def enable_crypto_mining_dns(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_crypto_mining_dns")
+
+    @enable_crypto_mining_dns.setter
+    def enable_crypto_mining_dns(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_crypto_mining_dns", value)
 
     @property
     @pulumi.getter(name="enableForkGuard")
@@ -1493,34 +836,28 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "enable_fork_guard", value)
 
     @property
-    @pulumi.getter(name="enableIpReputationSecurity")
-    def enable_ip_reputation_security(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        """
-        return pulumi.get(self, "enable_ip_reputation_security")
+    @pulumi.getter(name="enableIpReputation")
+    def enable_ip_reputation(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_ip_reputation")
 
-    @enable_ip_reputation_security.setter
-    def enable_ip_reputation_security(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_ip_reputation_security", value)
+    @enable_ip_reputation.setter
+    def enable_ip_reputation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ip_reputation", value)
 
     @property
-    @pulumi.getter(name="enablePortScanDetection")
-    def enable_port_scan_detection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, detects port scanning behavior in the container.
-        """
-        return pulumi.get(self, "enable_port_scan_detection")
+    @pulumi.getter(name="enablePortScanProtection")
+    def enable_port_scan_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_port_scan_protection")
 
-    @enable_port_scan_detection.setter
-    def enable_port_scan_detection(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enable_port_scan_detection", value)
+    @enable_port_scan_protection.setter
+    def enable_port_scan_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_port_scan_protection", value)
 
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicates if the runtime policy is enabled or not.
+        Whether allowed executables configuration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1553,28 +890,55 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "enforce_after_days", value)
 
     @property
-    @pulumi.getter(name="exceptionalReadonlyFilesAndDirectories")
-    def exceptional_readonly_files_and_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of files and directories to be excluded from the read-only list.
-        """
-        return pulumi.get(self, "exceptional_readonly_files_and_directories")
+    @pulumi.getter(name="enforceSchedulerAddedOn")
+    def enforce_scheduler_added_on(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "enforce_scheduler_added_on")
 
-    @exceptional_readonly_files_and_directories.setter
-    def exceptional_readonly_files_and_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "exceptional_readonly_files_and_directories", value)
+    @enforce_scheduler_added_on.setter
+    def enforce_scheduler_added_on(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enforce_scheduler_added_on", value)
 
     @property
-    @pulumi.getter(name="execLockdownWhiteLists")
-    def exec_lockdown_white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="excludeApplicationScopes")
+    def exclude_application_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specify processes that will be allowed
+        List of excluded application scopes.
         """
-        return pulumi.get(self, "exec_lockdown_white_lists")
+        return pulumi.get(self, "exclude_application_scopes")
 
-    @exec_lockdown_white_lists.setter
-    def exec_lockdown_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "exec_lockdown_white_lists", value)
+    @exclude_application_scopes.setter
+    def exclude_application_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_application_scopes", value)
+
+    @property
+    @pulumi.getter(name="executableBlacklists")
+    def executable_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]]]:
+        """
+        Executable blacklist configuration.
+        """
+        return pulumi.get(self, "executable_blacklists")
+
+    @executable_blacklists.setter
+    def executable_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]]]):
+        pulumi.set(self, "executable_blacklists", value)
+
+    @property
+    @pulumi.getter(name="failedKubernetesChecks")
+    def failed_kubernetes_checks(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFailedKubernetesChecksArgs']]:
+        return pulumi.get(self, "failed_kubernetes_checks")
+
+    @failed_kubernetes_checks.setter
+    def failed_kubernetes_checks(self, value: Optional[pulumi.Input['ContainerRuntimePolicyFailedKubernetesChecksArgs']]):
+        pulumi.set(self, "failed_kubernetes_checks", value)
+
+    @property
+    @pulumi.getter(name="fileBlock")
+    def file_block(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFileBlockArgs']]:
+        return pulumi.get(self, "file_block")
+
+    @file_block.setter
+    def file_block(self, value: Optional[pulumi.Input['ContainerRuntimePolicyFileBlockArgs']]):
+        pulumi.set(self, "file_block", value)
 
     @property
     @pulumi.getter(name="fileIntegrityMonitoring")
@@ -1601,6 +965,63 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "fork_guard_process_limit", value)
 
     @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @is_audit_checked.setter
+    def is_audit_checked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_audit_checked", value)
+
+    @property
+    @pulumi.getter(name="isAutoGenerated")
+    def is_auto_generated(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_auto_generated")
+
+    @is_auto_generated.setter
+    def is_auto_generated(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_auto_generated", value)
+
+    @property
+    @pulumi.getter(name="isOotbPolicy")
+    def is_ootb_policy(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_ootb_policy")
+
+    @is_ootb_policy.setter
+    def is_ootb_policy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_ootb_policy", value)
+
+    @property
+    @pulumi.getter
+    def lastupdate(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "lastupdate")
+
+    @lastupdate.setter
+    def lastupdate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lastupdate", value)
+
+    @property
+    @pulumi.getter(name="limitContainerPrivileges")
+    def limit_container_privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]:
+        """
+        Container privileges configuration.
+        """
+        return pulumi.get(self, "limit_container_privileges")
+
+    @limit_container_privileges.setter
+    def limit_container_privileges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]):
+        pulumi.set(self, "limit_container_privileges", value)
+
+    @property
     @pulumi.getter(name="limitNewPrivileges")
     def limit_new_privileges(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1611,6 +1032,15 @@ class _ContainerRuntimePolicyState:
     @limit_new_privileges.setter
     def limit_new_privileges(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "limit_new_privileges", value)
+
+    @property
+    @pulumi.getter(name="linuxCapabilities")
+    def linux_capabilities(self) -> Optional[pulumi.Input['ContainerRuntimePolicyLinuxCapabilitiesArgs']]:
+        return pulumi.get(self, "linux_capabilities")
+
+    @linux_capabilities.setter
+    def linux_capabilities(self, value: Optional[pulumi.Input['ContainerRuntimePolicyLinuxCapabilitiesArgs']]):
+        pulumi.set(self, "linux_capabilities", value)
 
     @property
     @pulumi.getter(name="malwareScanOptions")
@@ -1640,7 +1070,7 @@ class _ContainerRuntimePolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the container runtime policy
+        Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
 
@@ -1649,40 +1079,151 @@ class _ContainerRuntimePolicyState:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="readonlyFilesAndDirectories")
-    def readonly_files_and_directories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of files and directories to be restricted as read-only
-        """
-        return pulumi.get(self, "readonly_files_and_directories")
+    @pulumi.getter(name="noNewPrivileges")
+    def no_new_privileges(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_new_privileges")
 
-    @readonly_files_and_directories.setter
-    def readonly_files_and_directories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "readonly_files_and_directories", value)
+    @no_new_privileges.setter
+    def no_new_privileges(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_new_privileges", value)
 
     @property
-    @pulumi.getter(name="reverseShellAllowedIps")
-    def reverse_shell_allowed_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of IPs/ CIDRs that will be allowed
-        """
-        return pulumi.get(self, "reverse_shell_allowed_ips")
+    @pulumi.getter(name="onlyRegisteredImages")
+    def only_registered_images(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "only_registered_images")
 
-    @reverse_shell_allowed_ips.setter
-    def reverse_shell_allowed_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "reverse_shell_allowed_ips", value)
+    @only_registered_images.setter
+    def only_registered_images(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_registered_images", value)
 
     @property
-    @pulumi.getter(name="reverseShellAllowedProcesses")
-    def reverse_shell_allowed_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        List of processes that will be allowed
-        """
-        return pulumi.get(self, "reverse_shell_allowed_processes")
+    @pulumi.getter(name="packageBlock")
+    def package_block(self) -> Optional[pulumi.Input['ContainerRuntimePolicyPackageBlockArgs']]:
+        return pulumi.get(self, "package_block")
 
-    @reverse_shell_allowed_processes.setter
-    def reverse_shell_allowed_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "reverse_shell_allowed_processes", value)
+    @package_block.setter
+    def package_block(self, value: Optional[pulumi.Input['ContainerRuntimePolicyPackageBlockArgs']]):
+        pulumi.set(self, "package_block", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission", value)
+
+    @property
+    @pulumi.getter(name="portBlock")
+    def port_block(self) -> Optional[pulumi.Input['ContainerRuntimePolicyPortBlockArgs']]:
+        return pulumi.get(self, "port_block")
+
+    @port_block.setter
+    def port_block(self, value: Optional[pulumi.Input['ContainerRuntimePolicyPortBlockArgs']]):
+        pulumi.set(self, "port_block", value)
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional[pulumi.Input['ContainerRuntimePolicyReadonlyFilesArgs']]:
+        return pulumi.get(self, "readonly_files")
+
+    @readonly_files.setter
+    def readonly_files(self, value: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyFilesArgs']]):
+        pulumi.set(self, "readonly_files", value)
+
+    @property
+    @pulumi.getter(name="readonlyRegistry")
+    def readonly_registry(self) -> Optional[pulumi.Input['ContainerRuntimePolicyReadonlyRegistryArgs']]:
+        return pulumi.get(self, "readonly_registry")
+
+    @readonly_registry.setter
+    def readonly_registry(self, value: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyRegistryArgs']]):
+        pulumi.set(self, "readonly_registry", value)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryAccessMonitoring")
+    def registry_access_monitoring(self) -> Optional[pulumi.Input['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]:
+        return pulumi.get(self, "registry_access_monitoring")
+
+    @registry_access_monitoring.setter
+    def registry_access_monitoring(self, value: Optional[pulumi.Input['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]):
+        pulumi.set(self, "registry_access_monitoring", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter(name="restrictedVolumes")
+    def restricted_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]]]:
+        """
+        Restricted volumes configuration.
+        """
+        return pulumi.get(self, "restricted_volumes")
+
+    @restricted_volumes.setter
+    def restricted_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]]]):
+        pulumi.set(self, "restricted_volumes", value)
+
+    @property
+    @pulumi.getter(name="reverseShell")
+    def reverse_shell(self) -> Optional[pulumi.Input['ContainerRuntimePolicyReverseShellArgs']]:
+        return pulumi.get(self, "reverse_shell")
+
+    @reverse_shell.setter
+    def reverse_shell(self, value: Optional[pulumi.Input['ContainerRuntimePolicyReverseShellArgs']]):
+        pulumi.set(self, "reverse_shell", value)
+
+    @property
+    @pulumi.getter(name="runtimeMode")
+    def runtime_mode(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "runtime_mode")
+
+    @runtime_mode.setter
+    def runtime_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "runtime_mode", value)
+
+    @property
+    @pulumi.getter(name="runtimeType")
+    def runtime_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtime_type")
+
+    @runtime_type.setter
+    def runtime_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_type", value)
 
     @property
     @pulumi.getter(name="scopeExpression")
@@ -1708,31 +1249,106 @@ class _ContainerRuntimePolicyState:
     def scope_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]]):
         pulumi.set(self, "scope_variables", value)
 
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]]]:
+        """
+        Scope configuration.
+        """
+        return pulumi.get(self, "scopes")
 
-class ContainerRuntimePolicy(pulumi.CustomResource):
-    @overload
-    def __init__(__self__,
-                 resource_name: str,
-                 opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="systemIntegrityProtection")
+    def system_integrity_protection(self) -> Optional[pulumi.Input['ContainerRuntimePolicySystemIntegrityProtectionArgs']]:
+        return pulumi.get(self, "system_integrity_protection")
+
+    @system_integrity_protection.setter
+    def system_integrity_protection(self, value: Optional[pulumi.Input['ContainerRuntimePolicySystemIntegrityProtectionArgs']]):
+        pulumi.set(self, "system_integrity_protection", value)
+
+    @property
+    @pulumi.getter
+    def tripwire(self) -> Optional[pulumi.Input['ContainerRuntimePolicyTripwireArgs']]:
+        return pulumi.get(self, "tripwire")
+
+    @tripwire.setter
+    def tripwire(self, value: Optional[pulumi.Input['ContainerRuntimePolicyTripwireArgs']]):
+        pulumi.set(self, "tripwire", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="vpatchVersion")
+    def vpatch_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpatch_version")
+
+    @vpatch_version.setter
+    def vpatch_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpatch_version", value)
+
+    @property
+    @pulumi.getter(name="whitelistedOsUsers")
+    def whitelisted_os_users(self) -> Optional[pulumi.Input['ContainerRuntimePolicyWhitelistedOsUsersArgs']]:
+        return pulumi.get(self, "whitelisted_os_users")
+
+    @whitelisted_os_users.setter
+    def whitelisted_os_users(self, value: Optional[pulumi.Input['ContainerRuntimePolicyWhitelistedOsUsersArgs']]):
+        pulumi.set(self, "whitelisted_os_users", value)
+
+
+@pulumi.input_type
+class _ContainerRuntimePolicyState:
+    def __init__(__self__, *,
+                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]]] = None,
+                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]]] = None,
                  application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  audit_all_network_activity: Optional[pulumi.Input[bool]] = None,
                  audit_all_processes_activity: Optional[pulumi.Input[bool]] = None,
+                 audit_brute_force_login: Optional[pulumi.Input[bool]] = None,
                  audit_full_command_arguments: Optional[pulumi.Input[bool]] = None,
+                 auditing: Optional[pulumi.Input['ContainerRuntimePolicyAuditingArgs']] = None,
+                 author: Optional[pulumi.Input[str]] = None,
+                 blacklisted_os_users: Optional[pulumi.Input['ContainerRuntimePolicyBlacklistedOsUsersArgs']] = None,
                  block_access_host_network: Optional[pulumi.Input[bool]] = None,
                  block_adding_capabilities: Optional[pulumi.Input[bool]] = None,
                  block_container_exec: Optional[pulumi.Input[bool]] = None,
                  block_cryptocurrency_mining: Optional[pulumi.Input[bool]] = None,
+                 block_disallowed_images: Optional[pulumi.Input[bool]] = None,
                  block_fileless_exec: Optional[pulumi.Input[bool]] = None,
                  block_low_port_binding: Optional[pulumi.Input[bool]] = None,
-                 block_non_compliant_images: Optional[pulumi.Input[bool]] = None,
                  block_non_compliant_workloads: Optional[pulumi.Input[bool]] = None,
                  block_non_k8s_containers: Optional[pulumi.Input[bool]] = None,
                  block_privileged_containers: Optional[pulumi.Input[bool]] = None,
-                 block_reverse_shell: Optional[pulumi.Input[bool]] = None,
                  block_root_user: Optional[pulumi.Input[bool]] = None,
-                 block_unregistered_images: Optional[pulumi.Input[bool]] = None,
                  block_use_ipc_namespace: Optional[pulumi.Input[bool]] = None,
                  block_use_pid_namespace: Optional[pulumi.Input[bool]] = None,
                  block_use_user_namespace: Optional[pulumi.Input[bool]] = None,
@@ -1744,176 +1360,86 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  blocked_outbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bypass_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]]] = None,
+                 container_exec: Optional[pulumi.Input['ContainerRuntimePolicyContainerExecArgs']] = None,
                  container_exec_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 created: Optional[pulumi.Input[str]] = None,
+                 cve: Optional[pulumi.Input[str]] = None,
+                 default_security_profile: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_drift_prevention: Optional[pulumi.Input[bool]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 drift_preventions: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]]] = None,
+                 enable_crypto_mining_dns: Optional[pulumi.Input[bool]] = None,
                  enable_fork_guard: Optional[pulumi.Input[bool]] = None,
-                 enable_ip_reputation_security: Optional[pulumi.Input[bool]] = None,
-                 enable_port_scan_detection: Optional[pulumi.Input[bool]] = None,
+                 enable_ip_reputation: Optional[pulumi.Input[bool]] = None,
+                 enable_port_scan_protection: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
-                 exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
+                 enforce_scheduler_added_on: Optional[pulumi.Input[int]] = None,
+                 exclude_application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 executable_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]]] = None,
+                 failed_kubernetes_checks: Optional[pulumi.Input['ContainerRuntimePolicyFailedKubernetesChecksArgs']] = None,
+                 file_block: Optional[pulumi.Input['ContainerRuntimePolicyFileBlockArgs']] = None,
+                 file_integrity_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 is_audit_checked: Optional[pulumi.Input[bool]] = None,
+                 is_auto_generated: Optional[pulumi.Input[bool]] = None,
+                 is_ootb_policy: Optional[pulumi.Input[bool]] = None,
+                 lastupdate: Optional[pulumi.Input[int]] = None,
+                 limit_container_privileges: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
-                 malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
+                 linux_capabilities: Optional[pulumi.Input['ContainerRuntimePolicyLinuxCapabilitiesArgs']] = None,
+                 malware_scan_options: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 no_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 only_registered_images: Optional[pulumi.Input[bool]] = None,
+                 package_block: Optional[pulumi.Input['ContainerRuntimePolicyPackageBlockArgs']] = None,
+                 permission: Optional[pulumi.Input[str]] = None,
+                 port_block: Optional[pulumi.Input['ContainerRuntimePolicyPortBlockArgs']] = None,
+                 readonly_files: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyFilesArgs']] = None,
+                 readonly_registry: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyRegistryArgs']] = None,
+                 registry: Optional[pulumi.Input[str]] = None,
+                 registry_access_monitoring: Optional[pulumi.Input['ContainerRuntimePolicyRegistryAccessMonitoringArgs']] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 resource_name: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 restricted_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]]] = None,
+                 reverse_shell: Optional[pulumi.Input['ContainerRuntimePolicyReverseShellArgs']] = None,
+                 runtime_mode: Optional[pulumi.Input[int]] = None,
+                 runtime_type: Optional[pulumi.Input[str]] = None,
                  scope_expression: Optional[pulumi.Input[str]] = None,
-                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]]] = None,
-                 __props__=None):
+                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]]] = None,
+                 system_integrity_protection: Optional[pulumi.Input['ContainerRuntimePolicySystemIntegrityProtectionArgs']] = None,
+                 tripwire: Optional[pulumi.Input['ContainerRuntimePolicyTripwireArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpatch_version: Optional[pulumi.Input[str]] = None,
+                 whitelisted_os_users: Optional[pulumi.Input['ContainerRuntimePolicyWhitelistedOsUsersArgs']] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_aquasec as aquasec
-
-        container_runtime_policy = aquasec.ContainerRuntimePolicy("containerRuntimePolicy",
-            allowed_executables=[
-                "exe",
-                "bin",
-            ],
-            allowed_registries=[
-                "registry1",
-                "registry2",
-            ],
-            application_scopes=["Global"],
-            audit_all_network_activity=True,
-            audit_all_processes_activity=True,
-            audit_full_command_arguments=True,
-            block_access_host_network=True,
-            block_adding_capabilities=True,
-            block_container_exec=True,
-            block_cryptocurrency_mining=True,
-            block_fileless_exec=True,
-            block_low_port_binding=True,
-            block_non_compliant_images=True,
-            block_non_compliant_workloads=True,
-            block_non_k8s_containers=True,
-            block_privileged_containers=True,
-            block_reverse_shell=True,
-            block_root_user=True,
-            block_unregistered_images=True,
-            block_use_ipc_namespace=True,
-            block_use_pid_namespace=True,
-            block_use_user_namespace=True,
-            block_use_uts_namespace=True,
-            blocked_capabilities=[
-                "AUDIT_CONTROL",
-                "AUDIT_WRITE",
-            ],
-            blocked_executables=[
-                "exe1",
-                "exe2",
-            ],
-            blocked_files=[
-                "test1",
-                "test2",
-            ],
-            blocked_inbound_ports=[
-                "80",
-                "8080",
-            ],
-            blocked_outbound_ports=[
-                "90",
-                "9090",
-            ],
-            blocked_packages=[
-                "pkg",
-                "pkg2",
-            ],
-            blocked_volumes=[
-                "blocked",
-                "vol",
-            ],
-            container_exec_allowed_processes=[
-                "proc1",
-                "proc2",
-            ],
-            description="container_runtime_policy",
-            enable_drift_prevention=True,
-            enable_fork_guard=True,
-            enable_ip_reputation_security=True,
-            enable_port_scan_detection=True,
-            enabled=True,
-            enforce=False,
-            exceptional_readonly_files_and_directories=[
-                "readonly2",
-                "/dir2/",
-            ],
-            file_integrity_monitoring=aquasec.ContainerRuntimePolicyFileIntegrityMonitoringArgs(
-                excluded_paths=["expaths"],
-                excluded_processes=["exprocess"],
-                excluded_users=["expuser"],
-                monitor_attributes=True,
-                monitor_create=True,
-                monitor_delete=True,
-                monitor_modify=True,
-                monitor_read=True,
-                monitored_paths=["paths"],
-                monitored_processes=["process"],
-                monitored_users=["user"],
-            ),
-            fork_guard_process_limit=13,
-            limit_new_privileges=True,
-            malware_scan_options=aquasec.ContainerRuntimePolicyMalwareScanOptionsArgs(
-                action="alert",
-                enabled=True,
-            ),
-            monitor_system_time_changes=True,
-            readonly_files_and_directories=[
-                "readonly",
-                "/dir/",
-            ],
-            reverse_shell_allowed_ips=[
-                "ip1",
-                "ip2",
-            ],
-            reverse_shell_allowed_processes=[
-                "proc1",
-                "proc2",
-            ],
-            scope_expression="v1 || v2",
-            scope_variables=[
-                aquasec.ContainerRuntimePolicyScopeVariableArgs(
-                    attribute="kubernetes.cluster",
-                    value="default",
-                ),
-                aquasec.ContainerRuntimePolicyScopeVariableArgs(
-                    attribute="kubernetes.label",
-                    name="app",
-                    value="aqua",
-                ),
-            ])
-        ```
-
-        :param str resource_name: The name of the resource.
-        :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_executables: List of executables that are allowed for the user.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_registries: List of registries that allowed for running containers.
+        Input properties used for looking up and filtering ContainerRuntimePolicy resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]] allowed_executables: Allowed executables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]] allowed_registries: List of allowed registries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_all_network_activity: If true, all network activity will be audited.
         :param pulumi.Input[bool] audit_all_processes_activity: If true, all process activity will be audited.
+        :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
+        :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[bool] block_access_host_network: If true, prevent containers from running with access to host network.
         :param pulumi.Input[bool] block_adding_capabilities: If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
         :param pulumi.Input[bool] block_container_exec: If true, exec into a container is prevented.
         :param pulumi.Input[bool] block_cryptocurrency_mining: Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
         :param pulumi.Input[bool] block_fileless_exec: Detect and prevent running in-memory execution
         :param pulumi.Input[bool] block_low_port_binding: If true, prevent containers from running with the capability to bind in port lower than 1024.
-        :param pulumi.Input[bool] block_non_compliant_images: If true, running non-compliant image in the container is prevented.
         :param pulumi.Input[bool] block_non_compliant_workloads: If true, running containers in non-compliant pods is prevented.
         :param pulumi.Input[bool] block_non_k8s_containers: If true, running non-kubernetes containers is prevented.
         :param pulumi.Input[bool] block_privileged_containers: If true, prevent containers from running with privileged container capability.
-        :param pulumi.Input[bool] block_reverse_shell: If true, reverse shell is prevented.
         :param pulumi.Input[bool] block_root_user: If true, prevent containers from running with root user.
-        :param pulumi.Input[bool] block_unregistered_images: If true, running images in the container that are not registered in Aqua is prevented.
         :param pulumi.Input[bool] block_use_ipc_namespace: If true, prevent containers from running with the privilege to use the IPC namespace.
         :param pulumi.Input[bool] block_use_pid_namespace: If true, prevent containers from running with the privilege to use the PID namespace.
         :param pulumi.Input[bool] block_use_user_namespace: If true, prevent containers from running with the privilege to use the user namespace.
@@ -1925,28 +1451,1344 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_outbound_ports: List of blocked outbound ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_packages: Prevent containers from reading, writing, or executing all files in the list of packages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_volumes: List of volumes that are prevented from being mounted in the containers.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] container_exec_allowed_processes: List of processes that will be allowed.
         :param pulumi.Input[str] description: The description of the container runtime policy
-        :param pulumi.Input[bool] enable_drift_prevention: If true, executables that are not in the original image is prevented from running.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]] drift_preventions: Drift prevention configuration.
         :param pulumi.Input[bool] enable_fork_guard: If true, fork bombs are prevented in the containers.
-        :param pulumi.Input[bool] enable_ip_reputation_security: If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        :param pulumi.Input[bool] enable_port_scan_detection: If true, detects port scanning behavior in the container.
-        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
+        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]] executable_blacklists: Executable blacklist configuration.
+        :param pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs'] file_integrity_monitoring: Configuration for file integrity monitoring.
+        :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]] limit_container_privileges: Container privileges configuration.
+        :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
+        :param pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
+        :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
+        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]] restricted_volumes: Restricted volumes configuration.
+        :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]] scope_variables: List of scope attributes.
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]] scopes: Scope configuration.
+        """
+        if allowed_executables is not None:
+            pulumi.set(__self__, "allowed_executables", allowed_executables)
+        if allowed_registries is not None:
+            pulumi.set(__self__, "allowed_registries", allowed_registries)
+        if application_scopes is not None:
+            pulumi.set(__self__, "application_scopes", application_scopes)
+        if audit_all_network_activity is not None:
+            pulumi.set(__self__, "audit_all_network_activity", audit_all_network_activity)
+        if audit_all_processes_activity is not None:
+            pulumi.set(__self__, "audit_all_processes_activity", audit_all_processes_activity)
+        if audit_brute_force_login is not None:
+            pulumi.set(__self__, "audit_brute_force_login", audit_brute_force_login)
+        if audit_full_command_arguments is not None:
+            pulumi.set(__self__, "audit_full_command_arguments", audit_full_command_arguments)
+        if auditing is not None:
+            pulumi.set(__self__, "auditing", auditing)
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if blacklisted_os_users is not None:
+            pulumi.set(__self__, "blacklisted_os_users", blacklisted_os_users)
+        if block_access_host_network is not None:
+            pulumi.set(__self__, "block_access_host_network", block_access_host_network)
+        if block_adding_capabilities is not None:
+            pulumi.set(__self__, "block_adding_capabilities", block_adding_capabilities)
+        if block_container_exec is not None:
+            pulumi.set(__self__, "block_container_exec", block_container_exec)
+        if block_cryptocurrency_mining is not None:
+            pulumi.set(__self__, "block_cryptocurrency_mining", block_cryptocurrency_mining)
+        if block_disallowed_images is not None:
+            pulumi.set(__self__, "block_disallowed_images", block_disallowed_images)
+        if block_fileless_exec is not None:
+            pulumi.set(__self__, "block_fileless_exec", block_fileless_exec)
+        if block_low_port_binding is not None:
+            pulumi.set(__self__, "block_low_port_binding", block_low_port_binding)
+        if block_non_compliant_workloads is not None:
+            pulumi.set(__self__, "block_non_compliant_workloads", block_non_compliant_workloads)
+        if block_non_k8s_containers is not None:
+            pulumi.set(__self__, "block_non_k8s_containers", block_non_k8s_containers)
+        if block_privileged_containers is not None:
+            pulumi.set(__self__, "block_privileged_containers", block_privileged_containers)
+        if block_root_user is not None:
+            pulumi.set(__self__, "block_root_user", block_root_user)
+        if block_use_ipc_namespace is not None:
+            pulumi.set(__self__, "block_use_ipc_namespace", block_use_ipc_namespace)
+        if block_use_pid_namespace is not None:
+            pulumi.set(__self__, "block_use_pid_namespace", block_use_pid_namespace)
+        if block_use_user_namespace is not None:
+            pulumi.set(__self__, "block_use_user_namespace", block_use_user_namespace)
+        if block_use_uts_namespace is not None:
+            pulumi.set(__self__, "block_use_uts_namespace", block_use_uts_namespace)
+        if blocked_capabilities is not None:
+            pulumi.set(__self__, "blocked_capabilities", blocked_capabilities)
+        if blocked_executables is not None:
+            pulumi.set(__self__, "blocked_executables", blocked_executables)
+        if blocked_files is not None:
+            pulumi.set(__self__, "blocked_files", blocked_files)
+        if blocked_inbound_ports is not None:
+            pulumi.set(__self__, "blocked_inbound_ports", blocked_inbound_ports)
+        if blocked_outbound_ports is not None:
+            pulumi.set(__self__, "blocked_outbound_ports", blocked_outbound_ports)
+        if blocked_packages is not None:
+            pulumi.set(__self__, "blocked_packages", blocked_packages)
+        if blocked_volumes is not None:
+            pulumi.set(__self__, "blocked_volumes", blocked_volumes)
+        if bypass_scopes is not None:
+            pulumi.set(__self__, "bypass_scopes", bypass_scopes)
+        if container_exec is not None:
+            pulumi.set(__self__, "container_exec", container_exec)
+        if container_exec_allowed_processes is not None:
+            pulumi.set(__self__, "container_exec_allowed_processes", container_exec_allowed_processes)
+        if created is not None:
+            pulumi.set(__self__, "created", created)
+        if cve is not None:
+            pulumi.set(__self__, "cve", cve)
+        if default_security_profile is not None:
+            pulumi.set(__self__, "default_security_profile", default_security_profile)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if drift_preventions is not None:
+            pulumi.set(__self__, "drift_preventions", drift_preventions)
+        if enable_crypto_mining_dns is not None:
+            pulumi.set(__self__, "enable_crypto_mining_dns", enable_crypto_mining_dns)
+        if enable_fork_guard is not None:
+            pulumi.set(__self__, "enable_fork_guard", enable_fork_guard)
+        if enable_ip_reputation is not None:
+            pulumi.set(__self__, "enable_ip_reputation", enable_ip_reputation)
+        if enable_port_scan_protection is not None:
+            pulumi.set(__self__, "enable_port_scan_protection", enable_port_scan_protection)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if enforce_after_days is not None:
+            pulumi.set(__self__, "enforce_after_days", enforce_after_days)
+        if enforce_scheduler_added_on is not None:
+            pulumi.set(__self__, "enforce_scheduler_added_on", enforce_scheduler_added_on)
+        if exclude_application_scopes is not None:
+            pulumi.set(__self__, "exclude_application_scopes", exclude_application_scopes)
+        if executable_blacklists is not None:
+            pulumi.set(__self__, "executable_blacklists", executable_blacklists)
+        if failed_kubernetes_checks is not None:
+            pulumi.set(__self__, "failed_kubernetes_checks", failed_kubernetes_checks)
+        if file_block is not None:
+            pulumi.set(__self__, "file_block", file_block)
+        if file_integrity_monitoring is not None:
+            pulumi.set(__self__, "file_integrity_monitoring", file_integrity_monitoring)
+        if fork_guard_process_limit is not None:
+            pulumi.set(__self__, "fork_guard_process_limit", fork_guard_process_limit)
+        if image_name is not None:
+            pulumi.set(__self__, "image_name", image_name)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if is_auto_generated is not None:
+            pulumi.set(__self__, "is_auto_generated", is_auto_generated)
+        if is_ootb_policy is not None:
+            pulumi.set(__self__, "is_ootb_policy", is_ootb_policy)
+        if lastupdate is not None:
+            pulumi.set(__self__, "lastupdate", lastupdate)
+        if limit_container_privileges is not None:
+            pulumi.set(__self__, "limit_container_privileges", limit_container_privileges)
+        if limit_new_privileges is not None:
+            pulumi.set(__self__, "limit_new_privileges", limit_new_privileges)
+        if linux_capabilities is not None:
+            pulumi.set(__self__, "linux_capabilities", linux_capabilities)
+        if malware_scan_options is not None:
+            pulumi.set(__self__, "malware_scan_options", malware_scan_options)
+        if monitor_system_time_changes is not None:
+            pulumi.set(__self__, "monitor_system_time_changes", monitor_system_time_changes)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if no_new_privileges is not None:
+            pulumi.set(__self__, "no_new_privileges", no_new_privileges)
+        if only_registered_images is not None:
+            pulumi.set(__self__, "only_registered_images", only_registered_images)
+        if package_block is not None:
+            pulumi.set(__self__, "package_block", package_block)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+        if port_block is not None:
+            pulumi.set(__self__, "port_block", port_block)
+        if readonly_files is not None:
+            pulumi.set(__self__, "readonly_files", readonly_files)
+        if readonly_registry is not None:
+            pulumi.set(__self__, "readonly_registry", readonly_registry)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+        if registry_access_monitoring is not None:
+            pulumi.set(__self__, "registry_access_monitoring", registry_access_monitoring)
+        if repo_name is not None:
+            pulumi.set(__self__, "repo_name", repo_name)
+        if resource_name is not None:
+            pulumi.set(__self__, "resource_name", resource_name)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+        if restricted_volumes is not None:
+            pulumi.set(__self__, "restricted_volumes", restricted_volumes)
+        if reverse_shell is not None:
+            pulumi.set(__self__, "reverse_shell", reverse_shell)
+        if runtime_mode is not None:
+            pulumi.set(__self__, "runtime_mode", runtime_mode)
+        if runtime_type is not None:
+            pulumi.set(__self__, "runtime_type", runtime_type)
+        if scope_expression is not None:
+            pulumi.set(__self__, "scope_expression", scope_expression)
+        if scope_variables is not None:
+            pulumi.set(__self__, "scope_variables", scope_variables)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if system_integrity_protection is not None:
+            pulumi.set(__self__, "system_integrity_protection", system_integrity_protection)
+        if tripwire is not None:
+            pulumi.set(__self__, "tripwire", tripwire)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if updated is not None:
+            pulumi.set(__self__, "updated", updated)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if vpatch_version is not None:
+            pulumi.set(__self__, "vpatch_version", vpatch_version)
+        if whitelisted_os_users is not None:
+            pulumi.set(__self__, "whitelisted_os_users", whitelisted_os_users)
+
+    @property
+    @pulumi.getter(name="allowedExecutables")
+    def allowed_executables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]]]:
+        """
+        Allowed executables configuration.
+        """
+        return pulumi.get(self, "allowed_executables")
+
+    @allowed_executables.setter
+    def allowed_executables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedExecutableArgs']]]]):
+        pulumi.set(self, "allowed_executables", value)
+
+    @property
+    @pulumi.getter(name="allowedRegistries")
+    def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]]]:
+        """
+        List of allowed registries.
+        """
+        return pulumi.get(self, "allowed_registries")
+
+    @allowed_registries.setter
+    def allowed_registries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyAllowedRegistryArgs']]]]):
+        pulumi.set(self, "allowed_registries", value)
+
+    @property
+    @pulumi.getter(name="applicationScopes")
+    def application_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Indicates the application scope of the service.
+        """
+        return pulumi.get(self, "application_scopes")
+
+    @application_scopes.setter
+    def application_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "application_scopes", value)
+
+    @property
+    @pulumi.getter(name="auditAllNetworkActivity")
+    def audit_all_network_activity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, all network activity will be audited.
+        """
+        return pulumi.get(self, "audit_all_network_activity")
+
+    @audit_all_network_activity.setter
+    def audit_all_network_activity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit_all_network_activity", value)
+
+    @property
+    @pulumi.getter(name="auditAllProcessesActivity")
+    def audit_all_processes_activity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, all process activity will be audited.
+        """
+        return pulumi.get(self, "audit_all_processes_activity")
+
+    @audit_all_processes_activity.setter
+    def audit_all_processes_activity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit_all_processes_activity", value)
+
+    @property
+    @pulumi.getter(name="auditBruteForceLogin")
+    def audit_brute_force_login(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Detects brute force login attempts
+        """
+        return pulumi.get(self, "audit_brute_force_login")
+
+    @audit_brute_force_login.setter
+    def audit_brute_force_login(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit_brute_force_login", value)
+
+    @property
+    @pulumi.getter(name="auditFullCommandArguments")
+    def audit_full_command_arguments(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, full command arguments will be audited.
+        """
+        return pulumi.get(self, "audit_full_command_arguments")
+
+    @audit_full_command_arguments.setter
+    def audit_full_command_arguments(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "audit_full_command_arguments", value)
+
+    @property
+    @pulumi.getter
+    def auditing(self) -> Optional[pulumi.Input['ContainerRuntimePolicyAuditingArgs']]:
+        return pulumi.get(self, "auditing")
+
+    @auditing.setter
+    def auditing(self, value: Optional[pulumi.Input['ContainerRuntimePolicyAuditingArgs']]):
+        pulumi.set(self, "auditing", value)
+
+    @property
+    @pulumi.getter
+    def author(self) -> Optional[pulumi.Input[str]]:
+        """
+        Username of the account that created the service.
+        """
+        return pulumi.get(self, "author")
+
+    @author.setter
+    def author(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "author", value)
+
+    @property
+    @pulumi.getter(name="blacklistedOsUsers")
+    def blacklisted_os_users(self) -> Optional[pulumi.Input['ContainerRuntimePolicyBlacklistedOsUsersArgs']]:
+        return pulumi.get(self, "blacklisted_os_users")
+
+    @blacklisted_os_users.setter
+    def blacklisted_os_users(self, value: Optional[pulumi.Input['ContainerRuntimePolicyBlacklistedOsUsersArgs']]):
+        pulumi.set(self, "blacklisted_os_users", value)
+
+    @property
+    @pulumi.getter(name="blockAccessHostNetwork")
+    def block_access_host_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with access to host network.
+        """
+        return pulumi.get(self, "block_access_host_network")
+
+    @block_access_host_network.setter
+    def block_access_host_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_access_host_network", value)
+
+    @property
+    @pulumi.getter(name="blockAddingCapabilities")
+    def block_adding_capabilities(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
+        """
+        return pulumi.get(self, "block_adding_capabilities")
+
+    @block_adding_capabilities.setter
+    def block_adding_capabilities(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_adding_capabilities", value)
+
+    @property
+    @pulumi.getter(name="blockContainerExec")
+    def block_container_exec(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, exec into a container is prevented.
+        """
+        return pulumi.get(self, "block_container_exec")
+
+    @block_container_exec.setter
+    def block_container_exec(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_container_exec", value)
+
+    @property
+    @pulumi.getter(name="blockCryptocurrencyMining")
+    def block_cryptocurrency_mining(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
+        """
+        return pulumi.get(self, "block_cryptocurrency_mining")
+
+    @block_cryptocurrency_mining.setter
+    def block_cryptocurrency_mining(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_cryptocurrency_mining", value)
+
+    @property
+    @pulumi.getter(name="blockDisallowedImages")
+    def block_disallowed_images(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "block_disallowed_images")
+
+    @block_disallowed_images.setter
+    def block_disallowed_images(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_disallowed_images", value)
+
+    @property
+    @pulumi.getter(name="blockFilelessExec")
+    def block_fileless_exec(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Detect and prevent running in-memory execution
+        """
+        return pulumi.get(self, "block_fileless_exec")
+
+    @block_fileless_exec.setter
+    def block_fileless_exec(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_fileless_exec", value)
+
+    @property
+    @pulumi.getter(name="blockLowPortBinding")
+    def block_low_port_binding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with the capability to bind in port lower than 1024.
+        """
+        return pulumi.get(self, "block_low_port_binding")
+
+    @block_low_port_binding.setter
+    def block_low_port_binding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_low_port_binding", value)
+
+    @property
+    @pulumi.getter(name="blockNonCompliantWorkloads")
+    def block_non_compliant_workloads(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, running containers in non-compliant pods is prevented.
+        """
+        return pulumi.get(self, "block_non_compliant_workloads")
+
+    @block_non_compliant_workloads.setter
+    def block_non_compliant_workloads(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_non_compliant_workloads", value)
+
+    @property
+    @pulumi.getter(name="blockNonK8sContainers")
+    def block_non_k8s_containers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, running non-kubernetes containers is prevented.
+        """
+        return pulumi.get(self, "block_non_k8s_containers")
+
+    @block_non_k8s_containers.setter
+    def block_non_k8s_containers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_non_k8s_containers", value)
+
+    @property
+    @pulumi.getter(name="blockPrivilegedContainers")
+    def block_privileged_containers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with privileged container capability.
+        """
+        return pulumi.get(self, "block_privileged_containers")
+
+    @block_privileged_containers.setter
+    def block_privileged_containers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_privileged_containers", value)
+
+    @property
+    @pulumi.getter(name="blockRootUser")
+    def block_root_user(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with root user.
+        """
+        return pulumi.get(self, "block_root_user")
+
+    @block_root_user.setter
+    def block_root_user(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_root_user", value)
+
+    @property
+    @pulumi.getter(name="blockUseIpcNamespace")
+    def block_use_ipc_namespace(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with the privilege to use the IPC namespace.
+        """
+        return pulumi.get(self, "block_use_ipc_namespace")
+
+    @block_use_ipc_namespace.setter
+    def block_use_ipc_namespace(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_use_ipc_namespace", value)
+
+    @property
+    @pulumi.getter(name="blockUsePidNamespace")
+    def block_use_pid_namespace(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with the privilege to use the PID namespace.
+        """
+        return pulumi.get(self, "block_use_pid_namespace")
+
+    @block_use_pid_namespace.setter
+    def block_use_pid_namespace(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_use_pid_namespace", value)
+
+    @property
+    @pulumi.getter(name="blockUseUserNamespace")
+    def block_use_user_namespace(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with the privilege to use the user namespace.
+        """
+        return pulumi.get(self, "block_use_user_namespace")
+
+    @block_use_user_namespace.setter
+    def block_use_user_namespace(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_use_user_namespace", value)
+
+    @property
+    @pulumi.getter(name="blockUseUtsNamespace")
+    def block_use_uts_namespace(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevent containers from running with the privilege to use the UTS namespace.
+        """
+        return pulumi.get(self, "block_use_uts_namespace")
+
+    @block_use_uts_namespace.setter
+    def block_use_uts_namespace(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "block_use_uts_namespace", value)
+
+    @property
+    @pulumi.getter(name="blockedCapabilities")
+    def blocked_capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        If true, prevents containers from using specific Unix capabilities.
+        """
+        return pulumi.get(self, "blocked_capabilities")
+
+    @blocked_capabilities.setter
+    def blocked_capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_capabilities", value)
+
+    @property
+    @pulumi.getter(name="blockedExecutables")
+    def blocked_executables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of executables that are prevented from running in containers.
+        """
+        return pulumi.get(self, "blocked_executables")
+
+    @blocked_executables.setter
+    def blocked_executables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_executables", value)
+
+    @property
+    @pulumi.getter(name="blockedFiles")
+    def blocked_files(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of files that are prevented from being read, modified and executed in the containers.
+        """
+        return pulumi.get(self, "blocked_files")
+
+    @blocked_files.setter
+    def blocked_files(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_files", value)
+
+    @property
+    @pulumi.getter(name="blockedInboundPorts")
+    def blocked_inbound_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of blocked inbound ports.
+        """
+        return pulumi.get(self, "blocked_inbound_ports")
+
+    @blocked_inbound_ports.setter
+    def blocked_inbound_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_inbound_ports", value)
+
+    @property
+    @pulumi.getter(name="blockedOutboundPorts")
+    def blocked_outbound_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of blocked outbound ports.
+        """
+        return pulumi.get(self, "blocked_outbound_ports")
+
+    @blocked_outbound_ports.setter
+    def blocked_outbound_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_outbound_ports", value)
+
+    @property
+    @pulumi.getter(name="blockedPackages")
+    def blocked_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Prevent containers from reading, writing, or executing all files in the list of packages.
+        """
+        return pulumi.get(self, "blocked_packages")
+
+    @blocked_packages.setter
+    def blocked_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_packages", value)
+
+    @property
+    @pulumi.getter(name="blockedVolumes")
+    def blocked_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of volumes that are prevented from being mounted in the containers.
+        """
+        return pulumi.get(self, "blocked_volumes")
+
+    @blocked_volumes.setter
+    def blocked_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "blocked_volumes", value)
+
+    @property
+    @pulumi.getter(name="bypassScopes")
+    def bypass_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]]]:
+        """
+        Bypass scope configuration.
+        """
+        return pulumi.get(self, "bypass_scopes")
+
+    @bypass_scopes.setter
+    def bypass_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyBypassScopeArgs']]]]):
+        pulumi.set(self, "bypass_scopes", value)
+
+    @property
+    @pulumi.getter(name="containerExec")
+    def container_exec(self) -> Optional[pulumi.Input['ContainerRuntimePolicyContainerExecArgs']]:
+        return pulumi.get(self, "container_exec")
+
+    @container_exec.setter
+    def container_exec(self, value: Optional[pulumi.Input['ContainerRuntimePolicyContainerExecArgs']]):
+        pulumi.set(self, "container_exec", value)
+
+    @property
+    @pulumi.getter(name="containerExecAllowedProcesses")
+    def container_exec_allowed_processes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of processes that will be allowed.
+        """
+        return pulumi.get(self, "container_exec_allowed_processes")
+
+    @container_exec_allowed_processes.setter
+    def container_exec_allowed_processes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "container_exec_allowed_processes", value)
+
+    @property
+    @pulumi.getter
+    def created(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "created")
+
+    @created.setter
+    def created(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created", value)
+
+    @property
+    @pulumi.getter
+    def cve(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cve")
+
+    @cve.setter
+    def cve(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cve", value)
+
+    @property
+    @pulumi.getter(name="defaultSecurityProfile")
+    def default_security_profile(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "default_security_profile")
+
+    @default_security_profile.setter
+    def default_security_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_security_profile", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the container runtime policy
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="driftPreventions")
+    def drift_preventions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]]]:
+        """
+        Drift prevention configuration.
+        """
+        return pulumi.get(self, "drift_preventions")
+
+    @drift_preventions.setter
+    def drift_preventions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyDriftPreventionArgs']]]]):
+        pulumi.set(self, "drift_preventions", value)
+
+    @property
+    @pulumi.getter(name="enableCryptoMiningDns")
+    def enable_crypto_mining_dns(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_crypto_mining_dns")
+
+    @enable_crypto_mining_dns.setter
+    def enable_crypto_mining_dns(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_crypto_mining_dns", value)
+
+    @property
+    @pulumi.getter(name="enableForkGuard")
+    def enable_fork_guard(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, fork bombs are prevented in the containers.
+        """
+        return pulumi.get(self, "enable_fork_guard")
+
+    @enable_fork_guard.setter
+    def enable_fork_guard(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_fork_guard", value)
+
+    @property
+    @pulumi.getter(name="enableIpReputation")
+    def enable_ip_reputation(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_ip_reputation")
+
+    @enable_ip_reputation.setter
+    def enable_ip_reputation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_ip_reputation", value)
+
+    @property
+    @pulumi.getter(name="enablePortScanProtection")
+    def enable_port_scan_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_port_scan_protection")
+
+    @enable_port_scan_protection.setter
+    def enable_port_scan_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_port_scan_protection", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether allowed executables configuration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates that policy should effect container execution (not just for audit).
+        """
+        return pulumi.get(self, "enforce")
+
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enforce", value)
+
+    @property
+    @pulumi.getter(name="enforceAfterDays")
+    def enforce_after_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates the number of days after which the runtime policy will be changed to enforce mode.
+        """
+        return pulumi.get(self, "enforce_after_days")
+
+    @enforce_after_days.setter
+    def enforce_after_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enforce_after_days", value)
+
+    @property
+    @pulumi.getter(name="enforceSchedulerAddedOn")
+    def enforce_scheduler_added_on(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "enforce_scheduler_added_on")
+
+    @enforce_scheduler_added_on.setter
+    def enforce_scheduler_added_on(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enforce_scheduler_added_on", value)
+
+    @property
+    @pulumi.getter(name="excludeApplicationScopes")
+    def exclude_application_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of excluded application scopes.
+        """
+        return pulumi.get(self, "exclude_application_scopes")
+
+    @exclude_application_scopes.setter
+    def exclude_application_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "exclude_application_scopes", value)
+
+    @property
+    @pulumi.getter(name="executableBlacklists")
+    def executable_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]]]:
+        """
+        Executable blacklist configuration.
+        """
+        return pulumi.get(self, "executable_blacklists")
+
+    @executable_blacklists.setter
+    def executable_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyExecutableBlacklistArgs']]]]):
+        pulumi.set(self, "executable_blacklists", value)
+
+    @property
+    @pulumi.getter(name="failedKubernetesChecks")
+    def failed_kubernetes_checks(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFailedKubernetesChecksArgs']]:
+        return pulumi.get(self, "failed_kubernetes_checks")
+
+    @failed_kubernetes_checks.setter
+    def failed_kubernetes_checks(self, value: Optional[pulumi.Input['ContainerRuntimePolicyFailedKubernetesChecksArgs']]):
+        pulumi.set(self, "failed_kubernetes_checks", value)
+
+    @property
+    @pulumi.getter(name="fileBlock")
+    def file_block(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFileBlockArgs']]:
+        return pulumi.get(self, "file_block")
+
+    @file_block.setter
+    def file_block(self, value: Optional[pulumi.Input['ContainerRuntimePolicyFileBlockArgs']]):
+        pulumi.set(self, "file_block", value)
+
+    @property
+    @pulumi.getter(name="fileIntegrityMonitoring")
+    def file_integrity_monitoring(self) -> Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]:
+        """
+        Configuration for file integrity monitoring.
+        """
+        return pulumi.get(self, "file_integrity_monitoring")
+
+    @file_integrity_monitoring.setter
+    def file_integrity_monitoring(self, value: Optional[pulumi.Input['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]):
+        pulumi.set(self, "file_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="forkGuardProcessLimit")
+    def fork_guard_process_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        Process limit for the fork guard.
+        """
+        return pulumi.get(self, "fork_guard_process_limit")
+
+    @fork_guard_process_limit.setter
+    def fork_guard_process_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fork_guard_process_limit", value)
+
+    @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "image_name")
+
+    @image_name.setter
+    def image_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @is_audit_checked.setter
+    def is_audit_checked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_audit_checked", value)
+
+    @property
+    @pulumi.getter(name="isAutoGenerated")
+    def is_auto_generated(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_auto_generated")
+
+    @is_auto_generated.setter
+    def is_auto_generated(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_auto_generated", value)
+
+    @property
+    @pulumi.getter(name="isOotbPolicy")
+    def is_ootb_policy(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_ootb_policy")
+
+    @is_ootb_policy.setter
+    def is_ootb_policy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_ootb_policy", value)
+
+    @property
+    @pulumi.getter
+    def lastupdate(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "lastupdate")
+
+    @lastupdate.setter
+    def lastupdate(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "lastupdate", value)
+
+    @property
+    @pulumi.getter(name="limitContainerPrivileges")
+    def limit_container_privileges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]:
+        """
+        Container privileges configuration.
+        """
+        return pulumi.get(self, "limit_container_privileges")
+
+    @limit_container_privileges.setter
+    def limit_container_privileges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]):
+        pulumi.set(self, "limit_container_privileges", value)
+
+    @property
+    @pulumi.getter(name="limitNewPrivileges")
+    def limit_new_privileges(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
+        """
+        return pulumi.get(self, "limit_new_privileges")
+
+    @limit_new_privileges.setter
+    def limit_new_privileges(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "limit_new_privileges", value)
+
+    @property
+    @pulumi.getter(name="linuxCapabilities")
+    def linux_capabilities(self) -> Optional[pulumi.Input['ContainerRuntimePolicyLinuxCapabilitiesArgs']]:
+        return pulumi.get(self, "linux_capabilities")
+
+    @linux_capabilities.setter
+    def linux_capabilities(self, value: Optional[pulumi.Input['ContainerRuntimePolicyLinuxCapabilitiesArgs']]):
+        pulumi.set(self, "linux_capabilities", value)
+
+    @property
+    @pulumi.getter(name="malwareScanOptions")
+    def malware_scan_options(self) -> Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]:
+        """
+        Configuration for Real-Time Malware Protection.
+        """
+        return pulumi.get(self, "malware_scan_options")
+
+    @malware_scan_options.setter
+    def malware_scan_options(self, value: Optional[pulumi.Input['ContainerRuntimePolicyMalwareScanOptionsArgs']]):
+        pulumi.set(self, "malware_scan_options", value)
+
+    @property
+    @pulumi.getter(name="monitorSystemTimeChanges")
+    def monitor_system_time_changes(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, system time changes will be monitored.
+        """
+        return pulumi.get(self, "monitor_system_time_changes")
+
+    @monitor_system_time_changes.setter
+    def monitor_system_time_changes(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "monitor_system_time_changes", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name assigned to the attribute.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="noNewPrivileges")
+    def no_new_privileges(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "no_new_privileges")
+
+    @no_new_privileges.setter
+    def no_new_privileges(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_new_privileges", value)
+
+    @property
+    @pulumi.getter(name="onlyRegisteredImages")
+    def only_registered_images(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "only_registered_images")
+
+    @only_registered_images.setter
+    def only_registered_images(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_registered_images", value)
+
+    @property
+    @pulumi.getter(name="packageBlock")
+    def package_block(self) -> Optional[pulumi.Input['ContainerRuntimePolicyPackageBlockArgs']]:
+        return pulumi.get(self, "package_block")
+
+    @package_block.setter
+    def package_block(self, value: Optional[pulumi.Input['ContainerRuntimePolicyPackageBlockArgs']]):
+        pulumi.set(self, "package_block", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission", value)
+
+    @property
+    @pulumi.getter(name="portBlock")
+    def port_block(self) -> Optional[pulumi.Input['ContainerRuntimePolicyPortBlockArgs']]:
+        return pulumi.get(self, "port_block")
+
+    @port_block.setter
+    def port_block(self, value: Optional[pulumi.Input['ContainerRuntimePolicyPortBlockArgs']]):
+        pulumi.set(self, "port_block", value)
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional[pulumi.Input['ContainerRuntimePolicyReadonlyFilesArgs']]:
+        return pulumi.get(self, "readonly_files")
+
+    @readonly_files.setter
+    def readonly_files(self, value: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyFilesArgs']]):
+        pulumi.set(self, "readonly_files", value)
+
+    @property
+    @pulumi.getter(name="readonlyRegistry")
+    def readonly_registry(self) -> Optional[pulumi.Input['ContainerRuntimePolicyReadonlyRegistryArgs']]:
+        return pulumi.get(self, "readonly_registry")
+
+    @readonly_registry.setter
+    def readonly_registry(self, value: Optional[pulumi.Input['ContainerRuntimePolicyReadonlyRegistryArgs']]):
+        pulumi.set(self, "readonly_registry", value)
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "registry")
+
+    @registry.setter
+    def registry(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "registry", value)
+
+    @property
+    @pulumi.getter(name="registryAccessMonitoring")
+    def registry_access_monitoring(self) -> Optional[pulumi.Input['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]:
+        return pulumi.get(self, "registry_access_monitoring")
+
+    @registry_access_monitoring.setter
+    def registry_access_monitoring(self, value: Optional[pulumi.Input['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]):
+        pulumi.set(self, "registry_access_monitoring", value)
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repo_name")
+
+    @repo_name.setter
+    def repo_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repo_name", value)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_name")
+
+    @resource_name.setter
+    def resource_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_name", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
+
+    @property
+    @pulumi.getter(name="restrictedVolumes")
+    def restricted_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]]]:
+        """
+        Restricted volumes configuration.
+        """
+        return pulumi.get(self, "restricted_volumes")
+
+    @restricted_volumes.setter
+    def restricted_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyRestrictedVolumeArgs']]]]):
+        pulumi.set(self, "restricted_volumes", value)
+
+    @property
+    @pulumi.getter(name="reverseShell")
+    def reverse_shell(self) -> Optional[pulumi.Input['ContainerRuntimePolicyReverseShellArgs']]:
+        return pulumi.get(self, "reverse_shell")
+
+    @reverse_shell.setter
+    def reverse_shell(self, value: Optional[pulumi.Input['ContainerRuntimePolicyReverseShellArgs']]):
+        pulumi.set(self, "reverse_shell", value)
+
+    @property
+    @pulumi.getter(name="runtimeMode")
+    def runtime_mode(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "runtime_mode")
+
+    @runtime_mode.setter
+    def runtime_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "runtime_mode", value)
+
+    @property
+    @pulumi.getter(name="runtimeType")
+    def runtime_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "runtime_type")
+
+    @runtime_type.setter
+    def runtime_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_type", value)
+
+    @property
+    @pulumi.getter(name="scopeExpression")
+    def scope_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Logical expression of how to compute the dependency of the scope variables.
+        """
+        return pulumi.get(self, "scope_expression")
+
+    @scope_expression.setter
+    def scope_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_expression", value)
+
+    @property
+    @pulumi.getter(name="scopeVariables")
+    def scope_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]]:
+        """
+        List of scope attributes.
+        """
+        return pulumi.get(self, "scope_variables")
+
+    @scope_variables.setter
+    def scope_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeVariableArgs']]]]):
+        pulumi.set(self, "scope_variables", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]]]:
+        """
+        Scope configuration.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerRuntimePolicyScopeArgs']]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="systemIntegrityProtection")
+    def system_integrity_protection(self) -> Optional[pulumi.Input['ContainerRuntimePolicySystemIntegrityProtectionArgs']]:
+        return pulumi.get(self, "system_integrity_protection")
+
+    @system_integrity_protection.setter
+    def system_integrity_protection(self, value: Optional[pulumi.Input['ContainerRuntimePolicySystemIntegrityProtectionArgs']]):
+        pulumi.set(self, "system_integrity_protection", value)
+
+    @property
+    @pulumi.getter
+    def tripwire(self) -> Optional[pulumi.Input['ContainerRuntimePolicyTripwireArgs']]:
+        return pulumi.get(self, "tripwire")
+
+    @tripwire.setter
+    def tripwire(self, value: Optional[pulumi.Input['ContainerRuntimePolicyTripwireArgs']]):
+        pulumi.set(self, "tripwire", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def updated(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "updated")
+
+    @updated.setter
+    def updated(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "updated", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="vpatchVersion")
+    def vpatch_version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpatch_version")
+
+    @vpatch_version.setter
+    def vpatch_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpatch_version", value)
+
+    @property
+    @pulumi.getter(name="whitelistedOsUsers")
+    def whitelisted_os_users(self) -> Optional[pulumi.Input['ContainerRuntimePolicyWhitelistedOsUsersArgs']]:
+        return pulumi.get(self, "whitelisted_os_users")
+
+    @whitelisted_os_users.setter
+    def whitelisted_os_users(self, value: Optional[pulumi.Input['ContainerRuntimePolicyWhitelistedOsUsersArgs']]):
+        pulumi.set(self, "whitelisted_os_users", value)
+
+
+class ContainerRuntimePolicy(pulumi.CustomResource):
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedExecutableArgs']]]]] = None,
+                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedRegistryArgs']]]]] = None,
+                 application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 audit_all_network_activity: Optional[pulumi.Input[bool]] = None,
+                 audit_all_processes_activity: Optional[pulumi.Input[bool]] = None,
+                 audit_brute_force_login: Optional[pulumi.Input[bool]] = None,
+                 audit_full_command_arguments: Optional[pulumi.Input[bool]] = None,
+                 auditing: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAuditingArgs']]] = None,
+                 author: Optional[pulumi.Input[str]] = None,
+                 blacklisted_os_users: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBlacklistedOsUsersArgs']]] = None,
+                 block_access_host_network: Optional[pulumi.Input[bool]] = None,
+                 block_adding_capabilities: Optional[pulumi.Input[bool]] = None,
+                 block_container_exec: Optional[pulumi.Input[bool]] = None,
+                 block_cryptocurrency_mining: Optional[pulumi.Input[bool]] = None,
+                 block_disallowed_images: Optional[pulumi.Input[bool]] = None,
+                 block_fileless_exec: Optional[pulumi.Input[bool]] = None,
+                 block_low_port_binding: Optional[pulumi.Input[bool]] = None,
+                 block_non_compliant_workloads: Optional[pulumi.Input[bool]] = None,
+                 block_non_k8s_containers: Optional[pulumi.Input[bool]] = None,
+                 block_privileged_containers: Optional[pulumi.Input[bool]] = None,
+                 block_root_user: Optional[pulumi.Input[bool]] = None,
+                 block_use_ipc_namespace: Optional[pulumi.Input[bool]] = None,
+                 block_use_pid_namespace: Optional[pulumi.Input[bool]] = None,
+                 block_use_user_namespace: Optional[pulumi.Input[bool]] = None,
+                 block_use_uts_namespace: Optional[pulumi.Input[bool]] = None,
+                 blocked_capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 blocked_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 blocked_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 blocked_inbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 blocked_outbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 blocked_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 blocked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bypass_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBypassScopeArgs']]]]] = None,
+                 container_exec: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyContainerExecArgs']]] = None,
+                 container_exec_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 created: Optional[pulumi.Input[str]] = None,
+                 cve: Optional[pulumi.Input[str]] = None,
+                 default_security_profile: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 drift_preventions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyDriftPreventionArgs']]]]] = None,
+                 enable_crypto_mining_dns: Optional[pulumi.Input[bool]] = None,
+                 enable_fork_guard: Optional[pulumi.Input[bool]] = None,
+                 enable_ip_reputation: Optional[pulumi.Input[bool]] = None,
+                 enable_port_scan_protection: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 enforce: Optional[pulumi.Input[bool]] = None,
+                 enforce_after_days: Optional[pulumi.Input[int]] = None,
+                 enforce_scheduler_added_on: Optional[pulumi.Input[int]] = None,
+                 exclude_application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 executable_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyExecutableBlacklistArgs']]]]] = None,
+                 failed_kubernetes_checks: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFailedKubernetesChecksArgs']]] = None,
+                 file_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileBlockArgs']]] = None,
+                 file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
+                 fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 is_audit_checked: Optional[pulumi.Input[bool]] = None,
+                 is_auto_generated: Optional[pulumi.Input[bool]] = None,
+                 is_ootb_policy: Optional[pulumi.Input[bool]] = None,
+                 lastupdate: Optional[pulumi.Input[int]] = None,
+                 limit_container_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]] = None,
+                 limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 linux_capabilities: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLinuxCapabilitiesArgs']]] = None,
+                 malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
+                 monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 no_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 only_registered_images: Optional[pulumi.Input[bool]] = None,
+                 package_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyPackageBlockArgs']]] = None,
+                 permission: Optional[pulumi.Input[str]] = None,
+                 port_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyPortBlockArgs']]] = None,
+                 readonly_files: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReadonlyFilesArgs']]] = None,
+                 readonly_registry: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReadonlyRegistryArgs']]] = None,
+                 registry: Optional[pulumi.Input[str]] = None,
+                 registry_access_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 restricted_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRestrictedVolumeArgs']]]]] = None,
+                 reverse_shell: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReverseShellArgs']]] = None,
+                 runtime_mode: Optional[pulumi.Input[int]] = None,
+                 runtime_type: Optional[pulumi.Input[str]] = None,
+                 scope_expression: Optional[pulumi.Input[str]] = None,
+                 scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeArgs']]]]] = None,
+                 system_integrity_protection: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicySystemIntegrityProtectionArgs']]] = None,
+                 tripwire: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyTripwireArgs']]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpatch_version: Optional[pulumi.Input[str]] = None,
+                 whitelisted_os_users: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyWhitelistedOsUsersArgs']]] = None,
+                 __props__=None):
+        """
+        Create a ContainerRuntimePolicy resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedExecutableArgs']]]] allowed_executables: Allowed executables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
+        :param pulumi.Input[bool] audit_all_network_activity: If true, all network activity will be audited.
+        :param pulumi.Input[bool] audit_all_processes_activity: If true, all process activity will be audited.
+        :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
+        :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
+        :param pulumi.Input[str] author: Username of the account that created the service.
+        :param pulumi.Input[bool] block_access_host_network: If true, prevent containers from running with access to host network.
+        :param pulumi.Input[bool] block_adding_capabilities: If true, prevent containers from running with adding capabilities with `--cap-add` privilege.
+        :param pulumi.Input[bool] block_container_exec: If true, exec into a container is prevented.
+        :param pulumi.Input[bool] block_cryptocurrency_mining: Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
+        :param pulumi.Input[bool] block_fileless_exec: Detect and prevent running in-memory execution
+        :param pulumi.Input[bool] block_low_port_binding: If true, prevent containers from running with the capability to bind in port lower than 1024.
+        :param pulumi.Input[bool] block_non_compliant_workloads: If true, running containers in non-compliant pods is prevented.
+        :param pulumi.Input[bool] block_non_k8s_containers: If true, running non-kubernetes containers is prevented.
+        :param pulumi.Input[bool] block_privileged_containers: If true, prevent containers from running with privileged container capability.
+        :param pulumi.Input[bool] block_root_user: If true, prevent containers from running with root user.
+        :param pulumi.Input[bool] block_use_ipc_namespace: If true, prevent containers from running with the privilege to use the IPC namespace.
+        :param pulumi.Input[bool] block_use_pid_namespace: If true, prevent containers from running with the privilege to use the PID namespace.
+        :param pulumi.Input[bool] block_use_user_namespace: If true, prevent containers from running with the privilege to use the user namespace.
+        :param pulumi.Input[bool] block_use_uts_namespace: If true, prevent containers from running with the privilege to use the UTS namespace.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_capabilities: If true, prevents containers from using specific Unix capabilities.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_executables: List of executables that are prevented from running in containers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_files: List of files that are prevented from being read, modified and executed in the containers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_inbound_ports: List of blocked inbound ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_outbound_ports: List of blocked outbound ports.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_packages: Prevent containers from reading, writing, or executing all files in the list of packages.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_volumes: List of volumes that are prevented from being mounted in the containers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBypassScopeArgs']]]] bypass_scopes: Bypass scope configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] container_exec_allowed_processes: List of processes that will be allowed.
+        :param pulumi.Input[str] description: The description of the container runtime policy
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyDriftPreventionArgs']]]] drift_preventions: Drift prevention configuration.
+        :param pulumi.Input[bool] enable_fork_guard: If true, fork bombs are prevented in the containers.
+        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
+        :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyExecutableBlacklistArgs']]]] executable_blacklists: Executable blacklist configuration.
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
-        :param pulumi.Input[str] name: Name of the container runtime policy
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_ips: List of IPs/ CIDRs that will be allowed
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_processes: List of processes that will be allowed
+        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRestrictedVolumeArgs']]]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]] scope_variables: List of scope attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeArgs']]]] scopes: Scope configuration.
         """
         ...
     @overload
@@ -1955,131 +2797,7 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  args: Optional[ContainerRuntimePolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumiverse_aquasec as aquasec
-
-        container_runtime_policy = aquasec.ContainerRuntimePolicy("containerRuntimePolicy",
-            allowed_executables=[
-                "exe",
-                "bin",
-            ],
-            allowed_registries=[
-                "registry1",
-                "registry2",
-            ],
-            application_scopes=["Global"],
-            audit_all_network_activity=True,
-            audit_all_processes_activity=True,
-            audit_full_command_arguments=True,
-            block_access_host_network=True,
-            block_adding_capabilities=True,
-            block_container_exec=True,
-            block_cryptocurrency_mining=True,
-            block_fileless_exec=True,
-            block_low_port_binding=True,
-            block_non_compliant_images=True,
-            block_non_compliant_workloads=True,
-            block_non_k8s_containers=True,
-            block_privileged_containers=True,
-            block_reverse_shell=True,
-            block_root_user=True,
-            block_unregistered_images=True,
-            block_use_ipc_namespace=True,
-            block_use_pid_namespace=True,
-            block_use_user_namespace=True,
-            block_use_uts_namespace=True,
-            blocked_capabilities=[
-                "AUDIT_CONTROL",
-                "AUDIT_WRITE",
-            ],
-            blocked_executables=[
-                "exe1",
-                "exe2",
-            ],
-            blocked_files=[
-                "test1",
-                "test2",
-            ],
-            blocked_inbound_ports=[
-                "80",
-                "8080",
-            ],
-            blocked_outbound_ports=[
-                "90",
-                "9090",
-            ],
-            blocked_packages=[
-                "pkg",
-                "pkg2",
-            ],
-            blocked_volumes=[
-                "blocked",
-                "vol",
-            ],
-            container_exec_allowed_processes=[
-                "proc1",
-                "proc2",
-            ],
-            description="container_runtime_policy",
-            enable_drift_prevention=True,
-            enable_fork_guard=True,
-            enable_ip_reputation_security=True,
-            enable_port_scan_detection=True,
-            enabled=True,
-            enforce=False,
-            exceptional_readonly_files_and_directories=[
-                "readonly2",
-                "/dir2/",
-            ],
-            file_integrity_monitoring=aquasec.ContainerRuntimePolicyFileIntegrityMonitoringArgs(
-                excluded_paths=["expaths"],
-                excluded_processes=["exprocess"],
-                excluded_users=["expuser"],
-                monitor_attributes=True,
-                monitor_create=True,
-                monitor_delete=True,
-                monitor_modify=True,
-                monitor_read=True,
-                monitored_paths=["paths"],
-                monitored_processes=["process"],
-                monitored_users=["user"],
-            ),
-            fork_guard_process_limit=13,
-            limit_new_privileges=True,
-            malware_scan_options=aquasec.ContainerRuntimePolicyMalwareScanOptionsArgs(
-                action="alert",
-                enabled=True,
-            ),
-            monitor_system_time_changes=True,
-            readonly_files_and_directories=[
-                "readonly",
-                "/dir/",
-            ],
-            reverse_shell_allowed_ips=[
-                "ip1",
-                "ip2",
-            ],
-            reverse_shell_allowed_processes=[
-                "proc1",
-                "proc2",
-            ],
-            scope_expression="v1 || v2",
-            scope_variables=[
-                aquasec.ContainerRuntimePolicyScopeVariableArgs(
-                    attribute="kubernetes.cluster",
-                    value="default",
-                ),
-                aquasec.ContainerRuntimePolicyScopeVariableArgs(
-                    attribute="kubernetes.label",
-                    name="app",
-                    value="aqua",
-                ),
-            ])
-        ```
-
+        Create a ContainerRuntimePolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ContainerRuntimePolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2095,25 +2813,27 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedExecutableArgs']]]]] = None,
+                 allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedRegistryArgs']]]]] = None,
                  application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  audit_all_network_activity: Optional[pulumi.Input[bool]] = None,
                  audit_all_processes_activity: Optional[pulumi.Input[bool]] = None,
+                 audit_brute_force_login: Optional[pulumi.Input[bool]] = None,
                  audit_full_command_arguments: Optional[pulumi.Input[bool]] = None,
+                 auditing: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAuditingArgs']]] = None,
+                 author: Optional[pulumi.Input[str]] = None,
+                 blacklisted_os_users: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBlacklistedOsUsersArgs']]] = None,
                  block_access_host_network: Optional[pulumi.Input[bool]] = None,
                  block_adding_capabilities: Optional[pulumi.Input[bool]] = None,
                  block_container_exec: Optional[pulumi.Input[bool]] = None,
                  block_cryptocurrency_mining: Optional[pulumi.Input[bool]] = None,
+                 block_disallowed_images: Optional[pulumi.Input[bool]] = None,
                  block_fileless_exec: Optional[pulumi.Input[bool]] = None,
                  block_low_port_binding: Optional[pulumi.Input[bool]] = None,
-                 block_non_compliant_images: Optional[pulumi.Input[bool]] = None,
                  block_non_compliant_workloads: Optional[pulumi.Input[bool]] = None,
                  block_non_k8s_containers: Optional[pulumi.Input[bool]] = None,
                  block_privileged_containers: Optional[pulumi.Input[bool]] = None,
-                 block_reverse_shell: Optional[pulumi.Input[bool]] = None,
                  block_root_user: Optional[pulumi.Input[bool]] = None,
-                 block_unregistered_images: Optional[pulumi.Input[bool]] = None,
                  block_use_ipc_namespace: Optional[pulumi.Input[bool]] = None,
                  block_use_pid_namespace: Optional[pulumi.Input[bool]] = None,
                  block_use_user_namespace: Optional[pulumi.Input[bool]] = None,
@@ -2125,28 +2845,66 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
                  blocked_outbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  blocked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 bypass_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBypassScopeArgs']]]]] = None,
+                 container_exec: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyContainerExecArgs']]] = None,
                  container_exec_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 created: Optional[pulumi.Input[str]] = None,
+                 cve: Optional[pulumi.Input[str]] = None,
+                 default_security_profile: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 enable_drift_prevention: Optional[pulumi.Input[bool]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 drift_preventions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyDriftPreventionArgs']]]]] = None,
+                 enable_crypto_mining_dns: Optional[pulumi.Input[bool]] = None,
                  enable_fork_guard: Optional[pulumi.Input[bool]] = None,
-                 enable_ip_reputation_security: Optional[pulumi.Input[bool]] = None,
-                 enable_port_scan_detection: Optional[pulumi.Input[bool]] = None,
+                 enable_ip_reputation: Optional[pulumi.Input[bool]] = None,
+                 enable_port_scan_protection: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  enforce: Optional[pulumi.Input[bool]] = None,
                  enforce_after_days: Optional[pulumi.Input[int]] = None,
-                 exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enforce_scheduler_added_on: Optional[pulumi.Input[int]] = None,
+                 exclude_application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 executable_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyExecutableBlacklistArgs']]]]] = None,
+                 failed_kubernetes_checks: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFailedKubernetesChecksArgs']]] = None,
+                 file_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileBlockArgs']]] = None,
                  file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
                  fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
+                 image_name: Optional[pulumi.Input[str]] = None,
+                 is_audit_checked: Optional[pulumi.Input[bool]] = None,
+                 is_auto_generated: Optional[pulumi.Input[bool]] = None,
+                 is_ootb_policy: Optional[pulumi.Input[bool]] = None,
+                 lastupdate: Optional[pulumi.Input[int]] = None,
+                 limit_container_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]] = None,
                  limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 linux_capabilities: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLinuxCapabilitiesArgs']]] = None,
                  malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
                  monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reverse_shell_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 no_new_privileges: Optional[pulumi.Input[bool]] = None,
+                 only_registered_images: Optional[pulumi.Input[bool]] = None,
+                 package_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyPackageBlockArgs']]] = None,
+                 permission: Optional[pulumi.Input[str]] = None,
+                 port_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyPortBlockArgs']]] = None,
+                 readonly_files: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReadonlyFilesArgs']]] = None,
+                 readonly_registry: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReadonlyRegistryArgs']]] = None,
+                 registry: Optional[pulumi.Input[str]] = None,
+                 registry_access_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]] = None,
+                 repo_name: Optional[pulumi.Input[str]] = None,
+                 resource_name_: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 restricted_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRestrictedVolumeArgs']]]]] = None,
+                 reverse_shell: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReverseShellArgs']]] = None,
+                 runtime_mode: Optional[pulumi.Input[int]] = None,
+                 runtime_type: Optional[pulumi.Input[str]] = None,
                  scope_expression: Optional[pulumi.Input[str]] = None,
                  scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeArgs']]]]] = None,
+                 system_integrity_protection: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicySystemIntegrityProtectionArgs']]] = None,
+                 tripwire: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyTripwireArgs']]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 updated: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None,
+                 vpatch_version: Optional[pulumi.Input[str]] = None,
+                 whitelisted_os_users: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyWhitelistedOsUsersArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2161,20 +2919,22 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             __props__.__dict__["application_scopes"] = application_scopes
             __props__.__dict__["audit_all_network_activity"] = audit_all_network_activity
             __props__.__dict__["audit_all_processes_activity"] = audit_all_processes_activity
+            __props__.__dict__["audit_brute_force_login"] = audit_brute_force_login
             __props__.__dict__["audit_full_command_arguments"] = audit_full_command_arguments
+            __props__.__dict__["auditing"] = auditing
+            __props__.__dict__["author"] = author
+            __props__.__dict__["blacklisted_os_users"] = blacklisted_os_users
             __props__.__dict__["block_access_host_network"] = block_access_host_network
             __props__.__dict__["block_adding_capabilities"] = block_adding_capabilities
             __props__.__dict__["block_container_exec"] = block_container_exec
             __props__.__dict__["block_cryptocurrency_mining"] = block_cryptocurrency_mining
+            __props__.__dict__["block_disallowed_images"] = block_disallowed_images
             __props__.__dict__["block_fileless_exec"] = block_fileless_exec
             __props__.__dict__["block_low_port_binding"] = block_low_port_binding
-            __props__.__dict__["block_non_compliant_images"] = block_non_compliant_images
             __props__.__dict__["block_non_compliant_workloads"] = block_non_compliant_workloads
             __props__.__dict__["block_non_k8s_containers"] = block_non_k8s_containers
             __props__.__dict__["block_privileged_containers"] = block_privileged_containers
-            __props__.__dict__["block_reverse_shell"] = block_reverse_shell
             __props__.__dict__["block_root_user"] = block_root_user
-            __props__.__dict__["block_unregistered_images"] = block_unregistered_images
             __props__.__dict__["block_use_ipc_namespace"] = block_use_ipc_namespace
             __props__.__dict__["block_use_pid_namespace"] = block_use_pid_namespace
             __props__.__dict__["block_use_user_namespace"] = block_use_user_namespace
@@ -2186,29 +2946,66 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             __props__.__dict__["blocked_outbound_ports"] = blocked_outbound_ports
             __props__.__dict__["blocked_packages"] = blocked_packages
             __props__.__dict__["blocked_volumes"] = blocked_volumes
+            __props__.__dict__["bypass_scopes"] = bypass_scopes
+            __props__.__dict__["container_exec"] = container_exec
             __props__.__dict__["container_exec_allowed_processes"] = container_exec_allowed_processes
+            __props__.__dict__["created"] = created
+            __props__.__dict__["cve"] = cve
+            __props__.__dict__["default_security_profile"] = default_security_profile
             __props__.__dict__["description"] = description
-            __props__.__dict__["enable_drift_prevention"] = enable_drift_prevention
+            __props__.__dict__["digest"] = digest
+            __props__.__dict__["drift_preventions"] = drift_preventions
+            __props__.__dict__["enable_crypto_mining_dns"] = enable_crypto_mining_dns
             __props__.__dict__["enable_fork_guard"] = enable_fork_guard
-            __props__.__dict__["enable_ip_reputation_security"] = enable_ip_reputation_security
-            __props__.__dict__["enable_port_scan_detection"] = enable_port_scan_detection
+            __props__.__dict__["enable_ip_reputation"] = enable_ip_reputation
+            __props__.__dict__["enable_port_scan_protection"] = enable_port_scan_protection
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["enforce"] = enforce
             __props__.__dict__["enforce_after_days"] = enforce_after_days
-            __props__.__dict__["exceptional_readonly_files_and_directories"] = exceptional_readonly_files_and_directories
-            __props__.__dict__["exec_lockdown_white_lists"] = exec_lockdown_white_lists
+            __props__.__dict__["enforce_scheduler_added_on"] = enforce_scheduler_added_on
+            __props__.__dict__["exclude_application_scopes"] = exclude_application_scopes
+            __props__.__dict__["executable_blacklists"] = executable_blacklists
+            __props__.__dict__["failed_kubernetes_checks"] = failed_kubernetes_checks
+            __props__.__dict__["file_block"] = file_block
             __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
             __props__.__dict__["fork_guard_process_limit"] = fork_guard_process_limit
+            __props__.__dict__["image_name"] = image_name
+            __props__.__dict__["is_audit_checked"] = is_audit_checked
+            __props__.__dict__["is_auto_generated"] = is_auto_generated
+            __props__.__dict__["is_ootb_policy"] = is_ootb_policy
+            __props__.__dict__["lastupdate"] = lastupdate
+            __props__.__dict__["limit_container_privileges"] = limit_container_privileges
             __props__.__dict__["limit_new_privileges"] = limit_new_privileges
+            __props__.__dict__["linux_capabilities"] = linux_capabilities
             __props__.__dict__["malware_scan_options"] = malware_scan_options
             __props__.__dict__["monitor_system_time_changes"] = monitor_system_time_changes
             __props__.__dict__["name"] = name
-            __props__.__dict__["readonly_files_and_directories"] = readonly_files_and_directories
-            __props__.__dict__["reverse_shell_allowed_ips"] = reverse_shell_allowed_ips
-            __props__.__dict__["reverse_shell_allowed_processes"] = reverse_shell_allowed_processes
+            __props__.__dict__["no_new_privileges"] = no_new_privileges
+            __props__.__dict__["only_registered_images"] = only_registered_images
+            __props__.__dict__["package_block"] = package_block
+            __props__.__dict__["permission"] = permission
+            __props__.__dict__["port_block"] = port_block
+            __props__.__dict__["readonly_files"] = readonly_files
+            __props__.__dict__["readonly_registry"] = readonly_registry
+            __props__.__dict__["registry"] = registry
+            __props__.__dict__["registry_access_monitoring"] = registry_access_monitoring
+            __props__.__dict__["repo_name"] = repo_name
+            __props__.__dict__["resource_name"] = resource_name_
+            __props__.__dict__["resource_type"] = resource_type
+            __props__.__dict__["restricted_volumes"] = restricted_volumes
+            __props__.__dict__["reverse_shell"] = reverse_shell
+            __props__.__dict__["runtime_mode"] = runtime_mode
+            __props__.__dict__["runtime_type"] = runtime_type
             __props__.__dict__["scope_expression"] = scope_expression
             __props__.__dict__["scope_variables"] = scope_variables
-            __props__.__dict__["author"] = None
+            __props__.__dict__["scopes"] = scopes
+            __props__.__dict__["system_integrity_protection"] = system_integrity_protection
+            __props__.__dict__["tripwire"] = tripwire
+            __props__.__dict__["type"] = type
+            __props__.__dict__["updated"] = updated
+            __props__.__dict__["version"] = version
+            __props__.__dict__["vpatch_version"] = vpatch_version
+            __props__.__dict__["whitelisted_os_users"] = whitelisted_os_users
         super(ContainerRuntimePolicy, __self__).__init__(
             'aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy',
             resource_name,
@@ -2219,26 +3016,27 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            allowed_executables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedExecutableArgs']]]]] = None,
+            allowed_registries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedRegistryArgs']]]]] = None,
             application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             audit_all_network_activity: Optional[pulumi.Input[bool]] = None,
             audit_all_processes_activity: Optional[pulumi.Input[bool]] = None,
+            audit_brute_force_login: Optional[pulumi.Input[bool]] = None,
             audit_full_command_arguments: Optional[pulumi.Input[bool]] = None,
+            auditing: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAuditingArgs']]] = None,
             author: Optional[pulumi.Input[str]] = None,
+            blacklisted_os_users: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBlacklistedOsUsersArgs']]] = None,
             block_access_host_network: Optional[pulumi.Input[bool]] = None,
             block_adding_capabilities: Optional[pulumi.Input[bool]] = None,
             block_container_exec: Optional[pulumi.Input[bool]] = None,
             block_cryptocurrency_mining: Optional[pulumi.Input[bool]] = None,
+            block_disallowed_images: Optional[pulumi.Input[bool]] = None,
             block_fileless_exec: Optional[pulumi.Input[bool]] = None,
             block_low_port_binding: Optional[pulumi.Input[bool]] = None,
-            block_non_compliant_images: Optional[pulumi.Input[bool]] = None,
             block_non_compliant_workloads: Optional[pulumi.Input[bool]] = None,
             block_non_k8s_containers: Optional[pulumi.Input[bool]] = None,
             block_privileged_containers: Optional[pulumi.Input[bool]] = None,
-            block_reverse_shell: Optional[pulumi.Input[bool]] = None,
             block_root_user: Optional[pulumi.Input[bool]] = None,
-            block_unregistered_images: Optional[pulumi.Input[bool]] = None,
             block_use_ipc_namespace: Optional[pulumi.Input[bool]] = None,
             block_use_pid_namespace: Optional[pulumi.Input[bool]] = None,
             block_use_user_namespace: Optional[pulumi.Input[bool]] = None,
@@ -2250,28 +3048,66 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
             blocked_outbound_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             blocked_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             blocked_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            bypass_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBypassScopeArgs']]]]] = None,
+            container_exec: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyContainerExecArgs']]] = None,
             container_exec_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            created: Optional[pulumi.Input[str]] = None,
+            cve: Optional[pulumi.Input[str]] = None,
+            default_security_profile: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            enable_drift_prevention: Optional[pulumi.Input[bool]] = None,
+            digest: Optional[pulumi.Input[str]] = None,
+            drift_preventions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyDriftPreventionArgs']]]]] = None,
+            enable_crypto_mining_dns: Optional[pulumi.Input[bool]] = None,
             enable_fork_guard: Optional[pulumi.Input[bool]] = None,
-            enable_ip_reputation_security: Optional[pulumi.Input[bool]] = None,
-            enable_port_scan_detection: Optional[pulumi.Input[bool]] = None,
+            enable_ip_reputation: Optional[pulumi.Input[bool]] = None,
+            enable_port_scan_protection: Optional[pulumi.Input[bool]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             enforce: Optional[pulumi.Input[bool]] = None,
             enforce_after_days: Optional[pulumi.Input[int]] = None,
-            exceptional_readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            exec_lockdown_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            enforce_scheduler_added_on: Optional[pulumi.Input[int]] = None,
+            exclude_application_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            executable_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyExecutableBlacklistArgs']]]]] = None,
+            failed_kubernetes_checks: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFailedKubernetesChecksArgs']]] = None,
+            file_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileBlockArgs']]] = None,
             file_integrity_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']]] = None,
             fork_guard_process_limit: Optional[pulumi.Input[int]] = None,
+            image_name: Optional[pulumi.Input[str]] = None,
+            is_audit_checked: Optional[pulumi.Input[bool]] = None,
+            is_auto_generated: Optional[pulumi.Input[bool]] = None,
+            is_ootb_policy: Optional[pulumi.Input[bool]] = None,
+            lastupdate: Optional[pulumi.Input[int]] = None,
+            limit_container_privileges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]]] = None,
             limit_new_privileges: Optional[pulumi.Input[bool]] = None,
+            linux_capabilities: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLinuxCapabilitiesArgs']]] = None,
             malware_scan_options: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']]] = None,
             monitor_system_time_changes: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            readonly_files_and_directories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            reverse_shell_allowed_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            reverse_shell_allowed_processes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            no_new_privileges: Optional[pulumi.Input[bool]] = None,
+            only_registered_images: Optional[pulumi.Input[bool]] = None,
+            package_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyPackageBlockArgs']]] = None,
+            permission: Optional[pulumi.Input[str]] = None,
+            port_block: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyPortBlockArgs']]] = None,
+            readonly_files: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReadonlyFilesArgs']]] = None,
+            readonly_registry: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReadonlyRegistryArgs']]] = None,
+            registry: Optional[pulumi.Input[str]] = None,
+            registry_access_monitoring: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRegistryAccessMonitoringArgs']]] = None,
+            repo_name: Optional[pulumi.Input[str]] = None,
+            resource_name_: Optional[pulumi.Input[str]] = None,
+            resource_type: Optional[pulumi.Input[str]] = None,
+            restricted_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRestrictedVolumeArgs']]]]] = None,
+            reverse_shell: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyReverseShellArgs']]] = None,
+            runtime_mode: Optional[pulumi.Input[int]] = None,
+            runtime_type: Optional[pulumi.Input[str]] = None,
             scope_expression: Optional[pulumi.Input[str]] = None,
-            scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]]] = None) -> 'ContainerRuntimePolicy':
+            scope_variables: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]]] = None,
+            scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeArgs']]]]] = None,
+            system_integrity_protection: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicySystemIntegrityProtectionArgs']]] = None,
+            tripwire: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyTripwireArgs']]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            updated: Optional[pulumi.Input[str]] = None,
+            version: Optional[pulumi.Input[str]] = None,
+            vpatch_version: Optional[pulumi.Input[str]] = None,
+            whitelisted_os_users: Optional[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyWhitelistedOsUsersArgs']]] = None) -> 'ContainerRuntimePolicy':
         """
         Get an existing ContainerRuntimePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2279,11 +3115,12 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_executables: List of executables that are allowed for the user.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_registries: List of registries that allowed for running containers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedExecutableArgs']]]] allowed_executables: Allowed executables configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: List of allowed registries.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_all_network_activity: If true, all network activity will be audited.
         :param pulumi.Input[bool] audit_all_processes_activity: If true, all process activity will be audited.
+        :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
         :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[bool] block_access_host_network: If true, prevent containers from running with access to host network.
@@ -2292,13 +3129,10 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] block_cryptocurrency_mining: Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
         :param pulumi.Input[bool] block_fileless_exec: Detect and prevent running in-memory execution
         :param pulumi.Input[bool] block_low_port_binding: If true, prevent containers from running with the capability to bind in port lower than 1024.
-        :param pulumi.Input[bool] block_non_compliant_images: If true, running non-compliant image in the container is prevented.
         :param pulumi.Input[bool] block_non_compliant_workloads: If true, running containers in non-compliant pods is prevented.
         :param pulumi.Input[bool] block_non_k8s_containers: If true, running non-kubernetes containers is prevented.
         :param pulumi.Input[bool] block_privileged_containers: If true, prevent containers from running with privileged container capability.
-        :param pulumi.Input[bool] block_reverse_shell: If true, reverse shell is prevented.
         :param pulumi.Input[bool] block_root_user: If true, prevent containers from running with root user.
-        :param pulumi.Input[bool] block_unregistered_images: If true, running images in the container that are not registered in Aqua is prevented.
         :param pulumi.Input[bool] block_use_ipc_namespace: If true, prevent containers from running with the privilege to use the IPC namespace.
         :param pulumi.Input[bool] block_use_pid_namespace: If true, prevent containers from running with the privilege to use the PID namespace.
         :param pulumi.Input[bool] block_use_user_namespace: If true, prevent containers from running with the privilege to use the user namespace.
@@ -2310,28 +3144,27 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_outbound_ports: List of blocked outbound ports.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_packages: Prevent containers from reading, writing, or executing all files in the list of packages.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blocked_volumes: List of volumes that are prevented from being mounted in the containers.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyBypassScopeArgs']]]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] container_exec_allowed_processes: List of processes that will be allowed.
         :param pulumi.Input[str] description: The description of the container runtime policy
-        :param pulumi.Input[bool] enable_drift_prevention: If true, executables that are not in the original image is prevented from running.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyDriftPreventionArgs']]]] drift_preventions: Drift prevention configuration.
         :param pulumi.Input[bool] enable_fork_guard: If true, fork bombs are prevented in the containers.
-        :param pulumi.Input[bool] enable_ip_reputation_security: If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        :param pulumi.Input[bool] enable_port_scan_detection: If true, detects port scanning behavior in the container.
-        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
+        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exceptional_readonly_files_and_directories: List of files and directories to be excluded from the read-only list.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] exec_lockdown_white_lists: Specify processes that will be allowed
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyExecutableBlacklistArgs']]]] executable_blacklists: Executable blacklist configuration.
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitoring: Configuration for file integrity monitoring.
         :param pulumi.Input[int] fork_guard_process_limit: Process limit for the fork guard.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyLimitContainerPrivilegeArgs']]]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input[bool] limit_new_privileges: If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         :param pulumi.Input[pulumi.InputType['ContainerRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
-        :param pulumi.Input[str] name: Name of the container runtime policy
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_files_and_directories: List of files and directories to be restricted as read-only
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_ips: List of IPs/ CIDRs that will be allowed
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reverse_shell_allowed_processes: List of processes that will be allowed
+        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyRestrictedVolumeArgs']]]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeVariableArgs']]]] scope_variables: List of scope attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ContainerRuntimePolicyScopeArgs']]]] scopes: Scope configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2342,21 +3175,22 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         __props__.__dict__["application_scopes"] = application_scopes
         __props__.__dict__["audit_all_network_activity"] = audit_all_network_activity
         __props__.__dict__["audit_all_processes_activity"] = audit_all_processes_activity
+        __props__.__dict__["audit_brute_force_login"] = audit_brute_force_login
         __props__.__dict__["audit_full_command_arguments"] = audit_full_command_arguments
+        __props__.__dict__["auditing"] = auditing
         __props__.__dict__["author"] = author
+        __props__.__dict__["blacklisted_os_users"] = blacklisted_os_users
         __props__.__dict__["block_access_host_network"] = block_access_host_network
         __props__.__dict__["block_adding_capabilities"] = block_adding_capabilities
         __props__.__dict__["block_container_exec"] = block_container_exec
         __props__.__dict__["block_cryptocurrency_mining"] = block_cryptocurrency_mining
+        __props__.__dict__["block_disallowed_images"] = block_disallowed_images
         __props__.__dict__["block_fileless_exec"] = block_fileless_exec
         __props__.__dict__["block_low_port_binding"] = block_low_port_binding
-        __props__.__dict__["block_non_compliant_images"] = block_non_compliant_images
         __props__.__dict__["block_non_compliant_workloads"] = block_non_compliant_workloads
         __props__.__dict__["block_non_k8s_containers"] = block_non_k8s_containers
         __props__.__dict__["block_privileged_containers"] = block_privileged_containers
-        __props__.__dict__["block_reverse_shell"] = block_reverse_shell
         __props__.__dict__["block_root_user"] = block_root_user
-        __props__.__dict__["block_unregistered_images"] = block_unregistered_images
         __props__.__dict__["block_use_ipc_namespace"] = block_use_ipc_namespace
         __props__.__dict__["block_use_pid_namespace"] = block_use_pid_namespace
         __props__.__dict__["block_use_user_namespace"] = block_use_user_namespace
@@ -2368,43 +3202,81 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         __props__.__dict__["blocked_outbound_ports"] = blocked_outbound_ports
         __props__.__dict__["blocked_packages"] = blocked_packages
         __props__.__dict__["blocked_volumes"] = blocked_volumes
+        __props__.__dict__["bypass_scopes"] = bypass_scopes
+        __props__.__dict__["container_exec"] = container_exec
         __props__.__dict__["container_exec_allowed_processes"] = container_exec_allowed_processes
+        __props__.__dict__["created"] = created
+        __props__.__dict__["cve"] = cve
+        __props__.__dict__["default_security_profile"] = default_security_profile
         __props__.__dict__["description"] = description
-        __props__.__dict__["enable_drift_prevention"] = enable_drift_prevention
+        __props__.__dict__["digest"] = digest
+        __props__.__dict__["drift_preventions"] = drift_preventions
+        __props__.__dict__["enable_crypto_mining_dns"] = enable_crypto_mining_dns
         __props__.__dict__["enable_fork_guard"] = enable_fork_guard
-        __props__.__dict__["enable_ip_reputation_security"] = enable_ip_reputation_security
-        __props__.__dict__["enable_port_scan_detection"] = enable_port_scan_detection
+        __props__.__dict__["enable_ip_reputation"] = enable_ip_reputation
+        __props__.__dict__["enable_port_scan_protection"] = enable_port_scan_protection
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["enforce"] = enforce
         __props__.__dict__["enforce_after_days"] = enforce_after_days
-        __props__.__dict__["exceptional_readonly_files_and_directories"] = exceptional_readonly_files_and_directories
-        __props__.__dict__["exec_lockdown_white_lists"] = exec_lockdown_white_lists
+        __props__.__dict__["enforce_scheduler_added_on"] = enforce_scheduler_added_on
+        __props__.__dict__["exclude_application_scopes"] = exclude_application_scopes
+        __props__.__dict__["executable_blacklists"] = executable_blacklists
+        __props__.__dict__["failed_kubernetes_checks"] = failed_kubernetes_checks
+        __props__.__dict__["file_block"] = file_block
         __props__.__dict__["file_integrity_monitoring"] = file_integrity_monitoring
         __props__.__dict__["fork_guard_process_limit"] = fork_guard_process_limit
+        __props__.__dict__["image_name"] = image_name
+        __props__.__dict__["is_audit_checked"] = is_audit_checked
+        __props__.__dict__["is_auto_generated"] = is_auto_generated
+        __props__.__dict__["is_ootb_policy"] = is_ootb_policy
+        __props__.__dict__["lastupdate"] = lastupdate
+        __props__.__dict__["limit_container_privileges"] = limit_container_privileges
         __props__.__dict__["limit_new_privileges"] = limit_new_privileges
+        __props__.__dict__["linux_capabilities"] = linux_capabilities
         __props__.__dict__["malware_scan_options"] = malware_scan_options
         __props__.__dict__["monitor_system_time_changes"] = monitor_system_time_changes
         __props__.__dict__["name"] = name
-        __props__.__dict__["readonly_files_and_directories"] = readonly_files_and_directories
-        __props__.__dict__["reverse_shell_allowed_ips"] = reverse_shell_allowed_ips
-        __props__.__dict__["reverse_shell_allowed_processes"] = reverse_shell_allowed_processes
+        __props__.__dict__["no_new_privileges"] = no_new_privileges
+        __props__.__dict__["only_registered_images"] = only_registered_images
+        __props__.__dict__["package_block"] = package_block
+        __props__.__dict__["permission"] = permission
+        __props__.__dict__["port_block"] = port_block
+        __props__.__dict__["readonly_files"] = readonly_files
+        __props__.__dict__["readonly_registry"] = readonly_registry
+        __props__.__dict__["registry"] = registry
+        __props__.__dict__["registry_access_monitoring"] = registry_access_monitoring
+        __props__.__dict__["repo_name"] = repo_name
+        __props__.__dict__["resource_name"] = resource_name_
+        __props__.__dict__["resource_type"] = resource_type
+        __props__.__dict__["restricted_volumes"] = restricted_volumes
+        __props__.__dict__["reverse_shell"] = reverse_shell
+        __props__.__dict__["runtime_mode"] = runtime_mode
+        __props__.__dict__["runtime_type"] = runtime_type
         __props__.__dict__["scope_expression"] = scope_expression
         __props__.__dict__["scope_variables"] = scope_variables
+        __props__.__dict__["scopes"] = scopes
+        __props__.__dict__["system_integrity_protection"] = system_integrity_protection
+        __props__.__dict__["tripwire"] = tripwire
+        __props__.__dict__["type"] = type
+        __props__.__dict__["updated"] = updated
+        __props__.__dict__["version"] = version
+        __props__.__dict__["vpatch_version"] = vpatch_version
+        __props__.__dict__["whitelisted_os_users"] = whitelisted_os_users
         return ContainerRuntimePolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="allowedExecutables")
-    def allowed_executables(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def allowed_executables(self) -> pulumi.Output[Sequence['outputs.ContainerRuntimePolicyAllowedExecutable']]:
         """
-        List of executables that are allowed for the user.
+        Allowed executables configuration.
         """
         return pulumi.get(self, "allowed_executables")
 
     @property
     @pulumi.getter(name="allowedRegistries")
-    def allowed_registries(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def allowed_registries(self) -> pulumi.Output[Sequence['outputs.ContainerRuntimePolicyAllowedRegistry']]:
         """
-        List of registries that allowed for running containers.
+        List of allowed registries.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -2433,6 +3305,14 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "audit_all_processes_activity")
 
     @property
+    @pulumi.getter(name="auditBruteForceLogin")
+    def audit_brute_force_login(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Detects brute force login attempts
+        """
+        return pulumi.get(self, "audit_brute_force_login")
+
+    @property
     @pulumi.getter(name="auditFullCommandArguments")
     def audit_full_command_arguments(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -2442,11 +3322,21 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def auditing(self) -> pulumi.Output['outputs.ContainerRuntimePolicyAuditing']:
+        return pulumi.get(self, "auditing")
+
+    @property
+    @pulumi.getter
     def author(self) -> pulumi.Output[str]:
         """
         Username of the account that created the service.
         """
         return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter(name="blacklistedOsUsers")
+    def blacklisted_os_users(self) -> pulumi.Output['outputs.ContainerRuntimePolicyBlacklistedOsUsers']:
+        return pulumi.get(self, "blacklisted_os_users")
 
     @property
     @pulumi.getter(name="blockAccessHostNetwork")
@@ -2481,6 +3371,11 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "block_cryptocurrency_mining")
 
     @property
+    @pulumi.getter(name="blockDisallowedImages")
+    def block_disallowed_images(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "block_disallowed_images")
+
+    @property
     @pulumi.getter(name="blockFilelessExec")
     def block_fileless_exec(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -2495,14 +3390,6 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         If true, prevent containers from running with the capability to bind in port lower than 1024.
         """
         return pulumi.get(self, "block_low_port_binding")
-
-    @property
-    @pulumi.getter(name="blockNonCompliantImages")
-    def block_non_compliant_images(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, running non-compliant image in the container is prevented.
-        """
-        return pulumi.get(self, "block_non_compliant_images")
 
     @property
     @pulumi.getter(name="blockNonCompliantWorkloads")
@@ -2529,28 +3416,12 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "block_privileged_containers")
 
     @property
-    @pulumi.getter(name="blockReverseShell")
-    def block_reverse_shell(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, reverse shell is prevented.
-        """
-        return pulumi.get(self, "block_reverse_shell")
-
-    @property
     @pulumi.getter(name="blockRootUser")
     def block_root_user(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, prevent containers from running with root user.
         """
         return pulumi.get(self, "block_root_user")
-
-    @property
-    @pulumi.getter(name="blockUnregisteredImages")
-    def block_unregistered_images(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, running images in the container that are not registered in Aqua is prevented.
-        """
-        return pulumi.get(self, "block_unregistered_images")
 
     @property
     @pulumi.getter(name="blockUseIpcNamespace")
@@ -2641,12 +3512,40 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "blocked_volumes")
 
     @property
+    @pulumi.getter(name="bypassScopes")
+    def bypass_scopes(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerRuntimePolicyBypassScope']]]:
+        """
+        Bypass scope configuration.
+        """
+        return pulumi.get(self, "bypass_scopes")
+
+    @property
+    @pulumi.getter(name="containerExec")
+    def container_exec(self) -> pulumi.Output['outputs.ContainerRuntimePolicyContainerExec']:
+        return pulumi.get(self, "container_exec")
+
+    @property
     @pulumi.getter(name="containerExecAllowedProcesses")
     def container_exec_allowed_processes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         List of processes that will be allowed.
         """
         return pulumi.get(self, "container_exec_allowed_processes")
+
+    @property
+    @pulumi.getter
+    def created(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "created")
+
+    @property
+    @pulumi.getter
+    def cve(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "cve")
+
+    @property
+    @pulumi.getter(name="defaultSecurityProfile")
+    def default_security_profile(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "default_security_profile")
 
     @property
     @pulumi.getter
@@ -2657,12 +3556,22 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
-    @pulumi.getter(name="enableDriftPrevention")
-    def enable_drift_prevention(self) -> pulumi.Output[Optional[bool]]:
+    @pulumi.getter
+    def digest(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter(name="driftPreventions")
+    def drift_preventions(self) -> pulumi.Output[Sequence['outputs.ContainerRuntimePolicyDriftPrevention']]:
         """
-        If true, executables that are not in the original image is prevented from running.
+        Drift prevention configuration.
         """
-        return pulumi.get(self, "enable_drift_prevention")
+        return pulumi.get(self, "drift_preventions")
+
+    @property
+    @pulumi.getter(name="enableCryptoMiningDns")
+    def enable_crypto_mining_dns(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "enable_crypto_mining_dns")
 
     @property
     @pulumi.getter(name="enableForkGuard")
@@ -2673,26 +3582,20 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "enable_fork_guard")
 
     @property
-    @pulumi.getter(name="enableIpReputationSecurity")
-    def enable_ip_reputation_security(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        """
-        return pulumi.get(self, "enable_ip_reputation_security")
+    @pulumi.getter(name="enableIpReputation")
+    def enable_ip_reputation(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "enable_ip_reputation")
 
     @property
-    @pulumi.getter(name="enablePortScanDetection")
-    def enable_port_scan_detection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        If true, detects port scanning behavior in the container.
-        """
-        return pulumi.get(self, "enable_port_scan_detection")
+    @pulumi.getter(name="enablePortScanProtection")
+    def enable_port_scan_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "enable_port_scan_protection")
 
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicates if the runtime policy is enabled or not.
+        Whether allowed executables configuration is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -2713,24 +3616,39 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "enforce_after_days")
 
     @property
-    @pulumi.getter(name="exceptionalReadonlyFilesAndDirectories")
-    def exceptional_readonly_files_and_directories(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of files and directories to be excluded from the read-only list.
-        """
-        return pulumi.get(self, "exceptional_readonly_files_and_directories")
+    @pulumi.getter(name="enforceSchedulerAddedOn")
+    def enforce_scheduler_added_on(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "enforce_scheduler_added_on")
 
     @property
-    @pulumi.getter(name="execLockdownWhiteLists")
-    def exec_lockdown_white_lists(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    @pulumi.getter(name="excludeApplicationScopes")
+    def exclude_application_scopes(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Specify processes that will be allowed
+        List of excluded application scopes.
         """
-        return pulumi.get(self, "exec_lockdown_white_lists")
+        return pulumi.get(self, "exclude_application_scopes")
+
+    @property
+    @pulumi.getter(name="executableBlacklists")
+    def executable_blacklists(self) -> pulumi.Output[Sequence['outputs.ContainerRuntimePolicyExecutableBlacklist']]:
+        """
+        Executable blacklist configuration.
+        """
+        return pulumi.get(self, "executable_blacklists")
+
+    @property
+    @pulumi.getter(name="failedKubernetesChecks")
+    def failed_kubernetes_checks(self) -> pulumi.Output['outputs.ContainerRuntimePolicyFailedKubernetesChecks']:
+        return pulumi.get(self, "failed_kubernetes_checks")
+
+    @property
+    @pulumi.getter(name="fileBlock")
+    def file_block(self) -> pulumi.Output['outputs.ContainerRuntimePolicyFileBlock']:
+        return pulumi.get(self, "file_block")
 
     @property
     @pulumi.getter(name="fileIntegrityMonitoring")
-    def file_integrity_monitoring(self) -> pulumi.Output[Optional['outputs.ContainerRuntimePolicyFileIntegrityMonitoring']]:
+    def file_integrity_monitoring(self) -> pulumi.Output['outputs.ContainerRuntimePolicyFileIntegrityMonitoring']:
         """
         Configuration for file integrity monitoring.
         """
@@ -2745,6 +3663,39 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "fork_guard_process_limit")
 
     @property
+    @pulumi.getter(name="imageName")
+    def image_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @property
+    @pulumi.getter(name="isAutoGenerated")
+    def is_auto_generated(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "is_auto_generated")
+
+    @property
+    @pulumi.getter(name="isOotbPolicy")
+    def is_ootb_policy(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "is_ootb_policy")
+
+    @property
+    @pulumi.getter
+    def lastupdate(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "lastupdate")
+
+    @property
+    @pulumi.getter(name="limitContainerPrivileges")
+    def limit_container_privileges(self) -> pulumi.Output[Sequence['outputs.ContainerRuntimePolicyLimitContainerPrivilege']]:
+        """
+        Container privileges configuration.
+        """
+        return pulumi.get(self, "limit_container_privileges")
+
+    @property
     @pulumi.getter(name="limitNewPrivileges")
     def limit_new_privileges(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -2753,8 +3704,13 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         return pulumi.get(self, "limit_new_privileges")
 
     @property
+    @pulumi.getter(name="linuxCapabilities")
+    def linux_capabilities(self) -> pulumi.Output['outputs.ContainerRuntimePolicyLinuxCapabilities']:
+        return pulumi.get(self, "linux_capabilities")
+
+    @property
     @pulumi.getter(name="malwareScanOptions")
-    def malware_scan_options(self) -> pulumi.Output[Optional['outputs.ContainerRuntimePolicyMalwareScanOptions']]:
+    def malware_scan_options(self) -> pulumi.Output['outputs.ContainerRuntimePolicyMalwareScanOptions']:
         """
         Configuration for Real-Time Malware Protection.
         """
@@ -2772,33 +3728,92 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the container runtime policy
+        Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="readonlyFilesAndDirectories")
-    def readonly_files_and_directories(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of files and directories to be restricted as read-only
-        """
-        return pulumi.get(self, "readonly_files_and_directories")
+    @pulumi.getter(name="noNewPrivileges")
+    def no_new_privileges(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "no_new_privileges")
 
     @property
-    @pulumi.getter(name="reverseShellAllowedIps")
-    def reverse_shell_allowed_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
-        """
-        List of IPs/ CIDRs that will be allowed
-        """
-        return pulumi.get(self, "reverse_shell_allowed_ips")
+    @pulumi.getter(name="onlyRegisteredImages")
+    def only_registered_images(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "only_registered_images")
 
     @property
-    @pulumi.getter(name="reverseShellAllowedProcesses")
-    def reverse_shell_allowed_processes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    @pulumi.getter(name="packageBlock")
+    def package_block(self) -> pulumi.Output['outputs.ContainerRuntimePolicyPackageBlock']:
+        return pulumi.get(self, "package_block")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "permission")
+
+    @property
+    @pulumi.getter(name="portBlock")
+    def port_block(self) -> pulumi.Output['outputs.ContainerRuntimePolicyPortBlock']:
+        return pulumi.get(self, "port_block")
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> pulumi.Output['outputs.ContainerRuntimePolicyReadonlyFiles']:
+        return pulumi.get(self, "readonly_files")
+
+    @property
+    @pulumi.getter(name="readonlyRegistry")
+    def readonly_registry(self) -> pulumi.Output['outputs.ContainerRuntimePolicyReadonlyRegistry']:
+        return pulumi.get(self, "readonly_registry")
+
+    @property
+    @pulumi.getter
+    def registry(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "registry")
+
+    @property
+    @pulumi.getter(name="registryAccessMonitoring")
+    def registry_access_monitoring(self) -> pulumi.Output['outputs.ContainerRuntimePolicyRegistryAccessMonitoring']:
+        return pulumi.get(self, "registry_access_monitoring")
+
+    @property
+    @pulumi.getter(name="repoName")
+    def repo_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "repo_name")
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "resource_name")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "resource_type")
+
+    @property
+    @pulumi.getter(name="restrictedVolumes")
+    def restricted_volumes(self) -> pulumi.Output[Sequence['outputs.ContainerRuntimePolicyRestrictedVolume']]:
         """
-        List of processes that will be allowed
+        Restricted volumes configuration.
         """
-        return pulumi.get(self, "reverse_shell_allowed_processes")
+        return pulumi.get(self, "restricted_volumes")
+
+    @property
+    @pulumi.getter(name="reverseShell")
+    def reverse_shell(self) -> pulumi.Output['outputs.ContainerRuntimePolicyReverseShell']:
+        return pulumi.get(self, "reverse_shell")
+
+    @property
+    @pulumi.getter(name="runtimeMode")
+    def runtime_mode(self) -> pulumi.Output[Optional[int]]:
+        return pulumi.get(self, "runtime_mode")
+
+    @property
+    @pulumi.getter(name="runtimeType")
+    def runtime_type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "runtime_type")
 
     @property
     @pulumi.getter(name="scopeExpression")
@@ -2815,4 +3830,47 @@ class ContainerRuntimePolicy(pulumi.CustomResource):
         List of scope attributes.
         """
         return pulumi.get(self, "scope_variables")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerRuntimePolicyScope']]]:
+        """
+        Scope configuration.
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="systemIntegrityProtection")
+    def system_integrity_protection(self) -> pulumi.Output['outputs.ContainerRuntimePolicySystemIntegrityProtection']:
+        return pulumi.get(self, "system_integrity_protection")
+
+    @property
+    @pulumi.getter
+    def tripwire(self) -> pulumi.Output['outputs.ContainerRuntimePolicyTripwire']:
+        return pulumi.get(self, "tripwire")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def updated(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "updated")
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="vpatchVersion")
+    def vpatch_version(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vpatch_version")
+
+    @property
+    @pulumi.getter(name="whitelistedOsUsers")
+    def whitelisted_os_users(self) -> pulumi.Output['outputs.ContainerRuntimePolicyWhitelistedOsUsers']:
+        return pulumi.get(self, "whitelisted_os_users")
 

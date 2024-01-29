@@ -22,15 +22,9 @@ namespace Pulumiverse.Aquasec.Inputs
         [Input("control")]
         public Input<string>? Control { get; set; }
 
-        /// <summary>
-        /// If DTA was skipped.
-        /// </summary>
         [Input("dtaSkipped")]
         public Input<bool>? DtaSkipped { get; set; }
 
-        /// <summary>
-        /// The reason why DTA was skipped.
-        /// </summary>
         [Input("dtaSkippedReason")]
         public Input<string>? DtaSkippedReason { get; set; }
 

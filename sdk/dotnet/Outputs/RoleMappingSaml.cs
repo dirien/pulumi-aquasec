@@ -15,7 +15,7 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class RoleMappingSaml
     {
         /// <summary>
-        /// Role Mapping is used to define the IdP role that the user will assume in Aqua
+        /// Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         /// </summary>
         public readonly ImmutableDictionary<string, string> RoleMapping;
 

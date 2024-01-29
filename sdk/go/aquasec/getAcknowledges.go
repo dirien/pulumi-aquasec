@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -50,4 +53,44 @@ type GetAcknowledgesResult struct {
 	Acknowledges []GetAcknowledgesAcknowledge `pulumi:"acknowledges"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetAcknowledgesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAcknowledgesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAcknowledgesResult, error) {
+		r, err := GetAcknowledges(ctx, opts...)
+		var s GetAcknowledgesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetAcknowledgesResultOutput)
+}
+
+// A collection of values returned by getAcknowledges.
+type GetAcknowledgesResultOutput struct{ *pulumi.OutputState }
+
+func (GetAcknowledgesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAcknowledgesResult)(nil)).Elem()
+}
+
+func (o GetAcknowledgesResultOutput) ToGetAcknowledgesResultOutput() GetAcknowledgesResultOutput {
+	return o
+}
+
+func (o GetAcknowledgesResultOutput) ToGetAcknowledgesResultOutputWithContext(ctx context.Context) GetAcknowledgesResultOutput {
+	return o
+}
+
+// A list of existing security acknowledges.
+func (o GetAcknowledgesResultOutput) Acknowledges() GetAcknowledgesAcknowledgeArrayOutput {
+	return o.ApplyT(func(v GetAcknowledgesResult) []GetAcknowledgesAcknowledge { return v.Acknowledges }).(GetAcknowledgesAcknowledgeArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetAcknowledgesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAcknowledgesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetAcknowledgesResultOutput{})
 }

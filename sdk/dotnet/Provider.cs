@@ -150,6 +150,12 @@ namespace Pulumiverse.Aquasec
 
         public ProviderArgs()
         {
+            AquaUrl = Utilities.GetEnv("AQUA_URL");
+            CaCertificatePath = Utilities.GetEnv("AQUA_CA_CERT_PATH");
+            ConfigPath = Utilities.GetEnv("AQUA_CONFIG");
+            Password = Utilities.GetEnv("AQUA_PASSWORD");
+            Username = Utilities.GetEnv("AQUA_USER");
+            VerifyTls = Utilities.GetEnvBoolean("AQUA_TLS_VERIFY") ?? true;
         }
         public static new ProviderArgs Empty => new ProviderArgs();
     }

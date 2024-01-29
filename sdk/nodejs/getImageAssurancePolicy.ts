@@ -54,7 +54,7 @@ export interface GetImageAssurancePolicyResult {
      */
     readonly blacklistedLicenses: string[];
     /**
-     * Lndicates if license blacklist is relevant.
+     * Indicates if license blacklist is relevant.
      */
     readonly blacklistedLicensesEnabled: boolean;
     /**
@@ -72,15 +72,15 @@ export interface GetImageAssurancePolicyResult {
     readonly customChecksEnabled: boolean;
     readonly customSeverityEnabled: boolean;
     /**
-     * Indicates if cves blacklist is relevant.
+     * Indicates if CVEs blacklist is relevant.
      */
     readonly cvesBlackListEnabled: boolean;
     /**
-     * List of cves blacklisted items.
+     * List of CVEs blacklisted items.
      */
     readonly cvesBlackLists: string[];
     /**
-     * Indicates if cves whitelist is relevant.
+     * Indicates if CVEs whitelist is relevant.
      */
     readonly cvesWhiteListEnabled: boolean;
     /**
@@ -104,6 +104,9 @@ export interface GetImageAssurancePolicyResult {
      * Indicates if malware should block the image.
      */
     readonly disallowMalware: boolean;
+    /**
+     * Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+     */
     readonly dockerCisEnabled: boolean;
     /**
      * Name of the container image.
@@ -143,6 +146,9 @@ export interface GetImageAssurancePolicyResult {
      * List of images.
      */
     readonly images: string[];
+    /**
+     * Performs a Kubernetes CIS benchmark check for the host.
+     */
     readonly kubeCisEnabled: boolean;
     /**
      * List of labels.
@@ -172,7 +178,7 @@ export interface GetImageAssurancePolicyResult {
      */
     readonly packagesBlackListEnabled: boolean;
     /**
-     * List of backlisted images.
+     * List of blacklisted images.
      */
     readonly packagesBlackLists: outputs.GetImageAssurancePolicyPackagesBlackList[];
     /**

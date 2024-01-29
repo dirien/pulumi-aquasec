@@ -13,24 +13,15 @@ namespace Pulumiverse.Aquasec.Inputs
 
     public sealed class ImageHistoryArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The image creation comment.
-        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        /// <summary>
-        /// The date and time when the image was registered.
-        /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
 
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 

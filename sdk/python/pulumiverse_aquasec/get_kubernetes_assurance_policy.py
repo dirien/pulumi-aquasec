@@ -321,7 +321,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="blacklistedLicensesEnabled")
     def blacklisted_licenses_enabled(self) -> bool:
         """
-        Lndicates if license blacklist is relevant.
+        Indicates if license blacklist is relevant.
         """
         return pulumi.get(self, "blacklisted_licenses_enabled")
 
@@ -363,7 +363,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvesBlackListEnabled")
     def cves_black_list_enabled(self) -> bool:
         """
-        Indicates if cves blacklist is relevant.
+        Indicates if CVEs blacklist is relevant.
         """
         return pulumi.get(self, "cves_black_list_enabled")
 
@@ -371,7 +371,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvesBlackLists")
     def cves_black_lists(self) -> Sequence[str]:
         """
-        List of cves blacklisted items.
+        List of CVEs blacklisted items.
         """
         return pulumi.get(self, "cves_black_lists")
 
@@ -379,7 +379,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvesWhiteListEnabled")
     def cves_white_list_enabled(self) -> bool:
         """
-        Indicates if cves whitelist is relevant.
+        Indicates if CVEs whitelist is relevant.
         """
         return pulumi.get(self, "cves_white_list_enabled")
 
@@ -387,7 +387,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvesWhiteLists")
     def cves_white_lists(self) -> Sequence[str]:
         """
-        List of cves whitelisted licenses
+        List of CVEs whitelisted licenses
         """
         return pulumi.get(self, "cves_white_lists")
 
@@ -395,7 +395,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvssSeverity")
     def cvss_severity(self) -> str:
         """
-        Identifier of the cvss severity.
+        Identifier of the CVSS severity.
         """
         return pulumi.get(self, "cvss_severity")
 
@@ -403,7 +403,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvssSeverityEnabled")
     def cvss_severity_enabled(self) -> bool:
         """
-        Indicates if the cvss severity is scanned.
+        Indicates if the CVSS severity is scanned.
         """
         return pulumi.get(self, "cvss_severity_enabled")
 
@@ -411,7 +411,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="cvssSeverityExcludeNoFix")
     def cvss_severity_exclude_no_fix(self) -> bool:
         """
-        Indicates that policy should ignore cvss cases that do not have a known fix.
+        Indicates that policy should ignore CVSS cases that do not have a known fix.
         """
         return pulumi.get(self, "cvss_severity_exclude_no_fix")
 
@@ -431,6 +431,9 @@ class GetKubernetesAssurancePolicyResult:
     @property
     @pulumi.getter(name="dockerCisEnabled")
     def docker_cis_enabled(self) -> bool:
+        """
+        Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        """
         return pulumi.get(self, "docker_cis_enabled")
 
     @property
@@ -479,13 +482,16 @@ class GetKubernetesAssurancePolicyResult:
     @property
     @pulumi.getter(name="exceptionalMonitoredMalwarePaths")
     def exceptional_monitored_malware_paths(self) -> Sequence[str]:
+        """
+        Directories to be excluded from monitoring.
+        """
         return pulumi.get(self, "exceptional_monitored_malware_paths")
 
     @property
     @pulumi.getter(name="failCicd")
     def fail_cicd(self) -> bool:
         """
-        Indicates if cicd failures will fail the image.
+        Indicates if CI/CD failures will fail the image.
         """
         return pulumi.get(self, "fail_cicd")
 
@@ -554,6 +560,9 @@ class GetKubernetesAssurancePolicyResult:
     @property
     @pulumi.getter(name="kubeCisEnabled")
     def kube_cis_enabled(self) -> bool:
+        """
+        Performs a Kubernetes CIS benchmark check for the host.
+        """
         return pulumi.get(self, "kube_cis_enabled")
 
     @property
@@ -604,6 +613,9 @@ class GetKubernetesAssurancePolicyResult:
     @property
     @pulumi.getter(name="monitoredMalwarePaths")
     def monitored_malware_paths(self) -> Sequence[str]:
+        """
+        Directories to be monitored.
+        """
         return pulumi.get(self, "monitored_malware_paths")
 
     @property
@@ -631,7 +643,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="packagesBlackLists")
     def packages_black_lists(self) -> Sequence['outputs.GetKubernetesAssurancePolicyPackagesBlackListResult']:
         """
-        List of backlisted images.
+        List of blacklisted images.
         """
         return pulumi.get(self, "packages_black_lists")
 
@@ -701,7 +713,7 @@ class GetKubernetesAssurancePolicyResult:
     @pulumi.getter(name="scapEnabled")
     def scap_enabled(self) -> bool:
         """
-        Indicates if scanning should include scap.
+        Indicates if scanning should include SCAP.
         """
         return pulumi.get(self, "scap_enabled")
 

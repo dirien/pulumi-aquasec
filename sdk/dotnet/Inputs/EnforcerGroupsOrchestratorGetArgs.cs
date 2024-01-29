@@ -28,9 +28,6 @@ namespace Pulumiverse.Aquasec.Inputs
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
-        /// <summary>
-        /// Enforcer Type.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
