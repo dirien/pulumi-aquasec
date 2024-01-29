@@ -63,29 +63,60 @@
         "variables": {
             "aquaUrl": {
                 "type": "string",
-                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n"
+                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_URL"
+                    ]
+                }
             },
             "caCertificatePath": {
                 "type": "string",
-                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n"
+                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_CA_CERT_PATH"
+                    ]
+                }
             },
             "configPath": {
                 "type": "string",
-                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n"
+                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_CONFIG"
+                    ]
+                }
             },
             "password": {
                 "type": "string",
                 "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_PASSWORD"
+                    ]
+                },
                 "secret": true
             },
             "username": {
                 "type": "string",
                 "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_USER"
+                    ]
+                },
                 "secret": true
             },
             "verifyTls": {
                 "type": "boolean",
-                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n"
+                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n",
+                "default": true,
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_VERIFY_TLS"
+                    ]
+                }
             }
         }
     },
@@ -4736,6 +4767,34 @@
                 }
             }
         },
+        "aquasec:index/getIntegrationRegistriesOption:getIntegrationRegistriesOption": {
+            "properties": {
+                "option": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "aquasec:index/getIntegrationRegistriesWebhook:getIntegrationRegistriesWebhook": {
+            "properties": {
+                "authToken": {
+                    "type": "string"
+                },
+                "enabled": {
+                    "type": "boolean"
+                },
+                "unQuarantine": {
+                    "type": "boolean"
+                },
+                "url": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption": {
             "properties": {
                 "option": {
@@ -5810,29 +5869,60 @@
         "inputProperties": {
             "aquaUrl": {
                 "type": "string",
-                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n"
+                "description": "This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_URL"
+                    ]
+                }
             },
             "caCertificatePath": {
                 "type": "string",
-                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n"
+                "description": "This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced\nfrom the `AQUA_CA_CERT_PATH` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_CA_CERT_PATH"
+                    ]
+                }
             },
             "configPath": {
                 "type": "string",
-                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n"
+                "description": "This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can\nalternatively be sourced from the `AQUA_CONFIG` environment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_CONFIG"
+                    ]
+                }
             },
             "password": {
                 "type": "string",
                 "description": "This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`\nenvironment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_PASSWORD"
+                    ]
+                },
                 "secret": true
             },
             "username": {
                 "type": "string",
                 "description": "This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`\nenvironment variable.\n",
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_USER"
+                    ]
+                },
                 "secret": true
             },
             "verifyTls": {
                 "type": "boolean",
-                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n"
+                "description": "If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can\nalternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.\n",
+                "default": true,
+                "defaultInfo": {
+                    "environment": [
+                        "AQUA_VERIFY_TLS"
+                    ]
+                }
             }
         }
     },
@@ -17546,9 +17636,9 @@
                 ]
             }
         },
-        "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": {
+        "aquasec:index/getIntegrationRegistries:getIntegrationRegistries": {
             "inputs": {
-                "description": "A collection of arguments for invoking getIntegrationRegistry.\n",
+                "description": "A collection of arguments for invoking getIntegrationRegistries.\n",
                 "properties": {
                     "advancedSettingsCleanup": {
                         "type": "boolean",
@@ -17576,7 +17666,7 @@
                     "options": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption"
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistriesOption:getIntegrationRegistriesOption"
                         }
                     },
                     "pullImageAge": {
@@ -17619,7 +17709,7 @@
                     "webhooks": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook"
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistriesWebhook:getIntegrationRegistriesWebhook"
                         },
                         "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
                     }
@@ -17630,7 +17720,7 @@
                 ]
             },
             "outputs": {
-                "description": "A collection of values returned by getIntegrationRegistry.\n",
+                "description": "A collection of values returned by getIntegrationRegistries.\n",
                 "properties": {
                     "advancedSettingsCleanup": {
                         "type": "boolean",
@@ -17690,7 +17780,7 @@
                     "options": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption"
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistriesOption:getIntegrationRegistriesOption"
                         }
                     },
                     "password": {
@@ -17756,9 +17846,212 @@
                     "webhooks": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook"
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistriesWebhook:getIntegrationRegistriesWebhook"
                         },
                         "description": "When enabled, registry events are sent to the given Aqua webhook url\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "autoCleanup",
+                    "autoPull",
+                    "autoPullInterval",
+                    "autoPullMax",
+                    "autoPullRescan",
+                    "autoPullTime",
+                    "description",
+                    "imageCreationDateCondition",
+                    "lastupdate",
+                    "name",
+                    "password",
+                    "prefixes",
+                    "pullImageAge",
+                    "pullImageCount",
+                    "scannerNames",
+                    "scannerType",
+                    "type",
+                    "url",
+                    "username",
+                    "id"
+                ]
+            }
+        },
+        "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": {
+            "deprecationMessage": "aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIntegrationRegistry.\n",
+                "properties": {
+                    "advancedSettingsCleanup": {
+                        "type": "boolean"
+                    },
+                    "alwaysPullPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "imageCreationDateCondition": {
+                        "type": "string"
+                    },
+                    "lastupdate": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption"
+                        }
+                    },
+                    "pullImageAge": {
+                        "type": "string"
+                    },
+                    "pullImageCount": {
+                        "type": "integer"
+                    },
+                    "pullImageTagPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "pullRepoPatternsExcludeds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "registryScanTimeout": {
+                        "type": "integer"
+                    },
+                    "scannerNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "scannerType": {
+                        "type": "string"
+                    },
+                    "webhooks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIntegrationRegistry.\n",
+                "properties": {
+                    "advancedSettingsCleanup": {
+                        "type": "boolean"
+                    },
+                    "alwaysPullPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "autoCleanup": {
+                        "type": "boolean"
+                    },
+                    "autoPull": {
+                        "type": "boolean"
+                    },
+                    "autoPullInterval": {
+                        "type": "integer"
+                    },
+                    "autoPullMax": {
+                        "type": "integer"
+                    },
+                    "autoPullRescan": {
+                        "type": "boolean"
+                    },
+                    "autoPullTime": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "imageCreationDateCondition": {
+                        "type": "string"
+                    },
+                    "lastupdate": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "options": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryOption:getIntegrationRegistryOption"
+                        }
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "prefixes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "pullImageAge": {
+                        "type": "string"
+                    },
+                    "pullImageCount": {
+                        "type": "integer"
+                    },
+                    "pullImageTagPatterns": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "pullRepoPatternsExcludeds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "registryScanTimeout": {
+                        "type": "integer"
+                    },
+                    "scannerNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "scannerType": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "webhooks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aquasec:index/getIntegrationRegistryWebhook:getIntegrationRegistryWebhook"
+                        }
                     }
                 },
                 "type": "object",

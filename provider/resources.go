@@ -88,7 +88,7 @@ func Provider() tfbridge.ProviderInfo {
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg: "aquasecurity",
-		Config:    map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
 			// Add any required configuration here, or remove the example below if
 			// no additional points are required.
 			// "region": {
@@ -97,9 +97,41 @@ func Provider() tfbridge.ProviderInfo {
 			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
 			// 	},
 			// },
+			"aqua_url": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_URL"},
+				},
+			},
+			"ca_certificate_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_CA_CERT_PATH"},
+				},
+			},
+			"config_path": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_CONFIG"},
+				},
+			},
+			"username": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_USER"},
+				},
+				Secret: tfbridge.BoolRef(true),
+			},
+			"password": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_PASSWORD"},
+				},
+			},
+			"verify_tls": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"AQUA_TLS_VERIFY"},
+					Value:   true,
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources: map[string]*tfbridge.ResourceInfo{
+		Resources:            map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
@@ -112,66 +144,11 @@ func Provider() tfbridge.ProviderInfo {
 			// 		"tags": {Type: tfbridge.MakeType(mainPkg, "Tags")},
 			// 	},
 			// },
-			"aquasec_acknowledge":                 {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Acknowledge")},
-			"aquasec_application_scope":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApplicationScope")},
-			"aquasec_aqua_label":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AquaLabel")},
-			"aquasec_container_runtime_policy":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ContainerRuntimePolicy")},
-			"aquasec_enforcer_groups":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "EnforcerGroups")},
-			"aquasec_firewall_policy":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FirewallPolicy")},
-			"aquasec_function_assurance_policy":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FunctionAssurancePolicy")},
-			"aquasec_function_runtime_policy":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FunctionRuntimePolicy")},
-			"aquasec_group":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Group")},
-			"aquasec_host_assurance_policy":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "HostAssurancePolicy")},
-			"aquasec_host_runtime_policy":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "HostRuntimePolicy")},
-			"aquasec_image":                       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Image")},
-			"aquasec_image_assurance_policy":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ImageAssurancePolicy")},
-			"aquasec_integration_registry":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IntegrationRegistry")},
-			"aquasec_kubernetes_assurance_policy": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "KubernetesAssurancePolicy")},
-			"aquasec_notification":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Notification")},
-			"aquasec_notification_slack":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationSlack")},
-			"aquasec_permissions_sets":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PermissionsSets")},
-			"aquasec_role":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Role")},
-			"aquasec_role_mapping":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RoleMapping")},
-			"aquasec_role_mapping_saas":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RoleMappingSaas")},
-			"aquasec_service":                     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Service")},
-			"aquasec_user":                        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "User")},
-			"aquasec_user_saas":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "UserSaas")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
 			// "aws_ami": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAmi")},
-			"aquasec_acknowledges":             {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAcknowledges")},
-			"aquasec_application_scope":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApplicationScope")},
-			"aquasec_aqua_labels":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAquaLabels")},
-			"aquasec_container_runtime_policy": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getContainerRuntimePolicy")},
-			"aquasec_enforcer_groups":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getEnforcerGroups")},
-			"aquasec_firewall_policy":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFirewallPolicy")},
-			"aquasec_function_assurance_policy": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFunctionAssurancePolicy"),
-			},
-			"aquasec_function_runtime_policy": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getFunctionRuntimePolicy")},
-			"aquasec_gateways":                {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGateways")},
-			"aquasec_groups":                  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getGroups")},
-			"aquasec_host_assurance_policy":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostAssurancePolicy")},
-			"aquasec_host_runtime_policy":     {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getHostRuntimePolicy")},
-			"aquasec_image":                   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getImage")},
-			"aquasec_image_assurance_policy": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getImageAssurancePolicy"),
-			},
-			"aquasec_integration_registries": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIntegrationRegistry")},
-			"aquasec_integration_state":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIntegrationState")},
-			"aquasec_kubernetes_assurance_policy": {
-				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getKubernetesAssurancePolicy"),
-			},
-			"aquasec_notifications":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getNotifications")},
-			"aquasec_permissions_sets":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getPermissionsSets")},
-			"aquasec_roles":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRoles")},
-			"aquasec_roles_mapping":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRolesMapping")},
-			"aquasec_roles_mapping_saas": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getRolesMappingSaas")},
-			"aquasec_service":            {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getService")},
-			"aquasec_users":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsers")},
-			"aquasec_users_saas":         {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getUsersSaas")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@pulumiverse/aquasec",

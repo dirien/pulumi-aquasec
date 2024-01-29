@@ -1599,7 +1599,14 @@
                 }
             },
             "aquasec_integration_registries": {
-                "current": "aquasec:index/getIntegrationRegistry:getIntegrationRegistry",
+                "current": "aquasec:index/getIntegrationRegistries:getIntegrationRegistries",
+                "past": [
+                    {
+                        "name": "aquasec:index/getIntegrationRegistry:getIntegrationRegistry",
+                        "inCodegen": true,
+                        "majorVersion": 0
+                    }
+                ],
                 "fields": {
                     "always_pull_patterns": {
                         "maxItemsOne": false
@@ -1855,7 +1862,15 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "datasources": {
+            "aquasec_integration_registries": {
+                "renames": [
+                    "aquasec:index/getIntegrationRegistry:getIntegrationRegistry"
+                ]
+            }
+        }
+    },
     "renames": {
         "resources": {
             "aquasec:index/acknowledge:Acknowledge": "aquasec_acknowledge",
@@ -1898,7 +1913,8 @@
             "aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy": "aquasec_host_runtime_policy",
             "aquasec:index/getImage:getImage": "aquasec_image",
             "aquasec:index/getImageAssurancePolicy:getImageAssurancePolicy": "aquasec_image_assurance_policy",
-            "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": "aquasec_integration_registries",
+            "aquasec:index/getIntegrationRegistries:getIntegrationRegistries": "aquasec_integration_registries",
+            "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": "aquasec_integration_registries_legacy",
             "aquasec:index/getIntegrationState:getIntegrationState": "aquasec_integration_state",
             "aquasec:index/getKubernetesAssurancePolicy:getKubernetesAssurancePolicy": "aquasec_kubernetes_assurance_policy",
             "aquasec:index/getNotifications:getNotifications": "aquasec_notifications",
@@ -2954,6 +2970,29 @@
                 "vendorSeverity": "vendor_severity",
                 "vendorStatement": "vendor_statement",
                 "vendorUrl": "vendor_url"
+            },
+            "aquasec:index/getIntegrationRegistries:getIntegrationRegistries": {
+                "advancedSettingsCleanup": "advanced_settings_cleanup",
+                "alwaysPullPatterns": "always_pull_patterns",
+                "autoCleanup": "auto_cleanup",
+                "autoPull": "auto_pull",
+                "autoPullInterval": "auto_pull_interval",
+                "autoPullMax": "auto_pull_max",
+                "autoPullRescan": "auto_pull_rescan",
+                "autoPullTime": "auto_pull_time",
+                "imageCreationDateCondition": "image_creation_date_condition",
+                "pullImageAge": "pull_image_age",
+                "pullImageCount": "pull_image_count",
+                "pullImageTagPatterns": "pull_image_tag_pattern",
+                "pullRepoPatternsExcludeds": "pull_repo_patterns_excluded",
+                "registryScanTimeout": "registry_scan_timeout",
+                "scannerNames": "scanner_name",
+                "scannerType": "scanner_type",
+                "webhooks": "webhook"
+            },
+            "aquasec:index/getIntegrationRegistriesWebhook:getIntegrationRegistriesWebhook": {
+                "authToken": "auth_token",
+                "unQuarantine": "un_quarantine"
             },
             "aquasec:index/getIntegrationRegistry:getIntegrationRegistry": {
                 "advancedSettingsCleanup": "advanced_settings_cleanup",
