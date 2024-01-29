@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -29,4 +32,67 @@ type GetNotificationsResult struct {
 	Splunks     []GetNotificationsSplunk     `pulumi:"splunks"`
 	Teams       []GetNotificationsTeam       `pulumi:"teams"`
 	Webhooks    []GetNotificationsWebhook    `pulumi:"webhooks"`
+}
+
+func GetNotificationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetNotificationsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetNotificationsResult, error) {
+		r, err := GetNotifications(ctx, opts...)
+		var s GetNotificationsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetNotificationsResultOutput)
+}
+
+// A collection of values returned by getNotifications.
+type GetNotificationsResultOutput struct{ *pulumi.OutputState }
+
+func (GetNotificationsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNotificationsResult)(nil)).Elem()
+}
+
+func (o GetNotificationsResultOutput) ToGetNotificationsResultOutput() GetNotificationsResultOutput {
+	return o
+}
+
+func (o GetNotificationsResultOutput) ToGetNotificationsResultOutputWithContext(ctx context.Context) GetNotificationsResultOutput {
+	return o
+}
+
+func (o GetNotificationsResultOutput) Emails() GetNotificationsEmailArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsEmail { return v.Emails }).(GetNotificationsEmailArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetNotificationsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNotificationsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNotificationsResultOutput) Jiras() GetNotificationsJiraArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsJira { return v.Jiras }).(GetNotificationsJiraArrayOutput)
+}
+
+func (o GetNotificationsResultOutput) Servicenows() GetNotificationsServicenowArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsServicenow { return v.Servicenows }).(GetNotificationsServicenowArrayOutput)
+}
+
+func (o GetNotificationsResultOutput) Slacks() GetNotificationsSlackArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsSlack { return v.Slacks }).(GetNotificationsSlackArrayOutput)
+}
+
+func (o GetNotificationsResultOutput) Splunks() GetNotificationsSplunkArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsSplunk { return v.Splunks }).(GetNotificationsSplunkArrayOutput)
+}
+
+func (o GetNotificationsResultOutput) Teams() GetNotificationsTeamArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsTeam { return v.Teams }).(GetNotificationsTeamArrayOutput)
+}
+
+func (o GetNotificationsResultOutput) Webhooks() GetNotificationsWebhookArrayOutput {
+	return o.ApplyT(func(v GetNotificationsResult) []GetNotificationsWebhook { return v.Webhooks }).(GetNotificationsWebhookArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetNotificationsResultOutput{})
 }

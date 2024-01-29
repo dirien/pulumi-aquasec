@@ -75,7 +75,7 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly ImmutableArray<string> BlacklistedLicenses;
         /// <summary>
-        /// Lndicates if license blacklist is relevant.
+        /// Indicates if license blacklist is relevant.
         /// </summary>
         public readonly bool BlacklistedLicensesEnabled;
         /// <summary>
@@ -93,15 +93,15 @@ namespace Pulumiverse.Aquasec
         public readonly bool CustomChecksEnabled;
         public readonly bool CustomSeverityEnabled;
         /// <summary>
-        /// Indicates if cves blacklist is relevant.
+        /// Indicates if CVEs blacklist is relevant.
         /// </summary>
         public readonly bool CvesBlackListEnabled;
         /// <summary>
-        /// List of cves blacklisted items.
+        /// List of CVEs blacklisted items.
         /// </summary>
         public readonly ImmutableArray<string> CvesBlackLists;
         /// <summary>
-        /// Indicates if cves whitelist is relevant.
+        /// Indicates if CVEs whitelist is relevant.
         /// </summary>
         public readonly bool CvesWhiteListEnabled;
         /// <summary>
@@ -125,6 +125,9 @@ namespace Pulumiverse.Aquasec
         /// Indicates if malware should block the image.
         /// </summary>
         public readonly bool DisallowMalware;
+        /// <summary>
+        /// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        /// </summary>
         public readonly bool DockerCisEnabled;
         /// <summary>
         /// Name of the container image.
@@ -164,6 +167,9 @@ namespace Pulumiverse.Aquasec
         /// List of images.
         /// </summary>
         public readonly ImmutableArray<string> Images;
+        /// <summary>
+        /// Performs a Kubernetes CIS benchmark check for the host.
+        /// </summary>
         public readonly bool KubeCisEnabled;
         /// <summary>
         /// List of labels.
@@ -193,7 +199,7 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         public readonly bool PackagesBlackListEnabled;
         /// <summary>
-        /// List of backlisted images.
+        /// List of blacklisted images.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImageAssurancePolicyPackagesBlackListResult> PackagesBlackLists;
         /// <summary>

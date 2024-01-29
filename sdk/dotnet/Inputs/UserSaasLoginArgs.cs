@@ -16,9 +16,6 @@ namespace Pulumiverse.Aquasec.Inputs
         [Input("created")]
         public Input<string>? Created { get; set; }
 
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 

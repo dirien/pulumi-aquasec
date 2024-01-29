@@ -14,6 +14,7 @@ __all__ = [
     'GetRolesMappingResult',
     'AwaitableGetRolesMappingResult',
     'get_roles_mapping',
+    'get_roles_mapping_output',
 ]
 
 @pulumi.output_type
@@ -115,3 +116,20 @@ def get_roles_mapping(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         oauth2s=pulumi.get(__ret__, 'oauth2s'),
         openids=pulumi.get(__ret__, 'openids'),
         samls=pulumi.get(__ret__, 'samls'))
+
+
+@_utilities.lift_output_func(get_roles_mapping)
+def get_roles_mapping_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesMappingResult]:
+    """
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    roles_mapping = aquasec.get_roles_mapping()
+    pulumi.export("roleMappingAll", roles_mapping)
+    pulumi.export("roleMappingSaml", roles_mapping.samls)
+    ```
+    """
+    ...

@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -142,12 +141,6 @@ func (i *RoleMappingSaas) ToRoleMappingSaasOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingSaasOutput)
 }
 
-func (i *RoleMappingSaas) ToOutput(ctx context.Context) pulumix.Output[*RoleMappingSaas] {
-	return pulumix.Output[*RoleMappingSaas]{
-		OutputState: i.ToRoleMappingSaasOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoleMappingSaasArrayInput is an input type that accepts RoleMappingSaasArray and RoleMappingSaasArrayOutput values.
 // You can construct a concrete instance of `RoleMappingSaasArrayInput` via:
 //
@@ -171,12 +164,6 @@ func (i RoleMappingSaasArray) ToRoleMappingSaasArrayOutput() RoleMappingSaasArra
 
 func (i RoleMappingSaasArray) ToRoleMappingSaasArrayOutputWithContext(ctx context.Context) RoleMappingSaasArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingSaasArrayOutput)
-}
-
-func (i RoleMappingSaasArray) ToOutput(ctx context.Context) pulumix.Output[[]*RoleMappingSaas] {
-	return pulumix.Output[[]*RoleMappingSaas]{
-		OutputState: i.ToRoleMappingSaasArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RoleMappingSaasMapInput is an input type that accepts RoleMappingSaasMap and RoleMappingSaasMapOutput values.
@@ -204,12 +191,6 @@ func (i RoleMappingSaasMap) ToRoleMappingSaasMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingSaasMapOutput)
 }
 
-func (i RoleMappingSaasMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleMappingSaas] {
-	return pulumix.Output[map[string]*RoleMappingSaas]{
-		OutputState: i.ToRoleMappingSaasMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RoleMappingSaasOutput struct{ *pulumi.OutputState }
 
 func (RoleMappingSaasOutput) ElementType() reflect.Type {
@@ -222,12 +203,6 @@ func (o RoleMappingSaasOutput) ToRoleMappingSaasOutput() RoleMappingSaasOutput {
 
 func (o RoleMappingSaasOutput) ToRoleMappingSaasOutputWithContext(ctx context.Context) RoleMappingSaasOutput {
 	return o
-}
-
-func (o RoleMappingSaasOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleMappingSaas] {
-	return pulumix.Output[*RoleMappingSaas]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleMappingSaasOutput) AccountId() pulumi.IntOutput {
@@ -264,12 +239,6 @@ func (o RoleMappingSaasArrayOutput) ToRoleMappingSaasArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o RoleMappingSaasArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RoleMappingSaas] {
-	return pulumix.Output[[]*RoleMappingSaas]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoleMappingSaasArrayOutput) Index(i pulumi.IntInput) RoleMappingSaasOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoleMappingSaas {
 		return vs[0].([]*RoleMappingSaas)[vs[1].(int)]
@@ -288,12 +257,6 @@ func (o RoleMappingSaasMapOutput) ToRoleMappingSaasMapOutput() RoleMappingSaasMa
 
 func (o RoleMappingSaasMapOutput) ToRoleMappingSaasMapOutputWithContext(ctx context.Context) RoleMappingSaasMapOutput {
 	return o
-}
-
-func (o RoleMappingSaasMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleMappingSaas] {
-	return pulumix.Output[map[string]*RoleMappingSaas]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleMappingSaasMapOutput) MapIndex(k pulumi.StringInput) RoleMappingSaasOutput {

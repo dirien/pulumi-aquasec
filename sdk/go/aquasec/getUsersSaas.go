@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -49,4 +52,43 @@ type GetUsersSaasResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id    string             `pulumi:"id"`
 	Users []GetUsersSaasUser `pulumi:"users"`
+}
+
+func GetUsersSaasOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUsersSaasResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetUsersSaasResult, error) {
+		r, err := GetUsersSaas(ctx, opts...)
+		var s GetUsersSaasResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetUsersSaasResultOutput)
+}
+
+// A collection of values returned by getUsersSaas.
+type GetUsersSaasResultOutput struct{ *pulumi.OutputState }
+
+func (GetUsersSaasResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersSaasResult)(nil)).Elem()
+}
+
+func (o GetUsersSaasResultOutput) ToGetUsersSaasResultOutput() GetUsersSaasResultOutput {
+	return o
+}
+
+func (o GetUsersSaasResultOutput) ToGetUsersSaasResultOutputWithContext(ctx context.Context) GetUsersSaasResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUsersSaasResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersSaasResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUsersSaasResultOutput) Users() GetUsersSaasUserArrayOutput {
+	return o.ApplyT(func(v GetUsersSaasResult) []GetUsersSaasUser { return v.Users }).(GetUsersSaasUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUsersSaasResultOutput{})
 }

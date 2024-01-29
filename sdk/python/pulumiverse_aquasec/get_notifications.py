@@ -14,6 +14,7 @@ __all__ = [
     'GetNotificationsResult',
     'AwaitableGetNotificationsResult',
     'get_notifications',
+    'get_notifications_output',
 ]
 
 @pulumi.output_type
@@ -124,3 +125,11 @@ def get_notifications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         splunks=pulumi.get(__ret__, 'splunks'),
         teams=pulumi.get(__ret__, 'teams'),
         webhooks=pulumi.get(__ret__, 'webhooks'))
+
+
+@_utilities.lift_output_func(get_notifications)
+def get_notifications_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationsResult]:
+    """
+    Use this data source to access information about an existing resource.
+    """
+    ...

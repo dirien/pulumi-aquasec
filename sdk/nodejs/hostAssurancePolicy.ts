@@ -6,6 +6,13 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Host Assurance is a subsystem of Aqua. It is responsible for:
+ *  Scans host VMs and Kubernetes nodes' file system for security issues, vulnerabilities in OS and programming language packages, open-source licenses, and compliance with CIS benchmarks.
+ * Evaluates scan findings according to defined Host Assurance Policies.
+ * Determines host compliance based on these policies.
+ * Generates an audit event for host assurance failure.
+ */
 export class HostAssurancePolicy extends pulumi.CustomResource {
     /**
      * Get an existing HostAssurancePolicy resource's state with the given name, ID, and optional extra
@@ -35,10 +42,18 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Aggregated vulnerability information.
+     */
+    public readonly aggregatedVulnerability!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * List of explicitly allowed images.
      */
     public readonly allowedImages!: pulumi.Output<string[] | undefined>;
     public readonly applicationScopes!: pulumi.Output<string[]>;
+    /**
+     * What type of assurance policy is described.
+     */
+    public readonly assuranceType!: pulumi.Output<string>;
     /**
      * Indicates if auditing for failures.
      */
@@ -46,7 +61,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
     /**
      * Name of user account that created the policy.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    public readonly author!: pulumi.Output<string>;
     public readonly autoScanConfigured!: pulumi.Output<boolean | undefined>;
     public readonly autoScanEnabled!: pulumi.Output<boolean | undefined>;
     public readonly autoScanTimes!: pulumi.Output<outputs.HostAssurancePolicyAutoScanTime[]>;
@@ -63,7 +78,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      */
     public readonly blacklistedLicenses!: pulumi.Output<string[] | undefined>;
     /**
-     * Lndicates if license blacklist is relevant.
+     * Indicates if license blacklist is relevant.
      */
     public readonly blacklistedLicensesEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -79,17 +94,18 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      * Indicates if scanning should include custom checks.
      */
     public readonly customChecksEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly customSeverity!: pulumi.Output<string>;
     public readonly customSeverityEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Indicates if cves blacklist is relevant.
+     * Indicates if CVEs blacklist is relevant.
      */
     public readonly cvesBlackListEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * List of cves blacklisted items.
+     * List of CVEs blacklisted items.
      */
     public readonly cvesBlackLists!: pulumi.Output<string[] | undefined>;
     /**
-     * Indicates if cves whitelist is relevant.
+     * Indicates if CVEs whitelist is relevant.
      */
     public readonly cvesWhiteListEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -109,10 +125,14 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      */
     public readonly cvssSeverityExcludeNoFix!: pulumi.Output<boolean | undefined>;
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly disallowExploitTypes!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates if malware should block the image.
      */
     public readonly disallowMalware!: pulumi.Output<boolean | undefined>;
+    /**
+     * Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+     */
     public readonly dockerCisEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Name of the container image.
@@ -126,6 +146,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
     public readonly enforceAfterDays!: pulumi.Output<number | undefined>;
     public readonly enforceExcessivePermissions!: pulumi.Output<boolean | undefined>;
     public readonly exceptionalMonitoredMalwarePaths!: pulumi.Output<string[] | undefined>;
+    public readonly excludeApplicationScopes!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates if cicd failures will fail the image.
      */
@@ -134,8 +155,9 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
     public readonly forbiddenLabelsEnabled!: pulumi.Output<boolean | undefined>;
     public readonly forceMicroenforcer!: pulumi.Output<boolean | undefined>;
     public readonly functionIntegrityEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly ignoreBaseImageVln!: pulumi.Output<boolean | undefined>;
     public readonly ignoreRecentlyPublishedVln!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly ignoreRecentlyPublishedVlnPeriod!: pulumi.Output<number>;
+    public readonly ignoreRecentlyPublishedVlnPeriod!: pulumi.Output<number>;
     /**
      * Indicates if risk resources are ignored.
      */
@@ -144,15 +166,24 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      * List of ignored risk resources.
      */
     public readonly ignoredRiskResources!: pulumi.Output<string[] | undefined>;
+    public readonly ignoredSensitiveResources!: pulumi.Output<string[] | undefined>;
     /**
      * List of images.
      */
     public readonly images!: pulumi.Output<string[] | undefined>;
+    /**
+     * Performs a Kubernetes CIS benchmark check for the host.
+     */
     public readonly kubeCisEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly kubernetesControls!: pulumi.Output<string[] | undefined>;
+    public readonly kubernetesControlsAvdIds!: pulumi.Output<string[] | undefined>;
+    public readonly kubernetesControlsNames!: pulumi.Output<string[] | undefined>;
     /**
      * List of labels.
      */
     public readonly labels!: pulumi.Output<string[] | undefined>;
+    public readonly lastupdate!: pulumi.Output<string>;
+    public readonly linuxCisEnabled!: pulumi.Output<boolean | undefined>;
     public readonly malwareAction!: pulumi.Output<string | undefined>;
     /**
      * Value of allowed maximum score.
@@ -172,12 +203,13 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      * Indicates if raise a warning for images that should only be run as root.
      */
     public readonly onlyNoneRootUsers!: pulumi.Output<boolean | undefined>;
+    public readonly openshiftHardeningEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if packages blacklist is relevant.
      */
     public readonly packagesBlackListEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * List of backlisted images.
+     * List of blacklisted images.
      */
     public readonly packagesBlackLists!: pulumi.Output<outputs.HostAssurancePolicyPackagesBlackList[] | undefined>;
     /**
@@ -189,6 +221,8 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      */
     public readonly packagesWhiteLists!: pulumi.Output<outputs.HostAssurancePolicyPackagesWhiteList[] | undefined>;
     public readonly partialResultsImageFail!: pulumi.Output<boolean | undefined>;
+    public readonly permission!: pulumi.Output<string>;
+    public readonly policySettings!: pulumi.Output<outputs.HostAssurancePolicyPolicySettings>;
     public readonly readOnly!: pulumi.Output<boolean | undefined>;
     /**
      * List of registries.
@@ -197,11 +231,14 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
     public readonly registry!: pulumi.Output<string | undefined>;
     public readonly requiredLabels!: pulumi.Output<outputs.HostAssurancePolicyRequiredLabel[] | undefined>;
     public readonly requiredLabelsEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly scanMalwareInArchives!: pulumi.Output<boolean | undefined>;
     public readonly scanNfsMounts!: pulumi.Output<boolean | undefined>;
+    public readonly scanProcessMemory!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if scan should include sensitive data in the image.
      */
     public readonly scanSensitiveData!: pulumi.Output<boolean | undefined>;
+    public readonly scanWindowsRegistry!: pulumi.Output<boolean | undefined>;
     /**
      * Indicates if scanning should include scap.
      */
@@ -219,6 +256,8 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      * Indicates if list of trusted base images is relevant.
      */
     public readonly trustedBaseImagesEnabled!: pulumi.Output<boolean | undefined>;
+    public readonly vulnerabilityExploitability!: pulumi.Output<boolean | undefined>;
+    public readonly vulnerabilityScoreRanges!: pulumi.Output<number[]>;
     /**
      * List of whitelisted licenses.
      */
@@ -227,6 +266,10 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
      * Indicates if license blacklist is relevant.
      */
     public readonly whitelistedLicensesEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Checks the host according to the Windows CIS benchmark (relevant for hosts running Windows).
+     */
+    public readonly windowsCisEnabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a HostAssurancePolicy resource with the given unique name, arguments, and options.
@@ -241,8 +284,10 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as HostAssurancePolicyState | undefined;
+            resourceInputs["aggregatedVulnerability"] = state ? state.aggregatedVulnerability : undefined;
             resourceInputs["allowedImages"] = state ? state.allowedImages : undefined;
             resourceInputs["applicationScopes"] = state ? state.applicationScopes : undefined;
+            resourceInputs["assuranceType"] = state ? state.assuranceType : undefined;
             resourceInputs["auditOnFailure"] = state ? state.auditOnFailure : undefined;
             resourceInputs["author"] = state ? state.author : undefined;
             resourceInputs["autoScanConfigured"] = state ? state.autoScanConfigured : undefined;
@@ -256,6 +301,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["controlExcludeNoFix"] = state ? state.controlExcludeNoFix : undefined;
             resourceInputs["customChecks"] = state ? state.customChecks : undefined;
             resourceInputs["customChecksEnabled"] = state ? state.customChecksEnabled : undefined;
+            resourceInputs["customSeverity"] = state ? state.customSeverity : undefined;
             resourceInputs["customSeverityEnabled"] = state ? state.customSeverityEnabled : undefined;
             resourceInputs["cvesBlackListEnabled"] = state ? state.cvesBlackListEnabled : undefined;
             resourceInputs["cvesBlackLists"] = state ? state.cvesBlackLists : undefined;
@@ -265,6 +311,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["cvssSeverityEnabled"] = state ? state.cvssSeverityEnabled : undefined;
             resourceInputs["cvssSeverityExcludeNoFix"] = state ? state.cvssSeverityExcludeNoFix : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disallowExploitTypes"] = state ? state.disallowExploitTypes : undefined;
             resourceInputs["disallowMalware"] = state ? state.disallowMalware : undefined;
             resourceInputs["dockerCisEnabled"] = state ? state.dockerCisEnabled : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
@@ -276,18 +323,26 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["enforceAfterDays"] = state ? state.enforceAfterDays : undefined;
             resourceInputs["enforceExcessivePermissions"] = state ? state.enforceExcessivePermissions : undefined;
             resourceInputs["exceptionalMonitoredMalwarePaths"] = state ? state.exceptionalMonitoredMalwarePaths : undefined;
+            resourceInputs["excludeApplicationScopes"] = state ? state.excludeApplicationScopes : undefined;
             resourceInputs["failCicd"] = state ? state.failCicd : undefined;
             resourceInputs["forbiddenLabels"] = state ? state.forbiddenLabels : undefined;
             resourceInputs["forbiddenLabelsEnabled"] = state ? state.forbiddenLabelsEnabled : undefined;
             resourceInputs["forceMicroenforcer"] = state ? state.forceMicroenforcer : undefined;
             resourceInputs["functionIntegrityEnabled"] = state ? state.functionIntegrityEnabled : undefined;
+            resourceInputs["ignoreBaseImageVln"] = state ? state.ignoreBaseImageVln : undefined;
             resourceInputs["ignoreRecentlyPublishedVln"] = state ? state.ignoreRecentlyPublishedVln : undefined;
             resourceInputs["ignoreRecentlyPublishedVlnPeriod"] = state ? state.ignoreRecentlyPublishedVlnPeriod : undefined;
             resourceInputs["ignoreRiskResourcesEnabled"] = state ? state.ignoreRiskResourcesEnabled : undefined;
             resourceInputs["ignoredRiskResources"] = state ? state.ignoredRiskResources : undefined;
+            resourceInputs["ignoredSensitiveResources"] = state ? state.ignoredSensitiveResources : undefined;
             resourceInputs["images"] = state ? state.images : undefined;
             resourceInputs["kubeCisEnabled"] = state ? state.kubeCisEnabled : undefined;
+            resourceInputs["kubernetesControls"] = state ? state.kubernetesControls : undefined;
+            resourceInputs["kubernetesControlsAvdIds"] = state ? state.kubernetesControlsAvdIds : undefined;
+            resourceInputs["kubernetesControlsNames"] = state ? state.kubernetesControlsNames : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
+            resourceInputs["lastupdate"] = state ? state.lastupdate : undefined;
+            resourceInputs["linuxCisEnabled"] = state ? state.linuxCisEnabled : undefined;
             resourceInputs["malwareAction"] = state ? state.malwareAction : undefined;
             resourceInputs["maximumScore"] = state ? state.maximumScore : undefined;
             resourceInputs["maximumScoreEnabled"] = state ? state.maximumScoreEnabled : undefined;
@@ -295,33 +350,45 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["monitoredMalwarePaths"] = state ? state.monitoredMalwarePaths : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["onlyNoneRootUsers"] = state ? state.onlyNoneRootUsers : undefined;
+            resourceInputs["openshiftHardeningEnabled"] = state ? state.openshiftHardeningEnabled : undefined;
             resourceInputs["packagesBlackListEnabled"] = state ? state.packagesBlackListEnabled : undefined;
             resourceInputs["packagesBlackLists"] = state ? state.packagesBlackLists : undefined;
             resourceInputs["packagesWhiteListEnabled"] = state ? state.packagesWhiteListEnabled : undefined;
             resourceInputs["packagesWhiteLists"] = state ? state.packagesWhiteLists : undefined;
             resourceInputs["partialResultsImageFail"] = state ? state.partialResultsImageFail : undefined;
+            resourceInputs["permission"] = state ? state.permission : undefined;
+            resourceInputs["policySettings"] = state ? state.policySettings : undefined;
             resourceInputs["readOnly"] = state ? state.readOnly : undefined;
             resourceInputs["registries"] = state ? state.registries : undefined;
             resourceInputs["registry"] = state ? state.registry : undefined;
             resourceInputs["requiredLabels"] = state ? state.requiredLabels : undefined;
             resourceInputs["requiredLabelsEnabled"] = state ? state.requiredLabelsEnabled : undefined;
+            resourceInputs["scanMalwareInArchives"] = state ? state.scanMalwareInArchives : undefined;
             resourceInputs["scanNfsMounts"] = state ? state.scanNfsMounts : undefined;
+            resourceInputs["scanProcessMemory"] = state ? state.scanProcessMemory : undefined;
             resourceInputs["scanSensitiveData"] = state ? state.scanSensitiveData : undefined;
+            resourceInputs["scanWindowsRegistry"] = state ? state.scanWindowsRegistry : undefined;
             resourceInputs["scapEnabled"] = state ? state.scapEnabled : undefined;
             resourceInputs["scapFiles"] = state ? state.scapFiles : undefined;
             resourceInputs["scopes"] = state ? state.scopes : undefined;
             resourceInputs["trustedBaseImages"] = state ? state.trustedBaseImages : undefined;
             resourceInputs["trustedBaseImagesEnabled"] = state ? state.trustedBaseImagesEnabled : undefined;
+            resourceInputs["vulnerabilityExploitability"] = state ? state.vulnerabilityExploitability : undefined;
+            resourceInputs["vulnerabilityScoreRanges"] = state ? state.vulnerabilityScoreRanges : undefined;
             resourceInputs["whitelistedLicenses"] = state ? state.whitelistedLicenses : undefined;
             resourceInputs["whitelistedLicensesEnabled"] = state ? state.whitelistedLicensesEnabled : undefined;
+            resourceInputs["windowsCisEnabled"] = state ? state.windowsCisEnabled : undefined;
         } else {
             const args = argsOrState as HostAssurancePolicyArgs | undefined;
             if ((!args || args.applicationScopes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationScopes'");
             }
+            resourceInputs["aggregatedVulnerability"] = args ? args.aggregatedVulnerability : undefined;
             resourceInputs["allowedImages"] = args ? args.allowedImages : undefined;
             resourceInputs["applicationScopes"] = args ? args.applicationScopes : undefined;
+            resourceInputs["assuranceType"] = args ? args.assuranceType : undefined;
             resourceInputs["auditOnFailure"] = args ? args.auditOnFailure : undefined;
+            resourceInputs["author"] = args ? args.author : undefined;
             resourceInputs["autoScanConfigured"] = args ? args.autoScanConfigured : undefined;
             resourceInputs["autoScanEnabled"] = args ? args.autoScanEnabled : undefined;
             resourceInputs["autoScanTimes"] = args ? args.autoScanTimes : undefined;
@@ -333,6 +400,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["controlExcludeNoFix"] = args ? args.controlExcludeNoFix : undefined;
             resourceInputs["customChecks"] = args ? args.customChecks : undefined;
             resourceInputs["customChecksEnabled"] = args ? args.customChecksEnabled : undefined;
+            resourceInputs["customSeverity"] = args ? args.customSeverity : undefined;
             resourceInputs["customSeverityEnabled"] = args ? args.customSeverityEnabled : undefined;
             resourceInputs["cvesBlackListEnabled"] = args ? args.cvesBlackListEnabled : undefined;
             resourceInputs["cvesBlackLists"] = args ? args.cvesBlackLists : undefined;
@@ -342,6 +410,7 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["cvssSeverityEnabled"] = args ? args.cvssSeverityEnabled : undefined;
             resourceInputs["cvssSeverityExcludeNoFix"] = args ? args.cvssSeverityExcludeNoFix : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disallowExploitTypes"] = args ? args.disallowExploitTypes : undefined;
             resourceInputs["disallowMalware"] = args ? args.disallowMalware : undefined;
             resourceInputs["dockerCisEnabled"] = args ? args.dockerCisEnabled : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
@@ -353,17 +422,26 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["enforceAfterDays"] = args ? args.enforceAfterDays : undefined;
             resourceInputs["enforceExcessivePermissions"] = args ? args.enforceExcessivePermissions : undefined;
             resourceInputs["exceptionalMonitoredMalwarePaths"] = args ? args.exceptionalMonitoredMalwarePaths : undefined;
+            resourceInputs["excludeApplicationScopes"] = args ? args.excludeApplicationScopes : undefined;
             resourceInputs["failCicd"] = args ? args.failCicd : undefined;
             resourceInputs["forbiddenLabels"] = args ? args.forbiddenLabels : undefined;
             resourceInputs["forbiddenLabelsEnabled"] = args ? args.forbiddenLabelsEnabled : undefined;
             resourceInputs["forceMicroenforcer"] = args ? args.forceMicroenforcer : undefined;
             resourceInputs["functionIntegrityEnabled"] = args ? args.functionIntegrityEnabled : undefined;
+            resourceInputs["ignoreBaseImageVln"] = args ? args.ignoreBaseImageVln : undefined;
             resourceInputs["ignoreRecentlyPublishedVln"] = args ? args.ignoreRecentlyPublishedVln : undefined;
+            resourceInputs["ignoreRecentlyPublishedVlnPeriod"] = args ? args.ignoreRecentlyPublishedVlnPeriod : undefined;
             resourceInputs["ignoreRiskResourcesEnabled"] = args ? args.ignoreRiskResourcesEnabled : undefined;
             resourceInputs["ignoredRiskResources"] = args ? args.ignoredRiskResources : undefined;
+            resourceInputs["ignoredSensitiveResources"] = args ? args.ignoredSensitiveResources : undefined;
             resourceInputs["images"] = args ? args.images : undefined;
             resourceInputs["kubeCisEnabled"] = args ? args.kubeCisEnabled : undefined;
+            resourceInputs["kubernetesControls"] = args ? args.kubernetesControls : undefined;
+            resourceInputs["kubernetesControlsAvdIds"] = args ? args.kubernetesControlsAvdIds : undefined;
+            resourceInputs["kubernetesControlsNames"] = args ? args.kubernetesControlsNames : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["lastupdate"] = args ? args.lastupdate : undefined;
+            resourceInputs["linuxCisEnabled"] = args ? args.linuxCisEnabled : undefined;
             resourceInputs["malwareAction"] = args ? args.malwareAction : undefined;
             resourceInputs["maximumScore"] = args ? args.maximumScore : undefined;
             resourceInputs["maximumScoreEnabled"] = args ? args.maximumScoreEnabled : undefined;
@@ -371,27 +449,34 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
             resourceInputs["monitoredMalwarePaths"] = args ? args.monitoredMalwarePaths : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["onlyNoneRootUsers"] = args ? args.onlyNoneRootUsers : undefined;
+            resourceInputs["openshiftHardeningEnabled"] = args ? args.openshiftHardeningEnabled : undefined;
             resourceInputs["packagesBlackListEnabled"] = args ? args.packagesBlackListEnabled : undefined;
             resourceInputs["packagesBlackLists"] = args ? args.packagesBlackLists : undefined;
             resourceInputs["packagesWhiteListEnabled"] = args ? args.packagesWhiteListEnabled : undefined;
             resourceInputs["packagesWhiteLists"] = args ? args.packagesWhiteLists : undefined;
             resourceInputs["partialResultsImageFail"] = args ? args.partialResultsImageFail : undefined;
+            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["policySettings"] = args ? args.policySettings : undefined;
             resourceInputs["readOnly"] = args ? args.readOnly : undefined;
             resourceInputs["registries"] = args ? args.registries : undefined;
             resourceInputs["registry"] = args ? args.registry : undefined;
             resourceInputs["requiredLabels"] = args ? args.requiredLabels : undefined;
             resourceInputs["requiredLabelsEnabled"] = args ? args.requiredLabelsEnabled : undefined;
+            resourceInputs["scanMalwareInArchives"] = args ? args.scanMalwareInArchives : undefined;
             resourceInputs["scanNfsMounts"] = args ? args.scanNfsMounts : undefined;
+            resourceInputs["scanProcessMemory"] = args ? args.scanProcessMemory : undefined;
             resourceInputs["scanSensitiveData"] = args ? args.scanSensitiveData : undefined;
+            resourceInputs["scanWindowsRegistry"] = args ? args.scanWindowsRegistry : undefined;
             resourceInputs["scapEnabled"] = args ? args.scapEnabled : undefined;
             resourceInputs["scapFiles"] = args ? args.scapFiles : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["trustedBaseImages"] = args ? args.trustedBaseImages : undefined;
             resourceInputs["trustedBaseImagesEnabled"] = args ? args.trustedBaseImagesEnabled : undefined;
+            resourceInputs["vulnerabilityExploitability"] = args ? args.vulnerabilityExploitability : undefined;
+            resourceInputs["vulnerabilityScoreRanges"] = args ? args.vulnerabilityScoreRanges : undefined;
             resourceInputs["whitelistedLicenses"] = args ? args.whitelistedLicenses : undefined;
             resourceInputs["whitelistedLicensesEnabled"] = args ? args.whitelistedLicensesEnabled : undefined;
-            resourceInputs["author"] = undefined /*out*/;
-            resourceInputs["ignoreRecentlyPublishedVlnPeriod"] = undefined /*out*/;
+            resourceInputs["windowsCisEnabled"] = args ? args.windowsCisEnabled : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(HostAssurancePolicy.__pulumiType, name, resourceInputs, opts);
@@ -403,10 +488,18 @@ export class HostAssurancePolicy extends pulumi.CustomResource {
  */
 export interface HostAssurancePolicyState {
     /**
+     * Aggregated vulnerability information.
+     */
+    aggregatedVulnerability?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * List of explicitly allowed images.
      */
     allowedImages?: pulumi.Input<pulumi.Input<string>[]>;
     applicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * What type of assurance policy is described.
+     */
+    assuranceType?: pulumi.Input<string>;
     /**
      * Indicates if auditing for failures.
      */
@@ -431,7 +524,7 @@ export interface HostAssurancePolicyState {
      */
     blacklistedLicenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Lndicates if license blacklist is relevant.
+     * Indicates if license blacklist is relevant.
      */
     blacklistedLicensesEnabled?: pulumi.Input<boolean>;
     /**
@@ -447,17 +540,18 @@ export interface HostAssurancePolicyState {
      * Indicates if scanning should include custom checks.
      */
     customChecksEnabled?: pulumi.Input<boolean>;
+    customSeverity?: pulumi.Input<string>;
     customSeverityEnabled?: pulumi.Input<boolean>;
     /**
-     * Indicates if cves blacklist is relevant.
+     * Indicates if CVEs blacklist is relevant.
      */
     cvesBlackListEnabled?: pulumi.Input<boolean>;
     /**
-     * List of cves blacklisted items.
+     * List of CVEs blacklisted items.
      */
     cvesBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates if cves whitelist is relevant.
+     * Indicates if CVEs whitelist is relevant.
      */
     cvesWhiteListEnabled?: pulumi.Input<boolean>;
     /**
@@ -477,10 +571,14 @@ export interface HostAssurancePolicyState {
      */
     cvssSeverityExcludeNoFix?: pulumi.Input<boolean>;
     description?: pulumi.Input<string>;
+    disallowExploitTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates if malware should block the image.
      */
     disallowMalware?: pulumi.Input<boolean>;
+    /**
+     * Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+     */
     dockerCisEnabled?: pulumi.Input<boolean>;
     /**
      * Name of the container image.
@@ -494,6 +592,7 @@ export interface HostAssurancePolicyState {
     enforceAfterDays?: pulumi.Input<number>;
     enforceExcessivePermissions?: pulumi.Input<boolean>;
     exceptionalMonitoredMalwarePaths?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeApplicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates if cicd failures will fail the image.
      */
@@ -502,6 +601,7 @@ export interface HostAssurancePolicyState {
     forbiddenLabelsEnabled?: pulumi.Input<boolean>;
     forceMicroenforcer?: pulumi.Input<boolean>;
     functionIntegrityEnabled?: pulumi.Input<boolean>;
+    ignoreBaseImageVln?: pulumi.Input<boolean>;
     ignoreRecentlyPublishedVln?: pulumi.Input<boolean>;
     ignoreRecentlyPublishedVlnPeriod?: pulumi.Input<number>;
     /**
@@ -512,15 +612,24 @@ export interface HostAssurancePolicyState {
      * List of ignored risk resources.
      */
     ignoredRiskResources?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoredSensitiveResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of images.
      */
     images?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Performs a Kubernetes CIS benchmark check for the host.
+     */
     kubeCisEnabled?: pulumi.Input<boolean>;
+    kubernetesControls?: pulumi.Input<pulumi.Input<string>[]>;
+    kubernetesControlsAvdIds?: pulumi.Input<pulumi.Input<string>[]>;
+    kubernetesControlsNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of labels.
      */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
+    lastupdate?: pulumi.Input<string>;
+    linuxCisEnabled?: pulumi.Input<boolean>;
     malwareAction?: pulumi.Input<string>;
     /**
      * Value of allowed maximum score.
@@ -540,12 +649,13 @@ export interface HostAssurancePolicyState {
      * Indicates if raise a warning for images that should only be run as root.
      */
     onlyNoneRootUsers?: pulumi.Input<boolean>;
+    openshiftHardeningEnabled?: pulumi.Input<boolean>;
     /**
      * Indicates if packages blacklist is relevant.
      */
     packagesBlackListEnabled?: pulumi.Input<boolean>;
     /**
-     * List of backlisted images.
+     * List of blacklisted images.
      */
     packagesBlackLists?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyPackagesBlackList>[]>;
     /**
@@ -557,6 +667,8 @@ export interface HostAssurancePolicyState {
      */
     packagesWhiteLists?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyPackagesWhiteList>[]>;
     partialResultsImageFail?: pulumi.Input<boolean>;
+    permission?: pulumi.Input<string>;
+    policySettings?: pulumi.Input<inputs.HostAssurancePolicyPolicySettings>;
     readOnly?: pulumi.Input<boolean>;
     /**
      * List of registries.
@@ -565,11 +677,14 @@ export interface HostAssurancePolicyState {
     registry?: pulumi.Input<string>;
     requiredLabels?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyRequiredLabel>[]>;
     requiredLabelsEnabled?: pulumi.Input<boolean>;
+    scanMalwareInArchives?: pulumi.Input<boolean>;
     scanNfsMounts?: pulumi.Input<boolean>;
+    scanProcessMemory?: pulumi.Input<boolean>;
     /**
      * Indicates if scan should include sensitive data in the image.
      */
     scanSensitiveData?: pulumi.Input<boolean>;
+    scanWindowsRegistry?: pulumi.Input<boolean>;
     /**
      * Indicates if scanning should include scap.
      */
@@ -587,6 +702,8 @@ export interface HostAssurancePolicyState {
      * Indicates if list of trusted base images is relevant.
      */
     trustedBaseImagesEnabled?: pulumi.Input<boolean>;
+    vulnerabilityExploitability?: pulumi.Input<boolean>;
+    vulnerabilityScoreRanges?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * List of whitelisted licenses.
      */
@@ -595,6 +712,10 @@ export interface HostAssurancePolicyState {
      * Indicates if license blacklist is relevant.
      */
     whitelistedLicensesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Checks the host according to the Windows CIS benchmark (relevant for hosts running Windows).
+     */
+    windowsCisEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -602,14 +723,26 @@ export interface HostAssurancePolicyState {
  */
 export interface HostAssurancePolicyArgs {
     /**
+     * Aggregated vulnerability information.
+     */
+    aggregatedVulnerability?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * List of explicitly allowed images.
      */
     allowedImages?: pulumi.Input<pulumi.Input<string>[]>;
     applicationScopes: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * What type of assurance policy is described.
+     */
+    assuranceType?: pulumi.Input<string>;
+    /**
      * Indicates if auditing for failures.
      */
     auditOnFailure?: pulumi.Input<boolean>;
+    /**
+     * Name of user account that created the policy.
+     */
+    author?: pulumi.Input<string>;
     autoScanConfigured?: pulumi.Input<boolean>;
     autoScanEnabled?: pulumi.Input<boolean>;
     autoScanTimes?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyAutoScanTime>[]>;
@@ -626,7 +759,7 @@ export interface HostAssurancePolicyArgs {
      */
     blacklistedLicenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Lndicates if license blacklist is relevant.
+     * Indicates if license blacklist is relevant.
      */
     blacklistedLicensesEnabled?: pulumi.Input<boolean>;
     /**
@@ -642,17 +775,18 @@ export interface HostAssurancePolicyArgs {
      * Indicates if scanning should include custom checks.
      */
     customChecksEnabled?: pulumi.Input<boolean>;
+    customSeverity?: pulumi.Input<string>;
     customSeverityEnabled?: pulumi.Input<boolean>;
     /**
-     * Indicates if cves blacklist is relevant.
+     * Indicates if CVEs blacklist is relevant.
      */
     cvesBlackListEnabled?: pulumi.Input<boolean>;
     /**
-     * List of cves blacklisted items.
+     * List of CVEs blacklisted items.
      */
     cvesBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates if cves whitelist is relevant.
+     * Indicates if CVEs whitelist is relevant.
      */
     cvesWhiteListEnabled?: pulumi.Input<boolean>;
     /**
@@ -672,10 +806,14 @@ export interface HostAssurancePolicyArgs {
      */
     cvssSeverityExcludeNoFix?: pulumi.Input<boolean>;
     description?: pulumi.Input<string>;
+    disallowExploitTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates if malware should block the image.
      */
     disallowMalware?: pulumi.Input<boolean>;
+    /**
+     * Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+     */
     dockerCisEnabled?: pulumi.Input<boolean>;
     /**
      * Name of the container image.
@@ -689,6 +827,7 @@ export interface HostAssurancePolicyArgs {
     enforceAfterDays?: pulumi.Input<number>;
     enforceExcessivePermissions?: pulumi.Input<boolean>;
     exceptionalMonitoredMalwarePaths?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeApplicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates if cicd failures will fail the image.
      */
@@ -697,7 +836,9 @@ export interface HostAssurancePolicyArgs {
     forbiddenLabelsEnabled?: pulumi.Input<boolean>;
     forceMicroenforcer?: pulumi.Input<boolean>;
     functionIntegrityEnabled?: pulumi.Input<boolean>;
+    ignoreBaseImageVln?: pulumi.Input<boolean>;
     ignoreRecentlyPublishedVln?: pulumi.Input<boolean>;
+    ignoreRecentlyPublishedVlnPeriod?: pulumi.Input<number>;
     /**
      * Indicates if risk resources are ignored.
      */
@@ -706,15 +847,24 @@ export interface HostAssurancePolicyArgs {
      * List of ignored risk resources.
      */
     ignoredRiskResources?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoredSensitiveResources?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of images.
      */
     images?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Performs a Kubernetes CIS benchmark check for the host.
+     */
     kubeCisEnabled?: pulumi.Input<boolean>;
+    kubernetesControls?: pulumi.Input<pulumi.Input<string>[]>;
+    kubernetesControlsAvdIds?: pulumi.Input<pulumi.Input<string>[]>;
+    kubernetesControlsNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of labels.
      */
     labels?: pulumi.Input<pulumi.Input<string>[]>;
+    lastupdate?: pulumi.Input<string>;
+    linuxCisEnabled?: pulumi.Input<boolean>;
     malwareAction?: pulumi.Input<string>;
     /**
      * Value of allowed maximum score.
@@ -734,12 +884,13 @@ export interface HostAssurancePolicyArgs {
      * Indicates if raise a warning for images that should only be run as root.
      */
     onlyNoneRootUsers?: pulumi.Input<boolean>;
+    openshiftHardeningEnabled?: pulumi.Input<boolean>;
     /**
      * Indicates if packages blacklist is relevant.
      */
     packagesBlackListEnabled?: pulumi.Input<boolean>;
     /**
-     * List of backlisted images.
+     * List of blacklisted images.
      */
     packagesBlackLists?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyPackagesBlackList>[]>;
     /**
@@ -751,6 +902,8 @@ export interface HostAssurancePolicyArgs {
      */
     packagesWhiteLists?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyPackagesWhiteList>[]>;
     partialResultsImageFail?: pulumi.Input<boolean>;
+    permission?: pulumi.Input<string>;
+    policySettings?: pulumi.Input<inputs.HostAssurancePolicyPolicySettings>;
     readOnly?: pulumi.Input<boolean>;
     /**
      * List of registries.
@@ -759,11 +912,14 @@ export interface HostAssurancePolicyArgs {
     registry?: pulumi.Input<string>;
     requiredLabels?: pulumi.Input<pulumi.Input<inputs.HostAssurancePolicyRequiredLabel>[]>;
     requiredLabelsEnabled?: pulumi.Input<boolean>;
+    scanMalwareInArchives?: pulumi.Input<boolean>;
     scanNfsMounts?: pulumi.Input<boolean>;
+    scanProcessMemory?: pulumi.Input<boolean>;
     /**
      * Indicates if scan should include sensitive data in the image.
      */
     scanSensitiveData?: pulumi.Input<boolean>;
+    scanWindowsRegistry?: pulumi.Input<boolean>;
     /**
      * Indicates if scanning should include scap.
      */
@@ -781,6 +937,8 @@ export interface HostAssurancePolicyArgs {
      * Indicates if list of trusted base images is relevant.
      */
     trustedBaseImagesEnabled?: pulumi.Input<boolean>;
+    vulnerabilityExploitability?: pulumi.Input<boolean>;
+    vulnerabilityScoreRanges?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * List of whitelisted licenses.
      */
@@ -789,4 +947,8 @@ export interface HostAssurancePolicyArgs {
      * Indicates if license blacklist is relevant.
      */
     whitelistedLicensesEnabled?: pulumi.Input<boolean>;
+    /**
+     * Checks the host according to the Windows CIS benchmark (relevant for hosts running Windows).
+     */
+    windowsCisEnabled?: pulumi.Input<boolean>;
 }

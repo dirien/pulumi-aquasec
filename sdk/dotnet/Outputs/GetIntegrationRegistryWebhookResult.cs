@@ -17,9 +17,6 @@ namespace Pulumiverse.Aquasec.Outputs
         public readonly string? AuthToken;
         public readonly bool? Enabled;
         public readonly bool? UnQuarantine;
-        /// <summary>
-        /// The URL, address or region of the registry
-        /// </summary>
         public readonly string? Url;
 
         [OutputConstructor]

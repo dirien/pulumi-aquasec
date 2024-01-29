@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -47,4 +50,43 @@ type GetRolesMappingSaasResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id            string                            `pulumi:"id"`
 	RolesMappings []GetRolesMappingSaasRolesMapping `pulumi:"rolesMappings"`
+}
+
+func GetRolesMappingSaasOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRolesMappingSaasResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetRolesMappingSaasResult, error) {
+		r, err := GetRolesMappingSaas(ctx, opts...)
+		var s GetRolesMappingSaasResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetRolesMappingSaasResultOutput)
+}
+
+// A collection of values returned by getRolesMappingSaas.
+type GetRolesMappingSaasResultOutput struct{ *pulumi.OutputState }
+
+func (GetRolesMappingSaasResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRolesMappingSaasResult)(nil)).Elem()
+}
+
+func (o GetRolesMappingSaasResultOutput) ToGetRolesMappingSaasResultOutput() GetRolesMappingSaasResultOutput {
+	return o
+}
+
+func (o GetRolesMappingSaasResultOutput) ToGetRolesMappingSaasResultOutputWithContext(ctx context.Context) GetRolesMappingSaasResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetRolesMappingSaasResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRolesMappingSaasResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetRolesMappingSaasResultOutput) RolesMappings() GetRolesMappingSaasRolesMappingArrayOutput {
+	return o.ApplyT(func(v GetRolesMappingSaasResult) []GetRolesMappingSaasRolesMapping { return v.RolesMappings }).(GetRolesMappingSaasRolesMappingArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetRolesMappingSaasResultOutput{})
 }

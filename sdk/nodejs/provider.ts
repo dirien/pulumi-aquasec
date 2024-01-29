@@ -61,12 +61,12 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["aquaUrl"] = args ? args.aquaUrl : undefined;
-            resourceInputs["caCertificatePath"] = args ? args.caCertificatePath : undefined;
-            resourceInputs["configPath"] = args ? args.configPath : undefined;
-            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
-            resourceInputs["verifyTls"] = pulumi.output(args ? args.verifyTls : undefined).apply(JSON.stringify);
+            resourceInputs["aquaUrl"] = (args ? args.aquaUrl : undefined) ?? utilities.getEnv("AQUA_URL");
+            resourceInputs["caCertificatePath"] = (args ? args.caCertificatePath : undefined) ?? utilities.getEnv("AQUA_CA_CERT_PATH");
+            resourceInputs["configPath"] = (args ? args.configPath : undefined) ?? utilities.getEnv("AQUA_CONFIG");
+            resourceInputs["password"] = (args?.password ? pulumi.secret(args.password) : undefined) ?? utilities.getEnv("AQUA_PASSWORD");
+            resourceInputs["username"] = (args?.username ? pulumi.secret(args.username) : undefined) ?? utilities.getEnv("AQUA_USER");
+            resourceInputs["verifyTls"] = pulumi.output((args ? args.verifyTls : undefined) ?? (utilities.getEnvBoolean("AQUA_TLS_VERIFY") || true)).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password", "username"] };

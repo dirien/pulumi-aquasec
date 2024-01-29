@@ -20,13 +20,7 @@ export function getImage(args: GetImageArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageArgs {
-    /**
-     * The name of the registry where the image is stored.
-     */
     registry: string;
-    /**
-     * The name of the image's repository.
-     */
     repository: string;
     /**
      * The tag of the image.
@@ -251,13 +245,7 @@ export function getImageOutput(args: GetImageOutputArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getImage.
  */
 export interface GetImageOutputArgs {
-    /**
-     * The name of the registry where the image is stored.
-     */
     registry: pulumi.Input<string>;
-    /**
-     * The name of the image's repository.
-     */
     repository: pulumi.Input<string>;
     /**
      * The tag of the image.

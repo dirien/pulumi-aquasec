@@ -23,6 +23,10 @@ namespace Pulumiverse.Aquasec.Inputs
 
         [Input("functions")]
         private InputList<Inputs.ApplicationScopeCategoryArtifactFunctionGetArgs>? _functions;
+
+        /// <summary>
+        /// Function name
+        /// </summary>
         public InputList<Inputs.ApplicationScopeCategoryArtifactFunctionGetArgs> Functions
         {
             get => _functions ?? (_functions = new InputList<Inputs.ApplicationScopeCategoryArtifactFunctionGetArgs>());
@@ -31,6 +35,10 @@ namespace Pulumiverse.Aquasec.Inputs
 
         [Input("images")]
         private InputList<Inputs.ApplicationScopeCategoryArtifactImageGetArgs>? _images;
+
+        /// <summary>
+        /// Name of a registry as defined in Aqua
+        /// </summary>
         public InputList<Inputs.ApplicationScopeCategoryArtifactImageGetArgs> Images
         {
             get => _images ?? (_images = new InputList<Inputs.ApplicationScopeCategoryArtifactImageGetArgs>());

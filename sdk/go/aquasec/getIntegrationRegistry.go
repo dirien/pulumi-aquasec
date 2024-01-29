@@ -8,10 +8,10 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
+// Deprecated: aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries
 func LookupIntegrationRegistry(ctx *pulumi.Context, args *LookupIntegrationRegistryArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationRegistryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationRegistryResult
@@ -24,90 +24,52 @@ func LookupIntegrationRegistry(ctx *pulumi.Context, args *LookupIntegrationRegis
 
 // A collection of arguments for invoking getIntegrationRegistry.
 type LookupIntegrationRegistryArgs struct {
-	// Automatically clean up that don't match the pull criteria
-	AdvancedSettingsCleanup *bool `pulumi:"advancedSettingsCleanup"`
-	// List of image patterns to pull always
-	AlwaysPullPatterns []string `pulumi:"alwaysPullPatterns"`
-	// Additional condition for pulling and rescanning images, Defaults to 'none'
-	ImageCreationDateCondition *string `pulumi:"imageCreationDateCondition"`
-	// The last time the registry was modified in UNIX time
-	Lastupdate *int `pulumi:"lastupdate"`
-	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name    string                         `pulumi:"name"`
-	Options []GetIntegrationRegistryOption `pulumi:"options"`
-	// When auto pull image enabled, sets maximum age of auto pulled images
-	PullImageAge *string `pulumi:"pullImageAge"`
-	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-	PullImageCount *int `pulumi:"pullImageCount"`
-	// List of image tags patterns to pull
-	PullImageTagPatterns []string `pulumi:"pullImageTagPatterns"`
-	// List of image patterns to exclude
-	PullRepoPatternsExcludeds []string `pulumi:"pullRepoPatternsExcludeds"`
-	// Registry scan timeout in Minutes
-	RegistryScanTimeout *int `pulumi:"registryScanTimeout"`
-	// List of scanner names
-	ScannerNames []string `pulumi:"scannerNames"`
-	// Scanner type
-	ScannerType *string `pulumi:"scannerType"`
-	// When enabled, registry events are sent to the given Aqua webhook url
-	Webhooks []GetIntegrationRegistryWebhook `pulumi:"webhooks"`
+	AdvancedSettingsCleanup    *bool                           `pulumi:"advancedSettingsCleanup"`
+	AlwaysPullPatterns         []string                        `pulumi:"alwaysPullPatterns"`
+	ImageCreationDateCondition *string                         `pulumi:"imageCreationDateCondition"`
+	Lastupdate                 *int                            `pulumi:"lastupdate"`
+	Name                       string                          `pulumi:"name"`
+	Options                    []GetIntegrationRegistryOption  `pulumi:"options"`
+	PullImageAge               *string                         `pulumi:"pullImageAge"`
+	PullImageCount             *int                            `pulumi:"pullImageCount"`
+	PullImageTagPatterns       []string                        `pulumi:"pullImageTagPatterns"`
+	PullRepoPatternsExcludeds  []string                        `pulumi:"pullRepoPatternsExcludeds"`
+	RegistryScanTimeout        *int                            `pulumi:"registryScanTimeout"`
+	ScannerNames               []string                        `pulumi:"scannerNames"`
+	ScannerType                *string                         `pulumi:"scannerType"`
+	Webhooks                   []GetIntegrationRegistryWebhook `pulumi:"webhooks"`
 }
 
 // A collection of values returned by getIntegrationRegistry.
 type LookupIntegrationRegistryResult struct {
-	// Automatically clean up that don't match the pull criteria
-	AdvancedSettingsCleanup *bool `pulumi:"advancedSettingsCleanup"`
-	// List of image patterns to pull always
-	AlwaysPullPatterns []string `pulumi:"alwaysPullPatterns"`
-	// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
-	AutoCleanup bool `pulumi:"autoCleanup"`
-	// Whether to automatically pull images from the registry on creation and daily
-	AutoPull bool `pulumi:"autoPull"`
-	// The interval in days to start pulling new images from the registry, Defaults to 1
-	AutoPullInterval int `pulumi:"autoPullInterval"`
-	// Maximum number of repositories to pull every day, defaults to 100
-	AutoPullMax int `pulumi:"autoPullMax"`
-	// Whether to automatically pull and rescan images from the registry on creation and daily
-	AutoPullRescan bool `pulumi:"autoPullRescan"`
-	// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
-	AutoPullTime string `pulumi:"autoPullTime"`
-	// The description of the registry
-	Description string `pulumi:"description"`
+	AdvancedSettingsCleanup *bool    `pulumi:"advancedSettingsCleanup"`
+	AlwaysPullPatterns      []string `pulumi:"alwaysPullPatterns"`
+	AutoCleanup             bool     `pulumi:"autoCleanup"`
+	AutoPull                bool     `pulumi:"autoPull"`
+	AutoPullInterval        int      `pulumi:"autoPullInterval"`
+	AutoPullMax             int      `pulumi:"autoPullMax"`
+	AutoPullRescan          bool     `pulumi:"autoPullRescan"`
+	AutoPullTime            string   `pulumi:"autoPullTime"`
+	Description             string   `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Additional condition for pulling and rescanning images, Defaults to 'none'
-	ImageCreationDateCondition string `pulumi:"imageCreationDateCondition"`
-	// The last time the registry was modified in UNIX time
-	Lastupdate int `pulumi:"lastupdate"`
-	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name    string                         `pulumi:"name"`
-	Options []GetIntegrationRegistryOption `pulumi:"options"`
-	// The password for registry authentication
-	Password string `pulumi:"password"`
-	// List of possible prefixes to image names pulled from the registry
-	Prefixes []string `pulumi:"prefixes"`
-	// When auto pull image enabled, sets maximum age of auto pulled images
-	PullImageAge string `pulumi:"pullImageAge"`
-	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-	PullImageCount int `pulumi:"pullImageCount"`
-	// List of image tags patterns to pull
-	PullImageTagPatterns []string `pulumi:"pullImageTagPatterns"`
-	// List of image patterns to exclude
-	PullRepoPatternsExcludeds []string `pulumi:"pullRepoPatternsExcludeds"`
-	// Registry scan timeout in Minutes
-	RegistryScanTimeout *int `pulumi:"registryScanTimeout"`
-	// List of scanner names
-	ScannerNames []string `pulumi:"scannerNames"`
-	// Scanner type
-	ScannerType string `pulumi:"scannerType"`
-	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
-	Type string `pulumi:"type"`
-	// The URL, address or region of the registry
-	Url string `pulumi:"url"`
-	// The username for registry authentication.
-	Username string `pulumi:"username"`
-	// When enabled, registry events are sent to the given Aqua webhook url
-	Webhooks []GetIntegrationRegistryWebhook `pulumi:"webhooks"`
+	Id                         string                          `pulumi:"id"`
+	ImageCreationDateCondition string                          `pulumi:"imageCreationDateCondition"`
+	Lastupdate                 int                             `pulumi:"lastupdate"`
+	Name                       string                          `pulumi:"name"`
+	Options                    []GetIntegrationRegistryOption  `pulumi:"options"`
+	Password                   string                          `pulumi:"password"`
+	Prefixes                   []string                        `pulumi:"prefixes"`
+	PullImageAge               string                          `pulumi:"pullImageAge"`
+	PullImageCount             int                             `pulumi:"pullImageCount"`
+	PullImageTagPatterns       []string                        `pulumi:"pullImageTagPatterns"`
+	PullRepoPatternsExcludeds  []string                        `pulumi:"pullRepoPatternsExcludeds"`
+	RegistryScanTimeout        *int                            `pulumi:"registryScanTimeout"`
+	ScannerNames               []string                        `pulumi:"scannerNames"`
+	ScannerType                string                          `pulumi:"scannerType"`
+	Type                       string                          `pulumi:"type"`
+	Url                        string                          `pulumi:"url"`
+	Username                   string                          `pulumi:"username"`
+	Webhooks                   []GetIntegrationRegistryWebhook `pulumi:"webhooks"`
 }
 
 func LookupIntegrationRegistryOutput(ctx *pulumi.Context, args LookupIntegrationRegistryOutputArgs, opts ...pulumi.InvokeOption) LookupIntegrationRegistryResultOutput {
@@ -125,33 +87,20 @@ func LookupIntegrationRegistryOutput(ctx *pulumi.Context, args LookupIntegration
 
 // A collection of arguments for invoking getIntegrationRegistry.
 type LookupIntegrationRegistryOutputArgs struct {
-	// Automatically clean up that don't match the pull criteria
-	AdvancedSettingsCleanup pulumi.BoolPtrInput `pulumi:"advancedSettingsCleanup"`
-	// List of image patterns to pull always
-	AlwaysPullPatterns pulumi.StringArrayInput `pulumi:"alwaysPullPatterns"`
-	// Additional condition for pulling and rescanning images, Defaults to 'none'
-	ImageCreationDateCondition pulumi.StringPtrInput `pulumi:"imageCreationDateCondition"`
-	// The last time the registry was modified in UNIX time
-	Lastupdate pulumi.IntPtrInput `pulumi:"lastupdate"`
-	// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-	Name    pulumi.StringInput                     `pulumi:"name"`
-	Options GetIntegrationRegistryOptionArrayInput `pulumi:"options"`
-	// When auto pull image enabled, sets maximum age of auto pulled images
-	PullImageAge pulumi.StringPtrInput `pulumi:"pullImageAge"`
-	// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-	PullImageCount pulumi.IntPtrInput `pulumi:"pullImageCount"`
-	// List of image tags patterns to pull
-	PullImageTagPatterns pulumi.StringArrayInput `pulumi:"pullImageTagPatterns"`
-	// List of image patterns to exclude
-	PullRepoPatternsExcludeds pulumi.StringArrayInput `pulumi:"pullRepoPatternsExcludeds"`
-	// Registry scan timeout in Minutes
-	RegistryScanTimeout pulumi.IntPtrInput `pulumi:"registryScanTimeout"`
-	// List of scanner names
-	ScannerNames pulumi.StringArrayInput `pulumi:"scannerNames"`
-	// Scanner type
-	ScannerType pulumi.StringPtrInput `pulumi:"scannerType"`
-	// When enabled, registry events are sent to the given Aqua webhook url
-	Webhooks GetIntegrationRegistryWebhookArrayInput `pulumi:"webhooks"`
+	AdvancedSettingsCleanup    pulumi.BoolPtrInput                     `pulumi:"advancedSettingsCleanup"`
+	AlwaysPullPatterns         pulumi.StringArrayInput                 `pulumi:"alwaysPullPatterns"`
+	ImageCreationDateCondition pulumi.StringPtrInput                   `pulumi:"imageCreationDateCondition"`
+	Lastupdate                 pulumi.IntPtrInput                      `pulumi:"lastupdate"`
+	Name                       pulumi.StringInput                      `pulumi:"name"`
+	Options                    GetIntegrationRegistryOptionArrayInput  `pulumi:"options"`
+	PullImageAge               pulumi.StringPtrInput                   `pulumi:"pullImageAge"`
+	PullImageCount             pulumi.IntPtrInput                      `pulumi:"pullImageCount"`
+	PullImageTagPatterns       pulumi.StringArrayInput                 `pulumi:"pullImageTagPatterns"`
+	PullRepoPatternsExcludeds  pulumi.StringArrayInput                 `pulumi:"pullRepoPatternsExcludeds"`
+	RegistryScanTimeout        pulumi.IntPtrInput                      `pulumi:"registryScanTimeout"`
+	ScannerNames               pulumi.StringArrayInput                 `pulumi:"scannerNames"`
+	ScannerType                pulumi.StringPtrInput                   `pulumi:"scannerType"`
+	Webhooks                   GetIntegrationRegistryWebhookArrayInput `pulumi:"webhooks"`
 }
 
 func (LookupIntegrationRegistryOutputArgs) ElementType() reflect.Type {
@@ -173,53 +122,38 @@ func (o LookupIntegrationRegistryResultOutput) ToLookupIntegrationRegistryResult
 	return o
 }
 
-func (o LookupIntegrationRegistryResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupIntegrationRegistryResult] {
-	return pulumix.Output[LookupIntegrationRegistryResult]{
-		OutputState: o.OutputState,
-	}
-}
-
-// Automatically clean up that don't match the pull criteria
 func (o LookupIntegrationRegistryResultOutput) AdvancedSettingsCleanup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) *bool { return v.AdvancedSettingsCleanup }).(pulumi.BoolPtrOutput)
 }
 
-// List of image patterns to pull always
 func (o LookupIntegrationRegistryResultOutput) AlwaysPullPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []string { return v.AlwaysPullPatterns }).(pulumi.StringArrayOutput)
 }
 
-// Automatically clean up images and repositories which are no longer present in the registry from Aqua console
 func (o LookupIntegrationRegistryResultOutput) AutoCleanup() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) bool { return v.AutoCleanup }).(pulumi.BoolOutput)
 }
 
-// Whether to automatically pull images from the registry on creation and daily
 func (o LookupIntegrationRegistryResultOutput) AutoPull() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) bool { return v.AutoPull }).(pulumi.BoolOutput)
 }
 
-// The interval in days to start pulling new images from the registry, Defaults to 1
 func (o LookupIntegrationRegistryResultOutput) AutoPullInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) int { return v.AutoPullInterval }).(pulumi.IntOutput)
 }
 
-// Maximum number of repositories to pull every day, defaults to 100
 func (o LookupIntegrationRegistryResultOutput) AutoPullMax() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) int { return v.AutoPullMax }).(pulumi.IntOutput)
 }
 
-// Whether to automatically pull and rescan images from the registry on creation and daily
 func (o LookupIntegrationRegistryResultOutput) AutoPullRescan() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) bool { return v.AutoPullRescan }).(pulumi.BoolOutput)
 }
 
-// The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
 func (o LookupIntegrationRegistryResultOutput) AutoPullTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.AutoPullTime }).(pulumi.StringOutput)
 }
 
-// The description of the registry
 func (o LookupIntegrationRegistryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -229,17 +163,14 @@ func (o LookupIntegrationRegistryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Additional condition for pulling and rescanning images, Defaults to 'none'
 func (o LookupIntegrationRegistryResultOutput) ImageCreationDateCondition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.ImageCreationDateCondition }).(pulumi.StringOutput)
 }
 
-// The last time the registry was modified in UNIX time
 func (o LookupIntegrationRegistryResultOutput) Lastupdate() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) int { return v.Lastupdate }).(pulumi.IntOutput)
 }
 
-// The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
 func (o LookupIntegrationRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -248,67 +179,54 @@ func (o LookupIntegrationRegistryResultOutput) Options() GetIntegrationRegistryO
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []GetIntegrationRegistryOption { return v.Options }).(GetIntegrationRegistryOptionArrayOutput)
 }
 
-// The password for registry authentication
 func (o LookupIntegrationRegistryResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// List of possible prefixes to image names pulled from the registry
 func (o LookupIntegrationRegistryResultOutput) Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
-// When auto pull image enabled, sets maximum age of auto pulled images
 func (o LookupIntegrationRegistryResultOutput) PullImageAge() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.PullImageAge }).(pulumi.StringOutput)
 }
 
-// When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
 func (o LookupIntegrationRegistryResultOutput) PullImageCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) int { return v.PullImageCount }).(pulumi.IntOutput)
 }
 
-// List of image tags patterns to pull
 func (o LookupIntegrationRegistryResultOutput) PullImageTagPatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []string { return v.PullImageTagPatterns }).(pulumi.StringArrayOutput)
 }
 
-// List of image patterns to exclude
 func (o LookupIntegrationRegistryResultOutput) PullRepoPatternsExcludeds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []string { return v.PullRepoPatternsExcludeds }).(pulumi.StringArrayOutput)
 }
 
-// Registry scan timeout in Minutes
 func (o LookupIntegrationRegistryResultOutput) RegistryScanTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) *int { return v.RegistryScanTimeout }).(pulumi.IntPtrOutput)
 }
 
-// List of scanner names
 func (o LookupIntegrationRegistryResultOutput) ScannerNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []string { return v.ScannerNames }).(pulumi.StringArrayOutput)
 }
 
-// Scanner type
 func (o LookupIntegrationRegistryResultOutput) ScannerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.ScannerType }).(pulumi.StringOutput)
 }
 
-// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
 func (o LookupIntegrationRegistryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The URL, address or region of the registry
 func (o LookupIntegrationRegistryResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// The username for registry authentication.
 func (o LookupIntegrationRegistryResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) string { return v.Username }).(pulumi.StringOutput)
 }
 
-// When enabled, registry events are sent to the given Aqua webhook url
 func (o LookupIntegrationRegistryResultOutput) Webhooks() GetIntegrationRegistryWebhookArrayOutput {
 	return o.ApplyT(func(v LookupIntegrationRegistryResult) []GetIntegrationRegistryWebhook { return v.Webhooks }).(GetIntegrationRegistryWebhookArrayOutput)
 }

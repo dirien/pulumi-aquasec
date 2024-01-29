@@ -69,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &User{}
 	case "aquasec:index/userSaas:UserSaas":
 		r = &UserSaas{}
+	case "aquasec:index/vmwareAssurancePolicy:VmwareAssurancePolicy":
+		r = &VmwareAssurancePolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -218,6 +220,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aquasec",
 		"index/userSaas",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aquasec",
+		"index/vmwareAssurancePolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

@@ -6,133 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aquasec from "@pulumiverse/aquasec";
- *
- * const containerRuntimePolicy = new aquasec.ContainerRuntimePolicy("containerRuntimePolicy", {
- *     allowedExecutables: [
- *         "exe",
- *         "bin",
- *     ],
- *     allowedRegistries: [
- *         "registry1",
- *         "registry2",
- *     ],
- *     applicationScopes: ["Global"],
- *     auditAllNetworkActivity: true,
- *     auditAllProcessesActivity: true,
- *     auditFullCommandArguments: true,
- *     blockAccessHostNetwork: true,
- *     blockAddingCapabilities: true,
- *     blockContainerExec: true,
- *     blockCryptocurrencyMining: true,
- *     blockFilelessExec: true,
- *     blockLowPortBinding: true,
- *     blockNonCompliantImages: true,
- *     blockNonCompliantWorkloads: true,
- *     blockNonK8sContainers: true,
- *     blockPrivilegedContainers: true,
- *     blockReverseShell: true,
- *     blockRootUser: true,
- *     blockUnregisteredImages: true,
- *     blockUseIpcNamespace: true,
- *     blockUsePidNamespace: true,
- *     blockUseUserNamespace: true,
- *     blockUseUtsNamespace: true,
- *     blockedCapabilities: [
- *         "AUDIT_CONTROL",
- *         "AUDIT_WRITE",
- *     ],
- *     blockedExecutables: [
- *         "exe1",
- *         "exe2",
- *     ],
- *     blockedFiles: [
- *         "test1",
- *         "test2",
- *     ],
- *     blockedInboundPorts: [
- *         "80",
- *         "8080",
- *     ],
- *     blockedOutboundPorts: [
- *         "90",
- *         "9090",
- *     ],
- *     blockedPackages: [
- *         "pkg",
- *         "pkg2",
- *     ],
- *     blockedVolumes: [
- *         "blocked",
- *         "vol",
- *     ],
- *     containerExecAllowedProcesses: [
- *         "proc1",
- *         "proc2",
- *     ],
- *     description: "container_runtime_policy",
- *     enableDriftPrevention: true,
- *     enableForkGuard: true,
- *     enableIpReputationSecurity: true,
- *     enablePortScanDetection: true,
- *     enabled: true,
- *     enforce: false,
- *     exceptionalReadonlyFilesAndDirectories: [
- *         "readonly2",
- *         "/dir2/",
- *     ],
- *     fileIntegrityMonitoring: {
- *         excludedPaths: ["expaths"],
- *         excludedProcesses: ["exprocess"],
- *         excludedUsers: ["expuser"],
- *         monitorAttributes: true,
- *         monitorCreate: true,
- *         monitorDelete: true,
- *         monitorModify: true,
- *         monitorRead: true,
- *         monitoredPaths: ["paths"],
- *         monitoredProcesses: ["process"],
- *         monitoredUsers: ["user"],
- *     },
- *     forkGuardProcessLimit: 13,
- *     limitNewPrivileges: true,
- *     malwareScanOptions: {
- *         action: "alert",
- *         enabled: true,
- *     },
- *     monitorSystemTimeChanges: true,
- *     readonlyFilesAndDirectories: [
- *         "readonly",
- *         "/dir/",
- *     ],
- *     reverseShellAllowedIps: [
- *         "ip1",
- *         "ip2",
- *     ],
- *     reverseShellAllowedProcesses: [
- *         "proc1",
- *         "proc2",
- *     ],
- *     scopeExpression: "v1 || v2",
- *     scopeVariables: [
- *         {
- *             attribute: "kubernetes.cluster",
- *             value: "default",
- *         },
- *         {
- *             attribute: "kubernetes.label",
- *             name: "app",
- *             value: "aqua",
- *         },
- *     ],
- * });
- * ```
- */
 export class ContainerRuntimePolicy extends pulumi.CustomResource {
     /**
      * Get an existing ContainerRuntimePolicy resource's state with the given name, ID, and optional extra
@@ -162,13 +35,13 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * List of executables that are allowed for the user.
+     * Allowed executables configuration.
      */
-    public readonly allowedExecutables!: pulumi.Output<string[] | undefined>;
+    public readonly allowedExecutables!: pulumi.Output<outputs.ContainerRuntimePolicyAllowedExecutable[]>;
     /**
-     * List of registries that allowed for running containers.
+     * List of allowed registries.
      */
-    public readonly allowedRegistries!: pulumi.Output<string[] | undefined>;
+    public readonly allowedRegistries!: pulumi.Output<outputs.ContainerRuntimePolicyAllowedRegistry[]>;
     /**
      * Indicates the application scope of the service.
      */
@@ -182,13 +55,19 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly auditAllProcessesActivity!: pulumi.Output<boolean | undefined>;
     /**
+     * Detects brute force login attempts
+     */
+    public readonly auditBruteForceLogin!: pulumi.Output<boolean | undefined>;
+    /**
      * If true, full command arguments will be audited.
      */
     public readonly auditFullCommandArguments!: pulumi.Output<boolean | undefined>;
+    public readonly auditing!: pulumi.Output<outputs.ContainerRuntimePolicyAuditing>;
     /**
      * Username of the account that created the service.
      */
-    public /*out*/ readonly author!: pulumi.Output<string>;
+    public readonly author!: pulumi.Output<string>;
+    public readonly blacklistedOsUsers!: pulumi.Output<outputs.ContainerRuntimePolicyBlacklistedOsUsers>;
     /**
      * If true, prevent containers from running with access to host network.
      */
@@ -205,6 +84,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      */
     public readonly blockCryptocurrencyMining!: pulumi.Output<boolean | undefined>;
+    public readonly blockDisallowedImages!: pulumi.Output<boolean | undefined>;
     /**
      * Detect and prevent running in-memory execution
      */
@@ -213,10 +93,6 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      * If true, prevent containers from running with the capability to bind in port lower than 1024.
      */
     public readonly blockLowPortBinding!: pulumi.Output<boolean | undefined>;
-    /**
-     * If true, running non-compliant image in the container is prevented.
-     */
-    public readonly blockNonCompliantImages!: pulumi.Output<boolean | undefined>;
     /**
      * If true, running containers in non-compliant pods is prevented.
      */
@@ -230,17 +106,9 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly blockPrivilegedContainers!: pulumi.Output<boolean | undefined>;
     /**
-     * If true, reverse shell is prevented.
-     */
-    public readonly blockReverseShell!: pulumi.Output<boolean | undefined>;
-    /**
      * If true, prevent containers from running with root user.
      */
     public readonly blockRootUser!: pulumi.Output<boolean | undefined>;
-    /**
-     * If true, running images in the container that are not registered in Aqua is prevented.
-     */
-    public readonly blockUnregisteredImages!: pulumi.Output<boolean | undefined>;
     /**
      * If true, prevent containers from running with the privilege to use the IPC namespace.
      */
@@ -286,31 +154,35 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly blockedVolumes!: pulumi.Output<string[] | undefined>;
     /**
+     * Bypass scope configuration.
+     */
+    public readonly bypassScopes!: pulumi.Output<outputs.ContainerRuntimePolicyBypassScope[] | undefined>;
+    public readonly containerExec!: pulumi.Output<outputs.ContainerRuntimePolicyContainerExec>;
+    /**
      * List of processes that will be allowed.
      */
     public readonly containerExecAllowedProcesses!: pulumi.Output<string[] | undefined>;
+    public readonly created!: pulumi.Output<string>;
+    public readonly cve!: pulumi.Output<string | undefined>;
+    public readonly defaultSecurityProfile!: pulumi.Output<string | undefined>;
     /**
      * The description of the container runtime policy
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly digest!: pulumi.Output<string | undefined>;
     /**
-     * If true, executables that are not in the original image is prevented from running.
+     * Drift prevention configuration.
      */
-    public readonly enableDriftPrevention!: pulumi.Output<boolean | undefined>;
+    public readonly driftPreventions!: pulumi.Output<outputs.ContainerRuntimePolicyDriftPrevention[]>;
+    public readonly enableCryptoMiningDns!: pulumi.Output<boolean | undefined>;
     /**
      * If true, fork bombs are prevented in the containers.
      */
     public readonly enableForkGuard!: pulumi.Output<boolean | undefined>;
+    public readonly enableIpReputation!: pulumi.Output<boolean | undefined>;
+    public readonly enablePortScanProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-     */
-    public readonly enableIpReputationSecurity!: pulumi.Output<boolean | undefined>;
-    /**
-     * If true, detects port scanning behavior in the container.
-     */
-    public readonly enablePortScanDetection!: pulumi.Output<boolean | undefined>;
-    /**
-     * Indicates if the runtime policy is enabled or not.
+     * Whether allowed executables configuration is enabled.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -321,50 +193,70 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      */
     public readonly enforceAfterDays!: pulumi.Output<number | undefined>;
+    public readonly enforceSchedulerAddedOn!: pulumi.Output<number>;
     /**
-     * List of files and directories to be excluded from the read-only list.
+     * List of excluded application scopes.
      */
-    public readonly exceptionalReadonlyFilesAndDirectories!: pulumi.Output<string[] | undefined>;
+    public readonly excludeApplicationScopes!: pulumi.Output<string[] | undefined>;
     /**
-     * Specify processes that will be allowed
+     * Executable blacklist configuration.
      */
-    public readonly execLockdownWhiteLists!: pulumi.Output<string[] | undefined>;
+    public readonly executableBlacklists!: pulumi.Output<outputs.ContainerRuntimePolicyExecutableBlacklist[]>;
+    public readonly failedKubernetesChecks!: pulumi.Output<outputs.ContainerRuntimePolicyFailedKubernetesChecks>;
+    public readonly fileBlock!: pulumi.Output<outputs.ContainerRuntimePolicyFileBlock>;
     /**
      * Configuration for file integrity monitoring.
      */
-    public readonly fileIntegrityMonitoring!: pulumi.Output<outputs.ContainerRuntimePolicyFileIntegrityMonitoring | undefined>;
+    public readonly fileIntegrityMonitoring!: pulumi.Output<outputs.ContainerRuntimePolicyFileIntegrityMonitoring>;
     /**
      * Process limit for the fork guard.
      */
     public readonly forkGuardProcessLimit!: pulumi.Output<number | undefined>;
+    public readonly imageName!: pulumi.Output<string | undefined>;
+    public readonly isAuditChecked!: pulumi.Output<boolean | undefined>;
+    public readonly isAutoGenerated!: pulumi.Output<boolean | undefined>;
+    public readonly isOotbPolicy!: pulumi.Output<boolean | undefined>;
+    public readonly lastupdate!: pulumi.Output<number>;
+    /**
+     * Container privileges configuration.
+     */
+    public readonly limitContainerPrivileges!: pulumi.Output<outputs.ContainerRuntimePolicyLimitContainerPrivilege[]>;
     /**
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      */
     public readonly limitNewPrivileges!: pulumi.Output<boolean | undefined>;
+    public readonly linuxCapabilities!: pulumi.Output<outputs.ContainerRuntimePolicyLinuxCapabilities>;
     /**
      * Configuration for Real-Time Malware Protection.
      */
-    public readonly malwareScanOptions!: pulumi.Output<outputs.ContainerRuntimePolicyMalwareScanOptions | undefined>;
+    public readonly malwareScanOptions!: pulumi.Output<outputs.ContainerRuntimePolicyMalwareScanOptions>;
     /**
      * If true, system time changes will be monitored.
      */
     public readonly monitorSystemTimeChanges!: pulumi.Output<boolean | undefined>;
     /**
-     * Name of the container runtime policy
+     * Name assigned to the attribute.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly noNewPrivileges!: pulumi.Output<boolean | undefined>;
+    public readonly onlyRegisteredImages!: pulumi.Output<boolean | undefined>;
+    public readonly packageBlock!: pulumi.Output<outputs.ContainerRuntimePolicyPackageBlock>;
+    public readonly permission!: pulumi.Output<string | undefined>;
+    public readonly portBlock!: pulumi.Output<outputs.ContainerRuntimePolicyPortBlock>;
+    public readonly readonlyFiles!: pulumi.Output<outputs.ContainerRuntimePolicyReadonlyFiles>;
+    public readonly readonlyRegistry!: pulumi.Output<outputs.ContainerRuntimePolicyReadonlyRegistry>;
+    public readonly registry!: pulumi.Output<string | undefined>;
+    public readonly registryAccessMonitoring!: pulumi.Output<outputs.ContainerRuntimePolicyRegistryAccessMonitoring>;
+    public readonly repoName!: pulumi.Output<string | undefined>;
+    public readonly resourceName!: pulumi.Output<string | undefined>;
+    public readonly resourceType!: pulumi.Output<string | undefined>;
     /**
-     * List of files and directories to be restricted as read-only
+     * Restricted volumes configuration.
      */
-    public readonly readonlyFilesAndDirectories!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of IPs/ CIDRs that will be allowed
-     */
-    public readonly reverseShellAllowedIps!: pulumi.Output<string[] | undefined>;
-    /**
-     * List of processes that will be allowed
-     */
-    public readonly reverseShellAllowedProcesses!: pulumi.Output<string[] | undefined>;
+    public readonly restrictedVolumes!: pulumi.Output<outputs.ContainerRuntimePolicyRestrictedVolume[]>;
+    public readonly reverseShell!: pulumi.Output<outputs.ContainerRuntimePolicyReverseShell>;
+    public readonly runtimeMode!: pulumi.Output<number | undefined>;
+    public readonly runtimeType!: pulumi.Output<string | undefined>;
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
@@ -373,6 +265,17 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      * List of scope attributes.
      */
     public readonly scopeVariables!: pulumi.Output<outputs.ContainerRuntimePolicyScopeVariable[]>;
+    /**
+     * Scope configuration.
+     */
+    public readonly scopes!: pulumi.Output<outputs.ContainerRuntimePolicyScope[] | undefined>;
+    public readonly systemIntegrityProtection!: pulumi.Output<outputs.ContainerRuntimePolicySystemIntegrityProtection>;
+    public readonly tripwire!: pulumi.Output<outputs.ContainerRuntimePolicyTripwire>;
+    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly updated!: pulumi.Output<string>;
+    public readonly version!: pulumi.Output<string | undefined>;
+    public readonly vpatchVersion!: pulumi.Output<string | undefined>;
+    public readonly whitelistedOsUsers!: pulumi.Output<outputs.ContainerRuntimePolicyWhitelistedOsUsers>;
 
     /**
      * Create a ContainerRuntimePolicy resource with the given unique name, arguments, and options.
@@ -392,21 +295,22 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["applicationScopes"] = state ? state.applicationScopes : undefined;
             resourceInputs["auditAllNetworkActivity"] = state ? state.auditAllNetworkActivity : undefined;
             resourceInputs["auditAllProcessesActivity"] = state ? state.auditAllProcessesActivity : undefined;
+            resourceInputs["auditBruteForceLogin"] = state ? state.auditBruteForceLogin : undefined;
             resourceInputs["auditFullCommandArguments"] = state ? state.auditFullCommandArguments : undefined;
+            resourceInputs["auditing"] = state ? state.auditing : undefined;
             resourceInputs["author"] = state ? state.author : undefined;
+            resourceInputs["blacklistedOsUsers"] = state ? state.blacklistedOsUsers : undefined;
             resourceInputs["blockAccessHostNetwork"] = state ? state.blockAccessHostNetwork : undefined;
             resourceInputs["blockAddingCapabilities"] = state ? state.blockAddingCapabilities : undefined;
             resourceInputs["blockContainerExec"] = state ? state.blockContainerExec : undefined;
             resourceInputs["blockCryptocurrencyMining"] = state ? state.blockCryptocurrencyMining : undefined;
+            resourceInputs["blockDisallowedImages"] = state ? state.blockDisallowedImages : undefined;
             resourceInputs["blockFilelessExec"] = state ? state.blockFilelessExec : undefined;
             resourceInputs["blockLowPortBinding"] = state ? state.blockLowPortBinding : undefined;
-            resourceInputs["blockNonCompliantImages"] = state ? state.blockNonCompliantImages : undefined;
             resourceInputs["blockNonCompliantWorkloads"] = state ? state.blockNonCompliantWorkloads : undefined;
             resourceInputs["blockNonK8sContainers"] = state ? state.blockNonK8sContainers : undefined;
             resourceInputs["blockPrivilegedContainers"] = state ? state.blockPrivilegedContainers : undefined;
-            resourceInputs["blockReverseShell"] = state ? state.blockReverseShell : undefined;
             resourceInputs["blockRootUser"] = state ? state.blockRootUser : undefined;
-            resourceInputs["blockUnregisteredImages"] = state ? state.blockUnregisteredImages : undefined;
             resourceInputs["blockUseIpcNamespace"] = state ? state.blockUseIpcNamespace : undefined;
             resourceInputs["blockUsePidNamespace"] = state ? state.blockUsePidNamespace : undefined;
             resourceInputs["blockUseUserNamespace"] = state ? state.blockUseUserNamespace : undefined;
@@ -418,28 +322,66 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["blockedOutboundPorts"] = state ? state.blockedOutboundPorts : undefined;
             resourceInputs["blockedPackages"] = state ? state.blockedPackages : undefined;
             resourceInputs["blockedVolumes"] = state ? state.blockedVolumes : undefined;
+            resourceInputs["bypassScopes"] = state ? state.bypassScopes : undefined;
+            resourceInputs["containerExec"] = state ? state.containerExec : undefined;
             resourceInputs["containerExecAllowedProcesses"] = state ? state.containerExecAllowedProcesses : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["cve"] = state ? state.cve : undefined;
+            resourceInputs["defaultSecurityProfile"] = state ? state.defaultSecurityProfile : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enableDriftPrevention"] = state ? state.enableDriftPrevention : undefined;
+            resourceInputs["digest"] = state ? state.digest : undefined;
+            resourceInputs["driftPreventions"] = state ? state.driftPreventions : undefined;
+            resourceInputs["enableCryptoMiningDns"] = state ? state.enableCryptoMiningDns : undefined;
             resourceInputs["enableForkGuard"] = state ? state.enableForkGuard : undefined;
-            resourceInputs["enableIpReputationSecurity"] = state ? state.enableIpReputationSecurity : undefined;
-            resourceInputs["enablePortScanDetection"] = state ? state.enablePortScanDetection : undefined;
+            resourceInputs["enableIpReputation"] = state ? state.enableIpReputation : undefined;
+            resourceInputs["enablePortScanProtection"] = state ? state.enablePortScanProtection : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["enforce"] = state ? state.enforce : undefined;
             resourceInputs["enforceAfterDays"] = state ? state.enforceAfterDays : undefined;
-            resourceInputs["exceptionalReadonlyFilesAndDirectories"] = state ? state.exceptionalReadonlyFilesAndDirectories : undefined;
-            resourceInputs["execLockdownWhiteLists"] = state ? state.execLockdownWhiteLists : undefined;
+            resourceInputs["enforceSchedulerAddedOn"] = state ? state.enforceSchedulerAddedOn : undefined;
+            resourceInputs["excludeApplicationScopes"] = state ? state.excludeApplicationScopes : undefined;
+            resourceInputs["executableBlacklists"] = state ? state.executableBlacklists : undefined;
+            resourceInputs["failedKubernetesChecks"] = state ? state.failedKubernetesChecks : undefined;
+            resourceInputs["fileBlock"] = state ? state.fileBlock : undefined;
             resourceInputs["fileIntegrityMonitoring"] = state ? state.fileIntegrityMonitoring : undefined;
             resourceInputs["forkGuardProcessLimit"] = state ? state.forkGuardProcessLimit : undefined;
+            resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["isAuditChecked"] = state ? state.isAuditChecked : undefined;
+            resourceInputs["isAutoGenerated"] = state ? state.isAutoGenerated : undefined;
+            resourceInputs["isOotbPolicy"] = state ? state.isOotbPolicy : undefined;
+            resourceInputs["lastupdate"] = state ? state.lastupdate : undefined;
+            resourceInputs["limitContainerPrivileges"] = state ? state.limitContainerPrivileges : undefined;
             resourceInputs["limitNewPrivileges"] = state ? state.limitNewPrivileges : undefined;
+            resourceInputs["linuxCapabilities"] = state ? state.linuxCapabilities : undefined;
             resourceInputs["malwareScanOptions"] = state ? state.malwareScanOptions : undefined;
             resourceInputs["monitorSystemTimeChanges"] = state ? state.monitorSystemTimeChanges : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["readonlyFilesAndDirectories"] = state ? state.readonlyFilesAndDirectories : undefined;
-            resourceInputs["reverseShellAllowedIps"] = state ? state.reverseShellAllowedIps : undefined;
-            resourceInputs["reverseShellAllowedProcesses"] = state ? state.reverseShellAllowedProcesses : undefined;
+            resourceInputs["noNewPrivileges"] = state ? state.noNewPrivileges : undefined;
+            resourceInputs["onlyRegisteredImages"] = state ? state.onlyRegisteredImages : undefined;
+            resourceInputs["packageBlock"] = state ? state.packageBlock : undefined;
+            resourceInputs["permission"] = state ? state.permission : undefined;
+            resourceInputs["portBlock"] = state ? state.portBlock : undefined;
+            resourceInputs["readonlyFiles"] = state ? state.readonlyFiles : undefined;
+            resourceInputs["readonlyRegistry"] = state ? state.readonlyRegistry : undefined;
+            resourceInputs["registry"] = state ? state.registry : undefined;
+            resourceInputs["registryAccessMonitoring"] = state ? state.registryAccessMonitoring : undefined;
+            resourceInputs["repoName"] = state ? state.repoName : undefined;
+            resourceInputs["resourceName"] = state ? state.resourceName : undefined;
+            resourceInputs["resourceType"] = state ? state.resourceType : undefined;
+            resourceInputs["restrictedVolumes"] = state ? state.restrictedVolumes : undefined;
+            resourceInputs["reverseShell"] = state ? state.reverseShell : undefined;
+            resourceInputs["runtimeMode"] = state ? state.runtimeMode : undefined;
+            resourceInputs["runtimeType"] = state ? state.runtimeType : undefined;
             resourceInputs["scopeExpression"] = state ? state.scopeExpression : undefined;
             resourceInputs["scopeVariables"] = state ? state.scopeVariables : undefined;
+            resourceInputs["scopes"] = state ? state.scopes : undefined;
+            resourceInputs["systemIntegrityProtection"] = state ? state.systemIntegrityProtection : undefined;
+            resourceInputs["tripwire"] = state ? state.tripwire : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["updated"] = state ? state.updated : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["vpatchVersion"] = state ? state.vpatchVersion : undefined;
+            resourceInputs["whitelistedOsUsers"] = state ? state.whitelistedOsUsers : undefined;
         } else {
             const args = argsOrState as ContainerRuntimePolicyArgs | undefined;
             resourceInputs["allowedExecutables"] = args ? args.allowedExecutables : undefined;
@@ -447,20 +389,22 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["applicationScopes"] = args ? args.applicationScopes : undefined;
             resourceInputs["auditAllNetworkActivity"] = args ? args.auditAllNetworkActivity : undefined;
             resourceInputs["auditAllProcessesActivity"] = args ? args.auditAllProcessesActivity : undefined;
+            resourceInputs["auditBruteForceLogin"] = args ? args.auditBruteForceLogin : undefined;
             resourceInputs["auditFullCommandArguments"] = args ? args.auditFullCommandArguments : undefined;
+            resourceInputs["auditing"] = args ? args.auditing : undefined;
+            resourceInputs["author"] = args ? args.author : undefined;
+            resourceInputs["blacklistedOsUsers"] = args ? args.blacklistedOsUsers : undefined;
             resourceInputs["blockAccessHostNetwork"] = args ? args.blockAccessHostNetwork : undefined;
             resourceInputs["blockAddingCapabilities"] = args ? args.blockAddingCapabilities : undefined;
             resourceInputs["blockContainerExec"] = args ? args.blockContainerExec : undefined;
             resourceInputs["blockCryptocurrencyMining"] = args ? args.blockCryptocurrencyMining : undefined;
+            resourceInputs["blockDisallowedImages"] = args ? args.blockDisallowedImages : undefined;
             resourceInputs["blockFilelessExec"] = args ? args.blockFilelessExec : undefined;
             resourceInputs["blockLowPortBinding"] = args ? args.blockLowPortBinding : undefined;
-            resourceInputs["blockNonCompliantImages"] = args ? args.blockNonCompliantImages : undefined;
             resourceInputs["blockNonCompliantWorkloads"] = args ? args.blockNonCompliantWorkloads : undefined;
             resourceInputs["blockNonK8sContainers"] = args ? args.blockNonK8sContainers : undefined;
             resourceInputs["blockPrivilegedContainers"] = args ? args.blockPrivilegedContainers : undefined;
-            resourceInputs["blockReverseShell"] = args ? args.blockReverseShell : undefined;
             resourceInputs["blockRootUser"] = args ? args.blockRootUser : undefined;
-            resourceInputs["blockUnregisteredImages"] = args ? args.blockUnregisteredImages : undefined;
             resourceInputs["blockUseIpcNamespace"] = args ? args.blockUseIpcNamespace : undefined;
             resourceInputs["blockUsePidNamespace"] = args ? args.blockUsePidNamespace : undefined;
             resourceInputs["blockUseUserNamespace"] = args ? args.blockUseUserNamespace : undefined;
@@ -472,29 +416,66 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
             resourceInputs["blockedOutboundPorts"] = args ? args.blockedOutboundPorts : undefined;
             resourceInputs["blockedPackages"] = args ? args.blockedPackages : undefined;
             resourceInputs["blockedVolumes"] = args ? args.blockedVolumes : undefined;
+            resourceInputs["bypassScopes"] = args ? args.bypassScopes : undefined;
+            resourceInputs["containerExec"] = args ? args.containerExec : undefined;
             resourceInputs["containerExecAllowedProcesses"] = args ? args.containerExecAllowedProcesses : undefined;
+            resourceInputs["created"] = args ? args.created : undefined;
+            resourceInputs["cve"] = args ? args.cve : undefined;
+            resourceInputs["defaultSecurityProfile"] = args ? args.defaultSecurityProfile : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enableDriftPrevention"] = args ? args.enableDriftPrevention : undefined;
+            resourceInputs["digest"] = args ? args.digest : undefined;
+            resourceInputs["driftPreventions"] = args ? args.driftPreventions : undefined;
+            resourceInputs["enableCryptoMiningDns"] = args ? args.enableCryptoMiningDns : undefined;
             resourceInputs["enableForkGuard"] = args ? args.enableForkGuard : undefined;
-            resourceInputs["enableIpReputationSecurity"] = args ? args.enableIpReputationSecurity : undefined;
-            resourceInputs["enablePortScanDetection"] = args ? args.enablePortScanDetection : undefined;
+            resourceInputs["enableIpReputation"] = args ? args.enableIpReputation : undefined;
+            resourceInputs["enablePortScanProtection"] = args ? args.enablePortScanProtection : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["enforce"] = args ? args.enforce : undefined;
             resourceInputs["enforceAfterDays"] = args ? args.enforceAfterDays : undefined;
-            resourceInputs["exceptionalReadonlyFilesAndDirectories"] = args ? args.exceptionalReadonlyFilesAndDirectories : undefined;
-            resourceInputs["execLockdownWhiteLists"] = args ? args.execLockdownWhiteLists : undefined;
+            resourceInputs["enforceSchedulerAddedOn"] = args ? args.enforceSchedulerAddedOn : undefined;
+            resourceInputs["excludeApplicationScopes"] = args ? args.excludeApplicationScopes : undefined;
+            resourceInputs["executableBlacklists"] = args ? args.executableBlacklists : undefined;
+            resourceInputs["failedKubernetesChecks"] = args ? args.failedKubernetesChecks : undefined;
+            resourceInputs["fileBlock"] = args ? args.fileBlock : undefined;
             resourceInputs["fileIntegrityMonitoring"] = args ? args.fileIntegrityMonitoring : undefined;
             resourceInputs["forkGuardProcessLimit"] = args ? args.forkGuardProcessLimit : undefined;
+            resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["isAuditChecked"] = args ? args.isAuditChecked : undefined;
+            resourceInputs["isAutoGenerated"] = args ? args.isAutoGenerated : undefined;
+            resourceInputs["isOotbPolicy"] = args ? args.isOotbPolicy : undefined;
+            resourceInputs["lastupdate"] = args ? args.lastupdate : undefined;
+            resourceInputs["limitContainerPrivileges"] = args ? args.limitContainerPrivileges : undefined;
             resourceInputs["limitNewPrivileges"] = args ? args.limitNewPrivileges : undefined;
+            resourceInputs["linuxCapabilities"] = args ? args.linuxCapabilities : undefined;
             resourceInputs["malwareScanOptions"] = args ? args.malwareScanOptions : undefined;
             resourceInputs["monitorSystemTimeChanges"] = args ? args.monitorSystemTimeChanges : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["readonlyFilesAndDirectories"] = args ? args.readonlyFilesAndDirectories : undefined;
-            resourceInputs["reverseShellAllowedIps"] = args ? args.reverseShellAllowedIps : undefined;
-            resourceInputs["reverseShellAllowedProcesses"] = args ? args.reverseShellAllowedProcesses : undefined;
+            resourceInputs["noNewPrivileges"] = args ? args.noNewPrivileges : undefined;
+            resourceInputs["onlyRegisteredImages"] = args ? args.onlyRegisteredImages : undefined;
+            resourceInputs["packageBlock"] = args ? args.packageBlock : undefined;
+            resourceInputs["permission"] = args ? args.permission : undefined;
+            resourceInputs["portBlock"] = args ? args.portBlock : undefined;
+            resourceInputs["readonlyFiles"] = args ? args.readonlyFiles : undefined;
+            resourceInputs["readonlyRegistry"] = args ? args.readonlyRegistry : undefined;
+            resourceInputs["registry"] = args ? args.registry : undefined;
+            resourceInputs["registryAccessMonitoring"] = args ? args.registryAccessMonitoring : undefined;
+            resourceInputs["repoName"] = args ? args.repoName : undefined;
+            resourceInputs["resourceName"] = args ? args.resourceName : undefined;
+            resourceInputs["resourceType"] = args ? args.resourceType : undefined;
+            resourceInputs["restrictedVolumes"] = args ? args.restrictedVolumes : undefined;
+            resourceInputs["reverseShell"] = args ? args.reverseShell : undefined;
+            resourceInputs["runtimeMode"] = args ? args.runtimeMode : undefined;
+            resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
             resourceInputs["scopeExpression"] = args ? args.scopeExpression : undefined;
             resourceInputs["scopeVariables"] = args ? args.scopeVariables : undefined;
-            resourceInputs["author"] = undefined /*out*/;
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
+            resourceInputs["systemIntegrityProtection"] = args ? args.systemIntegrityProtection : undefined;
+            resourceInputs["tripwire"] = args ? args.tripwire : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["updated"] = args ? args.updated : undefined;
+            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["vpatchVersion"] = args ? args.vpatchVersion : undefined;
+            resourceInputs["whitelistedOsUsers"] = args ? args.whitelistedOsUsers : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ContainerRuntimePolicy.__pulumiType, name, resourceInputs, opts);
@@ -506,13 +487,13 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
  */
 export interface ContainerRuntimePolicyState {
     /**
-     * List of executables that are allowed for the user.
+     * Allowed executables configuration.
      */
-    allowedExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedExecutables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedExecutable>[]>;
     /**
-     * List of registries that allowed for running containers.
+     * List of allowed registries.
      */
-    allowedRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedRegistries?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedRegistry>[]>;
     /**
      * Indicates the application scope of the service.
      */
@@ -526,13 +507,19 @@ export interface ContainerRuntimePolicyState {
      */
     auditAllProcessesActivity?: pulumi.Input<boolean>;
     /**
+     * Detects brute force login attempts
+     */
+    auditBruteForceLogin?: pulumi.Input<boolean>;
+    /**
      * If true, full command arguments will be audited.
      */
     auditFullCommandArguments?: pulumi.Input<boolean>;
+    auditing?: pulumi.Input<inputs.ContainerRuntimePolicyAuditing>;
     /**
      * Username of the account that created the service.
      */
     author?: pulumi.Input<string>;
+    blacklistedOsUsers?: pulumi.Input<inputs.ContainerRuntimePolicyBlacklistedOsUsers>;
     /**
      * If true, prevent containers from running with access to host network.
      */
@@ -549,6 +536,7 @@ export interface ContainerRuntimePolicyState {
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      */
     blockCryptocurrencyMining?: pulumi.Input<boolean>;
+    blockDisallowedImages?: pulumi.Input<boolean>;
     /**
      * Detect and prevent running in-memory execution
      */
@@ -557,10 +545,6 @@ export interface ContainerRuntimePolicyState {
      * If true, prevent containers from running with the capability to bind in port lower than 1024.
      */
     blockLowPortBinding?: pulumi.Input<boolean>;
-    /**
-     * If true, running non-compliant image in the container is prevented.
-     */
-    blockNonCompliantImages?: pulumi.Input<boolean>;
     /**
      * If true, running containers in non-compliant pods is prevented.
      */
@@ -574,17 +558,9 @@ export interface ContainerRuntimePolicyState {
      */
     blockPrivilegedContainers?: pulumi.Input<boolean>;
     /**
-     * If true, reverse shell is prevented.
-     */
-    blockReverseShell?: pulumi.Input<boolean>;
-    /**
      * If true, prevent containers from running with root user.
      */
     blockRootUser?: pulumi.Input<boolean>;
-    /**
-     * If true, running images in the container that are not registered in Aqua is prevented.
-     */
-    blockUnregisteredImages?: pulumi.Input<boolean>;
     /**
      * If true, prevent containers from running with the privilege to use the IPC namespace.
      */
@@ -630,31 +606,35 @@ export interface ContainerRuntimePolicyState {
      */
     blockedVolumes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Bypass scope configuration.
+     */
+    bypassScopes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyBypassScope>[]>;
+    containerExec?: pulumi.Input<inputs.ContainerRuntimePolicyContainerExec>;
+    /**
      * List of processes that will be allowed.
      */
     containerExecAllowedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    created?: pulumi.Input<string>;
+    cve?: pulumi.Input<string>;
+    defaultSecurityProfile?: pulumi.Input<string>;
     /**
      * The description of the container runtime policy
      */
     description?: pulumi.Input<string>;
+    digest?: pulumi.Input<string>;
     /**
-     * If true, executables that are not in the original image is prevented from running.
+     * Drift prevention configuration.
      */
-    enableDriftPrevention?: pulumi.Input<boolean>;
+    driftPreventions?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyDriftPrevention>[]>;
+    enableCryptoMiningDns?: pulumi.Input<boolean>;
     /**
      * If true, fork bombs are prevented in the containers.
      */
     enableForkGuard?: pulumi.Input<boolean>;
+    enableIpReputation?: pulumi.Input<boolean>;
+    enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-     */
-    enableIpReputationSecurity?: pulumi.Input<boolean>;
-    /**
-     * If true, detects port scanning behavior in the container.
-     */
-    enablePortScanDetection?: pulumi.Input<boolean>;
-    /**
-     * Indicates if the runtime policy is enabled or not.
+     * Whether allowed executables configuration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -665,14 +645,17 @@ export interface ContainerRuntimePolicyState {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      */
     enforceAfterDays?: pulumi.Input<number>;
+    enforceSchedulerAddedOn?: pulumi.Input<number>;
     /**
-     * List of files and directories to be excluded from the read-only list.
+     * List of excluded application scopes.
      */
-    exceptionalReadonlyFilesAndDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeApplicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specify processes that will be allowed
+     * Executable blacklist configuration.
      */
-    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    executableBlacklists?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyExecutableBlacklist>[]>;
+    failedKubernetesChecks?: pulumi.Input<inputs.ContainerRuntimePolicyFailedKubernetesChecks>;
+    fileBlock?: pulumi.Input<inputs.ContainerRuntimePolicyFileBlock>;
     /**
      * Configuration for file integrity monitoring.
      */
@@ -681,10 +664,20 @@ export interface ContainerRuntimePolicyState {
      * Process limit for the fork guard.
      */
     forkGuardProcessLimit?: pulumi.Input<number>;
+    imageName?: pulumi.Input<string>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    isAutoGenerated?: pulumi.Input<boolean>;
+    isOotbPolicy?: pulumi.Input<boolean>;
+    lastupdate?: pulumi.Input<number>;
+    /**
+     * Container privileges configuration.
+     */
+    limitContainerPrivileges?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyLimitContainerPrivilege>[]>;
     /**
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      */
     limitNewPrivileges?: pulumi.Input<boolean>;
+    linuxCapabilities?: pulumi.Input<inputs.ContainerRuntimePolicyLinuxCapabilities>;
     /**
      * Configuration for Real-Time Malware Protection.
      */
@@ -694,21 +687,28 @@ export interface ContainerRuntimePolicyState {
      */
     monitorSystemTimeChanges?: pulumi.Input<boolean>;
     /**
-     * Name of the container runtime policy
+     * Name assigned to the attribute.
      */
     name?: pulumi.Input<string>;
+    noNewPrivileges?: pulumi.Input<boolean>;
+    onlyRegisteredImages?: pulumi.Input<boolean>;
+    packageBlock?: pulumi.Input<inputs.ContainerRuntimePolicyPackageBlock>;
+    permission?: pulumi.Input<string>;
+    portBlock?: pulumi.Input<inputs.ContainerRuntimePolicyPortBlock>;
+    readonlyFiles?: pulumi.Input<inputs.ContainerRuntimePolicyReadonlyFiles>;
+    readonlyRegistry?: pulumi.Input<inputs.ContainerRuntimePolicyReadonlyRegistry>;
+    registry?: pulumi.Input<string>;
+    registryAccessMonitoring?: pulumi.Input<inputs.ContainerRuntimePolicyRegistryAccessMonitoring>;
+    repoName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
-     * List of files and directories to be restricted as read-only
+     * Restricted volumes configuration.
      */
-    readonlyFilesAndDirectories?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of IPs/ CIDRs that will be allowed
-     */
-    reverseShellAllowedIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of processes that will be allowed
-     */
-    reverseShellAllowedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictedVolumes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyRestrictedVolume>[]>;
+    reverseShell?: pulumi.Input<inputs.ContainerRuntimePolicyReverseShell>;
+    runtimeMode?: pulumi.Input<number>;
+    runtimeType?: pulumi.Input<string>;
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
@@ -717,6 +717,17 @@ export interface ContainerRuntimePolicyState {
      * List of scope attributes.
      */
     scopeVariables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyScopeVariable>[]>;
+    /**
+     * Scope configuration.
+     */
+    scopes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyScope>[]>;
+    systemIntegrityProtection?: pulumi.Input<inputs.ContainerRuntimePolicySystemIntegrityProtection>;
+    tripwire?: pulumi.Input<inputs.ContainerRuntimePolicyTripwire>;
+    type?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    vpatchVersion?: pulumi.Input<string>;
+    whitelistedOsUsers?: pulumi.Input<inputs.ContainerRuntimePolicyWhitelistedOsUsers>;
 }
 
 /**
@@ -724,13 +735,13 @@ export interface ContainerRuntimePolicyState {
  */
 export interface ContainerRuntimePolicyArgs {
     /**
-     * List of executables that are allowed for the user.
+     * Allowed executables configuration.
      */
-    allowedExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedExecutables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedExecutable>[]>;
     /**
-     * List of registries that allowed for running containers.
+     * List of allowed registries.
      */
-    allowedRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedRegistries?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedRegistry>[]>;
     /**
      * Indicates the application scope of the service.
      */
@@ -744,9 +755,19 @@ export interface ContainerRuntimePolicyArgs {
      */
     auditAllProcessesActivity?: pulumi.Input<boolean>;
     /**
+     * Detects brute force login attempts
+     */
+    auditBruteForceLogin?: pulumi.Input<boolean>;
+    /**
      * If true, full command arguments will be audited.
      */
     auditFullCommandArguments?: pulumi.Input<boolean>;
+    auditing?: pulumi.Input<inputs.ContainerRuntimePolicyAuditing>;
+    /**
+     * Username of the account that created the service.
+     */
+    author?: pulumi.Input<string>;
+    blacklistedOsUsers?: pulumi.Input<inputs.ContainerRuntimePolicyBlacklistedOsUsers>;
     /**
      * If true, prevent containers from running with access to host network.
      */
@@ -763,6 +784,7 @@ export interface ContainerRuntimePolicyArgs {
      * Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
      */
     blockCryptocurrencyMining?: pulumi.Input<boolean>;
+    blockDisallowedImages?: pulumi.Input<boolean>;
     /**
      * Detect and prevent running in-memory execution
      */
@@ -771,10 +793,6 @@ export interface ContainerRuntimePolicyArgs {
      * If true, prevent containers from running with the capability to bind in port lower than 1024.
      */
     blockLowPortBinding?: pulumi.Input<boolean>;
-    /**
-     * If true, running non-compliant image in the container is prevented.
-     */
-    blockNonCompliantImages?: pulumi.Input<boolean>;
     /**
      * If true, running containers in non-compliant pods is prevented.
      */
@@ -788,17 +806,9 @@ export interface ContainerRuntimePolicyArgs {
      */
     blockPrivilegedContainers?: pulumi.Input<boolean>;
     /**
-     * If true, reverse shell is prevented.
-     */
-    blockReverseShell?: pulumi.Input<boolean>;
-    /**
      * If true, prevent containers from running with root user.
      */
     blockRootUser?: pulumi.Input<boolean>;
-    /**
-     * If true, running images in the container that are not registered in Aqua is prevented.
-     */
-    blockUnregisteredImages?: pulumi.Input<boolean>;
     /**
      * If true, prevent containers from running with the privilege to use the IPC namespace.
      */
@@ -844,31 +854,35 @@ export interface ContainerRuntimePolicyArgs {
      */
     blockedVolumes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Bypass scope configuration.
+     */
+    bypassScopes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyBypassScope>[]>;
+    containerExec?: pulumi.Input<inputs.ContainerRuntimePolicyContainerExec>;
+    /**
      * List of processes that will be allowed.
      */
     containerExecAllowedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    created?: pulumi.Input<string>;
+    cve?: pulumi.Input<string>;
+    defaultSecurityProfile?: pulumi.Input<string>;
     /**
      * The description of the container runtime policy
      */
     description?: pulumi.Input<string>;
+    digest?: pulumi.Input<string>;
     /**
-     * If true, executables that are not in the original image is prevented from running.
+     * Drift prevention configuration.
      */
-    enableDriftPrevention?: pulumi.Input<boolean>;
+    driftPreventions?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyDriftPrevention>[]>;
+    enableCryptoMiningDns?: pulumi.Input<boolean>;
     /**
      * If true, fork bombs are prevented in the containers.
      */
     enableForkGuard?: pulumi.Input<boolean>;
+    enableIpReputation?: pulumi.Input<boolean>;
+    enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-     */
-    enableIpReputationSecurity?: pulumi.Input<boolean>;
-    /**
-     * If true, detects port scanning behavior in the container.
-     */
-    enablePortScanDetection?: pulumi.Input<boolean>;
-    /**
-     * Indicates if the runtime policy is enabled or not.
+     * Whether allowed executables configuration is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -879,14 +893,17 @@ export interface ContainerRuntimePolicyArgs {
      * Indicates the number of days after which the runtime policy will be changed to enforce mode.
      */
     enforceAfterDays?: pulumi.Input<number>;
+    enforceSchedulerAddedOn?: pulumi.Input<number>;
     /**
-     * List of files and directories to be excluded from the read-only list.
+     * List of excluded application scopes.
      */
-    exceptionalReadonlyFilesAndDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeApplicationScopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Specify processes that will be allowed
+     * Executable blacklist configuration.
      */
-    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    executableBlacklists?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyExecutableBlacklist>[]>;
+    failedKubernetesChecks?: pulumi.Input<inputs.ContainerRuntimePolicyFailedKubernetesChecks>;
+    fileBlock?: pulumi.Input<inputs.ContainerRuntimePolicyFileBlock>;
     /**
      * Configuration for file integrity monitoring.
      */
@@ -895,10 +912,20 @@ export interface ContainerRuntimePolicyArgs {
      * Process limit for the fork guard.
      */
     forkGuardProcessLimit?: pulumi.Input<number>;
+    imageName?: pulumi.Input<string>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    isAutoGenerated?: pulumi.Input<boolean>;
+    isOotbPolicy?: pulumi.Input<boolean>;
+    lastupdate?: pulumi.Input<number>;
+    /**
+     * Container privileges configuration.
+     */
+    limitContainerPrivileges?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyLimitContainerPrivilege>[]>;
     /**
      * If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
      */
     limitNewPrivileges?: pulumi.Input<boolean>;
+    linuxCapabilities?: pulumi.Input<inputs.ContainerRuntimePolicyLinuxCapabilities>;
     /**
      * Configuration for Real-Time Malware Protection.
      */
@@ -908,21 +935,28 @@ export interface ContainerRuntimePolicyArgs {
      */
     monitorSystemTimeChanges?: pulumi.Input<boolean>;
     /**
-     * Name of the container runtime policy
+     * Name assigned to the attribute.
      */
     name?: pulumi.Input<string>;
+    noNewPrivileges?: pulumi.Input<boolean>;
+    onlyRegisteredImages?: pulumi.Input<boolean>;
+    packageBlock?: pulumi.Input<inputs.ContainerRuntimePolicyPackageBlock>;
+    permission?: pulumi.Input<string>;
+    portBlock?: pulumi.Input<inputs.ContainerRuntimePolicyPortBlock>;
+    readonlyFiles?: pulumi.Input<inputs.ContainerRuntimePolicyReadonlyFiles>;
+    readonlyRegistry?: pulumi.Input<inputs.ContainerRuntimePolicyReadonlyRegistry>;
+    registry?: pulumi.Input<string>;
+    registryAccessMonitoring?: pulumi.Input<inputs.ContainerRuntimePolicyRegistryAccessMonitoring>;
+    repoName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string>;
     /**
-     * List of files and directories to be restricted as read-only
+     * Restricted volumes configuration.
      */
-    readonlyFilesAndDirectories?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of IPs/ CIDRs that will be allowed
-     */
-    reverseShellAllowedIps?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of processes that will be allowed
-     */
-    reverseShellAllowedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    restrictedVolumes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyRestrictedVolume>[]>;
+    reverseShell?: pulumi.Input<inputs.ContainerRuntimePolicyReverseShell>;
+    runtimeMode?: pulumi.Input<number>;
+    runtimeType?: pulumi.Input<string>;
     /**
      * Logical expression of how to compute the dependency of the scope variables.
      */
@@ -931,4 +965,15 @@ export interface ContainerRuntimePolicyArgs {
      * List of scope attributes.
      */
     scopeVariables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyScopeVariable>[]>;
+    /**
+     * Scope configuration.
+     */
+    scopes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyScope>[]>;
+    systemIntegrityProtection?: pulumi.Input<inputs.ContainerRuntimePolicySystemIntegrityProtection>;
+    tripwire?: pulumi.Input<inputs.ContainerRuntimePolicyTripwire>;
+    type?: pulumi.Input<string>;
+    updated?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    vpatchVersion?: pulumi.Input<string>;
+    whitelistedOsUsers?: pulumi.Input<inputs.ContainerRuntimePolicyWhitelistedOsUsers>;
 }

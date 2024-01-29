@@ -10,9 +10,18 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
+    /// <summary>
+    /// Aqua Image Assurance covers the first part of the container lifecycle: image development. The Image Assurance subsystem detects, assesses, and reports security issues in your images.
+    /// </summary>
     [AquasecResourceType("aquasec:index/imageAssurancePolicy:ImageAssurancePolicy")]
     public partial class ImageAssurancePolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Aggregated vulnerability information.
+        /// </summary>
+        [Output("aggregatedVulnerability")]
+        public Output<ImmutableDictionary<string, string>?> AggregatedVulnerability { get; private set; } = null!;
+
         /// <summary>
         /// List of explicitly allowed images.
         /// </summary>
@@ -21,6 +30,12 @@ namespace Pulumiverse.Aquasec
 
         [Output("applicationScopes")]
         public Output<ImmutableArray<string>> ApplicationScopes { get; private set; } = null!;
+
+        /// <summary>
+        /// What type of assurance policy is described.
+        /// </summary>
+        [Output("assuranceType")]
+        public Output<string> AssuranceType { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if auditing for failures.
@@ -62,7 +77,7 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> BlacklistedLicenses { get; private set; } = null!;
 
         /// <summary>
-        /// Lndicates if license blacklist is relevant.
+        /// Indicates if license blacklist is relevant.
         /// </summary>
         [Output("blacklistedLicensesEnabled")]
         public Output<bool?> BlacklistedLicensesEnabled { get; private set; } = null!;
@@ -88,11 +103,14 @@ namespace Pulumiverse.Aquasec
         [Output("customChecksEnabled")]
         public Output<bool?> CustomChecksEnabled { get; private set; } = null!;
 
+        [Output("customSeverity")]
+        public Output<string> CustomSeverity { get; private set; } = null!;
+
         [Output("customSeverityEnabled")]
         public Output<bool?> CustomSeverityEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if cves blacklist is relevant.
+        /// Indicates if CVEs blacklist is relevant.
         /// </summary>
         [Output("cvesBlackListEnabled")]
         public Output<bool?> CvesBlackListEnabled { get; private set; } = null!;
@@ -136,12 +154,18 @@ namespace Pulumiverse.Aquasec
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("disallowExploitTypes")]
+        public Output<ImmutableArray<string>> DisallowExploitTypes { get; private set; } = null!;
+
         /// <summary>
         /// Indicates if malware should block the image.
         /// </summary>
         [Output("disallowMalware")]
         public Output<bool?> DisallowMalware { get; private set; } = null!;
 
+        /// <summary>
+        /// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        /// </summary>
         [Output("dockerCisEnabled")]
         public Output<bool?> DockerCisEnabled { get; private set; } = null!;
 
@@ -175,6 +199,9 @@ namespace Pulumiverse.Aquasec
         [Output("exceptionalMonitoredMalwarePaths")]
         public Output<ImmutableArray<string>> ExceptionalMonitoredMalwarePaths { get; private set; } = null!;
 
+        [Output("excludeApplicationScopes")]
+        public Output<ImmutableArray<string>> ExcludeApplicationScopes { get; private set; } = null!;
+
         /// <summary>
         /// Indicates if cicd failures will fail the image.
         /// </summary>
@@ -192,6 +219,9 @@ namespace Pulumiverse.Aquasec
 
         [Output("functionIntegrityEnabled")]
         public Output<bool?> FunctionIntegrityEnabled { get; private set; } = null!;
+
+        [Output("ignoreBaseImageVln")]
+        public Output<bool?> IgnoreBaseImageVln { get; private set; } = null!;
 
         [Output("ignoreRecentlyPublishedVln")]
         public Output<bool?> IgnoreRecentlyPublishedVln { get; private set; } = null!;
@@ -211,20 +241,44 @@ namespace Pulumiverse.Aquasec
         [Output("ignoredRiskResources")]
         public Output<ImmutableArray<string>> IgnoredRiskResources { get; private set; } = null!;
 
+        [Output("ignoredSensitiveResources")]
+        public Output<ImmutableArray<string>> IgnoredSensitiveResources { get; private set; } = null!;
+
         /// <summary>
         /// List of images.
         /// </summary>
         [Output("images")]
         public Output<ImmutableArray<string>> Images { get; private set; } = null!;
 
+        /// <summary>
+        /// Performs a Kubernetes CIS benchmark check for the host.
+        /// </summary>
         [Output("kubeCisEnabled")]
         public Output<bool?> KubeCisEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// List of Kubernetes controls.
+        /// </summary>
+        [Output("kubernetesControls")]
+        public Output<Outputs.ImageAssurancePolicyKubernetesControls?> KubernetesControls { get; private set; } = null!;
+
+        [Output("kubernetesControlsAvdIds")]
+        public Output<ImmutableArray<string>> KubernetesControlsAvdIds { get; private set; } = null!;
+
+        [Output("kubernetesControlsNames")]
+        public Output<ImmutableArray<string>> KubernetesControlsNames { get; private set; } = null!;
 
         /// <summary>
         /// List of labels.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableArray<string>> Labels { get; private set; } = null!;
+
+        [Output("lastupdate")]
+        public Output<string> Lastupdate { get; private set; } = null!;
+
+        [Output("linuxCisEnabled")]
+        public Output<bool?> LinuxCisEnabled { get; private set; } = null!;
 
         [Output("malwareAction")]
         public Output<string?> MalwareAction { get; private set; } = null!;
@@ -241,9 +295,6 @@ namespace Pulumiverse.Aquasec
         [Output("maximumScoreEnabled")]
         public Output<bool?> MaximumScoreEnabled { get; private set; } = null!;
 
-        /// <summary>
-        /// Indicates that policy should ignore cases that do not have a known fix.
-        /// </summary>
         [Output("maximumScoreExcludeNoFix")]
         public Output<bool?> MaximumScoreExcludeNoFix { get; private set; } = null!;
 
@@ -259,6 +310,9 @@ namespace Pulumiverse.Aquasec
         [Output("onlyNoneRootUsers")]
         public Output<bool?> OnlyNoneRootUsers { get; private set; } = null!;
 
+        [Output("openshiftHardeningEnabled")]
+        public Output<bool?> OpenshiftHardeningEnabled { get; private set; } = null!;
+
         /// <summary>
         /// Indicates if packages blacklist is relevant.
         /// </summary>
@@ -266,7 +320,7 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> PackagesBlackListEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// List of backlisted images.
+        /// List of blacklisted images.
         /// </summary>
         [Output("packagesBlackLists")]
         public Output<ImmutableArray<Outputs.ImageAssurancePolicyPackagesBlackList>> PackagesBlackLists { get; private set; } = null!;
@@ -286,6 +340,12 @@ namespace Pulumiverse.Aquasec
         [Output("partialResultsImageFail")]
         public Output<bool?> PartialResultsImageFail { get; private set; } = null!;
 
+        [Output("permission")]
+        public Output<string> Permission { get; private set; } = null!;
+
+        [Output("policySettings")]
+        public Output<Outputs.ImageAssurancePolicyPolicySettings> PolicySettings { get; private set; } = null!;
+
         [Output("readOnly")]
         public Output<bool?> ReadOnly { get; private set; } = null!;
 
@@ -304,14 +364,23 @@ namespace Pulumiverse.Aquasec
         [Output("requiredLabelsEnabled")]
         public Output<bool?> RequiredLabelsEnabled { get; private set; } = null!;
 
+        [Output("scanMalwareInArchives")]
+        public Output<bool?> ScanMalwareInArchives { get; private set; } = null!;
+
         [Output("scanNfsMounts")]
         public Output<bool?> ScanNfsMounts { get; private set; } = null!;
+
+        [Output("scanProcessMemory")]
+        public Output<bool?> ScanProcessMemory { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if scan should include sensitive data in the image.
         /// </summary>
         [Output("scanSensitiveData")]
         public Output<bool?> ScanSensitiveData { get; private set; } = null!;
+
+        [Output("scanWindowsRegistry")]
+        public Output<bool?> ScanWindowsRegistry { get; private set; } = null!;
 
         /// <summary>
         /// Indicates if scanning should include scap.
@@ -339,6 +408,12 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Output("trustedBaseImagesEnabled")]
         public Output<bool?> TrustedBaseImagesEnabled { get; private set; } = null!;
+
+        [Output("vulnerabilityExploitability")]
+        public Output<bool?> VulnerabilityExploitability { get; private set; } = null!;
+
+        [Output("vulnerabilityScoreRanges")]
+        public Output<ImmutableArray<int>> VulnerabilityScoreRanges { get; private set; } = null!;
 
         /// <summary>
         /// List of whitelisted licenses.
@@ -399,6 +474,18 @@ namespace Pulumiverse.Aquasec
 
     public sealed class ImageAssurancePolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("aggregatedVulnerability")]
+        private InputMap<string>? _aggregatedVulnerability;
+
+        /// <summary>
+        /// Aggregated vulnerability information.
+        /// </summary>
+        public InputMap<string> AggregatedVulnerability
+        {
+            get => _aggregatedVulnerability ?? (_aggregatedVulnerability = new InputMap<string>());
+            set => _aggregatedVulnerability = value;
+        }
+
         [Input("allowedImages")]
         private InputList<string>? _allowedImages;
 
@@ -420,10 +507,22 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
+        /// What type of assurance policy is described.
+        /// </summary>
+        [Input("assuranceType")]
+        public Input<string>? AssuranceType { get; set; }
+
+        /// <summary>
         /// Indicates if auditing for failures.
         /// </summary>
         [Input("auditOnFailure")]
         public Input<bool>? AuditOnFailure { get; set; }
+
+        /// <summary>
+        /// Name of user account that created the policy.
+        /// </summary>
+        [Input("author")]
+        public Input<string>? Author { get; set; }
 
         [Input("autoScanConfigured")]
         public Input<bool>? AutoScanConfigured { get; set; }
@@ -470,7 +569,7 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// Lndicates if license blacklist is relevant.
+        /// Indicates if license blacklist is relevant.
         /// </summary>
         [Input("blacklistedLicensesEnabled")]
         public Input<bool>? BlacklistedLicensesEnabled { get; set; }
@@ -502,11 +601,14 @@ namespace Pulumiverse.Aquasec
         [Input("customChecksEnabled")]
         public Input<bool>? CustomChecksEnabled { get; set; }
 
+        [Input("customSeverity")]
+        public Input<string>? CustomSeverity { get; set; }
+
         [Input("customSeverityEnabled")]
         public Input<bool>? CustomSeverityEnabled { get; set; }
 
         /// <summary>
-        /// Indicates if cves blacklist is relevant.
+        /// Indicates if CVEs blacklist is relevant.
         /// </summary>
         [Input("cvesBlackListEnabled")]
         public Input<bool>? CvesBlackListEnabled { get; set; }
@@ -562,12 +664,23 @@ namespace Pulumiverse.Aquasec
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("disallowExploitTypes")]
+        private InputList<string>? _disallowExploitTypes;
+        public InputList<string> DisallowExploitTypes
+        {
+            get => _disallowExploitTypes ?? (_disallowExploitTypes = new InputList<string>());
+            set => _disallowExploitTypes = value;
+        }
+
         /// <summary>
         /// Indicates if malware should block the image.
         /// </summary>
         [Input("disallowMalware")]
         public Input<bool>? DisallowMalware { get; set; }
 
+        /// <summary>
+        /// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        /// </summary>
         [Input("dockerCisEnabled")]
         public Input<bool>? DockerCisEnabled { get; set; }
 
@@ -606,6 +719,14 @@ namespace Pulumiverse.Aquasec
             set => _exceptionalMonitoredMalwarePaths = value;
         }
 
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
+        public InputList<string> ExcludeApplicationScopes
+        {
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
+        }
+
         /// <summary>
         /// Indicates if cicd failures will fail the image.
         /// </summary>
@@ -629,8 +750,14 @@ namespace Pulumiverse.Aquasec
         [Input("functionIntegrityEnabled")]
         public Input<bool>? FunctionIntegrityEnabled { get; set; }
 
+        [Input("ignoreBaseImageVln")]
+        public Input<bool>? IgnoreBaseImageVln { get; set; }
+
         [Input("ignoreRecentlyPublishedVln")]
         public Input<bool>? IgnoreRecentlyPublishedVln { get; set; }
+
+        [Input("ignoreRecentlyPublishedVlnPeriod")]
+        public Input<int>? IgnoreRecentlyPublishedVlnPeriod { get; set; }
 
         /// <summary>
         /// Indicates if risk resources are ignored.
@@ -650,6 +777,14 @@ namespace Pulumiverse.Aquasec
             set => _ignoredRiskResources = value;
         }
 
+        [Input("ignoredSensitiveResources")]
+        private InputList<string>? _ignoredSensitiveResources;
+        public InputList<string> IgnoredSensitiveResources
+        {
+            get => _ignoredSensitiveResources ?? (_ignoredSensitiveResources = new InputList<string>());
+            set => _ignoredSensitiveResources = value;
+        }
+
         [Input("images")]
         private InputList<string>? _images;
 
@@ -662,8 +797,33 @@ namespace Pulumiverse.Aquasec
             set => _images = value;
         }
 
+        /// <summary>
+        /// Performs a Kubernetes CIS benchmark check for the host.
+        /// </summary>
         [Input("kubeCisEnabled")]
         public Input<bool>? KubeCisEnabled { get; set; }
+
+        /// <summary>
+        /// List of Kubernetes controls.
+        /// </summary>
+        [Input("kubernetesControls")]
+        public Input<Inputs.ImageAssurancePolicyKubernetesControlsArgs>? KubernetesControls { get; set; }
+
+        [Input("kubernetesControlsAvdIds")]
+        private InputList<string>? _kubernetesControlsAvdIds;
+        public InputList<string> KubernetesControlsAvdIds
+        {
+            get => _kubernetesControlsAvdIds ?? (_kubernetesControlsAvdIds = new InputList<string>());
+            set => _kubernetesControlsAvdIds = value;
+        }
+
+        [Input("kubernetesControlsNames")]
+        private InputList<string>? _kubernetesControlsNames;
+        public InputList<string> KubernetesControlsNames
+        {
+            get => _kubernetesControlsNames ?? (_kubernetesControlsNames = new InputList<string>());
+            set => _kubernetesControlsNames = value;
+        }
 
         [Input("labels")]
         private InputList<string>? _labels;
@@ -676,6 +836,12 @@ namespace Pulumiverse.Aquasec
             get => _labels ?? (_labels = new InputList<string>());
             set => _labels = value;
         }
+
+        [Input("lastupdate")]
+        public Input<string>? Lastupdate { get; set; }
+
+        [Input("linuxCisEnabled")]
+        public Input<bool>? LinuxCisEnabled { get; set; }
 
         [Input("malwareAction")]
         public Input<string>? MalwareAction { get; set; }
@@ -692,9 +858,6 @@ namespace Pulumiverse.Aquasec
         [Input("maximumScoreEnabled")]
         public Input<bool>? MaximumScoreEnabled { get; set; }
 
-        /// <summary>
-        /// Indicates that policy should ignore cases that do not have a known fix.
-        /// </summary>
         [Input("maximumScoreExcludeNoFix")]
         public Input<bool>? MaximumScoreExcludeNoFix { get; set; }
 
@@ -715,6 +878,9 @@ namespace Pulumiverse.Aquasec
         [Input("onlyNoneRootUsers")]
         public Input<bool>? OnlyNoneRootUsers { get; set; }
 
+        [Input("openshiftHardeningEnabled")]
+        public Input<bool>? OpenshiftHardeningEnabled { get; set; }
+
         /// <summary>
         /// Indicates if packages blacklist is relevant.
         /// </summary>
@@ -725,7 +891,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.ImageAssurancePolicyPackagesBlackListArgs>? _packagesBlackLists;
 
         /// <summary>
-        /// List of backlisted images.
+        /// List of blacklisted images.
         /// </summary>
         public InputList<Inputs.ImageAssurancePolicyPackagesBlackListArgs> PackagesBlackLists
         {
@@ -753,6 +919,12 @@ namespace Pulumiverse.Aquasec
 
         [Input("partialResultsImageFail")]
         public Input<bool>? PartialResultsImageFail { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("policySettings")]
+        public Input<Inputs.ImageAssurancePolicyPolicySettingsArgs>? PolicySettings { get; set; }
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -783,14 +955,23 @@ namespace Pulumiverse.Aquasec
         [Input("requiredLabelsEnabled")]
         public Input<bool>? RequiredLabelsEnabled { get; set; }
 
+        [Input("scanMalwareInArchives")]
+        public Input<bool>? ScanMalwareInArchives { get; set; }
+
         [Input("scanNfsMounts")]
         public Input<bool>? ScanNfsMounts { get; set; }
+
+        [Input("scanProcessMemory")]
+        public Input<bool>? ScanProcessMemory { get; set; }
 
         /// <summary>
         /// Indicates if scan should include sensitive data in the image.
         /// </summary>
         [Input("scanSensitiveData")]
         public Input<bool>? ScanSensitiveData { get; set; }
+
+        [Input("scanWindowsRegistry")]
+        public Input<bool>? ScanWindowsRegistry { get; set; }
 
         /// <summary>
         /// Indicates if scanning should include scap.
@@ -836,6 +1017,17 @@ namespace Pulumiverse.Aquasec
         [Input("trustedBaseImagesEnabled")]
         public Input<bool>? TrustedBaseImagesEnabled { get; set; }
 
+        [Input("vulnerabilityExploitability")]
+        public Input<bool>? VulnerabilityExploitability { get; set; }
+
+        [Input("vulnerabilityScoreRanges")]
+        private InputList<int>? _vulnerabilityScoreRanges;
+        public InputList<int> VulnerabilityScoreRanges
+        {
+            get => _vulnerabilityScoreRanges ?? (_vulnerabilityScoreRanges = new InputList<int>());
+            set => _vulnerabilityScoreRanges = value;
+        }
+
         [Input("whitelistedLicenses")]
         private InputList<string>? _whitelistedLicenses;
 
@@ -862,6 +1054,18 @@ namespace Pulumiverse.Aquasec
 
     public sealed class ImageAssurancePolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("aggregatedVulnerability")]
+        private InputMap<string>? _aggregatedVulnerability;
+
+        /// <summary>
+        /// Aggregated vulnerability information.
+        /// </summary>
+        public InputMap<string> AggregatedVulnerability
+        {
+            get => _aggregatedVulnerability ?? (_aggregatedVulnerability = new InputMap<string>());
+            set => _aggregatedVulnerability = value;
+        }
+
         [Input("allowedImages")]
         private InputList<string>? _allowedImages;
 
@@ -881,6 +1085,12 @@ namespace Pulumiverse.Aquasec
             get => _applicationScopes ?? (_applicationScopes = new InputList<string>());
             set => _applicationScopes = value;
         }
+
+        /// <summary>
+        /// What type of assurance policy is described.
+        /// </summary>
+        [Input("assuranceType")]
+        public Input<string>? AssuranceType { get; set; }
 
         /// <summary>
         /// Indicates if auditing for failures.
@@ -939,7 +1149,7 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// Lndicates if license blacklist is relevant.
+        /// Indicates if license blacklist is relevant.
         /// </summary>
         [Input("blacklistedLicensesEnabled")]
         public Input<bool>? BlacklistedLicensesEnabled { get; set; }
@@ -971,11 +1181,14 @@ namespace Pulumiverse.Aquasec
         [Input("customChecksEnabled")]
         public Input<bool>? CustomChecksEnabled { get; set; }
 
+        [Input("customSeverity")]
+        public Input<string>? CustomSeverity { get; set; }
+
         [Input("customSeverityEnabled")]
         public Input<bool>? CustomSeverityEnabled { get; set; }
 
         /// <summary>
-        /// Indicates if cves blacklist is relevant.
+        /// Indicates if CVEs blacklist is relevant.
         /// </summary>
         [Input("cvesBlackListEnabled")]
         public Input<bool>? CvesBlackListEnabled { get; set; }
@@ -1031,12 +1244,23 @@ namespace Pulumiverse.Aquasec
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("disallowExploitTypes")]
+        private InputList<string>? _disallowExploitTypes;
+        public InputList<string> DisallowExploitTypes
+        {
+            get => _disallowExploitTypes ?? (_disallowExploitTypes = new InputList<string>());
+            set => _disallowExploitTypes = value;
+        }
+
         /// <summary>
         /// Indicates if malware should block the image.
         /// </summary>
         [Input("disallowMalware")]
         public Input<bool>? DisallowMalware { get; set; }
 
+        /// <summary>
+        /// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
+        /// </summary>
         [Input("dockerCisEnabled")]
         public Input<bool>? DockerCisEnabled { get; set; }
 
@@ -1075,6 +1299,14 @@ namespace Pulumiverse.Aquasec
             set => _exceptionalMonitoredMalwarePaths = value;
         }
 
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
+        public InputList<string> ExcludeApplicationScopes
+        {
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
+        }
+
         /// <summary>
         /// Indicates if cicd failures will fail the image.
         /// </summary>
@@ -1097,6 +1329,9 @@ namespace Pulumiverse.Aquasec
 
         [Input("functionIntegrityEnabled")]
         public Input<bool>? FunctionIntegrityEnabled { get; set; }
+
+        [Input("ignoreBaseImageVln")]
+        public Input<bool>? IgnoreBaseImageVln { get; set; }
 
         [Input("ignoreRecentlyPublishedVln")]
         public Input<bool>? IgnoreRecentlyPublishedVln { get; set; }
@@ -1122,6 +1357,14 @@ namespace Pulumiverse.Aquasec
             set => _ignoredRiskResources = value;
         }
 
+        [Input("ignoredSensitiveResources")]
+        private InputList<string>? _ignoredSensitiveResources;
+        public InputList<string> IgnoredSensitiveResources
+        {
+            get => _ignoredSensitiveResources ?? (_ignoredSensitiveResources = new InputList<string>());
+            set => _ignoredSensitiveResources = value;
+        }
+
         [Input("images")]
         private InputList<string>? _images;
 
@@ -1134,8 +1377,33 @@ namespace Pulumiverse.Aquasec
             set => _images = value;
         }
 
+        /// <summary>
+        /// Performs a Kubernetes CIS benchmark check for the host.
+        /// </summary>
         [Input("kubeCisEnabled")]
         public Input<bool>? KubeCisEnabled { get; set; }
+
+        /// <summary>
+        /// List of Kubernetes controls.
+        /// </summary>
+        [Input("kubernetesControls")]
+        public Input<Inputs.ImageAssurancePolicyKubernetesControlsGetArgs>? KubernetesControls { get; set; }
+
+        [Input("kubernetesControlsAvdIds")]
+        private InputList<string>? _kubernetesControlsAvdIds;
+        public InputList<string> KubernetesControlsAvdIds
+        {
+            get => _kubernetesControlsAvdIds ?? (_kubernetesControlsAvdIds = new InputList<string>());
+            set => _kubernetesControlsAvdIds = value;
+        }
+
+        [Input("kubernetesControlsNames")]
+        private InputList<string>? _kubernetesControlsNames;
+        public InputList<string> KubernetesControlsNames
+        {
+            get => _kubernetesControlsNames ?? (_kubernetesControlsNames = new InputList<string>());
+            set => _kubernetesControlsNames = value;
+        }
 
         [Input("labels")]
         private InputList<string>? _labels;
@@ -1148,6 +1416,12 @@ namespace Pulumiverse.Aquasec
             get => _labels ?? (_labels = new InputList<string>());
             set => _labels = value;
         }
+
+        [Input("lastupdate")]
+        public Input<string>? Lastupdate { get; set; }
+
+        [Input("linuxCisEnabled")]
+        public Input<bool>? LinuxCisEnabled { get; set; }
 
         [Input("malwareAction")]
         public Input<string>? MalwareAction { get; set; }
@@ -1164,9 +1438,6 @@ namespace Pulumiverse.Aquasec
         [Input("maximumScoreEnabled")]
         public Input<bool>? MaximumScoreEnabled { get; set; }
 
-        /// <summary>
-        /// Indicates that policy should ignore cases that do not have a known fix.
-        /// </summary>
         [Input("maximumScoreExcludeNoFix")]
         public Input<bool>? MaximumScoreExcludeNoFix { get; set; }
 
@@ -1187,6 +1458,9 @@ namespace Pulumiverse.Aquasec
         [Input("onlyNoneRootUsers")]
         public Input<bool>? OnlyNoneRootUsers { get; set; }
 
+        [Input("openshiftHardeningEnabled")]
+        public Input<bool>? OpenshiftHardeningEnabled { get; set; }
+
         /// <summary>
         /// Indicates if packages blacklist is relevant.
         /// </summary>
@@ -1197,7 +1471,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.ImageAssurancePolicyPackagesBlackListGetArgs>? _packagesBlackLists;
 
         /// <summary>
-        /// List of backlisted images.
+        /// List of blacklisted images.
         /// </summary>
         public InputList<Inputs.ImageAssurancePolicyPackagesBlackListGetArgs> PackagesBlackLists
         {
@@ -1225,6 +1499,12 @@ namespace Pulumiverse.Aquasec
 
         [Input("partialResultsImageFail")]
         public Input<bool>? PartialResultsImageFail { get; set; }
+
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("policySettings")]
+        public Input<Inputs.ImageAssurancePolicyPolicySettingsGetArgs>? PolicySettings { get; set; }
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
@@ -1255,14 +1535,23 @@ namespace Pulumiverse.Aquasec
         [Input("requiredLabelsEnabled")]
         public Input<bool>? RequiredLabelsEnabled { get; set; }
 
+        [Input("scanMalwareInArchives")]
+        public Input<bool>? ScanMalwareInArchives { get; set; }
+
         [Input("scanNfsMounts")]
         public Input<bool>? ScanNfsMounts { get; set; }
+
+        [Input("scanProcessMemory")]
+        public Input<bool>? ScanProcessMemory { get; set; }
 
         /// <summary>
         /// Indicates if scan should include sensitive data in the image.
         /// </summary>
         [Input("scanSensitiveData")]
         public Input<bool>? ScanSensitiveData { get; set; }
+
+        [Input("scanWindowsRegistry")]
+        public Input<bool>? ScanWindowsRegistry { get; set; }
 
         /// <summary>
         /// Indicates if scanning should include scap.
@@ -1307,6 +1596,17 @@ namespace Pulumiverse.Aquasec
         /// </summary>
         [Input("trustedBaseImagesEnabled")]
         public Input<bool>? TrustedBaseImagesEnabled { get; set; }
+
+        [Input("vulnerabilityExploitability")]
+        public Input<bool>? VulnerabilityExploitability { get; set; }
+
+        [Input("vulnerabilityScoreRanges")]
+        private InputList<int>? _vulnerabilityScoreRanges;
+        public InputList<int> VulnerabilityScoreRanges
+        {
+            get => _vulnerabilityScoreRanges ?? (_vulnerabilityScoreRanges = new InputList<int>());
+            set => _vulnerabilityScoreRanges = value;
+        }
 
         [Input("whitelistedLicenses")]
         private InputList<string>? _whitelistedLicenses;

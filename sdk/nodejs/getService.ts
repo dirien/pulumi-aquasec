@@ -18,9 +18,6 @@ export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceArgs {
-    /**
-     * The name of the service. It is recommended not to use whitespace characters in the name.
-     */
     name: string;
 }
 
@@ -141,8 +138,5 @@ export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getService.
  */
 export interface GetServiceOutputArgs {
-    /**
-     * The name of the service. It is recommended not to use whitespace characters in the name.
-     */
     name: pulumi.Input<string>;
 }

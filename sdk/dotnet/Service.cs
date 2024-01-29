@@ -68,7 +68,7 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> Monitoring { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service. It is recommended not to use whitespace characters in the name.
+        /// Name assigned to the attribute.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// The name of the service. It is recommended not to use whitespace characters in the name.
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -357,7 +357,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? Monitoring { get; set; }
 
         /// <summary>
-        /// The name of the service. It is recommended not to use whitespace characters in the name.
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

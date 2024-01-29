@@ -9,16 +9,20 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
+// Aqua Image Assurance covers the first part of the container lifecycle: image development. The Image Assurance subsystem detects, assesses, and reports security issues in your images.
 type ImageAssurancePolicy struct {
 	pulumi.CustomResourceState
 
+	// Aggregated vulnerability information.
+	AggregatedVulnerability pulumi.StringMapOutput `pulumi:"aggregatedVulnerability"`
 	// List of explicitly allowed images.
 	AllowedImages     pulumi.StringArrayOutput `pulumi:"allowedImages"`
 	ApplicationScopes pulumi.StringArrayOutput `pulumi:"applicationScopes"`
+	// What type of assurance policy is described.
+	AssuranceType pulumi.StringOutput `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
 	AuditOnFailure pulumi.BoolPtrOutput `pulumi:"auditOnFailure"`
 	// Name of user account that created the policy.
@@ -32,7 +36,7 @@ type ImageAssurancePolicy struct {
 	BlacklistPermissionsEnabled pulumi.BoolPtrOutput `pulumi:"blacklistPermissionsEnabled"`
 	// List of blacklisted licenses.
 	BlacklistedLicenses pulumi.StringArrayOutput `pulumi:"blacklistedLicenses"`
-	// Lndicates if license blacklist is relevant.
+	// Indicates if license blacklist is relevant.
 	BlacklistedLicensesEnabled pulumi.BoolPtrOutput `pulumi:"blacklistedLicensesEnabled"`
 	// Indicates if failed images are blocked.
 	BlockFailed         pulumi.BoolPtrOutput `pulumi:"blockFailed"`
@@ -41,8 +45,9 @@ type ImageAssurancePolicy struct {
 	CustomChecks ImageAssurancePolicyCustomCheckArrayOutput `pulumi:"customChecks"`
 	// Indicates if scanning should include custom checks.
 	CustomChecksEnabled   pulumi.BoolPtrOutput `pulumi:"customChecksEnabled"`
+	CustomSeverity        pulumi.StringOutput  `pulumi:"customSeverity"`
 	CustomSeverityEnabled pulumi.BoolPtrOutput `pulumi:"customSeverityEnabled"`
-	// Indicates if cves blacklist is relevant.
+	// Indicates if CVEs blacklist is relevant.
 	CvesBlackListEnabled pulumi.BoolPtrOutput `pulumi:"cvesBlackListEnabled"`
 	// List of cves blacklisted items.
 	CvesBlackLists pulumi.StringArrayOutput `pulumi:"cvesBlackLists"`
@@ -55,10 +60,12 @@ type ImageAssurancePolicy struct {
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled pulumi.BoolPtrOutput `pulumi:"cvssSeverityEnabled"`
 	// Indicates that policy should ignore cvss cases that do not have a known fix.
-	CvssSeverityExcludeNoFix pulumi.BoolPtrOutput   `pulumi:"cvssSeverityExcludeNoFix"`
-	Description              pulumi.StringPtrOutput `pulumi:"description"`
+	CvssSeverityExcludeNoFix pulumi.BoolPtrOutput     `pulumi:"cvssSeverityExcludeNoFix"`
+	Description              pulumi.StringPtrOutput   `pulumi:"description"`
+	DisallowExploitTypes     pulumi.StringArrayOutput `pulumi:"disallowExploitTypes"`
 	// Indicates if malware should block the image.
-	DisallowMalware  pulumi.BoolPtrOutput `pulumi:"disallowMalware"`
+	DisallowMalware pulumi.BoolPtrOutput `pulumi:"disallowMalware"`
+	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled pulumi.BoolPtrOutput `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
 	Domain                           pulumi.StringPtrOutput   `pulumi:"domain"`
@@ -70,52 +77,67 @@ type ImageAssurancePolicy struct {
 	EnforceAfterDays                 pulumi.IntPtrOutput      `pulumi:"enforceAfterDays"`
 	EnforceExcessivePermissions      pulumi.BoolPtrOutput     `pulumi:"enforceExcessivePermissions"`
 	ExceptionalMonitoredMalwarePaths pulumi.StringArrayOutput `pulumi:"exceptionalMonitoredMalwarePaths"`
+	ExcludeApplicationScopes         pulumi.StringArrayOutput `pulumi:"excludeApplicationScopes"`
 	// Indicates if cicd failures will fail the image.
 	FailCicd                         pulumi.BoolPtrOutput                          `pulumi:"failCicd"`
 	ForbiddenLabels                  ImageAssurancePolicyForbiddenLabelArrayOutput `pulumi:"forbiddenLabels"`
 	ForbiddenLabelsEnabled           pulumi.BoolPtrOutput                          `pulumi:"forbiddenLabelsEnabled"`
 	ForceMicroenforcer               pulumi.BoolPtrOutput                          `pulumi:"forceMicroenforcer"`
 	FunctionIntegrityEnabled         pulumi.BoolPtrOutput                          `pulumi:"functionIntegrityEnabled"`
+	IgnoreBaseImageVln               pulumi.BoolPtrOutput                          `pulumi:"ignoreBaseImageVln"`
 	IgnoreRecentlyPublishedVln       pulumi.BoolPtrOutput                          `pulumi:"ignoreRecentlyPublishedVln"`
 	IgnoreRecentlyPublishedVlnPeriod pulumi.IntOutput                              `pulumi:"ignoreRecentlyPublishedVlnPeriod"`
 	// Indicates if risk resources are ignored.
 	IgnoreRiskResourcesEnabled pulumi.BoolPtrOutput `pulumi:"ignoreRiskResourcesEnabled"`
 	// List of ignored risk resources.
-	IgnoredRiskResources pulumi.StringArrayOutput `pulumi:"ignoredRiskResources"`
+	IgnoredRiskResources      pulumi.StringArrayOutput `pulumi:"ignoredRiskResources"`
+	IgnoredSensitiveResources pulumi.StringArrayOutput `pulumi:"ignoredSensitiveResources"`
 	// List of images.
-	Images         pulumi.StringArrayOutput `pulumi:"images"`
-	KubeCisEnabled pulumi.BoolPtrOutput     `pulumi:"kubeCisEnabled"`
+	Images pulumi.StringArrayOutput `pulumi:"images"`
+	// Performs a Kubernetes CIS benchmark check for the host.
+	KubeCisEnabled pulumi.BoolPtrOutput `pulumi:"kubeCisEnabled"`
+	// List of Kubernetes controls.
+	KubernetesControls       ImageAssurancePolicyKubernetesControlsPtrOutput `pulumi:"kubernetesControls"`
+	KubernetesControlsAvdIds pulumi.StringArrayOutput                        `pulumi:"kubernetesControlsAvdIds"`
+	KubernetesControlsNames  pulumi.StringArrayOutput                        `pulumi:"kubernetesControlsNames"`
 	// List of labels.
-	Labels        pulumi.StringArrayOutput `pulumi:"labels"`
-	MalwareAction pulumi.StringPtrOutput   `pulumi:"malwareAction"`
+	Labels          pulumi.StringArrayOutput `pulumi:"labels"`
+	Lastupdate      pulumi.StringOutput      `pulumi:"lastupdate"`
+	LinuxCisEnabled pulumi.BoolPtrOutput     `pulumi:"linuxCisEnabled"`
+	MalwareAction   pulumi.StringPtrOutput   `pulumi:"malwareAction"`
 	// Value of allowed maximum score.
 	MaximumScore pulumi.Float64PtrOutput `pulumi:"maximumScore"`
 	// Indicates if exceeding the maximum score is scanned.
-	MaximumScoreEnabled pulumi.BoolPtrOutput `pulumi:"maximumScoreEnabled"`
-	// Indicates that policy should ignore cases that do not have a known fix.
+	MaximumScoreEnabled      pulumi.BoolPtrOutput     `pulumi:"maximumScoreEnabled"`
 	MaximumScoreExcludeNoFix pulumi.BoolPtrOutput     `pulumi:"maximumScoreExcludeNoFix"`
 	MonitoredMalwarePaths    pulumi.StringArrayOutput `pulumi:"monitoredMalwarePaths"`
 	Name                     pulumi.StringOutput      `pulumi:"name"`
 	// Indicates if raise a warning for images that should only be run as root.
-	OnlyNoneRootUsers pulumi.BoolPtrOutput `pulumi:"onlyNoneRootUsers"`
+	OnlyNoneRootUsers         pulumi.BoolPtrOutput `pulumi:"onlyNoneRootUsers"`
+	OpenshiftHardeningEnabled pulumi.BoolPtrOutput `pulumi:"openshiftHardeningEnabled"`
 	// Indicates if packages blacklist is relevant.
 	PackagesBlackListEnabled pulumi.BoolPtrOutput `pulumi:"packagesBlackListEnabled"`
-	// List of backlisted images.
+	// List of blacklisted images.
 	PackagesBlackLists ImageAssurancePolicyPackagesBlackListArrayOutput `pulumi:"packagesBlackLists"`
 	// Indicates if packages whitelist is relevant.
 	PackagesWhiteListEnabled pulumi.BoolPtrOutput `pulumi:"packagesWhiteListEnabled"`
 	// List of whitelisted images.
 	PackagesWhiteLists      ImageAssurancePolicyPackagesWhiteListArrayOutput `pulumi:"packagesWhiteLists"`
 	PartialResultsImageFail pulumi.BoolPtrOutput                             `pulumi:"partialResultsImageFail"`
+	Permission              pulumi.StringOutput                              `pulumi:"permission"`
+	PolicySettings          ImageAssurancePolicyPolicySettingsOutput         `pulumi:"policySettings"`
 	ReadOnly                pulumi.BoolPtrOutput                             `pulumi:"readOnly"`
 	// List of registries.
 	Registries            pulumi.StringArrayOutput                     `pulumi:"registries"`
 	Registry              pulumi.StringPtrOutput                       `pulumi:"registry"`
 	RequiredLabels        ImageAssurancePolicyRequiredLabelArrayOutput `pulumi:"requiredLabels"`
 	RequiredLabelsEnabled pulumi.BoolPtrOutput                         `pulumi:"requiredLabelsEnabled"`
+	ScanMalwareInArchives pulumi.BoolPtrOutput                         `pulumi:"scanMalwareInArchives"`
 	ScanNfsMounts         pulumi.BoolPtrOutput                         `pulumi:"scanNfsMounts"`
+	ScanProcessMemory     pulumi.BoolPtrOutput                         `pulumi:"scanProcessMemory"`
 	// Indicates if scan should include sensitive data in the image.
-	ScanSensitiveData pulumi.BoolPtrOutput `pulumi:"scanSensitiveData"`
+	ScanSensitiveData   pulumi.BoolPtrOutput `pulumi:"scanSensitiveData"`
+	ScanWindowsRegistry pulumi.BoolPtrOutput `pulumi:"scanWindowsRegistry"`
 	// Indicates if scanning should include scap.
 	ScapEnabled pulumi.BoolPtrOutput `pulumi:"scapEnabled"`
 	// List of SCAP user scripts for checks.
@@ -124,7 +146,9 @@ type ImageAssurancePolicy struct {
 	// List of trusted images.
 	TrustedBaseImages ImageAssurancePolicyTrustedBaseImageArrayOutput `pulumi:"trustedBaseImages"`
 	// Indicates if list of trusted base images is relevant.
-	TrustedBaseImagesEnabled pulumi.BoolPtrOutput `pulumi:"trustedBaseImagesEnabled"`
+	TrustedBaseImagesEnabled    pulumi.BoolPtrOutput  `pulumi:"trustedBaseImagesEnabled"`
+	VulnerabilityExploitability pulumi.BoolPtrOutput  `pulumi:"vulnerabilityExploitability"`
+	VulnerabilityScoreRanges    pulumi.IntArrayOutput `pulumi:"vulnerabilityScoreRanges"`
 	// List of whitelisted licenses.
 	WhitelistedLicenses pulumi.StringArrayOutput `pulumi:"whitelistedLicenses"`
 	// Indicates if license blacklist is relevant.
@@ -164,9 +188,13 @@ func GetImageAssurancePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ImageAssurancePolicy resources.
 type imageAssurancePolicyState struct {
+	// Aggregated vulnerability information.
+	AggregatedVulnerability map[string]string `pulumi:"aggregatedVulnerability"`
 	// List of explicitly allowed images.
 	AllowedImages     []string `pulumi:"allowedImages"`
 	ApplicationScopes []string `pulumi:"applicationScopes"`
+	// What type of assurance policy is described.
+	AssuranceType *string `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
 	AuditOnFailure *bool `pulumi:"auditOnFailure"`
 	// Name of user account that created the policy.
@@ -180,7 +208,7 @@ type imageAssurancePolicyState struct {
 	BlacklistPermissionsEnabled *bool `pulumi:"blacklistPermissionsEnabled"`
 	// List of blacklisted licenses.
 	BlacklistedLicenses []string `pulumi:"blacklistedLicenses"`
-	// Lndicates if license blacklist is relevant.
+	// Indicates if license blacklist is relevant.
 	BlacklistedLicensesEnabled *bool `pulumi:"blacklistedLicensesEnabled"`
 	// Indicates if failed images are blocked.
 	BlockFailed         *bool `pulumi:"blockFailed"`
@@ -188,9 +216,10 @@ type imageAssurancePolicyState struct {
 	// List of Custom user scripts for checks.
 	CustomChecks []ImageAssurancePolicyCustomCheck `pulumi:"customChecks"`
 	// Indicates if scanning should include custom checks.
-	CustomChecksEnabled   *bool `pulumi:"customChecksEnabled"`
-	CustomSeverityEnabled *bool `pulumi:"customSeverityEnabled"`
-	// Indicates if cves blacklist is relevant.
+	CustomChecksEnabled   *bool   `pulumi:"customChecksEnabled"`
+	CustomSeverity        *string `pulumi:"customSeverity"`
+	CustomSeverityEnabled *bool   `pulumi:"customSeverityEnabled"`
+	// Indicates if CVEs blacklist is relevant.
 	CvesBlackListEnabled *bool `pulumi:"cvesBlackListEnabled"`
 	// List of cves blacklisted items.
 	CvesBlackLists []string `pulumi:"cvesBlackLists"`
@@ -203,10 +232,12 @@ type imageAssurancePolicyState struct {
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled *bool `pulumi:"cvssSeverityEnabled"`
 	// Indicates that policy should ignore cvss cases that do not have a known fix.
-	CvssSeverityExcludeNoFix *bool   `pulumi:"cvssSeverityExcludeNoFix"`
-	Description              *string `pulumi:"description"`
+	CvssSeverityExcludeNoFix *bool    `pulumi:"cvssSeverityExcludeNoFix"`
+	Description              *string  `pulumi:"description"`
+	DisallowExploitTypes     []string `pulumi:"disallowExploitTypes"`
 	// Indicates if malware should block the image.
-	DisallowMalware  *bool `pulumi:"disallowMalware"`
+	DisallowMalware *bool `pulumi:"disallowMalware"`
+	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled *bool `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
 	Domain                           *string  `pulumi:"domain"`
@@ -218,52 +249,67 @@ type imageAssurancePolicyState struct {
 	EnforceAfterDays                 *int     `pulumi:"enforceAfterDays"`
 	EnforceExcessivePermissions      *bool    `pulumi:"enforceExcessivePermissions"`
 	ExceptionalMonitoredMalwarePaths []string `pulumi:"exceptionalMonitoredMalwarePaths"`
+	ExcludeApplicationScopes         []string `pulumi:"excludeApplicationScopes"`
 	// Indicates if cicd failures will fail the image.
 	FailCicd                         *bool                                `pulumi:"failCicd"`
 	ForbiddenLabels                  []ImageAssurancePolicyForbiddenLabel `pulumi:"forbiddenLabels"`
 	ForbiddenLabelsEnabled           *bool                                `pulumi:"forbiddenLabelsEnabled"`
 	ForceMicroenforcer               *bool                                `pulumi:"forceMicroenforcer"`
 	FunctionIntegrityEnabled         *bool                                `pulumi:"functionIntegrityEnabled"`
+	IgnoreBaseImageVln               *bool                                `pulumi:"ignoreBaseImageVln"`
 	IgnoreRecentlyPublishedVln       *bool                                `pulumi:"ignoreRecentlyPublishedVln"`
 	IgnoreRecentlyPublishedVlnPeriod *int                                 `pulumi:"ignoreRecentlyPublishedVlnPeriod"`
 	// Indicates if risk resources are ignored.
 	IgnoreRiskResourcesEnabled *bool `pulumi:"ignoreRiskResourcesEnabled"`
 	// List of ignored risk resources.
-	IgnoredRiskResources []string `pulumi:"ignoredRiskResources"`
+	IgnoredRiskResources      []string `pulumi:"ignoredRiskResources"`
+	IgnoredSensitiveResources []string `pulumi:"ignoredSensitiveResources"`
 	// List of images.
-	Images         []string `pulumi:"images"`
-	KubeCisEnabled *bool    `pulumi:"kubeCisEnabled"`
+	Images []string `pulumi:"images"`
+	// Performs a Kubernetes CIS benchmark check for the host.
+	KubeCisEnabled *bool `pulumi:"kubeCisEnabled"`
+	// List of Kubernetes controls.
+	KubernetesControls       *ImageAssurancePolicyKubernetesControls `pulumi:"kubernetesControls"`
+	KubernetesControlsAvdIds []string                                `pulumi:"kubernetesControlsAvdIds"`
+	KubernetesControlsNames  []string                                `pulumi:"kubernetesControlsNames"`
 	// List of labels.
-	Labels        []string `pulumi:"labels"`
-	MalwareAction *string  `pulumi:"malwareAction"`
+	Labels          []string `pulumi:"labels"`
+	Lastupdate      *string  `pulumi:"lastupdate"`
+	LinuxCisEnabled *bool    `pulumi:"linuxCisEnabled"`
+	MalwareAction   *string  `pulumi:"malwareAction"`
 	// Value of allowed maximum score.
 	MaximumScore *float64 `pulumi:"maximumScore"`
 	// Indicates if exceeding the maximum score is scanned.
-	MaximumScoreEnabled *bool `pulumi:"maximumScoreEnabled"`
-	// Indicates that policy should ignore cases that do not have a known fix.
+	MaximumScoreEnabled      *bool    `pulumi:"maximumScoreEnabled"`
 	MaximumScoreExcludeNoFix *bool    `pulumi:"maximumScoreExcludeNoFix"`
 	MonitoredMalwarePaths    []string `pulumi:"monitoredMalwarePaths"`
 	Name                     *string  `pulumi:"name"`
 	// Indicates if raise a warning for images that should only be run as root.
-	OnlyNoneRootUsers *bool `pulumi:"onlyNoneRootUsers"`
+	OnlyNoneRootUsers         *bool `pulumi:"onlyNoneRootUsers"`
+	OpenshiftHardeningEnabled *bool `pulumi:"openshiftHardeningEnabled"`
 	// Indicates if packages blacklist is relevant.
 	PackagesBlackListEnabled *bool `pulumi:"packagesBlackListEnabled"`
-	// List of backlisted images.
+	// List of blacklisted images.
 	PackagesBlackLists []ImageAssurancePolicyPackagesBlackList `pulumi:"packagesBlackLists"`
 	// Indicates if packages whitelist is relevant.
 	PackagesWhiteListEnabled *bool `pulumi:"packagesWhiteListEnabled"`
 	// List of whitelisted images.
 	PackagesWhiteLists      []ImageAssurancePolicyPackagesWhiteList `pulumi:"packagesWhiteLists"`
 	PartialResultsImageFail *bool                                   `pulumi:"partialResultsImageFail"`
+	Permission              *string                                 `pulumi:"permission"`
+	PolicySettings          *ImageAssurancePolicyPolicySettings     `pulumi:"policySettings"`
 	ReadOnly                *bool                                   `pulumi:"readOnly"`
 	// List of registries.
 	Registries            []string                            `pulumi:"registries"`
 	Registry              *string                             `pulumi:"registry"`
 	RequiredLabels        []ImageAssurancePolicyRequiredLabel `pulumi:"requiredLabels"`
 	RequiredLabelsEnabled *bool                               `pulumi:"requiredLabelsEnabled"`
+	ScanMalwareInArchives *bool                               `pulumi:"scanMalwareInArchives"`
 	ScanNfsMounts         *bool                               `pulumi:"scanNfsMounts"`
+	ScanProcessMemory     *bool                               `pulumi:"scanProcessMemory"`
 	// Indicates if scan should include sensitive data in the image.
-	ScanSensitiveData *bool `pulumi:"scanSensitiveData"`
+	ScanSensitiveData   *bool `pulumi:"scanSensitiveData"`
+	ScanWindowsRegistry *bool `pulumi:"scanWindowsRegistry"`
 	// Indicates if scanning should include scap.
 	ScapEnabled *bool `pulumi:"scapEnabled"`
 	// List of SCAP user scripts for checks.
@@ -272,7 +318,9 @@ type imageAssurancePolicyState struct {
 	// List of trusted images.
 	TrustedBaseImages []ImageAssurancePolicyTrustedBaseImage `pulumi:"trustedBaseImages"`
 	// Indicates if list of trusted base images is relevant.
-	TrustedBaseImagesEnabled *bool `pulumi:"trustedBaseImagesEnabled"`
+	TrustedBaseImagesEnabled    *bool `pulumi:"trustedBaseImagesEnabled"`
+	VulnerabilityExploitability *bool `pulumi:"vulnerabilityExploitability"`
+	VulnerabilityScoreRanges    []int `pulumi:"vulnerabilityScoreRanges"`
 	// List of whitelisted licenses.
 	WhitelistedLicenses []string `pulumi:"whitelistedLicenses"`
 	// Indicates if license blacklist is relevant.
@@ -280,9 +328,13 @@ type imageAssurancePolicyState struct {
 }
 
 type ImageAssurancePolicyState struct {
+	// Aggregated vulnerability information.
+	AggregatedVulnerability pulumi.StringMapInput
 	// List of explicitly allowed images.
 	AllowedImages     pulumi.StringArrayInput
 	ApplicationScopes pulumi.StringArrayInput
+	// What type of assurance policy is described.
+	AssuranceType pulumi.StringPtrInput
 	// Indicates if auditing for failures.
 	AuditOnFailure pulumi.BoolPtrInput
 	// Name of user account that created the policy.
@@ -296,7 +348,7 @@ type ImageAssurancePolicyState struct {
 	BlacklistPermissionsEnabled pulumi.BoolPtrInput
 	// List of blacklisted licenses.
 	BlacklistedLicenses pulumi.StringArrayInput
-	// Lndicates if license blacklist is relevant.
+	// Indicates if license blacklist is relevant.
 	BlacklistedLicensesEnabled pulumi.BoolPtrInput
 	// Indicates if failed images are blocked.
 	BlockFailed         pulumi.BoolPtrInput
@@ -305,8 +357,9 @@ type ImageAssurancePolicyState struct {
 	CustomChecks ImageAssurancePolicyCustomCheckArrayInput
 	// Indicates if scanning should include custom checks.
 	CustomChecksEnabled   pulumi.BoolPtrInput
+	CustomSeverity        pulumi.StringPtrInput
 	CustomSeverityEnabled pulumi.BoolPtrInput
-	// Indicates if cves blacklist is relevant.
+	// Indicates if CVEs blacklist is relevant.
 	CvesBlackListEnabled pulumi.BoolPtrInput
 	// List of cves blacklisted items.
 	CvesBlackLists pulumi.StringArrayInput
@@ -321,8 +374,10 @@ type ImageAssurancePolicyState struct {
 	// Indicates that policy should ignore cvss cases that do not have a known fix.
 	CvssSeverityExcludeNoFix pulumi.BoolPtrInput
 	Description              pulumi.StringPtrInput
+	DisallowExploitTypes     pulumi.StringArrayInput
 	// Indicates if malware should block the image.
-	DisallowMalware  pulumi.BoolPtrInput
+	DisallowMalware pulumi.BoolPtrInput
+	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled pulumi.BoolPtrInput
 	// Name of the container image.
 	Domain                           pulumi.StringPtrInput
@@ -334,52 +389,67 @@ type ImageAssurancePolicyState struct {
 	EnforceAfterDays                 pulumi.IntPtrInput
 	EnforceExcessivePermissions      pulumi.BoolPtrInput
 	ExceptionalMonitoredMalwarePaths pulumi.StringArrayInput
+	ExcludeApplicationScopes         pulumi.StringArrayInput
 	// Indicates if cicd failures will fail the image.
 	FailCicd                         pulumi.BoolPtrInput
 	ForbiddenLabels                  ImageAssurancePolicyForbiddenLabelArrayInput
 	ForbiddenLabelsEnabled           pulumi.BoolPtrInput
 	ForceMicroenforcer               pulumi.BoolPtrInput
 	FunctionIntegrityEnabled         pulumi.BoolPtrInput
+	IgnoreBaseImageVln               pulumi.BoolPtrInput
 	IgnoreRecentlyPublishedVln       pulumi.BoolPtrInput
 	IgnoreRecentlyPublishedVlnPeriod pulumi.IntPtrInput
 	// Indicates if risk resources are ignored.
 	IgnoreRiskResourcesEnabled pulumi.BoolPtrInput
 	// List of ignored risk resources.
-	IgnoredRiskResources pulumi.StringArrayInput
+	IgnoredRiskResources      pulumi.StringArrayInput
+	IgnoredSensitiveResources pulumi.StringArrayInput
 	// List of images.
-	Images         pulumi.StringArrayInput
+	Images pulumi.StringArrayInput
+	// Performs a Kubernetes CIS benchmark check for the host.
 	KubeCisEnabled pulumi.BoolPtrInput
+	// List of Kubernetes controls.
+	KubernetesControls       ImageAssurancePolicyKubernetesControlsPtrInput
+	KubernetesControlsAvdIds pulumi.StringArrayInput
+	KubernetesControlsNames  pulumi.StringArrayInput
 	// List of labels.
-	Labels        pulumi.StringArrayInput
-	MalwareAction pulumi.StringPtrInput
+	Labels          pulumi.StringArrayInput
+	Lastupdate      pulumi.StringPtrInput
+	LinuxCisEnabled pulumi.BoolPtrInput
+	MalwareAction   pulumi.StringPtrInput
 	// Value of allowed maximum score.
 	MaximumScore pulumi.Float64PtrInput
 	// Indicates if exceeding the maximum score is scanned.
-	MaximumScoreEnabled pulumi.BoolPtrInput
-	// Indicates that policy should ignore cases that do not have a known fix.
+	MaximumScoreEnabled      pulumi.BoolPtrInput
 	MaximumScoreExcludeNoFix pulumi.BoolPtrInput
 	MonitoredMalwarePaths    pulumi.StringArrayInput
 	Name                     pulumi.StringPtrInput
 	// Indicates if raise a warning for images that should only be run as root.
-	OnlyNoneRootUsers pulumi.BoolPtrInput
+	OnlyNoneRootUsers         pulumi.BoolPtrInput
+	OpenshiftHardeningEnabled pulumi.BoolPtrInput
 	// Indicates if packages blacklist is relevant.
 	PackagesBlackListEnabled pulumi.BoolPtrInput
-	// List of backlisted images.
+	// List of blacklisted images.
 	PackagesBlackLists ImageAssurancePolicyPackagesBlackListArrayInput
 	// Indicates if packages whitelist is relevant.
 	PackagesWhiteListEnabled pulumi.BoolPtrInput
 	// List of whitelisted images.
 	PackagesWhiteLists      ImageAssurancePolicyPackagesWhiteListArrayInput
 	PartialResultsImageFail pulumi.BoolPtrInput
+	Permission              pulumi.StringPtrInput
+	PolicySettings          ImageAssurancePolicyPolicySettingsPtrInput
 	ReadOnly                pulumi.BoolPtrInput
 	// List of registries.
 	Registries            pulumi.StringArrayInput
 	Registry              pulumi.StringPtrInput
 	RequiredLabels        ImageAssurancePolicyRequiredLabelArrayInput
 	RequiredLabelsEnabled pulumi.BoolPtrInput
+	ScanMalwareInArchives pulumi.BoolPtrInput
 	ScanNfsMounts         pulumi.BoolPtrInput
+	ScanProcessMemory     pulumi.BoolPtrInput
 	// Indicates if scan should include sensitive data in the image.
-	ScanSensitiveData pulumi.BoolPtrInput
+	ScanSensitiveData   pulumi.BoolPtrInput
+	ScanWindowsRegistry pulumi.BoolPtrInput
 	// Indicates if scanning should include scap.
 	ScapEnabled pulumi.BoolPtrInput
 	// List of SCAP user scripts for checks.
@@ -388,7 +458,9 @@ type ImageAssurancePolicyState struct {
 	// List of trusted images.
 	TrustedBaseImages ImageAssurancePolicyTrustedBaseImageArrayInput
 	// Indicates if list of trusted base images is relevant.
-	TrustedBaseImagesEnabled pulumi.BoolPtrInput
+	TrustedBaseImagesEnabled    pulumi.BoolPtrInput
+	VulnerabilityExploitability pulumi.BoolPtrInput
+	VulnerabilityScoreRanges    pulumi.IntArrayInput
 	// List of whitelisted licenses.
 	WhitelistedLicenses pulumi.StringArrayInput
 	// Indicates if license blacklist is relevant.
@@ -400,11 +472,17 @@ func (ImageAssurancePolicyState) ElementType() reflect.Type {
 }
 
 type imageAssurancePolicyArgs struct {
+	// Aggregated vulnerability information.
+	AggregatedVulnerability map[string]string `pulumi:"aggregatedVulnerability"`
 	// List of explicitly allowed images.
 	AllowedImages     []string `pulumi:"allowedImages"`
 	ApplicationScopes []string `pulumi:"applicationScopes"`
+	// What type of assurance policy is described.
+	AssuranceType *string `pulumi:"assuranceType"`
 	// Indicates if auditing for failures.
-	AuditOnFailure     *bool                              `pulumi:"auditOnFailure"`
+	AuditOnFailure *bool `pulumi:"auditOnFailure"`
+	// Name of user account that created the policy.
+	Author             *string                            `pulumi:"author"`
 	AutoScanConfigured *bool                              `pulumi:"autoScanConfigured"`
 	AutoScanEnabled    *bool                              `pulumi:"autoScanEnabled"`
 	AutoScanTimes      []ImageAssurancePolicyAutoScanTime `pulumi:"autoScanTimes"`
@@ -414,7 +492,7 @@ type imageAssurancePolicyArgs struct {
 	BlacklistPermissionsEnabled *bool `pulumi:"blacklistPermissionsEnabled"`
 	// List of blacklisted licenses.
 	BlacklistedLicenses []string `pulumi:"blacklistedLicenses"`
-	// Lndicates if license blacklist is relevant.
+	// Indicates if license blacklist is relevant.
 	BlacklistedLicensesEnabled *bool `pulumi:"blacklistedLicensesEnabled"`
 	// Indicates if failed images are blocked.
 	BlockFailed         *bool `pulumi:"blockFailed"`
@@ -422,9 +500,10 @@ type imageAssurancePolicyArgs struct {
 	// List of Custom user scripts for checks.
 	CustomChecks []ImageAssurancePolicyCustomCheck `pulumi:"customChecks"`
 	// Indicates if scanning should include custom checks.
-	CustomChecksEnabled   *bool `pulumi:"customChecksEnabled"`
-	CustomSeverityEnabled *bool `pulumi:"customSeverityEnabled"`
-	// Indicates if cves blacklist is relevant.
+	CustomChecksEnabled   *bool   `pulumi:"customChecksEnabled"`
+	CustomSeverity        *string `pulumi:"customSeverity"`
+	CustomSeverityEnabled *bool   `pulumi:"customSeverityEnabled"`
+	// Indicates if CVEs blacklist is relevant.
 	CvesBlackListEnabled *bool `pulumi:"cvesBlackListEnabled"`
 	// List of cves blacklisted items.
 	CvesBlackLists []string `pulumi:"cvesBlackLists"`
@@ -437,10 +516,12 @@ type imageAssurancePolicyArgs struct {
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled *bool `pulumi:"cvssSeverityEnabled"`
 	// Indicates that policy should ignore cvss cases that do not have a known fix.
-	CvssSeverityExcludeNoFix *bool   `pulumi:"cvssSeverityExcludeNoFix"`
-	Description              *string `pulumi:"description"`
+	CvssSeverityExcludeNoFix *bool    `pulumi:"cvssSeverityExcludeNoFix"`
+	Description              *string  `pulumi:"description"`
+	DisallowExploitTypes     []string `pulumi:"disallowExploitTypes"`
 	// Indicates if malware should block the image.
-	DisallowMalware  *bool `pulumi:"disallowMalware"`
+	DisallowMalware *bool `pulumi:"disallowMalware"`
+	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled *bool `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
 	Domain                           *string  `pulumi:"domain"`
@@ -452,51 +533,67 @@ type imageAssurancePolicyArgs struct {
 	EnforceAfterDays                 *int     `pulumi:"enforceAfterDays"`
 	EnforceExcessivePermissions      *bool    `pulumi:"enforceExcessivePermissions"`
 	ExceptionalMonitoredMalwarePaths []string `pulumi:"exceptionalMonitoredMalwarePaths"`
+	ExcludeApplicationScopes         []string `pulumi:"excludeApplicationScopes"`
 	// Indicates if cicd failures will fail the image.
-	FailCicd                   *bool                                `pulumi:"failCicd"`
-	ForbiddenLabels            []ImageAssurancePolicyForbiddenLabel `pulumi:"forbiddenLabels"`
-	ForbiddenLabelsEnabled     *bool                                `pulumi:"forbiddenLabelsEnabled"`
-	ForceMicroenforcer         *bool                                `pulumi:"forceMicroenforcer"`
-	FunctionIntegrityEnabled   *bool                                `pulumi:"functionIntegrityEnabled"`
-	IgnoreRecentlyPublishedVln *bool                                `pulumi:"ignoreRecentlyPublishedVln"`
+	FailCicd                         *bool                                `pulumi:"failCicd"`
+	ForbiddenLabels                  []ImageAssurancePolicyForbiddenLabel `pulumi:"forbiddenLabels"`
+	ForbiddenLabelsEnabled           *bool                                `pulumi:"forbiddenLabelsEnabled"`
+	ForceMicroenforcer               *bool                                `pulumi:"forceMicroenforcer"`
+	FunctionIntegrityEnabled         *bool                                `pulumi:"functionIntegrityEnabled"`
+	IgnoreBaseImageVln               *bool                                `pulumi:"ignoreBaseImageVln"`
+	IgnoreRecentlyPublishedVln       *bool                                `pulumi:"ignoreRecentlyPublishedVln"`
+	IgnoreRecentlyPublishedVlnPeriod *int                                 `pulumi:"ignoreRecentlyPublishedVlnPeriod"`
 	// Indicates if risk resources are ignored.
 	IgnoreRiskResourcesEnabled *bool `pulumi:"ignoreRiskResourcesEnabled"`
 	// List of ignored risk resources.
-	IgnoredRiskResources []string `pulumi:"ignoredRiskResources"`
+	IgnoredRiskResources      []string `pulumi:"ignoredRiskResources"`
+	IgnoredSensitiveResources []string `pulumi:"ignoredSensitiveResources"`
 	// List of images.
-	Images         []string `pulumi:"images"`
-	KubeCisEnabled *bool    `pulumi:"kubeCisEnabled"`
+	Images []string `pulumi:"images"`
+	// Performs a Kubernetes CIS benchmark check for the host.
+	KubeCisEnabled *bool `pulumi:"kubeCisEnabled"`
+	// List of Kubernetes controls.
+	KubernetesControls       *ImageAssurancePolicyKubernetesControls `pulumi:"kubernetesControls"`
+	KubernetesControlsAvdIds []string                                `pulumi:"kubernetesControlsAvdIds"`
+	KubernetesControlsNames  []string                                `pulumi:"kubernetesControlsNames"`
 	// List of labels.
-	Labels        []string `pulumi:"labels"`
-	MalwareAction *string  `pulumi:"malwareAction"`
+	Labels          []string `pulumi:"labels"`
+	Lastupdate      *string  `pulumi:"lastupdate"`
+	LinuxCisEnabled *bool    `pulumi:"linuxCisEnabled"`
+	MalwareAction   *string  `pulumi:"malwareAction"`
 	// Value of allowed maximum score.
 	MaximumScore *float64 `pulumi:"maximumScore"`
 	// Indicates if exceeding the maximum score is scanned.
-	MaximumScoreEnabled *bool `pulumi:"maximumScoreEnabled"`
-	// Indicates that policy should ignore cases that do not have a known fix.
+	MaximumScoreEnabled      *bool    `pulumi:"maximumScoreEnabled"`
 	MaximumScoreExcludeNoFix *bool    `pulumi:"maximumScoreExcludeNoFix"`
 	MonitoredMalwarePaths    []string `pulumi:"monitoredMalwarePaths"`
 	Name                     *string  `pulumi:"name"`
 	// Indicates if raise a warning for images that should only be run as root.
-	OnlyNoneRootUsers *bool `pulumi:"onlyNoneRootUsers"`
+	OnlyNoneRootUsers         *bool `pulumi:"onlyNoneRootUsers"`
+	OpenshiftHardeningEnabled *bool `pulumi:"openshiftHardeningEnabled"`
 	// Indicates if packages blacklist is relevant.
 	PackagesBlackListEnabled *bool `pulumi:"packagesBlackListEnabled"`
-	// List of backlisted images.
+	// List of blacklisted images.
 	PackagesBlackLists []ImageAssurancePolicyPackagesBlackList `pulumi:"packagesBlackLists"`
 	// Indicates if packages whitelist is relevant.
 	PackagesWhiteListEnabled *bool `pulumi:"packagesWhiteListEnabled"`
 	// List of whitelisted images.
 	PackagesWhiteLists      []ImageAssurancePolicyPackagesWhiteList `pulumi:"packagesWhiteLists"`
 	PartialResultsImageFail *bool                                   `pulumi:"partialResultsImageFail"`
+	Permission              *string                                 `pulumi:"permission"`
+	PolicySettings          *ImageAssurancePolicyPolicySettings     `pulumi:"policySettings"`
 	ReadOnly                *bool                                   `pulumi:"readOnly"`
 	// List of registries.
 	Registries            []string                            `pulumi:"registries"`
 	Registry              *string                             `pulumi:"registry"`
 	RequiredLabels        []ImageAssurancePolicyRequiredLabel `pulumi:"requiredLabels"`
 	RequiredLabelsEnabled *bool                               `pulumi:"requiredLabelsEnabled"`
+	ScanMalwareInArchives *bool                               `pulumi:"scanMalwareInArchives"`
 	ScanNfsMounts         *bool                               `pulumi:"scanNfsMounts"`
+	ScanProcessMemory     *bool                               `pulumi:"scanProcessMemory"`
 	// Indicates if scan should include sensitive data in the image.
-	ScanSensitiveData *bool `pulumi:"scanSensitiveData"`
+	ScanSensitiveData   *bool `pulumi:"scanSensitiveData"`
+	ScanWindowsRegistry *bool `pulumi:"scanWindowsRegistry"`
 	// Indicates if scanning should include scap.
 	ScapEnabled *bool `pulumi:"scapEnabled"`
 	// List of SCAP user scripts for checks.
@@ -505,7 +602,9 @@ type imageAssurancePolicyArgs struct {
 	// List of trusted images.
 	TrustedBaseImages []ImageAssurancePolicyTrustedBaseImage `pulumi:"trustedBaseImages"`
 	// Indicates if list of trusted base images is relevant.
-	TrustedBaseImagesEnabled *bool `pulumi:"trustedBaseImagesEnabled"`
+	TrustedBaseImagesEnabled    *bool `pulumi:"trustedBaseImagesEnabled"`
+	VulnerabilityExploitability *bool `pulumi:"vulnerabilityExploitability"`
+	VulnerabilityScoreRanges    []int `pulumi:"vulnerabilityScoreRanges"`
 	// List of whitelisted licenses.
 	WhitelistedLicenses []string `pulumi:"whitelistedLicenses"`
 	// Indicates if license blacklist is relevant.
@@ -514,11 +613,17 @@ type imageAssurancePolicyArgs struct {
 
 // The set of arguments for constructing a ImageAssurancePolicy resource.
 type ImageAssurancePolicyArgs struct {
+	// Aggregated vulnerability information.
+	AggregatedVulnerability pulumi.StringMapInput
 	// List of explicitly allowed images.
 	AllowedImages     pulumi.StringArrayInput
 	ApplicationScopes pulumi.StringArrayInput
+	// What type of assurance policy is described.
+	AssuranceType pulumi.StringPtrInput
 	// Indicates if auditing for failures.
-	AuditOnFailure     pulumi.BoolPtrInput
+	AuditOnFailure pulumi.BoolPtrInput
+	// Name of user account that created the policy.
+	Author             pulumi.StringPtrInput
 	AutoScanConfigured pulumi.BoolPtrInput
 	AutoScanEnabled    pulumi.BoolPtrInput
 	AutoScanTimes      ImageAssurancePolicyAutoScanTimeArrayInput
@@ -528,7 +633,7 @@ type ImageAssurancePolicyArgs struct {
 	BlacklistPermissionsEnabled pulumi.BoolPtrInput
 	// List of blacklisted licenses.
 	BlacklistedLicenses pulumi.StringArrayInput
-	// Lndicates if license blacklist is relevant.
+	// Indicates if license blacklist is relevant.
 	BlacklistedLicensesEnabled pulumi.BoolPtrInput
 	// Indicates if failed images are blocked.
 	BlockFailed         pulumi.BoolPtrInput
@@ -537,8 +642,9 @@ type ImageAssurancePolicyArgs struct {
 	CustomChecks ImageAssurancePolicyCustomCheckArrayInput
 	// Indicates if scanning should include custom checks.
 	CustomChecksEnabled   pulumi.BoolPtrInput
+	CustomSeverity        pulumi.StringPtrInput
 	CustomSeverityEnabled pulumi.BoolPtrInput
-	// Indicates if cves blacklist is relevant.
+	// Indicates if CVEs blacklist is relevant.
 	CvesBlackListEnabled pulumi.BoolPtrInput
 	// List of cves blacklisted items.
 	CvesBlackLists pulumi.StringArrayInput
@@ -553,8 +659,10 @@ type ImageAssurancePolicyArgs struct {
 	// Indicates that policy should ignore cvss cases that do not have a known fix.
 	CvssSeverityExcludeNoFix pulumi.BoolPtrInput
 	Description              pulumi.StringPtrInput
+	DisallowExploitTypes     pulumi.StringArrayInput
 	// Indicates if malware should block the image.
-	DisallowMalware  pulumi.BoolPtrInput
+	DisallowMalware pulumi.BoolPtrInput
+	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled pulumi.BoolPtrInput
 	// Name of the container image.
 	Domain                           pulumi.StringPtrInput
@@ -566,51 +674,67 @@ type ImageAssurancePolicyArgs struct {
 	EnforceAfterDays                 pulumi.IntPtrInput
 	EnforceExcessivePermissions      pulumi.BoolPtrInput
 	ExceptionalMonitoredMalwarePaths pulumi.StringArrayInput
+	ExcludeApplicationScopes         pulumi.StringArrayInput
 	// Indicates if cicd failures will fail the image.
-	FailCicd                   pulumi.BoolPtrInput
-	ForbiddenLabels            ImageAssurancePolicyForbiddenLabelArrayInput
-	ForbiddenLabelsEnabled     pulumi.BoolPtrInput
-	ForceMicroenforcer         pulumi.BoolPtrInput
-	FunctionIntegrityEnabled   pulumi.BoolPtrInput
-	IgnoreRecentlyPublishedVln pulumi.BoolPtrInput
+	FailCicd                         pulumi.BoolPtrInput
+	ForbiddenLabels                  ImageAssurancePolicyForbiddenLabelArrayInput
+	ForbiddenLabelsEnabled           pulumi.BoolPtrInput
+	ForceMicroenforcer               pulumi.BoolPtrInput
+	FunctionIntegrityEnabled         pulumi.BoolPtrInput
+	IgnoreBaseImageVln               pulumi.BoolPtrInput
+	IgnoreRecentlyPublishedVln       pulumi.BoolPtrInput
+	IgnoreRecentlyPublishedVlnPeriod pulumi.IntPtrInput
 	// Indicates if risk resources are ignored.
 	IgnoreRiskResourcesEnabled pulumi.BoolPtrInput
 	// List of ignored risk resources.
-	IgnoredRiskResources pulumi.StringArrayInput
+	IgnoredRiskResources      pulumi.StringArrayInput
+	IgnoredSensitiveResources pulumi.StringArrayInput
 	// List of images.
-	Images         pulumi.StringArrayInput
+	Images pulumi.StringArrayInput
+	// Performs a Kubernetes CIS benchmark check for the host.
 	KubeCisEnabled pulumi.BoolPtrInput
+	// List of Kubernetes controls.
+	KubernetesControls       ImageAssurancePolicyKubernetesControlsPtrInput
+	KubernetesControlsAvdIds pulumi.StringArrayInput
+	KubernetesControlsNames  pulumi.StringArrayInput
 	// List of labels.
-	Labels        pulumi.StringArrayInput
-	MalwareAction pulumi.StringPtrInput
+	Labels          pulumi.StringArrayInput
+	Lastupdate      pulumi.StringPtrInput
+	LinuxCisEnabled pulumi.BoolPtrInput
+	MalwareAction   pulumi.StringPtrInput
 	// Value of allowed maximum score.
 	MaximumScore pulumi.Float64PtrInput
 	// Indicates if exceeding the maximum score is scanned.
-	MaximumScoreEnabled pulumi.BoolPtrInput
-	// Indicates that policy should ignore cases that do not have a known fix.
+	MaximumScoreEnabled      pulumi.BoolPtrInput
 	MaximumScoreExcludeNoFix pulumi.BoolPtrInput
 	MonitoredMalwarePaths    pulumi.StringArrayInput
 	Name                     pulumi.StringPtrInput
 	// Indicates if raise a warning for images that should only be run as root.
-	OnlyNoneRootUsers pulumi.BoolPtrInput
+	OnlyNoneRootUsers         pulumi.BoolPtrInput
+	OpenshiftHardeningEnabled pulumi.BoolPtrInput
 	// Indicates if packages blacklist is relevant.
 	PackagesBlackListEnabled pulumi.BoolPtrInput
-	// List of backlisted images.
+	// List of blacklisted images.
 	PackagesBlackLists ImageAssurancePolicyPackagesBlackListArrayInput
 	// Indicates if packages whitelist is relevant.
 	PackagesWhiteListEnabled pulumi.BoolPtrInput
 	// List of whitelisted images.
 	PackagesWhiteLists      ImageAssurancePolicyPackagesWhiteListArrayInput
 	PartialResultsImageFail pulumi.BoolPtrInput
+	Permission              pulumi.StringPtrInput
+	PolicySettings          ImageAssurancePolicyPolicySettingsPtrInput
 	ReadOnly                pulumi.BoolPtrInput
 	// List of registries.
 	Registries            pulumi.StringArrayInput
 	Registry              pulumi.StringPtrInput
 	RequiredLabels        ImageAssurancePolicyRequiredLabelArrayInput
 	RequiredLabelsEnabled pulumi.BoolPtrInput
+	ScanMalwareInArchives pulumi.BoolPtrInput
 	ScanNfsMounts         pulumi.BoolPtrInput
+	ScanProcessMemory     pulumi.BoolPtrInput
 	// Indicates if scan should include sensitive data in the image.
-	ScanSensitiveData pulumi.BoolPtrInput
+	ScanSensitiveData   pulumi.BoolPtrInput
+	ScanWindowsRegistry pulumi.BoolPtrInput
 	// Indicates if scanning should include scap.
 	ScapEnabled pulumi.BoolPtrInput
 	// List of SCAP user scripts for checks.
@@ -619,7 +743,9 @@ type ImageAssurancePolicyArgs struct {
 	// List of trusted images.
 	TrustedBaseImages ImageAssurancePolicyTrustedBaseImageArrayInput
 	// Indicates if list of trusted base images is relevant.
-	TrustedBaseImagesEnabled pulumi.BoolPtrInput
+	TrustedBaseImagesEnabled    pulumi.BoolPtrInput
+	VulnerabilityExploitability pulumi.BoolPtrInput
+	VulnerabilityScoreRanges    pulumi.IntArrayInput
 	// List of whitelisted licenses.
 	WhitelistedLicenses pulumi.StringArrayInput
 	// Indicates if license blacklist is relevant.
@@ -649,12 +775,6 @@ func (i *ImageAssurancePolicy) ToImageAssurancePolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssurancePolicyOutput)
 }
 
-func (i *ImageAssurancePolicy) ToOutput(ctx context.Context) pulumix.Output[*ImageAssurancePolicy] {
-	return pulumix.Output[*ImageAssurancePolicy]{
-		OutputState: i.ToImageAssurancePolicyOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ImageAssurancePolicyArrayInput is an input type that accepts ImageAssurancePolicyArray and ImageAssurancePolicyArrayOutput values.
 // You can construct a concrete instance of `ImageAssurancePolicyArrayInput` via:
 //
@@ -678,12 +798,6 @@ func (i ImageAssurancePolicyArray) ToImageAssurancePolicyArrayOutput() ImageAssu
 
 func (i ImageAssurancePolicyArray) ToImageAssurancePolicyArrayOutputWithContext(ctx context.Context) ImageAssurancePolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssurancePolicyArrayOutput)
-}
-
-func (i ImageAssurancePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ImageAssurancePolicy] {
-	return pulumix.Output[[]*ImageAssurancePolicy]{
-		OutputState: i.ToImageAssurancePolicyArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ImageAssurancePolicyMapInput is an input type that accepts ImageAssurancePolicyMap and ImageAssurancePolicyMapOutput values.
@@ -711,12 +825,6 @@ func (i ImageAssurancePolicyMap) ToImageAssurancePolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ImageAssurancePolicyMapOutput)
 }
 
-func (i ImageAssurancePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageAssurancePolicy] {
-	return pulumix.Output[map[string]*ImageAssurancePolicy]{
-		OutputState: i.ToImageAssurancePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ImageAssurancePolicyOutput struct{ *pulumi.OutputState }
 
 func (ImageAssurancePolicyOutput) ElementType() reflect.Type {
@@ -731,10 +839,9 @@ func (o ImageAssurancePolicyOutput) ToImageAssurancePolicyOutputWithContext(ctx 
 	return o
 }
 
-func (o ImageAssurancePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ImageAssurancePolicy] {
-	return pulumix.Output[*ImageAssurancePolicy]{
-		OutputState: o.OutputState,
-	}
+// Aggregated vulnerability information.
+func (o ImageAssurancePolicyOutput) AggregatedVulnerability() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringMapOutput { return v.AggregatedVulnerability }).(pulumi.StringMapOutput)
 }
 
 // List of explicitly allowed images.
@@ -744,6 +851,11 @@ func (o ImageAssurancePolicyOutput) AllowedImages() pulumi.StringArrayOutput {
 
 func (o ImageAssurancePolicyOutput) ApplicationScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
+}
+
+// What type of assurance policy is described.
+func (o ImageAssurancePolicyOutput) AssuranceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringOutput { return v.AssuranceType }).(pulumi.StringOutput)
 }
 
 // Indicates if auditing for failures.
@@ -783,7 +895,7 @@ func (o ImageAssurancePolicyOutput) BlacklistedLicenses() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.BlacklistedLicenses }).(pulumi.StringArrayOutput)
 }
 
-// Lndicates if license blacklist is relevant.
+// Indicates if license blacklist is relevant.
 func (o ImageAssurancePolicyOutput) BlacklistedLicensesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.BlacklistedLicensesEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -807,11 +919,15 @@ func (o ImageAssurancePolicyOutput) CustomChecksEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.CustomChecksEnabled }).(pulumi.BoolPtrOutput)
 }
 
+func (o ImageAssurancePolicyOutput) CustomSeverity() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringOutput { return v.CustomSeverity }).(pulumi.StringOutput)
+}
+
 func (o ImageAssurancePolicyOutput) CustomSeverityEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.CustomSeverityEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates if cves blacklist is relevant.
+// Indicates if CVEs blacklist is relevant.
 func (o ImageAssurancePolicyOutput) CvesBlackListEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.CvesBlackListEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -850,11 +966,16 @@ func (o ImageAssurancePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o ImageAssurancePolicyOutput) DisallowExploitTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.DisallowExploitTypes }).(pulumi.StringArrayOutput)
+}
+
 // Indicates if malware should block the image.
 func (o ImageAssurancePolicyOutput) DisallowMalware() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.DisallowMalware }).(pulumi.BoolPtrOutput)
 }
 
+// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 func (o ImageAssurancePolicyOutput) DockerCisEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.DockerCisEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -896,6 +1017,10 @@ func (o ImageAssurancePolicyOutput) ExceptionalMonitoredMalwarePaths() pulumi.St
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.ExceptionalMonitoredMalwarePaths }).(pulumi.StringArrayOutput)
 }
 
+func (o ImageAssurancePolicyOutput) ExcludeApplicationScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.ExcludeApplicationScopes }).(pulumi.StringArrayOutput)
+}
+
 // Indicates if cicd failures will fail the image.
 func (o ImageAssurancePolicyOutput) FailCicd() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.FailCicd }).(pulumi.BoolPtrOutput)
@@ -917,6 +1042,10 @@ func (o ImageAssurancePolicyOutput) FunctionIntegrityEnabled() pulumi.BoolPtrOut
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.FunctionIntegrityEnabled }).(pulumi.BoolPtrOutput)
 }
 
+func (o ImageAssurancePolicyOutput) IgnoreBaseImageVln() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.IgnoreBaseImageVln }).(pulumi.BoolPtrOutput)
+}
+
 func (o ImageAssurancePolicyOutput) IgnoreRecentlyPublishedVln() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.IgnoreRecentlyPublishedVln }).(pulumi.BoolPtrOutput)
 }
@@ -935,18 +1064,46 @@ func (o ImageAssurancePolicyOutput) IgnoredRiskResources() pulumi.StringArrayOut
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.IgnoredRiskResources }).(pulumi.StringArrayOutput)
 }
 
+func (o ImageAssurancePolicyOutput) IgnoredSensitiveResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.IgnoredSensitiveResources }).(pulumi.StringArrayOutput)
+}
+
 // List of images.
 func (o ImageAssurancePolicyOutput) Images() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.Images }).(pulumi.StringArrayOutput)
 }
 
+// Performs a Kubernetes CIS benchmark check for the host.
 func (o ImageAssurancePolicyOutput) KubeCisEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.KubeCisEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of Kubernetes controls.
+func (o ImageAssurancePolicyOutput) KubernetesControls() ImageAssurancePolicyKubernetesControlsPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) ImageAssurancePolicyKubernetesControlsPtrOutput {
+		return v.KubernetesControls
+	}).(ImageAssurancePolicyKubernetesControlsPtrOutput)
+}
+
+func (o ImageAssurancePolicyOutput) KubernetesControlsAvdIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.KubernetesControlsAvdIds }).(pulumi.StringArrayOutput)
+}
+
+func (o ImageAssurancePolicyOutput) KubernetesControlsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.KubernetesControlsNames }).(pulumi.StringArrayOutput)
 }
 
 // List of labels.
 func (o ImageAssurancePolicyOutput) Labels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.Labels }).(pulumi.StringArrayOutput)
+}
+
+func (o ImageAssurancePolicyOutput) Lastupdate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringOutput { return v.Lastupdate }).(pulumi.StringOutput)
+}
+
+func (o ImageAssurancePolicyOutput) LinuxCisEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.LinuxCisEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o ImageAssurancePolicyOutput) MalwareAction() pulumi.StringPtrOutput {
@@ -963,7 +1120,6 @@ func (o ImageAssurancePolicyOutput) MaximumScoreEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.MaximumScoreEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates that policy should ignore cases that do not have a known fix.
 func (o ImageAssurancePolicyOutput) MaximumScoreExcludeNoFix() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.MaximumScoreExcludeNoFix }).(pulumi.BoolPtrOutput)
 }
@@ -981,12 +1137,16 @@ func (o ImageAssurancePolicyOutput) OnlyNoneRootUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.OnlyNoneRootUsers }).(pulumi.BoolPtrOutput)
 }
 
+func (o ImageAssurancePolicyOutput) OpenshiftHardeningEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.OpenshiftHardeningEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Indicates if packages blacklist is relevant.
 func (o ImageAssurancePolicyOutput) PackagesBlackListEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.PackagesBlackListEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// List of backlisted images.
+// List of blacklisted images.
 func (o ImageAssurancePolicyOutput) PackagesBlackLists() ImageAssurancePolicyPackagesBlackListArrayOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) ImageAssurancePolicyPackagesBlackListArrayOutput {
 		return v.PackagesBlackLists
@@ -1007,6 +1167,14 @@ func (o ImageAssurancePolicyOutput) PackagesWhiteLists() ImageAssurancePolicyPac
 
 func (o ImageAssurancePolicyOutput) PartialResultsImageFail() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.PartialResultsImageFail }).(pulumi.BoolPtrOutput)
+}
+
+func (o ImageAssurancePolicyOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
+}
+
+func (o ImageAssurancePolicyOutput) PolicySettings() ImageAssurancePolicyPolicySettingsOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) ImageAssurancePolicyPolicySettingsOutput { return v.PolicySettings }).(ImageAssurancePolicyPolicySettingsOutput)
 }
 
 func (o ImageAssurancePolicyOutput) ReadOnly() pulumi.BoolPtrOutput {
@@ -1030,13 +1198,25 @@ func (o ImageAssurancePolicyOutput) RequiredLabelsEnabled() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.RequiredLabelsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+func (o ImageAssurancePolicyOutput) ScanMalwareInArchives() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.ScanMalwareInArchives }).(pulumi.BoolPtrOutput)
+}
+
 func (o ImageAssurancePolicyOutput) ScanNfsMounts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.ScanNfsMounts }).(pulumi.BoolPtrOutput)
+}
+
+func (o ImageAssurancePolicyOutput) ScanProcessMemory() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.ScanProcessMemory }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if scan should include sensitive data in the image.
 func (o ImageAssurancePolicyOutput) ScanSensitiveData() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.ScanSensitiveData }).(pulumi.BoolPtrOutput)
+}
+
+func (o ImageAssurancePolicyOutput) ScanWindowsRegistry() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.ScanWindowsRegistry }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates if scanning should include scap.
@@ -1065,6 +1245,14 @@ func (o ImageAssurancePolicyOutput) TrustedBaseImagesEnabled() pulumi.BoolPtrOut
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.TrustedBaseImagesEnabled }).(pulumi.BoolPtrOutput)
 }
 
+func (o ImageAssurancePolicyOutput) VulnerabilityExploitability() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.BoolPtrOutput { return v.VulnerabilityExploitability }).(pulumi.BoolPtrOutput)
+}
+
+func (o ImageAssurancePolicyOutput) VulnerabilityScoreRanges() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.IntArrayOutput { return v.VulnerabilityScoreRanges }).(pulumi.IntArrayOutput)
+}
+
 // List of whitelisted licenses.
 func (o ImageAssurancePolicyOutput) WhitelistedLicenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.WhitelistedLicenses }).(pulumi.StringArrayOutput)
@@ -1089,12 +1277,6 @@ func (o ImageAssurancePolicyArrayOutput) ToImageAssurancePolicyArrayOutputWithCo
 	return o
 }
 
-func (o ImageAssurancePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ImageAssurancePolicy] {
-	return pulumix.Output[[]*ImageAssurancePolicy]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ImageAssurancePolicyArrayOutput) Index(i pulumi.IntInput) ImageAssurancePolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ImageAssurancePolicy {
 		return vs[0].([]*ImageAssurancePolicy)[vs[1].(int)]
@@ -1113,12 +1295,6 @@ func (o ImageAssurancePolicyMapOutput) ToImageAssurancePolicyMapOutput() ImageAs
 
 func (o ImageAssurancePolicyMapOutput) ToImageAssurancePolicyMapOutputWithContext(ctx context.Context) ImageAssurancePolicyMapOutput {
 	return o
-}
-
-func (o ImageAssurancePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ImageAssurancePolicy] {
-	return pulumix.Output[map[string]*ImageAssurancePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ImageAssurancePolicyMapOutput) MapIndex(k pulumi.StringInput) ImageAssurancePolicyOutput {

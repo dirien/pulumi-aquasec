@@ -8,82 +8,60 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aquasec.NewFunctionRuntimePolicy(ctx, "functionRuntimePolicy", &aquasec.FunctionRuntimePolicyArgs{
-//				ApplicationScopes: pulumi.StringArray{
-//					pulumi.String("Global"),
-//				},
-//				BlockMaliciousExecutables: pulumi.Bool(true),
-//				BlockMaliciousExecutablesAllowedProcesses: pulumi.StringArray{
-//					pulumi.String("proc1"),
-//					pulumi.String("proc2"),
-//				},
-//				BlockRunningExecutablesInTmpFolder: pulumi.Bool(true),
-//				BlockedExecutables: pulumi.StringArray{
-//					pulumi.String("exe1"),
-//					pulumi.String("exe2"),
-//				},
-//				Description: pulumi.String("function_runtime_policy"),
-//				Enabled:     pulumi.Bool(true),
-//				Enforce:     pulumi.Bool(false),
-//				ScopeVariables: aquasec.FunctionRuntimePolicyScopeVariableArray{
-//					&aquasec.FunctionRuntimePolicyScopeVariableArgs{
-//						Attribute: pulumi.String("kubernetes.cluster"),
-//						Value:     pulumi.String("default"),
-//					},
-//					&aquasec.FunctionRuntimePolicyScopeVariableArgs{
-//						Attribute: pulumi.String("kubernetes.label"),
-//						Name:      pulumi.String("app"),
-//						Value:     pulumi.String("aqua"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type FunctionRuntimePolicy struct {
 	pulumi.CustomResourceState
 
+	// Allowed executables configuration.
+	AllowedExecutables FunctionRuntimePolicyAllowedExecutableArrayOutput `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries FunctionRuntimePolicyAllowedRegistryArrayOutput `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayOutput `pulumi:"applicationScopes"`
+	// Detects brute force login attempts
+	AuditBruteForceLogin pulumi.BoolPtrOutput                `pulumi:"auditBruteForceLogin"`
+	Auditing             FunctionRuntimePolicyAuditingOutput `pulumi:"auditing"`
 	// Username of the account that created the service.
-	Author pulumi.StringOutput `pulumi:"author"`
-	// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-	BlockMaliciousExecutables pulumi.BoolPtrOutput `pulumi:"blockMaliciousExecutables"`
-	// List of processes that will be allowed
-	BlockMaliciousExecutablesAllowedProcesses pulumi.StringArrayOutput `pulumi:"blockMaliciousExecutablesAllowedProcesses"`
-	// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-	BlockRunningExecutablesInTmpFolder pulumi.BoolPtrOutput `pulumi:"blockRunningExecutablesInTmpFolder"`
-	// List of executables that are prevented from running in containers.
-	BlockedExecutables pulumi.StringArrayOutput `pulumi:"blockedExecutables"`
+	Author                     pulumi.StringOutput                           `pulumi:"author"`
+	BlacklistedOsUsers         FunctionRuntimePolicyBlacklistedOsUsersOutput `pulumi:"blacklistedOsUsers"`
+	BlockContainerExec         pulumi.BoolPtrOutput                          `pulumi:"blockContainerExec"`
+	BlockDisallowedImages      pulumi.BoolPtrOutput                          `pulumi:"blockDisallowedImages"`
+	BlockFilelessExec          pulumi.BoolPtrOutput                          `pulumi:"blockFilelessExec"`
+	BlockNonCompliantWorkloads pulumi.BoolPtrOutput                          `pulumi:"blockNonCompliantWorkloads"`
+	BlockNonK8sContainers      pulumi.BoolPtrOutput                          `pulumi:"blockNonK8sContainers"`
+	// Bypass scope configuration.
+	BypassScopes           FunctionRuntimePolicyBypassScopeArrayOutput `pulumi:"bypassScopes"`
+	ContainerExec          FunctionRuntimePolicyContainerExecOutput    `pulumi:"containerExec"`
+	Created                pulumi.StringOutput                         `pulumi:"created"`
+	Cve                    pulumi.StringPtrOutput                      `pulumi:"cve"`
+	DefaultSecurityProfile pulumi.StringPtrOutput                      `pulumi:"defaultSecurityProfile"`
 	// The description of the function runtime policy
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Indicates if the runtime policy is enabled or not.
+	Digest      pulumi.StringPtrOutput `pulumi:"digest"`
+	// Drift prevention configuration.
+	DriftPreventions         FunctionRuntimePolicyDriftPreventionArrayOutput `pulumi:"driftPreventions"`
+	EnableCryptoMiningDns    pulumi.BoolPtrOutput                            `pulumi:"enableCryptoMiningDns"`
+	EnableForkGuard          pulumi.BoolPtrOutput                            `pulumi:"enableForkGuard"`
+	EnableIpReputation       pulumi.BoolPtrOutput                            `pulumi:"enableIpReputation"`
+	EnablePortScanProtection pulumi.BoolPtrOutput                            `pulumi:"enablePortScanProtection"`
+	// Whether allowed executables configuration is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrOutput `pulumi:"enforce"`
+	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+	EnforceAfterDays        pulumi.IntPtrOutput `pulumi:"enforceAfterDays"`
+	EnforceSchedulerAddedOn pulumi.IntPtrOutput `pulumi:"enforceSchedulerAddedOn"`
+	// List of excluded application scopes.
+	ExcludeApplicationScopes pulumi.StringArrayOutput `pulumi:"excludeApplicationScopes"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists   FunctionRuntimePolicyExecutableBlacklistArrayOutput `pulumi:"executableBlacklists"`
+	FailedKubernetesChecks FunctionRuntimePolicyFailedKubernetesChecksOutput   `pulumi:"failedKubernetesChecks"`
+	FileBlock              FunctionRuntimePolicyFileBlockOutput                `pulumi:"fileBlock"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings FunctionRuntimePolicyFileIntegrityMonitoringArrayOutput `pulumi:"fileIntegrityMonitorings"`
+	ForkGuardProcessLimit    pulumi.IntPtrOutput                                     `pulumi:"forkGuardProcessLimit"`
 	// Honeypot User ID (Access Key)
 	HoneypotAccessKey pulumi.StringPtrOutput `pulumi:"honeypotAccessKey"`
 	// List of options to apply the honeypot on (Environment Vairable, Layer, File)
@@ -92,12 +70,48 @@ type FunctionRuntimePolicy struct {
 	HoneypotSecretKey pulumi.StringPtrOutput `pulumi:"honeypotSecretKey"`
 	// Serverless application name
 	HoneypotServerlessAppName pulumi.StringPtrOutput `pulumi:"honeypotServerlessAppName"`
-	// Name of the function runtime policy
-	Name pulumi.StringOutput `pulumi:"name"`
+	ImageName                 pulumi.StringPtrOutput `pulumi:"imageName"`
+	IsAuditChecked            pulumi.BoolPtrOutput   `pulumi:"isAuditChecked"`
+	IsAutoGenerated           pulumi.BoolPtrOutput   `pulumi:"isAutoGenerated"`
+	IsOotbPolicy              pulumi.BoolPtrOutput   `pulumi:"isOotbPolicy"`
+	Lastupdate                pulumi.IntOutput       `pulumi:"lastupdate"`
+	// Container privileges configuration.
+	LimitContainerPrivileges FunctionRuntimePolicyLimitContainerPrivilegeArrayOutput `pulumi:"limitContainerPrivileges"`
+	LinuxCapabilities        FunctionRuntimePolicyLinuxCapabilitiesOutput            `pulumi:"linuxCapabilities"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions FunctionRuntimePolicyMalwareScanOptionsPtrOutput `pulumi:"malwareScanOptions"`
+	// Name assigned to the attribute.
+	Name                     pulumi.StringOutput                                 `pulumi:"name"`
+	NoNewPrivileges          pulumi.BoolPtrOutput                                `pulumi:"noNewPrivileges"`
+	OnlyRegisteredImages     pulumi.BoolPtrOutput                                `pulumi:"onlyRegisteredImages"`
+	PackageBlock             FunctionRuntimePolicyPackageBlockOutput             `pulumi:"packageBlock"`
+	Permission               pulumi.StringPtrOutput                              `pulumi:"permission"`
+	PortBlock                FunctionRuntimePolicyPortBlockOutput                `pulumi:"portBlock"`
+	ReadonlyFiles            FunctionRuntimePolicyReadonlyFilesOutput            `pulumi:"readonlyFiles"`
+	ReadonlyRegistry         FunctionRuntimePolicyReadonlyRegistryOutput         `pulumi:"readonlyRegistry"`
+	Registry                 pulumi.StringPtrOutput                              `pulumi:"registry"`
+	RegistryAccessMonitoring FunctionRuntimePolicyRegistryAccessMonitoringOutput `pulumi:"registryAccessMonitoring"`
+	RepoName                 pulumi.StringPtrOutput                              `pulumi:"repoName"`
+	ResourceName             pulumi.StringPtrOutput                              `pulumi:"resourceName"`
+	ResourceType             pulumi.StringPtrOutput                              `pulumi:"resourceType"`
+	// Restricted volumes configuration.
+	RestrictedVolumes FunctionRuntimePolicyRestrictedVolumeArrayOutput `pulumi:"restrictedVolumes"`
+	ReverseShell      FunctionRuntimePolicyReverseShellOutput          `pulumi:"reverseShell"`
+	RuntimeMode       pulumi.IntPtrOutput                              `pulumi:"runtimeMode"`
+	RuntimeType       pulumi.StringPtrOutput                           `pulumi:"runtimeType"`
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression pulumi.StringOutput `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables FunctionRuntimePolicyScopeVariableArrayOutput `pulumi:"scopeVariables"`
+	// Scope configuration.
+	Scopes                    FunctionRuntimePolicyScopeArrayOutput                `pulumi:"scopes"`
+	SystemIntegrityProtection FunctionRuntimePolicySystemIntegrityProtectionOutput `pulumi:"systemIntegrityProtection"`
+	Tripwire                  FunctionRuntimePolicyTripwireOutput                  `pulumi:"tripwire"`
+	Type                      pulumi.StringPtrOutput                               `pulumi:"type"`
+	Updated                   pulumi.StringOutput                                  `pulumi:"updated"`
+	Version                   pulumi.StringPtrOutput                               `pulumi:"version"`
+	VpatchVersion             pulumi.StringPtrOutput                               `pulumi:"vpatchVersion"`
+	WhitelistedOsUsers        FunctionRuntimePolicyWhitelistedOsUsersOutput        `pulumi:"whitelistedOsUsers"`
 }
 
 // NewFunctionRuntimePolicy registers a new resource with the given unique name, arguments, and options.
@@ -137,24 +151,54 @@ func GetFunctionRuntimePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FunctionRuntimePolicy resources.
 type functionRuntimePolicyState struct {
+	// Allowed executables configuration.
+	AllowedExecutables []FunctionRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries []FunctionRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
+	// Detects brute force login attempts
+	AuditBruteForceLogin *bool                          `pulumi:"auditBruteForceLogin"`
+	Auditing             *FunctionRuntimePolicyAuditing `pulumi:"auditing"`
 	// Username of the account that created the service.
-	Author *string `pulumi:"author"`
-	// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-	BlockMaliciousExecutables *bool `pulumi:"blockMaliciousExecutables"`
-	// List of processes that will be allowed
-	BlockMaliciousExecutablesAllowedProcesses []string `pulumi:"blockMaliciousExecutablesAllowedProcesses"`
-	// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-	BlockRunningExecutablesInTmpFolder *bool `pulumi:"blockRunningExecutablesInTmpFolder"`
-	// List of executables that are prevented from running in containers.
-	BlockedExecutables []string `pulumi:"blockedExecutables"`
+	Author                     *string                                  `pulumi:"author"`
+	BlacklistedOsUsers         *FunctionRuntimePolicyBlacklistedOsUsers `pulumi:"blacklistedOsUsers"`
+	BlockContainerExec         *bool                                    `pulumi:"blockContainerExec"`
+	BlockDisallowedImages      *bool                                    `pulumi:"blockDisallowedImages"`
+	BlockFilelessExec          *bool                                    `pulumi:"blockFilelessExec"`
+	BlockNonCompliantWorkloads *bool                                    `pulumi:"blockNonCompliantWorkloads"`
+	BlockNonK8sContainers      *bool                                    `pulumi:"blockNonK8sContainers"`
+	// Bypass scope configuration.
+	BypassScopes           []FunctionRuntimePolicyBypassScope  `pulumi:"bypassScopes"`
+	ContainerExec          *FunctionRuntimePolicyContainerExec `pulumi:"containerExec"`
+	Created                *string                             `pulumi:"created"`
+	Cve                    *string                             `pulumi:"cve"`
+	DefaultSecurityProfile *string                             `pulumi:"defaultSecurityProfile"`
 	// The description of the function runtime policy
 	Description *string `pulumi:"description"`
-	// Indicates if the runtime policy is enabled or not.
+	Digest      *string `pulumi:"digest"`
+	// Drift prevention configuration.
+	DriftPreventions         []FunctionRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
+	EnableCryptoMiningDns    *bool                                  `pulumi:"enableCryptoMiningDns"`
+	EnableForkGuard          *bool                                  `pulumi:"enableForkGuard"`
+	EnableIpReputation       *bool                                  `pulumi:"enableIpReputation"`
+	EnablePortScanProtection *bool                                  `pulumi:"enablePortScanProtection"`
+	// Whether allowed executables configuration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
+	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+	EnforceAfterDays        *int `pulumi:"enforceAfterDays"`
+	EnforceSchedulerAddedOn *int `pulumi:"enforceSchedulerAddedOn"`
+	// List of excluded application scopes.
+	ExcludeApplicationScopes []string `pulumi:"excludeApplicationScopes"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists   []FunctionRuntimePolicyExecutableBlacklist   `pulumi:"executableBlacklists"`
+	FailedKubernetesChecks *FunctionRuntimePolicyFailedKubernetesChecks `pulumi:"failedKubernetesChecks"`
+	FileBlock              *FunctionRuntimePolicyFileBlock              `pulumi:"fileBlock"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings []FunctionRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
+	ForkGuardProcessLimit    *int                                           `pulumi:"forkGuardProcessLimit"`
 	// Honeypot User ID (Access Key)
 	HoneypotAccessKey *string `pulumi:"honeypotAccessKey"`
 	// List of options to apply the honeypot on (Environment Vairable, Layer, File)
@@ -163,33 +207,99 @@ type functionRuntimePolicyState struct {
 	HoneypotSecretKey *string `pulumi:"honeypotSecretKey"`
 	// Serverless application name
 	HoneypotServerlessAppName *string `pulumi:"honeypotServerlessAppName"`
-	// Name of the function runtime policy
-	Name *string `pulumi:"name"`
+	ImageName                 *string `pulumi:"imageName"`
+	IsAuditChecked            *bool   `pulumi:"isAuditChecked"`
+	IsAutoGenerated           *bool   `pulumi:"isAutoGenerated"`
+	IsOotbPolicy              *bool   `pulumi:"isOotbPolicy"`
+	Lastupdate                *int    `pulumi:"lastupdate"`
+	// Container privileges configuration.
+	LimitContainerPrivileges []FunctionRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
+	LinuxCapabilities        *FunctionRuntimePolicyLinuxCapabilities        `pulumi:"linuxCapabilities"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions *FunctionRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
+	// Name assigned to the attribute.
+	Name                     *string                                        `pulumi:"name"`
+	NoNewPrivileges          *bool                                          `pulumi:"noNewPrivileges"`
+	OnlyRegisteredImages     *bool                                          `pulumi:"onlyRegisteredImages"`
+	PackageBlock             *FunctionRuntimePolicyPackageBlock             `pulumi:"packageBlock"`
+	Permission               *string                                        `pulumi:"permission"`
+	PortBlock                *FunctionRuntimePolicyPortBlock                `pulumi:"portBlock"`
+	ReadonlyFiles            *FunctionRuntimePolicyReadonlyFiles            `pulumi:"readonlyFiles"`
+	ReadonlyRegistry         *FunctionRuntimePolicyReadonlyRegistry         `pulumi:"readonlyRegistry"`
+	Registry                 *string                                        `pulumi:"registry"`
+	RegistryAccessMonitoring *FunctionRuntimePolicyRegistryAccessMonitoring `pulumi:"registryAccessMonitoring"`
+	RepoName                 *string                                        `pulumi:"repoName"`
+	ResourceName             *string                                        `pulumi:"resourceName"`
+	ResourceType             *string                                        `pulumi:"resourceType"`
+	// Restricted volumes configuration.
+	RestrictedVolumes []FunctionRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
+	ReverseShell      *FunctionRuntimePolicyReverseShell      `pulumi:"reverseShell"`
+	RuntimeMode       *int                                    `pulumi:"runtimeMode"`
+	RuntimeType       *string                                 `pulumi:"runtimeType"`
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression *string `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables []FunctionRuntimePolicyScopeVariable `pulumi:"scopeVariables"`
+	// Scope configuration.
+	Scopes                    []FunctionRuntimePolicyScope                    `pulumi:"scopes"`
+	SystemIntegrityProtection *FunctionRuntimePolicySystemIntegrityProtection `pulumi:"systemIntegrityProtection"`
+	Tripwire                  *FunctionRuntimePolicyTripwire                  `pulumi:"tripwire"`
+	Type                      *string                                         `pulumi:"type"`
+	Updated                   *string                                         `pulumi:"updated"`
+	Version                   *string                                         `pulumi:"version"`
+	VpatchVersion             *string                                         `pulumi:"vpatchVersion"`
+	WhitelistedOsUsers        *FunctionRuntimePolicyWhitelistedOsUsers        `pulumi:"whitelistedOsUsers"`
 }
 
 type FunctionRuntimePolicyState struct {
+	// Allowed executables configuration.
+	AllowedExecutables FunctionRuntimePolicyAllowedExecutableArrayInput
+	// List of allowed registries.
+	AllowedRegistries FunctionRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
+	// Detects brute force login attempts
+	AuditBruteForceLogin pulumi.BoolPtrInput
+	Auditing             FunctionRuntimePolicyAuditingPtrInput
 	// Username of the account that created the service.
-	Author pulumi.StringPtrInput
-	// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-	BlockMaliciousExecutables pulumi.BoolPtrInput
-	// List of processes that will be allowed
-	BlockMaliciousExecutablesAllowedProcesses pulumi.StringArrayInput
-	// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-	BlockRunningExecutablesInTmpFolder pulumi.BoolPtrInput
-	// List of executables that are prevented from running in containers.
-	BlockedExecutables pulumi.StringArrayInput
+	Author                     pulumi.StringPtrInput
+	BlacklistedOsUsers         FunctionRuntimePolicyBlacklistedOsUsersPtrInput
+	BlockContainerExec         pulumi.BoolPtrInput
+	BlockDisallowedImages      pulumi.BoolPtrInput
+	BlockFilelessExec          pulumi.BoolPtrInput
+	BlockNonCompliantWorkloads pulumi.BoolPtrInput
+	BlockNonK8sContainers      pulumi.BoolPtrInput
+	// Bypass scope configuration.
+	BypassScopes           FunctionRuntimePolicyBypassScopeArrayInput
+	ContainerExec          FunctionRuntimePolicyContainerExecPtrInput
+	Created                pulumi.StringPtrInput
+	Cve                    pulumi.StringPtrInput
+	DefaultSecurityProfile pulumi.StringPtrInput
 	// The description of the function runtime policy
 	Description pulumi.StringPtrInput
-	// Indicates if the runtime policy is enabled or not.
+	Digest      pulumi.StringPtrInput
+	// Drift prevention configuration.
+	DriftPreventions         FunctionRuntimePolicyDriftPreventionArrayInput
+	EnableCryptoMiningDns    pulumi.BoolPtrInput
+	EnableForkGuard          pulumi.BoolPtrInput
+	EnableIpReputation       pulumi.BoolPtrInput
+	EnablePortScanProtection pulumi.BoolPtrInput
+	// Whether allowed executables configuration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
+	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+	EnforceAfterDays        pulumi.IntPtrInput
+	EnforceSchedulerAddedOn pulumi.IntPtrInput
+	// List of excluded application scopes.
+	ExcludeApplicationScopes pulumi.StringArrayInput
+	// Executable blacklist configuration.
+	ExecutableBlacklists   FunctionRuntimePolicyExecutableBlacklistArrayInput
+	FailedKubernetesChecks FunctionRuntimePolicyFailedKubernetesChecksPtrInput
+	FileBlock              FunctionRuntimePolicyFileBlockPtrInput
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings FunctionRuntimePolicyFileIntegrityMonitoringArrayInput
+	ForkGuardProcessLimit    pulumi.IntPtrInput
 	// Honeypot User ID (Access Key)
 	HoneypotAccessKey pulumi.StringPtrInput
 	// List of options to apply the honeypot on (Environment Vairable, Layer, File)
@@ -198,12 +308,48 @@ type FunctionRuntimePolicyState struct {
 	HoneypotSecretKey pulumi.StringPtrInput
 	// Serverless application name
 	HoneypotServerlessAppName pulumi.StringPtrInput
-	// Name of the function runtime policy
-	Name pulumi.StringPtrInput
+	ImageName                 pulumi.StringPtrInput
+	IsAuditChecked            pulumi.BoolPtrInput
+	IsAutoGenerated           pulumi.BoolPtrInput
+	IsOotbPolicy              pulumi.BoolPtrInput
+	Lastupdate                pulumi.IntPtrInput
+	// Container privileges configuration.
+	LimitContainerPrivileges FunctionRuntimePolicyLimitContainerPrivilegeArrayInput
+	LinuxCapabilities        FunctionRuntimePolicyLinuxCapabilitiesPtrInput
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions FunctionRuntimePolicyMalwareScanOptionsPtrInput
+	// Name assigned to the attribute.
+	Name                     pulumi.StringPtrInput
+	NoNewPrivileges          pulumi.BoolPtrInput
+	OnlyRegisteredImages     pulumi.BoolPtrInput
+	PackageBlock             FunctionRuntimePolicyPackageBlockPtrInput
+	Permission               pulumi.StringPtrInput
+	PortBlock                FunctionRuntimePolicyPortBlockPtrInput
+	ReadonlyFiles            FunctionRuntimePolicyReadonlyFilesPtrInput
+	ReadonlyRegistry         FunctionRuntimePolicyReadonlyRegistryPtrInput
+	Registry                 pulumi.StringPtrInput
+	RegistryAccessMonitoring FunctionRuntimePolicyRegistryAccessMonitoringPtrInput
+	RepoName                 pulumi.StringPtrInput
+	ResourceName             pulumi.StringPtrInput
+	ResourceType             pulumi.StringPtrInput
+	// Restricted volumes configuration.
+	RestrictedVolumes FunctionRuntimePolicyRestrictedVolumeArrayInput
+	ReverseShell      FunctionRuntimePolicyReverseShellPtrInput
+	RuntimeMode       pulumi.IntPtrInput
+	RuntimeType       pulumi.StringPtrInput
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression pulumi.StringPtrInput
 	// List of scope attributes.
 	ScopeVariables FunctionRuntimePolicyScopeVariableArrayInput
+	// Scope configuration.
+	Scopes                    FunctionRuntimePolicyScopeArrayInput
+	SystemIntegrityProtection FunctionRuntimePolicySystemIntegrityProtectionPtrInput
+	Tripwire                  FunctionRuntimePolicyTripwirePtrInput
+	Type                      pulumi.StringPtrInput
+	Updated                   pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
+	VpatchVersion             pulumi.StringPtrInput
+	WhitelistedOsUsers        FunctionRuntimePolicyWhitelistedOsUsersPtrInput
 }
 
 func (FunctionRuntimePolicyState) ElementType() reflect.Type {
@@ -211,22 +357,54 @@ func (FunctionRuntimePolicyState) ElementType() reflect.Type {
 }
 
 type functionRuntimePolicyArgs struct {
+	// Allowed executables configuration.
+	AllowedExecutables []FunctionRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
+	// List of allowed registries.
+	AllowedRegistries []FunctionRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
-	// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-	BlockMaliciousExecutables *bool `pulumi:"blockMaliciousExecutables"`
-	// List of processes that will be allowed
-	BlockMaliciousExecutablesAllowedProcesses []string `pulumi:"blockMaliciousExecutablesAllowedProcesses"`
-	// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-	BlockRunningExecutablesInTmpFolder *bool `pulumi:"blockRunningExecutablesInTmpFolder"`
-	// List of executables that are prevented from running in containers.
-	BlockedExecutables []string `pulumi:"blockedExecutables"`
+	// Detects brute force login attempts
+	AuditBruteForceLogin *bool                          `pulumi:"auditBruteForceLogin"`
+	Auditing             *FunctionRuntimePolicyAuditing `pulumi:"auditing"`
+	// Username of the account that created the service.
+	Author                     *string                                  `pulumi:"author"`
+	BlacklistedOsUsers         *FunctionRuntimePolicyBlacklistedOsUsers `pulumi:"blacklistedOsUsers"`
+	BlockContainerExec         *bool                                    `pulumi:"blockContainerExec"`
+	BlockDisallowedImages      *bool                                    `pulumi:"blockDisallowedImages"`
+	BlockFilelessExec          *bool                                    `pulumi:"blockFilelessExec"`
+	BlockNonCompliantWorkloads *bool                                    `pulumi:"blockNonCompliantWorkloads"`
+	BlockNonK8sContainers      *bool                                    `pulumi:"blockNonK8sContainers"`
+	// Bypass scope configuration.
+	BypassScopes           []FunctionRuntimePolicyBypassScope  `pulumi:"bypassScopes"`
+	ContainerExec          *FunctionRuntimePolicyContainerExec `pulumi:"containerExec"`
+	Created                *string                             `pulumi:"created"`
+	Cve                    *string                             `pulumi:"cve"`
+	DefaultSecurityProfile *string                             `pulumi:"defaultSecurityProfile"`
 	// The description of the function runtime policy
 	Description *string `pulumi:"description"`
-	// Indicates if the runtime policy is enabled or not.
+	Digest      *string `pulumi:"digest"`
+	// Drift prevention configuration.
+	DriftPreventions         []FunctionRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
+	EnableCryptoMiningDns    *bool                                  `pulumi:"enableCryptoMiningDns"`
+	EnableForkGuard          *bool                                  `pulumi:"enableForkGuard"`
+	EnableIpReputation       *bool                                  `pulumi:"enableIpReputation"`
+	EnablePortScanProtection *bool                                  `pulumi:"enablePortScanProtection"`
+	// Whether allowed executables configuration is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
+	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+	EnforceAfterDays        *int `pulumi:"enforceAfterDays"`
+	EnforceSchedulerAddedOn *int `pulumi:"enforceSchedulerAddedOn"`
+	// List of excluded application scopes.
+	ExcludeApplicationScopes []string `pulumi:"excludeApplicationScopes"`
+	// Executable blacklist configuration.
+	ExecutableBlacklists   []FunctionRuntimePolicyExecutableBlacklist   `pulumi:"executableBlacklists"`
+	FailedKubernetesChecks *FunctionRuntimePolicyFailedKubernetesChecks `pulumi:"failedKubernetesChecks"`
+	FileBlock              *FunctionRuntimePolicyFileBlock              `pulumi:"fileBlock"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings []FunctionRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
+	ForkGuardProcessLimit    *int                                           `pulumi:"forkGuardProcessLimit"`
 	// Honeypot User ID (Access Key)
 	HoneypotAccessKey *string `pulumi:"honeypotAccessKey"`
 	// List of options to apply the honeypot on (Environment Vairable, Layer, File)
@@ -235,32 +413,100 @@ type functionRuntimePolicyArgs struct {
 	HoneypotSecretKey *string `pulumi:"honeypotSecretKey"`
 	// Serverless application name
 	HoneypotServerlessAppName *string `pulumi:"honeypotServerlessAppName"`
-	// Name of the function runtime policy
-	Name *string `pulumi:"name"`
+	ImageName                 *string `pulumi:"imageName"`
+	IsAuditChecked            *bool   `pulumi:"isAuditChecked"`
+	IsAutoGenerated           *bool   `pulumi:"isAutoGenerated"`
+	IsOotbPolicy              *bool   `pulumi:"isOotbPolicy"`
+	Lastupdate                *int    `pulumi:"lastupdate"`
+	// Container privileges configuration.
+	LimitContainerPrivileges []FunctionRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
+	LinuxCapabilities        *FunctionRuntimePolicyLinuxCapabilities        `pulumi:"linuxCapabilities"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions *FunctionRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
+	// Name assigned to the attribute.
+	Name                     *string                                        `pulumi:"name"`
+	NoNewPrivileges          *bool                                          `pulumi:"noNewPrivileges"`
+	OnlyRegisteredImages     *bool                                          `pulumi:"onlyRegisteredImages"`
+	PackageBlock             *FunctionRuntimePolicyPackageBlock             `pulumi:"packageBlock"`
+	Permission               *string                                        `pulumi:"permission"`
+	PortBlock                *FunctionRuntimePolicyPortBlock                `pulumi:"portBlock"`
+	ReadonlyFiles            *FunctionRuntimePolicyReadonlyFiles            `pulumi:"readonlyFiles"`
+	ReadonlyRegistry         *FunctionRuntimePolicyReadonlyRegistry         `pulumi:"readonlyRegistry"`
+	Registry                 *string                                        `pulumi:"registry"`
+	RegistryAccessMonitoring *FunctionRuntimePolicyRegistryAccessMonitoring `pulumi:"registryAccessMonitoring"`
+	RepoName                 *string                                        `pulumi:"repoName"`
+	ResourceName             *string                                        `pulumi:"resourceName"`
+	ResourceType             *string                                        `pulumi:"resourceType"`
+	// Restricted volumes configuration.
+	RestrictedVolumes []FunctionRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
+	ReverseShell      *FunctionRuntimePolicyReverseShell      `pulumi:"reverseShell"`
+	RuntimeMode       *int                                    `pulumi:"runtimeMode"`
+	RuntimeType       *string                                 `pulumi:"runtimeType"`
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression *string `pulumi:"scopeExpression"`
 	// List of scope attributes.
 	ScopeVariables []FunctionRuntimePolicyScopeVariable `pulumi:"scopeVariables"`
+	// Scope configuration.
+	Scopes                    []FunctionRuntimePolicyScope                    `pulumi:"scopes"`
+	SystemIntegrityProtection *FunctionRuntimePolicySystemIntegrityProtection `pulumi:"systemIntegrityProtection"`
+	Tripwire                  *FunctionRuntimePolicyTripwire                  `pulumi:"tripwire"`
+	Type                      *string                                         `pulumi:"type"`
+	Updated                   *string                                         `pulumi:"updated"`
+	Version                   *string                                         `pulumi:"version"`
+	VpatchVersion             *string                                         `pulumi:"vpatchVersion"`
+	WhitelistedOsUsers        *FunctionRuntimePolicyWhitelistedOsUsers        `pulumi:"whitelistedOsUsers"`
 }
 
 // The set of arguments for constructing a FunctionRuntimePolicy resource.
 type FunctionRuntimePolicyArgs struct {
+	// Allowed executables configuration.
+	AllowedExecutables FunctionRuntimePolicyAllowedExecutableArrayInput
+	// List of allowed registries.
+	AllowedRegistries FunctionRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
-	// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-	BlockMaliciousExecutables pulumi.BoolPtrInput
-	// List of processes that will be allowed
-	BlockMaliciousExecutablesAllowedProcesses pulumi.StringArrayInput
-	// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-	BlockRunningExecutablesInTmpFolder pulumi.BoolPtrInput
-	// List of executables that are prevented from running in containers.
-	BlockedExecutables pulumi.StringArrayInput
+	// Detects brute force login attempts
+	AuditBruteForceLogin pulumi.BoolPtrInput
+	Auditing             FunctionRuntimePolicyAuditingPtrInput
+	// Username of the account that created the service.
+	Author                     pulumi.StringPtrInput
+	BlacklistedOsUsers         FunctionRuntimePolicyBlacklistedOsUsersPtrInput
+	BlockContainerExec         pulumi.BoolPtrInput
+	BlockDisallowedImages      pulumi.BoolPtrInput
+	BlockFilelessExec          pulumi.BoolPtrInput
+	BlockNonCompliantWorkloads pulumi.BoolPtrInput
+	BlockNonK8sContainers      pulumi.BoolPtrInput
+	// Bypass scope configuration.
+	BypassScopes           FunctionRuntimePolicyBypassScopeArrayInput
+	ContainerExec          FunctionRuntimePolicyContainerExecPtrInput
+	Created                pulumi.StringPtrInput
+	Cve                    pulumi.StringPtrInput
+	DefaultSecurityProfile pulumi.StringPtrInput
 	// The description of the function runtime policy
 	Description pulumi.StringPtrInput
-	// Indicates if the runtime policy is enabled or not.
+	Digest      pulumi.StringPtrInput
+	// Drift prevention configuration.
+	DriftPreventions         FunctionRuntimePolicyDriftPreventionArrayInput
+	EnableCryptoMiningDns    pulumi.BoolPtrInput
+	EnableForkGuard          pulumi.BoolPtrInput
+	EnableIpReputation       pulumi.BoolPtrInput
+	EnablePortScanProtection pulumi.BoolPtrInput
+	// Whether allowed executables configuration is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
+	// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+	EnforceAfterDays        pulumi.IntPtrInput
+	EnforceSchedulerAddedOn pulumi.IntPtrInput
+	// List of excluded application scopes.
+	ExcludeApplicationScopes pulumi.StringArrayInput
+	// Executable blacklist configuration.
+	ExecutableBlacklists   FunctionRuntimePolicyExecutableBlacklistArrayInput
+	FailedKubernetesChecks FunctionRuntimePolicyFailedKubernetesChecksPtrInput
+	FileBlock              FunctionRuntimePolicyFileBlockPtrInput
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings FunctionRuntimePolicyFileIntegrityMonitoringArrayInput
+	ForkGuardProcessLimit    pulumi.IntPtrInput
 	// Honeypot User ID (Access Key)
 	HoneypotAccessKey pulumi.StringPtrInput
 	// List of options to apply the honeypot on (Environment Vairable, Layer, File)
@@ -269,12 +515,48 @@ type FunctionRuntimePolicyArgs struct {
 	HoneypotSecretKey pulumi.StringPtrInput
 	// Serverless application name
 	HoneypotServerlessAppName pulumi.StringPtrInput
-	// Name of the function runtime policy
-	Name pulumi.StringPtrInput
+	ImageName                 pulumi.StringPtrInput
+	IsAuditChecked            pulumi.BoolPtrInput
+	IsAutoGenerated           pulumi.BoolPtrInput
+	IsOotbPolicy              pulumi.BoolPtrInput
+	Lastupdate                pulumi.IntPtrInput
+	// Container privileges configuration.
+	LimitContainerPrivileges FunctionRuntimePolicyLimitContainerPrivilegeArrayInput
+	LinuxCapabilities        FunctionRuntimePolicyLinuxCapabilitiesPtrInput
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions FunctionRuntimePolicyMalwareScanOptionsPtrInput
+	// Name assigned to the attribute.
+	Name                     pulumi.StringPtrInput
+	NoNewPrivileges          pulumi.BoolPtrInput
+	OnlyRegisteredImages     pulumi.BoolPtrInput
+	PackageBlock             FunctionRuntimePolicyPackageBlockPtrInput
+	Permission               pulumi.StringPtrInput
+	PortBlock                FunctionRuntimePolicyPortBlockPtrInput
+	ReadonlyFiles            FunctionRuntimePolicyReadonlyFilesPtrInput
+	ReadonlyRegistry         FunctionRuntimePolicyReadonlyRegistryPtrInput
+	Registry                 pulumi.StringPtrInput
+	RegistryAccessMonitoring FunctionRuntimePolicyRegistryAccessMonitoringPtrInput
+	RepoName                 pulumi.StringPtrInput
+	ResourceName             pulumi.StringPtrInput
+	ResourceType             pulumi.StringPtrInput
+	// Restricted volumes configuration.
+	RestrictedVolumes FunctionRuntimePolicyRestrictedVolumeArrayInput
+	ReverseShell      FunctionRuntimePolicyReverseShellPtrInput
+	RuntimeMode       pulumi.IntPtrInput
+	RuntimeType       pulumi.StringPtrInput
 	// Logical expression of how to compute the dependency of the scope variables.
 	ScopeExpression pulumi.StringPtrInput
 	// List of scope attributes.
 	ScopeVariables FunctionRuntimePolicyScopeVariableArrayInput
+	// Scope configuration.
+	Scopes                    FunctionRuntimePolicyScopeArrayInput
+	SystemIntegrityProtection FunctionRuntimePolicySystemIntegrityProtectionPtrInput
+	Tripwire                  FunctionRuntimePolicyTripwirePtrInput
+	Type                      pulumi.StringPtrInput
+	Updated                   pulumi.StringPtrInput
+	Version                   pulumi.StringPtrInput
+	VpatchVersion             pulumi.StringPtrInput
+	WhitelistedOsUsers        FunctionRuntimePolicyWhitelistedOsUsersPtrInput
 }
 
 func (FunctionRuntimePolicyArgs) ElementType() reflect.Type {
@@ -298,12 +580,6 @@ func (i *FunctionRuntimePolicy) ToFunctionRuntimePolicyOutput() FunctionRuntimeP
 
 func (i *FunctionRuntimePolicy) ToFunctionRuntimePolicyOutputWithContext(ctx context.Context) FunctionRuntimePolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionRuntimePolicyOutput)
-}
-
-func (i *FunctionRuntimePolicy) ToOutput(ctx context.Context) pulumix.Output[*FunctionRuntimePolicy] {
-	return pulumix.Output[*FunctionRuntimePolicy]{
-		OutputState: i.ToFunctionRuntimePolicyOutputWithContext(ctx).OutputState,
-	}
 }
 
 // FunctionRuntimePolicyArrayInput is an input type that accepts FunctionRuntimePolicyArray and FunctionRuntimePolicyArrayOutput values.
@@ -331,12 +607,6 @@ func (i FunctionRuntimePolicyArray) ToFunctionRuntimePolicyArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionRuntimePolicyArrayOutput)
 }
 
-func (i FunctionRuntimePolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionRuntimePolicy] {
-	return pulumix.Output[[]*FunctionRuntimePolicy]{
-		OutputState: i.ToFunctionRuntimePolicyArrayOutputWithContext(ctx).OutputState,
-	}
-}
-
 // FunctionRuntimePolicyMapInput is an input type that accepts FunctionRuntimePolicyMap and FunctionRuntimePolicyMapOutput values.
 // You can construct a concrete instance of `FunctionRuntimePolicyMapInput` via:
 //
@@ -362,12 +632,6 @@ func (i FunctionRuntimePolicyMap) ToFunctionRuntimePolicyMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionRuntimePolicyMapOutput)
 }
 
-func (i FunctionRuntimePolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionRuntimePolicy] {
-	return pulumix.Output[map[string]*FunctionRuntimePolicy]{
-		OutputState: i.ToFunctionRuntimePolicyMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type FunctionRuntimePolicyOutput struct{ *pulumi.OutputState }
 
 func (FunctionRuntimePolicyOutput) ElementType() reflect.Type {
@@ -382,10 +646,18 @@ func (o FunctionRuntimePolicyOutput) ToFunctionRuntimePolicyOutputWithContext(ct
 	return o
 }
 
-func (o FunctionRuntimePolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*FunctionRuntimePolicy] {
-	return pulumix.Output[*FunctionRuntimePolicy]{
-		OutputState: o.OutputState,
-	}
+// Allowed executables configuration.
+func (o FunctionRuntimePolicyOutput) AllowedExecutables() FunctionRuntimePolicyAllowedExecutableArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyAllowedExecutableArrayOutput {
+		return v.AllowedExecutables
+	}).(FunctionRuntimePolicyAllowedExecutableArrayOutput)
+}
+
+// List of allowed registries.
+func (o FunctionRuntimePolicyOutput) AllowedRegistries() FunctionRuntimePolicyAllowedRegistryArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyAllowedRegistryArrayOutput {
+		return v.AllowedRegistries
+	}).(FunctionRuntimePolicyAllowedRegistryArrayOutput)
 }
 
 // Indicates the application scope of the service.
@@ -393,31 +665,65 @@ func (o FunctionRuntimePolicyOutput) ApplicationScopes() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringArrayOutput { return v.ApplicationScopes }).(pulumi.StringArrayOutput)
 }
 
+// Detects brute force login attempts
+func (o FunctionRuntimePolicyOutput) AuditBruteForceLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.AuditBruteForceLogin }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Auditing() FunctionRuntimePolicyAuditingOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyAuditingOutput { return v.Auditing }).(FunctionRuntimePolicyAuditingOutput)
+}
+
 // Username of the account that created the service.
 func (o FunctionRuntimePolicyOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringOutput { return v.Author }).(pulumi.StringOutput)
 }
 
-// If true, prevent creation of malicious executables in functions during their runtime post invocation.
-func (o FunctionRuntimePolicyOutput) BlockMaliciousExecutables() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockMaliciousExecutables }).(pulumi.BoolPtrOutput)
+func (o FunctionRuntimePolicyOutput) BlacklistedOsUsers() FunctionRuntimePolicyBlacklistedOsUsersOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyBlacklistedOsUsersOutput {
+		return v.BlacklistedOsUsers
+	}).(FunctionRuntimePolicyBlacklistedOsUsersOutput)
 }
 
-// List of processes that will be allowed
-func (o FunctionRuntimePolicyOutput) BlockMaliciousExecutablesAllowedProcesses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringArrayOutput {
-		return v.BlockMaliciousExecutablesAllowedProcesses
-	}).(pulumi.StringArrayOutput)
+func (o FunctionRuntimePolicyOutput) BlockContainerExec() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockContainerExec }).(pulumi.BoolPtrOutput)
 }
 
-// If true, prevent running of executables in functions locate in /tmp folder during their runtime post invocation.
-func (o FunctionRuntimePolicyOutput) BlockRunningExecutablesInTmpFolder() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockRunningExecutablesInTmpFolder }).(pulumi.BoolPtrOutput)
+func (o FunctionRuntimePolicyOutput) BlockDisallowedImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockDisallowedImages }).(pulumi.BoolPtrOutput)
 }
 
-// List of executables that are prevented from running in containers.
-func (o FunctionRuntimePolicyOutput) BlockedExecutables() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringArrayOutput { return v.BlockedExecutables }).(pulumi.StringArrayOutput)
+func (o FunctionRuntimePolicyOutput) BlockFilelessExec() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockFilelessExec }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) BlockNonCompliantWorkloads() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockNonCompliantWorkloads }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) BlockNonK8sContainers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.BlockNonK8sContainers }).(pulumi.BoolPtrOutput)
+}
+
+// Bypass scope configuration.
+func (o FunctionRuntimePolicyOutput) BypassScopes() FunctionRuntimePolicyBypassScopeArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyBypassScopeArrayOutput { return v.BypassScopes }).(FunctionRuntimePolicyBypassScopeArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ContainerExec() FunctionRuntimePolicyContainerExecOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyContainerExecOutput { return v.ContainerExec }).(FunctionRuntimePolicyContainerExecOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Cve() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Cve }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) DefaultSecurityProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.DefaultSecurityProfile }).(pulumi.StringPtrOutput)
 }
 
 // The description of the function runtime policy
@@ -425,7 +731,34 @@ func (o FunctionRuntimePolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Indicates if the runtime policy is enabled or not.
+func (o FunctionRuntimePolicyOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// Drift prevention configuration.
+func (o FunctionRuntimePolicyOutput) DriftPreventions() FunctionRuntimePolicyDriftPreventionArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyDriftPreventionArrayOutput {
+		return v.DriftPreventions
+	}).(FunctionRuntimePolicyDriftPreventionArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) EnableCryptoMiningDns() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableCryptoMiningDns }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) EnableForkGuard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableForkGuard }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) EnableIpReputation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.EnableIpReputation }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) EnablePortScanProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.EnablePortScanProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether allowed executables configuration is enabled.
 func (o FunctionRuntimePolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -433,6 +766,48 @@ func (o FunctionRuntimePolicyOutput) Enabled() pulumi.BoolPtrOutput {
 // Indicates that policy should effect container execution (not just for audit).
 func (o FunctionRuntimePolicyOutput) Enforce() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.Enforce }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the number of days after which the runtime policy will be changed to enforce mode.
+func (o FunctionRuntimePolicyOutput) EnforceAfterDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.IntPtrOutput { return v.EnforceAfterDays }).(pulumi.IntPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) EnforceSchedulerAddedOn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.IntPtrOutput { return v.EnforceSchedulerAddedOn }).(pulumi.IntPtrOutput)
+}
+
+// List of excluded application scopes.
+func (o FunctionRuntimePolicyOutput) ExcludeApplicationScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringArrayOutput { return v.ExcludeApplicationScopes }).(pulumi.StringArrayOutput)
+}
+
+// Executable blacklist configuration.
+func (o FunctionRuntimePolicyOutput) ExecutableBlacklists() FunctionRuntimePolicyExecutableBlacklistArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyExecutableBlacklistArrayOutput {
+		return v.ExecutableBlacklists
+	}).(FunctionRuntimePolicyExecutableBlacklistArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) FailedKubernetesChecks() FunctionRuntimePolicyFailedKubernetesChecksOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyFailedKubernetesChecksOutput {
+		return v.FailedKubernetesChecks
+	}).(FunctionRuntimePolicyFailedKubernetesChecksOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) FileBlock() FunctionRuntimePolicyFileBlockOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyFileBlockOutput { return v.FileBlock }).(FunctionRuntimePolicyFileBlockOutput)
+}
+
+// Configuration for file integrity monitoring.
+func (o FunctionRuntimePolicyOutput) FileIntegrityMonitorings() FunctionRuntimePolicyFileIntegrityMonitoringArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyFileIntegrityMonitoringArrayOutput {
+		return v.FileIntegrityMonitorings
+	}).(FunctionRuntimePolicyFileIntegrityMonitoringArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ForkGuardProcessLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.IntPtrOutput { return v.ForkGuardProcessLimit }).(pulumi.IntPtrOutput)
 }
 
 // Honeypot User ID (Access Key)
@@ -455,9 +830,118 @@ func (o FunctionRuntimePolicyOutput) HoneypotServerlessAppName() pulumi.StringPt
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.HoneypotServerlessAppName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the function runtime policy
+func (o FunctionRuntimePolicyOutput) ImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) IsAuditChecked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.IsAuditChecked }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) IsAutoGenerated() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.IsAutoGenerated }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) IsOotbPolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.IsOotbPolicy }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Lastupdate() pulumi.IntOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.IntOutput { return v.Lastupdate }).(pulumi.IntOutput)
+}
+
+// Container privileges configuration.
+func (o FunctionRuntimePolicyOutput) LimitContainerPrivileges() FunctionRuntimePolicyLimitContainerPrivilegeArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyLimitContainerPrivilegeArrayOutput {
+		return v.LimitContainerPrivileges
+	}).(FunctionRuntimePolicyLimitContainerPrivilegeArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) LinuxCapabilities() FunctionRuntimePolicyLinuxCapabilitiesOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyLinuxCapabilitiesOutput {
+		return v.LinuxCapabilities
+	}).(FunctionRuntimePolicyLinuxCapabilitiesOutput)
+}
+
+// Configuration for Real-Time Malware Protection.
+func (o FunctionRuntimePolicyOutput) MalwareScanOptions() FunctionRuntimePolicyMalwareScanOptionsPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyMalwareScanOptionsPtrOutput {
+		return v.MalwareScanOptions
+	}).(FunctionRuntimePolicyMalwareScanOptionsPtrOutput)
+}
+
+// Name assigned to the attribute.
 func (o FunctionRuntimePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) NoNewPrivileges() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.NoNewPrivileges }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) OnlyRegisteredImages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.BoolPtrOutput { return v.OnlyRegisteredImages }).(pulumi.BoolPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) PackageBlock() FunctionRuntimePolicyPackageBlockOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyPackageBlockOutput { return v.PackageBlock }).(FunctionRuntimePolicyPackageBlockOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) PortBlock() FunctionRuntimePolicyPortBlockOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyPortBlockOutput { return v.PortBlock }).(FunctionRuntimePolicyPortBlockOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ReadonlyFiles() FunctionRuntimePolicyReadonlyFilesOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyReadonlyFilesOutput { return v.ReadonlyFiles }).(FunctionRuntimePolicyReadonlyFilesOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ReadonlyRegistry() FunctionRuntimePolicyReadonlyRegistryOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyReadonlyRegistryOutput { return v.ReadonlyRegistry }).(FunctionRuntimePolicyReadonlyRegistryOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Registry() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Registry }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) RegistryAccessMonitoring() FunctionRuntimePolicyRegistryAccessMonitoringOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyRegistryAccessMonitoringOutput {
+		return v.RegistryAccessMonitoring
+	}).(FunctionRuntimePolicyRegistryAccessMonitoringOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) RepoName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.RepoName }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.ResourceName }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Restricted volumes configuration.
+func (o FunctionRuntimePolicyOutput) RestrictedVolumes() FunctionRuntimePolicyRestrictedVolumeArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyRestrictedVolumeArrayOutput {
+		return v.RestrictedVolumes
+	}).(FunctionRuntimePolicyRestrictedVolumeArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) ReverseShell() FunctionRuntimePolicyReverseShellOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyReverseShellOutput { return v.ReverseShell }).(FunctionRuntimePolicyReverseShellOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) RuntimeMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.IntPtrOutput { return v.RuntimeMode }).(pulumi.IntPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) RuntimeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.RuntimeType }).(pulumi.StringPtrOutput)
 }
 
 // Logical expression of how to compute the dependency of the scope variables.
@@ -468,6 +952,43 @@ func (o FunctionRuntimePolicyOutput) ScopeExpression() pulumi.StringOutput {
 // List of scope attributes.
 func (o FunctionRuntimePolicyOutput) ScopeVariables() FunctionRuntimePolicyScopeVariableArrayOutput {
 	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyScopeVariableArrayOutput { return v.ScopeVariables }).(FunctionRuntimePolicyScopeVariableArrayOutput)
+}
+
+// Scope configuration.
+func (o FunctionRuntimePolicyOutput) Scopes() FunctionRuntimePolicyScopeArrayOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyScopeArrayOutput { return v.Scopes }).(FunctionRuntimePolicyScopeArrayOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) SystemIntegrityProtection() FunctionRuntimePolicySystemIntegrityProtectionOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicySystemIntegrityProtectionOutput {
+		return v.SystemIntegrityProtection
+	}).(FunctionRuntimePolicySystemIntegrityProtectionOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Tripwire() FunctionRuntimePolicyTripwireOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyTripwireOutput { return v.Tripwire }).(FunctionRuntimePolicyTripwireOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) VpatchVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) pulumi.StringPtrOutput { return v.VpatchVersion }).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionRuntimePolicyOutput) WhitelistedOsUsers() FunctionRuntimePolicyWhitelistedOsUsersOutput {
+	return o.ApplyT(func(v *FunctionRuntimePolicy) FunctionRuntimePolicyWhitelistedOsUsersOutput {
+		return v.WhitelistedOsUsers
+	}).(FunctionRuntimePolicyWhitelistedOsUsersOutput)
 }
 
 type FunctionRuntimePolicyArrayOutput struct{ *pulumi.OutputState }
@@ -482,12 +1003,6 @@ func (o FunctionRuntimePolicyArrayOutput) ToFunctionRuntimePolicyArrayOutput() F
 
 func (o FunctionRuntimePolicyArrayOutput) ToFunctionRuntimePolicyArrayOutputWithContext(ctx context.Context) FunctionRuntimePolicyArrayOutput {
 	return o
-}
-
-func (o FunctionRuntimePolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FunctionRuntimePolicy] {
-	return pulumix.Output[[]*FunctionRuntimePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionRuntimePolicyArrayOutput) Index(i pulumi.IntInput) FunctionRuntimePolicyOutput {
@@ -508,12 +1023,6 @@ func (o FunctionRuntimePolicyMapOutput) ToFunctionRuntimePolicyMapOutput() Funct
 
 func (o FunctionRuntimePolicyMapOutput) ToFunctionRuntimePolicyMapOutputWithContext(ctx context.Context) FunctionRuntimePolicyMapOutput {
 	return o
-}
-
-func (o FunctionRuntimePolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FunctionRuntimePolicy] {
-	return pulumix.Output[map[string]*FunctionRuntimePolicy]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o FunctionRuntimePolicyMapOutput) MapIndex(k pulumi.StringInput) FunctionRuntimePolicyOutput {

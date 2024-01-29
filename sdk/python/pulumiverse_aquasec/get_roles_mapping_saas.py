@@ -14,6 +14,7 @@ __all__ = [
     'GetRolesMappingSaasResult',
     'AwaitableGetRolesMappingSaasResult',
     'get_roles_mapping_saas',
+    'get_roles_mapping_saas_output',
 ]
 
 @pulumi.output_type
@@ -72,3 +73,19 @@ def get_roles_mapping_saas(opts: Optional[pulumi.InvokeOptions] = None) -> Await
     return AwaitableGetRolesMappingSaasResult(
         id=pulumi.get(__ret__, 'id'),
         roles_mappings=pulumi.get(__ret__, 'roles_mappings'))
+
+
+@_utilities.lift_output_func(get_roles_mapping_saas)
+def get_roles_mapping_saas_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesMappingSaasResult]:
+    """
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    roles_mapping_saas = aquasec.get_roles_mapping_saas()
+    pulumi.export("roleMapping", roles_mapping_saas.roles_mappings)
+    ```
+    """
+    ...

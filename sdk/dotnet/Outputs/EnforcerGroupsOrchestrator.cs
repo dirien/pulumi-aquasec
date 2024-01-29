@@ -23,9 +23,6 @@ namespace Pulumiverse.Aquasec.Outputs
         /// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
         /// </summary>
         public readonly string? ServiceAccount;
-        /// <summary>
-        /// Enforcer Type.
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

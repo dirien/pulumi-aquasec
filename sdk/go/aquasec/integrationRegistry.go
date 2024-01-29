@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -56,6 +55,7 @@ import (
 //						Value:  pulumi.String("nginx:latest"),
 //					},
 //				},
+//				Password: pulumi.String(""),
 //				Prefixes: pulumi.StringArray{
 //					pulumi.String("111111111111.dkr.ecr.us-east-1.amazonaws.com"),
 //				},
@@ -69,14 +69,11 @@ import (
 //					pulumi.String(":xyz"),
 //					pulumi.String(":onlytest"),
 //				},
-//				ScannerNames: pulumi.StringArray{
-//					pulumi.String("aqua-scanner-645f867c4f-4sbtj"),
-//					pulumi.String("aqua-scanner-645f867c4f-8pkdd"),
-//				},
-//				ScannerType: pulumi.String("specific"),
-//				Type:        pulumi.String("AWS"),
-//				Url:         pulumi.String("us-east-1"),
-//				Username:    pulumi.String(""),
+//				ScannerNames: pulumi.StringArray{},
+//				ScannerType:  pulumi.String("any"),
+//				Type:         pulumi.String("AWS"),
+//				Url:          pulumi.String("us-east-1"),
+//				Username:     pulumi.String(""),
 //				Webhooks: aquasec.IntegrationRegistryWebhookArray{
 //					&aquasec.IntegrationRegistryWebhookArgs{
 //						AuthToken:    pulumi.String("test1-test2-test3"),
@@ -142,7 +139,7 @@ type IntegrationRegistry struct {
 	ScannerNames pulumi.StringArrayOutput `pulumi:"scannerNames"`
 	// The Scanner type
 	ScannerType pulumi.StringOutput `pulumi:"scannerType"`
-	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+	// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The URL, address or region of the registry
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -230,7 +227,7 @@ type integrationRegistryState struct {
 	ScannerNames []string `pulumi:"scannerNames"`
 	// The Scanner type
 	ScannerType *string `pulumi:"scannerType"`
-	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+	// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
 	Type *string `pulumi:"type"`
 	// The URL, address or region of the registry
 	Url *string `pulumi:"url"`
@@ -286,7 +283,7 @@ type IntegrationRegistryState struct {
 	ScannerNames pulumi.StringArrayInput
 	// The Scanner type
 	ScannerType pulumi.StringPtrInput
-	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+	// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
 	Type pulumi.StringPtrInput
 	// The URL, address or region of the registry
 	Url pulumi.StringPtrInput
@@ -346,7 +343,7 @@ type integrationRegistryArgs struct {
 	ScannerNames []string `pulumi:"scannerNames"`
 	// The Scanner type
 	ScannerType *string `pulumi:"scannerType"`
-	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+	// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
 	Type string `pulumi:"type"`
 	// The URL, address or region of the registry
 	Url *string `pulumi:"url"`
@@ -403,7 +400,7 @@ type IntegrationRegistryArgs struct {
 	ScannerNames pulumi.StringArrayInput
 	// The Scanner type
 	ScannerType pulumi.StringPtrInput
-	// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+	// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
 	Type pulumi.StringInput
 	// The URL, address or region of the registry
 	Url pulumi.StringPtrInput
@@ -436,12 +433,6 @@ func (i *IntegrationRegistry) ToIntegrationRegistryOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRegistryOutput)
 }
 
-func (i *IntegrationRegistry) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRegistry] {
-	return pulumix.Output[*IntegrationRegistry]{
-		OutputState: i.ToIntegrationRegistryOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IntegrationRegistryArrayInput is an input type that accepts IntegrationRegistryArray and IntegrationRegistryArrayOutput values.
 // You can construct a concrete instance of `IntegrationRegistryArrayInput` via:
 //
@@ -465,12 +456,6 @@ func (i IntegrationRegistryArray) ToIntegrationRegistryArrayOutput() Integration
 
 func (i IntegrationRegistryArray) ToIntegrationRegistryArrayOutputWithContext(ctx context.Context) IntegrationRegistryArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRegistryArrayOutput)
-}
-
-func (i IntegrationRegistryArray) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationRegistry] {
-	return pulumix.Output[[]*IntegrationRegistry]{
-		OutputState: i.ToIntegrationRegistryArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IntegrationRegistryMapInput is an input type that accepts IntegrationRegistryMap and IntegrationRegistryMapOutput values.
@@ -498,12 +483,6 @@ func (i IntegrationRegistryMap) ToIntegrationRegistryMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(IntegrationRegistryMapOutput)
 }
 
-func (i IntegrationRegistryMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationRegistry] {
-	return pulumix.Output[map[string]*IntegrationRegistry]{
-		OutputState: i.ToIntegrationRegistryMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IntegrationRegistryOutput struct{ *pulumi.OutputState }
 
 func (IntegrationRegistryOutput) ElementType() reflect.Type {
@@ -516,12 +495,6 @@ func (o IntegrationRegistryOutput) ToIntegrationRegistryOutput() IntegrationRegi
 
 func (o IntegrationRegistryOutput) ToIntegrationRegistryOutputWithContext(ctx context.Context) IntegrationRegistryOutput {
 	return o
-}
-
-func (o IntegrationRegistryOutput) ToOutput(ctx context.Context) pulumix.Output[*IntegrationRegistry] {
-	return pulumix.Output[*IntegrationRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Automatically clean up that don't match the pull criteria
@@ -638,7 +611,7 @@ func (o IntegrationRegistryOutput) ScannerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringOutput { return v.ScannerType }).(pulumi.StringOutput)
 }
 
-// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
 func (o IntegrationRegistryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationRegistry) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -672,12 +645,6 @@ func (o IntegrationRegistryArrayOutput) ToIntegrationRegistryArrayOutputWithCont
 	return o
 }
 
-func (o IntegrationRegistryArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IntegrationRegistry] {
-	return pulumix.Output[[]*IntegrationRegistry]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IntegrationRegistryArrayOutput) Index(i pulumi.IntInput) IntegrationRegistryOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IntegrationRegistry {
 		return vs[0].([]*IntegrationRegistry)[vs[1].(int)]
@@ -696,12 +663,6 @@ func (o IntegrationRegistryMapOutput) ToIntegrationRegistryMapOutput() Integrati
 
 func (o IntegrationRegistryMapOutput) ToIntegrationRegistryMapOutputWithContext(ctx context.Context) IntegrationRegistryMapOutput {
 	return o
-}
-
-func (o IntegrationRegistryMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IntegrationRegistry] {
-	return pulumix.Output[map[string]*IntegrationRegistry]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IntegrationRegistryMapOutput) MapIndex(k pulumi.StringInput) IntegrationRegistryOutput {

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -30,6 +29,7 @@ import (
 //				Saml: &aquasec.RoleMappingSamlArgs{
 //					RoleMapping: pulumi.StringMap{
 //						"Administrator": pulumi.String("group1"),
+//						"Scanner":       pulumi.String("group2|group3"),
 //					},
 //				},
 //			})
@@ -156,12 +156,6 @@ func (i *RoleMapping) ToRoleMappingOutputWithContext(ctx context.Context) RoleMa
 	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingOutput)
 }
 
-func (i *RoleMapping) ToOutput(ctx context.Context) pulumix.Output[*RoleMapping] {
-	return pulumix.Output[*RoleMapping]{
-		OutputState: i.ToRoleMappingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RoleMappingArrayInput is an input type that accepts RoleMappingArray and RoleMappingArrayOutput values.
 // You can construct a concrete instance of `RoleMappingArrayInput` via:
 //
@@ -185,12 +179,6 @@ func (i RoleMappingArray) ToRoleMappingArrayOutput() RoleMappingArrayOutput {
 
 func (i RoleMappingArray) ToRoleMappingArrayOutputWithContext(ctx context.Context) RoleMappingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingArrayOutput)
-}
-
-func (i RoleMappingArray) ToOutput(ctx context.Context) pulumix.Output[[]*RoleMapping] {
-	return pulumix.Output[[]*RoleMapping]{
-		OutputState: i.ToRoleMappingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RoleMappingMapInput is an input type that accepts RoleMappingMap and RoleMappingMapOutput values.
@@ -218,12 +206,6 @@ func (i RoleMappingMap) ToRoleMappingMapOutputWithContext(ctx context.Context) R
 	return pulumi.ToOutputWithContext(ctx, i).(RoleMappingMapOutput)
 }
 
-func (i RoleMappingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleMapping] {
-	return pulumix.Output[map[string]*RoleMapping]{
-		OutputState: i.ToRoleMappingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RoleMappingOutput struct{ *pulumi.OutputState }
 
 func (RoleMappingOutput) ElementType() reflect.Type {
@@ -236,12 +218,6 @@ func (o RoleMappingOutput) ToRoleMappingOutput() RoleMappingOutput {
 
 func (o RoleMappingOutput) ToRoleMappingOutputWithContext(ctx context.Context) RoleMappingOutput {
 	return o
-}
-
-func (o RoleMappingOutput) ToOutput(ctx context.Context) pulumix.Output[*RoleMapping] {
-	return pulumix.Output[*RoleMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 // LDAP Authentication
@@ -278,12 +254,6 @@ func (o RoleMappingArrayOutput) ToRoleMappingArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o RoleMappingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RoleMapping] {
-	return pulumix.Output[[]*RoleMapping]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RoleMappingArrayOutput) Index(i pulumi.IntInput) RoleMappingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RoleMapping {
 		return vs[0].([]*RoleMapping)[vs[1].(int)]
@@ -302,12 +272,6 @@ func (o RoleMappingMapOutput) ToRoleMappingMapOutput() RoleMappingMapOutput {
 
 func (o RoleMappingMapOutput) ToRoleMappingMapOutputWithContext(ctx context.Context) RoleMappingMapOutput {
 	return o
-}
-
-func (o RoleMappingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RoleMapping] {
-	return pulumix.Output[map[string]*RoleMapping]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RoleMappingMapOutput) MapIndex(k pulumi.StringInput) RoleMappingOutput {

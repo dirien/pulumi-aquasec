@@ -14,6 +14,7 @@ __all__ = [
     'GetUsersSaasResult',
     'AwaitableGetUsersSaasResult',
     'get_users_saas',
+    'get_users_saas_output',
 ]
 
 @pulumi.output_type
@@ -74,3 +75,21 @@ def get_users_saas(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetU
     return AwaitableGetUsersSaasResult(
         id=pulumi.get(__ret__, 'id'),
         users=pulumi.get(__ret__, 'users'))
+
+
+@_utilities.lift_output_func(get_users_saas)
+def get_users_saas_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersSaasResult]:
+    """
+    The data source `get_users_saas` provides a method to query all saas users within the Aqua users management. The fields returned from this query are detailed in the Schema section below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    users = aquasec.get_users()
+    pulumi.export("firstUserEmail", data["aquasec_users_saas"]["users"]["users"][0]["email"])
+    ```
+    """
+    ...

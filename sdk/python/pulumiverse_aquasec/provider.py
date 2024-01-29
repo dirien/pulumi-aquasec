@@ -34,16 +34,28 @@ class ProviderArgs:
         :param pulumi.Input[bool] verify_tls: If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can
                alternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.
         """
+        if aqua_url is None:
+            aqua_url = _utilities.get_env('AQUA_URL')
         if aqua_url is not None:
             pulumi.set(__self__, "aqua_url", aqua_url)
+        if ca_certificate_path is None:
+            ca_certificate_path = _utilities.get_env('AQUA_CA_CERT_PATH')
         if ca_certificate_path is not None:
             pulumi.set(__self__, "ca_certificate_path", ca_certificate_path)
+        if config_path is None:
+            config_path = _utilities.get_env('AQUA_CONFIG')
         if config_path is not None:
             pulumi.set(__self__, "config_path", config_path)
+        if password is None:
+            password = _utilities.get_env('AQUA_PASSWORD')
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if username is None:
+            username = _utilities.get_env('AQUA_USER')
         if username is not None:
             pulumi.set(__self__, "username", username)
+        if verify_tls is None:
+            verify_tls = (_utilities.get_env_bool('AQUA_TLS_VERIFY') or True)
         if verify_tls is not None:
             pulumi.set(__self__, "verify_tls", verify_tls)
 
@@ -199,11 +211,23 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if aqua_url is None:
+                aqua_url = _utilities.get_env('AQUA_URL')
             __props__.__dict__["aqua_url"] = aqua_url
+            if ca_certificate_path is None:
+                ca_certificate_path = _utilities.get_env('AQUA_CA_CERT_PATH')
             __props__.__dict__["ca_certificate_path"] = ca_certificate_path
+            if config_path is None:
+                config_path = _utilities.get_env('AQUA_CONFIG')
             __props__.__dict__["config_path"] = config_path
+            if password is None:
+                password = _utilities.get_env('AQUA_PASSWORD')
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            if username is None:
+                username = _utilities.get_env('AQUA_USER')
             __props__.__dict__["username"] = None if username is None else pulumi.Output.secret(username)
+            if verify_tls is None:
+                verify_tls = (_utilities.get_env_bool('AQUA_TLS_VERIFY') or True)
             __props__.__dict__["verify_tls"] = pulumi.Output.from_input(verify_tls).apply(pulumi.runtime.to_json) if verify_tls is not None else None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "username"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)

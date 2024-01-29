@@ -6,7 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/** @deprecated aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries */
 export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: pulumi.InvokeOptions): Promise<GetIntegrationRegistryResult> {
+    pulumi.log.warn("getIntegrationRegistry is deprecated: aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries")
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getIntegrationRegistry:getIntegrationRegistry", {
@@ -31,58 +33,19 @@ export function getIntegrationRegistry(args: GetIntegrationRegistryArgs, opts?: 
  * A collection of arguments for invoking getIntegrationRegistry.
  */
 export interface GetIntegrationRegistryArgs {
-    /**
-     * Automatically clean up that don't match the pull criteria
-     */
     advancedSettingsCleanup?: boolean;
-    /**
-     * List of image patterns to pull always
-     */
     alwaysPullPatterns?: string[];
-    /**
-     * Additional condition for pulling and rescanning images, Defaults to 'none'
-     */
     imageCreationDateCondition?: string;
-    /**
-     * The last time the registry was modified in UNIX time
-     */
     lastupdate?: number;
-    /**
-     * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-     */
     name: string;
     options?: inputs.GetIntegrationRegistryOption[];
-    /**
-     * When auto pull image enabled, sets maximum age of auto pulled images
-     */
     pullImageAge?: string;
-    /**
-     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-     */
     pullImageCount?: number;
-    /**
-     * List of image tags patterns to pull
-     */
     pullImageTagPatterns?: string[];
-    /**
-     * List of image patterns to exclude
-     */
     pullRepoPatternsExcludeds?: string[];
-    /**
-     * Registry scan timeout in Minutes
-     */
     registryScanTimeout?: number;
-    /**
-     * List of scanner names
-     */
     scannerNames?: string[];
-    /**
-     * Scanner type
-     */
     scannerType?: string;
-    /**
-     * When enabled, registry events are sent to the given Aqua webhook url
-     */
     webhooks?: inputs.GetIntegrationRegistryWebhook[];
 }
 
@@ -90,112 +53,38 @@ export interface GetIntegrationRegistryArgs {
  * A collection of values returned by getIntegrationRegistry.
  */
 export interface GetIntegrationRegistryResult {
-    /**
-     * Automatically clean up that don't match the pull criteria
-     */
     readonly advancedSettingsCleanup?: boolean;
-    /**
-     * List of image patterns to pull always
-     */
     readonly alwaysPullPatterns?: string[];
-    /**
-     * Automatically clean up images and repositories which are no longer present in the registry from Aqua console
-     */
     readonly autoCleanup: boolean;
-    /**
-     * Whether to automatically pull images from the registry on creation and daily
-     */
     readonly autoPull: boolean;
-    /**
-     * The interval in days to start pulling new images from the registry, Defaults to 1
-     */
     readonly autoPullInterval: number;
-    /**
-     * Maximum number of repositories to pull every day, defaults to 100
-     */
     readonly autoPullMax: number;
-    /**
-     * Whether to automatically pull and rescan images from the registry on creation and daily
-     */
     readonly autoPullRescan: boolean;
-    /**
-     * The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
-     */
     readonly autoPullTime: string;
-    /**
-     * The description of the registry
-     */
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * Additional condition for pulling and rescanning images, Defaults to 'none'
-     */
     readonly imageCreationDateCondition: string;
-    /**
-     * The last time the registry was modified in UNIX time
-     */
     readonly lastupdate: number;
-    /**
-     * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-     */
     readonly name: string;
     readonly options?: outputs.GetIntegrationRegistryOption[];
-    /**
-     * The password for registry authentication
-     */
     readonly password: string;
-    /**
-     * List of possible prefixes to image names pulled from the registry
-     */
     readonly prefixes: string[];
-    /**
-     * When auto pull image enabled, sets maximum age of auto pulled images
-     */
     readonly pullImageAge: string;
-    /**
-     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-     */
     readonly pullImageCount: number;
-    /**
-     * List of image tags patterns to pull
-     */
     readonly pullImageTagPatterns?: string[];
-    /**
-     * List of image patterns to exclude
-     */
     readonly pullRepoPatternsExcludeds?: string[];
-    /**
-     * Registry scan timeout in Minutes
-     */
     readonly registryScanTimeout?: number;
-    /**
-     * List of scanner names
-     */
     readonly scannerNames: string[];
-    /**
-     * Scanner type
-     */
     readonly scannerType: string;
-    /**
-     * Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
-     */
     readonly type: string;
-    /**
-     * The URL, address or region of the registry
-     */
     readonly url: string;
-    /**
-     * The username for registry authentication.
-     */
     readonly username: string;
-    /**
-     * When enabled, registry events are sent to the given Aqua webhook url
-     */
     readonly webhooks?: outputs.GetIntegrationRegistryWebhook[];
 }
+/** @deprecated aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries */
 export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationRegistryResult> {
     return pulumi.output(args).apply((a: any) => getIntegrationRegistry(a, opts))
 }
@@ -204,57 +93,18 @@ export function getIntegrationRegistryOutput(args: GetIntegrationRegistryOutputA
  * A collection of arguments for invoking getIntegrationRegistry.
  */
 export interface GetIntegrationRegistryOutputArgs {
-    /**
-     * Automatically clean up that don't match the pull criteria
-     */
     advancedSettingsCleanup?: pulumi.Input<boolean>;
-    /**
-     * List of image patterns to pull always
-     */
     alwaysPullPatterns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Additional condition for pulling and rescanning images, Defaults to 'none'
-     */
     imageCreationDateCondition?: pulumi.Input<string>;
-    /**
-     * The last time the registry was modified in UNIX time
-     */
     lastupdate?: pulumi.Input<number>;
-    /**
-     * The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-     */
     name: pulumi.Input<string>;
     options?: pulumi.Input<pulumi.Input<inputs.GetIntegrationRegistryOptionArgs>[]>;
-    /**
-     * When auto pull image enabled, sets maximum age of auto pulled images
-     */
     pullImageAge?: pulumi.Input<string>;
-    /**
-     * When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-     */
     pullImageCount?: pulumi.Input<number>;
-    /**
-     * List of image tags patterns to pull
-     */
     pullImageTagPatterns?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of image patterns to exclude
-     */
     pullRepoPatternsExcludeds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Registry scan timeout in Minutes
-     */
     registryScanTimeout?: pulumi.Input<number>;
-    /**
-     * List of scanner names
-     */
     scannerNames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Scanner type
-     */
     scannerType?: pulumi.Input<string>;
-    /**
-     * When enabled, registry events are sent to the given Aqua webhook url
-     */
     webhooks?: pulumi.Input<pulumi.Input<inputs.GetIntegrationRegistryWebhookArgs>[]>;
 }

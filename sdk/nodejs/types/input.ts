@@ -107,7 +107,13 @@ export interface ApplicationScopeCategory {
 
 export interface ApplicationScopeCategoryArtifact {
     cfs?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryArtifactCf>[]>;
+    /**
+     * Function name
+     */
     functions?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryArtifactFunction>[]>;
+    /**
+     * Name of a registry as defined in Aqua
+     */
     images?: pulumi.Input<pulumi.Input<inputs.ApplicationScopeCategoryArtifactImage>[]>;
 }
 
@@ -212,51 +218,239 @@ export interface ApplicationScopeCategoryWorkloadOVariable {
     value?: pulumi.Input<string>;
 }
 
+export interface ContainerRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyAuditing {
+    auditAllNetwork?: pulumi.Input<boolean>;
+    auditAllProcesses?: pulumi.Input<boolean>;
+    auditFailedLogin?: pulumi.Input<boolean>;
+    auditOsUserActivity?: pulumi.Input<boolean>;
+    auditProcessCmdline?: pulumi.Input<boolean>;
+    auditSuccessLogin?: pulumi.Input<boolean>;
+    auditUserAccountManagement?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyBlacklistedOsUsers {
+    enabled?: pulumi.Input<boolean>;
+    groupBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    userBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyBypassScope {
+    /**
+     * Whether bypassing the scope is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Scope configuration.
+     */
+    scopes?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyBypassScopeScope>[]>;
+}
+
+export interface ContainerRuntimePolicyBypassScopeScope {
+    /**
+     * Scope expression.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * List of variables in the scope.
+     */
+    variables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyBypassScopeScopeVariable>[]>;
+}
+
+export interface ContainerRuntimePolicyBypassScopeScopeVariable {
+    /**
+     * Variable attribute.
+     */
+    attribute?: pulumi.Input<string>;
+    /**
+     * Variable value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface ContainerRuntimePolicyContainerExec {
+    blockContainerExec?: pulumi.Input<boolean>;
+    containerExecProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: pulumi.Input<boolean>;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyFailedKubernetesChecks {
+    enabled?: pulumi.Input<boolean>;
+    failedChecks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyFileBlock {
+    blockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    filenameBlockLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ContainerRuntimePolicyFileIntegrityMonitoring {
     /**
-     * List of paths to be excluded from being monitored.
+     * If true, file integrity monitoring is enabled.
      */
-    excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
     /**
-     * List of processes to be excluded from being monitored.
+     * List of paths to be excluded from monitoring.
      */
-    excludedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of users to be excluded from being monitored.
+     * List of processes to be excluded from monitoring.
      */
-    excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If true, add attributes operations will be monitored.
+     * List of users to be excluded from monitoring.
      */
-    monitorAttributes?: pulumi.Input<boolean>;
-    /**
-     * If true, create operations will be monitored.
-     */
-    monitorCreate?: pulumi.Input<boolean>;
-    /**
-     * If true, deletion operations will be monitored.
-     */
-    monitorDelete?: pulumi.Input<boolean>;
-    /**
-     * If true, modification operations will be monitored.
-     */
-    monitorModify?: pulumi.Input<boolean>;
-    /**
-     * If true, read operations will be monitored.
-     */
-    monitorRead?: pulumi.Input<boolean>;
+    exceptionalMonitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of paths to be monitored.
      */
-    monitoredPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of processes to be monitored.
+     * Whether to monitor file attribute operations.
      */
-    monitoredProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredFilesAttributes?: pulumi.Input<boolean>;
     /**
-     * List of users to be monitored.
+     * Whether to monitor file create operations.
      */
-    monitoredUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredFilesCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: pulumi.Input<boolean>;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: pulumi.Input<boolean>;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: pulumi.Input<boolean>;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: pulumi.Input<boolean>;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyLinuxCapabilities {
+    enabled?: pulumi.Input<boolean>;
+    removeLinuxCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ContainerRuntimePolicyMalwareScanOptions {
@@ -276,6 +470,90 @@ export interface ContainerRuntimePolicyMalwareScanOptions {
      * List of registry processes to be excluded from being protected.
      */
     excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockPackagesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    packagesBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyPortBlock {
+    blockInboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    blockOutboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyReadonlyFiles {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyReadonlyRegistry {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyRegistryAccessMonitoring {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalMonitoredRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryAttributes?: pulumi.Input<boolean>;
+    monitoredRegistryCreate?: pulumi.Input<boolean>;
+    monitoredRegistryDelete?: pulumi.Input<boolean>;
+    monitoredRegistryModify?: pulumi.Input<boolean>;
+    monitoredRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryRead?: pulumi.Input<boolean>;
+    monitoredRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyReverseShell {
+    blockReverseShell?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    reverseShellProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ContainerRuntimePolicyScope {
+    /**
+     * Scope expression.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * List of variables in the scope.
+     */
+    variables: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyScopeVariable>[]>;
 }
 
 export interface ContainerRuntimePolicyScopeVariable {
@@ -291,6 +569,27 @@ export interface ContainerRuntimePolicyScopeVariable {
      * Value assigned to the attribute.
      */
     value: pulumi.Input<string>;
+}
+
+export interface ContainerRuntimePolicySystemIntegrityProtection {
+    auditSystemtimeChange?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    monitorAuditLogIntegrity?: pulumi.Input<boolean>;
+    windowsServicesMonitoring?: pulumi.Input<boolean>;
+}
+
+export interface ContainerRuntimePolicyTripwire {
+    applyOns?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    serverlessApp?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
+    userPassword?: pulumi.Input<string>;
+}
+
+export interface ContainerRuntimePolicyWhitelistedOsUsers {
+    enabled?: pulumi.Input<boolean>;
+    groupWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    userWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface EnforcerGroupsCommand {
@@ -310,9 +609,6 @@ export interface EnforcerGroupsOrchestrator {
      * May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
      */
     serviceAccount?: pulumi.Input<string>;
-    /**
-     * Enforcer Type.
-     */
     type?: pulumi.Input<string>;
 }
 
@@ -382,6 +678,17 @@ export interface FunctionAssurancePolicyForbiddenLabel {
     value?: pulumi.Input<string>;
 }
 
+export interface FunctionAssurancePolicyKubernetesControl {
+    avdId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    ootb?: pulumi.Input<boolean>;
+    scriptId?: pulumi.Input<number>;
+    severity?: pulumi.Input<string>;
+}
+
 export interface FunctionAssurancePolicyPackagesBlackList {
     arch?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
@@ -406,6 +713,13 @@ export interface FunctionAssurancePolicyPackagesWhiteList {
     versionRange?: pulumi.Input<string>;
 }
 
+export interface FunctionAssurancePolicyPolicySettings {
+    enforce?: pulumi.Input<boolean>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    warn?: pulumi.Input<boolean>;
+    warningMessage?: pulumi.Input<string>;
+}
+
 export interface FunctionAssurancePolicyRequiredLabel {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
@@ -427,6 +741,344 @@ export interface FunctionAssurancePolicyTrustedBaseImage {
     registry?: pulumi.Input<string>;
 }
 
+export interface FunctionRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyAuditing {
+    auditAllNetwork?: pulumi.Input<boolean>;
+    auditAllProcesses?: pulumi.Input<boolean>;
+    auditFailedLogin?: pulumi.Input<boolean>;
+    auditOsUserActivity?: pulumi.Input<boolean>;
+    auditProcessCmdline?: pulumi.Input<boolean>;
+    auditSuccessLogin?: pulumi.Input<boolean>;
+    auditUserAccountManagement?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyBlacklistedOsUsers {
+    enabled?: pulumi.Input<boolean>;
+    groupBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    userBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyBypassScope {
+    /**
+     * Whether bypassing the scope is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Scope configuration.
+     */
+    scopes?: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyBypassScopeScope>[]>;
+}
+
+export interface FunctionRuntimePolicyBypassScopeScope {
+    /**
+     * Scope expression.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * List of variables in the scope.
+     */
+    variables?: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyBypassScopeScopeVariable>[]>;
+}
+
+export interface FunctionRuntimePolicyBypassScopeScopeVariable {
+    /**
+     * Variable attribute.
+     */
+    attribute?: pulumi.Input<string>;
+    /**
+     * Variable value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface FunctionRuntimePolicyContainerExec {
+    blockContainerExec?: pulumi.Input<boolean>;
+    containerExecProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: pulumi.Input<boolean>;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyFailedKubernetesChecks {
+    enabled?: pulumi.Input<boolean>;
+    failedChecks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyFileBlock {
+    blockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    filenameBlockLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyFileIntegrityMonitoring {
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: pulumi.Input<boolean>;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: pulumi.Input<boolean>;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: pulumi.Input<boolean>;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: pulumi.Input<boolean>;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyLinuxCapabilities {
+    enabled?: pulumi.Input<boolean>;
+    removeLinuxCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockPackagesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    packagesBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyPortBlock {
+    blockInboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    blockOutboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyReadonlyFiles {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyReadonlyRegistry {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyRegistryAccessMonitoring {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalMonitoredRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryAttributes?: pulumi.Input<boolean>;
+    monitoredRegistryCreate?: pulumi.Input<boolean>;
+    monitoredRegistryDelete?: pulumi.Input<boolean>;
+    monitoredRegistryModify?: pulumi.Input<boolean>;
+    monitoredRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryRead?: pulumi.Input<boolean>;
+    monitoredRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyReverseShell {
+    blockReverseShell?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    reverseShellProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface FunctionRuntimePolicyScope {
+    /**
+     * Scope expression.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * List of variables in the scope.
+     */
+    variables: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyScopeVariable>[]>;
+}
+
 export interface FunctionRuntimePolicyScopeVariable {
     /**
      * Class of supported scope.
@@ -440,6 +1092,27 @@ export interface FunctionRuntimePolicyScopeVariable {
      * Value assigned to the attribute.
      */
     value: pulumi.Input<string>;
+}
+
+export interface FunctionRuntimePolicySystemIntegrityProtection {
+    auditSystemtimeChange?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    monitorAuditLogIntegrity?: pulumi.Input<boolean>;
+    windowsServicesMonitoring?: pulumi.Input<boolean>;
+}
+
+export interface FunctionRuntimePolicyTripwire {
+    applyOns?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    serverlessApp?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
+    userPassword?: pulumi.Input<string>;
+}
+
+export interface FunctionRuntimePolicyWhitelistedOsUsers {
+    enabled?: pulumi.Input<boolean>;
+    groupWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    userWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetApplicationScopeCategory {
@@ -670,6 +1343,318 @@ export interface GetApplicationScopeCategoryWorkloadOVariableArgs {
     value?: pulumi.Input<string>;
 }
 
+export interface GetContainerRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: string[];
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: string[];
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: boolean;
+}
+
+export interface GetContainerRuntimePolicyAllowedExecutableArgs {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: pulumi.Input<boolean>;
+}
+
+export interface GetContainerRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: string[];
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: boolean;
+}
+
+export interface GetContainerRuntimePolicyAllowedRegistryArgs {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetContainerRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
+export interface GetContainerRuntimePolicyAuditingArgs {
+    auditAllNetwork?: pulumi.Input<boolean>;
+    auditAllProcesses?: pulumi.Input<boolean>;
+    auditFailedLogin?: pulumi.Input<boolean>;
+    auditOsUserActivity?: pulumi.Input<boolean>;
+    auditProcessCmdline?: pulumi.Input<boolean>;
+    auditSuccessLogin?: pulumi.Input<boolean>;
+    auditUserAccountManagement?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetContainerRuntimePolicyContainerExec {
+    blockContainerExec?: boolean;
+    containerExecProcWhiteLists?: string[];
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+}
+
+export interface GetContainerRuntimePolicyContainerExecArgs {
+    blockContainerExec?: pulumi.Input<boolean>;
+    containerExecProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetContainerRuntimePolicyFileBlock {
+    blockFilesProcesses?: string[];
+    blockFilesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockFiles?: string[];
+    exceptionalBlockFilesProcesses?: string[];
+    exceptionalBlockFilesUsers?: string[];
+    filenameBlockLists?: string[];
+}
+
+export interface GetContainerRuntimePolicyFileBlockArgs {
+    blockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    filenameBlockLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetContainerRuntimePolicyFileIntegrityMonitoring {
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: string[];
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: string[];
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: string[];
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: string[];
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: boolean;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
+}
+
+export interface GetContainerRuntimePolicyFileIntegrityMonitoringArgs {
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: pulumi.Input<boolean>;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: pulumi.Input<boolean>;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetContainerRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: boolean;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: boolean;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: boolean;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: boolean;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: boolean;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: boolean;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: boolean;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: boolean;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: boolean;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: boolean;
+}
+
+export interface GetContainerRuntimePolicyLimitContainerPrivilegeArgs {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: pulumi.Input<boolean>;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: pulumi.Input<boolean>;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: pulumi.Input<boolean>;
+}
+
 export interface GetContainerRuntimePolicyMalwareScanOption {
     /**
      * Set Action, Defaults to 'Alert' when empty
@@ -687,6 +1672,10 @@ export interface GetContainerRuntimePolicyMalwareScanOption {
      * List of registry processes to be excluded from being protected.
      */
     excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
 }
 
 export interface GetContainerRuntimePolicyMalwareScanOptionArgs {
@@ -706,6 +1695,64 @@ export interface GetContainerRuntimePolicyMalwareScanOptionArgs {
      * List of registry processes to be excluded from being protected.
      */
     excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetContainerRuntimePolicyPortBlock {
+    blockInboundPorts?: string[];
+    blockOutboundPorts?: string[];
+    enabled?: boolean;
+}
+
+export interface GetContainerRuntimePolicyPortBlockArgs {
+    blockInboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    blockOutboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetContainerRuntimePolicyReadonlyFiles {
+    enabled?: boolean;
+    exceptionalReadonlyFiles?: string[];
+    exceptionalReadonlyFilesProcesses?: string[];
+    exceptionalReadonlyFilesUsers?: string[];
+    readonlyFiles?: string[];
+    readonlyFilesProcesses?: string[];
+    readonlyFilesUsers?: string[];
+}
+
+export interface GetContainerRuntimePolicyReadonlyFilesArgs {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetContainerRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: string[];
+}
+
+export interface GetContainerRuntimePolicyRestrictedVolumeArgs {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface GetFirewallPolicyOutboundNetwork {
@@ -746,6 +1793,280 @@ export interface GetFirewallPolicyOutboundNetworkArgs {
     resourceType?: pulumi.Input<string>;
 }
 
+export interface GetFunctionRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: boolean;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: string[];
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: boolean;
+}
+
+export interface GetFunctionRuntimePolicyDriftPreventionArgs {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: pulumi.Input<boolean>;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: pulumi.Input<boolean>;
+}
+
+export interface GetFunctionRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: string[];
+}
+
+export interface GetFunctionRuntimePolicyExecutableBlacklistArgs {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetHostRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
+export interface GetHostRuntimePolicyAuditingArgs {
+    auditAllNetwork?: pulumi.Input<boolean>;
+    auditAllProcesses?: pulumi.Input<boolean>;
+    auditFailedLogin?: pulumi.Input<boolean>;
+    auditOsUserActivity?: pulumi.Input<boolean>;
+    auditProcessCmdline?: pulumi.Input<boolean>;
+    auditSuccessLogin?: pulumi.Input<boolean>;
+    auditUserAccountManagement?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetHostRuntimePolicyFileIntegrityMonitoring {
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: string[];
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: string[];
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: string[];
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: string[];
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: boolean;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
+}
+
+export interface GetHostRuntimePolicyFileIntegrityMonitoringArgs {
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: pulumi.Input<boolean>;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: pulumi.Input<boolean>;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetHostRuntimePolicyMalwareScanOption {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface GetHostRuntimePolicyMalwareScanOptionArgs {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetHostRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: string[];
+    blockPackagesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockPackagesFiles?: string[];
+    exceptionalBlockPackagesProcesses?: string[];
+    exceptionalBlockPackagesUsers?: string[];
+    packagesBlackLists?: string[];
+}
+
+export interface GetHostRuntimePolicyPackageBlockArgs {
+    blockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockPackagesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    packagesBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetIntegrationRegistriesOption {
+    option?: string;
+    value?: string;
+}
+
+export interface GetIntegrationRegistriesOptionArgs {
+    option?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface GetIntegrationRegistriesWebhook {
+    authToken?: string;
+    enabled?: boolean;
+    unQuarantine?: boolean;
+    url?: string;
+}
+
+export interface GetIntegrationRegistriesWebhookArgs {
+    authToken?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    unQuarantine?: pulumi.Input<boolean>;
+    url?: pulumi.Input<string>;
+}
+
 export interface GetIntegrationRegistryOption {
     option?: string;
     value?: string;
@@ -760,9 +2081,6 @@ export interface GetIntegrationRegistryWebhook {
     authToken?: string;
     enabled?: boolean;
     unQuarantine?: boolean;
-    /**
-     * The URL, address or region of the registry
-     */
     url?: string;
 }
 
@@ -770,9 +2088,6 @@ export interface GetIntegrationRegistryWebhookArgs {
     authToken?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     unQuarantine?: pulumi.Input<boolean>;
-    /**
-     * The URL, address or region of the registry
-     */
     url?: pulumi.Input<string>;
 }
 
@@ -828,6 +2143,13 @@ export interface HostAssurancePolicyPackagesWhiteList {
     versionRange?: pulumi.Input<string>;
 }
 
+export interface HostAssurancePolicyPolicySettings {
+    enforce?: pulumi.Input<boolean>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    warn?: pulumi.Input<boolean>;
+    warningMessage?: pulumi.Input<string>;
+}
+
 export interface HostAssurancePolicyRequiredLabel {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
@@ -849,51 +2171,239 @@ export interface HostAssurancePolicyTrustedBaseImage {
     registry?: pulumi.Input<string>;
 }
 
+export interface HostRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: pulumi.Input<boolean>;
+}
+
+export interface HostRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface HostRuntimePolicyAuditing {
+    auditAllNetwork?: pulumi.Input<boolean>;
+    auditAllProcesses?: pulumi.Input<boolean>;
+    auditFailedLogin?: pulumi.Input<boolean>;
+    auditOsUserActivity?: pulumi.Input<boolean>;
+    auditProcessCmdline?: pulumi.Input<boolean>;
+    auditSuccessLogin?: pulumi.Input<boolean>;
+    auditUserAccountManagement?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface HostRuntimePolicyBlacklistedOsUsers {
+    enabled?: pulumi.Input<boolean>;
+    groupBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    userBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyBypassScope {
+    /**
+     * Whether bypassing the scope is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Scope configuration.
+     */
+    scopes?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyBypassScopeScope>[]>;
+}
+
+export interface HostRuntimePolicyBypassScopeScope {
+    /**
+     * Scope expression.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * List of variables in the scope.
+     */
+    variables?: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyBypassScopeScopeVariable>[]>;
+}
+
+export interface HostRuntimePolicyBypassScopeScopeVariable {
+    /**
+     * Variable attribute.
+     */
+    attribute?: pulumi.Input<string>;
+    /**
+     * Variable value.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface HostRuntimePolicyContainerExec {
+    blockContainerExec?: pulumi.Input<boolean>;
+    containerExecProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: pulumi.Input<boolean>;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: pulumi.Input<boolean>;
+}
+
+export interface HostRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyFailedKubernetesChecks {
+    enabled?: pulumi.Input<boolean>;
+    failedChecks?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyFileBlock {
+    blockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    filenameBlockLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface HostRuntimePolicyFileIntegrityMonitoring {
     /**
-     * List of paths to be excluded from being monitored.
+     * If true, file integrity monitoring is enabled.
      */
-    excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
     /**
-     * List of processes to be excluded from being monitored.
+     * List of paths to be excluded from monitoring.
      */
-    excludedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of users to be excluded from being monitored.
+     * List of processes to be excluded from monitoring.
      */
-    excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If true, add attributes operations will be monitored.
+     * List of users to be excluded from monitoring.
      */
-    monitorAttributes?: pulumi.Input<boolean>;
-    /**
-     * If true, create operations will be monitored.
-     */
-    monitorCreate?: pulumi.Input<boolean>;
-    /**
-     * If true, deletion operations will be monitored.
-     */
-    monitorDelete?: pulumi.Input<boolean>;
-    /**
-     * If true, modification operations will be monitored.
-     */
-    monitorModify?: pulumi.Input<boolean>;
-    /**
-     * If true, read operations will be monitored.
-     */
-    monitorRead?: pulumi.Input<boolean>;
+    exceptionalMonitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of paths to be monitored.
      */
-    monitoredPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredFiles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of processes to be monitored.
+     * Whether to monitor file attribute operations.
      */
-    monitoredProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredFilesAttributes?: pulumi.Input<boolean>;
     /**
-     * List of users to be monitored.
+     * Whether to monitor file create operations.
      */
-    monitoredUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredFilesCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: pulumi.Input<boolean>;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: pulumi.Input<boolean>;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: pulumi.Input<boolean>;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: pulumi.Input<boolean>;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: pulumi.Input<boolean>;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: pulumi.Input<boolean>;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: pulumi.Input<boolean>;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: pulumi.Input<boolean>;
+}
+
+export interface HostRuntimePolicyLinuxCapabilities {
+    enabled?: pulumi.Input<boolean>;
+    removeLinuxCapabilities?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface HostRuntimePolicyMalwareScanOptions {
@@ -913,6 +2423,90 @@ export interface HostRuntimePolicyMalwareScanOptions {
      * List of registry processes to be excluded from being protected.
      */
     excludeProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    blockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    exceptionalBlockPackagesFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalBlockPackagesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    packagesBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyPortBlock {
+    blockInboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    blockOutboundPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface HostRuntimePolicyReadonlyFiles {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFiles?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyFilesUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyReadonlyRegistry {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalReadonlyRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalReadonlyRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlyRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyRegistryAccessMonitoring {
+    enabled?: pulumi.Input<boolean>;
+    exceptionalMonitoredRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    exceptionalMonitoredRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryAttributes?: pulumi.Input<boolean>;
+    monitoredRegistryCreate?: pulumi.Input<boolean>;
+    monitoredRegistryDelete?: pulumi.Input<boolean>;
+    monitoredRegistryModify?: pulumi.Input<boolean>;
+    monitoredRegistryPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryProcesses?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoredRegistryRead?: pulumi.Input<boolean>;
+    monitoredRegistryUsers?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyReverseShell {
+    blockReverseShell?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    reverseShellIpWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    reverseShellProcWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HostRuntimePolicyScope {
+    /**
+     * Scope expression.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * List of variables in the scope.
+     */
+    variables: pulumi.Input<pulumi.Input<inputs.HostRuntimePolicyScopeVariable>[]>;
 }
 
 export interface HostRuntimePolicyScopeVariable {
@@ -930,91 +2524,32 @@ export interface HostRuntimePolicyScopeVariable {
     value: pulumi.Input<string>;
 }
 
-export interface HostRuntimePolicyWindowsRegistryMonitoring {
-    /**
-     * List of paths to be excluded from being monitored.
-     */
-    excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry processes to be excluded from being monitored.
-     */
-    excludedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry users to be excluded from being monitored.
-     */
-    excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * If true, add attributes operations will be monitored.
-     */
-    monitorAttributes?: pulumi.Input<boolean>;
-    /**
-     * If true, create operations will be monitored.
-     */
-    monitorCreate?: pulumi.Input<boolean>;
-    /**
-     * If true, deletion operations will be monitored.
-     */
-    monitorDelete?: pulumi.Input<boolean>;
-    /**
-     * If true, modification operations will be monitored.
-     */
-    monitorModify?: pulumi.Input<boolean>;
-    /**
-     * If true, read operations will be monitored.
-     */
-    monitorRead?: pulumi.Input<boolean>;
-    /**
-     * List of paths to be monitored.
-     */
-    monitoredPaths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry processes to be monitored.
-     */
-    monitoredProcesses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry users to be monitored.
-     */
-    monitoredUsers?: pulumi.Input<pulumi.Input<string>[]>;
+export interface HostRuntimePolicySystemIntegrityProtection {
+    auditSystemtimeChange?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
+    monitorAuditLogIntegrity?: pulumi.Input<boolean>;
+    windowsServicesMonitoring?: pulumi.Input<boolean>;
 }
 
-export interface HostRuntimePolicyWindowsRegistryProtection {
-    /**
-     * List of registry paths to be excluded from being protected.
-     */
-    excludedPaths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry processes to be excluded from being protected.
-     */
-    excludedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry paths to be users from being protected.
-     */
-    excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry paths to be protected.
-     */
-    protectedPaths?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry processes to be protected.
-     */
-    protectedProcesses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of registry users to be protected.
-     */
-    protectedUsers?: pulumi.Input<pulumi.Input<string>[]>;
+export interface HostRuntimePolicyTripwire {
+    applyOns?: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    serverlessApp?: pulumi.Input<string>;
+    userId?: pulumi.Input<string>;
+    userPassword?: pulumi.Input<string>;
+}
+
+export interface HostRuntimePolicyWhitelistedOsUsers {
+    enabled?: pulumi.Input<boolean>;
+    groupWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    userWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ImageAssuranceChecksPerformed {
     assuranceType?: pulumi.Input<string>;
     blocking?: pulumi.Input<boolean>;
     control?: pulumi.Input<string>;
-    /**
-     * If DTA was skipped.
-     */
     dtaSkipped?: pulumi.Input<boolean>;
-    /**
-     * The reason why DTA was skipped.
-     */
     dtaSkippedReason?: pulumi.Input<string>;
     failed?: pulumi.Input<boolean>;
     policyName?: pulumi.Input<string>;
@@ -1048,6 +2583,17 @@ export interface ImageAssurancePolicyForbiddenLabel {
     value?: pulumi.Input<string>;
 }
 
+export interface ImageAssurancePolicyKubernetesControls {
+    avdId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    ootb?: pulumi.Input<boolean>;
+    scriptId?: pulumi.Input<number>;
+    severity?: pulumi.Input<string>;
+}
+
 export interface ImageAssurancePolicyPackagesBlackList {
     arch?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
@@ -1072,6 +2618,13 @@ export interface ImageAssurancePolicyPackagesWhiteList {
     versionRange?: pulumi.Input<string>;
 }
 
+export interface ImageAssurancePolicyPolicySettings {
+    enforce?: pulumi.Input<boolean>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    warn?: pulumi.Input<boolean>;
+    warningMessage?: pulumi.Input<string>;
+}
+
 export interface ImageAssurancePolicyRequiredLabel {
     key?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
@@ -1094,18 +2647,9 @@ export interface ImageAssurancePolicyTrustedBaseImage {
 }
 
 export interface ImageHistory {
-    /**
-     * The image creation comment.
-     */
     comment?: pulumi.Input<string>;
-    /**
-     * The date and time when the image was registered.
-     */
     created?: pulumi.Input<string>;
     createdBy?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<string>;
     size?: pulumi.Input<number>;
 }
@@ -1129,9 +2673,6 @@ export interface ImageVulnerability {
     blockEventsCount?: pulumi.Input<number>;
     classification?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
-    /**
-     * The content digest of the image.
-     */
     digest?: pulumi.Input<string>;
     exploitReference?: pulumi.Input<string>;
     exploitType?: pulumi.Input<string>;
@@ -1140,9 +2681,6 @@ export interface ImageVulnerability {
     imageName?: pulumi.Input<string>;
     lastFoundDate?: pulumi.Input<string>;
     modificationDate?: pulumi.Input<string>;
-    /**
-     * The name of the image.
-     */
     name?: pulumi.Input<string>;
     nvdCvss2Score?: pulumi.Input<number>;
     nvdCvss2Vectors?: pulumi.Input<string>;
@@ -1151,26 +2689,11 @@ export interface ImageVulnerability {
     nvdCvss3Vectors?: pulumi.Input<string>;
     nvdSeverity?: pulumi.Input<string>;
     nvdUrl?: pulumi.Input<string>;
-    /**
-     * The operating system detected in the image
-     */
     os?: pulumi.Input<string>;
-    /**
-     * The version of the OS detected in the image.
-     */
     osVersion?: pulumi.Input<string>;
-    /**
-     * Permission of the image.
-     */
     permission?: pulumi.Input<string>;
     publishDate?: pulumi.Input<string>;
-    /**
-     * The name of the registry where the image is stored.
-     */
     registry?: pulumi.Input<string>;
-    /**
-     * The name of the image's repository.
-     */
     repository?: pulumi.Input<string>;
     resourceArchitecture?: pulumi.Input<string>;
     resourceCpe?: pulumi.Input<string>;
@@ -1209,9 +2732,6 @@ export interface IntegrationRegistryWebhook {
     authToken?: pulumi.Input<string>;
     enabled?: pulumi.Input<boolean>;
     unQuarantine?: pulumi.Input<boolean>;
-    /**
-     * The URL, address or region of the registry
-     */
     url?: pulumi.Input<string>;
 }
 
@@ -1243,6 +2763,41 @@ export interface KubernetesAssurancePolicyForbiddenLabel {
     value?: pulumi.Input<string>;
 }
 
+export interface KubernetesAssurancePolicyKubernetesControl {
+    /**
+     * AVD ID.
+     */
+    avdId?: pulumi.Input<string>;
+    /**
+     * Description of the control.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Is the control enabled?
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Kind of the control.
+     */
+    kind?: pulumi.Input<string>;
+    /**
+     * Name of the control.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Out-of-the-box status of the control.
+     */
+    ootb?: pulumi.Input<boolean>;
+    /**
+     * Script ID.
+     */
+    scriptId?: pulumi.Input<number>;
+    /**
+     * Severity of the control.
+     */
+    severity?: pulumi.Input<string>;
+}
+
 export interface KubernetesAssurancePolicyPackagesBlackList {
     arch?: pulumi.Input<string>;
     display?: pulumi.Input<string>;
@@ -1265,6 +2820,13 @@ export interface KubernetesAssurancePolicyPackagesWhiteList {
     release?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
     versionRange?: pulumi.Input<string>;
+}
+
+export interface KubernetesAssurancePolicyPolicySettings {
+    enforce?: pulumi.Input<boolean>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    warn?: pulumi.Input<boolean>;
+    warningMessage?: pulumi.Input<string>;
 }
 
 export interface KubernetesAssurancePolicyRequiredLabel {
@@ -1290,28 +2852,28 @@ export interface KubernetesAssurancePolicyTrustedBaseImage {
 
 export interface RoleMappingLdap {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface RoleMappingOauth2 {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface RoleMappingOpenid {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 export interface RoleMappingSaml {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -1338,10 +2900,98 @@ export interface UserSaasGroup {
 
 export interface UserSaasLogin {
     created?: pulumi.Input<string>;
-    /**
-     * The ID of this resource.
-     */
     id?: pulumi.Input<number>;
     ipAddress?: pulumi.Input<string>;
     userId?: pulumi.Input<number>;
+}
+
+export interface VmwareAssurancePolicyAutoScanTime {
+    iteration?: pulumi.Input<number>;
+    iterationType?: pulumi.Input<string>;
+    time?: pulumi.Input<string>;
+    weekDays?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface VmwareAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
+    author?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    engine?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<number>;
+    name?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
+    readOnly?: pulumi.Input<boolean>;
+    scriptId?: pulumi.Input<string>;
+    severity?: pulumi.Input<string>;
+    snippet?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyForbiddenLabel {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyKubernetesControl {
+    avdId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
+    kind?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    ootb?: pulumi.Input<boolean>;
+    scriptId?: pulumi.Input<number>;
+    severity?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyPackagesBlackList {
+    arch?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    epoch?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    release?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    versionRange?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyPackagesWhiteList {
+    arch?: pulumi.Input<string>;
+    display?: pulumi.Input<string>;
+    epoch?: pulumi.Input<string>;
+    format?: pulumi.Input<string>;
+    license?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    release?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+    versionRange?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyPolicySettings {
+    enforce?: pulumi.Input<boolean>;
+    isAuditChecked?: pulumi.Input<boolean>;
+    warn?: pulumi.Input<boolean>;
+    warningMessage?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyRequiredLabel {
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyScope {
+    expression?: pulumi.Input<string>;
+    variables?: pulumi.Input<pulumi.Input<inputs.VmwareAssurancePolicyScopeVariable>[]>;
+}
+
+export interface VmwareAssurancePolicyScopeVariable {
+    attribute?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface VmwareAssurancePolicyTrustedBaseImage {
+    imagename?: pulumi.Input<string>;
+    registry?: pulumi.Input<string>;
 }

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -50,8 +49,13 @@ func LookupHostRuntimePolicy(ctx *pulumi.Context, args *LookupHostRuntimePolicyA
 
 // A collection of arguments for invoking getHostRuntimePolicy.
 type LookupHostRuntimePolicyArgs struct {
-	// Name of the host runtime policy
-	Name string `pulumi:"name"`
+	Auditing *GetHostRuntimePolicyAuditing `pulumi:"auditing"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings []GetHostRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions []GetHostRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
+	Name               string                                  `pulumi:"name"`
+	PackageBlocks      []GetHostRuntimePolicyPackageBlock      `pulumi:"packageBlocks"`
 }
 
 // A collection of values returned by getHostRuntimePolicy.
@@ -69,7 +73,8 @@ type LookupHostRuntimePolicyResult struct {
 	// If true, host successful logins will be audited.
 	AuditHostSuccessfulLoginEvents bool `pulumi:"auditHostSuccessfulLoginEvents"`
 	// If true, account management will be audited.
-	AuditUserAccountManagement bool `pulumi:"auditUserAccountManagement"`
+	AuditUserAccountManagement bool                          `pulumi:"auditUserAccountManagement"`
+	Auditing                   *GetHostRuntimePolicyAuditing `pulumi:"auditing"`
 	// Username of the account that created the service.
 	Author string `pulumi:"author"`
 	// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
@@ -79,7 +84,7 @@ type LookupHostRuntimePolicyResult struct {
 	// The description of the host runtime policy
 	Description string `pulumi:"description"`
 	// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-	EnableIpReputationSecurity bool `pulumi:"enableIpReputationSecurity"`
+	EnableIpReputation bool `pulumi:"enableIpReputation"`
 	// Indicates if the runtime policy is enabled or not.
 	Enabled bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
@@ -107,9 +112,8 @@ type LookupHostRuntimePolicyResult struct {
 	// List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
 	OsUsersAlloweds []string `pulumi:"osUsersAlloweds"`
 	// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
-	OsUsersBlockeds []string `pulumi:"osUsersBlockeds"`
-	// List of packages that are not allowed read, write or execute all files that under the packages.
-	PackageBlocks []string `pulumi:"packageBlocks"`
+	OsUsersBlockeds []string                           `pulumi:"osUsersBlockeds"`
+	PackageBlocks   []GetHostRuntimePolicyPackageBlock `pulumi:"packageBlocks"`
 	// If true, port scanning behaviors will be audited.
 	PortScanningDetection bool `pulumi:"portScanningDetection"`
 	// Logical expression of how to compute the dependency of the scope variables.
@@ -137,8 +141,13 @@ func LookupHostRuntimePolicyOutput(ctx *pulumi.Context, args LookupHostRuntimePo
 
 // A collection of arguments for invoking getHostRuntimePolicy.
 type LookupHostRuntimePolicyOutputArgs struct {
-	// Name of the host runtime policy
-	Name pulumi.StringInput `pulumi:"name"`
+	Auditing GetHostRuntimePolicyAuditingPtrInput `pulumi:"auditing"`
+	// Configuration for file integrity monitoring.
+	FileIntegrityMonitorings GetHostRuntimePolicyFileIntegrityMonitoringArrayInput `pulumi:"fileIntegrityMonitorings"`
+	// Configuration for Real-Time Malware Protection.
+	MalwareScanOptions GetHostRuntimePolicyMalwareScanOptionArrayInput `pulumi:"malwareScanOptions"`
+	Name               pulumi.StringInput                              `pulumi:"name"`
+	PackageBlocks      GetHostRuntimePolicyPackageBlockArrayInput      `pulumi:"packageBlocks"`
 }
 
 func (LookupHostRuntimePolicyOutputArgs) ElementType() reflect.Type {
@@ -158,12 +167,6 @@ func (o LookupHostRuntimePolicyResultOutput) ToLookupHostRuntimePolicyResultOutp
 
 func (o LookupHostRuntimePolicyResultOutput) ToLookupHostRuntimePolicyResultOutputWithContext(ctx context.Context) LookupHostRuntimePolicyResultOutput {
 	return o
-}
-
-func (o LookupHostRuntimePolicyResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupHostRuntimePolicyResult] {
-	return pulumix.Output[LookupHostRuntimePolicyResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Indicates the application scope of the service.
@@ -201,6 +204,10 @@ func (o LookupHostRuntimePolicyResultOutput) AuditUserAccountManagement() pulumi
 	return o.ApplyT(func(v LookupHostRuntimePolicyResult) bool { return v.AuditUserAccountManagement }).(pulumi.BoolOutput)
 }
 
+func (o LookupHostRuntimePolicyResultOutput) Auditing() GetHostRuntimePolicyAuditingPtrOutput {
+	return o.ApplyT(func(v LookupHostRuntimePolicyResult) *GetHostRuntimePolicyAuditing { return v.Auditing }).(GetHostRuntimePolicyAuditingPtrOutput)
+}
+
 // Username of the account that created the service.
 func (o LookupHostRuntimePolicyResultOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostRuntimePolicyResult) string { return v.Author }).(pulumi.StringOutput)
@@ -222,8 +229,8 @@ func (o LookupHostRuntimePolicyResultOutput) Description() pulumi.StringOutput {
 }
 
 // If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-func (o LookupHostRuntimePolicyResultOutput) EnableIpReputationSecurity() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupHostRuntimePolicyResult) bool { return v.EnableIpReputationSecurity }).(pulumi.BoolOutput)
+func (o LookupHostRuntimePolicyResultOutput) EnableIpReputation() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupHostRuntimePolicyResult) bool { return v.EnableIpReputation }).(pulumi.BoolOutput)
 }
 
 // Indicates if the runtime policy is enabled or not.
@@ -300,9 +307,8 @@ func (o LookupHostRuntimePolicyResultOutput) OsUsersBlockeds() pulumi.StringArra
 	return o.ApplyT(func(v LookupHostRuntimePolicyResult) []string { return v.OsUsersBlockeds }).(pulumi.StringArrayOutput)
 }
 
-// List of packages that are not allowed read, write or execute all files that under the packages.
-func (o LookupHostRuntimePolicyResultOutput) PackageBlocks() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupHostRuntimePolicyResult) []string { return v.PackageBlocks }).(pulumi.StringArrayOutput)
+func (o LookupHostRuntimePolicyResultOutput) PackageBlocks() GetHostRuntimePolicyPackageBlockArrayOutput {
+	return o.ApplyT(func(v LookupHostRuntimePolicyResult) []GetHostRuntimePolicyPackageBlock { return v.PackageBlocks }).(GetHostRuntimePolicyPackageBlockArrayOutput)
 }
 
 // If true, port scanning behaviors will be audited.

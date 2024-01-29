@@ -76,11 +76,43 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetHostRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("auditing")]
+        public Inputs.GetHostRuntimePolicyAuditingArgs? Auditing { get; set; }
+
+        [Input("fileIntegrityMonitorings")]
+        private List<Inputs.GetHostRuntimePolicyFileIntegrityMonitoringArgs>? _fileIntegrityMonitorings;
+
         /// <summary>
-        /// Name of the host runtime policy
+        /// Configuration for file integrity monitoring.
         /// </summary>
+        public List<Inputs.GetHostRuntimePolicyFileIntegrityMonitoringArgs> FileIntegrityMonitorings
+        {
+            get => _fileIntegrityMonitorings ?? (_fileIntegrityMonitorings = new List<Inputs.GetHostRuntimePolicyFileIntegrityMonitoringArgs>());
+            set => _fileIntegrityMonitorings = value;
+        }
+
+        [Input("malwareScanOptions")]
+        private List<Inputs.GetHostRuntimePolicyMalwareScanOptionArgs>? _malwareScanOptions;
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        public List<Inputs.GetHostRuntimePolicyMalwareScanOptionArgs> MalwareScanOptions
+        {
+            get => _malwareScanOptions ?? (_malwareScanOptions = new List<Inputs.GetHostRuntimePolicyMalwareScanOptionArgs>());
+            set => _malwareScanOptions = value;
+        }
+
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        [Input("packageBlocks")]
+        private List<Inputs.GetHostRuntimePolicyPackageBlockArgs>? _packageBlocks;
+        public List<Inputs.GetHostRuntimePolicyPackageBlockArgs> PackageBlocks
+        {
+            get => _packageBlocks ?? (_packageBlocks = new List<Inputs.GetHostRuntimePolicyPackageBlockArgs>());
+            set => _packageBlocks = value;
+        }
 
         public GetHostRuntimePolicyArgs()
         {
@@ -90,11 +122,43 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetHostRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("auditing")]
+        public Input<Inputs.GetHostRuntimePolicyAuditingInputArgs>? Auditing { get; set; }
+
+        [Input("fileIntegrityMonitorings")]
+        private InputList<Inputs.GetHostRuntimePolicyFileIntegrityMonitoringInputArgs>? _fileIntegrityMonitorings;
+
         /// <summary>
-        /// Name of the host runtime policy
+        /// Configuration for file integrity monitoring.
         /// </summary>
+        public InputList<Inputs.GetHostRuntimePolicyFileIntegrityMonitoringInputArgs> FileIntegrityMonitorings
+        {
+            get => _fileIntegrityMonitorings ?? (_fileIntegrityMonitorings = new InputList<Inputs.GetHostRuntimePolicyFileIntegrityMonitoringInputArgs>());
+            set => _fileIntegrityMonitorings = value;
+        }
+
+        [Input("malwareScanOptions")]
+        private InputList<Inputs.GetHostRuntimePolicyMalwareScanOptionInputArgs>? _malwareScanOptions;
+
+        /// <summary>
+        /// Configuration for Real-Time Malware Protection.
+        /// </summary>
+        public InputList<Inputs.GetHostRuntimePolicyMalwareScanOptionInputArgs> MalwareScanOptions
+        {
+            get => _malwareScanOptions ?? (_malwareScanOptions = new InputList<Inputs.GetHostRuntimePolicyMalwareScanOptionInputArgs>());
+            set => _malwareScanOptions = value;
+        }
+
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("packageBlocks")]
+        private InputList<Inputs.GetHostRuntimePolicyPackageBlockInputArgs>? _packageBlocks;
+        public InputList<Inputs.GetHostRuntimePolicyPackageBlockInputArgs> PackageBlocks
+        {
+            get => _packageBlocks ?? (_packageBlocks = new InputList<Inputs.GetHostRuntimePolicyPackageBlockInputArgs>());
+            set => _packageBlocks = value;
+        }
 
         public GetHostRuntimePolicyInvokeArgs()
         {
@@ -134,6 +198,7 @@ namespace Pulumiverse.Aquasec
         /// If true, account management will be audited.
         /// </summary>
         public readonly bool AuditUserAccountManagement;
+        public readonly Outputs.GetHostRuntimePolicyAuditingResult? Auditing;
         /// <summary>
         /// Username of the account that created the service.
         /// </summary>
@@ -153,7 +218,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
         /// </summary>
-        public readonly bool EnableIpReputationSecurity;
+        public readonly bool EnableIpReputation;
         /// <summary>
         /// Indicates if the runtime policy is enabled or not.
         /// </summary>
@@ -210,10 +275,7 @@ namespace Pulumiverse.Aquasec
         /// List of OS (Linux or Windows) users that are not allowed to authenticate to the host, and block authentication requests from all others.
         /// </summary>
         public readonly ImmutableArray<string> OsUsersBlockeds;
-        /// <summary>
-        /// List of packages that are not allowed read, write or execute all files that under the packages.
-        /// </summary>
-        public readonly ImmutableArray<string> PackageBlocks;
+        public readonly ImmutableArray<Outputs.GetHostRuntimePolicyPackageBlockResult> PackageBlocks;
         /// <summary>
         /// If true, port scanning behaviors will be audited.
         /// </summary>
@@ -251,6 +313,8 @@ namespace Pulumiverse.Aquasec
 
             bool auditUserAccountManagement,
 
+            Outputs.GetHostRuntimePolicyAuditingResult? auditing,
+
             string author,
 
             bool blockCryptocurrencyMining,
@@ -259,7 +323,7 @@ namespace Pulumiverse.Aquasec
 
             string description,
 
-            bool enableIpReputationSecurity,
+            bool enableIpReputation,
 
             bool enabled,
 
@@ -289,7 +353,7 @@ namespace Pulumiverse.Aquasec
 
             ImmutableArray<string> osUsersBlockeds,
 
-            ImmutableArray<string> packageBlocks,
+            ImmutableArray<Outputs.GetHostRuntimePolicyPackageBlockResult> packageBlocks,
 
             bool portScanningDetection,
 
@@ -308,11 +372,12 @@ namespace Pulumiverse.Aquasec
             AuditHostFailedLoginEvents = auditHostFailedLoginEvents;
             AuditHostSuccessfulLoginEvents = auditHostSuccessfulLoginEvents;
             AuditUserAccountManagement = auditUserAccountManagement;
+            Auditing = auditing;
             Author = author;
             BlockCryptocurrencyMining = blockCryptocurrencyMining;
             BlockedFiles = blockedFiles;
             Description = description;
-            EnableIpReputationSecurity = enableIpReputationSecurity;
+            EnableIpReputation = enableIpReputation;
             Enabled = enabled;
             Enforce = enforce;
             EnforceAfterDays = enforceAfterDays;

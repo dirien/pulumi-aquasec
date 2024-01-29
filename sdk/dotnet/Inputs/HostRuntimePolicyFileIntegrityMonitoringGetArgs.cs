@@ -13,106 +13,112 @@ namespace Pulumiverse.Aquasec.Inputs
 
     public sealed class HostRuntimePolicyFileIntegrityMonitoringGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("excludedPaths")]
-        private InputList<string>? _excludedPaths;
+        /// <summary>
+        /// If true, file integrity monitoring is enabled.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        [Input("exceptionalMonitoredFiles")]
+        private InputList<string>? _exceptionalMonitoredFiles;
 
         /// <summary>
-        /// List of paths to be excluded from being monitored.
+        /// List of paths to be excluded from monitoring.
         /// </summary>
-        public InputList<string> ExcludedPaths
+        public InputList<string> ExceptionalMonitoredFiles
         {
-            get => _excludedPaths ?? (_excludedPaths = new InputList<string>());
-            set => _excludedPaths = value;
+            get => _exceptionalMonitoredFiles ?? (_exceptionalMonitoredFiles = new InputList<string>());
+            set => _exceptionalMonitoredFiles = value;
         }
 
-        [Input("excludedProcesses")]
-        private InputList<string>? _excludedProcesses;
+        [Input("exceptionalMonitoredFilesProcesses")]
+        private InputList<string>? _exceptionalMonitoredFilesProcesses;
 
         /// <summary>
-        /// List of processes to be excluded from being monitored.
+        /// List of processes to be excluded from monitoring.
         /// </summary>
-        public InputList<string> ExcludedProcesses
+        public InputList<string> ExceptionalMonitoredFilesProcesses
         {
-            get => _excludedProcesses ?? (_excludedProcesses = new InputList<string>());
-            set => _excludedProcesses = value;
+            get => _exceptionalMonitoredFilesProcesses ?? (_exceptionalMonitoredFilesProcesses = new InputList<string>());
+            set => _exceptionalMonitoredFilesProcesses = value;
         }
 
-        [Input("excludedUsers")]
-        private InputList<string>? _excludedUsers;
+        [Input("exceptionalMonitoredFilesUsers")]
+        private InputList<string>? _exceptionalMonitoredFilesUsers;
 
         /// <summary>
-        /// List of users to be excluded from being monitored.
+        /// List of users to be excluded from monitoring.
         /// </summary>
-        public InputList<string> ExcludedUsers
+        public InputList<string> ExceptionalMonitoredFilesUsers
         {
-            get => _excludedUsers ?? (_excludedUsers = new InputList<string>());
-            set => _excludedUsers = value;
+            get => _exceptionalMonitoredFilesUsers ?? (_exceptionalMonitoredFilesUsers = new InputList<string>());
+            set => _exceptionalMonitoredFilesUsers = value;
         }
 
-        /// <summary>
-        /// If true, add attributes operations will be monitored.
-        /// </summary>
-        [Input("monitorAttributes")]
-        public Input<bool>? MonitorAttributes { get; set; }
-
-        /// <summary>
-        /// If true, create operations will be monitored.
-        /// </summary>
-        [Input("monitorCreate")]
-        public Input<bool>? MonitorCreate { get; set; }
-
-        /// <summary>
-        /// If true, deletion operations will be monitored.
-        /// </summary>
-        [Input("monitorDelete")]
-        public Input<bool>? MonitorDelete { get; set; }
-
-        /// <summary>
-        /// If true, modification operations will be monitored.
-        /// </summary>
-        [Input("monitorModify")]
-        public Input<bool>? MonitorModify { get; set; }
-
-        /// <summary>
-        /// If true, read operations will be monitored.
-        /// </summary>
-        [Input("monitorRead")]
-        public Input<bool>? MonitorRead { get; set; }
-
-        [Input("monitoredPaths")]
-        private InputList<string>? _monitoredPaths;
+        [Input("monitoredFiles")]
+        private InputList<string>? _monitoredFiles;
 
         /// <summary>
         /// List of paths to be monitored.
         /// </summary>
-        public InputList<string> MonitoredPaths
+        public InputList<string> MonitoredFiles
         {
-            get => _monitoredPaths ?? (_monitoredPaths = new InputList<string>());
-            set => _monitoredPaths = value;
+            get => _monitoredFiles ?? (_monitoredFiles = new InputList<string>());
+            set => _monitoredFiles = value;
         }
 
-        [Input("monitoredProcesses")]
-        private InputList<string>? _monitoredProcesses;
+        /// <summary>
+        /// Whether to monitor file attribute operations.
+        /// </summary>
+        [Input("monitoredFilesAttributes")]
+        public Input<bool>? MonitoredFilesAttributes { get; set; }
 
         /// <summary>
-        /// List of processes to be monitored.
+        /// Whether to monitor file create operations.
         /// </summary>
-        public InputList<string> MonitoredProcesses
+        [Input("monitoredFilesCreate")]
+        public Input<bool>? MonitoredFilesCreate { get; set; }
+
+        /// <summary>
+        /// Whether to monitor file delete operations.
+        /// </summary>
+        [Input("monitoredFilesDelete")]
+        public Input<bool>? MonitoredFilesDelete { get; set; }
+
+        /// <summary>
+        /// Whether to monitor file modify operations.
+        /// </summary>
+        [Input("monitoredFilesModify")]
+        public Input<bool>? MonitoredFilesModify { get; set; }
+
+        [Input("monitoredFilesProcesses")]
+        private InputList<string>? _monitoredFilesProcesses;
+
+        /// <summary>
+        /// List of processes associated with monitored files.
+        /// </summary>
+        public InputList<string> MonitoredFilesProcesses
         {
-            get => _monitoredProcesses ?? (_monitoredProcesses = new InputList<string>());
-            set => _monitoredProcesses = value;
+            get => _monitoredFilesProcesses ?? (_monitoredFilesProcesses = new InputList<string>());
+            set => _monitoredFilesProcesses = value;
         }
 
-        [Input("monitoredUsers")]
-        private InputList<string>? _monitoredUsers;
+        /// <summary>
+        /// Whether to monitor file read operations.
+        /// </summary>
+        [Input("monitoredFilesRead")]
+        public Input<bool>? MonitoredFilesRead { get; set; }
+
+        [Input("monitoredFilesUsers")]
+        private InputList<string>? _monitoredFilesUsers;
 
         /// <summary>
-        /// List of users to be monitored.
+        /// List of users associated with monitored files.
         /// </summary>
-        public InputList<string> MonitoredUsers
+        public InputList<string> MonitoredFilesUsers
         {
-            get => _monitoredUsers ?? (_monitoredUsers = new InputList<string>());
-            set => _monitoredUsers = value;
+            get => _monitoredFilesUsers ?? (_monitoredFilesUsers = new InputList<string>());
+            set => _monitoredFilesUsers = value;
         }
 
         public HostRuntimePolicyFileIntegrityMonitoringGetArgs()

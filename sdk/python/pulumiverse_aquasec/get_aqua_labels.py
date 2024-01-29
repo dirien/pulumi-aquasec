@@ -14,6 +14,7 @@ __all__ = [
     'GetAquaLabelsResult',
     'AwaitableGetAquaLabelsResult',
     'get_aqua_labels',
+    'get_aqua_labels_output',
 ]
 
 @pulumi.output_type
@@ -74,3 +75,21 @@ def get_aqua_labels(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     return AwaitableGetAquaLabelsResult(
         aqua_labels=pulumi.get(__ret__, 'aqua_labels'),
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_aqua_labels)
+def get_aqua_labels_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAquaLabelsResult]:
+    """
+    The data source `get_aqua_labels` provides a method to query all aqua labels within the Aqua account management.The fields returned from this query are detailed in the Schema section below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    aqua_labels = aquasec.get_aqua_labels()
+    pulumi.export("scopes", aqua_labels)
+    ```
+    """
+    ...

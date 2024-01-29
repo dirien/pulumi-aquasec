@@ -14,9 +14,6 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetImageAssurancePolicyCustomCheckResult
     {
-        /// <summary>
-        /// Name of user account that created the policy.
-        /// </summary>
         public readonly string Author;
         public readonly string Description;
         public readonly string Engine;

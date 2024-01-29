@@ -10,186 +10,26 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Aquasec = Pulumiverse.Aquasec;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var hostRuntimePolicy = new Aquasec.HostRuntimePolicy("hostRuntimePolicy", new()
-    ///     {
-    ///         ApplicationScopes = new[]
-    ///         {
-    ///             "Global",
-    ///         },
-    ///         AuditAllOsUserActivity = true,
-    ///         AuditBruteForceLogin = true,
-    ///         AuditFullCommandArguments = true,
-    ///         AuditHostFailedLoginEvents = true,
-    ///         AuditHostSuccessfulLoginEvents = true,
-    ///         AuditUserAccountManagement = true,
-    ///         BlockCryptocurrencyMining = true,
-    ///         BlockedFiles = new[]
-    ///         {
-    ///             "blocked",
-    ///         },
-    ///         Description = "host_runtime_policy",
-    ///         EnableIpReputationSecurity = true,
-    ///         Enabled = true,
-    ///         Enforce = false,
-    ///         FileIntegrityMonitoring = new Aquasec.Inputs.HostRuntimePolicyFileIntegrityMonitoringArgs
-    ///         {
-    ///             ExcludedPaths = new[]
-    ///             {
-    ///                 "expaths",
-    ///             },
-    ///             ExcludedProcesses = new[]
-    ///             {
-    ///                 "exprocess",
-    ///             },
-    ///             ExcludedUsers = new[]
-    ///             {
-    ///                 "expuser",
-    ///             },
-    ///             MonitorAttributes = true,
-    ///             MonitorCreate = true,
-    ///             MonitorDelete = true,
-    ///             MonitorModify = true,
-    ///             MonitorRead = true,
-    ///             MonitoredPaths = new[]
-    ///             {
-    ///                 "paths",
-    ///             },
-    ///             MonitoredProcesses = new[]
-    ///             {
-    ///                 "process",
-    ///             },
-    ///             MonitoredUsers = new[]
-    ///             {
-    ///                 "user",
-    ///             },
-    ///         },
-    ///         MonitorSystemLogIntegrity = true,
-    ///         MonitorSystemTimeChanges = true,
-    ///         MonitorWindowsServices = true,
-    ///         OsGroupsAlloweds = new[]
-    ///         {
-    ///             "group1",
-    ///         },
-    ///         OsGroupsBlockeds = new[]
-    ///         {
-    ///             "group2",
-    ///         },
-    ///         OsUsersAlloweds = new[]
-    ///         {
-    ///             "user1",
-    ///         },
-    ///         OsUsersBlockeds = new[]
-    ///         {
-    ///             "user2",
-    ///         },
-    ///         PackageBlocks = new[]
-    ///         {
-    ///             "package1",
-    ///         },
-    ///         PortScanningDetection = true,
-    ///         ScopeVariables = new[]
-    ///         {
-    ///             new Aquasec.Inputs.HostRuntimePolicyScopeVariableArgs
-    ///             {
-    ///                 Attribute = "kubernetes.cluster",
-    ///                 Value = "default",
-    ///             },
-    ///             new Aquasec.Inputs.HostRuntimePolicyScopeVariableArgs
-    ///             {
-    ///                 Attribute = "kubernetes.label",
-    ///                 Name = "app",
-    ///                 Value = "aqua",
-    ///             },
-    ///         },
-    ///         WindowsRegistryMonitoring = new Aquasec.Inputs.HostRuntimePolicyWindowsRegistryMonitoringArgs
-    ///         {
-    ///             ExcludedPaths = new[]
-    ///             {
-    ///                 "expaths",
-    ///             },
-    ///             ExcludedProcesses = new[]
-    ///             {
-    ///                 "exprocess",
-    ///             },
-    ///             ExcludedUsers = new[]
-    ///             {
-    ///                 "expuser",
-    ///             },
-    ///             MonitorAttributes = true,
-    ///             MonitorCreate = true,
-    ///             MonitorDelete = true,
-    ///             MonitorModify = true,
-    ///             MonitorRead = true,
-    ///             MonitoredPaths = new[]
-    ///             {
-    ///                 "paths",
-    ///             },
-    ///             MonitoredProcesses = new[]
-    ///             {
-    ///                 "process",
-    ///             },
-    ///             MonitoredUsers = new[]
-    ///             {
-    ///                 "user",
-    ///             },
-    ///         },
-    ///         WindowsRegistryProtection = new Aquasec.Inputs.HostRuntimePolicyWindowsRegistryProtectionArgs
-    ///         {
-    ///             ExcludedPaths = new[]
-    ///             {
-    ///                 "expaths",
-    ///             },
-    ///             ExcludedProcesses = new[]
-    ///             {
-    ///                 "exprocess",
-    ///             },
-    ///             ExcludedUsers = new[]
-    ///             {
-    ///                 "expuser",
-    ///             },
-    ///             ProtectedPaths = new[]
-    ///             {
-    ///                 "paths",
-    ///             },
-    ///             ProtectedProcesses = new[]
-    ///             {
-    ///                 "process",
-    ///             },
-    ///             ProtectedUsers = new[]
-    ///             {
-    ///                 "user",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// </summary>
     [AquasecResourceType("aquasec:index/hostRuntimePolicy:HostRuntimePolicy")]
     public partial class HostRuntimePolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        [Output("allowedExecutables")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyAllowedExecutable>> AllowedExecutables { get; private set; } = null!;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        [Output("allowedRegistries")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyAllowedRegistry>> AllowedRegistries { get; private set; } = null!;
+
         /// <summary>
         /// Indicates the application scope of the service.
         /// </summary>
         [Output("applicationScopes")]
         public Output<ImmutableArray<string>> ApplicationScopes { get; private set; } = null!;
-
-        /// <summary>
-        /// If true, all process activity will be audited.
-        /// </summary>
-        [Output("auditAllOsUserActivity")]
-        public Output<bool?> AuditAllOsUserActivity { get; private set; } = null!;
 
         /// <summary>
         /// Detects brute force login attempts
@@ -221,17 +61,38 @@ namespace Pulumiverse.Aquasec
         [Output("auditUserAccountManagement")]
         public Output<bool?> AuditUserAccountManagement { get; private set; } = null!;
 
+        [Output("auditing")]
+        public Output<Outputs.HostRuntimePolicyAuditing> Auditing { get; private set; } = null!;
+
         /// <summary>
         /// Username of the account that created the service.
         /// </summary>
         [Output("author")]
         public Output<string> Author { get; private set; } = null!;
 
+        [Output("blacklistedOsUsers")]
+        public Output<Outputs.HostRuntimePolicyBlacklistedOsUsers> BlacklistedOsUsers { get; private set; } = null!;
+
+        [Output("blockContainerExec")]
+        public Output<bool?> BlockContainerExec { get; private set; } = null!;
+
         /// <summary>
         /// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
         /// </summary>
         [Output("blockCryptocurrencyMining")]
         public Output<bool?> BlockCryptocurrencyMining { get; private set; } = null!;
+
+        [Output("blockDisallowedImages")]
+        public Output<bool?> BlockDisallowedImages { get; private set; } = null!;
+
+        [Output("blockFilelessExec")]
+        public Output<bool?> BlockFilelessExec { get; private set; } = null!;
+
+        [Output("blockNonCompliantWorkloads")]
+        public Output<bool?> BlockNonCompliantWorkloads { get; private set; } = null!;
+
+        [Output("blockNonK8sContainers")]
+        public Output<bool?> BlockNonK8sContainers { get; private set; } = null!;
 
         /// <summary>
         /// List of files that are prevented from being read, modified and executed in the containers.
@@ -240,19 +101,52 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> BlockedFiles { get; private set; } = null!;
 
         /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        [Output("bypassScopes")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyBypassScope>> BypassScopes { get; private set; } = null!;
+
+        [Output("containerExec")]
+        public Output<Outputs.HostRuntimePolicyContainerExec> ContainerExec { get; private set; } = null!;
+
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        [Output("cve")]
+        public Output<string?> Cve { get; private set; } = null!;
+
+        [Output("defaultSecurityProfile")]
+        public Output<string?> DefaultSecurityProfile { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the host runtime policy
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        /// </summary>
-        [Output("enableIpReputationSecurity")]
-        public Output<bool?> EnableIpReputationSecurity { get; private set; } = null!;
+        [Output("digest")]
+        public Output<string?> Digest { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Drift prevention configuration.
+        /// </summary>
+        [Output("driftPreventions")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyDriftPrevention>> DriftPreventions { get; private set; } = null!;
+
+        [Output("enableCryptoMiningDns")]
+        public Output<bool?> EnableCryptoMiningDns { get; private set; } = null!;
+
+        [Output("enableForkGuard")]
+        public Output<bool?> EnableForkGuard { get; private set; } = null!;
+
+        [Output("enableIpReputation")]
+        public Output<bool?> EnableIpReputation { get; private set; } = null!;
+
+        [Output("enablePortScanProtection")]
+        public Output<bool?> EnablePortScanProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -269,17 +163,65 @@ namespace Pulumiverse.Aquasec
         [Output("enforceAfterDays")]
         public Output<int?> EnforceAfterDays { get; private set; } = null!;
 
+        [Output("enforceSchedulerAddedOn")]
+        public Output<int> EnforceSchedulerAddedOn { get; private set; } = null!;
+
+        /// <summary>
+        /// List of excluded application scopes.
+        /// </summary>
+        [Output("excludeApplicationScopes")]
+        public Output<ImmutableArray<string>> ExcludeApplicationScopes { get; private set; } = null!;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        [Output("executableBlacklists")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyExecutableBlacklist>> ExecutableBlacklists { get; private set; } = null!;
+
+        [Output("failedKubernetesChecks")]
+        public Output<Outputs.HostRuntimePolicyFailedKubernetesChecks> FailedKubernetesChecks { get; private set; } = null!;
+
+        [Output("fileBlock")]
+        public Output<Outputs.HostRuntimePolicyFileBlock> FileBlock { get; private set; } = null!;
+
         /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
         [Output("fileIntegrityMonitoring")]
-        public Output<Outputs.HostRuntimePolicyFileIntegrityMonitoring?> FileIntegrityMonitoring { get; private set; } = null!;
+        public Output<Outputs.HostRuntimePolicyFileIntegrityMonitoring> FileIntegrityMonitoring { get; private set; } = null!;
+
+        [Output("forkGuardProcessLimit")]
+        public Output<int?> ForkGuardProcessLimit { get; private set; } = null!;
+
+        [Output("imageName")]
+        public Output<string?> ImageName { get; private set; } = null!;
+
+        [Output("isAuditChecked")]
+        public Output<bool?> IsAuditChecked { get; private set; } = null!;
+
+        [Output("isAutoGenerated")]
+        public Output<bool?> IsAutoGenerated { get; private set; } = null!;
+
+        [Output("isOotbPolicy")]
+        public Output<bool?> IsOotbPolicy { get; private set; } = null!;
+
+        [Output("lastupdate")]
+        public Output<int> Lastupdate { get; private set; } = null!;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        [Output("limitContainerPrivileges")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyLimitContainerPrivilege>> LimitContainerPrivileges { get; private set; } = null!;
+
+        [Output("linuxCapabilities")]
+        public Output<Outputs.HostRuntimePolicyLinuxCapabilities> LinuxCapabilities { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
         /// </summary>
         [Output("malwareScanOptions")]
-        public Output<Outputs.HostRuntimePolicyMalwareScanOptions?> MalwareScanOptions { get; private set; } = null!;
+        public Output<Outputs.HostRuntimePolicyMalwareScanOptions> MalwareScanOptions { get; private set; } = null!;
 
         /// <summary>
         /// If true, system log will be monitored.
@@ -300,10 +242,16 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> MonitorWindowsServices { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the host runtime policy
+        /// Name assigned to the attribute.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("noNewPrivileges")]
+        public Output<bool?> NoNewPrivileges { get; private set; } = null!;
+
+        [Output("onlyRegisteredImages")]
+        public Output<bool?> OnlyRegisteredImages { get; private set; } = null!;
 
         /// <summary>
         /// List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
@@ -329,17 +277,50 @@ namespace Pulumiverse.Aquasec
         [Output("osUsersBlockeds")]
         public Output<ImmutableArray<string>> OsUsersBlockeds { get; private set; } = null!;
 
-        /// <summary>
-        /// List of packages that are not allowed read, write or execute all files that under the packages.
-        /// </summary>
         [Output("packageBlocks")]
-        public Output<ImmutableArray<string>> PackageBlocks { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyPackageBlock>> PackageBlocks { get; private set; } = null!;
+
+        [Output("permission")]
+        public Output<string?> Permission { get; private set; } = null!;
+
+        [Output("portBlock")]
+        public Output<Outputs.HostRuntimePolicyPortBlock> PortBlock { get; private set; } = null!;
+
+        [Output("readonlyFiles")]
+        public Output<Outputs.HostRuntimePolicyReadonlyFiles> ReadonlyFiles { get; private set; } = null!;
+
+        [Output("readonlyRegistry")]
+        public Output<Outputs.HostRuntimePolicyReadonlyRegistry> ReadonlyRegistry { get; private set; } = null!;
+
+        [Output("registry")]
+        public Output<string?> Registry { get; private set; } = null!;
+
+        [Output("registryAccessMonitoring")]
+        public Output<Outputs.HostRuntimePolicyRegistryAccessMonitoring> RegistryAccessMonitoring { get; private set; } = null!;
+
+        [Output("repoName")]
+        public Output<string?> RepoName { get; private set; } = null!;
+
+        [Output("resourceName")]
+        public Output<string?> ResourceName { get; private set; } = null!;
+
+        [Output("resourceType")]
+        public Output<string?> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// If true, port scanning behaviors will be audited.
+        /// Restricted volumes configuration.
         /// </summary>
-        [Output("portScanningDetection")]
-        public Output<bool?> PortScanningDetection { get; private set; } = null!;
+        [Output("restrictedVolumes")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyRestrictedVolume>> RestrictedVolumes { get; private set; } = null!;
+
+        [Output("reverseShell")]
+        public Output<Outputs.HostRuntimePolicyReverseShell> ReverseShell { get; private set; } = null!;
+
+        [Output("runtimeMode")]
+        public Output<int?> RuntimeMode { get; private set; } = null!;
+
+        [Output("runtimeType")]
+        public Output<string> RuntimeType { get; private set; } = null!;
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -354,16 +335,31 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<Outputs.HostRuntimePolicyScopeVariable>> ScopeVariables { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for windows registry monitoring.
+        /// Scope configuration.
         /// </summary>
-        [Output("windowsRegistryMonitoring")]
-        public Output<Outputs.HostRuntimePolicyWindowsRegistryMonitoring?> WindowsRegistryMonitoring { get; private set; } = null!;
+        [Output("scopes")]
+        public Output<ImmutableArray<Outputs.HostRuntimePolicyScope>> Scopes { get; private set; } = null!;
 
-        /// <summary>
-        /// Configuration for windows registry protection.
-        /// </summary>
-        [Output("windowsRegistryProtection")]
-        public Output<Outputs.HostRuntimePolicyWindowsRegistryProtection?> WindowsRegistryProtection { get; private set; } = null!;
+        [Output("systemIntegrityProtection")]
+        public Output<Outputs.HostRuntimePolicySystemIntegrityProtection> SystemIntegrityProtection { get; private set; } = null!;
+
+        [Output("tripwire")]
+        public Output<Outputs.HostRuntimePolicyTripwire> Tripwire { get; private set; } = null!;
+
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        [Output("updated")]
+        public Output<string> Updated { get; private set; } = null!;
+
+        [Output("version")]
+        public Output<string?> Version { get; private set; } = null!;
+
+        [Output("vpatchVersion")]
+        public Output<string?> VpatchVersion { get; private set; } = null!;
+
+        [Output("whitelistedOsUsers")]
+        public Output<Outputs.HostRuntimePolicyWhitelistedOsUsers> WhitelistedOsUsers { get; private set; } = null!;
 
 
         /// <summary>
@@ -412,6 +408,30 @@ namespace Pulumiverse.Aquasec
 
     public sealed class HostRuntimePolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("allowedExecutables")]
+        private InputList<Inputs.HostRuntimePolicyAllowedExecutableArgs>? _allowedExecutables;
+
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyAllowedExecutableArgs> AllowedExecutables
+        {
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.HostRuntimePolicyAllowedExecutableArgs>());
+            set => _allowedExecutables = value;
+        }
+
+        [Input("allowedRegistries")]
+        private InputList<Inputs.HostRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyAllowedRegistryArgs> AllowedRegistries
+        {
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.HostRuntimePolicyAllowedRegistryArgs>());
+            set => _allowedRegistries = value;
+        }
+
         [Input("applicationScopes")]
         private InputList<string>? _applicationScopes;
 
@@ -423,12 +443,6 @@ namespace Pulumiverse.Aquasec
             get => _applicationScopes ?? (_applicationScopes = new InputList<string>());
             set => _applicationScopes = value;
         }
-
-        /// <summary>
-        /// If true, all process activity will be audited.
-        /// </summary>
-        [Input("auditAllOsUserActivity")]
-        public Input<bool>? AuditAllOsUserActivity { get; set; }
 
         /// <summary>
         /// Detects brute force login attempts
@@ -460,11 +474,38 @@ namespace Pulumiverse.Aquasec
         [Input("auditUserAccountManagement")]
         public Input<bool>? AuditUserAccountManagement { get; set; }
 
+        [Input("auditing")]
+        public Input<Inputs.HostRuntimePolicyAuditingArgs>? Auditing { get; set; }
+
+        /// <summary>
+        /// Username of the account that created the service.
+        /// </summary>
+        [Input("author")]
+        public Input<string>? Author { get; set; }
+
+        [Input("blacklistedOsUsers")]
+        public Input<Inputs.HostRuntimePolicyBlacklistedOsUsersArgs>? BlacklistedOsUsers { get; set; }
+
+        [Input("blockContainerExec")]
+        public Input<bool>? BlockContainerExec { get; set; }
+
         /// <summary>
         /// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
         /// </summary>
         [Input("blockCryptocurrencyMining")]
         public Input<bool>? BlockCryptocurrencyMining { get; set; }
+
+        [Input("blockDisallowedImages")]
+        public Input<bool>? BlockDisallowedImages { get; set; }
+
+        [Input("blockFilelessExec")]
+        public Input<bool>? BlockFilelessExec { get; set; }
+
+        [Input("blockNonCompliantWorkloads")]
+        public Input<bool>? BlockNonCompliantWorkloads { get; set; }
+
+        [Input("blockNonK8sContainers")]
+        public Input<bool>? BlockNonK8sContainers { get; set; }
 
         [Input("blockedFiles")]
         private InputList<string>? _blockedFiles;
@@ -478,20 +519,65 @@ namespace Pulumiverse.Aquasec
             set => _blockedFiles = value;
         }
 
+        [Input("bypassScopes")]
+        private InputList<Inputs.HostRuntimePolicyBypassScopeArgs>? _bypassScopes;
+
+        /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyBypassScopeArgs> BypassScopes
+        {
+            get => _bypassScopes ?? (_bypassScopes = new InputList<Inputs.HostRuntimePolicyBypassScopeArgs>());
+            set => _bypassScopes = value;
+        }
+
+        [Input("containerExec")]
+        public Input<Inputs.HostRuntimePolicyContainerExecArgs>? ContainerExec { get; set; }
+
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
+        [Input("cve")]
+        public Input<string>? Cve { get; set; }
+
+        [Input("defaultSecurityProfile")]
+        public Input<string>? DefaultSecurityProfile { get; set; }
+
         /// <summary>
         /// The description of the host runtime policy
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        /// </summary>
-        [Input("enableIpReputationSecurity")]
-        public Input<bool>? EnableIpReputationSecurity { get; set; }
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("driftPreventions")]
+        private InputList<Inputs.HostRuntimePolicyDriftPreventionArgs>? _driftPreventions;
 
         /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Drift prevention configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyDriftPreventionArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.HostRuntimePolicyDriftPreventionArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("enableCryptoMiningDns")]
+        public Input<bool>? EnableCryptoMiningDns { get; set; }
+
+        [Input("enableForkGuard")]
+        public Input<bool>? EnableForkGuard { get; set; }
+
+        [Input("enableIpReputation")]
+        public Input<bool>? EnableIpReputation { get; set; }
+
+        [Input("enablePortScanProtection")]
+        public Input<bool>? EnablePortScanProtection { get; set; }
+
+        /// <summary>
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -508,11 +594,77 @@ namespace Pulumiverse.Aquasec
         [Input("enforceAfterDays")]
         public Input<int>? EnforceAfterDays { get; set; }
 
+        [Input("enforceSchedulerAddedOn")]
+        public Input<int>? EnforceSchedulerAddedOn { get; set; }
+
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
+
+        /// <summary>
+        /// List of excluded application scopes.
+        /// </summary>
+        public InputList<string> ExcludeApplicationScopes
+        {
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
+        }
+
+        [Input("executableBlacklists")]
+        private InputList<Inputs.HostRuntimePolicyExecutableBlacklistArgs>? _executableBlacklists;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyExecutableBlacklistArgs> ExecutableBlacklists
+        {
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.HostRuntimePolicyExecutableBlacklistArgs>());
+            set => _executableBlacklists = value;
+        }
+
+        [Input("failedKubernetesChecks")]
+        public Input<Inputs.HostRuntimePolicyFailedKubernetesChecksArgs>? FailedKubernetesChecks { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.HostRuntimePolicyFileBlockArgs>? FileBlock { get; set; }
+
         /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
         [Input("fileIntegrityMonitoring")]
         public Input<Inputs.HostRuntimePolicyFileIntegrityMonitoringArgs>? FileIntegrityMonitoring { get; set; }
+
+        [Input("forkGuardProcessLimit")]
+        public Input<int>? ForkGuardProcessLimit { get; set; }
+
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        [Input("isAuditChecked")]
+        public Input<bool>? IsAuditChecked { get; set; }
+
+        [Input("isAutoGenerated")]
+        public Input<bool>? IsAutoGenerated { get; set; }
+
+        [Input("isOotbPolicy")]
+        public Input<bool>? IsOotbPolicy { get; set; }
+
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.HostRuntimePolicyLimitContainerPrivilegeArgs>? _limitContainerPrivileges;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyLimitContainerPrivilegeArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.HostRuntimePolicyLimitContainerPrivilegeArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
+        [Input("linuxCapabilities")]
+        public Input<Inputs.HostRuntimePolicyLinuxCapabilitiesArgs>? LinuxCapabilities { get; set; }
 
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
@@ -539,10 +691,16 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorWindowsServices { get; set; }
 
         /// <summary>
-        /// Name of the host runtime policy
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("noNewPrivileges")]
+        public Input<bool>? NoNewPrivileges { get; set; }
+
+        [Input("onlyRegisteredImages")]
+        public Input<bool>? OnlyRegisteredImages { get; set; }
 
         [Input("osGroupsAlloweds")]
         private InputList<string>? _osGroupsAlloweds;
@@ -593,22 +751,60 @@ namespace Pulumiverse.Aquasec
         }
 
         [Input("packageBlocks")]
-        private InputList<string>? _packageBlocks;
-
-        /// <summary>
-        /// List of packages that are not allowed read, write or execute all files that under the packages.
-        /// </summary>
-        public InputList<string> PackageBlocks
+        private InputList<Inputs.HostRuntimePolicyPackageBlockArgs>? _packageBlocks;
+        public InputList<Inputs.HostRuntimePolicyPackageBlockArgs> PackageBlocks
         {
-            get => _packageBlocks ?? (_packageBlocks = new InputList<string>());
+            get => _packageBlocks ?? (_packageBlocks = new InputList<Inputs.HostRuntimePolicyPackageBlockArgs>());
             set => _packageBlocks = value;
         }
 
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("portBlock")]
+        public Input<Inputs.HostRuntimePolicyPortBlockArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.HostRuntimePolicyReadonlyFilesArgs>? ReadonlyFiles { get; set; }
+
+        [Input("readonlyRegistry")]
+        public Input<Inputs.HostRuntimePolicyReadonlyRegistryArgs>? ReadonlyRegistry { get; set; }
+
+        [Input("registry")]
+        public Input<string>? Registry { get; set; }
+
+        [Input("registryAccessMonitoring")]
+        public Input<Inputs.HostRuntimePolicyRegistryAccessMonitoringArgs>? RegistryAccessMonitoring { get; set; }
+
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.HostRuntimePolicyRestrictedVolumeArgs>? _restrictedVolumes;
+
         /// <summary>
-        /// If true, port scanning behaviors will be audited.
+        /// Restricted volumes configuration.
         /// </summary>
-        [Input("portScanningDetection")]
-        public Input<bool>? PortScanningDetection { get; set; }
+        public InputList<Inputs.HostRuntimePolicyRestrictedVolumeArgs> RestrictedVolumes
+        {
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.HostRuntimePolicyRestrictedVolumeArgs>());
+            set => _restrictedVolumes = value;
+        }
+
+        [Input("reverseShell")]
+        public Input<Inputs.HostRuntimePolicyReverseShellArgs>? ReverseShell { get; set; }
+
+        [Input("runtimeMode")]
+        public Input<int>? RuntimeMode { get; set; }
+
+        [Input("runtimeType")]
+        public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -628,17 +824,38 @@ namespace Pulumiverse.Aquasec
             set => _scopeVariables = value;
         }
 
-        /// <summary>
-        /// Configuration for windows registry monitoring.
-        /// </summary>
-        [Input("windowsRegistryMonitoring")]
-        public Input<Inputs.HostRuntimePolicyWindowsRegistryMonitoringArgs>? WindowsRegistryMonitoring { get; set; }
+        [Input("scopes")]
+        private InputList<Inputs.HostRuntimePolicyScopeArgs>? _scopes;
 
         /// <summary>
-        /// Configuration for windows registry protection.
+        /// Scope configuration.
         /// </summary>
-        [Input("windowsRegistryProtection")]
-        public Input<Inputs.HostRuntimePolicyWindowsRegistryProtectionArgs>? WindowsRegistryProtection { get; set; }
+        public InputList<Inputs.HostRuntimePolicyScopeArgs> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<Inputs.HostRuntimePolicyScopeArgs>());
+            set => _scopes = value;
+        }
+
+        [Input("systemIntegrityProtection")]
+        public Input<Inputs.HostRuntimePolicySystemIntegrityProtectionArgs>? SystemIntegrityProtection { get; set; }
+
+        [Input("tripwire")]
+        public Input<Inputs.HostRuntimePolicyTripwireArgs>? Tripwire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("vpatchVersion")]
+        public Input<string>? VpatchVersion { get; set; }
+
+        [Input("whitelistedOsUsers")]
+        public Input<Inputs.HostRuntimePolicyWhitelistedOsUsersArgs>? WhitelistedOsUsers { get; set; }
 
         public HostRuntimePolicyArgs()
         {
@@ -648,6 +865,30 @@ namespace Pulumiverse.Aquasec
 
     public sealed class HostRuntimePolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("allowedExecutables")]
+        private InputList<Inputs.HostRuntimePolicyAllowedExecutableGetArgs>? _allowedExecutables;
+
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyAllowedExecutableGetArgs> AllowedExecutables
+        {
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.HostRuntimePolicyAllowedExecutableGetArgs>());
+            set => _allowedExecutables = value;
+        }
+
+        [Input("allowedRegistries")]
+        private InputList<Inputs.HostRuntimePolicyAllowedRegistryGetArgs>? _allowedRegistries;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyAllowedRegistryGetArgs> AllowedRegistries
+        {
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.HostRuntimePolicyAllowedRegistryGetArgs>());
+            set => _allowedRegistries = value;
+        }
+
         [Input("applicationScopes")]
         private InputList<string>? _applicationScopes;
 
@@ -659,12 +900,6 @@ namespace Pulumiverse.Aquasec
             get => _applicationScopes ?? (_applicationScopes = new InputList<string>());
             set => _applicationScopes = value;
         }
-
-        /// <summary>
-        /// If true, all process activity will be audited.
-        /// </summary>
-        [Input("auditAllOsUserActivity")]
-        public Input<bool>? AuditAllOsUserActivity { get; set; }
 
         /// <summary>
         /// Detects brute force login attempts
@@ -696,17 +931,38 @@ namespace Pulumiverse.Aquasec
         [Input("auditUserAccountManagement")]
         public Input<bool>? AuditUserAccountManagement { get; set; }
 
+        [Input("auditing")]
+        public Input<Inputs.HostRuntimePolicyAuditingGetArgs>? Auditing { get; set; }
+
         /// <summary>
         /// Username of the account that created the service.
         /// </summary>
         [Input("author")]
         public Input<string>? Author { get; set; }
 
+        [Input("blacklistedOsUsers")]
+        public Input<Inputs.HostRuntimePolicyBlacklistedOsUsersGetArgs>? BlacklistedOsUsers { get; set; }
+
+        [Input("blockContainerExec")]
+        public Input<bool>? BlockContainerExec { get; set; }
+
         /// <summary>
         /// Detect and prevent communication to DNS/IP addresses known to be used for Cryptocurrency Mining
         /// </summary>
         [Input("blockCryptocurrencyMining")]
         public Input<bool>? BlockCryptocurrencyMining { get; set; }
+
+        [Input("blockDisallowedImages")]
+        public Input<bool>? BlockDisallowedImages { get; set; }
+
+        [Input("blockFilelessExec")]
+        public Input<bool>? BlockFilelessExec { get; set; }
+
+        [Input("blockNonCompliantWorkloads")]
+        public Input<bool>? BlockNonCompliantWorkloads { get; set; }
+
+        [Input("blockNonK8sContainers")]
+        public Input<bool>? BlockNonK8sContainers { get; set; }
 
         [Input("blockedFiles")]
         private InputList<string>? _blockedFiles;
@@ -720,20 +976,65 @@ namespace Pulumiverse.Aquasec
             set => _blockedFiles = value;
         }
 
+        [Input("bypassScopes")]
+        private InputList<Inputs.HostRuntimePolicyBypassScopeGetArgs>? _bypassScopes;
+
+        /// <summary>
+        /// Bypass scope configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyBypassScopeGetArgs> BypassScopes
+        {
+            get => _bypassScopes ?? (_bypassScopes = new InputList<Inputs.HostRuntimePolicyBypassScopeGetArgs>());
+            set => _bypassScopes = value;
+        }
+
+        [Input("containerExec")]
+        public Input<Inputs.HostRuntimePolicyContainerExecGetArgs>? ContainerExec { get; set; }
+
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
+        [Input("cve")]
+        public Input<string>? Cve { get; set; }
+
+        [Input("defaultSecurityProfile")]
+        public Input<string>? DefaultSecurityProfile { get; set; }
+
         /// <summary>
         /// The description of the host runtime policy
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// If true, detect and prevent communication from containers to IP addresses known to have a bad reputation.
-        /// </summary>
-        [Input("enableIpReputationSecurity")]
-        public Input<bool>? EnableIpReputationSecurity { get; set; }
+        [Input("digest")]
+        public Input<string>? Digest { get; set; }
+
+        [Input("driftPreventions")]
+        private InputList<Inputs.HostRuntimePolicyDriftPreventionGetArgs>? _driftPreventions;
 
         /// <summary>
-        /// Indicates if the runtime policy is enabled or not.
+        /// Drift prevention configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyDriftPreventionGetArgs> DriftPreventions
+        {
+            get => _driftPreventions ?? (_driftPreventions = new InputList<Inputs.HostRuntimePolicyDriftPreventionGetArgs>());
+            set => _driftPreventions = value;
+        }
+
+        [Input("enableCryptoMiningDns")]
+        public Input<bool>? EnableCryptoMiningDns { get; set; }
+
+        [Input("enableForkGuard")]
+        public Input<bool>? EnableForkGuard { get; set; }
+
+        [Input("enableIpReputation")]
+        public Input<bool>? EnableIpReputation { get; set; }
+
+        [Input("enablePortScanProtection")]
+        public Input<bool>? EnablePortScanProtection { get; set; }
+
+        /// <summary>
+        /// Whether allowed executables configuration is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -750,11 +1051,77 @@ namespace Pulumiverse.Aquasec
         [Input("enforceAfterDays")]
         public Input<int>? EnforceAfterDays { get; set; }
 
+        [Input("enforceSchedulerAddedOn")]
+        public Input<int>? EnforceSchedulerAddedOn { get; set; }
+
+        [Input("excludeApplicationScopes")]
+        private InputList<string>? _excludeApplicationScopes;
+
+        /// <summary>
+        /// List of excluded application scopes.
+        /// </summary>
+        public InputList<string> ExcludeApplicationScopes
+        {
+            get => _excludeApplicationScopes ?? (_excludeApplicationScopes = new InputList<string>());
+            set => _excludeApplicationScopes = value;
+        }
+
+        [Input("executableBlacklists")]
+        private InputList<Inputs.HostRuntimePolicyExecutableBlacklistGetArgs>? _executableBlacklists;
+
+        /// <summary>
+        /// Executable blacklist configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyExecutableBlacklistGetArgs> ExecutableBlacklists
+        {
+            get => _executableBlacklists ?? (_executableBlacklists = new InputList<Inputs.HostRuntimePolicyExecutableBlacklistGetArgs>());
+            set => _executableBlacklists = value;
+        }
+
+        [Input("failedKubernetesChecks")]
+        public Input<Inputs.HostRuntimePolicyFailedKubernetesChecksGetArgs>? FailedKubernetesChecks { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.HostRuntimePolicyFileBlockGetArgs>? FileBlock { get; set; }
+
         /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
         [Input("fileIntegrityMonitoring")]
         public Input<Inputs.HostRuntimePolicyFileIntegrityMonitoringGetArgs>? FileIntegrityMonitoring { get; set; }
+
+        [Input("forkGuardProcessLimit")]
+        public Input<int>? ForkGuardProcessLimit { get; set; }
+
+        [Input("imageName")]
+        public Input<string>? ImageName { get; set; }
+
+        [Input("isAuditChecked")]
+        public Input<bool>? IsAuditChecked { get; set; }
+
+        [Input("isAutoGenerated")]
+        public Input<bool>? IsAutoGenerated { get; set; }
+
+        [Input("isOotbPolicy")]
+        public Input<bool>? IsOotbPolicy { get; set; }
+
+        [Input("lastupdate")]
+        public Input<int>? Lastupdate { get; set; }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.HostRuntimePolicyLimitContainerPrivilegeGetArgs>? _limitContainerPrivileges;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.HostRuntimePolicyLimitContainerPrivilegeGetArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.HostRuntimePolicyLimitContainerPrivilegeGetArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
+        [Input("linuxCapabilities")]
+        public Input<Inputs.HostRuntimePolicyLinuxCapabilitiesGetArgs>? LinuxCapabilities { get; set; }
 
         /// <summary>
         /// Configuration for Real-Time Malware Protection.
@@ -781,10 +1148,16 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorWindowsServices { get; set; }
 
         /// <summary>
-        /// Name of the host runtime policy
+        /// Name assigned to the attribute.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("noNewPrivileges")]
+        public Input<bool>? NoNewPrivileges { get; set; }
+
+        [Input("onlyRegisteredImages")]
+        public Input<bool>? OnlyRegisteredImages { get; set; }
 
         [Input("osGroupsAlloweds")]
         private InputList<string>? _osGroupsAlloweds;
@@ -835,22 +1208,60 @@ namespace Pulumiverse.Aquasec
         }
 
         [Input("packageBlocks")]
-        private InputList<string>? _packageBlocks;
-
-        /// <summary>
-        /// List of packages that are not allowed read, write or execute all files that under the packages.
-        /// </summary>
-        public InputList<string> PackageBlocks
+        private InputList<Inputs.HostRuntimePolicyPackageBlockGetArgs>? _packageBlocks;
+        public InputList<Inputs.HostRuntimePolicyPackageBlockGetArgs> PackageBlocks
         {
-            get => _packageBlocks ?? (_packageBlocks = new InputList<string>());
+            get => _packageBlocks ?? (_packageBlocks = new InputList<Inputs.HostRuntimePolicyPackageBlockGetArgs>());
             set => _packageBlocks = value;
         }
 
+        [Input("permission")]
+        public Input<string>? Permission { get; set; }
+
+        [Input("portBlock")]
+        public Input<Inputs.HostRuntimePolicyPortBlockGetArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.HostRuntimePolicyReadonlyFilesGetArgs>? ReadonlyFiles { get; set; }
+
+        [Input("readonlyRegistry")]
+        public Input<Inputs.HostRuntimePolicyReadonlyRegistryGetArgs>? ReadonlyRegistry { get; set; }
+
+        [Input("registry")]
+        public Input<string>? Registry { get; set; }
+
+        [Input("registryAccessMonitoring")]
+        public Input<Inputs.HostRuntimePolicyRegistryAccessMonitoringGetArgs>? RegistryAccessMonitoring { get; set; }
+
+        [Input("repoName")]
+        public Input<string>? RepoName { get; set; }
+
+        [Input("resourceName")]
+        public Input<string>? ResourceName { get; set; }
+
+        [Input("resourceType")]
+        public Input<string>? ResourceType { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.HostRuntimePolicyRestrictedVolumeGetArgs>? _restrictedVolumes;
+
         /// <summary>
-        /// If true, port scanning behaviors will be audited.
+        /// Restricted volumes configuration.
         /// </summary>
-        [Input("portScanningDetection")]
-        public Input<bool>? PortScanningDetection { get; set; }
+        public InputList<Inputs.HostRuntimePolicyRestrictedVolumeGetArgs> RestrictedVolumes
+        {
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.HostRuntimePolicyRestrictedVolumeGetArgs>());
+            set => _restrictedVolumes = value;
+        }
+
+        [Input("reverseShell")]
+        public Input<Inputs.HostRuntimePolicyReverseShellGetArgs>? ReverseShell { get; set; }
+
+        [Input("runtimeMode")]
+        public Input<int>? RuntimeMode { get; set; }
+
+        [Input("runtimeType")]
+        public Input<string>? RuntimeType { get; set; }
 
         /// <summary>
         /// Logical expression of how to compute the dependency of the scope variables.
@@ -870,17 +1281,38 @@ namespace Pulumiverse.Aquasec
             set => _scopeVariables = value;
         }
 
-        /// <summary>
-        /// Configuration for windows registry monitoring.
-        /// </summary>
-        [Input("windowsRegistryMonitoring")]
-        public Input<Inputs.HostRuntimePolicyWindowsRegistryMonitoringGetArgs>? WindowsRegistryMonitoring { get; set; }
+        [Input("scopes")]
+        private InputList<Inputs.HostRuntimePolicyScopeGetArgs>? _scopes;
 
         /// <summary>
-        /// Configuration for windows registry protection.
+        /// Scope configuration.
         /// </summary>
-        [Input("windowsRegistryProtection")]
-        public Input<Inputs.HostRuntimePolicyWindowsRegistryProtectionGetArgs>? WindowsRegistryProtection { get; set; }
+        public InputList<Inputs.HostRuntimePolicyScopeGetArgs> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<Inputs.HostRuntimePolicyScopeGetArgs>());
+            set => _scopes = value;
+        }
+
+        [Input("systemIntegrityProtection")]
+        public Input<Inputs.HostRuntimePolicySystemIntegrityProtectionGetArgs>? SystemIntegrityProtection { get; set; }
+
+        [Input("tripwire")]
+        public Input<Inputs.HostRuntimePolicyTripwireGetArgs>? Tripwire { get; set; }
+
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        [Input("updated")]
+        public Input<string>? Updated { get; set; }
+
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
+        [Input("vpatchVersion")]
+        public Input<string>? VpatchVersion { get; set; }
+
+        [Input("whitelistedOsUsers")]
+        public Input<Inputs.HostRuntimePolicyWhitelistedOsUsersGetArgs>? WhitelistedOsUsers { get; set; }
 
         public HostRuntimePolicyState()
         {

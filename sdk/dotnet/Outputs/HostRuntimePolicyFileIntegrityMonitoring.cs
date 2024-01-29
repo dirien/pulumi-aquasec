@@ -15,85 +15,92 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class HostRuntimePolicyFileIntegrityMonitoring
     {
         /// <summary>
-        /// List of paths to be excluded from being monitored.
+        /// If true, file integrity monitoring is enabled.
         /// </summary>
-        public readonly ImmutableArray<string> ExcludedPaths;
+        public readonly bool? Enabled;
         /// <summary>
-        /// List of processes to be excluded from being monitored.
+        /// List of paths to be excluded from monitoring.
         /// </summary>
-        public readonly ImmutableArray<string> ExcludedProcesses;
+        public readonly ImmutableArray<string> ExceptionalMonitoredFiles;
         /// <summary>
-        /// List of users to be excluded from being monitored.
+        /// List of processes to be excluded from monitoring.
         /// </summary>
-        public readonly ImmutableArray<string> ExcludedUsers;
+        public readonly ImmutableArray<string> ExceptionalMonitoredFilesProcesses;
         /// <summary>
-        /// If true, add attributes operations will be monitored.
+        /// List of users to be excluded from monitoring.
         /// </summary>
-        public readonly bool? MonitorAttributes;
-        /// <summary>
-        /// If true, create operations will be monitored.
-        /// </summary>
-        public readonly bool? MonitorCreate;
-        /// <summary>
-        /// If true, deletion operations will be monitored.
-        /// </summary>
-        public readonly bool? MonitorDelete;
-        /// <summary>
-        /// If true, modification operations will be monitored.
-        /// </summary>
-        public readonly bool? MonitorModify;
-        /// <summary>
-        /// If true, read operations will be monitored.
-        /// </summary>
-        public readonly bool? MonitorRead;
+        public readonly ImmutableArray<string> ExceptionalMonitoredFilesUsers;
         /// <summary>
         /// List of paths to be monitored.
         /// </summary>
-        public readonly ImmutableArray<string> MonitoredPaths;
+        public readonly ImmutableArray<string> MonitoredFiles;
         /// <summary>
-        /// List of processes to be monitored.
+        /// Whether to monitor file attribute operations.
         /// </summary>
-        public readonly ImmutableArray<string> MonitoredProcesses;
+        public readonly bool? MonitoredFilesAttributes;
         /// <summary>
-        /// List of users to be monitored.
+        /// Whether to monitor file create operations.
         /// </summary>
-        public readonly ImmutableArray<string> MonitoredUsers;
+        public readonly bool? MonitoredFilesCreate;
+        /// <summary>
+        /// Whether to monitor file delete operations.
+        /// </summary>
+        public readonly bool? MonitoredFilesDelete;
+        /// <summary>
+        /// Whether to monitor file modify operations.
+        /// </summary>
+        public readonly bool? MonitoredFilesModify;
+        /// <summary>
+        /// List of processes associated with monitored files.
+        /// </summary>
+        public readonly ImmutableArray<string> MonitoredFilesProcesses;
+        /// <summary>
+        /// Whether to monitor file read operations.
+        /// </summary>
+        public readonly bool? MonitoredFilesRead;
+        /// <summary>
+        /// List of users associated with monitored files.
+        /// </summary>
+        public readonly ImmutableArray<string> MonitoredFilesUsers;
 
         [OutputConstructor]
         private HostRuntimePolicyFileIntegrityMonitoring(
-            ImmutableArray<string> excludedPaths,
+            bool? enabled,
 
-            ImmutableArray<string> excludedProcesses,
+            ImmutableArray<string> exceptionalMonitoredFiles,
 
-            ImmutableArray<string> excludedUsers,
+            ImmutableArray<string> exceptionalMonitoredFilesProcesses,
 
-            bool? monitorAttributes,
+            ImmutableArray<string> exceptionalMonitoredFilesUsers,
 
-            bool? monitorCreate,
+            ImmutableArray<string> monitoredFiles,
 
-            bool? monitorDelete,
+            bool? monitoredFilesAttributes,
 
-            bool? monitorModify,
+            bool? monitoredFilesCreate,
 
-            bool? monitorRead,
+            bool? monitoredFilesDelete,
 
-            ImmutableArray<string> monitoredPaths,
+            bool? monitoredFilesModify,
 
-            ImmutableArray<string> monitoredProcesses,
+            ImmutableArray<string> monitoredFilesProcesses,
 
-            ImmutableArray<string> monitoredUsers)
+            bool? monitoredFilesRead,
+
+            ImmutableArray<string> monitoredFilesUsers)
         {
-            ExcludedPaths = excludedPaths;
-            ExcludedProcesses = excludedProcesses;
-            ExcludedUsers = excludedUsers;
-            MonitorAttributes = monitorAttributes;
-            MonitorCreate = monitorCreate;
-            MonitorDelete = monitorDelete;
-            MonitorModify = monitorModify;
-            MonitorRead = monitorRead;
-            MonitoredPaths = monitoredPaths;
-            MonitoredProcesses = monitoredProcesses;
-            MonitoredUsers = monitoredUsers;
+            Enabled = enabled;
+            ExceptionalMonitoredFiles = exceptionalMonitoredFiles;
+            ExceptionalMonitoredFilesProcesses = exceptionalMonitoredFilesProcesses;
+            ExceptionalMonitoredFilesUsers = exceptionalMonitoredFilesUsers;
+            MonitoredFiles = monitoredFiles;
+            MonitoredFilesAttributes = monitoredFilesAttributes;
+            MonitoredFilesCreate = monitoredFilesCreate;
+            MonitoredFilesDelete = monitoredFilesDelete;
+            MonitoredFilesModify = monitoredFilesModify;
+            MonitoredFilesProcesses = monitoredFilesProcesses;
+            MonitoredFilesRead = monitoredFilesRead;
+            MonitoredFilesUsers = monitoredFilesUsers;
         }
     }
 }

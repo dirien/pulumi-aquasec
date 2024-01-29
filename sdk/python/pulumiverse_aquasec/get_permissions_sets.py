@@ -14,6 +14,7 @@ __all__ = [
     'GetPermissionsSetsResult',
     'AwaitableGetPermissionsSetsResult',
     'get_permissions_sets',
+    'get_permissions_sets_output',
 ]
 
 @pulumi.output_type
@@ -75,3 +76,22 @@ def get_permissions_sets(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitab
     return AwaitableGetPermissionsSetsResult(
         id=pulumi.get(__ret__, 'id'),
         permissions_sets=pulumi.get(__ret__, 'permissions_sets'))
+
+
+@_utilities.lift_output_func(get_permissions_sets)
+def get_permissions_sets_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionsSetsResult]:
+    """
+    The data source `PermissionsSets` provides a method to query all permissions within the Aqua CSPMThe fields returned from this query are detailed in the Schema section below.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    testpermissionsset = aquasec.get_permissions_sets()
+    pulumi.export("permissionsSets", testpermissionsset)
+    pulumi.export("permissionsSetsNames", [[__item.name for __item in __item.permissions_sets] for __item in [testpermissionsset]])
+    ```
+    """
+    ...

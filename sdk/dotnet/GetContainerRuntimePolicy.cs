@@ -76,6 +76,63 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetContainerRuntimePolicyArgs : global::Pulumi.InvokeArgs
     {
+        [Input("allowedExecutables")]
+        private List<Inputs.GetContainerRuntimePolicyAllowedExecutableArgs>? _allowedExecutables;
+
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        public List<Inputs.GetContainerRuntimePolicyAllowedExecutableArgs> AllowedExecutables
+        {
+            get => _allowedExecutables ?? (_allowedExecutables = new List<Inputs.GetContainerRuntimePolicyAllowedExecutableArgs>());
+            set => _allowedExecutables = value;
+        }
+
+        [Input("allowedRegistries")]
+        private List<Inputs.GetContainerRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        public List<Inputs.GetContainerRuntimePolicyAllowedRegistryArgs> AllowedRegistries
+        {
+            get => _allowedRegistries ?? (_allowedRegistries = new List<Inputs.GetContainerRuntimePolicyAllowedRegistryArgs>());
+            set => _allowedRegistries = value;
+        }
+
+        [Input("auditing")]
+        public Inputs.GetContainerRuntimePolicyAuditingArgs? Auditing { get; set; }
+
+        [Input("containerExec")]
+        public Inputs.GetContainerRuntimePolicyContainerExecArgs? ContainerExec { get; set; }
+
+        [Input("fileBlock")]
+        public Inputs.GetContainerRuntimePolicyFileBlockArgs? FileBlock { get; set; }
+
+        [Input("fileIntegrityMonitorings")]
+        private List<Inputs.GetContainerRuntimePolicyFileIntegrityMonitoringArgs>? _fileIntegrityMonitorings;
+
+        /// <summary>
+        /// Configuration for file integrity monitoring.
+        /// </summary>
+        public List<Inputs.GetContainerRuntimePolicyFileIntegrityMonitoringArgs> FileIntegrityMonitorings
+        {
+            get => _fileIntegrityMonitorings ?? (_fileIntegrityMonitorings = new List<Inputs.GetContainerRuntimePolicyFileIntegrityMonitoringArgs>());
+            set => _fileIntegrityMonitorings = value;
+        }
+
+        [Input("limitContainerPrivileges")]
+        private List<Inputs.GetContainerRuntimePolicyLimitContainerPrivilegeArgs>? _limitContainerPrivileges;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public List<Inputs.GetContainerRuntimePolicyLimitContainerPrivilegeArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new List<Inputs.GetContainerRuntimePolicyLimitContainerPrivilegeArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
         [Input("malwareScanOptions")]
         private List<Inputs.GetContainerRuntimePolicyMalwareScanOptionArgs>? _malwareScanOptions;
 
@@ -88,11 +145,26 @@ namespace Pulumiverse.Aquasec
             set => _malwareScanOptions = value;
         }
 
-        /// <summary>
-        /// Name of the container runtime policy
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
+
+        [Input("portBlock")]
+        public Inputs.GetContainerRuntimePolicyPortBlockArgs? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Inputs.GetContainerRuntimePolicyReadonlyFilesArgs? ReadonlyFiles { get; set; }
+
+        [Input("restrictedVolumes")]
+        private List<Inputs.GetContainerRuntimePolicyRestrictedVolumeArgs>? _restrictedVolumes;
+
+        /// <summary>
+        /// Restricted volumes configuration.
+        /// </summary>
+        public List<Inputs.GetContainerRuntimePolicyRestrictedVolumeArgs> RestrictedVolumes
+        {
+            get => _restrictedVolumes ?? (_restrictedVolumes = new List<Inputs.GetContainerRuntimePolicyRestrictedVolumeArgs>());
+            set => _restrictedVolumes = value;
+        }
 
         public GetContainerRuntimePolicyArgs()
         {
@@ -102,6 +174,63 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetContainerRuntimePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("allowedExecutables")]
+        private InputList<Inputs.GetContainerRuntimePolicyAllowedExecutableInputArgs>? _allowedExecutables;
+
+        /// <summary>
+        /// Allowed executables configuration.
+        /// </summary>
+        public InputList<Inputs.GetContainerRuntimePolicyAllowedExecutableInputArgs> AllowedExecutables
+        {
+            get => _allowedExecutables ?? (_allowedExecutables = new InputList<Inputs.GetContainerRuntimePolicyAllowedExecutableInputArgs>());
+            set => _allowedExecutables = value;
+        }
+
+        [Input("allowedRegistries")]
+        private InputList<Inputs.GetContainerRuntimePolicyAllowedRegistryInputArgs>? _allowedRegistries;
+
+        /// <summary>
+        /// List of allowed registries.
+        /// </summary>
+        public InputList<Inputs.GetContainerRuntimePolicyAllowedRegistryInputArgs> AllowedRegistries
+        {
+            get => _allowedRegistries ?? (_allowedRegistries = new InputList<Inputs.GetContainerRuntimePolicyAllowedRegistryInputArgs>());
+            set => _allowedRegistries = value;
+        }
+
+        [Input("auditing")]
+        public Input<Inputs.GetContainerRuntimePolicyAuditingInputArgs>? Auditing { get; set; }
+
+        [Input("containerExec")]
+        public Input<Inputs.GetContainerRuntimePolicyContainerExecInputArgs>? ContainerExec { get; set; }
+
+        [Input("fileBlock")]
+        public Input<Inputs.GetContainerRuntimePolicyFileBlockInputArgs>? FileBlock { get; set; }
+
+        [Input("fileIntegrityMonitorings")]
+        private InputList<Inputs.GetContainerRuntimePolicyFileIntegrityMonitoringInputArgs>? _fileIntegrityMonitorings;
+
+        /// <summary>
+        /// Configuration for file integrity monitoring.
+        /// </summary>
+        public InputList<Inputs.GetContainerRuntimePolicyFileIntegrityMonitoringInputArgs> FileIntegrityMonitorings
+        {
+            get => _fileIntegrityMonitorings ?? (_fileIntegrityMonitorings = new InputList<Inputs.GetContainerRuntimePolicyFileIntegrityMonitoringInputArgs>());
+            set => _fileIntegrityMonitorings = value;
+        }
+
+        [Input("limitContainerPrivileges")]
+        private InputList<Inputs.GetContainerRuntimePolicyLimitContainerPrivilegeInputArgs>? _limitContainerPrivileges;
+
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public InputList<Inputs.GetContainerRuntimePolicyLimitContainerPrivilegeInputArgs> LimitContainerPrivileges
+        {
+            get => _limitContainerPrivileges ?? (_limitContainerPrivileges = new InputList<Inputs.GetContainerRuntimePolicyLimitContainerPrivilegeInputArgs>());
+            set => _limitContainerPrivileges = value;
+        }
+
         [Input("malwareScanOptions")]
         private InputList<Inputs.GetContainerRuntimePolicyMalwareScanOptionInputArgs>? _malwareScanOptions;
 
@@ -114,11 +243,26 @@ namespace Pulumiverse.Aquasec
             set => _malwareScanOptions = value;
         }
 
-        /// <summary>
-        /// Name of the container runtime policy
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("portBlock")]
+        public Input<Inputs.GetContainerRuntimePolicyPortBlockInputArgs>? PortBlock { get; set; }
+
+        [Input("readonlyFiles")]
+        public Input<Inputs.GetContainerRuntimePolicyReadonlyFilesInputArgs>? ReadonlyFiles { get; set; }
+
+        [Input("restrictedVolumes")]
+        private InputList<Inputs.GetContainerRuntimePolicyRestrictedVolumeInputArgs>? _restrictedVolumes;
+
+        /// <summary>
+        /// Restricted volumes configuration.
+        /// </summary>
+        public InputList<Inputs.GetContainerRuntimePolicyRestrictedVolumeInputArgs> RestrictedVolumes
+        {
+            get => _restrictedVolumes ?? (_restrictedVolumes = new InputList<Inputs.GetContainerRuntimePolicyRestrictedVolumeInputArgs>());
+            set => _restrictedVolumes = value;
+        }
 
         public GetContainerRuntimePolicyInvokeArgs()
         {
@@ -131,13 +275,13 @@ namespace Pulumiverse.Aquasec
     public sealed class GetContainerRuntimePolicyResult
     {
         /// <summary>
-        /// List of executables that are allowed for the user.
+        /// Allowed executables configuration.
         /// </summary>
-        public readonly ImmutableArray<string> AllowedExecutables;
+        public readonly ImmutableArray<Outputs.GetContainerRuntimePolicyAllowedExecutableResult> AllowedExecutables;
         /// <summary>
-        /// List of registries that allowed for running containers.
+        /// Allowed registries configuration.
         /// </summary>
-        public readonly ImmutableArray<string> AllowedRegistries;
+        public readonly ImmutableArray<Outputs.GetContainerRuntimePolicyAllowedRegistryResult> AllowedRegistries;
         /// <summary>
         /// Indicates the application scope of the service.
         /// </summary>
@@ -154,6 +298,7 @@ namespace Pulumiverse.Aquasec
         /// If true, full command arguments will be audited.
         /// </summary>
         public readonly bool AuditFullCommandArguments;
+        public readonly Outputs.GetContainerRuntimePolicyAuditingResult? Auditing;
         /// <summary>
         /// Username of the account that created the service.
         /// </summary>
@@ -254,6 +399,7 @@ namespace Pulumiverse.Aquasec
         /// List of volumes that are prevented from being mounted in the containers.
         /// </summary>
         public readonly ImmutableArray<string> BlockedVolumes;
+        public readonly Outputs.GetContainerRuntimePolicyContainerExecResult? ContainerExec;
         /// <summary>
         /// List of processes that will be allowed.
         /// </summary>
@@ -298,6 +444,7 @@ namespace Pulumiverse.Aquasec
         /// Specify processes that will be allowed
         /// </summary>
         public readonly ImmutableArray<string> ExecLockdownWhiteLists;
+        public readonly Outputs.GetContainerRuntimePolicyFileBlockResult? FileBlock;
         /// <summary>
         /// Configuration for file integrity monitoring.
         /// </summary>
@@ -310,6 +457,10 @@ namespace Pulumiverse.Aquasec
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Container privileges configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetContainerRuntimePolicyLimitContainerPrivilegeResult> LimitContainerPrivileges;
         /// <summary>
         /// If true, prevents the container from obtaining new privileges at runtime. (only enabled in enforce mode)
         /// </summary>
@@ -326,10 +477,16 @@ namespace Pulumiverse.Aquasec
         /// Name of the container runtime policy
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetContainerRuntimePolicyPortBlockResult? PortBlock;
+        public readonly Outputs.GetContainerRuntimePolicyReadonlyFilesResult? ReadonlyFiles;
         /// <summary>
         /// List of files and directories to be restricted as read-only
         /// </summary>
         public readonly ImmutableArray<string> ReadonlyFilesAndDirectories;
+        /// <summary>
+        /// Restricted volumes configuration.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetContainerRuntimePolicyRestrictedVolumeResult> RestrictedVolumes;
         /// <summary>
         /// List of IPs/ CIDRs that will be allowed
         /// </summary>
@@ -349,9 +506,9 @@ namespace Pulumiverse.Aquasec
 
         [OutputConstructor]
         private GetContainerRuntimePolicyResult(
-            ImmutableArray<string> allowedExecutables,
+            ImmutableArray<Outputs.GetContainerRuntimePolicyAllowedExecutableResult> allowedExecutables,
 
-            ImmutableArray<string> allowedRegistries,
+            ImmutableArray<Outputs.GetContainerRuntimePolicyAllowedRegistryResult> allowedRegistries,
 
             ImmutableArray<string> applicationScopes,
 
@@ -360,6 +517,8 @@ namespace Pulumiverse.Aquasec
             bool auditAllProcessesActivity,
 
             bool auditFullCommandArguments,
+
+            Outputs.GetContainerRuntimePolicyAuditingResult? auditing,
 
             string author,
 
@@ -411,6 +570,8 @@ namespace Pulumiverse.Aquasec
 
             ImmutableArray<string> blockedVolumes,
 
+            Outputs.GetContainerRuntimePolicyContainerExecResult? containerExec,
+
             ImmutableArray<string> containerExecAllowedProcesses,
 
             string description,
@@ -433,11 +594,15 @@ namespace Pulumiverse.Aquasec
 
             ImmutableArray<string> execLockdownWhiteLists,
 
+            Outputs.GetContainerRuntimePolicyFileBlockResult? fileBlock,
+
             ImmutableArray<Outputs.GetContainerRuntimePolicyFileIntegrityMonitoringResult> fileIntegrityMonitorings,
 
             int forkGuardProcessLimit,
 
             string id,
+
+            ImmutableArray<Outputs.GetContainerRuntimePolicyLimitContainerPrivilegeResult> limitContainerPrivileges,
 
             bool limitNewPrivileges,
 
@@ -447,7 +612,13 @@ namespace Pulumiverse.Aquasec
 
             string name,
 
+            Outputs.GetContainerRuntimePolicyPortBlockResult? portBlock,
+
+            Outputs.GetContainerRuntimePolicyReadonlyFilesResult? readonlyFiles,
+
             ImmutableArray<string> readonlyFilesAndDirectories,
+
+            ImmutableArray<Outputs.GetContainerRuntimePolicyRestrictedVolumeResult> restrictedVolumes,
 
             ImmutableArray<string> reverseShellAllowedIps,
 
@@ -463,6 +634,7 @@ namespace Pulumiverse.Aquasec
             AuditAllNetworkActivity = auditAllNetworkActivity;
             AuditAllProcessesActivity = auditAllProcessesActivity;
             AuditFullCommandArguments = auditFullCommandArguments;
+            Auditing = auditing;
             Author = author;
             BlockAccessHostNetwork = blockAccessHostNetwork;
             BlockAddingCapabilities = blockAddingCapabilities;
@@ -488,6 +660,7 @@ namespace Pulumiverse.Aquasec
             BlockedOutboundPorts = blockedOutboundPorts;
             BlockedPackages = blockedPackages;
             BlockedVolumes = blockedVolumes;
+            ContainerExec = containerExec;
             ContainerExecAllowedProcesses = containerExecAllowedProcesses;
             Description = description;
             EnableDriftPrevention = enableDriftPrevention;
@@ -499,14 +672,19 @@ namespace Pulumiverse.Aquasec
             EnforceAfterDays = enforceAfterDays;
             ExceptionalReadonlyFilesAndDirectories = exceptionalReadonlyFilesAndDirectories;
             ExecLockdownWhiteLists = execLockdownWhiteLists;
+            FileBlock = fileBlock;
             FileIntegrityMonitorings = fileIntegrityMonitorings;
             ForkGuardProcessLimit = forkGuardProcessLimit;
             Id = id;
+            LimitContainerPrivileges = limitContainerPrivileges;
             LimitNewPrivileges = limitNewPrivileges;
             MalwareScanOptions = malwareScanOptions;
             MonitorSystemTimeChanges = monitorSystemTimeChanges;
             Name = name;
+            PortBlock = portBlock;
+            ReadonlyFiles = readonlyFiles;
             ReadonlyFilesAndDirectories = readonlyFilesAndDirectories;
+            RestrictedVolumes = restrictedVolumes;
             ReverseShellAllowedIps = reverseShellAllowedIps;
             ReverseShellAllowedProcesses = reverseShellAllowedProcesses;
             ScopeExpression = scopeExpression;

@@ -22,9 +22,6 @@ namespace Pulumiverse.Aquasec.Inputs
         [Input("unQuarantine")]
         public bool? UnQuarantine { get; set; }
 
-        /// <summary>
-        /// The URL, address or region of the registry
-        /// </summary>
         [Input("url")]
         public string? Url { get; set; }
 

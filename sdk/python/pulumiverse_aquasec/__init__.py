@@ -27,6 +27,7 @@ from .get_host_assurance_policy import *
 from .get_host_runtime_policy import *
 from .get_image import *
 from .get_image_assurance_policy import *
+from .get_integration_registries import *
 from .get_integration_registry import *
 from .get_integration_state import *
 from .get_kubernetes_assurance_policy import *
@@ -55,6 +56,7 @@ from .role_mapping_saas import *
 from .service import *
 from .user import *
 from .user_saas import *
+from .vmware_assurance_policy import *
 from ._inputs import *
 from . import outputs
 
@@ -258,6 +260,14 @@ _utilities.register(
   "fqn": "pulumiverse_aquasec",
   "classes": {
    "aquasec:index/userSaas:UserSaas": "UserSaas"
+  }
+ },
+ {
+  "pkg": "aquasec",
+  "mod": "index/vmwareAssurancePolicy",
+  "fqn": "pulumiverse_aquasec",
+  "classes": {
+   "aquasec:index/vmwareAssurancePolicy:VmwareAssurancePolicy": "VmwareAssurancePolicy"
   }
  }
 ]

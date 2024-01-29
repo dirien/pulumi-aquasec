@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -24,9 +23,7 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
-	// The name of the registry where the image is stored.
-	Registry string `pulumi:"registry"`
-	// The name of the image's repository.
+	Registry   string `pulumi:"registry"`
 	Repository string `pulumi:"repository"`
 	// The tag of the image.
 	Tag string `pulumi:"tag"`
@@ -153,9 +150,7 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 
 // A collection of arguments for invoking getImage.
 type LookupImageOutputArgs struct {
-	// The name of the registry where the image is stored.
-	Registry pulumi.StringInput `pulumi:"registry"`
-	// The name of the image's repository.
+	Registry   pulumi.StringInput `pulumi:"registry"`
 	Repository pulumi.StringInput `pulumi:"repository"`
 	// The tag of the image.
 	Tag pulumi.StringInput `pulumi:"tag"`
@@ -178,12 +173,6 @@ func (o LookupImageResultOutput) ToLookupImageResultOutput() LookupImageResultOu
 
 func (o LookupImageResultOutput) ToLookupImageResultOutputWithContext(ctx context.Context) LookupImageResultOutput {
 	return o
-}
-
-func (o LookupImageResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupImageResult] {
-	return pulumix.Output[LookupImageResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The image architecture.

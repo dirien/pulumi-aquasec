@@ -56,6 +56,7 @@ namespace Pulumiverse.Aquasec
     ///                 Value = "nginx:latest",
     ///             },
     ///         },
+    ///         Password = "",
     ///         Prefixes = new[]
     ///         {
     ///             "111111111111.dkr.ecr.us-east-1.amazonaws.com",
@@ -72,12 +73,8 @@ namespace Pulumiverse.Aquasec
     ///             ":xyz",
     ///             ":onlytest",
     ///         },
-    ///         ScannerNames = new[]
-    ///         {
-    ///             "aqua-scanner-645f867c4f-4sbtj",
-    ///             "aqua-scanner-645f867c4f-8pkdd",
-    ///         },
-    ///         ScannerType = "specific",
+    ///         ScannerNames = new[] {},
+    ///         ScannerType = "any",
     ///         Type = "AWS",
     ///         Url = "us-east-1",
     ///         Username = "",
@@ -235,7 +232,7 @@ namespace Pulumiverse.Aquasec
         public Output<string> ScannerType { get; private set; } = null!;
 
         /// <summary>
-        /// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        /// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -476,7 +473,7 @@ namespace Pulumiverse.Aquasec
         public Input<string>? ScannerType { get; set; }
 
         /// <summary>
-        /// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        /// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -684,7 +681,7 @@ namespace Pulumiverse.Aquasec
         public Input<string>? ScannerType { get; set; }
 
         /// <summary>
-        /// Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+        /// Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

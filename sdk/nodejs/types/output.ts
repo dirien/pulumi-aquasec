@@ -107,7 +107,13 @@ export interface ApplicationScopeCategory {
 
 export interface ApplicationScopeCategoryArtifact {
     cfs?: outputs.ApplicationScopeCategoryArtifactCf[];
+    /**
+     * Function name
+     */
     functions?: outputs.ApplicationScopeCategoryArtifactFunction[];
+    /**
+     * Name of a registry as defined in Aqua
+     */
     images?: outputs.ApplicationScopeCategoryArtifactImage[];
 }
 
@@ -212,51 +218,239 @@ export interface ApplicationScopeCategoryWorkloadOVariable {
     value?: string;
 }
 
+export interface ContainerRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: string[];
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: string[];
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: boolean;
+}
+
+export interface ContainerRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: string[];
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: boolean;
+}
+
+export interface ContainerRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
+export interface ContainerRuntimePolicyBlacklistedOsUsers {
+    enabled?: boolean;
+    groupBlackLists?: string[];
+    userBlackLists?: string[];
+}
+
+export interface ContainerRuntimePolicyBypassScope {
+    /**
+     * Whether bypassing the scope is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Scope configuration.
+     */
+    scopes?: outputs.ContainerRuntimePolicyBypassScopeScope[];
+}
+
+export interface ContainerRuntimePolicyBypassScopeScope {
+    /**
+     * Scope expression.
+     */
+    expression?: string;
+    /**
+     * List of variables in the scope.
+     */
+    variables?: outputs.ContainerRuntimePolicyBypassScopeScopeVariable[];
+}
+
+export interface ContainerRuntimePolicyBypassScopeScopeVariable {
+    /**
+     * Variable attribute.
+     */
+    attribute?: string;
+    /**
+     * Variable value.
+     */
+    value?: string;
+}
+
+export interface ContainerRuntimePolicyContainerExec {
+    blockContainerExec?: boolean;
+    containerExecProcWhiteLists?: string[];
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+}
+
+export interface ContainerRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: boolean;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: string[];
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: boolean;
+}
+
+export interface ContainerRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: string[];
+}
+
+export interface ContainerRuntimePolicyFailedKubernetesChecks {
+    enabled?: boolean;
+    failedChecks?: string[];
+}
+
+export interface ContainerRuntimePolicyFileBlock {
+    blockFilesProcesses?: string[];
+    blockFilesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockFiles?: string[];
+    exceptionalBlockFilesProcesses?: string[];
+    exceptionalBlockFilesUsers?: string[];
+    filenameBlockLists?: string[];
+}
+
 export interface ContainerRuntimePolicyFileIntegrityMonitoring {
     /**
-     * List of paths to be excluded from being monitored.
+     * If true, file integrity monitoring is enabled.
      */
-    excludedPaths?: string[];
+    enabled?: boolean;
     /**
-     * List of processes to be excluded from being monitored.
+     * List of paths to be excluded from monitoring.
      */
-    excludedProcesses?: string[];
+    exceptionalMonitoredFiles?: string[];
     /**
-     * List of users to be excluded from being monitored.
+     * List of processes to be excluded from monitoring.
      */
-    excludedUsers?: string[];
+    exceptionalMonitoredFilesProcesses?: string[];
     /**
-     * If true, add attributes operations will be monitored.
+     * List of users to be excluded from monitoring.
      */
-    monitorAttributes?: boolean;
-    /**
-     * If true, create operations will be monitored.
-     */
-    monitorCreate?: boolean;
-    /**
-     * If true, deletion operations will be monitored.
-     */
-    monitorDelete?: boolean;
-    /**
-     * If true, modification operations will be monitored.
-     */
-    monitorModify?: boolean;
-    /**
-     * If true, read operations will be monitored.
-     */
-    monitorRead?: boolean;
+    exceptionalMonitoredFilesUsers?: string[];
     /**
      * List of paths to be monitored.
      */
-    monitoredPaths?: string[];
+    monitoredFiles?: string[];
     /**
-     * List of processes to be monitored.
+     * Whether to monitor file attribute operations.
      */
-    monitoredProcesses?: string[];
+    monitoredFilesAttributes?: boolean;
     /**
-     * List of users to be monitored.
+     * Whether to monitor file create operations.
      */
-    monitoredUsers?: string[];
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
+}
+
+export interface ContainerRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: boolean;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: boolean;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: boolean;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: boolean;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: boolean;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: boolean;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: boolean;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: boolean;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: boolean;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: boolean;
+}
+
+export interface ContainerRuntimePolicyLinuxCapabilities {
+    enabled?: boolean;
+    removeLinuxCapabilities?: string[];
 }
 
 export interface ContainerRuntimePolicyMalwareScanOptions {
@@ -276,6 +470,90 @@ export interface ContainerRuntimePolicyMalwareScanOptions {
      * List of registry processes to be excluded from being protected.
      */
     excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface ContainerRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: string[];
+    blockPackagesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockPackagesFiles?: string[];
+    exceptionalBlockPackagesProcesses?: string[];
+    exceptionalBlockPackagesUsers?: string[];
+    packagesBlackLists?: string[];
+}
+
+export interface ContainerRuntimePolicyPortBlock {
+    blockInboundPorts?: string[];
+    blockOutboundPorts?: string[];
+    enabled?: boolean;
+}
+
+export interface ContainerRuntimePolicyReadonlyFiles {
+    enabled?: boolean;
+    exceptionalReadonlyFiles?: string[];
+    exceptionalReadonlyFilesProcesses?: string[];
+    exceptionalReadonlyFilesUsers?: string[];
+    readonlyFiles?: string[];
+    readonlyFilesProcesses?: string[];
+    readonlyFilesUsers?: string[];
+}
+
+export interface ContainerRuntimePolicyReadonlyRegistry {
+    enabled?: boolean;
+    exceptionalReadonlyRegistryPaths?: string[];
+    exceptionalReadonlyRegistryProcesses?: string[];
+    exceptionalReadonlyRegistryUsers?: string[];
+    readonlyRegistryPaths?: string[];
+    readonlyRegistryProcesses?: string[];
+    readonlyRegistryUsers?: string[];
+}
+
+export interface ContainerRuntimePolicyRegistryAccessMonitoring {
+    enabled?: boolean;
+    exceptionalMonitoredRegistryPaths?: string[];
+    exceptionalMonitoredRegistryProcesses?: string[];
+    exceptionalMonitoredRegistryUsers?: string[];
+    monitoredRegistryAttributes?: boolean;
+    monitoredRegistryCreate?: boolean;
+    monitoredRegistryDelete?: boolean;
+    monitoredRegistryModify?: boolean;
+    monitoredRegistryPaths?: string[];
+    monitoredRegistryProcesses?: string[];
+    monitoredRegistryRead?: boolean;
+    monitoredRegistryUsers?: string[];
+}
+
+export interface ContainerRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: string[];
+}
+
+export interface ContainerRuntimePolicyReverseShell {
+    blockReverseShell?: boolean;
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+    reverseShellProcWhiteLists?: string[];
+}
+
+export interface ContainerRuntimePolicyScope {
+    /**
+     * Scope expression.
+     */
+    expression: string;
+    /**
+     * List of variables in the scope.
+     */
+    variables: outputs.ContainerRuntimePolicyScopeVariable[];
 }
 
 export interface ContainerRuntimePolicyScopeVariable {
@@ -291,6 +569,27 @@ export interface ContainerRuntimePolicyScopeVariable {
      * Value assigned to the attribute.
      */
     value: string;
+}
+
+export interface ContainerRuntimePolicySystemIntegrityProtection {
+    auditSystemtimeChange?: boolean;
+    enabled?: boolean;
+    monitorAuditLogIntegrity?: boolean;
+    windowsServicesMonitoring?: boolean;
+}
+
+export interface ContainerRuntimePolicyTripwire {
+    applyOns?: string[];
+    enabled?: boolean;
+    serverlessApp?: string;
+    userId?: string;
+    userPassword?: string;
+}
+
+export interface ContainerRuntimePolicyWhitelistedOsUsers {
+    enabled?: boolean;
+    groupWhiteLists?: string[];
+    userWhiteLists?: string[];
 }
 
 export interface EnforcerGroupsCommand {
@@ -310,9 +609,6 @@ export interface EnforcerGroupsOrchestrator {
      * May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
      */
     serviceAccount?: string;
-    /**
-     * Enforcer Type.
-     */
     type?: string;
 }
 
@@ -382,6 +678,17 @@ export interface FunctionAssurancePolicyForbiddenLabel {
     value?: string;
 }
 
+export interface FunctionAssurancePolicyKubernetesControl {
+    avdId?: string;
+    description?: string;
+    enabled?: boolean;
+    kind?: string;
+    name?: string;
+    ootb?: boolean;
+    scriptId?: number;
+    severity?: string;
+}
+
 export interface FunctionAssurancePolicyPackagesBlackList {
     arch?: string;
     display?: string;
@@ -406,6 +713,13 @@ export interface FunctionAssurancePolicyPackagesWhiteList {
     versionRange?: string;
 }
 
+export interface FunctionAssurancePolicyPolicySettings {
+    enforce?: boolean;
+    isAuditChecked?: boolean;
+    warn?: boolean;
+    warningMessage?: string;
+}
+
 export interface FunctionAssurancePolicyRequiredLabel {
     key?: string;
     value?: string;
@@ -427,6 +741,344 @@ export interface FunctionAssurancePolicyTrustedBaseImage {
     registry?: string;
 }
 
+export interface FunctionRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: string[];
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: string[];
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: boolean;
+}
+
+export interface FunctionRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: string[];
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: boolean;
+}
+
+export interface FunctionRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
+export interface FunctionRuntimePolicyBlacklistedOsUsers {
+    enabled?: boolean;
+    groupBlackLists?: string[];
+    userBlackLists?: string[];
+}
+
+export interface FunctionRuntimePolicyBypassScope {
+    /**
+     * Whether bypassing the scope is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Scope configuration.
+     */
+    scopes?: outputs.FunctionRuntimePolicyBypassScopeScope[];
+}
+
+export interface FunctionRuntimePolicyBypassScopeScope {
+    /**
+     * Scope expression.
+     */
+    expression?: string;
+    /**
+     * List of variables in the scope.
+     */
+    variables?: outputs.FunctionRuntimePolicyBypassScopeScopeVariable[];
+}
+
+export interface FunctionRuntimePolicyBypassScopeScopeVariable {
+    /**
+     * Variable attribute.
+     */
+    attribute?: string;
+    /**
+     * Variable value.
+     */
+    value?: string;
+}
+
+export interface FunctionRuntimePolicyContainerExec {
+    blockContainerExec?: boolean;
+    containerExecProcWhiteLists?: string[];
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+}
+
+export interface FunctionRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: boolean;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: string[];
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: boolean;
+}
+
+export interface FunctionRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: string[];
+}
+
+export interface FunctionRuntimePolicyFailedKubernetesChecks {
+    enabled?: boolean;
+    failedChecks?: string[];
+}
+
+export interface FunctionRuntimePolicyFileBlock {
+    blockFilesProcesses?: string[];
+    blockFilesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockFiles?: string[];
+    exceptionalBlockFilesProcesses?: string[];
+    exceptionalBlockFilesUsers?: string[];
+    filenameBlockLists?: string[];
+}
+
+export interface FunctionRuntimePolicyFileIntegrityMonitoring {
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: string[];
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: string[];
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: string[];
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: string[];
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: boolean;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
+}
+
+export interface FunctionRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: boolean;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: boolean;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: boolean;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: boolean;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: boolean;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: boolean;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: boolean;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: boolean;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: boolean;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: boolean;
+}
+
+export interface FunctionRuntimePolicyLinuxCapabilities {
+    enabled?: boolean;
+    removeLinuxCapabilities?: string[];
+}
+
+export interface FunctionRuntimePolicyMalwareScanOptions {
+    /**
+     * Set Action, Defaults to 'Alert' when empty
+     */
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface FunctionRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: string[];
+    blockPackagesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockPackagesFiles?: string[];
+    exceptionalBlockPackagesProcesses?: string[];
+    exceptionalBlockPackagesUsers?: string[];
+    packagesBlackLists?: string[];
+}
+
+export interface FunctionRuntimePolicyPortBlock {
+    blockInboundPorts?: string[];
+    blockOutboundPorts?: string[];
+    enabled?: boolean;
+}
+
+export interface FunctionRuntimePolicyReadonlyFiles {
+    enabled?: boolean;
+    exceptionalReadonlyFiles?: string[];
+    exceptionalReadonlyFilesProcesses?: string[];
+    exceptionalReadonlyFilesUsers?: string[];
+    readonlyFiles?: string[];
+    readonlyFilesProcesses?: string[];
+    readonlyFilesUsers?: string[];
+}
+
+export interface FunctionRuntimePolicyReadonlyRegistry {
+    enabled?: boolean;
+    exceptionalReadonlyRegistryPaths?: string[];
+    exceptionalReadonlyRegistryProcesses?: string[];
+    exceptionalReadonlyRegistryUsers?: string[];
+    readonlyRegistryPaths?: string[];
+    readonlyRegistryProcesses?: string[];
+    readonlyRegistryUsers?: string[];
+}
+
+export interface FunctionRuntimePolicyRegistryAccessMonitoring {
+    enabled?: boolean;
+    exceptionalMonitoredRegistryPaths?: string[];
+    exceptionalMonitoredRegistryProcesses?: string[];
+    exceptionalMonitoredRegistryUsers?: string[];
+    monitoredRegistryAttributes?: boolean;
+    monitoredRegistryCreate?: boolean;
+    monitoredRegistryDelete?: boolean;
+    monitoredRegistryModify?: boolean;
+    monitoredRegistryPaths?: string[];
+    monitoredRegistryProcesses?: string[];
+    monitoredRegistryRead?: boolean;
+    monitoredRegistryUsers?: string[];
+}
+
+export interface FunctionRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: string[];
+}
+
+export interface FunctionRuntimePolicyReverseShell {
+    blockReverseShell?: boolean;
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+    reverseShellProcWhiteLists?: string[];
+}
+
+export interface FunctionRuntimePolicyScope {
+    /**
+     * Scope expression.
+     */
+    expression: string;
+    /**
+     * List of variables in the scope.
+     */
+    variables: outputs.FunctionRuntimePolicyScopeVariable[];
+}
+
 export interface FunctionRuntimePolicyScopeVariable {
     /**
      * Class of supported scope.
@@ -440,6 +1092,27 @@ export interface FunctionRuntimePolicyScopeVariable {
      * Value assigned to the attribute.
      */
     value: string;
+}
+
+export interface FunctionRuntimePolicySystemIntegrityProtection {
+    auditSystemtimeChange?: boolean;
+    enabled?: boolean;
+    monitorAuditLogIntegrity?: boolean;
+    windowsServicesMonitoring?: boolean;
+}
+
+export interface FunctionRuntimePolicyTripwire {
+    applyOns?: string[];
+    enabled?: boolean;
+    serverlessApp?: string;
+    userId?: string;
+    userPassword?: string;
+}
+
+export interface FunctionRuntimePolicyWhitelistedOsUsers {
+    enabled?: boolean;
+    groupWhiteLists?: string[];
+    userWhiteLists?: string[];
 }
 
 export interface GetAcknowledgesAcknowledge {
@@ -588,44 +1261,214 @@ export interface GetAquaLabelsAquaLabel {
     name: string;
 }
 
+export interface GetContainerRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: string[];
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: string[];
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: boolean;
+}
+
+export interface GetContainerRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: string[];
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: boolean;
+}
+
+export interface GetContainerRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
+export interface GetContainerRuntimePolicyContainerExec {
+    blockContainerExec?: boolean;
+    containerExecProcWhiteLists?: string[];
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+}
+
+export interface GetContainerRuntimePolicyFileBlock {
+    blockFilesProcesses?: string[];
+    blockFilesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockFiles?: string[];
+    exceptionalBlockFilesProcesses?: string[];
+    exceptionalBlockFilesUsers?: string[];
+    filenameBlockLists?: string[];
+}
+
 export interface GetContainerRuntimePolicyFileIntegrityMonitoring {
-    excludedPaths: string[];
-    excludedProcesses: string[];
-    excludedUsers: string[];
-    monitorAttributes: boolean;
-    monitorCreate: boolean;
-    monitorDelete: boolean;
-    monitorModify: boolean;
-    monitorRead: boolean;
-    monitoredPaths: string[];
-    monitoredProcesses: string[];
-    monitoredUsers: string[];
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: string[];
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: string[];
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: string[];
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: string[];
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: boolean;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
+}
+
+export interface GetContainerRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: boolean;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: boolean;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: boolean;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: boolean;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: boolean;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: boolean;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: boolean;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: boolean;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: boolean;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: boolean;
 }
 
 export interface GetContainerRuntimePolicyMalwareScanOption {
     /**
      * Set Action, Defaults to 'Alert' when empty
      */
-    action: string;
+    action?: string;
     /**
      * Defines if enabled or not
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * List of registry paths to be excluded from being protected.
      */
-    excludeDirectories: string[];
+    excludeDirectories?: string[];
     /**
      * List of registry processes to be excluded from being protected.
      */
-    excludeProcesses: string[];
+    excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface GetContainerRuntimePolicyPortBlock {
+    blockInboundPorts?: string[];
+    blockOutboundPorts?: string[];
+    enabled?: boolean;
+}
+
+export interface GetContainerRuntimePolicyReadonlyFiles {
+    enabled?: boolean;
+    exceptionalReadonlyFiles?: string[];
+    exceptionalReadonlyFilesProcesses?: string[];
+    exceptionalReadonlyFilesUsers?: string[];
+    readonlyFiles?: string[];
+    readonlyFilesProcesses?: string[];
+    readonlyFilesUsers?: string[];
+}
+
+export interface GetContainerRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: string[];
 }
 
 export interface GetContainerRuntimePolicyScopeVariable {
     attribute: string;
-    /**
-     * Name of the container runtime policy
-     */
     name: string;
     value: string;
 }
@@ -641,9 +1484,6 @@ export interface GetEnforcerGroupsOrchestrator {
     master: boolean;
     namespace: string;
     serviceAccount: string;
-    /**
-     * Enforcer Type.
-     */
     type: string;
 }
 
@@ -681,9 +1521,6 @@ export interface GetFunctionAssurancePolicyAutoScanTime {
 }
 
 export interface GetFunctionAssurancePolicyCustomCheck {
-    /**
-     * Name of user account that created the policy.
-     */
     author: string;
     description: string;
     engine: string;
@@ -746,11 +1583,38 @@ export interface GetFunctionAssurancePolicyTrustedBaseImage {
     registry: string;
 }
 
+export interface GetFunctionRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: boolean;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: string[];
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: boolean;
+}
+
+export interface GetFunctionRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: string[];
+}
+
 export interface GetFunctionRuntimePolicyScopeVariable {
     attribute: string;
-    /**
-     * Name of the function runtime policy
-     */
     name: string;
     value: string;
 }
@@ -759,9 +1623,6 @@ export interface GetGatewaysGateway {
     description: string;
     grpcAddress: string;
     hostname: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     logicalname: string;
     publicAddress: string;
@@ -783,9 +1644,6 @@ export interface GetHostAssurancePolicyAutoScanTime {
 }
 
 export interface GetHostAssurancePolicyCustomCheck {
-    /**
-     * Name of user account that created the policy.
-     */
     author: string;
     description: string;
     engine: string;
@@ -848,35 +1706,103 @@ export interface GetHostAssurancePolicyTrustedBaseImage {
     registry: string;
 }
 
+export interface GetHostRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
 export interface GetHostRuntimePolicyFileIntegrityMonitoring {
-    excludedPaths: string[];
-    excludedProcesses: string[];
-    excludedUsers: string[];
-    monitorAttributes: boolean;
-    monitorCreate: boolean;
-    monitorDelete: boolean;
-    monitorModify: boolean;
-    monitorRead: boolean;
-    monitoredPaths: string[];
-    monitoredProcesses: string[];
-    monitoredUsers: string[];
+    /**
+     * If true, file integrity monitoring is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of paths to be excluded from monitoring.
+     */
+    exceptionalMonitoredFiles?: string[];
+    /**
+     * List of processes to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesProcesses?: string[];
+    /**
+     * List of users to be excluded from monitoring.
+     */
+    exceptionalMonitoredFilesUsers?: string[];
+    /**
+     * List of paths to be monitored.
+     */
+    monitoredFiles?: string[];
+    /**
+     * Whether to monitor file attribute operations.
+     */
+    monitoredFilesAttributes?: boolean;
+    /**
+     * Whether to monitor file create operations.
+     */
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
 }
 
 export interface GetHostRuntimePolicyMalwareScanOption {
-    action: string;
     /**
-     * Indicates if the runtime policy is enabled or not.
+     * Set Action, Defaults to 'Alert' when empty
      */
-    enabled: boolean;
-    excludeProcesses: string[];
-    includeDirectories: string[];
+    action?: string;
+    /**
+     * Defines if enabled or not
+     */
+    enabled?: boolean;
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    excludeDirectories?: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
+    excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface GetHostRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: string[];
+    blockPackagesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockPackagesFiles?: string[];
+    exceptionalBlockPackagesProcesses?: string[];
+    exceptionalBlockPackagesUsers?: string[];
+    packagesBlackLists?: string[];
 }
 
 export interface GetHostRuntimePolicyScopeVariable {
     attribute: string;
-    /**
-     * Name of the host runtime policy
-     */
     name: string;
     value: string;
 }
@@ -908,13 +1834,7 @@ export interface GetImageAssuranceChecksPerformed {
     assuranceType: string;
     blocking: boolean;
     control: string;
-    /**
-     * If DTA was skipped.
-     */
     dtaSkipped: boolean;
-    /**
-     * The reason why DTA was skipped.
-     */
     dtaSkippedReason: string;
     failed: boolean;
     policyName: string;
@@ -928,9 +1848,6 @@ export interface GetImageAssurancePolicyAutoScanTime {
 }
 
 export interface GetImageAssurancePolicyCustomCheck {
-    /**
-     * Name of user account that created the policy.
-     */
     author: string;
     description: string;
     engine: string;
@@ -994,18 +1911,9 @@ export interface GetImageAssurancePolicyTrustedBaseImage {
 }
 
 export interface GetImageHistory {
-    /**
-     * The image creation comment.
-     */
     comment: string;
-    /**
-     * The date and time when the image was registered.
-     */
     created: string;
     createdBy: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     size: number;
 }
@@ -1029,9 +1937,6 @@ export interface GetImageVulnerability {
     blockEventsCount: number;
     classification: string;
     description: string;
-    /**
-     * The content digest of the image.
-     */
     digest: string;
     exploitReference: string;
     exploitType: string;
@@ -1040,9 +1945,6 @@ export interface GetImageVulnerability {
     imageName: string;
     lastFoundDate: string;
     modificationDate: string;
-    /**
-     * The name of the image.
-     */
     name: string;
     nvdCvss2Score: number;
     nvdCvss2Vectors: string;
@@ -1051,26 +1953,11 @@ export interface GetImageVulnerability {
     nvdCvss3Vectors: string;
     nvdSeverity: string;
     nvdUrl: string;
-    /**
-     * The operating system detected in the image
-     */
     os: string;
-    /**
-     * The version of the OS detected in the image.
-     */
     osVersion: string;
-    /**
-     * Permission of the image.
-     */
     permission: string;
     publishDate: string;
-    /**
-     * The name of the registry where the image is stored.
-     */
     registry: string;
-    /**
-     * The name of the image's repository.
-     */
     repository: string;
     resourceArchitecture: string;
     resourceCpe: string;
@@ -1100,6 +1987,18 @@ export interface GetImageVulnerability {
     vendorUrl: string;
 }
 
+export interface GetIntegrationRegistriesOption {
+    option?: string;
+    value?: string;
+}
+
+export interface GetIntegrationRegistriesWebhook {
+    authToken?: string;
+    enabled?: boolean;
+    unQuarantine?: boolean;
+    url?: string;
+}
+
 export interface GetIntegrationRegistryOption {
     option?: string;
     value?: string;
@@ -1109,9 +2008,6 @@ export interface GetIntegrationRegistryWebhook {
     authToken?: string;
     enabled?: boolean;
     unQuarantine?: boolean;
-    /**
-     * The URL, address or region of the registry
-     */
     url?: string;
 }
 
@@ -1123,9 +2019,6 @@ export interface GetKubernetesAssurancePolicyAutoScanTime {
 }
 
 export interface GetKubernetesAssurancePolicyCustomCheck {
-    /**
-     * Name of user account that created the policy.
-     */
     author: string;
     description: string;
     engine: string;
@@ -1190,9 +2083,6 @@ export interface GetKubernetesAssurancePolicyTrustedBaseImage {
 
 export interface GetNotificationsEmail {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1203,9 +2093,6 @@ export interface GetNotificationsEmail {
 
 export interface GetNotificationsJira {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1216,9 +2103,6 @@ export interface GetNotificationsJira {
 
 export interface GetNotificationsServicenow {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1229,9 +2113,6 @@ export interface GetNotificationsServicenow {
 
 export interface GetNotificationsSlack {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1242,9 +2123,6 @@ export interface GetNotificationsSlack {
 
 export interface GetNotificationsSplunk {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1255,9 +2133,6 @@ export interface GetNotificationsSplunk {
 
 export interface GetNotificationsTeam {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1268,9 +2143,6 @@ export interface GetNotificationsTeam {
 
 export interface GetNotificationsWebhook {
     author: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     lastUpdated: string;
     name: string;
@@ -1305,9 +2177,6 @@ export interface GetRolesMappingSaasRolesMapping {
     accountId: number;
     created: string;
     cspRole: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     samlGroups: string[];
 }
@@ -1326,9 +2195,6 @@ export interface GetRolesRole {
 
 export interface GetServiceScopeVariable {
     attribute: string;
-    /**
-     * The name of the service. It is recommended not to use whitespace characters in the name.
-     */
     name: string;
     value: string;
 }
@@ -1354,18 +2220,12 @@ export interface GetUsersSaasUser {
 
 export interface GetUsersSaasUserGroup {
     created: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     name: string;
 }
 
 export interface GetUsersSaasUserLogin {
     created: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     ipAddress: string;
     userId: number;
@@ -1436,6 +2296,13 @@ export interface HostAssurancePolicyPackagesWhiteList {
     versionRange?: string;
 }
 
+export interface HostAssurancePolicyPolicySettings {
+    enforce?: boolean;
+    isAuditChecked?: boolean;
+    warn?: boolean;
+    warningMessage?: string;
+}
+
 export interface HostAssurancePolicyRequiredLabel {
     key?: string;
     value?: string;
@@ -1457,51 +2324,239 @@ export interface HostAssurancePolicyTrustedBaseImage {
     registry?: string;
 }
 
+export interface HostRuntimePolicyAllowedExecutable {
+    /**
+     * List of allowed executables.
+     */
+    allowExecutables?: string[];
+    /**
+     * List of allowed root executables.
+     */
+    allowRootExecutables?: string[];
+    /**
+     * Whether allowed executables configuration is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to treat executables separately.
+     */
+    separateExecutables?: boolean;
+}
+
+export interface HostRuntimePolicyAllowedRegistry {
+    /**
+     * List of allowed registries.
+     */
+    allowedRegistries?: string[];
+    /**
+     * Whether allowed registries are enabled.
+     */
+    enabled?: boolean;
+}
+
+export interface HostRuntimePolicyAuditing {
+    auditAllNetwork?: boolean;
+    auditAllProcesses?: boolean;
+    auditFailedLogin?: boolean;
+    auditOsUserActivity?: boolean;
+    auditProcessCmdline?: boolean;
+    auditSuccessLogin?: boolean;
+    auditUserAccountManagement?: boolean;
+    enabled?: boolean;
+}
+
+export interface HostRuntimePolicyBlacklistedOsUsers {
+    enabled?: boolean;
+    groupBlackLists?: string[];
+    userBlackLists?: string[];
+}
+
+export interface HostRuntimePolicyBypassScope {
+    /**
+     * Whether bypassing the scope is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Scope configuration.
+     */
+    scopes?: outputs.HostRuntimePolicyBypassScopeScope[];
+}
+
+export interface HostRuntimePolicyBypassScopeScope {
+    /**
+     * Scope expression.
+     */
+    expression?: string;
+    /**
+     * List of variables in the scope.
+     */
+    variables?: outputs.HostRuntimePolicyBypassScopeScopeVariable[];
+}
+
+export interface HostRuntimePolicyBypassScopeScopeVariable {
+    /**
+     * Variable attribute.
+     */
+    attribute?: string;
+    /**
+     * Variable value.
+     */
+    value?: string;
+}
+
+export interface HostRuntimePolicyContainerExec {
+    blockContainerExec?: boolean;
+    containerExecProcWhiteLists?: string[];
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+}
+
+export interface HostRuntimePolicyDriftPrevention {
+    /**
+     * Whether drift prevention is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to lockdown execution drift.
+     */
+    execLockdown?: boolean;
+    /**
+     * List of items in the execution lockdown white list.
+     */
+    execLockdownWhiteLists?: string[];
+    /**
+     * Whether to lockdown image drift.
+     */
+    imageLockdown?: boolean;
+}
+
+export interface HostRuntimePolicyExecutableBlacklist {
+    /**
+     * Whether the executable blacklist is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of blacklisted executables.
+     */
+    executables?: string[];
+}
+
+export interface HostRuntimePolicyFailedKubernetesChecks {
+    enabled?: boolean;
+    failedChecks?: string[];
+}
+
+export interface HostRuntimePolicyFileBlock {
+    blockFilesProcesses?: string[];
+    blockFilesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockFiles?: string[];
+    exceptionalBlockFilesProcesses?: string[];
+    exceptionalBlockFilesUsers?: string[];
+    filenameBlockLists?: string[];
+}
+
 export interface HostRuntimePolicyFileIntegrityMonitoring {
     /**
-     * List of paths to be excluded from being monitored.
+     * If true, file integrity monitoring is enabled.
      */
-    excludedPaths?: string[];
+    enabled?: boolean;
     /**
-     * List of processes to be excluded from being monitored.
+     * List of paths to be excluded from monitoring.
      */
-    excludedProcesses?: string[];
+    exceptionalMonitoredFiles?: string[];
     /**
-     * List of users to be excluded from being monitored.
+     * List of processes to be excluded from monitoring.
      */
-    excludedUsers?: string[];
+    exceptionalMonitoredFilesProcesses?: string[];
     /**
-     * If true, add attributes operations will be monitored.
+     * List of users to be excluded from monitoring.
      */
-    monitorAttributes?: boolean;
-    /**
-     * If true, create operations will be monitored.
-     */
-    monitorCreate?: boolean;
-    /**
-     * If true, deletion operations will be monitored.
-     */
-    monitorDelete?: boolean;
-    /**
-     * If true, modification operations will be monitored.
-     */
-    monitorModify?: boolean;
-    /**
-     * If true, read operations will be monitored.
-     */
-    monitorRead?: boolean;
+    exceptionalMonitoredFilesUsers?: string[];
     /**
      * List of paths to be monitored.
      */
-    monitoredPaths?: string[];
+    monitoredFiles?: string[];
     /**
-     * List of processes to be monitored.
+     * Whether to monitor file attribute operations.
      */
-    monitoredProcesses?: string[];
+    monitoredFilesAttributes?: boolean;
     /**
-     * List of users to be monitored.
+     * Whether to monitor file create operations.
      */
-    monitoredUsers?: string[];
+    monitoredFilesCreate?: boolean;
+    /**
+     * Whether to monitor file delete operations.
+     */
+    monitoredFilesDelete?: boolean;
+    /**
+     * Whether to monitor file modify operations.
+     */
+    monitoredFilesModify?: boolean;
+    /**
+     * List of processes associated with monitored files.
+     */
+    monitoredFilesProcesses?: string[];
+    /**
+     * Whether to monitor file read operations.
+     */
+    monitoredFilesRead?: boolean;
+    /**
+     * List of users associated with monitored files.
+     */
+    monitoredFilesUsers?: string[];
+}
+
+export interface HostRuntimePolicyLimitContainerPrivilege {
+    /**
+     * Whether to block adding capabilities.
+     */
+    blockAddCapabilities?: boolean;
+    /**
+     * Whether container privilege limitations are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * Whether to limit IPC-related capabilities.
+     */
+    ipcmode?: boolean;
+    /**
+     * Whether to limit network-related capabilities.
+     */
+    netmode?: boolean;
+    /**
+     * Whether to limit process-related capabilities.
+     */
+    pidmode?: boolean;
+    /**
+     * Whether to prevent low port binding.
+     */
+    preventLowPortBinding?: boolean;
+    /**
+     * Whether to prevent the use of the root user.
+     */
+    preventRootUser?: boolean;
+    /**
+     * Whether the container is run in privileged mode.
+     */
+    privileged?: boolean;
+    /**
+     * Whether to use the host user.
+     */
+    useHostUser?: boolean;
+    /**
+     * Whether to limit user-related capabilities.
+     */
+    usermode?: boolean;
+    /**
+     * Whether to limit UTS-related capabilities.
+     */
+    utsmode?: boolean;
+}
+
+export interface HostRuntimePolicyLinuxCapabilities {
+    enabled?: boolean;
+    removeLinuxCapabilities?: string[];
 }
 
 export interface HostRuntimePolicyMalwareScanOptions {
@@ -1521,6 +2576,90 @@ export interface HostRuntimePolicyMalwareScanOptions {
      * List of registry processes to be excluded from being protected.
      */
     excludeProcesses?: string[];
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
+    includeDirectories?: string[];
+}
+
+export interface HostRuntimePolicyPackageBlock {
+    blockPackagesProcesses?: string[];
+    blockPackagesUsers?: string[];
+    enabled?: boolean;
+    exceptionalBlockPackagesFiles?: string[];
+    exceptionalBlockPackagesProcesses?: string[];
+    exceptionalBlockPackagesUsers?: string[];
+    packagesBlackLists?: string[];
+}
+
+export interface HostRuntimePolicyPortBlock {
+    blockInboundPorts?: string[];
+    blockOutboundPorts?: string[];
+    enabled?: boolean;
+}
+
+export interface HostRuntimePolicyReadonlyFiles {
+    enabled?: boolean;
+    exceptionalReadonlyFiles?: string[];
+    exceptionalReadonlyFilesProcesses?: string[];
+    exceptionalReadonlyFilesUsers?: string[];
+    readonlyFiles?: string[];
+    readonlyFilesProcesses?: string[];
+    readonlyFilesUsers?: string[];
+}
+
+export interface HostRuntimePolicyReadonlyRegistry {
+    enabled?: boolean;
+    exceptionalReadonlyRegistryPaths?: string[];
+    exceptionalReadonlyRegistryProcesses?: string[];
+    exceptionalReadonlyRegistryUsers?: string[];
+    readonlyRegistryPaths?: string[];
+    readonlyRegistryProcesses?: string[];
+    readonlyRegistryUsers?: string[];
+}
+
+export interface HostRuntimePolicyRegistryAccessMonitoring {
+    enabled?: boolean;
+    exceptionalMonitoredRegistryPaths?: string[];
+    exceptionalMonitoredRegistryProcesses?: string[];
+    exceptionalMonitoredRegistryUsers?: string[];
+    monitoredRegistryAttributes?: boolean;
+    monitoredRegistryCreate?: boolean;
+    monitoredRegistryDelete?: boolean;
+    monitoredRegistryModify?: boolean;
+    monitoredRegistryPaths?: string[];
+    monitoredRegistryProcesses?: string[];
+    monitoredRegistryRead?: boolean;
+    monitoredRegistryUsers?: string[];
+}
+
+export interface HostRuntimePolicyRestrictedVolume {
+    /**
+     * Whether restricted volumes are enabled.
+     */
+    enabled?: boolean;
+    /**
+     * List of restricted volumes.
+     */
+    volumes?: string[];
+}
+
+export interface HostRuntimePolicyReverseShell {
+    blockReverseShell?: boolean;
+    enabled?: boolean;
+    reverseShellIpWhiteLists?: string[];
+    reverseShellProcWhiteLists?: string[];
+}
+
+export interface HostRuntimePolicyScope {
+    /**
+     * Scope expression.
+     */
+    expression: string;
+    /**
+     * List of variables in the scope.
+     */
+    variables: outputs.HostRuntimePolicyScopeVariable[];
 }
 
 export interface HostRuntimePolicyScopeVariable {
@@ -1538,101 +2677,42 @@ export interface HostRuntimePolicyScopeVariable {
     value: string;
 }
 
-export interface HostRuntimePolicyWindowsRegistryMonitoring {
-    /**
-     * List of paths to be excluded from being monitored.
-     */
-    excludedPaths?: string[];
-    /**
-     * List of registry processes to be excluded from being monitored.
-     */
-    excludedProcesses?: string[];
-    /**
-     * List of registry users to be excluded from being monitored.
-     */
-    excludedUsers?: string[];
-    /**
-     * If true, add attributes operations will be monitored.
-     */
-    monitorAttributes?: boolean;
-    /**
-     * If true, create operations will be monitored.
-     */
-    monitorCreate?: boolean;
-    /**
-     * If true, deletion operations will be monitored.
-     */
-    monitorDelete?: boolean;
-    /**
-     * If true, modification operations will be monitored.
-     */
-    monitorModify?: boolean;
-    /**
-     * If true, read operations will be monitored.
-     */
-    monitorRead?: boolean;
-    /**
-     * List of paths to be monitored.
-     */
-    monitoredPaths?: string[];
-    /**
-     * List of registry processes to be monitored.
-     */
-    monitoredProcesses?: string[];
-    /**
-     * List of registry users to be monitored.
-     */
-    monitoredUsers?: string[];
+export interface HostRuntimePolicySystemIntegrityProtection {
+    auditSystemtimeChange?: boolean;
+    enabled?: boolean;
+    monitorAuditLogIntegrity?: boolean;
+    windowsServicesMonitoring?: boolean;
 }
 
-export interface HostRuntimePolicyWindowsRegistryProtection {
-    /**
-     * List of registry paths to be excluded from being protected.
-     */
-    excludedPaths?: string[];
-    /**
-     * List of registry processes to be excluded from being protected.
-     */
-    excludedProcesses?: string[];
-    /**
-     * List of registry paths to be users from being protected.
-     */
-    excludedUsers?: string[];
-    /**
-     * List of registry paths to be protected.
-     */
-    protectedPaths?: string[];
-    /**
-     * List of registry processes to be protected.
-     */
-    protectedProcesses?: string[];
-    /**
-     * List of registry users to be protected.
-     */
-    protectedUsers?: string[];
+export interface HostRuntimePolicyTripwire {
+    applyOns?: string[];
+    enabled?: boolean;
+    serverlessApp?: string;
+    userId?: string;
+    userPassword?: string;
+}
+
+export interface HostRuntimePolicyWhitelistedOsUsers {
+    enabled?: boolean;
+    groupWhiteLists?: string[];
+    userWhiteLists?: string[];
 }
 
 export interface ImageAssuranceChecksPerformed {
     assuranceType: string;
     blocking: boolean;
     control: string;
-    /**
-     * If DTA was skipped.
-     */
     dtaSkipped: boolean;
-    /**
-     * The reason why DTA was skipped.
-     */
     dtaSkippedReason: string;
     failed: boolean;
     policyName: string;
 }
 
 export interface ImageAssurancePolicyAutoScanTime {
-    iteration: number;
+    iteration?: number;
     iterationType?: string;
     time?: string;
-    weekDays: string[];
+    weekDays?: string[];
 }
 
 export interface ImageAssurancePolicyCustomCheck {
@@ -1654,6 +2734,17 @@ export interface ImageAssurancePolicyCustomCheck {
 export interface ImageAssurancePolicyForbiddenLabel {
     key?: string;
     value?: string;
+}
+
+export interface ImageAssurancePolicyKubernetesControls {
+    avdId?: string;
+    description?: string;
+    enabled?: boolean;
+    kind?: string;
+    name?: string;
+    ootb?: boolean;
+    scriptId?: number;
+    severity?: string;
 }
 
 export interface ImageAssurancePolicyPackagesBlackList {
@@ -1680,6 +2771,13 @@ export interface ImageAssurancePolicyPackagesWhiteList {
     versionRange?: string;
 }
 
+export interface ImageAssurancePolicyPolicySettings {
+    enforce?: boolean;
+    isAuditChecked?: boolean;
+    warn?: boolean;
+    warningMessage?: string;
+}
+
 export interface ImageAssurancePolicyRequiredLabel {
     key?: string;
     value?: string;
@@ -1702,18 +2800,9 @@ export interface ImageAssurancePolicyTrustedBaseImage {
 }
 
 export interface ImageHistory {
-    /**
-     * The image creation comment.
-     */
     comment: string;
-    /**
-     * The date and time when the image was registered.
-     */
     created: string;
     createdBy: string;
-    /**
-     * The ID of this resource.
-     */
     id: string;
     size: number;
 }
@@ -1737,9 +2826,6 @@ export interface ImageVulnerability {
     blockEventsCount: number;
     classification: string;
     description: string;
-    /**
-     * The content digest of the image.
-     */
     digest: string;
     exploitReference: string;
     exploitType: string;
@@ -1748,9 +2834,6 @@ export interface ImageVulnerability {
     imageName: string;
     lastFoundDate: string;
     modificationDate: string;
-    /**
-     * The name of the image.
-     */
     name: string;
     nvdCvss2Score: number;
     nvdCvss2Vectors: string;
@@ -1759,26 +2842,11 @@ export interface ImageVulnerability {
     nvdCvss3Vectors: string;
     nvdSeverity: string;
     nvdUrl: string;
-    /**
-     * The operating system detected in the image
-     */
     os: string;
-    /**
-     * The version of the OS detected in the image.
-     */
     osVersion: string;
-    /**
-     * Permission of the image.
-     */
     permission: string;
     publishDate: string;
-    /**
-     * The name of the registry where the image is stored.
-     */
     registry: string;
-    /**
-     * The name of the image's repository.
-     */
     repository: string;
     resourceArchitecture: string;
     resourceCpe: string;
@@ -1817,9 +2885,6 @@ export interface IntegrationRegistryWebhook {
     authToken?: string;
     enabled: boolean;
     unQuarantine: boolean;
-    /**
-     * The URL, address or region of the registry
-     */
     url?: string;
 }
 
@@ -1851,6 +2916,41 @@ export interface KubernetesAssurancePolicyForbiddenLabel {
     value?: string;
 }
 
+export interface KubernetesAssurancePolicyKubernetesControl {
+    /**
+     * AVD ID.
+     */
+    avdId?: string;
+    /**
+     * Description of the control.
+     */
+    description?: string;
+    /**
+     * Is the control enabled?
+     */
+    enabled?: boolean;
+    /**
+     * Kind of the control.
+     */
+    kind?: string;
+    /**
+     * Name of the control.
+     */
+    name?: string;
+    /**
+     * Out-of-the-box status of the control.
+     */
+    ootb?: boolean;
+    /**
+     * Script ID.
+     */
+    scriptId?: number;
+    /**
+     * Severity of the control.
+     */
+    severity?: string;
+}
+
 export interface KubernetesAssurancePolicyPackagesBlackList {
     arch?: string;
     display?: string;
@@ -1873,6 +2973,13 @@ export interface KubernetesAssurancePolicyPackagesWhiteList {
     release?: string;
     version?: string;
     versionRange?: string;
+}
+
+export interface KubernetesAssurancePolicyPolicySettings {
+    enforce?: boolean;
+    isAuditChecked?: boolean;
+    warn?: boolean;
+    warningMessage?: string;
 }
 
 export interface KubernetesAssurancePolicyRequiredLabel {
@@ -1898,28 +3005,28 @@ export interface KubernetesAssurancePolicyTrustedBaseImage {
 
 export interface RoleMappingLdap {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: {[key: string]: string};
 }
 
 export interface RoleMappingOauth2 {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: {[key: string]: string};
 }
 
 export interface RoleMappingOpenid {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: {[key: string]: string};
 }
 
 export interface RoleMappingSaml {
     /**
-     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
      */
     roleMapping: {[key: string]: string};
 }
@@ -1946,11 +3053,99 @@ export interface UserSaasGroup {
 
 export interface UserSaasLogin {
     created: string;
-    /**
-     * The ID of this resource.
-     */
     id: number;
     ipAddress: string;
     userId: number;
+}
+
+export interface VmwareAssurancePolicyAutoScanTime {
+    iteration: number;
+    iterationType?: string;
+    time?: string;
+    weekDays: string[];
+}
+
+export interface VmwareAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
+    author?: string;
+    description?: string;
+    engine?: string;
+    lastModified?: number;
+    name?: string;
+    path?: string;
+    readOnly?: boolean;
+    scriptId?: string;
+    severity?: string;
+    snippet?: string;
+}
+
+export interface VmwareAssurancePolicyForbiddenLabel {
+    key?: string;
+    value?: string;
+}
+
+export interface VmwareAssurancePolicyKubernetesControl {
+    avdId?: string;
+    description?: string;
+    enabled?: boolean;
+    kind?: string;
+    name?: string;
+    ootb?: boolean;
+    scriptId?: number;
+    severity?: string;
+}
+
+export interface VmwareAssurancePolicyPackagesBlackList {
+    arch?: string;
+    display?: string;
+    epoch?: string;
+    format?: string;
+    license?: string;
+    name?: string;
+    release?: string;
+    version?: string;
+    versionRange?: string;
+}
+
+export interface VmwareAssurancePolicyPackagesWhiteList {
+    arch?: string;
+    display?: string;
+    epoch?: string;
+    format?: string;
+    license?: string;
+    name?: string;
+    release?: string;
+    version?: string;
+    versionRange?: string;
+}
+
+export interface VmwareAssurancePolicyPolicySettings {
+    enforce?: boolean;
+    isAuditChecked?: boolean;
+    warn?: boolean;
+    warningMessage?: string;
+}
+
+export interface VmwareAssurancePolicyRequiredLabel {
+    key?: string;
+    value?: string;
+}
+
+export interface VmwareAssurancePolicyScope {
+    expression: string;
+    variables?: outputs.VmwareAssurancePolicyScopeVariable[];
+}
+
+export interface VmwareAssurancePolicyScopeVariable {
+    attribute: string;
+    name?: string;
+    value: string;
+}
+
+export interface VmwareAssurancePolicyTrustedBaseImage {
+    imagename?: string;
+    registry?: string;
 }
 

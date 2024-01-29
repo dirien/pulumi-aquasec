@@ -14,18 +14,9 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetImageHistoryResult
     {
-        /// <summary>
-        /// The image creation comment.
-        /// </summary>
         public readonly string Comment;
-        /// <summary>
-        /// The date and time when the image was registered.
-        /// </summary>
         public readonly string Created;
         public readonly string CreatedBy;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string Id;
         public readonly int Size;
 

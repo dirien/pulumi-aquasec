@@ -4,6 +4,9 @@
 package aquasec
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
@@ -56,4 +59,44 @@ type GetGatewaysResult struct {
 	Gateways []GetGatewaysGateway `pulumi:"gateways"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetGatewaysOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetGatewaysResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetGatewaysResult, error) {
+		r, err := GetGateways(ctx, opts...)
+		var s GetGatewaysResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetGatewaysResultOutput)
+}
+
+// A collection of values returned by getGateways.
+type GetGatewaysResultOutput struct{ *pulumi.OutputState }
+
+func (GetGatewaysResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewaysResult)(nil)).Elem()
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutput() GetGatewaysResultOutput {
+	return o
+}
+
+func (o GetGatewaysResultOutput) ToGetGatewaysResultOutputWithContext(ctx context.Context) GetGatewaysResultOutput {
+	return o
+}
+
+// A list of existing gateways' parameters.
+func (o GetGatewaysResultOutput) Gateways() GetGatewaysGatewayArrayOutput {
+	return o.ApplyT(func(v GetGatewaysResult) []GetGatewaysGateway { return v.Gateways }).(GetGatewaysGatewayArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGatewaysResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewaysResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGatewaysResultOutput{})
 }

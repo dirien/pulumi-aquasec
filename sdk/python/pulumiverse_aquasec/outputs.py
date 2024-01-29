@@ -34,9 +34,34 @@ __all__ = [
     'ApplicationScopeCategoryWorkloadKuberneteVariable',
     'ApplicationScopeCategoryWorkloadO',
     'ApplicationScopeCategoryWorkloadOVariable',
+    'ContainerRuntimePolicyAllowedExecutable',
+    'ContainerRuntimePolicyAllowedRegistry',
+    'ContainerRuntimePolicyAuditing',
+    'ContainerRuntimePolicyBlacklistedOsUsers',
+    'ContainerRuntimePolicyBypassScope',
+    'ContainerRuntimePolicyBypassScopeScope',
+    'ContainerRuntimePolicyBypassScopeScopeVariable',
+    'ContainerRuntimePolicyContainerExec',
+    'ContainerRuntimePolicyDriftPrevention',
+    'ContainerRuntimePolicyExecutableBlacklist',
+    'ContainerRuntimePolicyFailedKubernetesChecks',
+    'ContainerRuntimePolicyFileBlock',
     'ContainerRuntimePolicyFileIntegrityMonitoring',
+    'ContainerRuntimePolicyLimitContainerPrivilege',
+    'ContainerRuntimePolicyLinuxCapabilities',
     'ContainerRuntimePolicyMalwareScanOptions',
+    'ContainerRuntimePolicyPackageBlock',
+    'ContainerRuntimePolicyPortBlock',
+    'ContainerRuntimePolicyReadonlyFiles',
+    'ContainerRuntimePolicyReadonlyRegistry',
+    'ContainerRuntimePolicyRegistryAccessMonitoring',
+    'ContainerRuntimePolicyRestrictedVolume',
+    'ContainerRuntimePolicyReverseShell',
+    'ContainerRuntimePolicyScope',
     'ContainerRuntimePolicyScopeVariable',
+    'ContainerRuntimePolicySystemIntegrityProtection',
+    'ContainerRuntimePolicyTripwire',
+    'ContainerRuntimePolicyWhitelistedOsUsers',
     'EnforcerGroupsCommand',
     'EnforcerGroupsOrchestrator',
     'FirewallPolicyInboundNetwork',
@@ -44,33 +69,88 @@ __all__ = [
     'FunctionAssurancePolicyAutoScanTime',
     'FunctionAssurancePolicyCustomCheck',
     'FunctionAssurancePolicyForbiddenLabel',
+    'FunctionAssurancePolicyKubernetesControl',
     'FunctionAssurancePolicyPackagesBlackList',
     'FunctionAssurancePolicyPackagesWhiteList',
+    'FunctionAssurancePolicyPolicySettings',
     'FunctionAssurancePolicyRequiredLabel',
     'FunctionAssurancePolicyScope',
     'FunctionAssurancePolicyScopeVariable',
     'FunctionAssurancePolicyTrustedBaseImage',
+    'FunctionRuntimePolicyAllowedExecutable',
+    'FunctionRuntimePolicyAllowedRegistry',
+    'FunctionRuntimePolicyAuditing',
+    'FunctionRuntimePolicyBlacklistedOsUsers',
+    'FunctionRuntimePolicyBypassScope',
+    'FunctionRuntimePolicyBypassScopeScope',
+    'FunctionRuntimePolicyBypassScopeScopeVariable',
+    'FunctionRuntimePolicyContainerExec',
+    'FunctionRuntimePolicyDriftPrevention',
+    'FunctionRuntimePolicyExecutableBlacklist',
+    'FunctionRuntimePolicyFailedKubernetesChecks',
+    'FunctionRuntimePolicyFileBlock',
+    'FunctionRuntimePolicyFileIntegrityMonitoring',
+    'FunctionRuntimePolicyLimitContainerPrivilege',
+    'FunctionRuntimePolicyLinuxCapabilities',
+    'FunctionRuntimePolicyMalwareScanOptions',
+    'FunctionRuntimePolicyPackageBlock',
+    'FunctionRuntimePolicyPortBlock',
+    'FunctionRuntimePolicyReadonlyFiles',
+    'FunctionRuntimePolicyReadonlyRegistry',
+    'FunctionRuntimePolicyRegistryAccessMonitoring',
+    'FunctionRuntimePolicyRestrictedVolume',
+    'FunctionRuntimePolicyReverseShell',
+    'FunctionRuntimePolicyScope',
     'FunctionRuntimePolicyScopeVariable',
+    'FunctionRuntimePolicySystemIntegrityProtection',
+    'FunctionRuntimePolicyTripwire',
+    'FunctionRuntimePolicyWhitelistedOsUsers',
     'HostAssurancePolicyAutoScanTime',
     'HostAssurancePolicyCustomCheck',
     'HostAssurancePolicyForbiddenLabel',
     'HostAssurancePolicyPackagesBlackList',
     'HostAssurancePolicyPackagesWhiteList',
+    'HostAssurancePolicyPolicySettings',
     'HostAssurancePolicyRequiredLabel',
     'HostAssurancePolicyScope',
     'HostAssurancePolicyScopeVariable',
     'HostAssurancePolicyTrustedBaseImage',
+    'HostRuntimePolicyAllowedExecutable',
+    'HostRuntimePolicyAllowedRegistry',
+    'HostRuntimePolicyAuditing',
+    'HostRuntimePolicyBlacklistedOsUsers',
+    'HostRuntimePolicyBypassScope',
+    'HostRuntimePolicyBypassScopeScope',
+    'HostRuntimePolicyBypassScopeScopeVariable',
+    'HostRuntimePolicyContainerExec',
+    'HostRuntimePolicyDriftPrevention',
+    'HostRuntimePolicyExecutableBlacklist',
+    'HostRuntimePolicyFailedKubernetesChecks',
+    'HostRuntimePolicyFileBlock',
     'HostRuntimePolicyFileIntegrityMonitoring',
+    'HostRuntimePolicyLimitContainerPrivilege',
+    'HostRuntimePolicyLinuxCapabilities',
     'HostRuntimePolicyMalwareScanOptions',
+    'HostRuntimePolicyPackageBlock',
+    'HostRuntimePolicyPortBlock',
+    'HostRuntimePolicyReadonlyFiles',
+    'HostRuntimePolicyReadonlyRegistry',
+    'HostRuntimePolicyRegistryAccessMonitoring',
+    'HostRuntimePolicyRestrictedVolume',
+    'HostRuntimePolicyReverseShell',
+    'HostRuntimePolicyScope',
     'HostRuntimePolicyScopeVariable',
-    'HostRuntimePolicyWindowsRegistryMonitoring',
-    'HostRuntimePolicyWindowsRegistryProtection',
+    'HostRuntimePolicySystemIntegrityProtection',
+    'HostRuntimePolicyTripwire',
+    'HostRuntimePolicyWhitelistedOsUsers',
     'ImageAssuranceChecksPerformed',
     'ImageAssurancePolicyAutoScanTime',
     'ImageAssurancePolicyCustomCheck',
     'ImageAssurancePolicyForbiddenLabel',
+    'ImageAssurancePolicyKubernetesControls',
     'ImageAssurancePolicyPackagesBlackList',
     'ImageAssurancePolicyPackagesWhiteList',
+    'ImageAssurancePolicyPolicySettings',
     'ImageAssurancePolicyRequiredLabel',
     'ImageAssurancePolicyScope',
     'ImageAssurancePolicyScopeVariable',
@@ -82,8 +162,10 @@ __all__ = [
     'KubernetesAssurancePolicyAutoScanTime',
     'KubernetesAssurancePolicyCustomCheck',
     'KubernetesAssurancePolicyForbiddenLabel',
+    'KubernetesAssurancePolicyKubernetesControl',
     'KubernetesAssurancePolicyPackagesBlackList',
     'KubernetesAssurancePolicyPackagesWhiteList',
+    'KubernetesAssurancePolicyPolicySettings',
     'KubernetesAssurancePolicyRequiredLabel',
     'KubernetesAssurancePolicyScope',
     'KubernetesAssurancePolicyScopeVariable',
@@ -95,6 +177,17 @@ __all__ = [
     'ServiceScopeVariable',
     'UserSaasGroup',
     'UserSaasLogin',
+    'VmwareAssurancePolicyAutoScanTime',
+    'VmwareAssurancePolicyCustomCheck',
+    'VmwareAssurancePolicyForbiddenLabel',
+    'VmwareAssurancePolicyKubernetesControl',
+    'VmwareAssurancePolicyPackagesBlackList',
+    'VmwareAssurancePolicyPackagesWhiteList',
+    'VmwareAssurancePolicyPolicySettings',
+    'VmwareAssurancePolicyRequiredLabel',
+    'VmwareAssurancePolicyScope',
+    'VmwareAssurancePolicyScopeVariable',
+    'VmwareAssurancePolicyTrustedBaseImage',
     'GetAcknowledgesAcknowledgeResult',
     'GetApplicationScopeCategoryResult',
     'GetApplicationScopeCategoryArtifactResult',
@@ -119,8 +212,17 @@ __all__ = [
     'GetApplicationScopeCategoryWorkloadOResult',
     'GetApplicationScopeCategoryWorkloadOVariableResult',
     'GetAquaLabelsAquaLabelResult',
+    'GetContainerRuntimePolicyAllowedExecutableResult',
+    'GetContainerRuntimePolicyAllowedRegistryResult',
+    'GetContainerRuntimePolicyAuditingResult',
+    'GetContainerRuntimePolicyContainerExecResult',
+    'GetContainerRuntimePolicyFileBlockResult',
     'GetContainerRuntimePolicyFileIntegrityMonitoringResult',
+    'GetContainerRuntimePolicyLimitContainerPrivilegeResult',
     'GetContainerRuntimePolicyMalwareScanOptionResult',
+    'GetContainerRuntimePolicyPortBlockResult',
+    'GetContainerRuntimePolicyReadonlyFilesResult',
+    'GetContainerRuntimePolicyRestrictedVolumeResult',
     'GetContainerRuntimePolicyScopeVariableResult',
     'GetEnforcerGroupsCommandResult',
     'GetEnforcerGroupsOrchestratorResult',
@@ -135,6 +237,8 @@ __all__ = [
     'GetFunctionAssurancePolicyScopeResult',
     'GetFunctionAssurancePolicyScopeVariableResult',
     'GetFunctionAssurancePolicyTrustedBaseImageResult',
+    'GetFunctionRuntimePolicyDriftPreventionResult',
+    'GetFunctionRuntimePolicyExecutableBlacklistResult',
     'GetFunctionRuntimePolicyScopeVariableResult',
     'GetGatewaysGatewayResult',
     'GetGroupsGroupResult',
@@ -147,8 +251,10 @@ __all__ = [
     'GetHostAssurancePolicyScopeResult',
     'GetHostAssurancePolicyScopeVariableResult',
     'GetHostAssurancePolicyTrustedBaseImageResult',
+    'GetHostRuntimePolicyAuditingResult',
     'GetHostRuntimePolicyFileIntegrityMonitoringResult',
     'GetHostRuntimePolicyMalwareScanOptionResult',
+    'GetHostRuntimePolicyPackageBlockResult',
     'GetHostRuntimePolicyScopeVariableResult',
     'GetHostRuntimePolicyWindowsRegistryMonitoringResult',
     'GetHostRuntimePolicyWindowsRegistryProtectionResult',
@@ -164,6 +270,8 @@ __all__ = [
     'GetImageAssurancePolicyTrustedBaseImageResult',
     'GetImageHistoryResult',
     'GetImageVulnerabilityResult',
+    'GetIntegrationRegistriesOptionResult',
+    'GetIntegrationRegistriesWebhookResult',
     'GetIntegrationRegistryOptionResult',
     'GetIntegrationRegistryWebhookResult',
     'GetKubernetesAssurancePolicyAutoScanTimeResult',
@@ -571,6 +679,10 @@ class ApplicationScopeCategoryArtifact(dict):
                  cfs: Optional[Sequence['outputs.ApplicationScopeCategoryArtifactCf']] = None,
                  functions: Optional[Sequence['outputs.ApplicationScopeCategoryArtifactFunction']] = None,
                  images: Optional[Sequence['outputs.ApplicationScopeCategoryArtifactImage']] = None):
+        """
+        :param Sequence['ApplicationScopeCategoryArtifactFunctionArgs'] functions: Function name
+        :param Sequence['ApplicationScopeCategoryArtifactImageArgs'] images: Name of a registry as defined in Aqua
+        """
         if cfs is not None:
             pulumi.set(__self__, "cfs", cfs)
         if functions is not None:
@@ -586,11 +698,17 @@ class ApplicationScopeCategoryArtifact(dict):
     @property
     @pulumi.getter
     def functions(self) -> Optional[Sequence['outputs.ApplicationScopeCategoryArtifactFunction']]:
+        """
+        Function name
+        """
         return pulumi.get(self, "functions")
 
     @property
     @pulumi.getter
     def images(self) -> Optional[Sequence['outputs.ApplicationScopeCategoryArtifactImage']]:
+        """
+        Name of a registry as defined in Aqua
+        """
         return pulumi.get(self, "images")
 
 
@@ -1023,32 +1141,686 @@ class ApplicationScopeCategoryWorkloadOVariable(dict):
 
 
 @pulumi.output_type
+class ContainerRuntimePolicyAllowedExecutable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowExecutables":
+            suggest = "allow_executables"
+        elif key == "allowRootExecutables":
+            suggest = "allow_root_executables"
+        elif key == "separateExecutables":
+            suggest = "separate_executables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyAllowedExecutable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyAllowedExecutable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyAllowedExecutable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_executables: Optional[Sequence[str]] = None,
+                 allow_root_executables: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 separate_executables: Optional[bool] = None):
+        """
+        :param Sequence[str] allow_executables: List of allowed executables.
+        :param Sequence[str] allow_root_executables: List of allowed root executables.
+        :param bool enabled: Whether allowed executables configuration is enabled.
+        :param bool separate_executables: Whether to treat executables separately.
+        """
+        if allow_executables is not None:
+            pulumi.set(__self__, "allow_executables", allow_executables)
+        if allow_root_executables is not None:
+            pulumi.set(__self__, "allow_root_executables", allow_root_executables)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if separate_executables is not None:
+            pulumi.set(__self__, "separate_executables", separate_executables)
+
+    @property
+    @pulumi.getter(name="allowExecutables")
+    def allow_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed executables.
+        """
+        return pulumi.get(self, "allow_executables")
+
+    @property
+    @pulumi.getter(name="allowRootExecutables")
+    def allow_root_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed root executables.
+        """
+        return pulumi.get(self, "allow_root_executables")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed executables configuration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="separateExecutables")
+    def separate_executables(self) -> Optional[bool]:
+        """
+        Whether to treat executables separately.
+        """
+        return pulumi.get(self, "separate_executables")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyAllowedRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedRegistries":
+            suggest = "allowed_registries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyAllowedRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyAllowedRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyAllowedRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_registries: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param Sequence[str] allowed_registries: List of allowed registries.
+        :param bool enabled: Whether allowed registries are enabled.
+        """
+        if allowed_registries is not None:
+            pulumi.set(__self__, "allowed_registries", allowed_registries)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="allowedRegistries")
+    def allowed_registries(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed registries.
+        """
+        return pulumi.get(self, "allowed_registries")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed registries are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyAuditing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditAllNetwork":
+            suggest = "audit_all_network"
+        elif key == "auditAllProcesses":
+            suggest = "audit_all_processes"
+        elif key == "auditFailedLogin":
+            suggest = "audit_failed_login"
+        elif key == "auditOsUserActivity":
+            suggest = "audit_os_user_activity"
+        elif key == "auditProcessCmdline":
+            suggest = "audit_process_cmdline"
+        elif key == "auditSuccessLogin":
+            suggest = "audit_success_login"
+        elif key == "auditUserAccountManagement":
+            suggest = "audit_user_account_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyAuditing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyAuditing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyAuditing.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_all_network: Optional[bool] = None,
+                 audit_all_processes: Optional[bool] = None,
+                 audit_failed_login: Optional[bool] = None,
+                 audit_os_user_activity: Optional[bool] = None,
+                 audit_process_cmdline: Optional[bool] = None,
+                 audit_success_login: Optional[bool] = None,
+                 audit_user_account_management: Optional[bool] = None,
+                 enabled: Optional[bool] = None):
+        if audit_all_network is not None:
+            pulumi.set(__self__, "audit_all_network", audit_all_network)
+        if audit_all_processes is not None:
+            pulumi.set(__self__, "audit_all_processes", audit_all_processes)
+        if audit_failed_login is not None:
+            pulumi.set(__self__, "audit_failed_login", audit_failed_login)
+        if audit_os_user_activity is not None:
+            pulumi.set(__self__, "audit_os_user_activity", audit_os_user_activity)
+        if audit_process_cmdline is not None:
+            pulumi.set(__self__, "audit_process_cmdline", audit_process_cmdline)
+        if audit_success_login is not None:
+            pulumi.set(__self__, "audit_success_login", audit_success_login)
+        if audit_user_account_management is not None:
+            pulumi.set(__self__, "audit_user_account_management", audit_user_account_management)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="auditAllNetwork")
+    def audit_all_network(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_network")
+
+    @property
+    @pulumi.getter(name="auditAllProcesses")
+    def audit_all_processes(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_processes")
+
+    @property
+    @pulumi.getter(name="auditFailedLogin")
+    def audit_failed_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_failed_login")
+
+    @property
+    @pulumi.getter(name="auditOsUserActivity")
+    def audit_os_user_activity(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_os_user_activity")
+
+    @property
+    @pulumi.getter(name="auditProcessCmdline")
+    def audit_process_cmdline(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_process_cmdline")
+
+    @property
+    @pulumi.getter(name="auditSuccessLogin")
+    def audit_success_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_success_login")
+
+    @property
+    @pulumi.getter(name="auditUserAccountManagement")
+    def audit_user_account_management(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_user_account_management")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyBlacklistedOsUsers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupBlackLists":
+            suggest = "group_black_lists"
+        elif key == "userBlackLists":
+            suggest = "user_black_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyBlacklistedOsUsers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyBlacklistedOsUsers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyBlacklistedOsUsers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_black_lists: Optional[Sequence[str]] = None,
+                 user_black_lists: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_black_lists is not None:
+            pulumi.set(__self__, "group_black_lists", group_black_lists)
+        if user_black_lists is not None:
+            pulumi.set(__self__, "user_black_lists", user_black_lists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupBlackLists")
+    def group_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "group_black_lists")
+
+    @property
+    @pulumi.getter(name="userBlackLists")
+    def user_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "user_black_lists")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyBypassScope(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 scopes: Optional[Sequence['outputs.ContainerRuntimePolicyBypassScopeScope']] = None):
+        """
+        :param bool enabled: Whether bypassing the scope is enabled.
+        :param Sequence['ContainerRuntimePolicyBypassScopeScopeArgs'] scopes: Scope configuration.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether bypassing the scope is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence['outputs.ContainerRuntimePolicyBypassScopeScope']]:
+        """
+        Scope configuration.
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyBypassScopeScope(dict):
+    def __init__(__self__, *,
+                 expression: Optional[str] = None,
+                 variables: Optional[Sequence['outputs.ContainerRuntimePolicyBypassScopeScopeVariable']] = None):
+        """
+        :param str expression: Scope expression.
+        :param Sequence['ContainerRuntimePolicyBypassScopeScopeVariableArgs'] variables: List of variables in the scope.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Scope expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[Sequence['outputs.ContainerRuntimePolicyBypassScopeScopeVariable']]:
+        """
+        List of variables in the scope.
+        """
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyBypassScopeScopeVariable(dict):
+    def __init__(__self__, *,
+                 attribute: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str attribute: Variable attribute.
+        :param str value: Variable value.
+        """
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[str]:
+        """
+        Variable attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyContainerExec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockContainerExec":
+            suggest = "block_container_exec"
+        elif key == "containerExecProcWhiteLists":
+            suggest = "container_exec_proc_white_lists"
+        elif key == "reverseShellIpWhiteLists":
+            suggest = "reverse_shell_ip_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyContainerExec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyContainerExec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyContainerExec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_container_exec: Optional[bool] = None,
+                 container_exec_proc_white_lists: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None):
+        if block_container_exec is not None:
+            pulumi.set(__self__, "block_container_exec", block_container_exec)
+        if container_exec_proc_white_lists is not None:
+            pulumi.set(__self__, "container_exec_proc_white_lists", container_exec_proc_white_lists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+
+    @property
+    @pulumi.getter(name="blockContainerExec")
+    def block_container_exec(self) -> Optional[bool]:
+        return pulumi.get(self, "block_container_exec")
+
+    @property
+    @pulumi.getter(name="containerExecProcWhiteLists")
+    def container_exec_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "container_exec_proc_white_lists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyDriftPrevention(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "execLockdown":
+            suggest = "exec_lockdown"
+        elif key == "execLockdownWhiteLists":
+            suggest = "exec_lockdown_white_lists"
+        elif key == "imageLockdown":
+            suggest = "image_lockdown"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyDriftPrevention. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyDriftPrevention.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyDriftPrevention.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exec_lockdown: Optional[bool] = None,
+                 exec_lockdown_white_lists: Optional[Sequence[str]] = None,
+                 image_lockdown: Optional[bool] = None):
+        """
+        :param bool enabled: Whether drift prevention is enabled.
+        :param bool exec_lockdown: Whether to lockdown execution drift.
+        :param Sequence[str] exec_lockdown_white_lists: List of items in the execution lockdown white list.
+        :param bool image_lockdown: Whether to lockdown image drift.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exec_lockdown is not None:
+            pulumi.set(__self__, "exec_lockdown", exec_lockdown)
+        if exec_lockdown_white_lists is not None:
+            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
+        if image_lockdown is not None:
+            pulumi.set(__self__, "image_lockdown", image_lockdown)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether drift prevention is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="execLockdown")
+    def exec_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown execution drift.
+        """
+        return pulumi.get(self, "exec_lockdown")
+
+    @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Optional[Sequence[str]]:
+        """
+        List of items in the execution lockdown white list.
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @property
+    @pulumi.getter(name="imageLockdown")
+    def image_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown image drift.
+        """
+        return pulumi.get(self, "image_lockdown")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyExecutableBlacklist(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 executables: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether the executable blacklist is enabled.
+        :param Sequence[str] executables: List of blacklisted executables.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if executables is not None:
+            pulumi.set(__self__, "executables", executables)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the executable blacklist is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def executables(self) -> Optional[Sequence[str]]:
+        """
+        List of blacklisted executables.
+        """
+        return pulumi.get(self, "executables")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyFailedKubernetesChecks(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failedChecks":
+            suggest = "failed_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyFailedKubernetesChecks. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyFailedKubernetesChecks.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyFailedKubernetesChecks.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 failed_checks: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if failed_checks is not None:
+            pulumi.set(__self__, "failed_checks", failed_checks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="failedChecks")
+    def failed_checks(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "failed_checks")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyFileBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockFilesProcesses":
+            suggest = "block_files_processes"
+        elif key == "blockFilesUsers":
+            suggest = "block_files_users"
+        elif key == "exceptionalBlockFiles":
+            suggest = "exceptional_block_files"
+        elif key == "exceptionalBlockFilesProcesses":
+            suggest = "exceptional_block_files_processes"
+        elif key == "exceptionalBlockFilesUsers":
+            suggest = "exceptional_block_files_users"
+        elif key == "filenameBlockLists":
+            suggest = "filename_block_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyFileBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyFileBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyFileBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_files_processes: Optional[Sequence[str]] = None,
+                 block_files_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_files: Optional[Sequence[str]] = None,
+                 exceptional_block_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_files_users: Optional[Sequence[str]] = None,
+                 filename_block_lists: Optional[Sequence[str]] = None):
+        if block_files_processes is not None:
+            pulumi.set(__self__, "block_files_processes", block_files_processes)
+        if block_files_users is not None:
+            pulumi.set(__self__, "block_files_users", block_files_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_files is not None:
+            pulumi.set(__self__, "exceptional_block_files", exceptional_block_files)
+        if exceptional_block_files_processes is not None:
+            pulumi.set(__self__, "exceptional_block_files_processes", exceptional_block_files_processes)
+        if exceptional_block_files_users is not None:
+            pulumi.set(__self__, "exceptional_block_files_users", exceptional_block_files_users)
+        if filename_block_lists is not None:
+            pulumi.set(__self__, "filename_block_lists", filename_block_lists)
+
+    @property
+    @pulumi.getter(name="blockFilesProcesses")
+    def block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_processes")
+
+    @property
+    @pulumi.getter(name="blockFilesUsers")
+    def block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFiles")
+    def exceptional_block_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesProcesses")
+    def exceptional_block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesUsers")
+    def exceptional_block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_users")
+
+    @property
+    @pulumi.getter(name="filenameBlockLists")
+    def filename_block_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filename_block_lists")
+
+
+@pulumi.output_type
 class ContainerRuntimePolicyFileIntegrityMonitoring(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludedPaths":
-            suggest = "excluded_paths"
-        elif key == "excludedProcesses":
-            suggest = "excluded_processes"
-        elif key == "excludedUsers":
-            suggest = "excluded_users"
-        elif key == "monitorAttributes":
-            suggest = "monitor_attributes"
-        elif key == "monitorCreate":
-            suggest = "monitor_create"
-        elif key == "monitorDelete":
-            suggest = "monitor_delete"
-        elif key == "monitorModify":
-            suggest = "monitor_modify"
-        elif key == "monitorRead":
-            suggest = "monitor_read"
-        elif key == "monitoredPaths":
-            suggest = "monitored_paths"
-        elif key == "monitoredProcesses":
-            suggest = "monitored_processes"
-        elif key == "monitoredUsers":
-            suggest = "monitored_users"
+        if key == "exceptionalMonitoredFiles":
+            suggest = "exceptional_monitored_files"
+        elif key == "exceptionalMonitoredFilesProcesses":
+            suggest = "exceptional_monitored_files_processes"
+        elif key == "exceptionalMonitoredFilesUsers":
+            suggest = "exceptional_monitored_files_users"
+        elif key == "monitoredFiles":
+            suggest = "monitored_files"
+        elif key == "monitoredFilesAttributes":
+            suggest = "monitored_files_attributes"
+        elif key == "monitoredFilesCreate":
+            suggest = "monitored_files_create"
+        elif key == "monitoredFilesDelete":
+            suggest = "monitored_files_delete"
+        elif key == "monitoredFilesModify":
+            suggest = "monitored_files_modify"
+        elif key == "monitoredFilesProcesses":
+            suggest = "monitored_files_processes"
+        elif key == "monitoredFilesRead":
+            suggest = "monitored_files_read"
+        elif key == "monitoredFilesUsers":
+            suggest = "monitored_files_users"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyFileIntegrityMonitoring. Access the value via the '{suggest}' property getter instead.")
@@ -1062,140 +1834,352 @@ class ContainerRuntimePolicyFileIntegrityMonitoring(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 excluded_paths: Optional[Sequence[str]] = None,
-                 excluded_processes: Optional[Sequence[str]] = None,
-                 excluded_users: Optional[Sequence[str]] = None,
-                 monitor_attributes: Optional[bool] = None,
-                 monitor_create: Optional[bool] = None,
-                 monitor_delete: Optional[bool] = None,
-                 monitor_modify: Optional[bool] = None,
-                 monitor_read: Optional[bool] = None,
-                 monitored_paths: Optional[Sequence[str]] = None,
-                 monitored_processes: Optional[Sequence[str]] = None,
-                 monitored_users: Optional[Sequence[str]] = None):
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_files: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_users: Optional[Sequence[str]] = None,
+                 monitored_files: Optional[Sequence[str]] = None,
+                 monitored_files_attributes: Optional[bool] = None,
+                 monitored_files_create: Optional[bool] = None,
+                 monitored_files_delete: Optional[bool] = None,
+                 monitored_files_modify: Optional[bool] = None,
+                 monitored_files_processes: Optional[Sequence[str]] = None,
+                 monitored_files_read: Optional[bool] = None,
+                 monitored_files_users: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] excluded_paths: List of paths to be excluded from being monitored.
-        :param Sequence[str] excluded_processes: List of processes to be excluded from being monitored.
-        :param Sequence[str] excluded_users: List of users to be excluded from being monitored.
-        :param bool monitor_attributes: If true, add attributes operations will be monitored.
-        :param bool monitor_create: If true, create operations will be monitored.
-        :param bool monitor_delete: If true, deletion operations will be monitored.
-        :param bool monitor_modify: If true, modification operations will be monitored.
-        :param bool monitor_read: If true, read operations will be monitored.
-        :param Sequence[str] monitored_paths: List of paths to be monitored.
-        :param Sequence[str] monitored_processes: List of processes to be monitored.
-        :param Sequence[str] monitored_users: List of users to be monitored.
+        :param bool enabled: If true, file integrity monitoring is enabled.
+        :param Sequence[str] exceptional_monitored_files: List of paths to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_processes: List of processes to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_users: List of users to be excluded from monitoring.
+        :param Sequence[str] monitored_files: List of paths to be monitored.
+        :param bool monitored_files_attributes: Whether to monitor file attribute operations.
+        :param bool monitored_files_create: Whether to monitor file create operations.
+        :param bool monitored_files_delete: Whether to monitor file delete operations.
+        :param bool monitored_files_modify: Whether to monitor file modify operations.
+        :param Sequence[str] monitored_files_processes: List of processes associated with monitored files.
+        :param bool monitored_files_read: Whether to monitor file read operations.
+        :param Sequence[str] monitored_files_users: List of users associated with monitored files.
         """
-        if excluded_paths is not None:
-            pulumi.set(__self__, "excluded_paths", excluded_paths)
-        if excluded_processes is not None:
-            pulumi.set(__self__, "excluded_processes", excluded_processes)
-        if excluded_users is not None:
-            pulumi.set(__self__, "excluded_users", excluded_users)
-        if monitor_attributes is not None:
-            pulumi.set(__self__, "monitor_attributes", monitor_attributes)
-        if monitor_create is not None:
-            pulumi.set(__self__, "monitor_create", monitor_create)
-        if monitor_delete is not None:
-            pulumi.set(__self__, "monitor_delete", monitor_delete)
-        if monitor_modify is not None:
-            pulumi.set(__self__, "monitor_modify", monitor_modify)
-        if monitor_read is not None:
-            pulumi.set(__self__, "monitor_read", monitor_read)
-        if monitored_paths is not None:
-            pulumi.set(__self__, "monitored_paths", monitored_paths)
-        if monitored_processes is not None:
-            pulumi.set(__self__, "monitored_processes", monitored_processes)
-        if monitored_users is not None:
-            pulumi.set(__self__, "monitored_users", monitored_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_files is not None:
+            pulumi.set(__self__, "exceptional_monitored_files", exceptional_monitored_files)
+        if exceptional_monitored_files_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_processes", exceptional_monitored_files_processes)
+        if exceptional_monitored_files_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_users", exceptional_monitored_files_users)
+        if monitored_files is not None:
+            pulumi.set(__self__, "monitored_files", monitored_files)
+        if monitored_files_attributes is not None:
+            pulumi.set(__self__, "monitored_files_attributes", monitored_files_attributes)
+        if monitored_files_create is not None:
+            pulumi.set(__self__, "monitored_files_create", monitored_files_create)
+        if monitored_files_delete is not None:
+            pulumi.set(__self__, "monitored_files_delete", monitored_files_delete)
+        if monitored_files_modify is not None:
+            pulumi.set(__self__, "monitored_files_modify", monitored_files_modify)
+        if monitored_files_processes is not None:
+            pulumi.set(__self__, "monitored_files_processes", monitored_files_processes)
+        if monitored_files_read is not None:
+            pulumi.set(__self__, "monitored_files_read", monitored_files_read)
+        if monitored_files_users is not None:
+            pulumi.set(__self__, "monitored_files_users", monitored_files_users)
 
     @property
-    @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Optional[Sequence[str]]:
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
         """
-        List of paths to be excluded from being monitored.
+        If true, file integrity monitoring is enabled.
         """
-        return pulumi.get(self, "excluded_paths")
+        return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="excludedProcesses")
-    def excluded_processes(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="exceptionalMonitoredFiles")
+    def exceptional_monitored_files(self) -> Optional[Sequence[str]]:
         """
-        List of processes to be excluded from being monitored.
+        List of paths to be excluded from monitoring.
         """
-        return pulumi.get(self, "excluded_processes")
+        return pulumi.get(self, "exceptional_monitored_files")
 
     @property
-    @pulumi.getter(name="excludedUsers")
-    def excluded_users(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="exceptionalMonitoredFilesProcesses")
+    def exceptional_monitored_files_processes(self) -> Optional[Sequence[str]]:
         """
-        List of users to be excluded from being monitored.
+        List of processes to be excluded from monitoring.
         """
-        return pulumi.get(self, "excluded_users")
+        return pulumi.get(self, "exceptional_monitored_files_processes")
 
     @property
-    @pulumi.getter(name="monitorAttributes")
-    def monitor_attributes(self) -> Optional[bool]:
+    @pulumi.getter(name="exceptionalMonitoredFilesUsers")
+    def exceptional_monitored_files_users(self) -> Optional[Sequence[str]]:
         """
-        If true, add attributes operations will be monitored.
+        List of users to be excluded from monitoring.
         """
-        return pulumi.get(self, "monitor_attributes")
+        return pulumi.get(self, "exceptional_monitored_files_users")
 
     @property
-    @pulumi.getter(name="monitorCreate")
-    def monitor_create(self) -> Optional[bool]:
-        """
-        If true, create operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_create")
-
-    @property
-    @pulumi.getter(name="monitorDelete")
-    def monitor_delete(self) -> Optional[bool]:
-        """
-        If true, deletion operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_delete")
-
-    @property
-    @pulumi.getter(name="monitorModify")
-    def monitor_modify(self) -> Optional[bool]:
-        """
-        If true, modification operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_modify")
-
-    @property
-    @pulumi.getter(name="monitorRead")
-    def monitor_read(self) -> Optional[bool]:
-        """
-        If true, read operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_read")
-
-    @property
-    @pulumi.getter(name="monitoredPaths")
-    def monitored_paths(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="monitoredFiles")
+    def monitored_files(self) -> Optional[Sequence[str]]:
         """
         List of paths to be monitored.
         """
-        return pulumi.get(self, "monitored_paths")
+        return pulumi.get(self, "monitored_files")
 
     @property
-    @pulumi.getter(name="monitoredProcesses")
-    def monitored_processes(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="monitoredFilesAttributes")
+    def monitored_files_attributes(self) -> Optional[bool]:
         """
-        List of processes to be monitored.
+        Whether to monitor file attribute operations.
         """
-        return pulumi.get(self, "monitored_processes")
+        return pulumi.get(self, "monitored_files_attributes")
 
     @property
-    @pulumi.getter(name="monitoredUsers")
-    def monitored_users(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="monitoredFilesCreate")
+    def monitored_files_create(self) -> Optional[bool]:
         """
-        List of users to be monitored.
+        Whether to monitor file create operations.
         """
-        return pulumi.get(self, "monitored_users")
+        return pulumi.get(self, "monitored_files_create")
+
+    @property
+    @pulumi.getter(name="monitoredFilesDelete")
+    def monitored_files_delete(self) -> Optional[bool]:
+        """
+        Whether to monitor file delete operations.
+        """
+        return pulumi.get(self, "monitored_files_delete")
+
+    @property
+    @pulumi.getter(name="monitoredFilesModify")
+    def monitored_files_modify(self) -> Optional[bool]:
+        """
+        Whether to monitor file modify operations.
+        """
+        return pulumi.get(self, "monitored_files_modify")
+
+    @property
+    @pulumi.getter(name="monitoredFilesProcesses")
+    def monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_processes")
+
+    @property
+    @pulumi.getter(name="monitoredFilesRead")
+    def monitored_files_read(self) -> Optional[bool]:
+        """
+        Whether to monitor file read operations.
+        """
+        return pulumi.get(self, "monitored_files_read")
+
+    @property
+    @pulumi.getter(name="monitoredFilesUsers")
+    def monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_users")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyLimitContainerPrivilege(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockAddCapabilities":
+            suggest = "block_add_capabilities"
+        elif key == "preventLowPortBinding":
+            suggest = "prevent_low_port_binding"
+        elif key == "preventRootUser":
+            suggest = "prevent_root_user"
+        elif key == "useHostUser":
+            suggest = "use_host_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyLimitContainerPrivilege. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyLimitContainerPrivilege.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyLimitContainerPrivilege.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_add_capabilities: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 ipcmode: Optional[bool] = None,
+                 netmode: Optional[bool] = None,
+                 pidmode: Optional[bool] = None,
+                 prevent_low_port_binding: Optional[bool] = None,
+                 prevent_root_user: Optional[bool] = None,
+                 privileged: Optional[bool] = None,
+                 use_host_user: Optional[bool] = None,
+                 usermode: Optional[bool] = None,
+                 utsmode: Optional[bool] = None):
+        """
+        :param bool block_add_capabilities: Whether to block adding capabilities.
+        :param bool enabled: Whether container privilege limitations are enabled.
+        :param bool ipcmode: Whether to limit IPC-related capabilities.
+        :param bool netmode: Whether to limit network-related capabilities.
+        :param bool pidmode: Whether to limit process-related capabilities.
+        :param bool prevent_low_port_binding: Whether to prevent low port binding.
+        :param bool prevent_root_user: Whether to prevent the use of the root user.
+        :param bool privileged: Whether the container is run in privileged mode.
+        :param bool use_host_user: Whether to use the host user.
+        :param bool usermode: Whether to limit user-related capabilities.
+        :param bool utsmode: Whether to limit UTS-related capabilities.
+        """
+        if block_add_capabilities is not None:
+            pulumi.set(__self__, "block_add_capabilities", block_add_capabilities)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ipcmode is not None:
+            pulumi.set(__self__, "ipcmode", ipcmode)
+        if netmode is not None:
+            pulumi.set(__self__, "netmode", netmode)
+        if pidmode is not None:
+            pulumi.set(__self__, "pidmode", pidmode)
+        if prevent_low_port_binding is not None:
+            pulumi.set(__self__, "prevent_low_port_binding", prevent_low_port_binding)
+        if prevent_root_user is not None:
+            pulumi.set(__self__, "prevent_root_user", prevent_root_user)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if use_host_user is not None:
+            pulumi.set(__self__, "use_host_user", use_host_user)
+        if usermode is not None:
+            pulumi.set(__self__, "usermode", usermode)
+        if utsmode is not None:
+            pulumi.set(__self__, "utsmode", utsmode)
+
+    @property
+    @pulumi.getter(name="blockAddCapabilities")
+    def block_add_capabilities(self) -> Optional[bool]:
+        """
+        Whether to block adding capabilities.
+        """
+        return pulumi.get(self, "block_add_capabilities")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether container privilege limitations are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def ipcmode(self) -> Optional[bool]:
+        """
+        Whether to limit IPC-related capabilities.
+        """
+        return pulumi.get(self, "ipcmode")
+
+    @property
+    @pulumi.getter
+    def netmode(self) -> Optional[bool]:
+        """
+        Whether to limit network-related capabilities.
+        """
+        return pulumi.get(self, "netmode")
+
+    @property
+    @pulumi.getter
+    def pidmode(self) -> Optional[bool]:
+        """
+        Whether to limit process-related capabilities.
+        """
+        return pulumi.get(self, "pidmode")
+
+    @property
+    @pulumi.getter(name="preventLowPortBinding")
+    def prevent_low_port_binding(self) -> Optional[bool]:
+        """
+        Whether to prevent low port binding.
+        """
+        return pulumi.get(self, "prevent_low_port_binding")
+
+    @property
+    @pulumi.getter(name="preventRootUser")
+    def prevent_root_user(self) -> Optional[bool]:
+        """
+        Whether to prevent the use of the root user.
+        """
+        return pulumi.get(self, "prevent_root_user")
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[bool]:
+        """
+        Whether the container is run in privileged mode.
+        """
+        return pulumi.get(self, "privileged")
+
+    @property
+    @pulumi.getter(name="useHostUser")
+    def use_host_user(self) -> Optional[bool]:
+        """
+        Whether to use the host user.
+        """
+        return pulumi.get(self, "use_host_user")
+
+    @property
+    @pulumi.getter
+    def usermode(self) -> Optional[bool]:
+        """
+        Whether to limit user-related capabilities.
+        """
+        return pulumi.get(self, "usermode")
+
+    @property
+    @pulumi.getter
+    def utsmode(self) -> Optional[bool]:
+        """
+        Whether to limit UTS-related capabilities.
+        """
+        return pulumi.get(self, "utsmode")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyLinuxCapabilities(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "removeLinuxCapabilities":
+            suggest = "remove_linux_capabilities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyLinuxCapabilities. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyLinuxCapabilities.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyLinuxCapabilities.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 remove_linux_capabilities: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if remove_linux_capabilities is not None:
+            pulumi.set(__self__, "remove_linux_capabilities", remove_linux_capabilities)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="removeLinuxCapabilities")
+    def remove_linux_capabilities(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "remove_linux_capabilities")
 
 
 @pulumi.output_type
@@ -1207,6 +2191,8 @@ class ContainerRuntimePolicyMalwareScanOptions(dict):
             suggest = "exclude_directories"
         elif key == "excludeProcesses":
             suggest = "exclude_processes"
+        elif key == "includeDirectories":
+            suggest = "include_directories"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyMalwareScanOptions. Access the value via the '{suggest}' property getter instead.")
@@ -1223,12 +2209,14 @@ class ContainerRuntimePolicyMalwareScanOptions(dict):
                  action: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  exclude_directories: Optional[Sequence[str]] = None,
-                 exclude_processes: Optional[Sequence[str]] = None):
+                 exclude_processes: Optional[Sequence[str]] = None,
+                 include_directories: Optional[Sequence[str]] = None):
         """
         :param str action: Set Action, Defaults to 'Alert' when empty
         :param bool enabled: Defines if enabled or not
         :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
         :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] include_directories: List of registry paths to be excluded from being protected.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -1238,6 +2226,8 @@ class ContainerRuntimePolicyMalwareScanOptions(dict):
             pulumi.set(__self__, "exclude_directories", exclude_directories)
         if exclude_processes is not None:
             pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if include_directories is not None:
+            pulumi.set(__self__, "include_directories", include_directories)
 
     @property
     @pulumi.getter
@@ -1270,6 +2260,582 @@ class ContainerRuntimePolicyMalwareScanOptions(dict):
         List of registry processes to be excluded from being protected.
         """
         return pulumi.get(self, "exclude_processes")
+
+    @property
+    @pulumi.getter(name="includeDirectories")
+    def include_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "include_directories")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyPackageBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockPackagesProcesses":
+            suggest = "block_packages_processes"
+        elif key == "blockPackagesUsers":
+            suggest = "block_packages_users"
+        elif key == "exceptionalBlockPackagesFiles":
+            suggest = "exceptional_block_packages_files"
+        elif key == "exceptionalBlockPackagesProcesses":
+            suggest = "exceptional_block_packages_processes"
+        elif key == "exceptionalBlockPackagesUsers":
+            suggest = "exceptional_block_packages_users"
+        elif key == "packagesBlackLists":
+            suggest = "packages_black_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyPackageBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyPackageBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyPackageBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_packages_processes: Optional[Sequence[str]] = None,
+                 block_packages_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_packages_files: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_users: Optional[Sequence[str]] = None,
+                 packages_black_lists: Optional[Sequence[str]] = None):
+        if block_packages_processes is not None:
+            pulumi.set(__self__, "block_packages_processes", block_packages_processes)
+        if block_packages_users is not None:
+            pulumi.set(__self__, "block_packages_users", block_packages_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_packages_files is not None:
+            pulumi.set(__self__, "exceptional_block_packages_files", exceptional_block_packages_files)
+        if exceptional_block_packages_processes is not None:
+            pulumi.set(__self__, "exceptional_block_packages_processes", exceptional_block_packages_processes)
+        if exceptional_block_packages_users is not None:
+            pulumi.set(__self__, "exceptional_block_packages_users", exceptional_block_packages_users)
+        if packages_black_lists is not None:
+            pulumi.set(__self__, "packages_black_lists", packages_black_lists)
+
+    @property
+    @pulumi.getter(name="blockPackagesProcesses")
+    def block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_processes")
+
+    @property
+    @pulumi.getter(name="blockPackagesUsers")
+    def block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesFiles")
+    def exceptional_block_packages_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesProcesses")
+    def exceptional_block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesUsers")
+    def exceptional_block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_users")
+
+    @property
+    @pulumi.getter(name="packagesBlackLists")
+    def packages_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "packages_black_lists")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyPortBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockInboundPorts":
+            suggest = "block_inbound_ports"
+        elif key == "blockOutboundPorts":
+            suggest = "block_outbound_ports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyPortBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyPortBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyPortBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_inbound_ports: Optional[Sequence[str]] = None,
+                 block_outbound_ports: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        if block_inbound_ports is not None:
+            pulumi.set(__self__, "block_inbound_ports", block_inbound_ports)
+        if block_outbound_ports is not None:
+            pulumi.set(__self__, "block_outbound_ports", block_outbound_ports)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="blockInboundPorts")
+    def block_inbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_inbound_ports")
+
+    @property
+    @pulumi.getter(name="blockOutboundPorts")
+    def block_outbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_outbound_ports")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyReadonlyFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalReadonlyFiles":
+            suggest = "exceptional_readonly_files"
+        elif key == "exceptionalReadonlyFilesProcesses":
+            suggest = "exceptional_readonly_files_processes"
+        elif key == "exceptionalReadonlyFilesUsers":
+            suggest = "exceptional_readonly_files_users"
+        elif key == "readonlyFiles":
+            suggest = "readonly_files"
+        elif key == "readonlyFilesProcesses":
+            suggest = "readonly_files_processes"
+        elif key == "readonlyFilesUsers":
+            suggest = "readonly_files_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyReadonlyFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyReadonlyFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyReadonlyFiles.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_files: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_users: Optional[Sequence[str]] = None,
+                 readonly_files: Optional[Sequence[str]] = None,
+                 readonly_files_processes: Optional[Sequence[str]] = None,
+                 readonly_files_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_files is not None:
+            pulumi.set(__self__, "exceptional_readonly_files", exceptional_readonly_files)
+        if exceptional_readonly_files_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_processes", exceptional_readonly_files_processes)
+        if exceptional_readonly_files_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_users", exceptional_readonly_files_users)
+        if readonly_files is not None:
+            pulumi.set(__self__, "readonly_files", readonly_files)
+        if readonly_files_processes is not None:
+            pulumi.set(__self__, "readonly_files_processes", readonly_files_processes)
+        if readonly_files_users is not None:
+            pulumi.set(__self__, "readonly_files_users", readonly_files_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFiles")
+    def exceptional_readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesProcesses")
+    def exceptional_readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesUsers")
+    def exceptional_readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_users")
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files")
+
+    @property
+    @pulumi.getter(name="readonlyFilesProcesses")
+    def readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="readonlyFilesUsers")
+    def readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_users")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyReadonlyRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalReadonlyRegistryPaths":
+            suggest = "exceptional_readonly_registry_paths"
+        elif key == "exceptionalReadonlyRegistryProcesses":
+            suggest = "exceptional_readonly_registry_processes"
+        elif key == "exceptionalReadonlyRegistryUsers":
+            suggest = "exceptional_readonly_registry_users"
+        elif key == "readonlyRegistryPaths":
+            suggest = "readonly_registry_paths"
+        elif key == "readonlyRegistryProcesses":
+            suggest = "readonly_registry_processes"
+        elif key == "readonlyRegistryUsers":
+            suggest = "readonly_registry_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyReadonlyRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyReadonlyRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyReadonlyRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_registry_paths: Optional[Sequence[str]] = None,
+                 exceptional_readonly_registry_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_registry_users: Optional[Sequence[str]] = None,
+                 readonly_registry_paths: Optional[Sequence[str]] = None,
+                 readonly_registry_processes: Optional[Sequence[str]] = None,
+                 readonly_registry_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_registry_paths is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_paths", exceptional_readonly_registry_paths)
+        if exceptional_readonly_registry_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_processes", exceptional_readonly_registry_processes)
+        if exceptional_readonly_registry_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_users", exceptional_readonly_registry_users)
+        if readonly_registry_paths is not None:
+            pulumi.set(__self__, "readonly_registry_paths", readonly_registry_paths)
+        if readonly_registry_processes is not None:
+            pulumi.set(__self__, "readonly_registry_processes", readonly_registry_processes)
+        if readonly_registry_users is not None:
+            pulumi.set(__self__, "readonly_registry_users", readonly_registry_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryPaths")
+    def exceptional_readonly_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_paths")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryProcesses")
+    def exceptional_readonly_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryUsers")
+    def exceptional_readonly_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_users")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryPaths")
+    def readonly_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_paths")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryProcesses")
+    def readonly_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_processes")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryUsers")
+    def readonly_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_users")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyRegistryAccessMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalMonitoredRegistryPaths":
+            suggest = "exceptional_monitored_registry_paths"
+        elif key == "exceptionalMonitoredRegistryProcesses":
+            suggest = "exceptional_monitored_registry_processes"
+        elif key == "exceptionalMonitoredRegistryUsers":
+            suggest = "exceptional_monitored_registry_users"
+        elif key == "monitoredRegistryAttributes":
+            suggest = "monitored_registry_attributes"
+        elif key == "monitoredRegistryCreate":
+            suggest = "monitored_registry_create"
+        elif key == "monitoredRegistryDelete":
+            suggest = "monitored_registry_delete"
+        elif key == "monitoredRegistryModify":
+            suggest = "monitored_registry_modify"
+        elif key == "monitoredRegistryPaths":
+            suggest = "monitored_registry_paths"
+        elif key == "monitoredRegistryProcesses":
+            suggest = "monitored_registry_processes"
+        elif key == "monitoredRegistryRead":
+            suggest = "monitored_registry_read"
+        elif key == "monitoredRegistryUsers":
+            suggest = "monitored_registry_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyRegistryAccessMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyRegistryAccessMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyRegistryAccessMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_registry_paths: Optional[Sequence[str]] = None,
+                 exceptional_monitored_registry_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_registry_users: Optional[Sequence[str]] = None,
+                 monitored_registry_attributes: Optional[bool] = None,
+                 monitored_registry_create: Optional[bool] = None,
+                 monitored_registry_delete: Optional[bool] = None,
+                 monitored_registry_modify: Optional[bool] = None,
+                 monitored_registry_paths: Optional[Sequence[str]] = None,
+                 monitored_registry_processes: Optional[Sequence[str]] = None,
+                 monitored_registry_read: Optional[bool] = None,
+                 monitored_registry_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_registry_paths is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_paths", exceptional_monitored_registry_paths)
+        if exceptional_monitored_registry_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_processes", exceptional_monitored_registry_processes)
+        if exceptional_monitored_registry_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_users", exceptional_monitored_registry_users)
+        if monitored_registry_attributes is not None:
+            pulumi.set(__self__, "monitored_registry_attributes", monitored_registry_attributes)
+        if monitored_registry_create is not None:
+            pulumi.set(__self__, "monitored_registry_create", monitored_registry_create)
+        if monitored_registry_delete is not None:
+            pulumi.set(__self__, "monitored_registry_delete", monitored_registry_delete)
+        if monitored_registry_modify is not None:
+            pulumi.set(__self__, "monitored_registry_modify", monitored_registry_modify)
+        if monitored_registry_paths is not None:
+            pulumi.set(__self__, "monitored_registry_paths", monitored_registry_paths)
+        if monitored_registry_processes is not None:
+            pulumi.set(__self__, "monitored_registry_processes", monitored_registry_processes)
+        if monitored_registry_read is not None:
+            pulumi.set(__self__, "monitored_registry_read", monitored_registry_read)
+        if monitored_registry_users is not None:
+            pulumi.set(__self__, "monitored_registry_users", monitored_registry_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryPaths")
+    def exceptional_monitored_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_paths")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryProcesses")
+    def exceptional_monitored_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryUsers")
+    def exceptional_monitored_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_users")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryAttributes")
+    def monitored_registry_attributes(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_attributes")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryCreate")
+    def monitored_registry_create(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_create")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryDelete")
+    def monitored_registry_delete(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_delete")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryModify")
+    def monitored_registry_modify(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_modify")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryPaths")
+    def monitored_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_paths")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryProcesses")
+    def monitored_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_processes")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryRead")
+    def monitored_registry_read(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_read")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryUsers")
+    def monitored_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_users")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyRestrictedVolume(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 volumes: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether restricted volumes are enabled.
+        :param Sequence[str] volumes: List of restricted volumes.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether restricted volumes are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence[str]]:
+        """
+        List of restricted volumes.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyReverseShell(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockReverseShell":
+            suggest = "block_reverse_shell"
+        elif key == "reverseShellIpWhiteLists":
+            suggest = "reverse_shell_ip_white_lists"
+        elif key == "reverseShellProcWhiteLists":
+            suggest = "reverse_shell_proc_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyReverseShell. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyReverseShell.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyReverseShell.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_reverse_shell: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None,
+                 reverse_shell_proc_white_lists: Optional[Sequence[str]] = None):
+        if block_reverse_shell is not None:
+            pulumi.set(__self__, "block_reverse_shell", block_reverse_shell)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+        if reverse_shell_proc_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_proc_white_lists", reverse_shell_proc_white_lists)
+
+    @property
+    @pulumi.getter(name="blockReverseShell")
+    def block_reverse_shell(self) -> Optional[bool]:
+        return pulumi.get(self, "block_reverse_shell")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+    @property
+    @pulumi.getter(name="reverseShellProcWhiteLists")
+    def reverse_shell_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_proc_white_lists")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyScope(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 variables: Sequence['outputs.ContainerRuntimePolicyScopeVariable']):
+        """
+        :param str expression: Scope expression.
+        :param Sequence['ContainerRuntimePolicyScopeVariableArgs'] variables: List of variables in the scope.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Scope expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Sequence['outputs.ContainerRuntimePolicyScopeVariable']:
+        """
+        List of variables in the scope.
+        """
+        return pulumi.get(self, "variables")
 
 
 @pulumi.output_type
@@ -1311,6 +2877,180 @@ class ContainerRuntimePolicyScopeVariable(dict):
         Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicySystemIntegrityProtection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditSystemtimeChange":
+            suggest = "audit_systemtime_change"
+        elif key == "monitorAuditLogIntegrity":
+            suggest = "monitor_audit_log_integrity"
+        elif key == "windowsServicesMonitoring":
+            suggest = "windows_services_monitoring"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicySystemIntegrityProtection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicySystemIntegrityProtection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicySystemIntegrityProtection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_systemtime_change: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 monitor_audit_log_integrity: Optional[bool] = None,
+                 windows_services_monitoring: Optional[bool] = None):
+        if audit_systemtime_change is not None:
+            pulumi.set(__self__, "audit_systemtime_change", audit_systemtime_change)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if monitor_audit_log_integrity is not None:
+            pulumi.set(__self__, "monitor_audit_log_integrity", monitor_audit_log_integrity)
+        if windows_services_monitoring is not None:
+            pulumi.set(__self__, "windows_services_monitoring", windows_services_monitoring)
+
+    @property
+    @pulumi.getter(name="auditSystemtimeChange")
+    def audit_systemtime_change(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_systemtime_change")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="monitorAuditLogIntegrity")
+    def monitor_audit_log_integrity(self) -> Optional[bool]:
+        return pulumi.get(self, "monitor_audit_log_integrity")
+
+    @property
+    @pulumi.getter(name="windowsServicesMonitoring")
+    def windows_services_monitoring(self) -> Optional[bool]:
+        return pulumi.get(self, "windows_services_monitoring")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyTripwire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applyOns":
+            suggest = "apply_ons"
+        elif key == "serverlessApp":
+            suggest = "serverless_app"
+        elif key == "userId":
+            suggest = "user_id"
+        elif key == "userPassword":
+            suggest = "user_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyTripwire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyTripwire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyTripwire.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 apply_ons: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 serverless_app: Optional[str] = None,
+                 user_id: Optional[str] = None,
+                 user_password: Optional[str] = None):
+        if apply_ons is not None:
+            pulumi.set(__self__, "apply_ons", apply_ons)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if serverless_app is not None:
+            pulumi.set(__self__, "serverless_app", serverless_app)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
+
+    @property
+    @pulumi.getter(name="applyOns")
+    def apply_ons(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "apply_ons")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="serverlessApp")
+    def serverless_app(self) -> Optional[str]:
+        return pulumi.get(self, "serverless_app")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[str]:
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional[str]:
+        return pulumi.get(self, "user_password")
+
+
+@pulumi.output_type
+class ContainerRuntimePolicyWhitelistedOsUsers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupWhiteLists":
+            suggest = "group_white_lists"
+        elif key == "userWhiteLists":
+            suggest = "user_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerRuntimePolicyWhitelistedOsUsers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerRuntimePolicyWhitelistedOsUsers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerRuntimePolicyWhitelistedOsUsers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_white_lists: Optional[Sequence[str]] = None,
+                 user_white_lists: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_white_lists is not None:
+            pulumi.set(__self__, "group_white_lists", group_white_lists)
+        if user_white_lists is not None:
+            pulumi.set(__self__, "user_white_lists", user_white_lists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupWhiteLists")
+    def group_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "group_white_lists")
+
+    @property
+    @pulumi.getter(name="userWhiteLists")
+    def user_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "user_white_lists")
 
 
 @pulumi.output_type
@@ -1377,7 +3117,6 @@ class EnforcerGroupsOrchestrator(dict):
         """
         :param str namespace: May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
         :param str service_account: May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
-        :param str type: Enforcer Type.
         """
         if master is not None:
             pulumi.set(__self__, "master", master)
@@ -1412,9 +3151,6 @@ class EnforcerGroupsOrchestrator(dict):
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
-        """
-        Enforcer Type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -1750,6 +3486,94 @@ class FunctionAssurancePolicyForbiddenLabel(dict):
 
 
 @pulumi.output_type
+class FunctionAssurancePolicyKubernetesControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avdId":
+            suggest = "avd_id"
+        elif key == "scriptId":
+            suggest = "script_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionAssurancePolicyKubernetesControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionAssurancePolicyKubernetesControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionAssurancePolicyKubernetesControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 avd_id: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 ootb: Optional[bool] = None,
+                 script_id: Optional[int] = None,
+                 severity: Optional[str] = None):
+        if avd_id is not None:
+            pulumi.set(__self__, "avd_id", avd_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ootb is not None:
+            pulumi.set(__self__, "ootb", ootb)
+        if script_id is not None:
+            pulumi.set(__self__, "script_id", script_id)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="avdId")
+    def avd_id(self) -> Optional[str]:
+        return pulumi.get(self, "avd_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ootb(self) -> Optional[bool]:
+        return pulumi.get(self, "ootb")
+
+    @property
+    @pulumi.getter(name="scriptId")
+    def script_id(self) -> Optional[int]:
+        return pulumi.get(self, "script_id")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
 class FunctionAssurancePolicyPackagesBlackList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -1938,6 +3762,62 @@ class FunctionAssurancePolicyPackagesWhiteList(dict):
 
 
 @pulumi.output_type
+class FunctionAssurancePolicyPolicySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuditChecked":
+            suggest = "is_audit_checked"
+        elif key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionAssurancePolicyPolicySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionAssurancePolicyPolicySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionAssurancePolicyPolicySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce: Optional[bool] = None,
+                 is_audit_checked: Optional[bool] = None,
+                 warn: Optional[bool] = None,
+                 warning_message: Optional[str] = None):
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+        if warning_message is not None:
+            pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[bool]:
+        return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[bool]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[bool]:
+        return pulumi.get(self, "warn")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> Optional[str]:
+        return pulumi.get(self, "warning_message")
+
+
+@pulumi.output_type
 class FunctionAssurancePolicyRequiredLabel(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -2030,6 +3910,1704 @@ class FunctionAssurancePolicyTrustedBaseImage(dict):
 
 
 @pulumi.output_type
+class FunctionRuntimePolicyAllowedExecutable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowExecutables":
+            suggest = "allow_executables"
+        elif key == "allowRootExecutables":
+            suggest = "allow_root_executables"
+        elif key == "separateExecutables":
+            suggest = "separate_executables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyAllowedExecutable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyAllowedExecutable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyAllowedExecutable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_executables: Optional[Sequence[str]] = None,
+                 allow_root_executables: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 separate_executables: Optional[bool] = None):
+        """
+        :param Sequence[str] allow_executables: List of allowed executables.
+        :param Sequence[str] allow_root_executables: List of allowed root executables.
+        :param bool enabled: Whether allowed executables configuration is enabled.
+        :param bool separate_executables: Whether to treat executables separately.
+        """
+        if allow_executables is not None:
+            pulumi.set(__self__, "allow_executables", allow_executables)
+        if allow_root_executables is not None:
+            pulumi.set(__self__, "allow_root_executables", allow_root_executables)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if separate_executables is not None:
+            pulumi.set(__self__, "separate_executables", separate_executables)
+
+    @property
+    @pulumi.getter(name="allowExecutables")
+    def allow_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed executables.
+        """
+        return pulumi.get(self, "allow_executables")
+
+    @property
+    @pulumi.getter(name="allowRootExecutables")
+    def allow_root_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed root executables.
+        """
+        return pulumi.get(self, "allow_root_executables")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed executables configuration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="separateExecutables")
+    def separate_executables(self) -> Optional[bool]:
+        """
+        Whether to treat executables separately.
+        """
+        return pulumi.get(self, "separate_executables")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyAllowedRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedRegistries":
+            suggest = "allowed_registries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyAllowedRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyAllowedRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyAllowedRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_registries: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param Sequence[str] allowed_registries: List of allowed registries.
+        :param bool enabled: Whether allowed registries are enabled.
+        """
+        if allowed_registries is not None:
+            pulumi.set(__self__, "allowed_registries", allowed_registries)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="allowedRegistries")
+    def allowed_registries(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed registries.
+        """
+        return pulumi.get(self, "allowed_registries")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed registries are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyAuditing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditAllNetwork":
+            suggest = "audit_all_network"
+        elif key == "auditAllProcesses":
+            suggest = "audit_all_processes"
+        elif key == "auditFailedLogin":
+            suggest = "audit_failed_login"
+        elif key == "auditOsUserActivity":
+            suggest = "audit_os_user_activity"
+        elif key == "auditProcessCmdline":
+            suggest = "audit_process_cmdline"
+        elif key == "auditSuccessLogin":
+            suggest = "audit_success_login"
+        elif key == "auditUserAccountManagement":
+            suggest = "audit_user_account_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyAuditing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyAuditing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyAuditing.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_all_network: Optional[bool] = None,
+                 audit_all_processes: Optional[bool] = None,
+                 audit_failed_login: Optional[bool] = None,
+                 audit_os_user_activity: Optional[bool] = None,
+                 audit_process_cmdline: Optional[bool] = None,
+                 audit_success_login: Optional[bool] = None,
+                 audit_user_account_management: Optional[bool] = None,
+                 enabled: Optional[bool] = None):
+        if audit_all_network is not None:
+            pulumi.set(__self__, "audit_all_network", audit_all_network)
+        if audit_all_processes is not None:
+            pulumi.set(__self__, "audit_all_processes", audit_all_processes)
+        if audit_failed_login is not None:
+            pulumi.set(__self__, "audit_failed_login", audit_failed_login)
+        if audit_os_user_activity is not None:
+            pulumi.set(__self__, "audit_os_user_activity", audit_os_user_activity)
+        if audit_process_cmdline is not None:
+            pulumi.set(__self__, "audit_process_cmdline", audit_process_cmdline)
+        if audit_success_login is not None:
+            pulumi.set(__self__, "audit_success_login", audit_success_login)
+        if audit_user_account_management is not None:
+            pulumi.set(__self__, "audit_user_account_management", audit_user_account_management)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="auditAllNetwork")
+    def audit_all_network(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_network")
+
+    @property
+    @pulumi.getter(name="auditAllProcesses")
+    def audit_all_processes(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_processes")
+
+    @property
+    @pulumi.getter(name="auditFailedLogin")
+    def audit_failed_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_failed_login")
+
+    @property
+    @pulumi.getter(name="auditOsUserActivity")
+    def audit_os_user_activity(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_os_user_activity")
+
+    @property
+    @pulumi.getter(name="auditProcessCmdline")
+    def audit_process_cmdline(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_process_cmdline")
+
+    @property
+    @pulumi.getter(name="auditSuccessLogin")
+    def audit_success_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_success_login")
+
+    @property
+    @pulumi.getter(name="auditUserAccountManagement")
+    def audit_user_account_management(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_user_account_management")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyBlacklistedOsUsers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupBlackLists":
+            suggest = "group_black_lists"
+        elif key == "userBlackLists":
+            suggest = "user_black_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyBlacklistedOsUsers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyBlacklistedOsUsers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyBlacklistedOsUsers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_black_lists: Optional[Sequence[str]] = None,
+                 user_black_lists: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_black_lists is not None:
+            pulumi.set(__self__, "group_black_lists", group_black_lists)
+        if user_black_lists is not None:
+            pulumi.set(__self__, "user_black_lists", user_black_lists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupBlackLists")
+    def group_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "group_black_lists")
+
+    @property
+    @pulumi.getter(name="userBlackLists")
+    def user_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "user_black_lists")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyBypassScope(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 scopes: Optional[Sequence['outputs.FunctionRuntimePolicyBypassScopeScope']] = None):
+        """
+        :param bool enabled: Whether bypassing the scope is enabled.
+        :param Sequence['FunctionRuntimePolicyBypassScopeScopeArgs'] scopes: Scope configuration.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether bypassing the scope is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence['outputs.FunctionRuntimePolicyBypassScopeScope']]:
+        """
+        Scope configuration.
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyBypassScopeScope(dict):
+    def __init__(__self__, *,
+                 expression: Optional[str] = None,
+                 variables: Optional[Sequence['outputs.FunctionRuntimePolicyBypassScopeScopeVariable']] = None):
+        """
+        :param str expression: Scope expression.
+        :param Sequence['FunctionRuntimePolicyBypassScopeScopeVariableArgs'] variables: List of variables in the scope.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Scope expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[Sequence['outputs.FunctionRuntimePolicyBypassScopeScopeVariable']]:
+        """
+        List of variables in the scope.
+        """
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyBypassScopeScopeVariable(dict):
+    def __init__(__self__, *,
+                 attribute: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str attribute: Variable attribute.
+        :param str value: Variable value.
+        """
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[str]:
+        """
+        Variable attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyContainerExec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockContainerExec":
+            suggest = "block_container_exec"
+        elif key == "containerExecProcWhiteLists":
+            suggest = "container_exec_proc_white_lists"
+        elif key == "reverseShellIpWhiteLists":
+            suggest = "reverse_shell_ip_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyContainerExec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyContainerExec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyContainerExec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_container_exec: Optional[bool] = None,
+                 container_exec_proc_white_lists: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None):
+        if block_container_exec is not None:
+            pulumi.set(__self__, "block_container_exec", block_container_exec)
+        if container_exec_proc_white_lists is not None:
+            pulumi.set(__self__, "container_exec_proc_white_lists", container_exec_proc_white_lists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+
+    @property
+    @pulumi.getter(name="blockContainerExec")
+    def block_container_exec(self) -> Optional[bool]:
+        return pulumi.get(self, "block_container_exec")
+
+    @property
+    @pulumi.getter(name="containerExecProcWhiteLists")
+    def container_exec_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "container_exec_proc_white_lists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyDriftPrevention(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "execLockdown":
+            suggest = "exec_lockdown"
+        elif key == "execLockdownWhiteLists":
+            suggest = "exec_lockdown_white_lists"
+        elif key == "imageLockdown":
+            suggest = "image_lockdown"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyDriftPrevention. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyDriftPrevention.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyDriftPrevention.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exec_lockdown: Optional[bool] = None,
+                 exec_lockdown_white_lists: Optional[Sequence[str]] = None,
+                 image_lockdown: Optional[bool] = None):
+        """
+        :param bool enabled: Whether drift prevention is enabled.
+        :param bool exec_lockdown: Whether to lockdown execution drift.
+        :param Sequence[str] exec_lockdown_white_lists: List of items in the execution lockdown white list.
+        :param bool image_lockdown: Whether to lockdown image drift.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exec_lockdown is not None:
+            pulumi.set(__self__, "exec_lockdown", exec_lockdown)
+        if exec_lockdown_white_lists is not None:
+            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
+        if image_lockdown is not None:
+            pulumi.set(__self__, "image_lockdown", image_lockdown)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether drift prevention is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="execLockdown")
+    def exec_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown execution drift.
+        """
+        return pulumi.get(self, "exec_lockdown")
+
+    @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Optional[Sequence[str]]:
+        """
+        List of items in the execution lockdown white list.
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @property
+    @pulumi.getter(name="imageLockdown")
+    def image_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown image drift.
+        """
+        return pulumi.get(self, "image_lockdown")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyExecutableBlacklist(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 executables: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether the executable blacklist is enabled.
+        :param Sequence[str] executables: List of blacklisted executables.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if executables is not None:
+            pulumi.set(__self__, "executables", executables)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the executable blacklist is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def executables(self) -> Optional[Sequence[str]]:
+        """
+        List of blacklisted executables.
+        """
+        return pulumi.get(self, "executables")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyFailedKubernetesChecks(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failedChecks":
+            suggest = "failed_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyFailedKubernetesChecks. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyFailedKubernetesChecks.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyFailedKubernetesChecks.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 failed_checks: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if failed_checks is not None:
+            pulumi.set(__self__, "failed_checks", failed_checks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="failedChecks")
+    def failed_checks(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "failed_checks")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyFileBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockFilesProcesses":
+            suggest = "block_files_processes"
+        elif key == "blockFilesUsers":
+            suggest = "block_files_users"
+        elif key == "exceptionalBlockFiles":
+            suggest = "exceptional_block_files"
+        elif key == "exceptionalBlockFilesProcesses":
+            suggest = "exceptional_block_files_processes"
+        elif key == "exceptionalBlockFilesUsers":
+            suggest = "exceptional_block_files_users"
+        elif key == "filenameBlockLists":
+            suggest = "filename_block_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyFileBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyFileBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyFileBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_files_processes: Optional[Sequence[str]] = None,
+                 block_files_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_files: Optional[Sequence[str]] = None,
+                 exceptional_block_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_files_users: Optional[Sequence[str]] = None,
+                 filename_block_lists: Optional[Sequence[str]] = None):
+        if block_files_processes is not None:
+            pulumi.set(__self__, "block_files_processes", block_files_processes)
+        if block_files_users is not None:
+            pulumi.set(__self__, "block_files_users", block_files_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_files is not None:
+            pulumi.set(__self__, "exceptional_block_files", exceptional_block_files)
+        if exceptional_block_files_processes is not None:
+            pulumi.set(__self__, "exceptional_block_files_processes", exceptional_block_files_processes)
+        if exceptional_block_files_users is not None:
+            pulumi.set(__self__, "exceptional_block_files_users", exceptional_block_files_users)
+        if filename_block_lists is not None:
+            pulumi.set(__self__, "filename_block_lists", filename_block_lists)
+
+    @property
+    @pulumi.getter(name="blockFilesProcesses")
+    def block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_processes")
+
+    @property
+    @pulumi.getter(name="blockFilesUsers")
+    def block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFiles")
+    def exceptional_block_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesProcesses")
+    def exceptional_block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesUsers")
+    def exceptional_block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_users")
+
+    @property
+    @pulumi.getter(name="filenameBlockLists")
+    def filename_block_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filename_block_lists")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyFileIntegrityMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalMonitoredFiles":
+            suggest = "exceptional_monitored_files"
+        elif key == "exceptionalMonitoredFilesProcesses":
+            suggest = "exceptional_monitored_files_processes"
+        elif key == "exceptionalMonitoredFilesUsers":
+            suggest = "exceptional_monitored_files_users"
+        elif key == "monitoredFiles":
+            suggest = "monitored_files"
+        elif key == "monitoredFilesAttributes":
+            suggest = "monitored_files_attributes"
+        elif key == "monitoredFilesCreate":
+            suggest = "monitored_files_create"
+        elif key == "monitoredFilesDelete":
+            suggest = "monitored_files_delete"
+        elif key == "monitoredFilesModify":
+            suggest = "monitored_files_modify"
+        elif key == "monitoredFilesProcesses":
+            suggest = "monitored_files_processes"
+        elif key == "monitoredFilesRead":
+            suggest = "monitored_files_read"
+        elif key == "monitoredFilesUsers":
+            suggest = "monitored_files_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyFileIntegrityMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyFileIntegrityMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyFileIntegrityMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_files: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_users: Optional[Sequence[str]] = None,
+                 monitored_files: Optional[Sequence[str]] = None,
+                 monitored_files_attributes: Optional[bool] = None,
+                 monitored_files_create: Optional[bool] = None,
+                 monitored_files_delete: Optional[bool] = None,
+                 monitored_files_modify: Optional[bool] = None,
+                 monitored_files_processes: Optional[Sequence[str]] = None,
+                 monitored_files_read: Optional[bool] = None,
+                 monitored_files_users: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: If true, file integrity monitoring is enabled.
+        :param Sequence[str] exceptional_monitored_files: List of paths to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_processes: List of processes to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_users: List of users to be excluded from monitoring.
+        :param Sequence[str] monitored_files: List of paths to be monitored.
+        :param bool monitored_files_attributes: Whether to monitor file attribute operations.
+        :param bool monitored_files_create: Whether to monitor file create operations.
+        :param bool monitored_files_delete: Whether to monitor file delete operations.
+        :param bool monitored_files_modify: Whether to monitor file modify operations.
+        :param Sequence[str] monitored_files_processes: List of processes associated with monitored files.
+        :param bool monitored_files_read: Whether to monitor file read operations.
+        :param Sequence[str] monitored_files_users: List of users associated with monitored files.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_files is not None:
+            pulumi.set(__self__, "exceptional_monitored_files", exceptional_monitored_files)
+        if exceptional_monitored_files_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_processes", exceptional_monitored_files_processes)
+        if exceptional_monitored_files_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_users", exceptional_monitored_files_users)
+        if monitored_files is not None:
+            pulumi.set(__self__, "monitored_files", monitored_files)
+        if monitored_files_attributes is not None:
+            pulumi.set(__self__, "monitored_files_attributes", monitored_files_attributes)
+        if monitored_files_create is not None:
+            pulumi.set(__self__, "monitored_files_create", monitored_files_create)
+        if monitored_files_delete is not None:
+            pulumi.set(__self__, "monitored_files_delete", monitored_files_delete)
+        if monitored_files_modify is not None:
+            pulumi.set(__self__, "monitored_files_modify", monitored_files_modify)
+        if monitored_files_processes is not None:
+            pulumi.set(__self__, "monitored_files_processes", monitored_files_processes)
+        if monitored_files_read is not None:
+            pulumi.set(__self__, "monitored_files_read", monitored_files_read)
+        if monitored_files_users is not None:
+            pulumi.set(__self__, "monitored_files_users", monitored_files_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, file integrity monitoring is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredFiles")
+    def exceptional_monitored_files(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredFilesProcesses")
+    def exceptional_monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredFilesUsers")
+    def exceptional_monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files_users")
+
+    @property
+    @pulumi.getter(name="monitoredFiles")
+    def monitored_files(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to be monitored.
+        """
+        return pulumi.get(self, "monitored_files")
+
+    @property
+    @pulumi.getter(name="monitoredFilesAttributes")
+    def monitored_files_attributes(self) -> Optional[bool]:
+        """
+        Whether to monitor file attribute operations.
+        """
+        return pulumi.get(self, "monitored_files_attributes")
+
+    @property
+    @pulumi.getter(name="monitoredFilesCreate")
+    def monitored_files_create(self) -> Optional[bool]:
+        """
+        Whether to monitor file create operations.
+        """
+        return pulumi.get(self, "monitored_files_create")
+
+    @property
+    @pulumi.getter(name="monitoredFilesDelete")
+    def monitored_files_delete(self) -> Optional[bool]:
+        """
+        Whether to monitor file delete operations.
+        """
+        return pulumi.get(self, "monitored_files_delete")
+
+    @property
+    @pulumi.getter(name="monitoredFilesModify")
+    def monitored_files_modify(self) -> Optional[bool]:
+        """
+        Whether to monitor file modify operations.
+        """
+        return pulumi.get(self, "monitored_files_modify")
+
+    @property
+    @pulumi.getter(name="monitoredFilesProcesses")
+    def monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_processes")
+
+    @property
+    @pulumi.getter(name="monitoredFilesRead")
+    def monitored_files_read(self) -> Optional[bool]:
+        """
+        Whether to monitor file read operations.
+        """
+        return pulumi.get(self, "monitored_files_read")
+
+    @property
+    @pulumi.getter(name="monitoredFilesUsers")
+    def monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_users")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyLimitContainerPrivilege(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockAddCapabilities":
+            suggest = "block_add_capabilities"
+        elif key == "preventLowPortBinding":
+            suggest = "prevent_low_port_binding"
+        elif key == "preventRootUser":
+            suggest = "prevent_root_user"
+        elif key == "useHostUser":
+            suggest = "use_host_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyLimitContainerPrivilege. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyLimitContainerPrivilege.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyLimitContainerPrivilege.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_add_capabilities: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 ipcmode: Optional[bool] = None,
+                 netmode: Optional[bool] = None,
+                 pidmode: Optional[bool] = None,
+                 prevent_low_port_binding: Optional[bool] = None,
+                 prevent_root_user: Optional[bool] = None,
+                 privileged: Optional[bool] = None,
+                 use_host_user: Optional[bool] = None,
+                 usermode: Optional[bool] = None,
+                 utsmode: Optional[bool] = None):
+        """
+        :param bool block_add_capabilities: Whether to block adding capabilities.
+        :param bool enabled: Whether container privilege limitations are enabled.
+        :param bool ipcmode: Whether to limit IPC-related capabilities.
+        :param bool netmode: Whether to limit network-related capabilities.
+        :param bool pidmode: Whether to limit process-related capabilities.
+        :param bool prevent_low_port_binding: Whether to prevent low port binding.
+        :param bool prevent_root_user: Whether to prevent the use of the root user.
+        :param bool privileged: Whether the container is run in privileged mode.
+        :param bool use_host_user: Whether to use the host user.
+        :param bool usermode: Whether to limit user-related capabilities.
+        :param bool utsmode: Whether to limit UTS-related capabilities.
+        """
+        if block_add_capabilities is not None:
+            pulumi.set(__self__, "block_add_capabilities", block_add_capabilities)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ipcmode is not None:
+            pulumi.set(__self__, "ipcmode", ipcmode)
+        if netmode is not None:
+            pulumi.set(__self__, "netmode", netmode)
+        if pidmode is not None:
+            pulumi.set(__self__, "pidmode", pidmode)
+        if prevent_low_port_binding is not None:
+            pulumi.set(__self__, "prevent_low_port_binding", prevent_low_port_binding)
+        if prevent_root_user is not None:
+            pulumi.set(__self__, "prevent_root_user", prevent_root_user)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if use_host_user is not None:
+            pulumi.set(__self__, "use_host_user", use_host_user)
+        if usermode is not None:
+            pulumi.set(__self__, "usermode", usermode)
+        if utsmode is not None:
+            pulumi.set(__self__, "utsmode", utsmode)
+
+    @property
+    @pulumi.getter(name="blockAddCapabilities")
+    def block_add_capabilities(self) -> Optional[bool]:
+        """
+        Whether to block adding capabilities.
+        """
+        return pulumi.get(self, "block_add_capabilities")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether container privilege limitations are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def ipcmode(self) -> Optional[bool]:
+        """
+        Whether to limit IPC-related capabilities.
+        """
+        return pulumi.get(self, "ipcmode")
+
+    @property
+    @pulumi.getter
+    def netmode(self) -> Optional[bool]:
+        """
+        Whether to limit network-related capabilities.
+        """
+        return pulumi.get(self, "netmode")
+
+    @property
+    @pulumi.getter
+    def pidmode(self) -> Optional[bool]:
+        """
+        Whether to limit process-related capabilities.
+        """
+        return pulumi.get(self, "pidmode")
+
+    @property
+    @pulumi.getter(name="preventLowPortBinding")
+    def prevent_low_port_binding(self) -> Optional[bool]:
+        """
+        Whether to prevent low port binding.
+        """
+        return pulumi.get(self, "prevent_low_port_binding")
+
+    @property
+    @pulumi.getter(name="preventRootUser")
+    def prevent_root_user(self) -> Optional[bool]:
+        """
+        Whether to prevent the use of the root user.
+        """
+        return pulumi.get(self, "prevent_root_user")
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[bool]:
+        """
+        Whether the container is run in privileged mode.
+        """
+        return pulumi.get(self, "privileged")
+
+    @property
+    @pulumi.getter(name="useHostUser")
+    def use_host_user(self) -> Optional[bool]:
+        """
+        Whether to use the host user.
+        """
+        return pulumi.get(self, "use_host_user")
+
+    @property
+    @pulumi.getter
+    def usermode(self) -> Optional[bool]:
+        """
+        Whether to limit user-related capabilities.
+        """
+        return pulumi.get(self, "usermode")
+
+    @property
+    @pulumi.getter
+    def utsmode(self) -> Optional[bool]:
+        """
+        Whether to limit UTS-related capabilities.
+        """
+        return pulumi.get(self, "utsmode")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyLinuxCapabilities(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "removeLinuxCapabilities":
+            suggest = "remove_linux_capabilities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyLinuxCapabilities. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyLinuxCapabilities.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyLinuxCapabilities.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 remove_linux_capabilities: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if remove_linux_capabilities is not None:
+            pulumi.set(__self__, "remove_linux_capabilities", remove_linux_capabilities)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="removeLinuxCapabilities")
+    def remove_linux_capabilities(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "remove_linux_capabilities")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyMalwareScanOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeDirectories":
+            suggest = "exclude_directories"
+        elif key == "excludeProcesses":
+            suggest = "exclude_processes"
+        elif key == "includeDirectories":
+            suggest = "include_directories"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyMalwareScanOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyMalwareScanOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyMalwareScanOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exclude_directories: Optional[Sequence[str]] = None,
+                 exclude_processes: Optional[Sequence[str]] = None,
+                 include_directories: Optional[Sequence[str]] = None):
+        """
+        :param str action: Set Action, Defaults to 'Alert' when empty
+        :param bool enabled: Defines if enabled or not
+        :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
+        :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] include_directories: List of registry paths to be excluded from being protected.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_directories is not None:
+            pulumi.set(__self__, "exclude_directories", exclude_directories)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if include_directories is not None:
+            pulumi.set(__self__, "include_directories", include_directories)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        Set Action, Defaults to 'Alert' when empty
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Defines if enabled or not
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="excludeDirectories")
+    def exclude_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_directories")
+
+    @property
+    @pulumi.getter(name="excludeProcesses")
+    def exclude_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_processes")
+
+    @property
+    @pulumi.getter(name="includeDirectories")
+    def include_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "include_directories")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyPackageBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockPackagesProcesses":
+            suggest = "block_packages_processes"
+        elif key == "blockPackagesUsers":
+            suggest = "block_packages_users"
+        elif key == "exceptionalBlockPackagesFiles":
+            suggest = "exceptional_block_packages_files"
+        elif key == "exceptionalBlockPackagesProcesses":
+            suggest = "exceptional_block_packages_processes"
+        elif key == "exceptionalBlockPackagesUsers":
+            suggest = "exceptional_block_packages_users"
+        elif key == "packagesBlackLists":
+            suggest = "packages_black_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyPackageBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyPackageBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyPackageBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_packages_processes: Optional[Sequence[str]] = None,
+                 block_packages_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_packages_files: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_users: Optional[Sequence[str]] = None,
+                 packages_black_lists: Optional[Sequence[str]] = None):
+        if block_packages_processes is not None:
+            pulumi.set(__self__, "block_packages_processes", block_packages_processes)
+        if block_packages_users is not None:
+            pulumi.set(__self__, "block_packages_users", block_packages_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_packages_files is not None:
+            pulumi.set(__self__, "exceptional_block_packages_files", exceptional_block_packages_files)
+        if exceptional_block_packages_processes is not None:
+            pulumi.set(__self__, "exceptional_block_packages_processes", exceptional_block_packages_processes)
+        if exceptional_block_packages_users is not None:
+            pulumi.set(__self__, "exceptional_block_packages_users", exceptional_block_packages_users)
+        if packages_black_lists is not None:
+            pulumi.set(__self__, "packages_black_lists", packages_black_lists)
+
+    @property
+    @pulumi.getter(name="blockPackagesProcesses")
+    def block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_processes")
+
+    @property
+    @pulumi.getter(name="blockPackagesUsers")
+    def block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesFiles")
+    def exceptional_block_packages_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesProcesses")
+    def exceptional_block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesUsers")
+    def exceptional_block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_users")
+
+    @property
+    @pulumi.getter(name="packagesBlackLists")
+    def packages_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "packages_black_lists")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyPortBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockInboundPorts":
+            suggest = "block_inbound_ports"
+        elif key == "blockOutboundPorts":
+            suggest = "block_outbound_ports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyPortBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyPortBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyPortBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_inbound_ports: Optional[Sequence[str]] = None,
+                 block_outbound_ports: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        if block_inbound_ports is not None:
+            pulumi.set(__self__, "block_inbound_ports", block_inbound_ports)
+        if block_outbound_ports is not None:
+            pulumi.set(__self__, "block_outbound_ports", block_outbound_ports)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="blockInboundPorts")
+    def block_inbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_inbound_ports")
+
+    @property
+    @pulumi.getter(name="blockOutboundPorts")
+    def block_outbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_outbound_ports")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyReadonlyFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalReadonlyFiles":
+            suggest = "exceptional_readonly_files"
+        elif key == "exceptionalReadonlyFilesProcesses":
+            suggest = "exceptional_readonly_files_processes"
+        elif key == "exceptionalReadonlyFilesUsers":
+            suggest = "exceptional_readonly_files_users"
+        elif key == "readonlyFiles":
+            suggest = "readonly_files"
+        elif key == "readonlyFilesProcesses":
+            suggest = "readonly_files_processes"
+        elif key == "readonlyFilesUsers":
+            suggest = "readonly_files_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyReadonlyFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyReadonlyFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyReadonlyFiles.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_files: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_users: Optional[Sequence[str]] = None,
+                 readonly_files: Optional[Sequence[str]] = None,
+                 readonly_files_processes: Optional[Sequence[str]] = None,
+                 readonly_files_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_files is not None:
+            pulumi.set(__self__, "exceptional_readonly_files", exceptional_readonly_files)
+        if exceptional_readonly_files_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_processes", exceptional_readonly_files_processes)
+        if exceptional_readonly_files_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_users", exceptional_readonly_files_users)
+        if readonly_files is not None:
+            pulumi.set(__self__, "readonly_files", readonly_files)
+        if readonly_files_processes is not None:
+            pulumi.set(__self__, "readonly_files_processes", readonly_files_processes)
+        if readonly_files_users is not None:
+            pulumi.set(__self__, "readonly_files_users", readonly_files_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFiles")
+    def exceptional_readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesProcesses")
+    def exceptional_readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesUsers")
+    def exceptional_readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_users")
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files")
+
+    @property
+    @pulumi.getter(name="readonlyFilesProcesses")
+    def readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="readonlyFilesUsers")
+    def readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_users")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyReadonlyRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalReadonlyRegistryPaths":
+            suggest = "exceptional_readonly_registry_paths"
+        elif key == "exceptionalReadonlyRegistryProcesses":
+            suggest = "exceptional_readonly_registry_processes"
+        elif key == "exceptionalReadonlyRegistryUsers":
+            suggest = "exceptional_readonly_registry_users"
+        elif key == "readonlyRegistryPaths":
+            suggest = "readonly_registry_paths"
+        elif key == "readonlyRegistryProcesses":
+            suggest = "readonly_registry_processes"
+        elif key == "readonlyRegistryUsers":
+            suggest = "readonly_registry_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyReadonlyRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyReadonlyRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyReadonlyRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_registry_paths: Optional[Sequence[str]] = None,
+                 exceptional_readonly_registry_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_registry_users: Optional[Sequence[str]] = None,
+                 readonly_registry_paths: Optional[Sequence[str]] = None,
+                 readonly_registry_processes: Optional[Sequence[str]] = None,
+                 readonly_registry_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_registry_paths is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_paths", exceptional_readonly_registry_paths)
+        if exceptional_readonly_registry_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_processes", exceptional_readonly_registry_processes)
+        if exceptional_readonly_registry_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_users", exceptional_readonly_registry_users)
+        if readonly_registry_paths is not None:
+            pulumi.set(__self__, "readonly_registry_paths", readonly_registry_paths)
+        if readonly_registry_processes is not None:
+            pulumi.set(__self__, "readonly_registry_processes", readonly_registry_processes)
+        if readonly_registry_users is not None:
+            pulumi.set(__self__, "readonly_registry_users", readonly_registry_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryPaths")
+    def exceptional_readonly_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_paths")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryProcesses")
+    def exceptional_readonly_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryUsers")
+    def exceptional_readonly_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_users")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryPaths")
+    def readonly_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_paths")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryProcesses")
+    def readonly_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_processes")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryUsers")
+    def readonly_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_users")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyRegistryAccessMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalMonitoredRegistryPaths":
+            suggest = "exceptional_monitored_registry_paths"
+        elif key == "exceptionalMonitoredRegistryProcesses":
+            suggest = "exceptional_monitored_registry_processes"
+        elif key == "exceptionalMonitoredRegistryUsers":
+            suggest = "exceptional_monitored_registry_users"
+        elif key == "monitoredRegistryAttributes":
+            suggest = "monitored_registry_attributes"
+        elif key == "monitoredRegistryCreate":
+            suggest = "monitored_registry_create"
+        elif key == "monitoredRegistryDelete":
+            suggest = "monitored_registry_delete"
+        elif key == "monitoredRegistryModify":
+            suggest = "monitored_registry_modify"
+        elif key == "monitoredRegistryPaths":
+            suggest = "monitored_registry_paths"
+        elif key == "monitoredRegistryProcesses":
+            suggest = "monitored_registry_processes"
+        elif key == "monitoredRegistryRead":
+            suggest = "monitored_registry_read"
+        elif key == "monitoredRegistryUsers":
+            suggest = "monitored_registry_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyRegistryAccessMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyRegistryAccessMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyRegistryAccessMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_registry_paths: Optional[Sequence[str]] = None,
+                 exceptional_monitored_registry_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_registry_users: Optional[Sequence[str]] = None,
+                 monitored_registry_attributes: Optional[bool] = None,
+                 monitored_registry_create: Optional[bool] = None,
+                 monitored_registry_delete: Optional[bool] = None,
+                 monitored_registry_modify: Optional[bool] = None,
+                 monitored_registry_paths: Optional[Sequence[str]] = None,
+                 monitored_registry_processes: Optional[Sequence[str]] = None,
+                 monitored_registry_read: Optional[bool] = None,
+                 monitored_registry_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_registry_paths is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_paths", exceptional_monitored_registry_paths)
+        if exceptional_monitored_registry_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_processes", exceptional_monitored_registry_processes)
+        if exceptional_monitored_registry_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_users", exceptional_monitored_registry_users)
+        if monitored_registry_attributes is not None:
+            pulumi.set(__self__, "monitored_registry_attributes", monitored_registry_attributes)
+        if monitored_registry_create is not None:
+            pulumi.set(__self__, "monitored_registry_create", monitored_registry_create)
+        if monitored_registry_delete is not None:
+            pulumi.set(__self__, "monitored_registry_delete", monitored_registry_delete)
+        if monitored_registry_modify is not None:
+            pulumi.set(__self__, "monitored_registry_modify", monitored_registry_modify)
+        if monitored_registry_paths is not None:
+            pulumi.set(__self__, "monitored_registry_paths", monitored_registry_paths)
+        if monitored_registry_processes is not None:
+            pulumi.set(__self__, "monitored_registry_processes", monitored_registry_processes)
+        if monitored_registry_read is not None:
+            pulumi.set(__self__, "monitored_registry_read", monitored_registry_read)
+        if monitored_registry_users is not None:
+            pulumi.set(__self__, "monitored_registry_users", monitored_registry_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryPaths")
+    def exceptional_monitored_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_paths")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryProcesses")
+    def exceptional_monitored_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryUsers")
+    def exceptional_monitored_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_users")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryAttributes")
+    def monitored_registry_attributes(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_attributes")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryCreate")
+    def monitored_registry_create(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_create")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryDelete")
+    def monitored_registry_delete(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_delete")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryModify")
+    def monitored_registry_modify(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_modify")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryPaths")
+    def monitored_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_paths")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryProcesses")
+    def monitored_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_processes")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryRead")
+    def monitored_registry_read(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_read")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryUsers")
+    def monitored_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_users")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyRestrictedVolume(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 volumes: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether restricted volumes are enabled.
+        :param Sequence[str] volumes: List of restricted volumes.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether restricted volumes are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence[str]]:
+        """
+        List of restricted volumes.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyReverseShell(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockReverseShell":
+            suggest = "block_reverse_shell"
+        elif key == "reverseShellIpWhiteLists":
+            suggest = "reverse_shell_ip_white_lists"
+        elif key == "reverseShellProcWhiteLists":
+            suggest = "reverse_shell_proc_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyReverseShell. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyReverseShell.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyReverseShell.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_reverse_shell: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None,
+                 reverse_shell_proc_white_lists: Optional[Sequence[str]] = None):
+        if block_reverse_shell is not None:
+            pulumi.set(__self__, "block_reverse_shell", block_reverse_shell)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+        if reverse_shell_proc_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_proc_white_lists", reverse_shell_proc_white_lists)
+
+    @property
+    @pulumi.getter(name="blockReverseShell")
+    def block_reverse_shell(self) -> Optional[bool]:
+        return pulumi.get(self, "block_reverse_shell")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+    @property
+    @pulumi.getter(name="reverseShellProcWhiteLists")
+    def reverse_shell_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_proc_white_lists")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyScope(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 variables: Sequence['outputs.FunctionRuntimePolicyScopeVariable']):
+        """
+        :param str expression: Scope expression.
+        :param Sequence['FunctionRuntimePolicyScopeVariableArgs'] variables: List of variables in the scope.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Scope expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Sequence['outputs.FunctionRuntimePolicyScopeVariable']:
+        """
+        List of variables in the scope.
+        """
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
 class FunctionRuntimePolicyScopeVariable(dict):
     def __init__(__self__, *,
                  attribute: str,
@@ -2068,6 +5646,180 @@ class FunctionRuntimePolicyScopeVariable(dict):
         Name assigned to the attribute.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicySystemIntegrityProtection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditSystemtimeChange":
+            suggest = "audit_systemtime_change"
+        elif key == "monitorAuditLogIntegrity":
+            suggest = "monitor_audit_log_integrity"
+        elif key == "windowsServicesMonitoring":
+            suggest = "windows_services_monitoring"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicySystemIntegrityProtection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicySystemIntegrityProtection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicySystemIntegrityProtection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_systemtime_change: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 monitor_audit_log_integrity: Optional[bool] = None,
+                 windows_services_monitoring: Optional[bool] = None):
+        if audit_systemtime_change is not None:
+            pulumi.set(__self__, "audit_systemtime_change", audit_systemtime_change)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if monitor_audit_log_integrity is not None:
+            pulumi.set(__self__, "monitor_audit_log_integrity", monitor_audit_log_integrity)
+        if windows_services_monitoring is not None:
+            pulumi.set(__self__, "windows_services_monitoring", windows_services_monitoring)
+
+    @property
+    @pulumi.getter(name="auditSystemtimeChange")
+    def audit_systemtime_change(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_systemtime_change")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="monitorAuditLogIntegrity")
+    def monitor_audit_log_integrity(self) -> Optional[bool]:
+        return pulumi.get(self, "monitor_audit_log_integrity")
+
+    @property
+    @pulumi.getter(name="windowsServicesMonitoring")
+    def windows_services_monitoring(self) -> Optional[bool]:
+        return pulumi.get(self, "windows_services_monitoring")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyTripwire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applyOns":
+            suggest = "apply_ons"
+        elif key == "serverlessApp":
+            suggest = "serverless_app"
+        elif key == "userId":
+            suggest = "user_id"
+        elif key == "userPassword":
+            suggest = "user_password"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyTripwire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyTripwire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyTripwire.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 apply_ons: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 serverless_app: Optional[str] = None,
+                 user_id: Optional[str] = None,
+                 user_password: Optional[str] = None):
+        if apply_ons is not None:
+            pulumi.set(__self__, "apply_ons", apply_ons)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if serverless_app is not None:
+            pulumi.set(__self__, "serverless_app", serverless_app)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
+
+    @property
+    @pulumi.getter(name="applyOns")
+    def apply_ons(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "apply_ons")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="serverlessApp")
+    def serverless_app(self) -> Optional[str]:
+        return pulumi.get(self, "serverless_app")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[str]:
+        return pulumi.get(self, "user_id")
+
+    @property
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional[str]:
+        return pulumi.get(self, "user_password")
+
+
+@pulumi.output_type
+class FunctionRuntimePolicyWhitelistedOsUsers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupWhiteLists":
+            suggest = "group_white_lists"
+        elif key == "userWhiteLists":
+            suggest = "user_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FunctionRuntimePolicyWhitelistedOsUsers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FunctionRuntimePolicyWhitelistedOsUsers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FunctionRuntimePolicyWhitelistedOsUsers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_white_lists: Optional[Sequence[str]] = None,
+                 user_white_lists: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_white_lists is not None:
+            pulumi.set(__self__, "group_white_lists", group_white_lists)
+        if user_white_lists is not None:
+            pulumi.set(__self__, "user_white_lists", user_white_lists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupWhiteLists")
+    def group_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "group_white_lists")
+
+    @property
+    @pulumi.getter(name="userWhiteLists")
+    def user_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "user_white_lists")
 
 
 @pulumi.output_type
@@ -2448,6 +6200,62 @@ class HostAssurancePolicyPackagesWhiteList(dict):
 
 
 @pulumi.output_type
+class HostAssurancePolicyPolicySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuditChecked":
+            suggest = "is_audit_checked"
+        elif key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostAssurancePolicyPolicySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostAssurancePolicyPolicySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostAssurancePolicyPolicySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce: Optional[bool] = None,
+                 is_audit_checked: Optional[bool] = None,
+                 warn: Optional[bool] = None,
+                 warning_message: Optional[str] = None):
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+        if warning_message is not None:
+            pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[bool]:
+        return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[bool]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[bool]:
+        return pulumi.get(self, "warn")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> Optional[str]:
+        return pulumi.get(self, "warning_message")
+
+
+@pulumi.output_type
 class HostAssurancePolicyRequiredLabel(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -2540,32 +6348,686 @@ class HostAssurancePolicyTrustedBaseImage(dict):
 
 
 @pulumi.output_type
+class HostRuntimePolicyAllowedExecutable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowExecutables":
+            suggest = "allow_executables"
+        elif key == "allowRootExecutables":
+            suggest = "allow_root_executables"
+        elif key == "separateExecutables":
+            suggest = "separate_executables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyAllowedExecutable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyAllowedExecutable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyAllowedExecutable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_executables: Optional[Sequence[str]] = None,
+                 allow_root_executables: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 separate_executables: Optional[bool] = None):
+        """
+        :param Sequence[str] allow_executables: List of allowed executables.
+        :param Sequence[str] allow_root_executables: List of allowed root executables.
+        :param bool enabled: Whether allowed executables configuration is enabled.
+        :param bool separate_executables: Whether to treat executables separately.
+        """
+        if allow_executables is not None:
+            pulumi.set(__self__, "allow_executables", allow_executables)
+        if allow_root_executables is not None:
+            pulumi.set(__self__, "allow_root_executables", allow_root_executables)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if separate_executables is not None:
+            pulumi.set(__self__, "separate_executables", separate_executables)
+
+    @property
+    @pulumi.getter(name="allowExecutables")
+    def allow_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed executables.
+        """
+        return pulumi.get(self, "allow_executables")
+
+    @property
+    @pulumi.getter(name="allowRootExecutables")
+    def allow_root_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed root executables.
+        """
+        return pulumi.get(self, "allow_root_executables")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed executables configuration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="separateExecutables")
+    def separate_executables(self) -> Optional[bool]:
+        """
+        Whether to treat executables separately.
+        """
+        return pulumi.get(self, "separate_executables")
+
+
+@pulumi.output_type
+class HostRuntimePolicyAllowedRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedRegistries":
+            suggest = "allowed_registries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyAllowedRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyAllowedRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyAllowedRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_registries: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param Sequence[str] allowed_registries: List of allowed registries.
+        :param bool enabled: Whether allowed registries are enabled.
+        """
+        if allowed_registries is not None:
+            pulumi.set(__self__, "allowed_registries", allowed_registries)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="allowedRegistries")
+    def allowed_registries(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed registries.
+        """
+        return pulumi.get(self, "allowed_registries")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed registries are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class HostRuntimePolicyAuditing(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditAllNetwork":
+            suggest = "audit_all_network"
+        elif key == "auditAllProcesses":
+            suggest = "audit_all_processes"
+        elif key == "auditFailedLogin":
+            suggest = "audit_failed_login"
+        elif key == "auditOsUserActivity":
+            suggest = "audit_os_user_activity"
+        elif key == "auditProcessCmdline":
+            suggest = "audit_process_cmdline"
+        elif key == "auditSuccessLogin":
+            suggest = "audit_success_login"
+        elif key == "auditUserAccountManagement":
+            suggest = "audit_user_account_management"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyAuditing. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyAuditing.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyAuditing.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_all_network: Optional[bool] = None,
+                 audit_all_processes: Optional[bool] = None,
+                 audit_failed_login: Optional[bool] = None,
+                 audit_os_user_activity: Optional[bool] = None,
+                 audit_process_cmdline: Optional[bool] = None,
+                 audit_success_login: Optional[bool] = None,
+                 audit_user_account_management: Optional[bool] = None,
+                 enabled: Optional[bool] = None):
+        if audit_all_network is not None:
+            pulumi.set(__self__, "audit_all_network", audit_all_network)
+        if audit_all_processes is not None:
+            pulumi.set(__self__, "audit_all_processes", audit_all_processes)
+        if audit_failed_login is not None:
+            pulumi.set(__self__, "audit_failed_login", audit_failed_login)
+        if audit_os_user_activity is not None:
+            pulumi.set(__self__, "audit_os_user_activity", audit_os_user_activity)
+        if audit_process_cmdline is not None:
+            pulumi.set(__self__, "audit_process_cmdline", audit_process_cmdline)
+        if audit_success_login is not None:
+            pulumi.set(__self__, "audit_success_login", audit_success_login)
+        if audit_user_account_management is not None:
+            pulumi.set(__self__, "audit_user_account_management", audit_user_account_management)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="auditAllNetwork")
+    def audit_all_network(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_network")
+
+    @property
+    @pulumi.getter(name="auditAllProcesses")
+    def audit_all_processes(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_processes")
+
+    @property
+    @pulumi.getter(name="auditFailedLogin")
+    def audit_failed_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_failed_login")
+
+    @property
+    @pulumi.getter(name="auditOsUserActivity")
+    def audit_os_user_activity(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_os_user_activity")
+
+    @property
+    @pulumi.getter(name="auditProcessCmdline")
+    def audit_process_cmdline(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_process_cmdline")
+
+    @property
+    @pulumi.getter(name="auditSuccessLogin")
+    def audit_success_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_success_login")
+
+    @property
+    @pulumi.getter(name="auditUserAccountManagement")
+    def audit_user_account_management(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_user_account_management")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class HostRuntimePolicyBlacklistedOsUsers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupBlackLists":
+            suggest = "group_black_lists"
+        elif key == "userBlackLists":
+            suggest = "user_black_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyBlacklistedOsUsers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyBlacklistedOsUsers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyBlacklistedOsUsers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_black_lists: Optional[Sequence[str]] = None,
+                 user_black_lists: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_black_lists is not None:
+            pulumi.set(__self__, "group_black_lists", group_black_lists)
+        if user_black_lists is not None:
+            pulumi.set(__self__, "user_black_lists", user_black_lists)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupBlackLists")
+    def group_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "group_black_lists")
+
+    @property
+    @pulumi.getter(name="userBlackLists")
+    def user_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "user_black_lists")
+
+
+@pulumi.output_type
+class HostRuntimePolicyBypassScope(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 scopes: Optional[Sequence['outputs.HostRuntimePolicyBypassScopeScope']] = None):
+        """
+        :param bool enabled: Whether bypassing the scope is enabled.
+        :param Sequence['HostRuntimePolicyBypassScopeScopeArgs'] scopes: Scope configuration.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether bypassing the scope is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence['outputs.HostRuntimePolicyBypassScopeScope']]:
+        """
+        Scope configuration.
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class HostRuntimePolicyBypassScopeScope(dict):
+    def __init__(__self__, *,
+                 expression: Optional[str] = None,
+                 variables: Optional[Sequence['outputs.HostRuntimePolicyBypassScopeScopeVariable']] = None):
+        """
+        :param str expression: Scope expression.
+        :param Sequence['HostRuntimePolicyBypassScopeScopeVariableArgs'] variables: List of variables in the scope.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Scope expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[Sequence['outputs.HostRuntimePolicyBypassScopeScopeVariable']]:
+        """
+        List of variables in the scope.
+        """
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class HostRuntimePolicyBypassScopeScopeVariable(dict):
+    def __init__(__self__, *,
+                 attribute: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str attribute: Variable attribute.
+        :param str value: Variable value.
+        """
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[str]:
+        """
+        Variable attribute.
+        """
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Variable value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class HostRuntimePolicyContainerExec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockContainerExec":
+            suggest = "block_container_exec"
+        elif key == "containerExecProcWhiteLists":
+            suggest = "container_exec_proc_white_lists"
+        elif key == "reverseShellIpWhiteLists":
+            suggest = "reverse_shell_ip_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyContainerExec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyContainerExec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyContainerExec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_container_exec: Optional[bool] = None,
+                 container_exec_proc_white_lists: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None):
+        if block_container_exec is not None:
+            pulumi.set(__self__, "block_container_exec", block_container_exec)
+        if container_exec_proc_white_lists is not None:
+            pulumi.set(__self__, "container_exec_proc_white_lists", container_exec_proc_white_lists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+
+    @property
+    @pulumi.getter(name="blockContainerExec")
+    def block_container_exec(self) -> Optional[bool]:
+        return pulumi.get(self, "block_container_exec")
+
+    @property
+    @pulumi.getter(name="containerExecProcWhiteLists")
+    def container_exec_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "container_exec_proc_white_lists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+
+@pulumi.output_type
+class HostRuntimePolicyDriftPrevention(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "execLockdown":
+            suggest = "exec_lockdown"
+        elif key == "execLockdownWhiteLists":
+            suggest = "exec_lockdown_white_lists"
+        elif key == "imageLockdown":
+            suggest = "image_lockdown"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyDriftPrevention. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyDriftPrevention.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyDriftPrevention.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exec_lockdown: Optional[bool] = None,
+                 exec_lockdown_white_lists: Optional[Sequence[str]] = None,
+                 image_lockdown: Optional[bool] = None):
+        """
+        :param bool enabled: Whether drift prevention is enabled.
+        :param bool exec_lockdown: Whether to lockdown execution drift.
+        :param Sequence[str] exec_lockdown_white_lists: List of items in the execution lockdown white list.
+        :param bool image_lockdown: Whether to lockdown image drift.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exec_lockdown is not None:
+            pulumi.set(__self__, "exec_lockdown", exec_lockdown)
+        if exec_lockdown_white_lists is not None:
+            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
+        if image_lockdown is not None:
+            pulumi.set(__self__, "image_lockdown", image_lockdown)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether drift prevention is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="execLockdown")
+    def exec_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown execution drift.
+        """
+        return pulumi.get(self, "exec_lockdown")
+
+    @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Optional[Sequence[str]]:
+        """
+        List of items in the execution lockdown white list.
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @property
+    @pulumi.getter(name="imageLockdown")
+    def image_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown image drift.
+        """
+        return pulumi.get(self, "image_lockdown")
+
+
+@pulumi.output_type
+class HostRuntimePolicyExecutableBlacklist(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 executables: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether the executable blacklist is enabled.
+        :param Sequence[str] executables: List of blacklisted executables.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if executables is not None:
+            pulumi.set(__self__, "executables", executables)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the executable blacklist is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def executables(self) -> Optional[Sequence[str]]:
+        """
+        List of blacklisted executables.
+        """
+        return pulumi.get(self, "executables")
+
+
+@pulumi.output_type
+class HostRuntimePolicyFailedKubernetesChecks(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failedChecks":
+            suggest = "failed_checks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyFailedKubernetesChecks. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyFailedKubernetesChecks.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyFailedKubernetesChecks.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 failed_checks: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if failed_checks is not None:
+            pulumi.set(__self__, "failed_checks", failed_checks)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="failedChecks")
+    def failed_checks(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "failed_checks")
+
+
+@pulumi.output_type
+class HostRuntimePolicyFileBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockFilesProcesses":
+            suggest = "block_files_processes"
+        elif key == "blockFilesUsers":
+            suggest = "block_files_users"
+        elif key == "exceptionalBlockFiles":
+            suggest = "exceptional_block_files"
+        elif key == "exceptionalBlockFilesProcesses":
+            suggest = "exceptional_block_files_processes"
+        elif key == "exceptionalBlockFilesUsers":
+            suggest = "exceptional_block_files_users"
+        elif key == "filenameBlockLists":
+            suggest = "filename_block_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyFileBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyFileBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyFileBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_files_processes: Optional[Sequence[str]] = None,
+                 block_files_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_files: Optional[Sequence[str]] = None,
+                 exceptional_block_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_files_users: Optional[Sequence[str]] = None,
+                 filename_block_lists: Optional[Sequence[str]] = None):
+        if block_files_processes is not None:
+            pulumi.set(__self__, "block_files_processes", block_files_processes)
+        if block_files_users is not None:
+            pulumi.set(__self__, "block_files_users", block_files_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_files is not None:
+            pulumi.set(__self__, "exceptional_block_files", exceptional_block_files)
+        if exceptional_block_files_processes is not None:
+            pulumi.set(__self__, "exceptional_block_files_processes", exceptional_block_files_processes)
+        if exceptional_block_files_users is not None:
+            pulumi.set(__self__, "exceptional_block_files_users", exceptional_block_files_users)
+        if filename_block_lists is not None:
+            pulumi.set(__self__, "filename_block_lists", filename_block_lists)
+
+    @property
+    @pulumi.getter(name="blockFilesProcesses")
+    def block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_processes")
+
+    @property
+    @pulumi.getter(name="blockFilesUsers")
+    def block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFiles")
+    def exceptional_block_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesProcesses")
+    def exceptional_block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesUsers")
+    def exceptional_block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_users")
+
+    @property
+    @pulumi.getter(name="filenameBlockLists")
+    def filename_block_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filename_block_lists")
+
+
+@pulumi.output_type
 class HostRuntimePolicyFileIntegrityMonitoring(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludedPaths":
-            suggest = "excluded_paths"
-        elif key == "excludedProcesses":
-            suggest = "excluded_processes"
-        elif key == "excludedUsers":
-            suggest = "excluded_users"
-        elif key == "monitorAttributes":
-            suggest = "monitor_attributes"
-        elif key == "monitorCreate":
-            suggest = "monitor_create"
-        elif key == "monitorDelete":
-            suggest = "monitor_delete"
-        elif key == "monitorModify":
-            suggest = "monitor_modify"
-        elif key == "monitorRead":
-            suggest = "monitor_read"
-        elif key == "monitoredPaths":
-            suggest = "monitored_paths"
-        elif key == "monitoredProcesses":
-            suggest = "monitored_processes"
-        elif key == "monitoredUsers":
-            suggest = "monitored_users"
+        if key == "exceptionalMonitoredFiles":
+            suggest = "exceptional_monitored_files"
+        elif key == "exceptionalMonitoredFilesProcesses":
+            suggest = "exceptional_monitored_files_processes"
+        elif key == "exceptionalMonitoredFilesUsers":
+            suggest = "exceptional_monitored_files_users"
+        elif key == "monitoredFiles":
+            suggest = "monitored_files"
+        elif key == "monitoredFilesAttributes":
+            suggest = "monitored_files_attributes"
+        elif key == "monitoredFilesCreate":
+            suggest = "monitored_files_create"
+        elif key == "monitoredFilesDelete":
+            suggest = "monitored_files_delete"
+        elif key == "monitoredFilesModify":
+            suggest = "monitored_files_modify"
+        elif key == "monitoredFilesProcesses":
+            suggest = "monitored_files_processes"
+        elif key == "monitoredFilesRead":
+            suggest = "monitored_files_read"
+        elif key == "monitoredFilesUsers":
+            suggest = "monitored_files_users"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyFileIntegrityMonitoring. Access the value via the '{suggest}' property getter instead.")
@@ -2579,140 +7041,352 @@ class HostRuntimePolicyFileIntegrityMonitoring(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 excluded_paths: Optional[Sequence[str]] = None,
-                 excluded_processes: Optional[Sequence[str]] = None,
-                 excluded_users: Optional[Sequence[str]] = None,
-                 monitor_attributes: Optional[bool] = None,
-                 monitor_create: Optional[bool] = None,
-                 monitor_delete: Optional[bool] = None,
-                 monitor_modify: Optional[bool] = None,
-                 monitor_read: Optional[bool] = None,
-                 monitored_paths: Optional[Sequence[str]] = None,
-                 monitored_processes: Optional[Sequence[str]] = None,
-                 monitored_users: Optional[Sequence[str]] = None):
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_files: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_users: Optional[Sequence[str]] = None,
+                 monitored_files: Optional[Sequence[str]] = None,
+                 monitored_files_attributes: Optional[bool] = None,
+                 monitored_files_create: Optional[bool] = None,
+                 monitored_files_delete: Optional[bool] = None,
+                 monitored_files_modify: Optional[bool] = None,
+                 monitored_files_processes: Optional[Sequence[str]] = None,
+                 monitored_files_read: Optional[bool] = None,
+                 monitored_files_users: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] excluded_paths: List of paths to be excluded from being monitored.
-        :param Sequence[str] excluded_processes: List of processes to be excluded from being monitored.
-        :param Sequence[str] excluded_users: List of users to be excluded from being monitored.
-        :param bool monitor_attributes: If true, add attributes operations will be monitored.
-        :param bool monitor_create: If true, create operations will be monitored.
-        :param bool monitor_delete: If true, deletion operations will be monitored.
-        :param bool monitor_modify: If true, modification operations will be monitored.
-        :param bool monitor_read: If true, read operations will be monitored.
-        :param Sequence[str] monitored_paths: List of paths to be monitored.
-        :param Sequence[str] monitored_processes: List of processes to be monitored.
-        :param Sequence[str] monitored_users: List of users to be monitored.
+        :param bool enabled: If true, file integrity monitoring is enabled.
+        :param Sequence[str] exceptional_monitored_files: List of paths to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_processes: List of processes to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_users: List of users to be excluded from monitoring.
+        :param Sequence[str] monitored_files: List of paths to be monitored.
+        :param bool monitored_files_attributes: Whether to monitor file attribute operations.
+        :param bool monitored_files_create: Whether to monitor file create operations.
+        :param bool monitored_files_delete: Whether to monitor file delete operations.
+        :param bool monitored_files_modify: Whether to monitor file modify operations.
+        :param Sequence[str] monitored_files_processes: List of processes associated with monitored files.
+        :param bool monitored_files_read: Whether to monitor file read operations.
+        :param Sequence[str] monitored_files_users: List of users associated with monitored files.
         """
-        if excluded_paths is not None:
-            pulumi.set(__self__, "excluded_paths", excluded_paths)
-        if excluded_processes is not None:
-            pulumi.set(__self__, "excluded_processes", excluded_processes)
-        if excluded_users is not None:
-            pulumi.set(__self__, "excluded_users", excluded_users)
-        if monitor_attributes is not None:
-            pulumi.set(__self__, "monitor_attributes", monitor_attributes)
-        if monitor_create is not None:
-            pulumi.set(__self__, "monitor_create", monitor_create)
-        if monitor_delete is not None:
-            pulumi.set(__self__, "monitor_delete", monitor_delete)
-        if monitor_modify is not None:
-            pulumi.set(__self__, "monitor_modify", monitor_modify)
-        if monitor_read is not None:
-            pulumi.set(__self__, "monitor_read", monitor_read)
-        if monitored_paths is not None:
-            pulumi.set(__self__, "monitored_paths", monitored_paths)
-        if monitored_processes is not None:
-            pulumi.set(__self__, "monitored_processes", monitored_processes)
-        if monitored_users is not None:
-            pulumi.set(__self__, "monitored_users", monitored_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_files is not None:
+            pulumi.set(__self__, "exceptional_monitored_files", exceptional_monitored_files)
+        if exceptional_monitored_files_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_processes", exceptional_monitored_files_processes)
+        if exceptional_monitored_files_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_users", exceptional_monitored_files_users)
+        if monitored_files is not None:
+            pulumi.set(__self__, "monitored_files", monitored_files)
+        if monitored_files_attributes is not None:
+            pulumi.set(__self__, "monitored_files_attributes", monitored_files_attributes)
+        if monitored_files_create is not None:
+            pulumi.set(__self__, "monitored_files_create", monitored_files_create)
+        if monitored_files_delete is not None:
+            pulumi.set(__self__, "monitored_files_delete", monitored_files_delete)
+        if monitored_files_modify is not None:
+            pulumi.set(__self__, "monitored_files_modify", monitored_files_modify)
+        if monitored_files_processes is not None:
+            pulumi.set(__self__, "monitored_files_processes", monitored_files_processes)
+        if monitored_files_read is not None:
+            pulumi.set(__self__, "monitored_files_read", monitored_files_read)
+        if monitored_files_users is not None:
+            pulumi.set(__self__, "monitored_files_users", monitored_files_users)
 
     @property
-    @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Optional[Sequence[str]]:
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
         """
-        List of paths to be excluded from being monitored.
+        If true, file integrity monitoring is enabled.
         """
-        return pulumi.get(self, "excluded_paths")
+        return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="excludedProcesses")
-    def excluded_processes(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="exceptionalMonitoredFiles")
+    def exceptional_monitored_files(self) -> Optional[Sequence[str]]:
         """
-        List of processes to be excluded from being monitored.
+        List of paths to be excluded from monitoring.
         """
-        return pulumi.get(self, "excluded_processes")
+        return pulumi.get(self, "exceptional_monitored_files")
 
     @property
-    @pulumi.getter(name="excludedUsers")
-    def excluded_users(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="exceptionalMonitoredFilesProcesses")
+    def exceptional_monitored_files_processes(self) -> Optional[Sequence[str]]:
         """
-        List of users to be excluded from being monitored.
+        List of processes to be excluded from monitoring.
         """
-        return pulumi.get(self, "excluded_users")
+        return pulumi.get(self, "exceptional_monitored_files_processes")
 
     @property
-    @pulumi.getter(name="monitorAttributes")
-    def monitor_attributes(self) -> Optional[bool]:
+    @pulumi.getter(name="exceptionalMonitoredFilesUsers")
+    def exceptional_monitored_files_users(self) -> Optional[Sequence[str]]:
         """
-        If true, add attributes operations will be monitored.
+        List of users to be excluded from monitoring.
         """
-        return pulumi.get(self, "monitor_attributes")
+        return pulumi.get(self, "exceptional_monitored_files_users")
 
     @property
-    @pulumi.getter(name="monitorCreate")
-    def monitor_create(self) -> Optional[bool]:
-        """
-        If true, create operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_create")
-
-    @property
-    @pulumi.getter(name="monitorDelete")
-    def monitor_delete(self) -> Optional[bool]:
-        """
-        If true, deletion operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_delete")
-
-    @property
-    @pulumi.getter(name="monitorModify")
-    def monitor_modify(self) -> Optional[bool]:
-        """
-        If true, modification operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_modify")
-
-    @property
-    @pulumi.getter(name="monitorRead")
-    def monitor_read(self) -> Optional[bool]:
-        """
-        If true, read operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_read")
-
-    @property
-    @pulumi.getter(name="monitoredPaths")
-    def monitored_paths(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="monitoredFiles")
+    def monitored_files(self) -> Optional[Sequence[str]]:
         """
         List of paths to be monitored.
         """
-        return pulumi.get(self, "monitored_paths")
+        return pulumi.get(self, "monitored_files")
 
     @property
-    @pulumi.getter(name="monitoredProcesses")
-    def monitored_processes(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="monitoredFilesAttributes")
+    def monitored_files_attributes(self) -> Optional[bool]:
         """
-        List of processes to be monitored.
+        Whether to monitor file attribute operations.
         """
-        return pulumi.get(self, "monitored_processes")
+        return pulumi.get(self, "monitored_files_attributes")
 
     @property
-    @pulumi.getter(name="monitoredUsers")
-    def monitored_users(self) -> Optional[Sequence[str]]:
+    @pulumi.getter(name="monitoredFilesCreate")
+    def monitored_files_create(self) -> Optional[bool]:
         """
-        List of users to be monitored.
+        Whether to monitor file create operations.
         """
-        return pulumi.get(self, "monitored_users")
+        return pulumi.get(self, "monitored_files_create")
+
+    @property
+    @pulumi.getter(name="monitoredFilesDelete")
+    def monitored_files_delete(self) -> Optional[bool]:
+        """
+        Whether to monitor file delete operations.
+        """
+        return pulumi.get(self, "monitored_files_delete")
+
+    @property
+    @pulumi.getter(name="monitoredFilesModify")
+    def monitored_files_modify(self) -> Optional[bool]:
+        """
+        Whether to monitor file modify operations.
+        """
+        return pulumi.get(self, "monitored_files_modify")
+
+    @property
+    @pulumi.getter(name="monitoredFilesProcesses")
+    def monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_processes")
+
+    @property
+    @pulumi.getter(name="monitoredFilesRead")
+    def monitored_files_read(self) -> Optional[bool]:
+        """
+        Whether to monitor file read operations.
+        """
+        return pulumi.get(self, "monitored_files_read")
+
+    @property
+    @pulumi.getter(name="monitoredFilesUsers")
+    def monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_users")
+
+
+@pulumi.output_type
+class HostRuntimePolicyLimitContainerPrivilege(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockAddCapabilities":
+            suggest = "block_add_capabilities"
+        elif key == "preventLowPortBinding":
+            suggest = "prevent_low_port_binding"
+        elif key == "preventRootUser":
+            suggest = "prevent_root_user"
+        elif key == "useHostUser":
+            suggest = "use_host_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyLimitContainerPrivilege. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyLimitContainerPrivilege.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyLimitContainerPrivilege.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_add_capabilities: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 ipcmode: Optional[bool] = None,
+                 netmode: Optional[bool] = None,
+                 pidmode: Optional[bool] = None,
+                 prevent_low_port_binding: Optional[bool] = None,
+                 prevent_root_user: Optional[bool] = None,
+                 privileged: Optional[bool] = None,
+                 use_host_user: Optional[bool] = None,
+                 usermode: Optional[bool] = None,
+                 utsmode: Optional[bool] = None):
+        """
+        :param bool block_add_capabilities: Whether to block adding capabilities.
+        :param bool enabled: Whether container privilege limitations are enabled.
+        :param bool ipcmode: Whether to limit IPC-related capabilities.
+        :param bool netmode: Whether to limit network-related capabilities.
+        :param bool pidmode: Whether to limit process-related capabilities.
+        :param bool prevent_low_port_binding: Whether to prevent low port binding.
+        :param bool prevent_root_user: Whether to prevent the use of the root user.
+        :param bool privileged: Whether the container is run in privileged mode.
+        :param bool use_host_user: Whether to use the host user.
+        :param bool usermode: Whether to limit user-related capabilities.
+        :param bool utsmode: Whether to limit UTS-related capabilities.
+        """
+        if block_add_capabilities is not None:
+            pulumi.set(__self__, "block_add_capabilities", block_add_capabilities)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ipcmode is not None:
+            pulumi.set(__self__, "ipcmode", ipcmode)
+        if netmode is not None:
+            pulumi.set(__self__, "netmode", netmode)
+        if pidmode is not None:
+            pulumi.set(__self__, "pidmode", pidmode)
+        if prevent_low_port_binding is not None:
+            pulumi.set(__self__, "prevent_low_port_binding", prevent_low_port_binding)
+        if prevent_root_user is not None:
+            pulumi.set(__self__, "prevent_root_user", prevent_root_user)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if use_host_user is not None:
+            pulumi.set(__self__, "use_host_user", use_host_user)
+        if usermode is not None:
+            pulumi.set(__self__, "usermode", usermode)
+        if utsmode is not None:
+            pulumi.set(__self__, "utsmode", utsmode)
+
+    @property
+    @pulumi.getter(name="blockAddCapabilities")
+    def block_add_capabilities(self) -> Optional[bool]:
+        """
+        Whether to block adding capabilities.
+        """
+        return pulumi.get(self, "block_add_capabilities")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether container privilege limitations are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def ipcmode(self) -> Optional[bool]:
+        """
+        Whether to limit IPC-related capabilities.
+        """
+        return pulumi.get(self, "ipcmode")
+
+    @property
+    @pulumi.getter
+    def netmode(self) -> Optional[bool]:
+        """
+        Whether to limit network-related capabilities.
+        """
+        return pulumi.get(self, "netmode")
+
+    @property
+    @pulumi.getter
+    def pidmode(self) -> Optional[bool]:
+        """
+        Whether to limit process-related capabilities.
+        """
+        return pulumi.get(self, "pidmode")
+
+    @property
+    @pulumi.getter(name="preventLowPortBinding")
+    def prevent_low_port_binding(self) -> Optional[bool]:
+        """
+        Whether to prevent low port binding.
+        """
+        return pulumi.get(self, "prevent_low_port_binding")
+
+    @property
+    @pulumi.getter(name="preventRootUser")
+    def prevent_root_user(self) -> Optional[bool]:
+        """
+        Whether to prevent the use of the root user.
+        """
+        return pulumi.get(self, "prevent_root_user")
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[bool]:
+        """
+        Whether the container is run in privileged mode.
+        """
+        return pulumi.get(self, "privileged")
+
+    @property
+    @pulumi.getter(name="useHostUser")
+    def use_host_user(self) -> Optional[bool]:
+        """
+        Whether to use the host user.
+        """
+        return pulumi.get(self, "use_host_user")
+
+    @property
+    @pulumi.getter
+    def usermode(self) -> Optional[bool]:
+        """
+        Whether to limit user-related capabilities.
+        """
+        return pulumi.get(self, "usermode")
+
+    @property
+    @pulumi.getter
+    def utsmode(self) -> Optional[bool]:
+        """
+        Whether to limit UTS-related capabilities.
+        """
+        return pulumi.get(self, "utsmode")
+
+
+@pulumi.output_type
+class HostRuntimePolicyLinuxCapabilities(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "removeLinuxCapabilities":
+            suggest = "remove_linux_capabilities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyLinuxCapabilities. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyLinuxCapabilities.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyLinuxCapabilities.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 remove_linux_capabilities: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if remove_linux_capabilities is not None:
+            pulumi.set(__self__, "remove_linux_capabilities", remove_linux_capabilities)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="removeLinuxCapabilities")
+    def remove_linux_capabilities(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "remove_linux_capabilities")
 
 
 @pulumi.output_type
@@ -2724,6 +7398,8 @@ class HostRuntimePolicyMalwareScanOptions(dict):
             suggest = "exclude_directories"
         elif key == "excludeProcesses":
             suggest = "exclude_processes"
+        elif key == "includeDirectories":
+            suggest = "include_directories"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyMalwareScanOptions. Access the value via the '{suggest}' property getter instead.")
@@ -2740,12 +7416,14 @@ class HostRuntimePolicyMalwareScanOptions(dict):
                  action: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  exclude_directories: Optional[Sequence[str]] = None,
-                 exclude_processes: Optional[Sequence[str]] = None):
+                 exclude_processes: Optional[Sequence[str]] = None,
+                 include_directories: Optional[Sequence[str]] = None):
         """
         :param str action: Set Action, Defaults to 'Alert' when empty
         :param bool enabled: Defines if enabled or not
         :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
         :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] include_directories: List of registry paths to be excluded from being protected.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -2755,6 +7433,8 @@ class HostRuntimePolicyMalwareScanOptions(dict):
             pulumi.set(__self__, "exclude_directories", exclude_directories)
         if exclude_processes is not None:
             pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if include_directories is not None:
+            pulumi.set(__self__, "include_directories", include_directories)
 
     @property
     @pulumi.getter
@@ -2787,6 +7467,582 @@ class HostRuntimePolicyMalwareScanOptions(dict):
         List of registry processes to be excluded from being protected.
         """
         return pulumi.get(self, "exclude_processes")
+
+    @property
+    @pulumi.getter(name="includeDirectories")
+    def include_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "include_directories")
+
+
+@pulumi.output_type
+class HostRuntimePolicyPackageBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockPackagesProcesses":
+            suggest = "block_packages_processes"
+        elif key == "blockPackagesUsers":
+            suggest = "block_packages_users"
+        elif key == "exceptionalBlockPackagesFiles":
+            suggest = "exceptional_block_packages_files"
+        elif key == "exceptionalBlockPackagesProcesses":
+            suggest = "exceptional_block_packages_processes"
+        elif key == "exceptionalBlockPackagesUsers":
+            suggest = "exceptional_block_packages_users"
+        elif key == "packagesBlackLists":
+            suggest = "packages_black_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyPackageBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyPackageBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyPackageBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_packages_processes: Optional[Sequence[str]] = None,
+                 block_packages_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_packages_files: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_users: Optional[Sequence[str]] = None,
+                 packages_black_lists: Optional[Sequence[str]] = None):
+        if block_packages_processes is not None:
+            pulumi.set(__self__, "block_packages_processes", block_packages_processes)
+        if block_packages_users is not None:
+            pulumi.set(__self__, "block_packages_users", block_packages_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_packages_files is not None:
+            pulumi.set(__self__, "exceptional_block_packages_files", exceptional_block_packages_files)
+        if exceptional_block_packages_processes is not None:
+            pulumi.set(__self__, "exceptional_block_packages_processes", exceptional_block_packages_processes)
+        if exceptional_block_packages_users is not None:
+            pulumi.set(__self__, "exceptional_block_packages_users", exceptional_block_packages_users)
+        if packages_black_lists is not None:
+            pulumi.set(__self__, "packages_black_lists", packages_black_lists)
+
+    @property
+    @pulumi.getter(name="blockPackagesProcesses")
+    def block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_processes")
+
+    @property
+    @pulumi.getter(name="blockPackagesUsers")
+    def block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesFiles")
+    def exceptional_block_packages_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesProcesses")
+    def exceptional_block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesUsers")
+    def exceptional_block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_users")
+
+    @property
+    @pulumi.getter(name="packagesBlackLists")
+    def packages_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "packages_black_lists")
+
+
+@pulumi.output_type
+class HostRuntimePolicyPortBlock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockInboundPorts":
+            suggest = "block_inbound_ports"
+        elif key == "blockOutboundPorts":
+            suggest = "block_outbound_ports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyPortBlock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyPortBlock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyPortBlock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_inbound_ports: Optional[Sequence[str]] = None,
+                 block_outbound_ports: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        if block_inbound_ports is not None:
+            pulumi.set(__self__, "block_inbound_ports", block_inbound_ports)
+        if block_outbound_ports is not None:
+            pulumi.set(__self__, "block_outbound_ports", block_outbound_ports)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="blockInboundPorts")
+    def block_inbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_inbound_ports")
+
+    @property
+    @pulumi.getter(name="blockOutboundPorts")
+    def block_outbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_outbound_ports")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class HostRuntimePolicyReadonlyFiles(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalReadonlyFiles":
+            suggest = "exceptional_readonly_files"
+        elif key == "exceptionalReadonlyFilesProcesses":
+            suggest = "exceptional_readonly_files_processes"
+        elif key == "exceptionalReadonlyFilesUsers":
+            suggest = "exceptional_readonly_files_users"
+        elif key == "readonlyFiles":
+            suggest = "readonly_files"
+        elif key == "readonlyFilesProcesses":
+            suggest = "readonly_files_processes"
+        elif key == "readonlyFilesUsers":
+            suggest = "readonly_files_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyReadonlyFiles. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyReadonlyFiles.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyReadonlyFiles.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_files: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_users: Optional[Sequence[str]] = None,
+                 readonly_files: Optional[Sequence[str]] = None,
+                 readonly_files_processes: Optional[Sequence[str]] = None,
+                 readonly_files_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_files is not None:
+            pulumi.set(__self__, "exceptional_readonly_files", exceptional_readonly_files)
+        if exceptional_readonly_files_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_processes", exceptional_readonly_files_processes)
+        if exceptional_readonly_files_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_users", exceptional_readonly_files_users)
+        if readonly_files is not None:
+            pulumi.set(__self__, "readonly_files", readonly_files)
+        if readonly_files_processes is not None:
+            pulumi.set(__self__, "readonly_files_processes", readonly_files_processes)
+        if readonly_files_users is not None:
+            pulumi.set(__self__, "readonly_files_users", readonly_files_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFiles")
+    def exceptional_readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesProcesses")
+    def exceptional_readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesUsers")
+    def exceptional_readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_users")
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files")
+
+    @property
+    @pulumi.getter(name="readonlyFilesProcesses")
+    def readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="readonlyFilesUsers")
+    def readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_users")
+
+
+@pulumi.output_type
+class HostRuntimePolicyReadonlyRegistry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalReadonlyRegistryPaths":
+            suggest = "exceptional_readonly_registry_paths"
+        elif key == "exceptionalReadonlyRegistryProcesses":
+            suggest = "exceptional_readonly_registry_processes"
+        elif key == "exceptionalReadonlyRegistryUsers":
+            suggest = "exceptional_readonly_registry_users"
+        elif key == "readonlyRegistryPaths":
+            suggest = "readonly_registry_paths"
+        elif key == "readonlyRegistryProcesses":
+            suggest = "readonly_registry_processes"
+        elif key == "readonlyRegistryUsers":
+            suggest = "readonly_registry_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyReadonlyRegistry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyReadonlyRegistry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyReadonlyRegistry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_registry_paths: Optional[Sequence[str]] = None,
+                 exceptional_readonly_registry_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_registry_users: Optional[Sequence[str]] = None,
+                 readonly_registry_paths: Optional[Sequence[str]] = None,
+                 readonly_registry_processes: Optional[Sequence[str]] = None,
+                 readonly_registry_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_registry_paths is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_paths", exceptional_readonly_registry_paths)
+        if exceptional_readonly_registry_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_processes", exceptional_readonly_registry_processes)
+        if exceptional_readonly_registry_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_registry_users", exceptional_readonly_registry_users)
+        if readonly_registry_paths is not None:
+            pulumi.set(__self__, "readonly_registry_paths", readonly_registry_paths)
+        if readonly_registry_processes is not None:
+            pulumi.set(__self__, "readonly_registry_processes", readonly_registry_processes)
+        if readonly_registry_users is not None:
+            pulumi.set(__self__, "readonly_registry_users", readonly_registry_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryPaths")
+    def exceptional_readonly_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_paths")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryProcesses")
+    def exceptional_readonly_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyRegistryUsers")
+    def exceptional_readonly_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_registry_users")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryPaths")
+    def readonly_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_paths")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryProcesses")
+    def readonly_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_processes")
+
+    @property
+    @pulumi.getter(name="readonlyRegistryUsers")
+    def readonly_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_registry_users")
+
+
+@pulumi.output_type
+class HostRuntimePolicyRegistryAccessMonitoring(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exceptionalMonitoredRegistryPaths":
+            suggest = "exceptional_monitored_registry_paths"
+        elif key == "exceptionalMonitoredRegistryProcesses":
+            suggest = "exceptional_monitored_registry_processes"
+        elif key == "exceptionalMonitoredRegistryUsers":
+            suggest = "exceptional_monitored_registry_users"
+        elif key == "monitoredRegistryAttributes":
+            suggest = "monitored_registry_attributes"
+        elif key == "monitoredRegistryCreate":
+            suggest = "monitored_registry_create"
+        elif key == "monitoredRegistryDelete":
+            suggest = "monitored_registry_delete"
+        elif key == "monitoredRegistryModify":
+            suggest = "monitored_registry_modify"
+        elif key == "monitoredRegistryPaths":
+            suggest = "monitored_registry_paths"
+        elif key == "monitoredRegistryProcesses":
+            suggest = "monitored_registry_processes"
+        elif key == "monitoredRegistryRead":
+            suggest = "monitored_registry_read"
+        elif key == "monitoredRegistryUsers":
+            suggest = "monitored_registry_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyRegistryAccessMonitoring. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyRegistryAccessMonitoring.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyRegistryAccessMonitoring.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_registry_paths: Optional[Sequence[str]] = None,
+                 exceptional_monitored_registry_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_registry_users: Optional[Sequence[str]] = None,
+                 monitored_registry_attributes: Optional[bool] = None,
+                 monitored_registry_create: Optional[bool] = None,
+                 monitored_registry_delete: Optional[bool] = None,
+                 monitored_registry_modify: Optional[bool] = None,
+                 monitored_registry_paths: Optional[Sequence[str]] = None,
+                 monitored_registry_processes: Optional[Sequence[str]] = None,
+                 monitored_registry_read: Optional[bool] = None,
+                 monitored_registry_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_registry_paths is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_paths", exceptional_monitored_registry_paths)
+        if exceptional_monitored_registry_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_processes", exceptional_monitored_registry_processes)
+        if exceptional_monitored_registry_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_registry_users", exceptional_monitored_registry_users)
+        if monitored_registry_attributes is not None:
+            pulumi.set(__self__, "monitored_registry_attributes", monitored_registry_attributes)
+        if monitored_registry_create is not None:
+            pulumi.set(__self__, "monitored_registry_create", monitored_registry_create)
+        if monitored_registry_delete is not None:
+            pulumi.set(__self__, "monitored_registry_delete", monitored_registry_delete)
+        if monitored_registry_modify is not None:
+            pulumi.set(__self__, "monitored_registry_modify", monitored_registry_modify)
+        if monitored_registry_paths is not None:
+            pulumi.set(__self__, "monitored_registry_paths", monitored_registry_paths)
+        if monitored_registry_processes is not None:
+            pulumi.set(__self__, "monitored_registry_processes", monitored_registry_processes)
+        if monitored_registry_read is not None:
+            pulumi.set(__self__, "monitored_registry_read", monitored_registry_read)
+        if monitored_registry_users is not None:
+            pulumi.set(__self__, "monitored_registry_users", monitored_registry_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryPaths")
+    def exceptional_monitored_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_paths")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryProcesses")
+    def exceptional_monitored_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalMonitoredRegistryUsers")
+    def exceptional_monitored_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_monitored_registry_users")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryAttributes")
+    def monitored_registry_attributes(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_attributes")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryCreate")
+    def monitored_registry_create(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_create")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryDelete")
+    def monitored_registry_delete(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_delete")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryModify")
+    def monitored_registry_modify(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_modify")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryPaths")
+    def monitored_registry_paths(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_paths")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryProcesses")
+    def monitored_registry_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_processes")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryRead")
+    def monitored_registry_read(self) -> Optional[bool]:
+        return pulumi.get(self, "monitored_registry_read")
+
+    @property
+    @pulumi.getter(name="monitoredRegistryUsers")
+    def monitored_registry_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "monitored_registry_users")
+
+
+@pulumi.output_type
+class HostRuntimePolicyRestrictedVolume(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 volumes: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether restricted volumes are enabled.
+        :param Sequence[str] volumes: List of restricted volumes.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether restricted volumes are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence[str]]:
+        """
+        List of restricted volumes.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class HostRuntimePolicyReverseShell(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "blockReverseShell":
+            suggest = "block_reverse_shell"
+        elif key == "reverseShellIpWhiteLists":
+            suggest = "reverse_shell_ip_white_lists"
+        elif key == "reverseShellProcWhiteLists":
+            suggest = "reverse_shell_proc_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyReverseShell. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyReverseShell.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyReverseShell.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 block_reverse_shell: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None,
+                 reverse_shell_proc_white_lists: Optional[Sequence[str]] = None):
+        if block_reverse_shell is not None:
+            pulumi.set(__self__, "block_reverse_shell", block_reverse_shell)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+        if reverse_shell_proc_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_proc_white_lists", reverse_shell_proc_white_lists)
+
+    @property
+    @pulumi.getter(name="blockReverseShell")
+    def block_reverse_shell(self) -> Optional[bool]:
+        return pulumi.get(self, "block_reverse_shell")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+    @property
+    @pulumi.getter(name="reverseShellProcWhiteLists")
+    def reverse_shell_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_proc_white_lists")
+
+
+@pulumi.output_type
+class HostRuntimePolicyScope(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 variables: Sequence['outputs.HostRuntimePolicyScopeVariable']):
+        """
+        :param str expression: Scope expression.
+        :param Sequence['HostRuntimePolicyScopeVariableArgs'] variables: List of variables in the scope.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Scope expression.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Sequence['outputs.HostRuntimePolicyScopeVariable']:
+        """
+        List of variables in the scope.
+        """
+        return pulumi.get(self, "variables")
 
 
 @pulumi.output_type
@@ -2831,285 +8087,177 @@ class HostRuntimePolicyScopeVariable(dict):
 
 
 @pulumi.output_type
-class HostRuntimePolicyWindowsRegistryMonitoring(dict):
+class HostRuntimePolicySystemIntegrityProtection(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludedPaths":
-            suggest = "excluded_paths"
-        elif key == "excludedProcesses":
-            suggest = "excluded_processes"
-        elif key == "excludedUsers":
-            suggest = "excluded_users"
-        elif key == "monitorAttributes":
-            suggest = "monitor_attributes"
-        elif key == "monitorCreate":
-            suggest = "monitor_create"
-        elif key == "monitorDelete":
-            suggest = "monitor_delete"
-        elif key == "monitorModify":
-            suggest = "monitor_modify"
-        elif key == "monitorRead":
-            suggest = "monitor_read"
-        elif key == "monitoredPaths":
-            suggest = "monitored_paths"
-        elif key == "monitoredProcesses":
-            suggest = "monitored_processes"
-        elif key == "monitoredUsers":
-            suggest = "monitored_users"
+        if key == "auditSystemtimeChange":
+            suggest = "audit_systemtime_change"
+        elif key == "monitorAuditLogIntegrity":
+            suggest = "monitor_audit_log_integrity"
+        elif key == "windowsServicesMonitoring":
+            suggest = "windows_services_monitoring"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyWindowsRegistryMonitoring. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicySystemIntegrityProtection. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        HostRuntimePolicyWindowsRegistryMonitoring.__key_warning(key)
+        HostRuntimePolicySystemIntegrityProtection.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        HostRuntimePolicyWindowsRegistryMonitoring.__key_warning(key)
+        HostRuntimePolicySystemIntegrityProtection.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 excluded_paths: Optional[Sequence[str]] = None,
-                 excluded_processes: Optional[Sequence[str]] = None,
-                 excluded_users: Optional[Sequence[str]] = None,
-                 monitor_attributes: Optional[bool] = None,
-                 monitor_create: Optional[bool] = None,
-                 monitor_delete: Optional[bool] = None,
-                 monitor_modify: Optional[bool] = None,
-                 monitor_read: Optional[bool] = None,
-                 monitored_paths: Optional[Sequence[str]] = None,
-                 monitored_processes: Optional[Sequence[str]] = None,
-                 monitored_users: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] excluded_paths: List of paths to be excluded from being monitored.
-        :param Sequence[str] excluded_processes: List of registry processes to be excluded from being monitored.
-        :param Sequence[str] excluded_users: List of registry users to be excluded from being monitored.
-        :param bool monitor_attributes: If true, add attributes operations will be monitored.
-        :param bool monitor_create: If true, create operations will be monitored.
-        :param bool monitor_delete: If true, deletion operations will be monitored.
-        :param bool monitor_modify: If true, modification operations will be monitored.
-        :param bool monitor_read: If true, read operations will be monitored.
-        :param Sequence[str] monitored_paths: List of paths to be monitored.
-        :param Sequence[str] monitored_processes: List of registry processes to be monitored.
-        :param Sequence[str] monitored_users: List of registry users to be monitored.
-        """
-        if excluded_paths is not None:
-            pulumi.set(__self__, "excluded_paths", excluded_paths)
-        if excluded_processes is not None:
-            pulumi.set(__self__, "excluded_processes", excluded_processes)
-        if excluded_users is not None:
-            pulumi.set(__self__, "excluded_users", excluded_users)
-        if monitor_attributes is not None:
-            pulumi.set(__self__, "monitor_attributes", monitor_attributes)
-        if monitor_create is not None:
-            pulumi.set(__self__, "monitor_create", monitor_create)
-        if monitor_delete is not None:
-            pulumi.set(__self__, "monitor_delete", monitor_delete)
-        if monitor_modify is not None:
-            pulumi.set(__self__, "monitor_modify", monitor_modify)
-        if monitor_read is not None:
-            pulumi.set(__self__, "monitor_read", monitor_read)
-        if monitored_paths is not None:
-            pulumi.set(__self__, "monitored_paths", monitored_paths)
-        if monitored_processes is not None:
-            pulumi.set(__self__, "monitored_processes", monitored_processes)
-        if monitored_users is not None:
-            pulumi.set(__self__, "monitored_users", monitored_users)
+                 audit_systemtime_change: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 monitor_audit_log_integrity: Optional[bool] = None,
+                 windows_services_monitoring: Optional[bool] = None):
+        if audit_systemtime_change is not None:
+            pulumi.set(__self__, "audit_systemtime_change", audit_systemtime_change)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if monitor_audit_log_integrity is not None:
+            pulumi.set(__self__, "monitor_audit_log_integrity", monitor_audit_log_integrity)
+        if windows_services_monitoring is not None:
+            pulumi.set(__self__, "windows_services_monitoring", windows_services_monitoring)
 
     @property
-    @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Optional[Sequence[str]]:
-        """
-        List of paths to be excluded from being monitored.
-        """
-        return pulumi.get(self, "excluded_paths")
+    @pulumi.getter(name="auditSystemtimeChange")
+    def audit_systemtime_change(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_systemtime_change")
 
     @property
-    @pulumi.getter(name="excludedProcesses")
-    def excluded_processes(self) -> Optional[Sequence[str]]:
-        """
-        List of registry processes to be excluded from being monitored.
-        """
-        return pulumi.get(self, "excluded_processes")
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="excludedUsers")
-    def excluded_users(self) -> Optional[Sequence[str]]:
-        """
-        List of registry users to be excluded from being monitored.
-        """
-        return pulumi.get(self, "excluded_users")
+    @pulumi.getter(name="monitorAuditLogIntegrity")
+    def monitor_audit_log_integrity(self) -> Optional[bool]:
+        return pulumi.get(self, "monitor_audit_log_integrity")
 
     @property
-    @pulumi.getter(name="monitorAttributes")
-    def monitor_attributes(self) -> Optional[bool]:
-        """
-        If true, add attributes operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_attributes")
-
-    @property
-    @pulumi.getter(name="monitorCreate")
-    def monitor_create(self) -> Optional[bool]:
-        """
-        If true, create operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_create")
-
-    @property
-    @pulumi.getter(name="monitorDelete")
-    def monitor_delete(self) -> Optional[bool]:
-        """
-        If true, deletion operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_delete")
-
-    @property
-    @pulumi.getter(name="monitorModify")
-    def monitor_modify(self) -> Optional[bool]:
-        """
-        If true, modification operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_modify")
-
-    @property
-    @pulumi.getter(name="monitorRead")
-    def monitor_read(self) -> Optional[bool]:
-        """
-        If true, read operations will be monitored.
-        """
-        return pulumi.get(self, "monitor_read")
-
-    @property
-    @pulumi.getter(name="monitoredPaths")
-    def monitored_paths(self) -> Optional[Sequence[str]]:
-        """
-        List of paths to be monitored.
-        """
-        return pulumi.get(self, "monitored_paths")
-
-    @property
-    @pulumi.getter(name="monitoredProcesses")
-    def monitored_processes(self) -> Optional[Sequence[str]]:
-        """
-        List of registry processes to be monitored.
-        """
-        return pulumi.get(self, "monitored_processes")
-
-    @property
-    @pulumi.getter(name="monitoredUsers")
-    def monitored_users(self) -> Optional[Sequence[str]]:
-        """
-        List of registry users to be monitored.
-        """
-        return pulumi.get(self, "monitored_users")
+    @pulumi.getter(name="windowsServicesMonitoring")
+    def windows_services_monitoring(self) -> Optional[bool]:
+        return pulumi.get(self, "windows_services_monitoring")
 
 
 @pulumi.output_type
-class HostRuntimePolicyWindowsRegistryProtection(dict):
+class HostRuntimePolicyTripwire(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludedPaths":
-            suggest = "excluded_paths"
-        elif key == "excludedProcesses":
-            suggest = "excluded_processes"
-        elif key == "excludedUsers":
-            suggest = "excluded_users"
-        elif key == "protectedPaths":
-            suggest = "protected_paths"
-        elif key == "protectedProcesses":
-            suggest = "protected_processes"
-        elif key == "protectedUsers":
-            suggest = "protected_users"
+        if key == "applyOns":
+            suggest = "apply_ons"
+        elif key == "serverlessApp":
+            suggest = "serverless_app"
+        elif key == "userId":
+            suggest = "user_id"
+        elif key == "userPassword":
+            suggest = "user_password"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyWindowsRegistryProtection. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyTripwire. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        HostRuntimePolicyWindowsRegistryProtection.__key_warning(key)
+        HostRuntimePolicyTripwire.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        HostRuntimePolicyWindowsRegistryProtection.__key_warning(key)
+        HostRuntimePolicyTripwire.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 excluded_paths: Optional[Sequence[str]] = None,
-                 excluded_processes: Optional[Sequence[str]] = None,
-                 excluded_users: Optional[Sequence[str]] = None,
-                 protected_paths: Optional[Sequence[str]] = None,
-                 protected_processes: Optional[Sequence[str]] = None,
-                 protected_users: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] excluded_paths: List of registry paths to be excluded from being protected.
-        :param Sequence[str] excluded_processes: List of registry processes to be excluded from being protected.
-        :param Sequence[str] excluded_users: List of registry paths to be users from being protected.
-        :param Sequence[str] protected_paths: List of registry paths to be protected.
-        :param Sequence[str] protected_processes: List of registry processes to be protected.
-        :param Sequence[str] protected_users: List of registry users to be protected.
-        """
-        if excluded_paths is not None:
-            pulumi.set(__self__, "excluded_paths", excluded_paths)
-        if excluded_processes is not None:
-            pulumi.set(__self__, "excluded_processes", excluded_processes)
-        if excluded_users is not None:
-            pulumi.set(__self__, "excluded_users", excluded_users)
-        if protected_paths is not None:
-            pulumi.set(__self__, "protected_paths", protected_paths)
-        if protected_processes is not None:
-            pulumi.set(__self__, "protected_processes", protected_processes)
-        if protected_users is not None:
-            pulumi.set(__self__, "protected_users", protected_users)
+                 apply_ons: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 serverless_app: Optional[str] = None,
+                 user_id: Optional[str] = None,
+                 user_password: Optional[str] = None):
+        if apply_ons is not None:
+            pulumi.set(__self__, "apply_ons", apply_ons)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if serverless_app is not None:
+            pulumi.set(__self__, "serverless_app", serverless_app)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if user_password is not None:
+            pulumi.set(__self__, "user_password", user_password)
 
     @property
-    @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Optional[Sequence[str]]:
-        """
-        List of registry paths to be excluded from being protected.
-        """
-        return pulumi.get(self, "excluded_paths")
+    @pulumi.getter(name="applyOns")
+    def apply_ons(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "apply_ons")
 
     @property
-    @pulumi.getter(name="excludedProcesses")
-    def excluded_processes(self) -> Optional[Sequence[str]]:
-        """
-        List of registry processes to be excluded from being protected.
-        """
-        return pulumi.get(self, "excluded_processes")
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="excludedUsers")
-    def excluded_users(self) -> Optional[Sequence[str]]:
-        """
-        List of registry paths to be users from being protected.
-        """
-        return pulumi.get(self, "excluded_users")
+    @pulumi.getter(name="serverlessApp")
+    def serverless_app(self) -> Optional[str]:
+        return pulumi.get(self, "serverless_app")
 
     @property
-    @pulumi.getter(name="protectedPaths")
-    def protected_paths(self) -> Optional[Sequence[str]]:
-        """
-        List of registry paths to be protected.
-        """
-        return pulumi.get(self, "protected_paths")
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[str]:
+        return pulumi.get(self, "user_id")
 
     @property
-    @pulumi.getter(name="protectedProcesses")
-    def protected_processes(self) -> Optional[Sequence[str]]:
-        """
-        List of registry processes to be protected.
-        """
-        return pulumi.get(self, "protected_processes")
+    @pulumi.getter(name="userPassword")
+    def user_password(self) -> Optional[str]:
+        return pulumi.get(self, "user_password")
+
+
+@pulumi.output_type
+class HostRuntimePolicyWhitelistedOsUsers(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupWhiteLists":
+            suggest = "group_white_lists"
+        elif key == "userWhiteLists":
+            suggest = "user_white_lists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuntimePolicyWhitelistedOsUsers. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuntimePolicyWhitelistedOsUsers.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuntimePolicyWhitelistedOsUsers.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 group_white_lists: Optional[Sequence[str]] = None,
+                 user_white_lists: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if group_white_lists is not None:
+            pulumi.set(__self__, "group_white_lists", group_white_lists)
+        if user_white_lists is not None:
+            pulumi.set(__self__, "user_white_lists", user_white_lists)
 
     @property
-    @pulumi.getter(name="protectedUsers")
-    def protected_users(self) -> Optional[Sequence[str]]:
-        """
-        List of registry users to be protected.
-        """
-        return pulumi.get(self, "protected_users")
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="groupWhiteLists")
+    def group_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "group_white_lists")
+
+    @property
+    @pulumi.getter(name="userWhiteLists")
+    def user_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "user_white_lists")
 
 
 @pulumi.output_type
@@ -3145,10 +8293,6 @@ class ImageAssuranceChecksPerformed(dict):
                  dta_skipped_reason: Optional[str] = None,
                  failed: Optional[bool] = None,
                  policy_name: Optional[str] = None):
-        """
-        :param bool dta_skipped: If DTA was skipped.
-        :param str dta_skipped_reason: The reason why DTA was skipped.
-        """
         if assurance_type is not None:
             pulumi.set(__self__, "assurance_type", assurance_type)
         if blocking is not None:
@@ -3182,17 +8326,11 @@ class ImageAssuranceChecksPerformed(dict):
     @property
     @pulumi.getter(name="dtaSkipped")
     def dta_skipped(self) -> Optional[bool]:
-        """
-        If DTA was skipped.
-        """
         return pulumi.get(self, "dta_skipped")
 
     @property
     @pulumi.getter(name="dtaSkippedReason")
     def dta_skipped_reason(self) -> Optional[str]:
-        """
-        The reason why DTA was skipped.
-        """
         return pulumi.get(self, "dta_skipped_reason")
 
     @property
@@ -3396,6 +8534,94 @@ class ImageAssurancePolicyForbiddenLabel(dict):
 
 
 @pulumi.output_type
+class ImageAssurancePolicyKubernetesControls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avdId":
+            suggest = "avd_id"
+        elif key == "scriptId":
+            suggest = "script_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageAssurancePolicyKubernetesControls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageAssurancePolicyKubernetesControls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageAssurancePolicyKubernetesControls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 avd_id: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 ootb: Optional[bool] = None,
+                 script_id: Optional[int] = None,
+                 severity: Optional[str] = None):
+        if avd_id is not None:
+            pulumi.set(__self__, "avd_id", avd_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ootb is not None:
+            pulumi.set(__self__, "ootb", ootb)
+        if script_id is not None:
+            pulumi.set(__self__, "script_id", script_id)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="avdId")
+    def avd_id(self) -> Optional[str]:
+        return pulumi.get(self, "avd_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ootb(self) -> Optional[bool]:
+        return pulumi.get(self, "ootb")
+
+    @property
+    @pulumi.getter(name="scriptId")
+    def script_id(self) -> Optional[int]:
+        return pulumi.get(self, "script_id")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
 class ImageAssurancePolicyPackagesBlackList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3584,6 +8810,62 @@ class ImageAssurancePolicyPackagesWhiteList(dict):
 
 
 @pulumi.output_type
+class ImageAssurancePolicyPolicySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuditChecked":
+            suggest = "is_audit_checked"
+        elif key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageAssurancePolicyPolicySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageAssurancePolicyPolicySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageAssurancePolicyPolicySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce: Optional[bool] = None,
+                 is_audit_checked: Optional[bool] = None,
+                 warn: Optional[bool] = None,
+                 warning_message: Optional[str] = None):
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+        if warning_message is not None:
+            pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[bool]:
+        return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[bool]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[bool]:
+        return pulumi.get(self, "warn")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> Optional[str]:
+        return pulumi.get(self, "warning_message")
+
+
+@pulumi.output_type
 class ImageAssurancePolicyRequiredLabel(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -3700,11 +8982,6 @@ class ImageHistory(dict):
                  created_by: Optional[str] = None,
                  id: Optional[str] = None,
                  size: Optional[int] = None):
-        """
-        :param str comment: The image creation comment.
-        :param str created: The date and time when the image was registered.
-        :param str id: The ID of this resource.
-        """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if created is not None:
@@ -3719,17 +8996,11 @@ class ImageHistory(dict):
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
-        """
-        The image creation comment.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def created(self) -> Optional[str]:
-        """
-        The date and time when the image was registered.
-        """
         return pulumi.get(self, "created")
 
     @property
@@ -3740,9 +9011,6 @@ class ImageHistory(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -3949,15 +9217,6 @@ class ImageVulnerability(dict):
                  vendor_severity: Optional[str] = None,
                  vendor_statement: Optional[str] = None,
                  vendor_url: Optional[str] = None):
-        """
-        :param str digest: The content digest of the image.
-        :param str name: The name of the image.
-        :param str os: The operating system detected in the image
-        :param str os_version: The version of the OS detected in the image.
-        :param str permission: Permission of the image.
-        :param str registry: The name of the registry where the image is stored.
-        :param str repository: The name of the image's repository.
-        """
         if ack_author is not None:
             pulumi.set(__self__, "ack_author", ack_author)
         if ack_comment is not None:
@@ -4184,9 +9443,6 @@ class ImageVulnerability(dict):
     @property
     @pulumi.getter
     def digest(self) -> Optional[str]:
-        """
-        The content digest of the image.
-        """
         return pulumi.get(self, "digest")
 
     @property
@@ -4227,9 +9483,6 @@ class ImageVulnerability(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the image.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -4270,25 +9523,16 @@ class ImageVulnerability(dict):
     @property
     @pulumi.getter
     def os(self) -> Optional[str]:
-        """
-        The operating system detected in the image
-        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter(name="osVersion")
     def os_version(self) -> Optional[str]:
-        """
-        The version of the OS detected in the image.
-        """
         return pulumi.get(self, "os_version")
 
     @property
     @pulumi.getter
     def permission(self) -> Optional[str]:
-        """
-        Permission of the image.
-        """
         return pulumi.get(self, "permission")
 
     @property
@@ -4299,17 +9543,11 @@ class ImageVulnerability(dict):
     @property
     @pulumi.getter
     def registry(self) -> Optional[str]:
-        """
-        The name of the registry where the image is stored.
-        """
         return pulumi.get(self, "registry")
 
     @property
     @pulumi.getter
     def repository(self) -> Optional[str]:
-        """
-        The name of the image's repository.
-        """
         return pulumi.get(self, "repository")
 
     @property
@@ -4490,9 +9728,6 @@ class IntegrationRegistryWebhook(dict):
                  enabled: Optional[bool] = None,
                  un_quarantine: Optional[bool] = None,
                  url: Optional[str] = None):
-        """
-        :param str url: The URL, address or region of the registry
-        """
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
         if enabled is not None:
@@ -4520,9 +9755,6 @@ class IntegrationRegistryWebhook(dict):
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
-        """
-        The URL, address or region of the registry
-        """
         return pulumi.get(self, "url")
 
 
@@ -4716,6 +9948,128 @@ class KubernetesAssurancePolicyForbiddenLabel(dict):
 
 
 @pulumi.output_type
+class KubernetesAssurancePolicyKubernetesControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avdId":
+            suggest = "avd_id"
+        elif key == "scriptId":
+            suggest = "script_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesAssurancePolicyKubernetesControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesAssurancePolicyKubernetesControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesAssurancePolicyKubernetesControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 avd_id: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 ootb: Optional[bool] = None,
+                 script_id: Optional[int] = None,
+                 severity: Optional[str] = None):
+        """
+        :param str avd_id: AVD ID.
+        :param str description: Description of the control.
+        :param bool enabled: Is the control enabled?
+        :param str kind: Kind of the control.
+        :param str name: Name of the control.
+        :param bool ootb: Out-of-the-box status of the control.
+        :param int script_id: Script ID.
+        :param str severity: Severity of the control.
+        """
+        if avd_id is not None:
+            pulumi.set(__self__, "avd_id", avd_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ootb is not None:
+            pulumi.set(__self__, "ootb", ootb)
+        if script_id is not None:
+            pulumi.set(__self__, "script_id", script_id)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="avdId")
+    def avd_id(self) -> Optional[str]:
+        """
+        AVD ID.
+        """
+        return pulumi.get(self, "avd_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the control.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Is the control enabled?
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        """
+        Kind of the control.
+        """
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the control.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ootb(self) -> Optional[bool]:
+        """
+        Out-of-the-box status of the control.
+        """
+        return pulumi.get(self, "ootb")
+
+    @property
+    @pulumi.getter(name="scriptId")
+    def script_id(self) -> Optional[int]:
+        """
+        Script ID.
+        """
+        return pulumi.get(self, "script_id")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        """
+        Severity of the control.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
 class KubernetesAssurancePolicyPackagesBlackList(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -4904,6 +10258,62 @@ class KubernetesAssurancePolicyPackagesWhiteList(dict):
 
 
 @pulumi.output_type
+class KubernetesAssurancePolicyPolicySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuditChecked":
+            suggest = "is_audit_checked"
+        elif key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesAssurancePolicyPolicySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesAssurancePolicyPolicySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesAssurancePolicyPolicySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce: Optional[bool] = None,
+                 is_audit_checked: Optional[bool] = None,
+                 warn: Optional[bool] = None,
+                 warning_message: Optional[str] = None):
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+        if warning_message is not None:
+            pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[bool]:
+        return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[bool]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[bool]:
+        return pulumi.get(self, "warn")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> Optional[str]:
+        return pulumi.get(self, "warning_message")
+
+
+@pulumi.output_type
 class KubernetesAssurancePolicyRequiredLabel(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
@@ -5017,7 +10427,7 @@ class RoleMappingLdap(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
         """
-        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
@@ -5025,7 +10435,7 @@ class RoleMappingLdap(dict):
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
         """
-        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         return pulumi.get(self, "role_mapping")
 
@@ -5052,7 +10462,7 @@ class RoleMappingOauth2(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
         """
-        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
@@ -5060,7 +10470,7 @@ class RoleMappingOauth2(dict):
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
         """
-        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         return pulumi.get(self, "role_mapping")
 
@@ -5087,7 +10497,7 @@ class RoleMappingOpenid(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
         """
-        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
@@ -5095,7 +10505,7 @@ class RoleMappingOpenid(dict):
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
         """
-        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         return pulumi.get(self, "role_mapping")
 
@@ -5122,7 +10532,7 @@ class RoleMappingSaml(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
         """
-        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
@@ -5130,7 +10540,7 @@ class RoleMappingSaml(dict):
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
         """
-        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        Role Mapping is used to define the IdP role that the user will assume in Aqua. Use '|' as a separator for multiple roles.
         """
         return pulumi.get(self, "role_mapping")
 
@@ -5242,9 +10652,6 @@ class UserSaasLogin(dict):
                  id: Optional[int] = None,
                  ip_address: Optional[str] = None,
                  user_id: Optional[int] = None):
-        """
-        :param int id: The ID of this resource.
-        """
         if created is not None:
             pulumi.set(__self__, "created", created)
         if id is not None:
@@ -5262,9 +10669,6 @@ class UserSaasLogin(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[int]:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -5276,6 +10680,619 @@ class UserSaasLogin(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[int]:
         return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyAutoScanTime(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iterationType":
+            suggest = "iteration_type"
+        elif key == "weekDays":
+            suggest = "week_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAssurancePolicyAutoScanTime. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAssurancePolicyAutoScanTime.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAssurancePolicyAutoScanTime.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 iteration: Optional[int] = None,
+                 iteration_type: Optional[str] = None,
+                 time: Optional[str] = None,
+                 week_days: Optional[Sequence[str]] = None):
+        if iteration is not None:
+            pulumi.set(__self__, "iteration", iteration)
+        if iteration_type is not None:
+            pulumi.set(__self__, "iteration_type", iteration_type)
+        if time is not None:
+            pulumi.set(__self__, "time", time)
+        if week_days is not None:
+            pulumi.set(__self__, "week_days", week_days)
+
+    @property
+    @pulumi.getter
+    def iteration(self) -> Optional[int]:
+        return pulumi.get(self, "iteration")
+
+    @property
+    @pulumi.getter(name="iterationType")
+    def iteration_type(self) -> Optional[str]:
+        return pulumi.get(self, "iteration_type")
+
+    @property
+    @pulumi.getter
+    def time(self) -> Optional[str]:
+        return pulumi.get(self, "time")
+
+    @property
+    @pulumi.getter(name="weekDays")
+    def week_days(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "week_days")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyCustomCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastModified":
+            suggest = "last_modified"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "scriptId":
+            suggest = "script_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAssurancePolicyCustomCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAssurancePolicyCustomCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAssurancePolicyCustomCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author: Optional[str] = None,
+                 description: Optional[str] = None,
+                 engine: Optional[str] = None,
+                 last_modified: Optional[int] = None,
+                 name: Optional[str] = None,
+                 path: Optional[str] = None,
+                 read_only: Optional[bool] = None,
+                 script_id: Optional[str] = None,
+                 severity: Optional[str] = None,
+                 snippet: Optional[str] = None):
+        """
+        :param str author: Name of user account that created the policy.
+        """
+        if author is not None:
+            pulumi.set(__self__, "author", author)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if engine is not None:
+            pulumi.set(__self__, "engine", engine)
+        if last_modified is not None:
+            pulumi.set(__self__, "last_modified", last_modified)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if script_id is not None:
+            pulumi.set(__self__, "script_id", script_id)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if snippet is not None:
+            pulumi.set(__self__, "snippet", snippet)
+
+    @property
+    @pulumi.getter
+    def author(self) -> Optional[str]:
+        """
+        Name of user account that created the policy.
+        """
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def engine(self) -> Optional[str]:
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter(name="lastModified")
+    def last_modified(self) -> Optional[int]:
+        return pulumi.get(self, "last_modified")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter(name="scriptId")
+    def script_id(self) -> Optional[str]:
+        return pulumi.get(self, "script_id")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
+    def snippet(self) -> Optional[str]:
+        return pulumi.get(self, "snippet")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyForbiddenLabel(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyKubernetesControl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "avdId":
+            suggest = "avd_id"
+        elif key == "scriptId":
+            suggest = "script_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAssurancePolicyKubernetesControl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAssurancePolicyKubernetesControl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAssurancePolicyKubernetesControl.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 avd_id: Optional[str] = None,
+                 description: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 kind: Optional[str] = None,
+                 name: Optional[str] = None,
+                 ootb: Optional[bool] = None,
+                 script_id: Optional[int] = None,
+                 severity: Optional[str] = None):
+        if avd_id is not None:
+            pulumi.set(__self__, "avd_id", avd_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ootb is not None:
+            pulumi.set(__self__, "ootb", ootb)
+        if script_id is not None:
+            pulumi.set(__self__, "script_id", script_id)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="avdId")
+    def avd_id(self) -> Optional[str]:
+        return pulumi.get(self, "avd_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[str]:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def ootb(self) -> Optional[bool]:
+        return pulumi.get(self, "ootb")
+
+    @property
+    @pulumi.getter(name="scriptId")
+    def script_id(self) -> Optional[int]:
+        return pulumi.get(self, "script_id")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyPackagesBlackList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionRange":
+            suggest = "version_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAssurancePolicyPackagesBlackList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAssurancePolicyPackagesBlackList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAssurancePolicyPackagesBlackList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arch: Optional[str] = None,
+                 display: Optional[str] = None,
+                 epoch: Optional[str] = None,
+                 format: Optional[str] = None,
+                 license: Optional[str] = None,
+                 name: Optional[str] = None,
+                 release: Optional[str] = None,
+                 version: Optional[str] = None,
+                 version_range: Optional[str] = None):
+        if arch is not None:
+            pulumi.set(__self__, "arch", arch)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if epoch is not None:
+            pulumi.set(__self__, "epoch", epoch)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if release is not None:
+            pulumi.set(__self__, "release", release)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if version_range is not None:
+            pulumi.set(__self__, "version_range", version_range)
+
+    @property
+    @pulumi.getter
+    def arch(self) -> Optional[str]:
+        return pulumi.get(self, "arch")
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[str]:
+        return pulumi.get(self, "display")
+
+    @property
+    @pulumi.getter
+    def epoch(self) -> Optional[str]:
+        return pulumi.get(self, "epoch")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[str]:
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def release(self) -> Optional[str]:
+        return pulumi.get(self, "release")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="versionRange")
+    def version_range(self) -> Optional[str]:
+        return pulumi.get(self, "version_range")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyPackagesWhiteList(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionRange":
+            suggest = "version_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAssurancePolicyPackagesWhiteList. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAssurancePolicyPackagesWhiteList.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAssurancePolicyPackagesWhiteList.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arch: Optional[str] = None,
+                 display: Optional[str] = None,
+                 epoch: Optional[str] = None,
+                 format: Optional[str] = None,
+                 license: Optional[str] = None,
+                 name: Optional[str] = None,
+                 release: Optional[str] = None,
+                 version: Optional[str] = None,
+                 version_range: Optional[str] = None):
+        if arch is not None:
+            pulumi.set(__self__, "arch", arch)
+        if display is not None:
+            pulumi.set(__self__, "display", display)
+        if epoch is not None:
+            pulumi.set(__self__, "epoch", epoch)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if license is not None:
+            pulumi.set(__self__, "license", license)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if release is not None:
+            pulumi.set(__self__, "release", release)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+        if version_range is not None:
+            pulumi.set(__self__, "version_range", version_range)
+
+    @property
+    @pulumi.getter
+    def arch(self) -> Optional[str]:
+        return pulumi.get(self, "arch")
+
+    @property
+    @pulumi.getter
+    def display(self) -> Optional[str]:
+        return pulumi.get(self, "display")
+
+    @property
+    @pulumi.getter
+    def epoch(self) -> Optional[str]:
+        return pulumi.get(self, "epoch")
+
+    @property
+    @pulumi.getter
+    def format(self) -> Optional[str]:
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def license(self) -> Optional[str]:
+        return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def release(self) -> Optional[str]:
+        return pulumi.get(self, "release")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="versionRange")
+    def version_range(self) -> Optional[str]:
+        return pulumi.get(self, "version_range")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyPolicySettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isAuditChecked":
+            suggest = "is_audit_checked"
+        elif key == "warningMessage":
+            suggest = "warning_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmwareAssurancePolicyPolicySettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmwareAssurancePolicyPolicySettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmwareAssurancePolicyPolicySettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enforce: Optional[bool] = None,
+                 is_audit_checked: Optional[bool] = None,
+                 warn: Optional[bool] = None,
+                 warning_message: Optional[str] = None):
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
+        if is_audit_checked is not None:
+            pulumi.set(__self__, "is_audit_checked", is_audit_checked)
+        if warn is not None:
+            pulumi.set(__self__, "warn", warn)
+        if warning_message is not None:
+            pulumi.set(__self__, "warning_message", warning_message)
+
+    @property
+    @pulumi.getter
+    def enforce(self) -> Optional[bool]:
+        return pulumi.get(self, "enforce")
+
+    @property
+    @pulumi.getter(name="isAuditChecked")
+    def is_audit_checked(self) -> Optional[bool]:
+        return pulumi.get(self, "is_audit_checked")
+
+    @property
+    @pulumi.getter
+    def warn(self) -> Optional[bool]:
+        return pulumi.get(self, "warn")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> Optional[str]:
+        return pulumi.get(self, "warning_message")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyRequiredLabel(dict):
+    def __init__(__self__, *,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyScope(dict):
+    def __init__(__self__, *,
+                 expression: Optional[str] = None,
+                 variables: Optional[Sequence['outputs.VmwareAssurancePolicyScopeVariable']] = None):
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if variables is not None:
+            pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def variables(self) -> Optional[Sequence['outputs.VmwareAssurancePolicyScopeVariable']]:
+        return pulumi.get(self, "variables")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyScopeVariable(dict):
+    def __init__(__self__, *,
+                 attribute: Optional[str] = None,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        if attribute is not None:
+            pulumi.set(__self__, "attribute", attribute)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def attribute(self) -> Optional[str]:
+        return pulumi.get(self, "attribute")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class VmwareAssurancePolicyTrustedBaseImage(dict):
+    def __init__(__self__, *,
+                 imagename: Optional[str] = None,
+                 registry: Optional[str] = None):
+        if imagename is not None:
+            pulumi.set(__self__, "imagename", imagename)
+        if registry is not None:
+            pulumi.set(__self__, "registry", registry)
+
+    @property
+    @pulumi.getter
+    def imagename(self) -> Optional[str]:
+        return pulumi.get(self, "imagename")
+
+    @property
+    @pulumi.getter
+    def registry(self) -> Optional[str]:
+        return pulumi.get(self, "registry")
 
 
 @pulumi.output_type
@@ -5947,108 +11964,577 @@ class GetAquaLabelsAquaLabelResult(dict):
 
 
 @pulumi.output_type
+class GetContainerRuntimePolicyAllowedExecutableResult(dict):
+    def __init__(__self__, *,
+                 allow_executables: Optional[Sequence[str]] = None,
+                 allow_root_executables: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 separate_executables: Optional[bool] = None):
+        """
+        :param Sequence[str] allow_executables: List of allowed executables.
+        :param Sequence[str] allow_root_executables: List of allowed root executables.
+        :param bool enabled: Whether allowed executables configuration is enabled.
+        :param bool separate_executables: Whether to treat executables separately.
+        """
+        if allow_executables is not None:
+            pulumi.set(__self__, "allow_executables", allow_executables)
+        if allow_root_executables is not None:
+            pulumi.set(__self__, "allow_root_executables", allow_root_executables)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if separate_executables is not None:
+            pulumi.set(__self__, "separate_executables", separate_executables)
+
+    @property
+    @pulumi.getter(name="allowExecutables")
+    def allow_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed executables.
+        """
+        return pulumi.get(self, "allow_executables")
+
+    @property
+    @pulumi.getter(name="allowRootExecutables")
+    def allow_root_executables(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed root executables.
+        """
+        return pulumi.get(self, "allow_root_executables")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed executables configuration is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="separateExecutables")
+    def separate_executables(self) -> Optional[bool]:
+        """
+        Whether to treat executables separately.
+        """
+        return pulumi.get(self, "separate_executables")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyAllowedRegistryResult(dict):
+    def __init__(__self__, *,
+                 allowed_registries: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param Sequence[str] allowed_registries: List of allowed registries.
+        :param bool enabled: Whether allowed registries are enabled.
+        """
+        if allowed_registries is not None:
+            pulumi.set(__self__, "allowed_registries", allowed_registries)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="allowedRegistries")
+    def allowed_registries(self) -> Optional[Sequence[str]]:
+        """
+        List of allowed registries.
+        """
+        return pulumi.get(self, "allowed_registries")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether allowed registries are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyAuditingResult(dict):
+    def __init__(__self__, *,
+                 audit_all_network: Optional[bool] = None,
+                 audit_all_processes: Optional[bool] = None,
+                 audit_failed_login: Optional[bool] = None,
+                 audit_os_user_activity: Optional[bool] = None,
+                 audit_process_cmdline: Optional[bool] = None,
+                 audit_success_login: Optional[bool] = None,
+                 audit_user_account_management: Optional[bool] = None,
+                 enabled: Optional[bool] = None):
+        if audit_all_network is not None:
+            pulumi.set(__self__, "audit_all_network", audit_all_network)
+        if audit_all_processes is not None:
+            pulumi.set(__self__, "audit_all_processes", audit_all_processes)
+        if audit_failed_login is not None:
+            pulumi.set(__self__, "audit_failed_login", audit_failed_login)
+        if audit_os_user_activity is not None:
+            pulumi.set(__self__, "audit_os_user_activity", audit_os_user_activity)
+        if audit_process_cmdline is not None:
+            pulumi.set(__self__, "audit_process_cmdline", audit_process_cmdline)
+        if audit_success_login is not None:
+            pulumi.set(__self__, "audit_success_login", audit_success_login)
+        if audit_user_account_management is not None:
+            pulumi.set(__self__, "audit_user_account_management", audit_user_account_management)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="auditAllNetwork")
+    def audit_all_network(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_network")
+
+    @property
+    @pulumi.getter(name="auditAllProcesses")
+    def audit_all_processes(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_processes")
+
+    @property
+    @pulumi.getter(name="auditFailedLogin")
+    def audit_failed_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_failed_login")
+
+    @property
+    @pulumi.getter(name="auditOsUserActivity")
+    def audit_os_user_activity(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_os_user_activity")
+
+    @property
+    @pulumi.getter(name="auditProcessCmdline")
+    def audit_process_cmdline(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_process_cmdline")
+
+    @property
+    @pulumi.getter(name="auditSuccessLogin")
+    def audit_success_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_success_login")
+
+    @property
+    @pulumi.getter(name="auditUserAccountManagement")
+    def audit_user_account_management(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_user_account_management")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyContainerExecResult(dict):
+    def __init__(__self__, *,
+                 block_container_exec: Optional[bool] = None,
+                 container_exec_proc_white_lists: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 reverse_shell_ip_white_lists: Optional[Sequence[str]] = None):
+        if block_container_exec is not None:
+            pulumi.set(__self__, "block_container_exec", block_container_exec)
+        if container_exec_proc_white_lists is not None:
+            pulumi.set(__self__, "container_exec_proc_white_lists", container_exec_proc_white_lists)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if reverse_shell_ip_white_lists is not None:
+            pulumi.set(__self__, "reverse_shell_ip_white_lists", reverse_shell_ip_white_lists)
+
+    @property
+    @pulumi.getter(name="blockContainerExec")
+    def block_container_exec(self) -> Optional[bool]:
+        return pulumi.get(self, "block_container_exec")
+
+    @property
+    @pulumi.getter(name="containerExecProcWhiteLists")
+    def container_exec_proc_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "container_exec_proc_white_lists")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="reverseShellIpWhiteLists")
+    def reverse_shell_ip_white_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "reverse_shell_ip_white_lists")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyFileBlockResult(dict):
+    def __init__(__self__, *,
+                 block_files_processes: Optional[Sequence[str]] = None,
+                 block_files_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_files: Optional[Sequence[str]] = None,
+                 exceptional_block_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_files_users: Optional[Sequence[str]] = None,
+                 filename_block_lists: Optional[Sequence[str]] = None):
+        if block_files_processes is not None:
+            pulumi.set(__self__, "block_files_processes", block_files_processes)
+        if block_files_users is not None:
+            pulumi.set(__self__, "block_files_users", block_files_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_files is not None:
+            pulumi.set(__self__, "exceptional_block_files", exceptional_block_files)
+        if exceptional_block_files_processes is not None:
+            pulumi.set(__self__, "exceptional_block_files_processes", exceptional_block_files_processes)
+        if exceptional_block_files_users is not None:
+            pulumi.set(__self__, "exceptional_block_files_users", exceptional_block_files_users)
+        if filename_block_lists is not None:
+            pulumi.set(__self__, "filename_block_lists", filename_block_lists)
+
+    @property
+    @pulumi.getter(name="blockFilesProcesses")
+    def block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_processes")
+
+    @property
+    @pulumi.getter(name="blockFilesUsers")
+    def block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_files_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFiles")
+    def exceptional_block_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesProcesses")
+    def exceptional_block_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockFilesUsers")
+    def exceptional_block_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_files_users")
+
+    @property
+    @pulumi.getter(name="filenameBlockLists")
+    def filename_block_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "filename_block_lists")
+
+
+@pulumi.output_type
 class GetContainerRuntimePolicyFileIntegrityMonitoringResult(dict):
     def __init__(__self__, *,
-                 excluded_paths: Sequence[str],
-                 excluded_processes: Sequence[str],
-                 excluded_users: Sequence[str],
-                 monitor_attributes: bool,
-                 monitor_create: bool,
-                 monitor_delete: bool,
-                 monitor_modify: bool,
-                 monitor_read: bool,
-                 monitored_paths: Sequence[str],
-                 monitored_processes: Sequence[str],
-                 monitored_users: Sequence[str]):
-        pulumi.set(__self__, "excluded_paths", excluded_paths)
-        pulumi.set(__self__, "excluded_processes", excluded_processes)
-        pulumi.set(__self__, "excluded_users", excluded_users)
-        pulumi.set(__self__, "monitor_attributes", monitor_attributes)
-        pulumi.set(__self__, "monitor_create", monitor_create)
-        pulumi.set(__self__, "monitor_delete", monitor_delete)
-        pulumi.set(__self__, "monitor_modify", monitor_modify)
-        pulumi.set(__self__, "monitor_read", monitor_read)
-        pulumi.set(__self__, "monitored_paths", monitored_paths)
-        pulumi.set(__self__, "monitored_processes", monitored_processes)
-        pulumi.set(__self__, "monitored_users", monitored_users)
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_files: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_users: Optional[Sequence[str]] = None,
+                 monitored_files: Optional[Sequence[str]] = None,
+                 monitored_files_attributes: Optional[bool] = None,
+                 monitored_files_create: Optional[bool] = None,
+                 monitored_files_delete: Optional[bool] = None,
+                 monitored_files_modify: Optional[bool] = None,
+                 monitored_files_processes: Optional[Sequence[str]] = None,
+                 monitored_files_read: Optional[bool] = None,
+                 monitored_files_users: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: If true, file integrity monitoring is enabled.
+        :param Sequence[str] exceptional_monitored_files: List of paths to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_processes: List of processes to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_users: List of users to be excluded from monitoring.
+        :param Sequence[str] monitored_files: List of paths to be monitored.
+        :param bool monitored_files_attributes: Whether to monitor file attribute operations.
+        :param bool monitored_files_create: Whether to monitor file create operations.
+        :param bool monitored_files_delete: Whether to monitor file delete operations.
+        :param bool monitored_files_modify: Whether to monitor file modify operations.
+        :param Sequence[str] monitored_files_processes: List of processes associated with monitored files.
+        :param bool monitored_files_read: Whether to monitor file read operations.
+        :param Sequence[str] monitored_files_users: List of users associated with monitored files.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_files is not None:
+            pulumi.set(__self__, "exceptional_monitored_files", exceptional_monitored_files)
+        if exceptional_monitored_files_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_processes", exceptional_monitored_files_processes)
+        if exceptional_monitored_files_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_users", exceptional_monitored_files_users)
+        if monitored_files is not None:
+            pulumi.set(__self__, "monitored_files", monitored_files)
+        if monitored_files_attributes is not None:
+            pulumi.set(__self__, "monitored_files_attributes", monitored_files_attributes)
+        if monitored_files_create is not None:
+            pulumi.set(__self__, "monitored_files_create", monitored_files_create)
+        if monitored_files_delete is not None:
+            pulumi.set(__self__, "monitored_files_delete", monitored_files_delete)
+        if monitored_files_modify is not None:
+            pulumi.set(__self__, "monitored_files_modify", monitored_files_modify)
+        if monitored_files_processes is not None:
+            pulumi.set(__self__, "monitored_files_processes", monitored_files_processes)
+        if monitored_files_read is not None:
+            pulumi.set(__self__, "monitored_files_read", monitored_files_read)
+        if monitored_files_users is not None:
+            pulumi.set(__self__, "monitored_files_users", monitored_files_users)
 
     @property
-    @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Sequence[str]:
-        return pulumi.get(self, "excluded_paths")
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, file integrity monitoring is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="excludedProcesses")
-    def excluded_processes(self) -> Sequence[str]:
-        return pulumi.get(self, "excluded_processes")
+    @pulumi.getter(name="exceptionalMonitoredFiles")
+    def exceptional_monitored_files(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files")
 
     @property
-    @pulumi.getter(name="excludedUsers")
-    def excluded_users(self) -> Sequence[str]:
-        return pulumi.get(self, "excluded_users")
+    @pulumi.getter(name="exceptionalMonitoredFilesProcesses")
+    def exceptional_monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files_processes")
 
     @property
-    @pulumi.getter(name="monitorAttributes")
-    def monitor_attributes(self) -> bool:
-        return pulumi.get(self, "monitor_attributes")
+    @pulumi.getter(name="exceptionalMonitoredFilesUsers")
+    def exceptional_monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files_users")
 
     @property
-    @pulumi.getter(name="monitorCreate")
-    def monitor_create(self) -> bool:
-        return pulumi.get(self, "monitor_create")
+    @pulumi.getter(name="monitoredFiles")
+    def monitored_files(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to be monitored.
+        """
+        return pulumi.get(self, "monitored_files")
 
     @property
-    @pulumi.getter(name="monitorDelete")
-    def monitor_delete(self) -> bool:
-        return pulumi.get(self, "monitor_delete")
+    @pulumi.getter(name="monitoredFilesAttributes")
+    def monitored_files_attributes(self) -> Optional[bool]:
+        """
+        Whether to monitor file attribute operations.
+        """
+        return pulumi.get(self, "monitored_files_attributes")
 
     @property
-    @pulumi.getter(name="monitorModify")
-    def monitor_modify(self) -> bool:
-        return pulumi.get(self, "monitor_modify")
+    @pulumi.getter(name="monitoredFilesCreate")
+    def monitored_files_create(self) -> Optional[bool]:
+        """
+        Whether to monitor file create operations.
+        """
+        return pulumi.get(self, "monitored_files_create")
 
     @property
-    @pulumi.getter(name="monitorRead")
-    def monitor_read(self) -> bool:
-        return pulumi.get(self, "monitor_read")
+    @pulumi.getter(name="monitoredFilesDelete")
+    def monitored_files_delete(self) -> Optional[bool]:
+        """
+        Whether to monitor file delete operations.
+        """
+        return pulumi.get(self, "monitored_files_delete")
 
     @property
-    @pulumi.getter(name="monitoredPaths")
-    def monitored_paths(self) -> Sequence[str]:
-        return pulumi.get(self, "monitored_paths")
+    @pulumi.getter(name="monitoredFilesModify")
+    def monitored_files_modify(self) -> Optional[bool]:
+        """
+        Whether to monitor file modify operations.
+        """
+        return pulumi.get(self, "monitored_files_modify")
 
     @property
-    @pulumi.getter(name="monitoredProcesses")
-    def monitored_processes(self) -> Sequence[str]:
-        return pulumi.get(self, "monitored_processes")
+    @pulumi.getter(name="monitoredFilesProcesses")
+    def monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_processes")
 
     @property
-    @pulumi.getter(name="monitoredUsers")
-    def monitored_users(self) -> Sequence[str]:
-        return pulumi.get(self, "monitored_users")
+    @pulumi.getter(name="monitoredFilesRead")
+    def monitored_files_read(self) -> Optional[bool]:
+        """
+        Whether to monitor file read operations.
+        """
+        return pulumi.get(self, "monitored_files_read")
+
+    @property
+    @pulumi.getter(name="monitoredFilesUsers")
+    def monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_users")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyLimitContainerPrivilegeResult(dict):
+    def __init__(__self__, *,
+                 block_add_capabilities: Optional[bool] = None,
+                 enabled: Optional[bool] = None,
+                 ipcmode: Optional[bool] = None,
+                 netmode: Optional[bool] = None,
+                 pidmode: Optional[bool] = None,
+                 prevent_low_port_binding: Optional[bool] = None,
+                 prevent_root_user: Optional[bool] = None,
+                 privileged: Optional[bool] = None,
+                 use_host_user: Optional[bool] = None,
+                 usermode: Optional[bool] = None,
+                 utsmode: Optional[bool] = None):
+        """
+        :param bool block_add_capabilities: Whether to block adding capabilities.
+        :param bool enabled: Whether container privilege limitations are enabled.
+        :param bool ipcmode: Whether to limit IPC-related capabilities.
+        :param bool netmode: Whether to limit network-related capabilities.
+        :param bool pidmode: Whether to limit process-related capabilities.
+        :param bool prevent_low_port_binding: Whether to prevent low port binding.
+        :param bool prevent_root_user: Whether to prevent the use of the root user.
+        :param bool privileged: Whether the container is run in privileged mode.
+        :param bool use_host_user: Whether to use the host user.
+        :param bool usermode: Whether to limit user-related capabilities.
+        :param bool utsmode: Whether to limit UTS-related capabilities.
+        """
+        if block_add_capabilities is not None:
+            pulumi.set(__self__, "block_add_capabilities", block_add_capabilities)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if ipcmode is not None:
+            pulumi.set(__self__, "ipcmode", ipcmode)
+        if netmode is not None:
+            pulumi.set(__self__, "netmode", netmode)
+        if pidmode is not None:
+            pulumi.set(__self__, "pidmode", pidmode)
+        if prevent_low_port_binding is not None:
+            pulumi.set(__self__, "prevent_low_port_binding", prevent_low_port_binding)
+        if prevent_root_user is not None:
+            pulumi.set(__self__, "prevent_root_user", prevent_root_user)
+        if privileged is not None:
+            pulumi.set(__self__, "privileged", privileged)
+        if use_host_user is not None:
+            pulumi.set(__self__, "use_host_user", use_host_user)
+        if usermode is not None:
+            pulumi.set(__self__, "usermode", usermode)
+        if utsmode is not None:
+            pulumi.set(__self__, "utsmode", utsmode)
+
+    @property
+    @pulumi.getter(name="blockAddCapabilities")
+    def block_add_capabilities(self) -> Optional[bool]:
+        """
+        Whether to block adding capabilities.
+        """
+        return pulumi.get(self, "block_add_capabilities")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether container privilege limitations are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def ipcmode(self) -> Optional[bool]:
+        """
+        Whether to limit IPC-related capabilities.
+        """
+        return pulumi.get(self, "ipcmode")
+
+    @property
+    @pulumi.getter
+    def netmode(self) -> Optional[bool]:
+        """
+        Whether to limit network-related capabilities.
+        """
+        return pulumi.get(self, "netmode")
+
+    @property
+    @pulumi.getter
+    def pidmode(self) -> Optional[bool]:
+        """
+        Whether to limit process-related capabilities.
+        """
+        return pulumi.get(self, "pidmode")
+
+    @property
+    @pulumi.getter(name="preventLowPortBinding")
+    def prevent_low_port_binding(self) -> Optional[bool]:
+        """
+        Whether to prevent low port binding.
+        """
+        return pulumi.get(self, "prevent_low_port_binding")
+
+    @property
+    @pulumi.getter(name="preventRootUser")
+    def prevent_root_user(self) -> Optional[bool]:
+        """
+        Whether to prevent the use of the root user.
+        """
+        return pulumi.get(self, "prevent_root_user")
+
+    @property
+    @pulumi.getter
+    def privileged(self) -> Optional[bool]:
+        """
+        Whether the container is run in privileged mode.
+        """
+        return pulumi.get(self, "privileged")
+
+    @property
+    @pulumi.getter(name="useHostUser")
+    def use_host_user(self) -> Optional[bool]:
+        """
+        Whether to use the host user.
+        """
+        return pulumi.get(self, "use_host_user")
+
+    @property
+    @pulumi.getter
+    def usermode(self) -> Optional[bool]:
+        """
+        Whether to limit user-related capabilities.
+        """
+        return pulumi.get(self, "usermode")
+
+    @property
+    @pulumi.getter
+    def utsmode(self) -> Optional[bool]:
+        """
+        Whether to limit UTS-related capabilities.
+        """
+        return pulumi.get(self, "utsmode")
 
 
 @pulumi.output_type
 class GetContainerRuntimePolicyMalwareScanOptionResult(dict):
     def __init__(__self__, *,
-                 action: str,
-                 enabled: bool,
-                 exclude_directories: Sequence[str],
-                 exclude_processes: Sequence[str]):
+                 action: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exclude_directories: Optional[Sequence[str]] = None,
+                 exclude_processes: Optional[Sequence[str]] = None,
+                 include_directories: Optional[Sequence[str]] = None):
         """
         :param str action: Set Action, Defaults to 'Alert' when empty
         :param bool enabled: Defines if enabled or not
         :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
         :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] include_directories: List of registry paths to be excluded from being protected.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "exclude_directories", exclude_directories)
-        pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_directories is not None:
+            pulumi.set(__self__, "exclude_directories", exclude_directories)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if include_directories is not None:
+            pulumi.set(__self__, "include_directories", include_directories)
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> Optional[str]:
         """
         Set Action, Defaults to 'Alert' when empty
         """
@@ -6056,7 +12542,7 @@ class GetContainerRuntimePolicyMalwareScanOptionResult(dict):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> Optional[bool]:
         """
         Defines if enabled or not
         """
@@ -6064,7 +12550,7 @@ class GetContainerRuntimePolicyMalwareScanOptionResult(dict):
 
     @property
     @pulumi.getter(name="excludeDirectories")
-    def exclude_directories(self) -> Sequence[str]:
+    def exclude_directories(self) -> Optional[Sequence[str]]:
         """
         List of registry paths to be excluded from being protected.
         """
@@ -6072,11 +12558,140 @@ class GetContainerRuntimePolicyMalwareScanOptionResult(dict):
 
     @property
     @pulumi.getter(name="excludeProcesses")
-    def exclude_processes(self) -> Sequence[str]:
+    def exclude_processes(self) -> Optional[Sequence[str]]:
         """
         List of registry processes to be excluded from being protected.
         """
         return pulumi.get(self, "exclude_processes")
+
+    @property
+    @pulumi.getter(name="includeDirectories")
+    def include_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "include_directories")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyPortBlockResult(dict):
+    def __init__(__self__, *,
+                 block_inbound_ports: Optional[Sequence[str]] = None,
+                 block_outbound_ports: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None):
+        if block_inbound_ports is not None:
+            pulumi.set(__self__, "block_inbound_ports", block_inbound_ports)
+        if block_outbound_ports is not None:
+            pulumi.set(__self__, "block_outbound_ports", block_outbound_ports)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="blockInboundPorts")
+    def block_inbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_inbound_ports")
+
+    @property
+    @pulumi.getter(name="blockOutboundPorts")
+    def block_outbound_ports(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_outbound_ports")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyReadonlyFilesResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exceptional_readonly_files: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_readonly_files_users: Optional[Sequence[str]] = None,
+                 readonly_files: Optional[Sequence[str]] = None,
+                 readonly_files_processes: Optional[Sequence[str]] = None,
+                 readonly_files_users: Optional[Sequence[str]] = None):
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_readonly_files is not None:
+            pulumi.set(__self__, "exceptional_readonly_files", exceptional_readonly_files)
+        if exceptional_readonly_files_processes is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_processes", exceptional_readonly_files_processes)
+        if exceptional_readonly_files_users is not None:
+            pulumi.set(__self__, "exceptional_readonly_files_users", exceptional_readonly_files_users)
+        if readonly_files is not None:
+            pulumi.set(__self__, "readonly_files", readonly_files)
+        if readonly_files_processes is not None:
+            pulumi.set(__self__, "readonly_files_processes", readonly_files_processes)
+        if readonly_files_users is not None:
+            pulumi.set(__self__, "readonly_files_users", readonly_files_users)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFiles")
+    def exceptional_readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesProcesses")
+    def exceptional_readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalReadonlyFilesUsers")
+    def exceptional_readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_readonly_files_users")
+
+    @property
+    @pulumi.getter(name="readonlyFiles")
+    def readonly_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files")
+
+    @property
+    @pulumi.getter(name="readonlyFilesProcesses")
+    def readonly_files_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_processes")
+
+    @property
+    @pulumi.getter(name="readonlyFilesUsers")
+    def readonly_files_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "readonly_files_users")
+
+
+@pulumi.output_type
+class GetContainerRuntimePolicyRestrictedVolumeResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 volumes: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether restricted volumes are enabled.
+        :param Sequence[str] volumes: List of restricted volumes.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether restricted volumes are enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence[str]]:
+        """
+        List of restricted volumes.
+        """
+        return pulumi.get(self, "volumes")
 
 
 @pulumi.output_type
@@ -6085,9 +12700,6 @@ class GetContainerRuntimePolicyScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
-        """
-        :param str name: Name of the container runtime policy
-        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -6100,9 +12712,6 @@ class GetContainerRuntimePolicyScopeVariableResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the container runtime policy
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -6151,9 +12760,6 @@ class GetEnforcerGroupsOrchestratorResult(dict):
                  namespace: str,
                  service_account: str,
                  type: str):
-        """
-        :param str type: Enforcer Type.
-        """
         pulumi.set(__self__, "master", master)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "service_account", service_account)
@@ -6177,9 +12783,6 @@ class GetEnforcerGroupsOrchestratorResult(dict):
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Enforcer Type.
-        """
         return pulumi.get(self, "type")
 
 
@@ -6313,9 +12916,6 @@ class GetFunctionAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
-        """
-        :param str author: Name of user account that created the policy.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -6330,9 +12930,6 @@ class GetFunctionAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
-        """
-        Name of user account that created the policy.
-        """
         return pulumi.get(self, "author")
 
     @property
@@ -6621,14 +13218,97 @@ class GetFunctionAssurancePolicyTrustedBaseImageResult(dict):
 
 
 @pulumi.output_type
+class GetFunctionRuntimePolicyDriftPreventionResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 exec_lockdown: Optional[bool] = None,
+                 exec_lockdown_white_lists: Optional[Sequence[str]] = None,
+                 image_lockdown: Optional[bool] = None):
+        """
+        :param bool enabled: Whether drift prevention is enabled.
+        :param bool exec_lockdown: Whether to lockdown execution drift.
+        :param Sequence[str] exec_lockdown_white_lists: List of items in the execution lockdown white list.
+        :param bool image_lockdown: Whether to lockdown image drift.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exec_lockdown is not None:
+            pulumi.set(__self__, "exec_lockdown", exec_lockdown)
+        if exec_lockdown_white_lists is not None:
+            pulumi.set(__self__, "exec_lockdown_white_lists", exec_lockdown_white_lists)
+        if image_lockdown is not None:
+            pulumi.set(__self__, "image_lockdown", image_lockdown)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether drift prevention is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="execLockdown")
+    def exec_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown execution drift.
+        """
+        return pulumi.get(self, "exec_lockdown")
+
+    @property
+    @pulumi.getter(name="execLockdownWhiteLists")
+    def exec_lockdown_white_lists(self) -> Optional[Sequence[str]]:
+        """
+        List of items in the execution lockdown white list.
+        """
+        return pulumi.get(self, "exec_lockdown_white_lists")
+
+    @property
+    @pulumi.getter(name="imageLockdown")
+    def image_lockdown(self) -> Optional[bool]:
+        """
+        Whether to lockdown image drift.
+        """
+        return pulumi.get(self, "image_lockdown")
+
+
+@pulumi.output_type
+class GetFunctionRuntimePolicyExecutableBlacklistResult(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 executables: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: Whether the executable blacklist is enabled.
+        :param Sequence[str] executables: List of blacklisted executables.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if executables is not None:
+            pulumi.set(__self__, "executables", executables)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the executable blacklist is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def executables(self) -> Optional[Sequence[str]]:
+        """
+        List of blacklisted executables.
+        """
+        return pulumi.get(self, "executables")
+
+
+@pulumi.output_type
 class GetFunctionRuntimePolicyScopeVariableResult(dict):
     def __init__(__self__, *,
                  attribute: str,
                  name: str,
                  value: str):
-        """
-        :param str name: Name of the function runtime policy
-        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -6641,9 +13321,6 @@ class GetFunctionRuntimePolicyScopeVariableResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the function runtime policy
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -6663,9 +13340,6 @@ class GetGatewaysGatewayResult(dict):
                  public_address: str,
                  status: str,
                  version: str):
-        """
-        :param str id: The ID of this resource.
-        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "grpc_address", grpc_address)
         pulumi.set(__self__, "hostname", hostname)
@@ -6693,9 +13367,6 @@ class GetGatewaysGatewayResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -6791,9 +13462,6 @@ class GetHostAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
-        """
-        :param str author: Name of user account that created the policy.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -6808,9 +13476,6 @@ class GetHostAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
-        """
-        Name of user account that created the policy.
-        """
         return pulumi.get(self, "author")
 
     @property
@@ -7099,124 +13764,351 @@ class GetHostAssurancePolicyTrustedBaseImageResult(dict):
 
 
 @pulumi.output_type
+class GetHostRuntimePolicyAuditingResult(dict):
+    def __init__(__self__, *,
+                 audit_all_network: Optional[bool] = None,
+                 audit_all_processes: Optional[bool] = None,
+                 audit_failed_login: Optional[bool] = None,
+                 audit_os_user_activity: Optional[bool] = None,
+                 audit_process_cmdline: Optional[bool] = None,
+                 audit_success_login: Optional[bool] = None,
+                 audit_user_account_management: Optional[bool] = None,
+                 enabled: Optional[bool] = None):
+        if audit_all_network is not None:
+            pulumi.set(__self__, "audit_all_network", audit_all_network)
+        if audit_all_processes is not None:
+            pulumi.set(__self__, "audit_all_processes", audit_all_processes)
+        if audit_failed_login is not None:
+            pulumi.set(__self__, "audit_failed_login", audit_failed_login)
+        if audit_os_user_activity is not None:
+            pulumi.set(__self__, "audit_os_user_activity", audit_os_user_activity)
+        if audit_process_cmdline is not None:
+            pulumi.set(__self__, "audit_process_cmdline", audit_process_cmdline)
+        if audit_success_login is not None:
+            pulumi.set(__self__, "audit_success_login", audit_success_login)
+        if audit_user_account_management is not None:
+            pulumi.set(__self__, "audit_user_account_management", audit_user_account_management)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="auditAllNetwork")
+    def audit_all_network(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_network")
+
+    @property
+    @pulumi.getter(name="auditAllProcesses")
+    def audit_all_processes(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_all_processes")
+
+    @property
+    @pulumi.getter(name="auditFailedLogin")
+    def audit_failed_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_failed_login")
+
+    @property
+    @pulumi.getter(name="auditOsUserActivity")
+    def audit_os_user_activity(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_os_user_activity")
+
+    @property
+    @pulumi.getter(name="auditProcessCmdline")
+    def audit_process_cmdline(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_process_cmdline")
+
+    @property
+    @pulumi.getter(name="auditSuccessLogin")
+    def audit_success_login(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_success_login")
+
+    @property
+    @pulumi.getter(name="auditUserAccountManagement")
+    def audit_user_account_management(self) -> Optional[bool]:
+        return pulumi.get(self, "audit_user_account_management")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetHostRuntimePolicyFileIntegrityMonitoringResult(dict):
     def __init__(__self__, *,
-                 excluded_paths: Sequence[str],
-                 excluded_processes: Sequence[str],
-                 excluded_users: Sequence[str],
-                 monitor_attributes: bool,
-                 monitor_create: bool,
-                 monitor_delete: bool,
-                 monitor_modify: bool,
-                 monitor_read: bool,
-                 monitored_paths: Sequence[str],
-                 monitored_processes: Sequence[str],
-                 monitored_users: Sequence[str]):
-        pulumi.set(__self__, "excluded_paths", excluded_paths)
-        pulumi.set(__self__, "excluded_processes", excluded_processes)
-        pulumi.set(__self__, "excluded_users", excluded_users)
-        pulumi.set(__self__, "monitor_attributes", monitor_attributes)
-        pulumi.set(__self__, "monitor_create", monitor_create)
-        pulumi.set(__self__, "monitor_delete", monitor_delete)
-        pulumi.set(__self__, "monitor_modify", monitor_modify)
-        pulumi.set(__self__, "monitor_read", monitor_read)
-        pulumi.set(__self__, "monitored_paths", monitored_paths)
-        pulumi.set(__self__, "monitored_processes", monitored_processes)
-        pulumi.set(__self__, "monitored_users", monitored_users)
+                 enabled: Optional[bool] = None,
+                 exceptional_monitored_files: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_processes: Optional[Sequence[str]] = None,
+                 exceptional_monitored_files_users: Optional[Sequence[str]] = None,
+                 monitored_files: Optional[Sequence[str]] = None,
+                 monitored_files_attributes: Optional[bool] = None,
+                 monitored_files_create: Optional[bool] = None,
+                 monitored_files_delete: Optional[bool] = None,
+                 monitored_files_modify: Optional[bool] = None,
+                 monitored_files_processes: Optional[Sequence[str]] = None,
+                 monitored_files_read: Optional[bool] = None,
+                 monitored_files_users: Optional[Sequence[str]] = None):
+        """
+        :param bool enabled: If true, file integrity monitoring is enabled.
+        :param Sequence[str] exceptional_monitored_files: List of paths to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_processes: List of processes to be excluded from monitoring.
+        :param Sequence[str] exceptional_monitored_files_users: List of users to be excluded from monitoring.
+        :param Sequence[str] monitored_files: List of paths to be monitored.
+        :param bool monitored_files_attributes: Whether to monitor file attribute operations.
+        :param bool monitored_files_create: Whether to monitor file create operations.
+        :param bool monitored_files_delete: Whether to monitor file delete operations.
+        :param bool monitored_files_modify: Whether to monitor file modify operations.
+        :param Sequence[str] monitored_files_processes: List of processes associated with monitored files.
+        :param bool monitored_files_read: Whether to monitor file read operations.
+        :param Sequence[str] monitored_files_users: List of users associated with monitored files.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_monitored_files is not None:
+            pulumi.set(__self__, "exceptional_monitored_files", exceptional_monitored_files)
+        if exceptional_monitored_files_processes is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_processes", exceptional_monitored_files_processes)
+        if exceptional_monitored_files_users is not None:
+            pulumi.set(__self__, "exceptional_monitored_files_users", exceptional_monitored_files_users)
+        if monitored_files is not None:
+            pulumi.set(__self__, "monitored_files", monitored_files)
+        if monitored_files_attributes is not None:
+            pulumi.set(__self__, "monitored_files_attributes", monitored_files_attributes)
+        if monitored_files_create is not None:
+            pulumi.set(__self__, "monitored_files_create", monitored_files_create)
+        if monitored_files_delete is not None:
+            pulumi.set(__self__, "monitored_files_delete", monitored_files_delete)
+        if monitored_files_modify is not None:
+            pulumi.set(__self__, "monitored_files_modify", monitored_files_modify)
+        if monitored_files_processes is not None:
+            pulumi.set(__self__, "monitored_files_processes", monitored_files_processes)
+        if monitored_files_read is not None:
+            pulumi.set(__self__, "monitored_files_read", monitored_files_read)
+        if monitored_files_users is not None:
+            pulumi.set(__self__, "monitored_files_users", monitored_files_users)
 
     @property
-    @pulumi.getter(name="excludedPaths")
-    def excluded_paths(self) -> Sequence[str]:
-        return pulumi.get(self, "excluded_paths")
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, file integrity monitoring is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
-    @pulumi.getter(name="excludedProcesses")
-    def excluded_processes(self) -> Sequence[str]:
-        return pulumi.get(self, "excluded_processes")
+    @pulumi.getter(name="exceptionalMonitoredFiles")
+    def exceptional_monitored_files(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files")
 
     @property
-    @pulumi.getter(name="excludedUsers")
-    def excluded_users(self) -> Sequence[str]:
-        return pulumi.get(self, "excluded_users")
+    @pulumi.getter(name="exceptionalMonitoredFilesProcesses")
+    def exceptional_monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files_processes")
 
     @property
-    @pulumi.getter(name="monitorAttributes")
-    def monitor_attributes(self) -> bool:
-        return pulumi.get(self, "monitor_attributes")
+    @pulumi.getter(name="exceptionalMonitoredFilesUsers")
+    def exceptional_monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users to be excluded from monitoring.
+        """
+        return pulumi.get(self, "exceptional_monitored_files_users")
 
     @property
-    @pulumi.getter(name="monitorCreate")
-    def monitor_create(self) -> bool:
-        return pulumi.get(self, "monitor_create")
+    @pulumi.getter(name="monitoredFiles")
+    def monitored_files(self) -> Optional[Sequence[str]]:
+        """
+        List of paths to be monitored.
+        """
+        return pulumi.get(self, "monitored_files")
 
     @property
-    @pulumi.getter(name="monitorDelete")
-    def monitor_delete(self) -> bool:
-        return pulumi.get(self, "monitor_delete")
+    @pulumi.getter(name="monitoredFilesAttributes")
+    def monitored_files_attributes(self) -> Optional[bool]:
+        """
+        Whether to monitor file attribute operations.
+        """
+        return pulumi.get(self, "monitored_files_attributes")
 
     @property
-    @pulumi.getter(name="monitorModify")
-    def monitor_modify(self) -> bool:
-        return pulumi.get(self, "monitor_modify")
+    @pulumi.getter(name="monitoredFilesCreate")
+    def monitored_files_create(self) -> Optional[bool]:
+        """
+        Whether to monitor file create operations.
+        """
+        return pulumi.get(self, "monitored_files_create")
 
     @property
-    @pulumi.getter(name="monitorRead")
-    def monitor_read(self) -> bool:
-        return pulumi.get(self, "monitor_read")
+    @pulumi.getter(name="monitoredFilesDelete")
+    def monitored_files_delete(self) -> Optional[bool]:
+        """
+        Whether to monitor file delete operations.
+        """
+        return pulumi.get(self, "monitored_files_delete")
 
     @property
-    @pulumi.getter(name="monitoredPaths")
-    def monitored_paths(self) -> Sequence[str]:
-        return pulumi.get(self, "monitored_paths")
+    @pulumi.getter(name="monitoredFilesModify")
+    def monitored_files_modify(self) -> Optional[bool]:
+        """
+        Whether to monitor file modify operations.
+        """
+        return pulumi.get(self, "monitored_files_modify")
 
     @property
-    @pulumi.getter(name="monitoredProcesses")
-    def monitored_processes(self) -> Sequence[str]:
-        return pulumi.get(self, "monitored_processes")
+    @pulumi.getter(name="monitoredFilesProcesses")
+    def monitored_files_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of processes associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_processes")
 
     @property
-    @pulumi.getter(name="monitoredUsers")
-    def monitored_users(self) -> Sequence[str]:
-        return pulumi.get(self, "monitored_users")
+    @pulumi.getter(name="monitoredFilesRead")
+    def monitored_files_read(self) -> Optional[bool]:
+        """
+        Whether to monitor file read operations.
+        """
+        return pulumi.get(self, "monitored_files_read")
+
+    @property
+    @pulumi.getter(name="monitoredFilesUsers")
+    def monitored_files_users(self) -> Optional[Sequence[str]]:
+        """
+        List of users associated with monitored files.
+        """
+        return pulumi.get(self, "monitored_files_users")
 
 
 @pulumi.output_type
 class GetHostRuntimePolicyMalwareScanOptionResult(dict):
     def __init__(__self__, *,
-                 action: str,
-                 enabled: bool,
-                 exclude_processes: Sequence[str],
-                 include_directories: Sequence[str]):
+                 action: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 exclude_directories: Optional[Sequence[str]] = None,
+                 exclude_processes: Optional[Sequence[str]] = None,
+                 include_directories: Optional[Sequence[str]] = None):
         """
-        :param bool enabled: Indicates if the runtime policy is enabled or not.
+        :param str action: Set Action, Defaults to 'Alert' when empty
+        :param bool enabled: Defines if enabled or not
+        :param Sequence[str] exclude_directories: List of registry paths to be excluded from being protected.
+        :param Sequence[str] exclude_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] include_directories: List of registry paths to be excluded from being protected.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "exclude_processes", exclude_processes)
-        pulumi.set(__self__, "include_directories", include_directories)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exclude_directories is not None:
+            pulumi.set(__self__, "exclude_directories", exclude_directories)
+        if exclude_processes is not None:
+            pulumi.set(__self__, "exclude_processes", exclude_processes)
+        if include_directories is not None:
+            pulumi.set(__self__, "include_directories", include_directories)
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> Optional[str]:
+        """
+        Set Action, Defaults to 'Alert' when empty
+        """
         return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> Optional[bool]:
         """
-        Indicates if the runtime policy is enabled or not.
+        Defines if enabled or not
         """
         return pulumi.get(self, "enabled")
 
     @property
+    @pulumi.getter(name="excludeDirectories")
+    def exclude_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
+        return pulumi.get(self, "exclude_directories")
+
+    @property
     @pulumi.getter(name="excludeProcesses")
-    def exclude_processes(self) -> Sequence[str]:
+    def exclude_processes(self) -> Optional[Sequence[str]]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
         return pulumi.get(self, "exclude_processes")
 
     @property
     @pulumi.getter(name="includeDirectories")
-    def include_directories(self) -> Sequence[str]:
+    def include_directories(self) -> Optional[Sequence[str]]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
         return pulumi.get(self, "include_directories")
+
+
+@pulumi.output_type
+class GetHostRuntimePolicyPackageBlockResult(dict):
+    def __init__(__self__, *,
+                 block_packages_processes: Optional[Sequence[str]] = None,
+                 block_packages_users: Optional[Sequence[str]] = None,
+                 enabled: Optional[bool] = None,
+                 exceptional_block_packages_files: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_processes: Optional[Sequence[str]] = None,
+                 exceptional_block_packages_users: Optional[Sequence[str]] = None,
+                 packages_black_lists: Optional[Sequence[str]] = None):
+        if block_packages_processes is not None:
+            pulumi.set(__self__, "block_packages_processes", block_packages_processes)
+        if block_packages_users is not None:
+            pulumi.set(__self__, "block_packages_users", block_packages_users)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if exceptional_block_packages_files is not None:
+            pulumi.set(__self__, "exceptional_block_packages_files", exceptional_block_packages_files)
+        if exceptional_block_packages_processes is not None:
+            pulumi.set(__self__, "exceptional_block_packages_processes", exceptional_block_packages_processes)
+        if exceptional_block_packages_users is not None:
+            pulumi.set(__self__, "exceptional_block_packages_users", exceptional_block_packages_users)
+        if packages_black_lists is not None:
+            pulumi.set(__self__, "packages_black_lists", packages_black_lists)
+
+    @property
+    @pulumi.getter(name="blockPackagesProcesses")
+    def block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_processes")
+
+    @property
+    @pulumi.getter(name="blockPackagesUsers")
+    def block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "block_packages_users")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesFiles")
+    def exceptional_block_packages_files(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_files")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesProcesses")
+    def exceptional_block_packages_processes(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_processes")
+
+    @property
+    @pulumi.getter(name="exceptionalBlockPackagesUsers")
+    def exceptional_block_packages_users(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "exceptional_block_packages_users")
+
+    @property
+    @pulumi.getter(name="packagesBlackLists")
+    def packages_black_lists(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "packages_black_lists")
 
 
 @pulumi.output_type
@@ -7225,9 +14117,6 @@ class GetHostRuntimePolicyScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
-        """
-        :param str name: Name of the host runtime policy
-        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -7240,9 +14129,6 @@ class GetHostRuntimePolicyScopeVariableResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        Name of the host runtime policy
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -7390,10 +14276,6 @@ class GetImageAssuranceChecksPerformedResult(dict):
                  dta_skipped_reason: str,
                  failed: bool,
                  policy_name: str):
-        """
-        :param bool dta_skipped: If DTA was skipped.
-        :param str dta_skipped_reason: The reason why DTA was skipped.
-        """
         pulumi.set(__self__, "assurance_type", assurance_type)
         pulumi.set(__self__, "blocking", blocking)
         pulumi.set(__self__, "control", control)
@@ -7420,17 +14302,11 @@ class GetImageAssuranceChecksPerformedResult(dict):
     @property
     @pulumi.getter(name="dtaSkipped")
     def dta_skipped(self) -> bool:
-        """
-        If DTA was skipped.
-        """
         return pulumi.get(self, "dta_skipped")
 
     @property
     @pulumi.getter(name="dtaSkippedReason")
     def dta_skipped_reason(self) -> str:
-        """
-        The reason why DTA was skipped.
-        """
         return pulumi.get(self, "dta_skipped_reason")
 
     @property
@@ -7490,9 +14366,6 @@ class GetImageAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
-        """
-        :param str author: Name of user account that created the policy.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -7507,9 +14380,6 @@ class GetImageAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
-        """
-        Name of user account that created the policy.
-        """
         return pulumi.get(self, "author")
 
     @property
@@ -7805,11 +14675,6 @@ class GetImageHistoryResult(dict):
                  created_by: str,
                  id: str,
                  size: int):
-        """
-        :param str comment: The image creation comment.
-        :param str created: The date and time when the image was registered.
-        :param str id: The ID of this resource.
-        """
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "created_by", created_by)
@@ -7819,17 +14684,11 @@ class GetImageHistoryResult(dict):
     @property
     @pulumi.getter
     def comment(self) -> str:
-        """
-        The image creation comment.
-        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def created(self) -> str:
-        """
-        The date and time when the image was registered.
-        """
         return pulumi.get(self, "created")
 
     @property
@@ -7840,9 +14699,6 @@ class GetImageHistoryResult(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -7920,15 +14776,6 @@ class GetImageVulnerabilityResult(dict):
                  vendor_severity: str,
                  vendor_statement: str,
                  vendor_url: str):
-        """
-        :param str digest: The content digest of the image.
-        :param str name: The name of the image.
-        :param str os: The operating system detected in the image
-        :param str os_version: The version of the OS detected in the image.
-        :param str permission: Permission of the image.
-        :param str registry: The name of the registry where the image is stored.
-        :param str repository: The name of the image's repository.
-        """
         pulumi.set(__self__, "ack_author", ack_author)
         pulumi.set(__self__, "ack_comment", ack_comment)
         pulumi.set(__self__, "ack_expiration_configured_at", ack_expiration_configured_at)
@@ -8089,9 +14936,6 @@ class GetImageVulnerabilityResult(dict):
     @property
     @pulumi.getter
     def digest(self) -> str:
-        """
-        The content digest of the image.
-        """
         return pulumi.get(self, "digest")
 
     @property
@@ -8132,9 +14976,6 @@ class GetImageVulnerabilityResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the image.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -8175,25 +15016,16 @@ class GetImageVulnerabilityResult(dict):
     @property
     @pulumi.getter
     def os(self) -> str:
-        """
-        The operating system detected in the image
-        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter(name="osVersion")
     def os_version(self) -> str:
-        """
-        The version of the OS detected in the image.
-        """
         return pulumi.get(self, "os_version")
 
     @property
     @pulumi.getter
     def permission(self) -> str:
-        """
-        Permission of the image.
-        """
         return pulumi.get(self, "permission")
 
     @property
@@ -8204,17 +15036,11 @@ class GetImageVulnerabilityResult(dict):
     @property
     @pulumi.getter
     def registry(self) -> str:
-        """
-        The name of the registry where the image is stored.
-        """
         return pulumi.get(self, "registry")
 
     @property
     @pulumi.getter
     def repository(self) -> str:
-        """
-        The name of the image's repository.
-        """
         return pulumi.get(self, "repository")
 
     @property
@@ -8349,7 +15175,7 @@ class GetImageVulnerabilityResult(dict):
 
 
 @pulumi.output_type
-class GetIntegrationRegistryOptionResult(dict):
+class GetIntegrationRegistriesOptionResult(dict):
     def __init__(__self__, *,
                  option: Optional[str] = None,
                  value: Optional[str] = None):
@@ -8370,15 +15196,12 @@ class GetIntegrationRegistryOptionResult(dict):
 
 
 @pulumi.output_type
-class GetIntegrationRegistryWebhookResult(dict):
+class GetIntegrationRegistriesWebhookResult(dict):
     def __init__(__self__, *,
                  auth_token: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  un_quarantine: Optional[bool] = None,
                  url: Optional[str] = None):
-        """
-        :param str url: The URL, address or region of the registry
-        """
         if auth_token is not None:
             pulumi.set(__self__, "auth_token", auth_token)
         if enabled is not None:
@@ -8406,9 +15229,64 @@ class GetIntegrationRegistryWebhookResult(dict):
     @property
     @pulumi.getter
     def url(self) -> Optional[str]:
-        """
-        The URL, address or region of the registry
-        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class GetIntegrationRegistryOptionResult(dict):
+    def __init__(__self__, *,
+                 option: Optional[str] = None,
+                 value: Optional[str] = None):
+        if option is not None:
+            pulumi.set(__self__, "option", option)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def option(self) -> Optional[str]:
+        return pulumi.get(self, "option")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetIntegrationRegistryWebhookResult(dict):
+    def __init__(__self__, *,
+                 auth_token: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 un_quarantine: Optional[bool] = None,
+                 url: Optional[str] = None):
+        if auth_token is not None:
+            pulumi.set(__self__, "auth_token", auth_token)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if un_quarantine is not None:
+            pulumi.set(__self__, "un_quarantine", un_quarantine)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="authToken")
+    def auth_token(self) -> Optional[str]:
+        return pulumi.get(self, "auth_token")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="unQuarantine")
+    def un_quarantine(self) -> Optional[bool]:
+        return pulumi.get(self, "un_quarantine")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
         return pulumi.get(self, "url")
 
 
@@ -8458,9 +15336,6 @@ class GetKubernetesAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
-        """
-        :param str author: Name of user account that created the policy.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -8475,9 +15350,6 @@ class GetKubernetesAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
-        """
-        Name of user account that created the policy.
-        """
         return pulumi.get(self, "author")
 
     @property
@@ -8775,9 +15647,6 @@ class GetNotificationsEmailResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -8794,9 +15663,6 @@ class GetNotificationsEmailResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -8835,9 +15701,6 @@ class GetNotificationsJiraResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -8854,9 +15717,6 @@ class GetNotificationsJiraResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -8895,9 +15755,6 @@ class GetNotificationsServicenowResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -8914,9 +15771,6 @@ class GetNotificationsServicenowResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -8955,9 +15809,6 @@ class GetNotificationsSlackResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -8974,9 +15825,6 @@ class GetNotificationsSlackResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -9015,9 +15863,6 @@ class GetNotificationsSplunkResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -9034,9 +15879,6 @@ class GetNotificationsSplunkResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -9075,9 +15917,6 @@ class GetNotificationsTeamResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -9094,9 +15933,6 @@ class GetNotificationsTeamResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -9135,9 +15971,6 @@ class GetNotificationsWebhookResult(dict):
                  properties: Mapping[str, str],
                  template: Mapping[str, str],
                  type: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "last_updated", last_updated)
@@ -9154,9 +15987,6 @@ class GetNotificationsWebhookResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -9283,9 +16113,6 @@ class GetRolesMappingSaasRolesMappingResult(dict):
                  csp_role: str,
                  id: int,
                  saml_groups: Sequence[str]):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "csp_role", csp_role)
@@ -9310,9 +16137,6 @@ class GetRolesMappingSaasRolesMappingResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -9379,9 +16203,6 @@ class GetServiceScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
-        """
-        :param str name: The name of the service. It is recommended not to use whitespace characters in the name.
-        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -9394,9 +16215,6 @@ class GetServiceScopeVariableResult(dict):
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the service. It is recommended not to use whitespace characters in the name.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -9528,9 +16346,6 @@ class GetUsersSaasUserGroupResult(dict):
                  created: str,
                  id: int,
                  name: str):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
@@ -9543,9 +16358,6 @@ class GetUsersSaasUserGroupResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -9561,9 +16373,6 @@ class GetUsersSaasUserLoginResult(dict):
                  id: int,
                  ip_address: str,
                  user_id: int):
-        """
-        :param int id: The ID of this resource.
-        """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ip_address", ip_address)
@@ -9577,9 +16386,6 @@ class GetUsersSaasUserLoginResult(dict):
     @property
     @pulumi.getter
     def id(self) -> int:
-        """
-        The ID of this resource.
-        """
         return pulumi.get(self, "id")
 
     @property

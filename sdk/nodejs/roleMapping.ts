@@ -16,6 +16,7 @@ import * as utilities from "./utilities";
  * const roleMappingRoleMapping = new aquasec.RoleMapping("roleMappingRoleMapping", {saml: {
  *     roleMapping: {
  *         Administrator: "group1",
+ *         Scanner: "group2|group3",
  *     },
  * }});
  * export const roleMapping = roleMappingRoleMapping;

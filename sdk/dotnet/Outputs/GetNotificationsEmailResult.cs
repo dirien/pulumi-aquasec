@@ -15,9 +15,6 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class GetNotificationsEmailResult
     {
         public readonly string Author;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly int Id;
         public readonly string LastUpdated;
         public readonly string Name;

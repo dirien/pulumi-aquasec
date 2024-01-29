@@ -20,7 +20,7 @@ class _ExportableConfig(types.ModuleType):
         """
         This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.
         """
-        return __config__.get('aquaUrl')
+        return __config__.get('aquaUrl') or _utilities.get_env('AQUA_URL')
 
     @property
     def ca_certificate_path(self) -> Optional[str]:
@@ -28,7 +28,7 @@ class _ExportableConfig(types.ModuleType):
         This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced
         from the `AQUA_CA_CERT_PATH` environment variable.
         """
-        return __config__.get('caCertificatePath')
+        return __config__.get('caCertificatePath') or _utilities.get_env('AQUA_CA_CERT_PATH')
 
     @property
     def config_path(self) -> Optional[str]:
@@ -36,7 +36,7 @@ class _ExportableConfig(types.ModuleType):
         This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can
         alternatively be sourced from the `AQUA_CONFIG` environment variable.
         """
-        return __config__.get('configPath')
+        return __config__.get('configPath') or _utilities.get_env('AQUA_CONFIG')
 
     @property
     def password(self) -> Optional[str]:
@@ -44,7 +44,7 @@ class _ExportableConfig(types.ModuleType):
         This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`
         environment variable.
         """
-        return __config__.get('password')
+        return __config__.get('password') or _utilities.get_env('AQUA_PASSWORD')
 
     @property
     def username(self) -> Optional[str]:
@@ -52,13 +52,13 @@ class _ExportableConfig(types.ModuleType):
         This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`
         environment variable.
         """
-        return __config__.get('username')
+        return __config__.get('username') or _utilities.get_env('AQUA_USER')
 
     @property
-    def verify_tls(self) -> Optional[bool]:
+    def verify_tls(self) -> bool:
         """
         If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can
         alternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.
         """
-        return __config__.get_bool('verifyTls')
+        return __config__.get_bool('verifyTls') or (_utilities.get_env_bool('AQUA_TLS_VERIFY') or True)
 

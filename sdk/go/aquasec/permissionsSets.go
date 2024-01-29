@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -233,12 +232,6 @@ func (i *PermissionsSets) ToPermissionsSetsOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionsSetsOutput)
 }
 
-func (i *PermissionsSets) ToOutput(ctx context.Context) pulumix.Output[*PermissionsSets] {
-	return pulumix.Output[*PermissionsSets]{
-		OutputState: i.ToPermissionsSetsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PermissionsSetsArrayInput is an input type that accepts PermissionsSetsArray and PermissionsSetsArrayOutput values.
 // You can construct a concrete instance of `PermissionsSetsArrayInput` via:
 //
@@ -262,12 +255,6 @@ func (i PermissionsSetsArray) ToPermissionsSetsArrayOutput() PermissionsSetsArra
 
 func (i PermissionsSetsArray) ToPermissionsSetsArrayOutputWithContext(ctx context.Context) PermissionsSetsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionsSetsArrayOutput)
-}
-
-func (i PermissionsSetsArray) ToOutput(ctx context.Context) pulumix.Output[[]*PermissionsSets] {
-	return pulumix.Output[[]*PermissionsSets]{
-		OutputState: i.ToPermissionsSetsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PermissionsSetsMapInput is an input type that accepts PermissionsSetsMap and PermissionsSetsMapOutput values.
@@ -295,12 +282,6 @@ func (i PermissionsSetsMap) ToPermissionsSetsMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(PermissionsSetsMapOutput)
 }
 
-func (i PermissionsSetsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PermissionsSets] {
-	return pulumix.Output[map[string]*PermissionsSets]{
-		OutputState: i.ToPermissionsSetsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PermissionsSetsOutput struct{ *pulumi.OutputState }
 
 func (PermissionsSetsOutput) ElementType() reflect.Type {
@@ -313,12 +294,6 @@ func (o PermissionsSetsOutput) ToPermissionsSetsOutput() PermissionsSetsOutput {
 
 func (o PermissionsSetsOutput) ToPermissionsSetsOutputWithContext(ctx context.Context) PermissionsSetsOutput {
 	return o
-}
-
-func (o PermissionsSetsOutput) ToOutput(ctx context.Context) pulumix.Output[*PermissionsSets] {
-	return pulumix.Output[*PermissionsSets]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
@@ -370,12 +345,6 @@ func (o PermissionsSetsArrayOutput) ToPermissionsSetsArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o PermissionsSetsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PermissionsSets] {
-	return pulumix.Output[[]*PermissionsSets]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PermissionsSetsArrayOutput) Index(i pulumi.IntInput) PermissionsSetsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PermissionsSets {
 		return vs[0].([]*PermissionsSets)[vs[1].(int)]
@@ -394,12 +363,6 @@ func (o PermissionsSetsMapOutput) ToPermissionsSetsMapOutput() PermissionsSetsMa
 
 func (o PermissionsSetsMapOutput) ToPermissionsSetsMapOutputWithContext(ctx context.Context) PermissionsSetsMapOutput {
 	return o
-}
-
-func (o PermissionsSetsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PermissionsSets] {
-	return pulumix.Output[map[string]*PermissionsSets]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PermissionsSetsMapOutput) MapIndex(k pulumi.StringInput) PermissionsSetsOutput {

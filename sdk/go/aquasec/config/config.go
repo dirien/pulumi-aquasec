@@ -13,35 +13,83 @@ var _ = internal.GetEnvOrDefault
 
 // This is the base URL of your Aqua instance. Can alternatively be sourced from the `AQUA_URL` environment variable.
 func GetAquaUrl(ctx *pulumi.Context) string {
-	return config.Get(ctx, "aquasec:aquaUrl")
+	v, err := config.Try(ctx, "aquasec:aquaUrl")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "AQUA_URL"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // This is the file path for server CA certificates if they are not available on the host OS. Can alternatively be sourced
 // from the `AQUA_CA_CERT_PATH` environment variable.
 func GetCaCertificatePath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "aquasec:caCertificatePath")
+	v, err := config.Try(ctx, "aquasec:caCertificatePath")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "AQUA_CA_CERT_PATH"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // This is the file path for Aqua provider configuration. The default configuration path is `~/.aqua/tf.config`. Can
 // alternatively be sourced from the `AQUA_CONFIG` environment variable.
 func GetConfigPath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "aquasec:configPath")
+	v, err := config.Try(ctx, "aquasec:configPath")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "AQUA_CONFIG"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // This is the password that should be used to make the connection. Can alternatively be sourced from the `AQUA_PASSWORD`
 // environment variable.
 func GetPassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "aquasec:password")
+	v, err := config.Try(ctx, "aquasec:password")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "AQUA_PASSWORD"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // This is the user id that should be used to make the connection. Can alternatively be sourced from the `AQUA_USER`
 // environment variable.
 func GetUsername(ctx *pulumi.Context) string {
-	return config.Get(ctx, "aquasec:username")
+	v, err := config.Try(ctx, "aquasec:username")
+	if err == nil {
+		return v
+	}
+	var value string
+	if d := internal.GetEnvOrDefault(nil, nil, "AQUA_USER"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // If true, server tls certificates will be verified by the client before making a connection. Defaults to true. Can
 // alternatively be sourced from the `AQUA_TLS_VERIFY` environment variable.
 func GetVerifyTls(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "aquasec:verifyTls")
+	v, err := config.TryBool(ctx, "aquasec:verifyTls")
+	if err == nil {
+		return v
+	}
+	var value bool
+	if d := internal.GetEnvOrDefault(true, internal.ParseEnvBool, "AQUA_TLS_VERIFY"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }

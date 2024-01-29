@@ -23,6 +23,8 @@ export function getFunctionRuntimePolicy(args: GetFunctionRuntimePolicyArgs, opt
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy", {
+        "driftPreventions": args.driftPreventions,
+        "executableBlacklists": args.executableBlacklists,
         "name": args.name,
     }, opts);
 }
@@ -32,8 +34,13 @@ export function getFunctionRuntimePolicy(args: GetFunctionRuntimePolicyArgs, opt
  */
 export interface GetFunctionRuntimePolicyArgs {
     /**
-     * Name of the function runtime policy
+     * Drift prevention configuration.
      */
+    driftPreventions?: inputs.GetFunctionRuntimePolicyDriftPrevention[];
+    /**
+     * Executable blacklist configuration.
+     */
+    executableBlacklists?: inputs.GetFunctionRuntimePolicyExecutableBlacklist[];
     name: string;
 }
 
@@ -70,6 +77,10 @@ export interface GetFunctionRuntimePolicyResult {
      */
     readonly description: string;
     /**
+     * Drift prevention configuration.
+     */
+    readonly driftPreventions?: outputs.GetFunctionRuntimePolicyDriftPrevention[];
+    /**
      * Indicates if the runtime policy is enabled or not.
      */
     readonly enabled: boolean;
@@ -77,6 +88,10 @@ export interface GetFunctionRuntimePolicyResult {
      * Indicates that policy should effect container execution (not just for audit).
      */
     readonly enforce: boolean;
+    /**
+     * Executable blacklist configuration.
+     */
+    readonly executableBlacklists?: outputs.GetFunctionRuntimePolicyExecutableBlacklist[];
     /**
      * Honeypot User ID (Access Key)
      */
@@ -132,7 +147,12 @@ export function getFunctionRuntimePolicyOutput(args: GetFunctionRuntimePolicyOut
  */
 export interface GetFunctionRuntimePolicyOutputArgs {
     /**
-     * Name of the function runtime policy
+     * Drift prevention configuration.
      */
+    driftPreventions?: pulumi.Input<pulumi.Input<inputs.GetFunctionRuntimePolicyDriftPreventionArgs>[]>;
+    /**
+     * Executable blacklist configuration.
+     */
+    executableBlacklists?: pulumi.Input<pulumi.Input<inputs.GetFunctionRuntimePolicyExecutableBlacklistArgs>[]>;
     name: pulumi.Input<string>;
 }

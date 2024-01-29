@@ -42,6 +42,7 @@ import * as utilities from "./utilities";
  *             value: "nginx:latest",
  *         },
  *     ],
+ *     password: "",
  *     prefixes: ["111111111111.dkr.ecr.us-east-1.amazonaws.com"],
  *     pullImageAge: "0D",
  *     pullImageCount: 3,
@@ -53,11 +54,8 @@ import * as utilities from "./utilities";
  *         ":xyz",
  *         ":onlytest",
  *     ],
- *     scannerNames: [
- *         "aqua-scanner-645f867c4f-4sbtj",
- *         "aqua-scanner-645f867c4f-8pkdd",
- *     ],
- *     scannerType: "specific",
+ *     scannerNames: [],
+ *     scannerType: "any",
  *     type: "AWS",
  *     url: "us-east-1",
  *     username: "",
@@ -188,7 +186,7 @@ export class IntegrationRegistry extends pulumi.CustomResource {
      */
     public readonly scannerType!: pulumi.Output<string>;
     /**
-     * Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+     * Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -376,7 +374,7 @@ export interface IntegrationRegistryState {
      */
     scannerType?: pulumi.Input<string>;
     /**
-     * Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+     * Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
      */
     type?: pulumi.Input<string>;
     /**
@@ -487,7 +485,7 @@ export interface IntegrationRegistryArgs {
      */
     scannerType?: pulumi.Input<string>;
     /**
-     * Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
+     * Registry type (HUB / V1 / V2 / ACR / GAR / ENGINE / AWS / GCR).
      */
     type: pulumi.Input<string>;
     /**

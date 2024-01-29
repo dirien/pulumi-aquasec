@@ -14,6 +14,7 @@ __all__ = [
     'GetAcknowledgesResult',
     'AwaitableGetAcknowledgesResult',
     'get_acknowledges',
+    'get_acknowledges_output',
 ]
 
 @pulumi.output_type
@@ -77,3 +78,21 @@ def get_acknowledges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     return AwaitableGetAcknowledgesResult(
         acknowledges=pulumi.get(__ret__, 'acknowledges'),
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_acknowledges)
+def get_acknowledges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAcknowledgesResult]:
+    """
+    The data source `get_acknowledges` provides a method to query all acknowledges within the Aqua
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aquasec as aquasec
+
+    acknowledges_acknowledges = aquasec.get_acknowledges()
+    pulumi.export("acknowledges", acknowledges_acknowledges)
+    ```
+    """
+    ...

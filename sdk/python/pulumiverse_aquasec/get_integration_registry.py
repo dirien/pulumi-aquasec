@@ -18,6 +18,8 @@ __all__ = [
     'get_integration_registry_output',
 ]
 
+warnings.warn("""aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries""", DeprecationWarning)
+
 @pulumi.output_type
 class GetIntegrationRegistryResult:
     """
@@ -109,73 +111,46 @@ class GetIntegrationRegistryResult:
     @property
     @pulumi.getter(name="advancedSettingsCleanup")
     def advanced_settings_cleanup(self) -> Optional[bool]:
-        """
-        Automatically clean up that don't match the pull criteria
-        """
         return pulumi.get(self, "advanced_settings_cleanup")
 
     @property
     @pulumi.getter(name="alwaysPullPatterns")
     def always_pull_patterns(self) -> Optional[Sequence[str]]:
-        """
-        List of image patterns to pull always
-        """
         return pulumi.get(self, "always_pull_patterns")
 
     @property
     @pulumi.getter(name="autoCleanup")
     def auto_cleanup(self) -> bool:
-        """
-        Automatically clean up images and repositories which are no longer present in the registry from Aqua console
-        """
         return pulumi.get(self, "auto_cleanup")
 
     @property
     @pulumi.getter(name="autoPull")
     def auto_pull(self) -> bool:
-        """
-        Whether to automatically pull images from the registry on creation and daily
-        """
         return pulumi.get(self, "auto_pull")
 
     @property
     @pulumi.getter(name="autoPullInterval")
     def auto_pull_interval(self) -> int:
-        """
-        The interval in days to start pulling new images from the registry, Defaults to 1
-        """
         return pulumi.get(self, "auto_pull_interval")
 
     @property
     @pulumi.getter(name="autoPullMax")
     def auto_pull_max(self) -> int:
-        """
-        Maximum number of repositories to pull every day, defaults to 100
-        """
         return pulumi.get(self, "auto_pull_max")
 
     @property
     @pulumi.getter(name="autoPullRescan")
     def auto_pull_rescan(self) -> bool:
-        """
-        Whether to automatically pull and rescan images from the registry on creation and daily
-        """
         return pulumi.get(self, "auto_pull_rescan")
 
     @property
     @pulumi.getter(name="autoPullTime")
     def auto_pull_time(self) -> str:
-        """
-        The time of day to start pulling new images from the registry, in the format HH:MM (24-hour clock), defaults to 03:00
-        """
         return pulumi.get(self, "auto_pull_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the registry
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -189,25 +164,16 @@ class GetIntegrationRegistryResult:
     @property
     @pulumi.getter(name="imageCreationDateCondition")
     def image_creation_date_condition(self) -> str:
-        """
-        Additional condition for pulling and rescanning images, Defaults to 'none'
-        """
         return pulumi.get(self, "image_creation_date_condition")
 
     @property
     @pulumi.getter
     def lastupdate(self) -> int:
-        """
-        The last time the registry was modified in UNIX time
-        """
         return pulumi.get(self, "lastupdate")
 
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -218,105 +184,66 @@ class GetIntegrationRegistryResult:
     @property
     @pulumi.getter
     def password(self) -> str:
-        """
-        The password for registry authentication
-        """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
     def prefixes(self) -> Sequence[str]:
-        """
-        List of possible prefixes to image names pulled from the registry
-        """
         return pulumi.get(self, "prefixes")
 
     @property
     @pulumi.getter(name="pullImageAge")
     def pull_image_age(self) -> str:
-        """
-        When auto pull image enabled, sets maximum age of auto pulled images
-        """
         return pulumi.get(self, "pull_image_age")
 
     @property
     @pulumi.getter(name="pullImageCount")
     def pull_image_count(self) -> int:
-        """
-        When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-        """
         return pulumi.get(self, "pull_image_count")
 
     @property
     @pulumi.getter(name="pullImageTagPatterns")
     def pull_image_tag_patterns(self) -> Optional[Sequence[str]]:
-        """
-        List of image tags patterns to pull
-        """
         return pulumi.get(self, "pull_image_tag_patterns")
 
     @property
     @pulumi.getter(name="pullRepoPatternsExcludeds")
     def pull_repo_patterns_excludeds(self) -> Optional[Sequence[str]]:
-        """
-        List of image patterns to exclude
-        """
         return pulumi.get(self, "pull_repo_patterns_excludeds")
 
     @property
     @pulumi.getter(name="registryScanTimeout")
     def registry_scan_timeout(self) -> Optional[int]:
-        """
-        Registry scan timeout in Minutes
-        """
         return pulumi.get(self, "registry_scan_timeout")
 
     @property
     @pulumi.getter(name="scannerNames")
     def scanner_names(self) -> Sequence[str]:
-        """
-        List of scanner names
-        """
         return pulumi.get(self, "scanner_names")
 
     @property
     @pulumi.getter(name="scannerType")
     def scanner_type(self) -> str:
-        """
-        Scanner type
-        """
         return pulumi.get(self, "scanner_type")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Registry type (HUB / V1 / V2 / ENGINE / AWS / GCR).
-        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def url(self) -> str:
-        """
-        The URL, address or region of the registry
-        """
         return pulumi.get(self, "url")
 
     @property
     @pulumi.getter
     def username(self) -> str:
-        """
-        The username for registry authentication.
-        """
         return pulumi.get(self, "username")
 
     @property
     @pulumi.getter
     def webhooks(self) -> Optional[Sequence['outputs.GetIntegrationRegistryWebhookResult']]:
-        """
-        When enabled, registry events are sent to the given Aqua webhook url
-        """
         return pulumi.get(self, "webhooks")
 
 
@@ -372,21 +299,8 @@ def get_integration_registry(advanced_settings_cleanup: Optional[bool] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIntegrationRegistryResult:
     """
     Use this data source to access information about an existing resource.
-
-    :param bool advanced_settings_cleanup: Automatically clean up that don't match the pull criteria
-    :param Sequence[str] always_pull_patterns: List of image patterns to pull always
-    :param str image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
-    :param int lastupdate: The last time the registry was modified in UNIX time
-    :param str name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-    :param str pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images
-    :param int pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-    :param Sequence[str] pull_image_tag_patterns: List of image tags patterns to pull
-    :param Sequence[str] pull_repo_patterns_excludeds: List of image patterns to exclude
-    :param int registry_scan_timeout: Registry scan timeout in Minutes
-    :param Sequence[str] scanner_names: List of scanner names
-    :param str scanner_type: Scanner type
-    :param Sequence[pulumi.InputType['GetIntegrationRegistryWebhookArgs']] webhooks: When enabled, registry events are sent to the given Aqua webhook url
     """
+    pulumi.log.warn("""get_integration_registry is deprecated: aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries""")
     __args__ = dict()
     __args__['advancedSettingsCleanup'] = advanced_settings_cleanup
     __args__['alwaysPullPatterns'] = always_pull_patterns
@@ -453,19 +367,6 @@ def get_integration_registry_output(advanced_settings_cleanup: Optional[pulumi.I
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIntegrationRegistryResult]:
     """
     Use this data source to access information about an existing resource.
-
-    :param bool advanced_settings_cleanup: Automatically clean up that don't match the pull criteria
-    :param Sequence[str] always_pull_patterns: List of image patterns to pull always
-    :param str image_creation_date_condition: Additional condition for pulling and rescanning images, Defaults to 'none'
-    :param int lastupdate: The last time the registry was modified in UNIX time
-    :param str name: The name of the registry; string, required - this will be treated as the registry's ID, so choose a simple alphanumerical name without special signs and spaces
-    :param str pull_image_age: When auto pull image enabled, sets maximum age of auto pulled images
-    :param int pull_image_count: When auto pull image enabled, sets maximum age of auto pulled images tags from each repository.
-    :param Sequence[str] pull_image_tag_patterns: List of image tags patterns to pull
-    :param Sequence[str] pull_repo_patterns_excludeds: List of image patterns to exclude
-    :param int registry_scan_timeout: Registry scan timeout in Minutes
-    :param Sequence[str] scanner_names: List of scanner names
-    :param str scanner_type: Scanner type
-    :param Sequence[pulumi.InputType['GetIntegrationRegistryWebhookArgs']] webhooks: When enabled, registry events are sent to the given Aqua webhook url
     """
+    pulumi.log.warn("""get_integration_registry is deprecated: aquasec.index/getintegrationregistry.getIntegrationRegistry has been deprecated in favor of aquasec.index/getintegrationregistries.getIntegrationRegistries""")
     ...

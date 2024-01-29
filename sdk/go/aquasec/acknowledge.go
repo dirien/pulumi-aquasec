@@ -9,7 +9,6 @@ import (
 
 	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
@@ -164,12 +163,6 @@ func (i *Acknowledge) ToAcknowledgeOutputWithContext(ctx context.Context) Acknow
 	return pulumi.ToOutputWithContext(ctx, i).(AcknowledgeOutput)
 }
 
-func (i *Acknowledge) ToOutput(ctx context.Context) pulumix.Output[*Acknowledge] {
-	return pulumix.Output[*Acknowledge]{
-		OutputState: i.ToAcknowledgeOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AcknowledgeArrayInput is an input type that accepts AcknowledgeArray and AcknowledgeArrayOutput values.
 // You can construct a concrete instance of `AcknowledgeArrayInput` via:
 //
@@ -193,12 +186,6 @@ func (i AcknowledgeArray) ToAcknowledgeArrayOutput() AcknowledgeArrayOutput {
 
 func (i AcknowledgeArray) ToAcknowledgeArrayOutputWithContext(ctx context.Context) AcknowledgeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AcknowledgeArrayOutput)
-}
-
-func (i AcknowledgeArray) ToOutput(ctx context.Context) pulumix.Output[[]*Acknowledge] {
-	return pulumix.Output[[]*Acknowledge]{
-		OutputState: i.ToAcknowledgeArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AcknowledgeMapInput is an input type that accepts AcknowledgeMap and AcknowledgeMapOutput values.
@@ -226,12 +213,6 @@ func (i AcknowledgeMap) ToAcknowledgeMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AcknowledgeMapOutput)
 }
 
-func (i AcknowledgeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Acknowledge] {
-	return pulumix.Output[map[string]*Acknowledge]{
-		OutputState: i.ToAcknowledgeMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AcknowledgeOutput struct{ *pulumi.OutputState }
 
 func (AcknowledgeOutput) ElementType() reflect.Type {
@@ -244,12 +225,6 @@ func (o AcknowledgeOutput) ToAcknowledgeOutput() AcknowledgeOutput {
 
 func (o AcknowledgeOutput) ToAcknowledgeOutputWithContext(ctx context.Context) AcknowledgeOutput {
 	return o
-}
-
-func (o AcknowledgeOutput) ToOutput(ctx context.Context) pulumix.Output[*Acknowledge] {
-	return pulumix.Output[*Acknowledge]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A comment describing the reason for the acknowledgment
@@ -276,12 +251,6 @@ func (o AcknowledgeArrayOutput) ToAcknowledgeArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o AcknowledgeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Acknowledge] {
-	return pulumix.Output[[]*Acknowledge]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AcknowledgeArrayOutput) Index(i pulumi.IntInput) AcknowledgeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Acknowledge {
 		return vs[0].([]*Acknowledge)[vs[1].(int)]
@@ -300,12 +269,6 @@ func (o AcknowledgeMapOutput) ToAcknowledgeMapOutput() AcknowledgeMapOutput {
 
 func (o AcknowledgeMapOutput) ToAcknowledgeMapOutputWithContext(ctx context.Context) AcknowledgeMapOutput {
 	return o
-}
-
-func (o AcknowledgeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Acknowledge] {
-	return pulumix.Output[map[string]*Acknowledge]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AcknowledgeMapOutput) MapIndex(k pulumi.StringInput) AcknowledgeOutput {
