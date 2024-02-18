@@ -8,7 +8,7 @@ require (
 	github.com/aquasecurity/terraform-provider-aquasec v0.8.27
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.27.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
-	github.com/pulumi/pulumi/sdk/v3 v3.105.0
+	github.com/pulumi/pulumi/sdk/v3 v3.106.0
 )
 
 require (
