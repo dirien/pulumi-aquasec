@@ -92,14 +92,14 @@ class FunctionRuntimePolicyArgs:
         """
         The set of arguments for constructing a FunctionRuntimePolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedExecutableArgs']]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedRegistryArgs']]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedRegistryArgs']]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyBypassScopeArgs']]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyDriftPreventionArgs']]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -111,7 +111,7 @@ class FunctionRuntimePolicyArgs:
         :param pulumi.Input[str] honeypot_serverless_app_name: Serverless application name
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyLimitContainerPrivilegeArgs']]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input['FunctionRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyRestrictedVolumeArgs']]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyScopeVariableArgs']]] scope_variables: List of scope attributes.
@@ -280,7 +280,7 @@ class FunctionRuntimePolicyArgs:
     @pulumi.getter(name="allowedRegistries")
     def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedRegistryArgs']]]]:
         """
-        List of allowed registries.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -508,7 +508,7 @@ class FunctionRuntimePolicyArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether allowed executables configuration is enabled.
+        Indicates if the runtime policy is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -742,7 +742,7 @@ class FunctionRuntimePolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name assigned to the attribute.
+        Name of the function runtime policy
         """
         return pulumi.get(self, "name")
 
@@ -1076,14 +1076,14 @@ class _FunctionRuntimePolicyState:
         """
         Input properties used for looking up and filtering FunctionRuntimePolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedExecutableArgs']]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedRegistryArgs']]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedRegistryArgs']]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyBypassScopeArgs']]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyDriftPreventionArgs']]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -1095,7 +1095,7 @@ class _FunctionRuntimePolicyState:
         :param pulumi.Input[str] honeypot_serverless_app_name: Serverless application name
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyLimitContainerPrivilegeArgs']]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input['FunctionRuntimePolicyMalwareScanOptionsArgs'] malware_scan_options: Configuration for Real-Time Malware Protection.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyRestrictedVolumeArgs']]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyScopeVariableArgs']]] scope_variables: List of scope attributes.
@@ -1264,7 +1264,7 @@ class _FunctionRuntimePolicyState:
     @pulumi.getter(name="allowedRegistries")
     def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FunctionRuntimePolicyAllowedRegistryArgs']]]]:
         """
-        List of allowed registries.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -1492,7 +1492,7 @@ class _FunctionRuntimePolicyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether allowed executables configuration is enabled.
+        Indicates if the runtime policy is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -1726,7 +1726,7 @@ class _FunctionRuntimePolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name assigned to the attribute.
+        Name of the function runtime policy
         """
         return pulumi.get(self, "name")
 
@@ -2061,18 +2061,19 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
                  whitelisted_os_users: Optional[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyWhitelistedOsUsersArgs']]] = None,
                  __props__=None):
         """
-        Create a FunctionRuntimePolicy resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyAllowedExecutableArgs']]]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyBypassScopeArgs']]]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyDriftPreventionArgs']]]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -2084,7 +2085,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] honeypot_serverless_app_name: Serverless application name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyLimitContainerPrivilegeArgs']]]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input[pulumi.InputType['FunctionRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyRestrictedVolumeArgs']]]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyScopeVariableArgs']]]] scope_variables: List of scope attributes.
@@ -2097,7 +2098,8 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
                  args: Optional[FunctionRuntimePolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FunctionRuntimePolicy resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param FunctionRuntimePolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2361,14 +2363,14 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyAllowedExecutableArgs']]]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[str] author: Username of the account that created the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyBypassScopeArgs']]]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyDriftPreventionArgs']]]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -2380,7 +2382,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] honeypot_serverless_app_name: Serverless application name
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyLimitContainerPrivilegeArgs']]]] limit_container_privileges: Container privileges configuration.
         :param pulumi.Input[pulumi.InputType['FunctionRuntimePolicyMalwareScanOptionsArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the function runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyRestrictedVolumeArgs']]]] restricted_volumes: Restricted volumes configuration.
         :param pulumi.Input[str] scope_expression: Logical expression of how to compute the dependency of the scope variables.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FunctionRuntimePolicyScopeVariableArgs']]]] scope_variables: List of scope attributes.
@@ -2477,7 +2479,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter(name="allowedRegistries")
     def allowed_registries(self) -> pulumi.Output[Sequence['outputs.FunctionRuntimePolicyAllowedRegistry']]:
         """
-        List of allowed registries.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -2613,7 +2615,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether allowed executables configuration is enabled.
+        Indicates if the runtime policy is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -2759,7 +2761,7 @@ class FunctionRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name assigned to the attribute.
+        Name of the function runtime policy
         """
         return pulumi.get(self, "name")
 

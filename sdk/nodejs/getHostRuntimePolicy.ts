@@ -44,6 +44,9 @@ export interface GetHostRuntimePolicyArgs {
      * Configuration for Real-Time Malware Protection.
      */
     malwareScanOptions?: inputs.GetHostRuntimePolicyMalwareScanOption[];
+    /**
+     * Name of the host runtime policy
+     */
     name: string;
     packageBlocks?: inputs.GetHostRuntimePolicyPackageBlock[];
 }
@@ -209,6 +212,9 @@ export interface GetHostRuntimePolicyOutputArgs {
      * Configuration for Real-Time Malware Protection.
      */
     malwareScanOptions?: pulumi.Input<pulumi.Input<inputs.GetHostRuntimePolicyMalwareScanOptionArgs>[]>;
+    /**
+     * Name of the host runtime policy
+     */
     name: pulumi.Input<string>;
     packageBlocks?: pulumi.Input<pulumi.Input<inputs.GetHostRuntimePolicyPackageBlockArgs>[]>;
 }

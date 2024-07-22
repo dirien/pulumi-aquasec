@@ -349,6 +349,8 @@ def get_service(name: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
     Use this data source to access information about an existing resource.
+
+    :param str name: The name of the service. It is recommended not to use whitespace characters in the name.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -389,5 +391,7 @@ def get_service_output(name: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
     """
     Use this data source to access information about an existing resource.
+
+    :param str name: The name of the service. It is recommended not to use whitespace characters in the name.
     """
     ...

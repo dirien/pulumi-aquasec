@@ -109,7 +109,7 @@ export class ImageAssurancePolicy extends pulumi.CustomResource {
      */
     public readonly cvesWhiteLists!: pulumi.Output<string[] | undefined>;
     /**
-     * Identifier of the cvss severity.
+     * Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
      */
     public readonly cvssSeverity!: pulumi.Output<string | undefined>;
     /**
@@ -549,7 +549,7 @@ export interface ImageAssurancePolicyState {
      */
     cvesWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier of the cvss severity.
+     * Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
      */
     cvssSeverity?: pulumi.Input<string>;
     /**
@@ -780,7 +780,7 @@ export interface ImageAssurancePolicyArgs {
      */
     cvesWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifier of the cvss severity.
+     * Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
      */
     cvssSeverity?: pulumi.Input<string>;
     /**
