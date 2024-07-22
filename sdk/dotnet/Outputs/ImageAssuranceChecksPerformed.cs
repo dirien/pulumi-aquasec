@@ -14,12 +14,33 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class ImageAssuranceChecksPerformed
     {
+        /// <summary>
+        /// The type of the Assurance Policy the check originated from.
+        /// </summary>
         public readonly string? AssuranceType;
+        /// <summary>
+        /// Whether the check is blocking (i.e. a failure should trigger a disallow).
+        /// </summary>
         public readonly bool? Blocking;
+        /// <summary>
+        /// The name of the image assurance control.
+        /// </summary>
         public readonly string? Control;
+        /// <summary>
+        /// If DTA was skipped.
+        /// </summary>
         public readonly bool? DtaSkipped;
+        /// <summary>
+        /// The reason why DTA was skipped.
+        /// </summary>
         public readonly string? DtaSkippedReason;
+        /// <summary>
+        /// Whether the image failed the check.
+        /// </summary>
         public readonly bool? Failed;
+        /// <summary>
+        /// The name of the Image Assurance Policy the check originated from.
+        /// </summary>
         public readonly string? PolicyName;
 
         [OutputConstructor]

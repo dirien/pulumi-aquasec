@@ -14,10 +14,25 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetRolesRoleResult
     {
+        /// <summary>
+        /// Free text description for the role.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The name of the Permission Set that will affect the users assigned to this specific Role.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// List of Application Scopes that will affect the users assigned to this specific Role.
+        /// </summary>
         public readonly ImmutableArray<string> Scopes;
+        /// <summary>
+        /// The date of the last modification of the role.
+        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]

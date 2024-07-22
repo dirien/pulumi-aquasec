@@ -41,6 +41,9 @@ export interface GetFunctionRuntimePolicyArgs {
      * Executable blacklist configuration.
      */
     executableBlacklists?: inputs.GetFunctionRuntimePolicyExecutableBlacklist[];
+    /**
+     * Name of the function runtime policy
+     */
     name: string;
 }
 
@@ -154,5 +157,8 @@ export interface GetFunctionRuntimePolicyOutputArgs {
      * Executable blacklist configuration.
      */
     executableBlacklists?: pulumi.Input<pulumi.Input<inputs.GetFunctionRuntimePolicyExecutableBlacklistArgs>[]>;
+    /**
+     * Name of the function runtime policy
+     */
     name: pulumi.Input<string>;
 }

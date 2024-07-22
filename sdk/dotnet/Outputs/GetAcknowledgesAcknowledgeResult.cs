@@ -14,27 +14,90 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetAcknowledgesAcknowledgeResult
     {
+        /// <summary>
+        /// The user who acknowledged the issue.
+        /// </summary>
         public readonly string Author;
+        /// <summary>
+        /// A comment describing the reason for the acknowledgment
+        /// </summary>
         public readonly string Comment;
+        /// <summary>
+        /// The date and time of the acknowledgment.
+        /// </summary>
         public readonly string Date;
         public readonly string DockerId;
+        /// <summary>
+        /// The current dat and time when the expiration was set
+        /// </summary>
         public readonly string ExpirationConfiguredAt;
+        /// <summary>
+        /// The user who set the expiration of the issue.
+        /// </summary>
         public readonly string ExpirationConfiguredBy;
+        /// <summary>
+        /// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        /// </summary>
         public readonly int ExpirationDays;
+        /// <summary>
+        /// The version of the package that having a fix for the issue.
+        /// </summary>
         public readonly string FixVersion;
+        /// <summary>
+        /// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        /// </summary>
         public readonly string ImageName;
+        /// <summary>
+        /// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        /// </summary>
         public readonly string IssueName;
+        /// <summary>
+        /// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        /// </summary>
         public readonly string IssueType;
+        /// <summary>
+        /// When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        /// </summary>
         public readonly string Os;
+        /// <summary>
+        /// When the resource_type is 'package', the operating system version is required.
+        /// </summary>
         public readonly string OsVersion;
+        /// <summary>
+        /// The permissions of the user who acknowledged the issue.
+        /// </summary>
         public readonly string Permission;
+        /// <summary>
+        /// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        /// </summary>
         public readonly string RegistryName;
+        /// <summary>
+        /// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        /// </summary>
         public readonly string ResourceCpe;
+        /// <summary>
+        /// The format of the resource.
+        /// </summary>
         public readonly string ResourceFormat;
+        /// <summary>
+        /// When the resource_type is 'file', the hash of the file is required
+        /// </summary>
         public readonly string ResourceHash;
+        /// <summary>
+        /// When the resource_type is 'package', the name of the package is required.
+        /// </summary>
         public readonly string ResourceName;
+        /// <summary>
+        /// The path of the resource. This is required for resources of type 'file' and 'executable'.
+        /// </summary>
         public readonly string ResourcePath;
+        /// <summary>
+        /// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        /// </summary>
         public readonly string ResourceType;
+        /// <summary>
+        /// When the resource_type is 'package', the version of the package is required
+        /// </summary>
         public readonly string ResourceVersion;
 
         [OutputConstructor]

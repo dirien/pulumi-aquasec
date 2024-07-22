@@ -14,6 +14,9 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetRolesMappingLdapResult
     {
+        /// <summary>
+        /// Role Mapping is used to define the IdP role that the user will assume in Aqua
+        /// </summary>
         public readonly ImmutableDictionary<string, string> RoleMapping;
 
         [OutputConstructor]

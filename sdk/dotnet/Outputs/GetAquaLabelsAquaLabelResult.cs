@@ -14,9 +14,21 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetAquaLabelsAquaLabelResult
     {
+        /// <summary>
+        /// The name of the user who created the Aqua label.
+        /// </summary>
         public readonly string Author;
+        /// <summary>
+        /// The creation date of the Aqua label.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// Aqua label description.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Aqua label name.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

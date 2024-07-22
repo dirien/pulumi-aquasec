@@ -15,9 +15,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The data source `aquasec.EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -38,8 +36,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnforcerGroupsResult> InvokeAsync(GetEnforcerGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsArgs(), options.WithDefaults());
@@ -47,9 +43,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The data source `aquasec.EnforcerGroups` provides an Enforcer group template that generates a configuration file, which is subsequently used to generate one or more Enforcers using a Docker command.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -70,8 +64,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnforcerGroupsResult> Invoke(GetEnforcerGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnforcerGroupsResult>("aquasec:index/getEnforcerGroups:getEnforcerGroups", args ?? new GetEnforcerGroupsInvokeArgs(), options.WithDefaults());

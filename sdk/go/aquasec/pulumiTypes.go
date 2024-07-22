@@ -19783,13 +19783,20 @@ func (o HostRuntimePolicyWhitelistedOsUsersPtrOutput) UserWhiteLists() pulumi.St
 }
 
 type ImageAssuranceChecksPerformed struct {
-	AssuranceType    *string `pulumi:"assuranceType"`
-	Blocking         *bool   `pulumi:"blocking"`
-	Control          *string `pulumi:"control"`
-	DtaSkipped       *bool   `pulumi:"dtaSkipped"`
+	// The type of the Assurance Policy the check originated from.
+	AssuranceType *string `pulumi:"assuranceType"`
+	// Whether the check is blocking (i.e. a failure should trigger a disallow).
+	Blocking *bool `pulumi:"blocking"`
+	// The name of the image assurance control.
+	Control *string `pulumi:"control"`
+	// If DTA was skipped.
+	DtaSkipped *bool `pulumi:"dtaSkipped"`
+	// The reason why DTA was skipped.
 	DtaSkippedReason *string `pulumi:"dtaSkippedReason"`
-	Failed           *bool   `pulumi:"failed"`
-	PolicyName       *string `pulumi:"policyName"`
+	// Whether the image failed the check.
+	Failed *bool `pulumi:"failed"`
+	// The name of the Image Assurance Policy the check originated from.
+	PolicyName *string `pulumi:"policyName"`
 }
 
 // ImageAssuranceChecksPerformedInput is an input type that accepts ImageAssuranceChecksPerformedArgs and ImageAssuranceChecksPerformedOutput values.
@@ -19804,13 +19811,20 @@ type ImageAssuranceChecksPerformedInput interface {
 }
 
 type ImageAssuranceChecksPerformedArgs struct {
-	AssuranceType    pulumi.StringPtrInput `pulumi:"assuranceType"`
-	Blocking         pulumi.BoolPtrInput   `pulumi:"blocking"`
-	Control          pulumi.StringPtrInput `pulumi:"control"`
-	DtaSkipped       pulumi.BoolPtrInput   `pulumi:"dtaSkipped"`
+	// The type of the Assurance Policy the check originated from.
+	AssuranceType pulumi.StringPtrInput `pulumi:"assuranceType"`
+	// Whether the check is blocking (i.e. a failure should trigger a disallow).
+	Blocking pulumi.BoolPtrInput `pulumi:"blocking"`
+	// The name of the image assurance control.
+	Control pulumi.StringPtrInput `pulumi:"control"`
+	// If DTA was skipped.
+	DtaSkipped pulumi.BoolPtrInput `pulumi:"dtaSkipped"`
+	// The reason why DTA was skipped.
 	DtaSkippedReason pulumi.StringPtrInput `pulumi:"dtaSkippedReason"`
-	Failed           pulumi.BoolPtrInput   `pulumi:"failed"`
-	PolicyName       pulumi.StringPtrInput `pulumi:"policyName"`
+	// Whether the image failed the check.
+	Failed pulumi.BoolPtrInput `pulumi:"failed"`
+	// The name of the Image Assurance Policy the check originated from.
+	PolicyName pulumi.StringPtrInput `pulumi:"policyName"`
 }
 
 func (ImageAssuranceChecksPerformedArgs) ElementType() reflect.Type {
@@ -19864,30 +19878,37 @@ func (o ImageAssuranceChecksPerformedOutput) ToImageAssuranceChecksPerformedOutp
 	return o
 }
 
+// The type of the Assurance Policy the check originated from.
 func (o ImageAssuranceChecksPerformedOutput) AssuranceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *string { return v.AssuranceType }).(pulumi.StringPtrOutput)
 }
 
+// Whether the check is blocking (i.e. a failure should trigger a disallow).
 func (o ImageAssuranceChecksPerformedOutput) Blocking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *bool { return v.Blocking }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the image assurance control.
 func (o ImageAssuranceChecksPerformedOutput) Control() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *string { return v.Control }).(pulumi.StringPtrOutput)
 }
 
+// If DTA was skipped.
 func (o ImageAssuranceChecksPerformedOutput) DtaSkipped() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *bool { return v.DtaSkipped }).(pulumi.BoolPtrOutput)
 }
 
+// The reason why DTA was skipped.
 func (o ImageAssuranceChecksPerformedOutput) DtaSkippedReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *string { return v.DtaSkippedReason }).(pulumi.StringPtrOutput)
 }
 
+// Whether the image failed the check.
 func (o ImageAssuranceChecksPerformedOutput) Failed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *bool { return v.Failed }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the Image Assurance Policy the check originated from.
 func (o ImageAssuranceChecksPerformedOutput) PolicyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageAssuranceChecksPerformed) *string { return v.PolicyName }).(pulumi.StringPtrOutput)
 }
@@ -21382,11 +21403,16 @@ func (o ImageAssurancePolicyTrustedBaseImageArrayOutput) Index(i pulumi.IntInput
 }
 
 type ImageHistory struct {
-	Comment   *string `pulumi:"comment"`
-	Created   *string `pulumi:"created"`
+	// The commit comment for the image, if any.
+	Comment *string `pulumi:"comment"`
+	// The date of creation of the layer.
+	Created *string `pulumi:"created"`
+	// The command that generated the layer.
 	CreatedBy *string `pulumi:"createdBy"`
-	Id        *string `pulumi:"id"`
-	Size      *int    `pulumi:"size"`
+	// The image ID of the layer (if any).
+	Id *string `pulumi:"id"`
+	// The size of the image.
+	Size *int `pulumi:"size"`
 }
 
 // ImageHistoryInput is an input type that accepts ImageHistoryArgs and ImageHistoryOutput values.
@@ -21401,11 +21427,16 @@ type ImageHistoryInput interface {
 }
 
 type ImageHistoryArgs struct {
-	Comment   pulumi.StringPtrInput `pulumi:"comment"`
-	Created   pulumi.StringPtrInput `pulumi:"created"`
+	// The commit comment for the image, if any.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The date of creation of the layer.
+	Created pulumi.StringPtrInput `pulumi:"created"`
+	// The command that generated the layer.
 	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
-	Id        pulumi.StringPtrInput `pulumi:"id"`
-	Size      pulumi.IntPtrInput    `pulumi:"size"`
+	// The image ID of the layer (if any).
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The size of the image.
+	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
 func (ImageHistoryArgs) ElementType() reflect.Type {
@@ -21459,22 +21490,27 @@ func (o ImageHistoryOutput) ToImageHistoryOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The commit comment for the image, if any.
 func (o ImageHistoryOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageHistory) *string { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
+// The date of creation of the layer.
 func (o ImageHistoryOutput) Created() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageHistory) *string { return v.Created }).(pulumi.StringPtrOutput)
 }
 
+// The command that generated the layer.
 func (o ImageHistoryOutput) CreatedBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageHistory) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
 }
 
+// The image ID of the layer (if any).
 func (o ImageHistoryOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageHistory) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The size of the image.
 func (o ImageHistoryOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageHistory) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -21500,72 +21536,116 @@ func (o ImageHistoryArrayOutput) Index(i pulumi.IntInput) ImageHistoryOutput {
 }
 
 type ImageVulnerability struct {
-	AckAuthor                  *string  `pulumi:"ackAuthor"`
-	AckComment                 *string  `pulumi:"ackComment"`
-	AckExpirationConfiguredAt  *string  `pulumi:"ackExpirationConfiguredAt"`
-	AckExpirationConfiguredBy  *string  `pulumi:"ackExpirationConfiguredBy"`
-	AckExpirationDays          *int     `pulumi:"ackExpirationDays"`
-	AckScope                   *string  `pulumi:"ackScope"`
-	AcknowledgeDate            *string  `pulumi:"acknowledgeDate"`
-	AncestorPkg                *string  `pulumi:"ancestorPkg"`
-	AquaScore                  *float64 `pulumi:"aquaScore"`
-	AquaScoreClassification    *string  `pulumi:"aquaScoreClassification"`
-	AquaScoringSystem          *string  `pulumi:"aquaScoringSystem"`
-	AquaSeverity               *string  `pulumi:"aquaSeverity"`
-	AquaSeverityClassification *string  `pulumi:"aquaSeverityClassification"`
-	AquaVectors                *string  `pulumi:"aquaVectors"`
-	AuditEventsCount           *int     `pulumi:"auditEventsCount"`
-	BlockEventsCount           *int     `pulumi:"blockEventsCount"`
-	Classification             *string  `pulumi:"classification"`
-	Description                *string  `pulumi:"description"`
-	Digest                     *string  `pulumi:"digest"`
-	ExploitReference           *string  `pulumi:"exploitReference"`
-	ExploitType                *string  `pulumi:"exploitType"`
-	FirstFoundDate             *string  `pulumi:"firstFoundDate"`
-	FixVersion                 *string  `pulumi:"fixVersion"`
-	ImageName                  *string  `pulumi:"imageName"`
-	LastFoundDate              *string  `pulumi:"lastFoundDate"`
-	ModificationDate           *string  `pulumi:"modificationDate"`
-	Name                       *string  `pulumi:"name"`
-	NvdCvss2Score              *float64 `pulumi:"nvdCvss2Score"`
-	NvdCvss2Vectors            *string  `pulumi:"nvdCvss2Vectors"`
-	NvdCvss3Score              *float64 `pulumi:"nvdCvss3Score"`
-	NvdCvss3Severity           *string  `pulumi:"nvdCvss3Severity"`
-	NvdCvss3Vectors            *string  `pulumi:"nvdCvss3Vectors"`
-	NvdSeverity                *string  `pulumi:"nvdSeverity"`
-	NvdUrl                     *string  `pulumi:"nvdUrl"`
-	Os                         *string  `pulumi:"os"`
-	OsVersion                  *string  `pulumi:"osVersion"`
-	Permission                 *string  `pulumi:"permission"`
-	PublishDate                *string  `pulumi:"publishDate"`
-	Registry                   *string  `pulumi:"registry"`
-	Repository                 *string  `pulumi:"repository"`
-	ResourceArchitecture       *string  `pulumi:"resourceArchitecture"`
-	ResourceCpe                *string  `pulumi:"resourceCpe"`
-	ResourceFormat             *string  `pulumi:"resourceFormat"`
-	ResourceHash               *string  `pulumi:"resourceHash"`
-	ResourceLicenses           []string `pulumi:"resourceLicenses"`
-	ResourceName               *string  `pulumi:"resourceName"`
-	ResourcePath               *string  `pulumi:"resourcePath"`
-	ResourceType               *string  `pulumi:"resourceType"`
-	ResourceVersion            *string  `pulumi:"resourceVersion"`
-	SeverityClassification     *string  `pulumi:"severityClassification"`
-	Solution                   *string  `pulumi:"solution"`
-	TemporalVector             *string  `pulumi:"temporalVector"`
-	VPatchAppliedBy            *string  `pulumi:"vPatchAppliedBy"`
-	VPatchAppliedOn            *string  `pulumi:"vPatchAppliedOn"`
-	VPatchEnforcedBy           *string  `pulumi:"vPatchEnforcedBy"`
-	VPatchEnforcedOn           *string  `pulumi:"vPatchEnforcedOn"`
-	VPatchPolicyEnforce        *bool    `pulumi:"vPatchPolicyEnforce"`
-	VPatchPolicyName           *string  `pulumi:"vPatchPolicyName"`
-	VPatchRevertedBy           *string  `pulumi:"vPatchRevertedBy"`
-	VPatchRevertedOn           *string  `pulumi:"vPatchRevertedOn"`
-	VPatchStatus               *string  `pulumi:"vPatchStatus"`
-	VendorCvss2Score           *float64 `pulumi:"vendorCvss2Score"`
-	VendorCvss2Vectors         *string  `pulumi:"vendorCvss2Vectors"`
-	VendorSeverity             *string  `pulumi:"vendorSeverity"`
-	VendorStatement            *string  `pulumi:"vendorStatement"`
-	VendorUrl                  *string  `pulumi:"vendorUrl"`
+	AckAuthor                 *string `pulumi:"ackAuthor"`
+	AckComment                *string `pulumi:"ackComment"`
+	AckExpirationConfiguredAt *string `pulumi:"ackExpirationConfiguredAt"`
+	AckExpirationConfiguredBy *string `pulumi:"ackExpirationConfiguredBy"`
+	AckExpirationDays         *int    `pulumi:"ackExpirationDays"`
+	AckScope                  *string `pulumi:"ackScope"`
+	AcknowledgeDate           *string `pulumi:"acknowledgeDate"`
+	// The ancestor of this package.
+	AncestorPkg *string `pulumi:"ancestorPkg"`
+	// The score generated for the vulnerability by Aqua.
+	AquaScore *float64 `pulumi:"aquaScore"`
+	// Score classification by Aqua.
+	AquaScoreClassification *string `pulumi:"aquaScoreClassification"`
+	// The score system for the vulnerability by Aqua
+	AquaScoringSystem *string `pulumi:"aquaScoringSystem"`
+	// The severity generated for the vulnerability by Aqua.
+	AquaSeverity *string `pulumi:"aquaSeverity"`
+	// Classification of the severity defined by Aqua.
+	AquaSeverityClassification *string `pulumi:"aquaSeverityClassification"`
+	// The vectors generated for the vulnerability by Aqua
+	AquaVectors *string `pulumi:"aquaVectors"`
+	// Number of audit events.
+	AuditEventsCount *int `pulumi:"auditEventsCount"`
+	// Number of blocked events.
+	BlockEventsCount *int `pulumi:"blockEventsCount"`
+	// Classification of the vulnerability.
+	Classification *string `pulumi:"classification"`
+	// The description of the vulnerability.
+	Description *string `pulumi:"description"`
+	// The content digest of the image.
+	Digest *string `pulumi:"digest"`
+	// Reference of the exploit.
+	ExploitReference *string `pulumi:"exploitReference"`
+	// Type of the exploit.
+	ExploitType *string `pulumi:"exploitType"`
+	// The date when this vulnerability was first found.
+	FirstFoundDate *string `pulumi:"firstFoundDate"`
+	// Fixed version of the resource.
+	FixVersion *string `pulumi:"fixVersion"`
+	// Name of the image.
+	ImageName *string `pulumi:"imageName"`
+	// The date when this vulnerability was last found.
+	LastFoundDate *string `pulumi:"lastFoundDate"`
+	// Thhe date when this vulnerability was modified.
+	ModificationDate *string `pulumi:"modificationDate"`
+	// The name of the vulnerability.
+	Name *string `pulumi:"name"`
+	// CVSS2 score by NVD
+	NvdCvss2Score *float64 `pulumi:"nvdCvss2Score"`
+	// CVSS2 vectors by NVD
+	NvdCvss2Vectors *string `pulumi:"nvdCvss2Vectors"`
+	// CVSS3 score by NVD
+	NvdCvss3Score *float64 `pulumi:"nvdCvss3Score"`
+	// CVSS3 severity by NVD
+	NvdCvss3Severity *string `pulumi:"nvdCvss3Severity"`
+	// CVSS3 vectors by NVD
+	NvdCvss3Vectors *string `pulumi:"nvdCvss3Vectors"`
+	// Type of the severity identified by NVD.
+	NvdSeverity *string `pulumi:"nvdSeverity"`
+	// URL of the details of this vulnerability by NVD.
+	NvdUrl *string `pulumi:"nvdUrl"`
+	// Name of the Operating System.
+	Os *string `pulumi:"os"`
+	// The version of the OS.
+	OsVersion *string `pulumi:"osVersion"`
+	// permission on the image
+	Permission *string `pulumi:"permission"`
+	// The date this vulnerability was published.
+	PublishDate *string `pulumi:"publishDate"`
+	// Registry of the image.
+	Registry *string `pulumi:"registry"`
+	// Repository of the image.
+	Repository *string `pulumi:"repository"`
+	// Architecture of the resource.
+	ResourceArchitecture *string `pulumi:"resourceArchitecture"`
+	// Common Platform Enumeration (CPE) of the resource.
+	ResourceCpe *string `pulumi:"resourceCpe"`
+	// Code format of the resource (java, apk etc.).
+	ResourceFormat *string `pulumi:"resourceFormat"`
+	// Hash of the resource.
+	ResourceHash *string `pulumi:"resourceHash"`
+	// List of license supported by the resource.
+	ResourceLicenses []string `pulumi:"resourceLicenses"`
+	// Name of the resource.
+	ResourceName *string `pulumi:"resourceName"`
+	// Path of the resource.
+	ResourcePath *string `pulumi:"resourcePath"`
+	// Type of the resource
+	ResourceType *string `pulumi:"resourceType"`
+	// Version of the resource.
+	ResourceVersion *string `pulumi:"resourceVersion"`
+	// Classification of the severity.
+	SeverityClassification *string `pulumi:"severityClassification"`
+	// Solution for the vulnerability.
+	Solution            *string  `pulumi:"solution"`
+	TemporalVector      *string  `pulumi:"temporalVector"`
+	VPatchAppliedBy     *string  `pulumi:"vPatchAppliedBy"`
+	VPatchAppliedOn     *string  `pulumi:"vPatchAppliedOn"`
+	VPatchEnforcedBy    *string  `pulumi:"vPatchEnforcedBy"`
+	VPatchEnforcedOn    *string  `pulumi:"vPatchEnforcedOn"`
+	VPatchPolicyEnforce *bool    `pulumi:"vPatchPolicyEnforce"`
+	VPatchPolicyName    *string  `pulumi:"vPatchPolicyName"`
+	VPatchRevertedBy    *string  `pulumi:"vPatchRevertedBy"`
+	VPatchRevertedOn    *string  `pulumi:"vPatchRevertedOn"`
+	VPatchStatus        *string  `pulumi:"vPatchStatus"`
+	VendorCvss2Score    *float64 `pulumi:"vendorCvss2Score"`
+	VendorCvss2Vectors  *string  `pulumi:"vendorCvss2Vectors"`
+	VendorSeverity      *string  `pulumi:"vendorSeverity"`
+	VendorStatement     *string  `pulumi:"vendorStatement"`
+	VendorUrl           *string  `pulumi:"vendorUrl"`
 }
 
 // ImageVulnerabilityInput is an input type that accepts ImageVulnerabilityArgs and ImageVulnerabilityOutput values.
@@ -21580,72 +21660,116 @@ type ImageVulnerabilityInput interface {
 }
 
 type ImageVulnerabilityArgs struct {
-	AckAuthor                  pulumi.StringPtrInput   `pulumi:"ackAuthor"`
-	AckComment                 pulumi.StringPtrInput   `pulumi:"ackComment"`
-	AckExpirationConfiguredAt  pulumi.StringPtrInput   `pulumi:"ackExpirationConfiguredAt"`
-	AckExpirationConfiguredBy  pulumi.StringPtrInput   `pulumi:"ackExpirationConfiguredBy"`
-	AckExpirationDays          pulumi.IntPtrInput      `pulumi:"ackExpirationDays"`
-	AckScope                   pulumi.StringPtrInput   `pulumi:"ackScope"`
-	AcknowledgeDate            pulumi.StringPtrInput   `pulumi:"acknowledgeDate"`
-	AncestorPkg                pulumi.StringPtrInput   `pulumi:"ancestorPkg"`
-	AquaScore                  pulumi.Float64PtrInput  `pulumi:"aquaScore"`
-	AquaScoreClassification    pulumi.StringPtrInput   `pulumi:"aquaScoreClassification"`
-	AquaScoringSystem          pulumi.StringPtrInput   `pulumi:"aquaScoringSystem"`
-	AquaSeverity               pulumi.StringPtrInput   `pulumi:"aquaSeverity"`
-	AquaSeverityClassification pulumi.StringPtrInput   `pulumi:"aquaSeverityClassification"`
-	AquaVectors                pulumi.StringPtrInput   `pulumi:"aquaVectors"`
-	AuditEventsCount           pulumi.IntPtrInput      `pulumi:"auditEventsCount"`
-	BlockEventsCount           pulumi.IntPtrInput      `pulumi:"blockEventsCount"`
-	Classification             pulumi.StringPtrInput   `pulumi:"classification"`
-	Description                pulumi.StringPtrInput   `pulumi:"description"`
-	Digest                     pulumi.StringPtrInput   `pulumi:"digest"`
-	ExploitReference           pulumi.StringPtrInput   `pulumi:"exploitReference"`
-	ExploitType                pulumi.StringPtrInput   `pulumi:"exploitType"`
-	FirstFoundDate             pulumi.StringPtrInput   `pulumi:"firstFoundDate"`
-	FixVersion                 pulumi.StringPtrInput   `pulumi:"fixVersion"`
-	ImageName                  pulumi.StringPtrInput   `pulumi:"imageName"`
-	LastFoundDate              pulumi.StringPtrInput   `pulumi:"lastFoundDate"`
-	ModificationDate           pulumi.StringPtrInput   `pulumi:"modificationDate"`
-	Name                       pulumi.StringPtrInput   `pulumi:"name"`
-	NvdCvss2Score              pulumi.Float64PtrInput  `pulumi:"nvdCvss2Score"`
-	NvdCvss2Vectors            pulumi.StringPtrInput   `pulumi:"nvdCvss2Vectors"`
-	NvdCvss3Score              pulumi.Float64PtrInput  `pulumi:"nvdCvss3Score"`
-	NvdCvss3Severity           pulumi.StringPtrInput   `pulumi:"nvdCvss3Severity"`
-	NvdCvss3Vectors            pulumi.StringPtrInput   `pulumi:"nvdCvss3Vectors"`
-	NvdSeverity                pulumi.StringPtrInput   `pulumi:"nvdSeverity"`
-	NvdUrl                     pulumi.StringPtrInput   `pulumi:"nvdUrl"`
-	Os                         pulumi.StringPtrInput   `pulumi:"os"`
-	OsVersion                  pulumi.StringPtrInput   `pulumi:"osVersion"`
-	Permission                 pulumi.StringPtrInput   `pulumi:"permission"`
-	PublishDate                pulumi.StringPtrInput   `pulumi:"publishDate"`
-	Registry                   pulumi.StringPtrInput   `pulumi:"registry"`
-	Repository                 pulumi.StringPtrInput   `pulumi:"repository"`
-	ResourceArchitecture       pulumi.StringPtrInput   `pulumi:"resourceArchitecture"`
-	ResourceCpe                pulumi.StringPtrInput   `pulumi:"resourceCpe"`
-	ResourceFormat             pulumi.StringPtrInput   `pulumi:"resourceFormat"`
-	ResourceHash               pulumi.StringPtrInput   `pulumi:"resourceHash"`
-	ResourceLicenses           pulumi.StringArrayInput `pulumi:"resourceLicenses"`
-	ResourceName               pulumi.StringPtrInput   `pulumi:"resourceName"`
-	ResourcePath               pulumi.StringPtrInput   `pulumi:"resourcePath"`
-	ResourceType               pulumi.StringPtrInput   `pulumi:"resourceType"`
-	ResourceVersion            pulumi.StringPtrInput   `pulumi:"resourceVersion"`
-	SeverityClassification     pulumi.StringPtrInput   `pulumi:"severityClassification"`
-	Solution                   pulumi.StringPtrInput   `pulumi:"solution"`
-	TemporalVector             pulumi.StringPtrInput   `pulumi:"temporalVector"`
-	VPatchAppliedBy            pulumi.StringPtrInput   `pulumi:"vPatchAppliedBy"`
-	VPatchAppliedOn            pulumi.StringPtrInput   `pulumi:"vPatchAppliedOn"`
-	VPatchEnforcedBy           pulumi.StringPtrInput   `pulumi:"vPatchEnforcedBy"`
-	VPatchEnforcedOn           pulumi.StringPtrInput   `pulumi:"vPatchEnforcedOn"`
-	VPatchPolicyEnforce        pulumi.BoolPtrInput     `pulumi:"vPatchPolicyEnforce"`
-	VPatchPolicyName           pulumi.StringPtrInput   `pulumi:"vPatchPolicyName"`
-	VPatchRevertedBy           pulumi.StringPtrInput   `pulumi:"vPatchRevertedBy"`
-	VPatchRevertedOn           pulumi.StringPtrInput   `pulumi:"vPatchRevertedOn"`
-	VPatchStatus               pulumi.StringPtrInput   `pulumi:"vPatchStatus"`
-	VendorCvss2Score           pulumi.Float64PtrInput  `pulumi:"vendorCvss2Score"`
-	VendorCvss2Vectors         pulumi.StringPtrInput   `pulumi:"vendorCvss2Vectors"`
-	VendorSeverity             pulumi.StringPtrInput   `pulumi:"vendorSeverity"`
-	VendorStatement            pulumi.StringPtrInput   `pulumi:"vendorStatement"`
-	VendorUrl                  pulumi.StringPtrInput   `pulumi:"vendorUrl"`
+	AckAuthor                 pulumi.StringPtrInput `pulumi:"ackAuthor"`
+	AckComment                pulumi.StringPtrInput `pulumi:"ackComment"`
+	AckExpirationConfiguredAt pulumi.StringPtrInput `pulumi:"ackExpirationConfiguredAt"`
+	AckExpirationConfiguredBy pulumi.StringPtrInput `pulumi:"ackExpirationConfiguredBy"`
+	AckExpirationDays         pulumi.IntPtrInput    `pulumi:"ackExpirationDays"`
+	AckScope                  pulumi.StringPtrInput `pulumi:"ackScope"`
+	AcknowledgeDate           pulumi.StringPtrInput `pulumi:"acknowledgeDate"`
+	// The ancestor of this package.
+	AncestorPkg pulumi.StringPtrInput `pulumi:"ancestorPkg"`
+	// The score generated for the vulnerability by Aqua.
+	AquaScore pulumi.Float64PtrInput `pulumi:"aquaScore"`
+	// Score classification by Aqua.
+	AquaScoreClassification pulumi.StringPtrInput `pulumi:"aquaScoreClassification"`
+	// The score system for the vulnerability by Aqua
+	AquaScoringSystem pulumi.StringPtrInput `pulumi:"aquaScoringSystem"`
+	// The severity generated for the vulnerability by Aqua.
+	AquaSeverity pulumi.StringPtrInput `pulumi:"aquaSeverity"`
+	// Classification of the severity defined by Aqua.
+	AquaSeverityClassification pulumi.StringPtrInput `pulumi:"aquaSeverityClassification"`
+	// The vectors generated for the vulnerability by Aqua
+	AquaVectors pulumi.StringPtrInput `pulumi:"aquaVectors"`
+	// Number of audit events.
+	AuditEventsCount pulumi.IntPtrInput `pulumi:"auditEventsCount"`
+	// Number of blocked events.
+	BlockEventsCount pulumi.IntPtrInput `pulumi:"blockEventsCount"`
+	// Classification of the vulnerability.
+	Classification pulumi.StringPtrInput `pulumi:"classification"`
+	// The description of the vulnerability.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The content digest of the image.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// Reference of the exploit.
+	ExploitReference pulumi.StringPtrInput `pulumi:"exploitReference"`
+	// Type of the exploit.
+	ExploitType pulumi.StringPtrInput `pulumi:"exploitType"`
+	// The date when this vulnerability was first found.
+	FirstFoundDate pulumi.StringPtrInput `pulumi:"firstFoundDate"`
+	// Fixed version of the resource.
+	FixVersion pulumi.StringPtrInput `pulumi:"fixVersion"`
+	// Name of the image.
+	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
+	// The date when this vulnerability was last found.
+	LastFoundDate pulumi.StringPtrInput `pulumi:"lastFoundDate"`
+	// Thhe date when this vulnerability was modified.
+	ModificationDate pulumi.StringPtrInput `pulumi:"modificationDate"`
+	// The name of the vulnerability.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// CVSS2 score by NVD
+	NvdCvss2Score pulumi.Float64PtrInput `pulumi:"nvdCvss2Score"`
+	// CVSS2 vectors by NVD
+	NvdCvss2Vectors pulumi.StringPtrInput `pulumi:"nvdCvss2Vectors"`
+	// CVSS3 score by NVD
+	NvdCvss3Score pulumi.Float64PtrInput `pulumi:"nvdCvss3Score"`
+	// CVSS3 severity by NVD
+	NvdCvss3Severity pulumi.StringPtrInput `pulumi:"nvdCvss3Severity"`
+	// CVSS3 vectors by NVD
+	NvdCvss3Vectors pulumi.StringPtrInput `pulumi:"nvdCvss3Vectors"`
+	// Type of the severity identified by NVD.
+	NvdSeverity pulumi.StringPtrInput `pulumi:"nvdSeverity"`
+	// URL of the details of this vulnerability by NVD.
+	NvdUrl pulumi.StringPtrInput `pulumi:"nvdUrl"`
+	// Name of the Operating System.
+	Os pulumi.StringPtrInput `pulumi:"os"`
+	// The version of the OS.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+	// permission on the image
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+	// The date this vulnerability was published.
+	PublishDate pulumi.StringPtrInput `pulumi:"publishDate"`
+	// Registry of the image.
+	Registry pulumi.StringPtrInput `pulumi:"registry"`
+	// Repository of the image.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+	// Architecture of the resource.
+	ResourceArchitecture pulumi.StringPtrInput `pulumi:"resourceArchitecture"`
+	// Common Platform Enumeration (CPE) of the resource.
+	ResourceCpe pulumi.StringPtrInput `pulumi:"resourceCpe"`
+	// Code format of the resource (java, apk etc.).
+	ResourceFormat pulumi.StringPtrInput `pulumi:"resourceFormat"`
+	// Hash of the resource.
+	ResourceHash pulumi.StringPtrInput `pulumi:"resourceHash"`
+	// List of license supported by the resource.
+	ResourceLicenses pulumi.StringArrayInput `pulumi:"resourceLicenses"`
+	// Name of the resource.
+	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// Path of the resource.
+	ResourcePath pulumi.StringPtrInput `pulumi:"resourcePath"`
+	// Type of the resource
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+	// Version of the resource.
+	ResourceVersion pulumi.StringPtrInput `pulumi:"resourceVersion"`
+	// Classification of the severity.
+	SeverityClassification pulumi.StringPtrInput `pulumi:"severityClassification"`
+	// Solution for the vulnerability.
+	Solution            pulumi.StringPtrInput  `pulumi:"solution"`
+	TemporalVector      pulumi.StringPtrInput  `pulumi:"temporalVector"`
+	VPatchAppliedBy     pulumi.StringPtrInput  `pulumi:"vPatchAppliedBy"`
+	VPatchAppliedOn     pulumi.StringPtrInput  `pulumi:"vPatchAppliedOn"`
+	VPatchEnforcedBy    pulumi.StringPtrInput  `pulumi:"vPatchEnforcedBy"`
+	VPatchEnforcedOn    pulumi.StringPtrInput  `pulumi:"vPatchEnforcedOn"`
+	VPatchPolicyEnforce pulumi.BoolPtrInput    `pulumi:"vPatchPolicyEnforce"`
+	VPatchPolicyName    pulumi.StringPtrInput  `pulumi:"vPatchPolicyName"`
+	VPatchRevertedBy    pulumi.StringPtrInput  `pulumi:"vPatchRevertedBy"`
+	VPatchRevertedOn    pulumi.StringPtrInput  `pulumi:"vPatchRevertedOn"`
+	VPatchStatus        pulumi.StringPtrInput  `pulumi:"vPatchStatus"`
+	VendorCvss2Score    pulumi.Float64PtrInput `pulumi:"vendorCvss2Score"`
+	VendorCvss2Vectors  pulumi.StringPtrInput  `pulumi:"vendorCvss2Vectors"`
+	VendorSeverity      pulumi.StringPtrInput  `pulumi:"vendorSeverity"`
+	VendorStatement     pulumi.StringPtrInput  `pulumi:"vendorStatement"`
+	VendorUrl           pulumi.StringPtrInput  `pulumi:"vendorUrl"`
 }
 
 func (ImageVulnerabilityArgs) ElementType() reflect.Type {
@@ -21727,178 +21851,222 @@ func (o ImageVulnerabilityOutput) AcknowledgeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AcknowledgeDate }).(pulumi.StringPtrOutput)
 }
 
+// The ancestor of this package.
 func (o ImageVulnerabilityOutput) AncestorPkg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AncestorPkg }).(pulumi.StringPtrOutput)
 }
 
+// The score generated for the vulnerability by Aqua.
 func (o ImageVulnerabilityOutput) AquaScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *float64 { return v.AquaScore }).(pulumi.Float64PtrOutput)
 }
 
+// Score classification by Aqua.
 func (o ImageVulnerabilityOutput) AquaScoreClassification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AquaScoreClassification }).(pulumi.StringPtrOutput)
 }
 
+// The score system for the vulnerability by Aqua
 func (o ImageVulnerabilityOutput) AquaScoringSystem() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AquaScoringSystem }).(pulumi.StringPtrOutput)
 }
 
+// The severity generated for the vulnerability by Aqua.
 func (o ImageVulnerabilityOutput) AquaSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AquaSeverity }).(pulumi.StringPtrOutput)
 }
 
+// Classification of the severity defined by Aqua.
 func (o ImageVulnerabilityOutput) AquaSeverityClassification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AquaSeverityClassification }).(pulumi.StringPtrOutput)
 }
 
+// The vectors generated for the vulnerability by Aqua
 func (o ImageVulnerabilityOutput) AquaVectors() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.AquaVectors }).(pulumi.StringPtrOutput)
 }
 
+// Number of audit events.
 func (o ImageVulnerabilityOutput) AuditEventsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *int { return v.AuditEventsCount }).(pulumi.IntPtrOutput)
 }
 
+// Number of blocked events.
 func (o ImageVulnerabilityOutput) BlockEventsCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *int { return v.BlockEventsCount }).(pulumi.IntPtrOutput)
 }
 
+// Classification of the vulnerability.
 func (o ImageVulnerabilityOutput) Classification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Classification }).(pulumi.StringPtrOutput)
 }
 
+// The description of the vulnerability.
 func (o ImageVulnerabilityOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The content digest of the image.
 func (o ImageVulnerabilityOutput) Digest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Digest }).(pulumi.StringPtrOutput)
 }
 
+// Reference of the exploit.
 func (o ImageVulnerabilityOutput) ExploitReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ExploitReference }).(pulumi.StringPtrOutput)
 }
 
+// Type of the exploit.
 func (o ImageVulnerabilityOutput) ExploitType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ExploitType }).(pulumi.StringPtrOutput)
 }
 
+// The date when this vulnerability was first found.
 func (o ImageVulnerabilityOutput) FirstFoundDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.FirstFoundDate }).(pulumi.StringPtrOutput)
 }
 
+// Fixed version of the resource.
 func (o ImageVulnerabilityOutput) FixVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.FixVersion }).(pulumi.StringPtrOutput)
 }
 
+// Name of the image.
 func (o ImageVulnerabilityOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ImageName }).(pulumi.StringPtrOutput)
 }
 
+// The date when this vulnerability was last found.
 func (o ImageVulnerabilityOutput) LastFoundDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.LastFoundDate }).(pulumi.StringPtrOutput)
 }
 
+// Thhe date when this vulnerability was modified.
 func (o ImageVulnerabilityOutput) ModificationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ModificationDate }).(pulumi.StringPtrOutput)
 }
 
+// The name of the vulnerability.
 func (o ImageVulnerabilityOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// CVSS2 score by NVD
 func (o ImageVulnerabilityOutput) NvdCvss2Score() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *float64 { return v.NvdCvss2Score }).(pulumi.Float64PtrOutput)
 }
 
+// CVSS2 vectors by NVD
 func (o ImageVulnerabilityOutput) NvdCvss2Vectors() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.NvdCvss2Vectors }).(pulumi.StringPtrOutput)
 }
 
+// CVSS3 score by NVD
 func (o ImageVulnerabilityOutput) NvdCvss3Score() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *float64 { return v.NvdCvss3Score }).(pulumi.Float64PtrOutput)
 }
 
+// CVSS3 severity by NVD
 func (o ImageVulnerabilityOutput) NvdCvss3Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.NvdCvss3Severity }).(pulumi.StringPtrOutput)
 }
 
+// CVSS3 vectors by NVD
 func (o ImageVulnerabilityOutput) NvdCvss3Vectors() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.NvdCvss3Vectors }).(pulumi.StringPtrOutput)
 }
 
+// Type of the severity identified by NVD.
 func (o ImageVulnerabilityOutput) NvdSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.NvdSeverity }).(pulumi.StringPtrOutput)
 }
 
+// URL of the details of this vulnerability by NVD.
 func (o ImageVulnerabilityOutput) NvdUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.NvdUrl }).(pulumi.StringPtrOutput)
 }
 
+// Name of the Operating System.
 func (o ImageVulnerabilityOutput) Os() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Os }).(pulumi.StringPtrOutput)
 }
 
+// The version of the OS.
 func (o ImageVulnerabilityOutput) OsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
 }
 
+// permission on the image
 func (o ImageVulnerabilityOutput) Permission() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Permission }).(pulumi.StringPtrOutput)
 }
 
+// The date this vulnerability was published.
 func (o ImageVulnerabilityOutput) PublishDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.PublishDate }).(pulumi.StringPtrOutput)
 }
 
+// Registry of the image.
 func (o ImageVulnerabilityOutput) Registry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Registry }).(pulumi.StringPtrOutput)
 }
 
+// Repository of the image.
 func (o ImageVulnerabilityOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Repository }).(pulumi.StringPtrOutput)
 }
 
+// Architecture of the resource.
 func (o ImageVulnerabilityOutput) ResourceArchitecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceArchitecture }).(pulumi.StringPtrOutput)
 }
 
+// Common Platform Enumeration (CPE) of the resource.
 func (o ImageVulnerabilityOutput) ResourceCpe() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceCpe }).(pulumi.StringPtrOutput)
 }
 
+// Code format of the resource (java, apk etc.).
 func (o ImageVulnerabilityOutput) ResourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceFormat }).(pulumi.StringPtrOutput)
 }
 
+// Hash of the resource.
 func (o ImageVulnerabilityOutput) ResourceHash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceHash }).(pulumi.StringPtrOutput)
 }
 
+// List of license supported by the resource.
 func (o ImageVulnerabilityOutput) ResourceLicenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ImageVulnerability) []string { return v.ResourceLicenses }).(pulumi.StringArrayOutput)
 }
 
+// Name of the resource.
 func (o ImageVulnerabilityOutput) ResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
 }
 
+// Path of the resource.
 func (o ImageVulnerabilityOutput) ResourcePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourcePath }).(pulumi.StringPtrOutput)
 }
 
+// Type of the resource
 func (o ImageVulnerabilityOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
+// Version of the resource.
 func (o ImageVulnerabilityOutput) ResourceVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.ResourceVersion }).(pulumi.StringPtrOutput)
 }
 
+// Classification of the severity.
 func (o ImageVulnerabilityOutput) SeverityClassification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.SeverityClassification }).(pulumi.StringPtrOutput)
 }
 
+// Solution for the vulnerability.
 func (o ImageVulnerabilityOutput) Solution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageVulnerability) *string { return v.Solution }).(pulumi.StringPtrOutput)
 }
@@ -25829,28 +25997,49 @@ func (o VmwareAssurancePolicyTrustedBaseImageArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetAcknowledgesAcknowledge struct {
-	Author                 string `pulumi:"author"`
-	Comment                string `pulumi:"comment"`
-	Date                   string `pulumi:"date"`
-	DockerId               string `pulumi:"dockerId"`
+	// The user who acknowledged the issue.
+	Author string `pulumi:"author"`
+	// A comment describing the reason for the acknowledgment
+	Comment string `pulumi:"comment"`
+	// The date and time of the acknowledgment.
+	Date     string `pulumi:"date"`
+	DockerId string `pulumi:"dockerId"`
+	// The current dat and time when the expiration was set
 	ExpirationConfiguredAt string `pulumi:"expirationConfiguredAt"`
+	// The user who set the expiration of the issue.
 	ExpirationConfiguredBy string `pulumi:"expirationConfiguredBy"`
-	ExpirationDays         int    `pulumi:"expirationDays"`
-	FixVersion             string `pulumi:"fixVersion"`
-	ImageName              string `pulumi:"imageName"`
-	IssueName              string `pulumi:"issueName"`
-	IssueType              string `pulumi:"issueType"`
-	Os                     string `pulumi:"os"`
-	OsVersion              string `pulumi:"osVersion"`
-	Permission             string `pulumi:"permission"`
-	RegistryName           string `pulumi:"registryName"`
-	ResourceCpe            string `pulumi:"resourceCpe"`
-	ResourceFormat         string `pulumi:"resourceFormat"`
-	ResourceHash           string `pulumi:"resourceHash"`
-	ResourceName           string `pulumi:"resourceName"`
-	ResourcePath           string `pulumi:"resourcePath"`
-	ResourceType           string `pulumi:"resourceType"`
-	ResourceVersion        string `pulumi:"resourceVersion"`
+	// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+	ExpirationDays int `pulumi:"expirationDays"`
+	// The version of the package that having a fix for the issue.
+	FixVersion string `pulumi:"fixVersion"`
+	// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+	ImageName string `pulumi:"imageName"`
+	// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+	IssueName string `pulumi:"issueName"`
+	// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+	IssueType string `pulumi:"issueType"`
+	// When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+	Os string `pulumi:"os"`
+	// When the resourceType is 'package', the operating system version is required.
+	OsVersion string `pulumi:"osVersion"`
+	// The permissions of the user who acknowledged the issue.
+	Permission string `pulumi:"permission"`
+	// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+	RegistryName string `pulumi:"registryName"`
+	// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+	ResourceCpe string `pulumi:"resourceCpe"`
+	// The format of the resource.
+	ResourceFormat string `pulumi:"resourceFormat"`
+	// When the resourceType is 'file', the hash of the file is required
+	ResourceHash string `pulumi:"resourceHash"`
+	// When the resourceType is 'package', the name of the package is required.
+	ResourceName string `pulumi:"resourceName"`
+	// The path of the resource. This is required for resources of type 'file' and 'executable'.
+	ResourcePath string `pulumi:"resourcePath"`
+	// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+	ResourceType string `pulumi:"resourceType"`
+	// When the resourceType is 'package', the version of the package is required
+	ResourceVersion string `pulumi:"resourceVersion"`
 }
 
 // GetAcknowledgesAcknowledgeInput is an input type that accepts GetAcknowledgesAcknowledgeArgs and GetAcknowledgesAcknowledgeOutput values.
@@ -25865,28 +26054,49 @@ type GetAcknowledgesAcknowledgeInput interface {
 }
 
 type GetAcknowledgesAcknowledgeArgs struct {
-	Author                 pulumi.StringInput `pulumi:"author"`
-	Comment                pulumi.StringInput `pulumi:"comment"`
-	Date                   pulumi.StringInput `pulumi:"date"`
-	DockerId               pulumi.StringInput `pulumi:"dockerId"`
+	// The user who acknowledged the issue.
+	Author pulumi.StringInput `pulumi:"author"`
+	// A comment describing the reason for the acknowledgment
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The date and time of the acknowledgment.
+	Date     pulumi.StringInput `pulumi:"date"`
+	DockerId pulumi.StringInput `pulumi:"dockerId"`
+	// The current dat and time when the expiration was set
 	ExpirationConfiguredAt pulumi.StringInput `pulumi:"expirationConfiguredAt"`
+	// The user who set the expiration of the issue.
 	ExpirationConfiguredBy pulumi.StringInput `pulumi:"expirationConfiguredBy"`
-	ExpirationDays         pulumi.IntInput    `pulumi:"expirationDays"`
-	FixVersion             pulumi.StringInput `pulumi:"fixVersion"`
-	ImageName              pulumi.StringInput `pulumi:"imageName"`
-	IssueName              pulumi.StringInput `pulumi:"issueName"`
-	IssueType              pulumi.StringInput `pulumi:"issueType"`
-	Os                     pulumi.StringInput `pulumi:"os"`
-	OsVersion              pulumi.StringInput `pulumi:"osVersion"`
-	Permission             pulumi.StringInput `pulumi:"permission"`
-	RegistryName           pulumi.StringInput `pulumi:"registryName"`
-	ResourceCpe            pulumi.StringInput `pulumi:"resourceCpe"`
-	ResourceFormat         pulumi.StringInput `pulumi:"resourceFormat"`
-	ResourceHash           pulumi.StringInput `pulumi:"resourceHash"`
-	ResourceName           pulumi.StringInput `pulumi:"resourceName"`
-	ResourcePath           pulumi.StringInput `pulumi:"resourcePath"`
-	ResourceType           pulumi.StringInput `pulumi:"resourceType"`
-	ResourceVersion        pulumi.StringInput `pulumi:"resourceVersion"`
+	// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+	ExpirationDays pulumi.IntInput `pulumi:"expirationDays"`
+	// The version of the package that having a fix for the issue.
+	FixVersion pulumi.StringInput `pulumi:"fixVersion"`
+	// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+	IssueName pulumi.StringInput `pulumi:"issueName"`
+	// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+	IssueType pulumi.StringInput `pulumi:"issueType"`
+	// When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+	Os pulumi.StringInput `pulumi:"os"`
+	// When the resourceType is 'package', the operating system version is required.
+	OsVersion pulumi.StringInput `pulumi:"osVersion"`
+	// The permissions of the user who acknowledged the issue.
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+	RegistryName pulumi.StringInput `pulumi:"registryName"`
+	// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+	ResourceCpe pulumi.StringInput `pulumi:"resourceCpe"`
+	// The format of the resource.
+	ResourceFormat pulumi.StringInput `pulumi:"resourceFormat"`
+	// When the resourceType is 'file', the hash of the file is required
+	ResourceHash pulumi.StringInput `pulumi:"resourceHash"`
+	// When the resourceType is 'package', the name of the package is required.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// The path of the resource. This is required for resources of type 'file' and 'executable'.
+	ResourcePath pulumi.StringInput `pulumi:"resourcePath"`
+	// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// When the resourceType is 'package', the version of the package is required
+	ResourceVersion pulumi.StringInput `pulumi:"resourceVersion"`
 }
 
 func (GetAcknowledgesAcknowledgeArgs) ElementType() reflect.Type {
@@ -25940,14 +26150,17 @@ func (o GetAcknowledgesAcknowledgeOutput) ToGetAcknowledgesAcknowledgeOutputWith
 	return o
 }
 
+// The user who acknowledged the issue.
 func (o GetAcknowledgesAcknowledgeOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Author }).(pulumi.StringOutput)
 }
 
+// A comment describing the reason for the acknowledgment
 func (o GetAcknowledgesAcknowledgeOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Comment }).(pulumi.StringOutput)
 }
 
+// The date and time of the acknowledgment.
 func (o GetAcknowledgesAcknowledgeOutput) Date() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Date }).(pulumi.StringOutput)
 }
@@ -25956,74 +26169,92 @@ func (o GetAcknowledgesAcknowledgeOutput) DockerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.DockerId }).(pulumi.StringOutput)
 }
 
+// The current dat and time when the expiration was set
 func (o GetAcknowledgesAcknowledgeOutput) ExpirationConfiguredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ExpirationConfiguredAt }).(pulumi.StringOutput)
 }
 
+// The user who set the expiration of the issue.
 func (o GetAcknowledgesAcknowledgeOutput) ExpirationConfiguredBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ExpirationConfiguredBy }).(pulumi.StringOutput)
 }
 
+// Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
 func (o GetAcknowledgesAcknowledgeOutput) ExpirationDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) int { return v.ExpirationDays }).(pulumi.IntOutput)
 }
 
+// The version of the package that having a fix for the issue.
 func (o GetAcknowledgesAcknowledgeOutput) FixVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.FixVersion }).(pulumi.StringOutput)
 }
 
+// Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
 func (o GetAcknowledgesAcknowledgeOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
+// The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
 func (o GetAcknowledgesAcknowledgeOutput) IssueName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.IssueName }).(pulumi.StringOutput)
 }
 
+// The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
 func (o GetAcknowledgesAcknowledgeOutput) IssueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.IssueType }).(pulumi.StringOutput)
 }
 
+// When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
 func (o GetAcknowledgesAcknowledgeOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Os }).(pulumi.StringOutput)
 }
 
+// When the resourceType is 'package', the operating system version is required.
 func (o GetAcknowledgesAcknowledgeOutput) OsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.OsVersion }).(pulumi.StringOutput)
 }
 
+// The permissions of the user who acknowledged the issue.
 func (o GetAcknowledgesAcknowledgeOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
 func (o GetAcknowledgesAcknowledgeOutput) RegistryName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.RegistryName }).(pulumi.StringOutput)
 }
 
+// The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
 func (o GetAcknowledgesAcknowledgeOutput) ResourceCpe() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceCpe }).(pulumi.StringOutput)
 }
 
+// The format of the resource.
 func (o GetAcknowledgesAcknowledgeOutput) ResourceFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceFormat }).(pulumi.StringOutput)
 }
 
+// When the resourceType is 'file', the hash of the file is required
 func (o GetAcknowledgesAcknowledgeOutput) ResourceHash() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceHash }).(pulumi.StringOutput)
 }
 
+// When the resourceType is 'package', the name of the package is required.
 func (o GetAcknowledgesAcknowledgeOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceName }).(pulumi.StringOutput)
 }
 
+// The path of the resource. This is required for resources of type 'file' and 'executable'.
 func (o GetAcknowledgesAcknowledgeOutput) ResourcePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourcePath }).(pulumi.StringOutput)
 }
 
+// The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
 func (o GetAcknowledgesAcknowledgeOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
+// When the resourceType is 'package', the version of the package is required
 func (o GetAcknowledgesAcknowledgeOutput) ResourceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcknowledgesAcknowledge) string { return v.ResourceVersion }).(pulumi.StringOutput)
 }
@@ -28303,10 +28534,14 @@ func (o GetApplicationScopeCategoryWorkloadOVariableArrayOutput) Index(i pulumi.
 }
 
 type GetAquaLabelsAquaLabel struct {
-	Author      string `pulumi:"author"`
-	Created     string `pulumi:"created"`
+	// The name of the user who created the Aqua label.
+	Author string `pulumi:"author"`
+	// The creation date of the Aqua label.
+	Created string `pulumi:"created"`
+	// Aqua label description.
 	Description string `pulumi:"description"`
-	Name        string `pulumi:"name"`
+	// Aqua label name.
+	Name string `pulumi:"name"`
 }
 
 // GetAquaLabelsAquaLabelInput is an input type that accepts GetAquaLabelsAquaLabelArgs and GetAquaLabelsAquaLabelOutput values.
@@ -28321,10 +28556,14 @@ type GetAquaLabelsAquaLabelInput interface {
 }
 
 type GetAquaLabelsAquaLabelArgs struct {
-	Author      pulumi.StringInput `pulumi:"author"`
-	Created     pulumi.StringInput `pulumi:"created"`
+	// The name of the user who created the Aqua label.
+	Author pulumi.StringInput `pulumi:"author"`
+	// The creation date of the Aqua label.
+	Created pulumi.StringInput `pulumi:"created"`
+	// Aqua label description.
 	Description pulumi.StringInput `pulumi:"description"`
-	Name        pulumi.StringInput `pulumi:"name"`
+	// Aqua label name.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetAquaLabelsAquaLabelArgs) ElementType() reflect.Type {
@@ -28378,18 +28617,22 @@ func (o GetAquaLabelsAquaLabelOutput) ToGetAquaLabelsAquaLabelOutputWithContext(
 	return o
 }
 
+// The name of the user who created the Aqua label.
 func (o GetAquaLabelsAquaLabelOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Author }).(pulumi.StringOutput)
 }
 
+// The creation date of the Aqua label.
 func (o GetAquaLabelsAquaLabelOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// Aqua label description.
 func (o GetAquaLabelsAquaLabelOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Aqua label name.
 func (o GetAquaLabelsAquaLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAquaLabelsAquaLabel) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -30296,9 +30539,12 @@ func (o GetContainerRuntimePolicyRestrictedVolumeArrayOutput) Index(i pulumi.Int
 }
 
 type GetContainerRuntimePolicyScopeVariable struct {
+	// Class of supported scope.
 	Attribute string `pulumi:"attribute"`
-	Name      string `pulumi:"name"`
-	Value     string `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name string `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value string `pulumi:"value"`
 }
 
 // GetContainerRuntimePolicyScopeVariableInput is an input type that accepts GetContainerRuntimePolicyScopeVariableArgs and GetContainerRuntimePolicyScopeVariableOutput values.
@@ -30313,9 +30559,12 @@ type GetContainerRuntimePolicyScopeVariableInput interface {
 }
 
 type GetContainerRuntimePolicyScopeVariableArgs struct {
+	// Class of supported scope.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	Name      pulumi.StringInput `pulumi:"name"`
-	Value     pulumi.StringInput `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetContainerRuntimePolicyScopeVariableArgs) ElementType() reflect.Type {
@@ -30369,14 +30618,17 @@ func (o GetContainerRuntimePolicyScopeVariableOutput) ToGetContainerRuntimePolic
 	return o
 }
 
+// Class of supported scope.
 func (o GetContainerRuntimePolicyScopeVariableOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRuntimePolicyScopeVariable) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+// Name assigned to the attribute.
 func (o GetContainerRuntimePolicyScopeVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRuntimePolicyScopeVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value assigned to the attribute.
 func (o GetContainerRuntimePolicyScopeVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerRuntimePolicyScopeVariable) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -30514,8 +30766,10 @@ func (o GetEnforcerGroupsCommandArrayOutput) Index(i pulumi.IntInput) GetEnforce
 }
 
 type GetEnforcerGroupsOrchestrator struct {
-	Master         bool   `pulumi:"master"`
-	Namespace      string `pulumi:"namespace"`
+	Master bool `pulumi:"master"`
+	// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+	Namespace string `pulumi:"namespace"`
+	// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
 	ServiceAccount string `pulumi:"serviceAccount"`
 	Type           string `pulumi:"type"`
 }
@@ -30532,8 +30786,10 @@ type GetEnforcerGroupsOrchestratorInput interface {
 }
 
 type GetEnforcerGroupsOrchestratorArgs struct {
-	Master         pulumi.BoolInput   `pulumi:"master"`
-	Namespace      pulumi.StringInput `pulumi:"namespace"`
+	Master pulumi.BoolInput `pulumi:"master"`
+	// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	Type           pulumi.StringInput `pulumi:"type"`
 }
@@ -30593,10 +30849,12 @@ func (o GetEnforcerGroupsOrchestratorOutput) Master() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEnforcerGroupsOrchestrator) bool { return v.Master }).(pulumi.BoolOutput)
 }
 
+// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
 func (o GetEnforcerGroupsOrchestratorOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnforcerGroupsOrchestrator) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
 func (o GetEnforcerGroupsOrchestratorOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEnforcerGroupsOrchestrator) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -30626,9 +30884,13 @@ func (o GetEnforcerGroupsOrchestratorArrayOutput) Index(i pulumi.IntInput) GetEn
 }
 
 type GetFirewallPolicyInboundNetwork struct {
-	Allow        bool   `pulumi:"allow"`
-	PortRange    string `pulumi:"portRange"`
-	Resource     string `pulumi:"resource"`
+	// Indicates whether the specified resources are allowed to pass in data or requests.
+	Allow bool `pulumi:"allow"`
+	// Range of ports affected by firewall.
+	PortRange string `pulumi:"portRange"`
+	// Information of the resource.
+	Resource string `pulumi:"resource"`
+	// Type of the resource
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -30644,9 +30906,13 @@ type GetFirewallPolicyInboundNetworkInput interface {
 }
 
 type GetFirewallPolicyInboundNetworkArgs struct {
-	Allow        pulumi.BoolInput   `pulumi:"allow"`
-	PortRange    pulumi.StringInput `pulumi:"portRange"`
-	Resource     pulumi.StringInput `pulumi:"resource"`
+	// Indicates whether the specified resources are allowed to pass in data or requests.
+	Allow pulumi.BoolInput `pulumi:"allow"`
+	// Range of ports affected by firewall.
+	PortRange pulumi.StringInput `pulumi:"portRange"`
+	// Information of the resource.
+	Resource pulumi.StringInput `pulumi:"resource"`
+	// Type of the resource
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -30701,18 +30967,22 @@ func (o GetFirewallPolicyInboundNetworkOutput) ToGetFirewallPolicyInboundNetwork
 	return o
 }
 
+// Indicates whether the specified resources are allowed to pass in data or requests.
 func (o GetFirewallPolicyInboundNetworkOutput) Allow() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetFirewallPolicyInboundNetwork) bool { return v.Allow }).(pulumi.BoolOutput)
 }
 
+// Range of ports affected by firewall.
 func (o GetFirewallPolicyInboundNetworkOutput) PortRange() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallPolicyInboundNetwork) string { return v.PortRange }).(pulumi.StringOutput)
 }
 
+// Information of the resource.
 func (o GetFirewallPolicyInboundNetworkOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallPolicyInboundNetwork) string { return v.Resource }).(pulumi.StringOutput)
 }
 
+// Type of the resource
 func (o GetFirewallPolicyInboundNetworkOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallPolicyInboundNetwork) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -30974,6 +31244,7 @@ func (o GetFunctionAssurancePolicyAutoScanTimeArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetFunctionAssurancePolicyCustomCheck struct {
+	// Name of user account that created the policy.
 	Author       string `pulumi:"author"`
 	Description  string `pulumi:"description"`
 	Engine       string `pulumi:"engine"`
@@ -30998,6 +31269,7 @@ type GetFunctionAssurancePolicyCustomCheckInput interface {
 }
 
 type GetFunctionAssurancePolicyCustomCheckArgs struct {
+	// Name of user account that created the policy.
 	Author       pulumi.StringInput `pulumi:"author"`
 	Description  pulumi.StringInput `pulumi:"description"`
 	Engine       pulumi.StringInput `pulumi:"engine"`
@@ -31061,6 +31333,7 @@ func (o GetFunctionAssurancePolicyCustomCheckOutput) ToGetFunctionAssurancePolic
 	return o
 }
 
+// Name of user account that created the policy.
 func (o GetFunctionAssurancePolicyCustomCheckOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionAssurancePolicyCustomCheck) string { return v.Author }).(pulumi.StringOutput)
 }
@@ -32142,9 +32415,12 @@ func (o GetFunctionRuntimePolicyExecutableBlacklistArrayOutput) Index(i pulumi.I
 }
 
 type GetFunctionRuntimePolicyScopeVariable struct {
+	// Class of supported scope.
 	Attribute string `pulumi:"attribute"`
-	Name      string `pulumi:"name"`
-	Value     string `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name string `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value string `pulumi:"value"`
 }
 
 // GetFunctionRuntimePolicyScopeVariableInput is an input type that accepts GetFunctionRuntimePolicyScopeVariableArgs and GetFunctionRuntimePolicyScopeVariableOutput values.
@@ -32159,9 +32435,12 @@ type GetFunctionRuntimePolicyScopeVariableInput interface {
 }
 
 type GetFunctionRuntimePolicyScopeVariableArgs struct {
+	// Class of supported scope.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	Name      pulumi.StringInput `pulumi:"name"`
-	Value     pulumi.StringInput `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetFunctionRuntimePolicyScopeVariableArgs) ElementType() reflect.Type {
@@ -32215,14 +32494,17 @@ func (o GetFunctionRuntimePolicyScopeVariableOutput) ToGetFunctionRuntimePolicyS
 	return o
 }
 
+// Class of supported scope.
 func (o GetFunctionRuntimePolicyScopeVariableOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionRuntimePolicyScopeVariable) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+// Name assigned to the attribute.
 func (o GetFunctionRuntimePolicyScopeVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionRuntimePolicyScopeVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value assigned to the attribute.
 func (o GetFunctionRuntimePolicyScopeVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionRuntimePolicyScopeVariable) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -32248,14 +32530,22 @@ func (o GetFunctionRuntimePolicyScopeVariableArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetGatewaysGateway struct {
-	Description   string `pulumi:"description"`
-	GrpcAddress   string `pulumi:"grpcAddress"`
-	Hostname      string `pulumi:"hostname"`
-	Id            string `pulumi:"id"`
-	Logicalname   string `pulumi:"logicalname"`
+	// The description of the gateway.
+	Description string `pulumi:"description"`
+	// The GRPC address of the gateway.
+	GrpcAddress string `pulumi:"grpcAddress"`
+	// The name of the gateway's host.
+	Hostname string `pulumi:"hostname"`
+	// The ID of the gateway (for example: 8522744b25e2_gateway)
+	Id string `pulumi:"id"`
+	// The logical name of the gateway (for example: 8522744b25e2)
+	Logicalname string `pulumi:"logicalname"`
+	// The public IP address of the gateway.
 	PublicAddress string `pulumi:"publicAddress"`
-	Status        string `pulumi:"status"`
-	Version       string `pulumi:"version"`
+	// The status of the gateway.
+	Status string `pulumi:"status"`
+	// The version of the gateway.
+	Version string `pulumi:"version"`
 }
 
 // GetGatewaysGatewayInput is an input type that accepts GetGatewaysGatewayArgs and GetGatewaysGatewayOutput values.
@@ -32270,14 +32560,22 @@ type GetGatewaysGatewayInput interface {
 }
 
 type GetGatewaysGatewayArgs struct {
-	Description   pulumi.StringInput `pulumi:"description"`
-	GrpcAddress   pulumi.StringInput `pulumi:"grpcAddress"`
-	Hostname      pulumi.StringInput `pulumi:"hostname"`
-	Id            pulumi.StringInput `pulumi:"id"`
-	Logicalname   pulumi.StringInput `pulumi:"logicalname"`
+	// The description of the gateway.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The GRPC address of the gateway.
+	GrpcAddress pulumi.StringInput `pulumi:"grpcAddress"`
+	// The name of the gateway's host.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The ID of the gateway (for example: 8522744b25e2_gateway)
+	Id pulumi.StringInput `pulumi:"id"`
+	// The logical name of the gateway (for example: 8522744b25e2)
+	Logicalname pulumi.StringInput `pulumi:"logicalname"`
+	// The public IP address of the gateway.
 	PublicAddress pulumi.StringInput `pulumi:"publicAddress"`
-	Status        pulumi.StringInput `pulumi:"status"`
-	Version       pulumi.StringInput `pulumi:"version"`
+	// The status of the gateway.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The version of the gateway.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GetGatewaysGatewayArgs) ElementType() reflect.Type {
@@ -32331,34 +32629,42 @@ func (o GetGatewaysGatewayOutput) ToGetGatewaysGatewayOutputWithContext(ctx cont
 	return o
 }
 
+// The description of the gateway.
 func (o GetGatewaysGatewayOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The GRPC address of the gateway.
 func (o GetGatewaysGatewayOutput) GrpcAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.GrpcAddress }).(pulumi.StringOutput)
 }
 
+// The name of the gateway's host.
 func (o GetGatewaysGatewayOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
+// The ID of the gateway (for example: 8522744b25e2_gateway)
 func (o GetGatewaysGatewayOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The logical name of the gateway (for example: 8522744b25e2)
 func (o GetGatewaysGatewayOutput) Logicalname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Logicalname }).(pulumi.StringOutput)
 }
 
+// The public IP address of the gateway.
 func (o GetGatewaysGatewayOutput) PublicAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.PublicAddress }).(pulumi.StringOutput)
 }
 
+// The status of the gateway.
 func (o GetGatewaysGatewayOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// The version of the gateway.
 func (o GetGatewaysGatewayOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGateway) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -32384,9 +32690,12 @@ func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatew
 }
 
 type GetGroupsGroup struct {
+	// The creation date of the group.
 	Created string `pulumi:"created"`
+	// The ID of the created group.
 	GroupId string `pulumi:"groupId"`
-	Name    string `pulumi:"name"`
+	// The desired name of the group.
+	Name string `pulumi:"name"`
 }
 
 // GetGroupsGroupInput is an input type that accepts GetGroupsGroupArgs and GetGroupsGroupOutput values.
@@ -32401,9 +32710,12 @@ type GetGroupsGroupInput interface {
 }
 
 type GetGroupsGroupArgs struct {
+	// The creation date of the group.
 	Created pulumi.StringInput `pulumi:"created"`
+	// The ID of the created group.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
-	Name    pulumi.StringInput `pulumi:"name"`
+	// The desired name of the group.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GetGroupsGroupArgs) ElementType() reflect.Type {
@@ -32457,14 +32769,17 @@ func (o GetGroupsGroupOutput) ToGetGroupsGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The creation date of the group.
 func (o GetGroupsGroupOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The ID of the created group.
 func (o GetGroupsGroupOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
+// The desired name of the group.
 func (o GetGroupsGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsGroup) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -32602,6 +32917,7 @@ func (o GetHostAssurancePolicyAutoScanTimeArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetHostAssurancePolicyCustomCheck struct {
+	// Name of user account that created the policy.
 	Author       string `pulumi:"author"`
 	Description  string `pulumi:"description"`
 	Engine       string `pulumi:"engine"`
@@ -32626,6 +32942,7 @@ type GetHostAssurancePolicyCustomCheckInput interface {
 }
 
 type GetHostAssurancePolicyCustomCheckArgs struct {
+	// Name of user account that created the policy.
 	Author       pulumi.StringInput `pulumi:"author"`
 	Description  pulumi.StringInput `pulumi:"description"`
 	Engine       pulumi.StringInput `pulumi:"engine"`
@@ -32689,6 +33006,7 @@ func (o GetHostAssurancePolicyCustomCheckOutput) ToGetHostAssurancePolicyCustomC
 	return o
 }
 
+// Name of user account that created the policy.
 func (o GetHostAssurancePolicyCustomCheckOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostAssurancePolicyCustomCheck) string { return v.Author }).(pulumi.StringOutput)
 }
@@ -34239,9 +34557,12 @@ func (o GetHostRuntimePolicyPackageBlockArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetHostRuntimePolicyScopeVariable struct {
+	// Class of supported scope.
 	Attribute string `pulumi:"attribute"`
-	Name      string `pulumi:"name"`
-	Value     string `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name string `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value string `pulumi:"value"`
 }
 
 // GetHostRuntimePolicyScopeVariableInput is an input type that accepts GetHostRuntimePolicyScopeVariableArgs and GetHostRuntimePolicyScopeVariableOutput values.
@@ -34256,9 +34577,12 @@ type GetHostRuntimePolicyScopeVariableInput interface {
 }
 
 type GetHostRuntimePolicyScopeVariableArgs struct {
+	// Class of supported scope.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	Name      pulumi.StringInput `pulumi:"name"`
-	Value     pulumi.StringInput `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetHostRuntimePolicyScopeVariableArgs) ElementType() reflect.Type {
@@ -34312,14 +34636,17 @@ func (o GetHostRuntimePolicyScopeVariableOutput) ToGetHostRuntimePolicyScopeVari
 	return o
 }
 
+// Class of supported scope.
 func (o GetHostRuntimePolicyScopeVariableOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyScopeVariable) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+// Name assigned to the attribute.
 func (o GetHostRuntimePolicyScopeVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyScopeVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value assigned to the attribute.
 func (o GetHostRuntimePolicyScopeVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyScopeVariable) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -34345,17 +34672,28 @@ func (o GetHostRuntimePolicyScopeVariableArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetHostRuntimePolicyWindowsRegistryMonitoring struct {
-	ExcludedPaths      []string `pulumi:"excludedPaths"`
-	ExcludedProcesses  []string `pulumi:"excludedProcesses"`
-	ExcludedUsers      []string `pulumi:"excludedUsers"`
-	MonitorAttributes  bool     `pulumi:"monitorAttributes"`
-	MonitorCreate      bool     `pulumi:"monitorCreate"`
-	MonitorDelete      bool     `pulumi:"monitorDelete"`
-	MonitorModify      bool     `pulumi:"monitorModify"`
-	MonitorRead        bool     `pulumi:"monitorRead"`
-	MonitoredPaths     []string `pulumi:"monitoredPaths"`
+	// List of paths to be excluded from being monitored.
+	ExcludedPaths []string `pulumi:"excludedPaths"`
+	// List of registry processes to be excluded from being monitored.
+	ExcludedProcesses []string `pulumi:"excludedProcesses"`
+	// List of registry users to be excluded from being monitored.
+	ExcludedUsers []string `pulumi:"excludedUsers"`
+	// If true, add attributes operations will be monitored.
+	MonitorAttributes bool `pulumi:"monitorAttributes"`
+	// If true, create operations will be monitored.
+	MonitorCreate bool `pulumi:"monitorCreate"`
+	// If true, deletion operations will be monitored.
+	MonitorDelete bool `pulumi:"monitorDelete"`
+	// If true, modification operations will be monitored.
+	MonitorModify bool `pulumi:"monitorModify"`
+	// If true, read operations will be monitored.
+	MonitorRead bool `pulumi:"monitorRead"`
+	// List of paths to be monitored.
+	MonitoredPaths []string `pulumi:"monitoredPaths"`
+	// List of registry processes to be monitored.
 	MonitoredProcesses []string `pulumi:"monitoredProcesses"`
-	MonitoredUsers     []string `pulumi:"monitoredUsers"`
+	// List of registry users to be monitored.
+	MonitoredUsers []string `pulumi:"monitoredUsers"`
 }
 
 // GetHostRuntimePolicyWindowsRegistryMonitoringInput is an input type that accepts GetHostRuntimePolicyWindowsRegistryMonitoringArgs and GetHostRuntimePolicyWindowsRegistryMonitoringOutput values.
@@ -34370,17 +34708,28 @@ type GetHostRuntimePolicyWindowsRegistryMonitoringInput interface {
 }
 
 type GetHostRuntimePolicyWindowsRegistryMonitoringArgs struct {
-	ExcludedPaths      pulumi.StringArrayInput `pulumi:"excludedPaths"`
-	ExcludedProcesses  pulumi.StringArrayInput `pulumi:"excludedProcesses"`
-	ExcludedUsers      pulumi.StringArrayInput `pulumi:"excludedUsers"`
-	MonitorAttributes  pulumi.BoolInput        `pulumi:"monitorAttributes"`
-	MonitorCreate      pulumi.BoolInput        `pulumi:"monitorCreate"`
-	MonitorDelete      pulumi.BoolInput        `pulumi:"monitorDelete"`
-	MonitorModify      pulumi.BoolInput        `pulumi:"monitorModify"`
-	MonitorRead        pulumi.BoolInput        `pulumi:"monitorRead"`
-	MonitoredPaths     pulumi.StringArrayInput `pulumi:"monitoredPaths"`
+	// List of paths to be excluded from being monitored.
+	ExcludedPaths pulumi.StringArrayInput `pulumi:"excludedPaths"`
+	// List of registry processes to be excluded from being monitored.
+	ExcludedProcesses pulumi.StringArrayInput `pulumi:"excludedProcesses"`
+	// List of registry users to be excluded from being monitored.
+	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
+	// If true, add attributes operations will be monitored.
+	MonitorAttributes pulumi.BoolInput `pulumi:"monitorAttributes"`
+	// If true, create operations will be monitored.
+	MonitorCreate pulumi.BoolInput `pulumi:"monitorCreate"`
+	// If true, deletion operations will be monitored.
+	MonitorDelete pulumi.BoolInput `pulumi:"monitorDelete"`
+	// If true, modification operations will be monitored.
+	MonitorModify pulumi.BoolInput `pulumi:"monitorModify"`
+	// If true, read operations will be monitored.
+	MonitorRead pulumi.BoolInput `pulumi:"monitorRead"`
+	// List of paths to be monitored.
+	MonitoredPaths pulumi.StringArrayInput `pulumi:"monitoredPaths"`
+	// List of registry processes to be monitored.
 	MonitoredProcesses pulumi.StringArrayInput `pulumi:"monitoredProcesses"`
-	MonitoredUsers     pulumi.StringArrayInput `pulumi:"monitoredUsers"`
+	// List of registry users to be monitored.
+	MonitoredUsers pulumi.StringArrayInput `pulumi:"monitoredUsers"`
 }
 
 func (GetHostRuntimePolicyWindowsRegistryMonitoringArgs) ElementType() reflect.Type {
@@ -34434,46 +34783,57 @@ func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) ToGetHostRuntimePol
 	return o
 }
 
+// List of paths to be excluded from being monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) ExcludedPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) []string { return v.ExcludedPaths }).(pulumi.StringArrayOutput)
 }
 
+// List of registry processes to be excluded from being monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) ExcludedProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) []string { return v.ExcludedProcesses }).(pulumi.StringArrayOutput)
 }
 
+// List of registry users to be excluded from being monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) ExcludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) []string { return v.ExcludedUsers }).(pulumi.StringArrayOutput)
 }
 
+// If true, add attributes operations will be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitorAttributes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) bool { return v.MonitorAttributes }).(pulumi.BoolOutput)
 }
 
+// If true, create operations will be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitorCreate() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) bool { return v.MonitorCreate }).(pulumi.BoolOutput)
 }
 
+// If true, deletion operations will be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitorDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) bool { return v.MonitorDelete }).(pulumi.BoolOutput)
 }
 
+// If true, modification operations will be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitorModify() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) bool { return v.MonitorModify }).(pulumi.BoolOutput)
 }
 
+// If true, read operations will be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitorRead() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) bool { return v.MonitorRead }).(pulumi.BoolOutput)
 }
 
+// List of paths to be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitoredPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) []string { return v.MonitoredPaths }).(pulumi.StringArrayOutput)
 }
 
+// List of registry processes to be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitoredProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) []string { return v.MonitoredProcesses }).(pulumi.StringArrayOutput)
 }
 
+// List of registry users to be monitored.
 func (o GetHostRuntimePolicyWindowsRegistryMonitoringOutput) MonitoredUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryMonitoring) []string { return v.MonitoredUsers }).(pulumi.StringArrayOutput)
 }
@@ -34499,12 +34859,18 @@ func (o GetHostRuntimePolicyWindowsRegistryMonitoringArrayOutput) Index(i pulumi
 }
 
 type GetHostRuntimePolicyWindowsRegistryProtection struct {
-	ExcludedPaths      []string `pulumi:"excludedPaths"`
-	ExcludedProcesses  []string `pulumi:"excludedProcesses"`
-	ExcludedUsers      []string `pulumi:"excludedUsers"`
-	ProtectedPaths     []string `pulumi:"protectedPaths"`
+	// List of registry paths to be excluded from being protected.
+	ExcludedPaths []string `pulumi:"excludedPaths"`
+	// List of registry processes to be excluded from being protected.
+	ExcludedProcesses []string `pulumi:"excludedProcesses"`
+	// List of registry paths to be users from being protected.
+	ExcludedUsers []string `pulumi:"excludedUsers"`
+	// List of registry paths to be protected.
+	ProtectedPaths []string `pulumi:"protectedPaths"`
+	// List of registry processes to be protected.
 	ProtectedProcesses []string `pulumi:"protectedProcesses"`
-	ProtectedUsers     []string `pulumi:"protectedUsers"`
+	// List of registry users to be protected.
+	ProtectedUsers []string `pulumi:"protectedUsers"`
 }
 
 // GetHostRuntimePolicyWindowsRegistryProtectionInput is an input type that accepts GetHostRuntimePolicyWindowsRegistryProtectionArgs and GetHostRuntimePolicyWindowsRegistryProtectionOutput values.
@@ -34519,12 +34885,18 @@ type GetHostRuntimePolicyWindowsRegistryProtectionInput interface {
 }
 
 type GetHostRuntimePolicyWindowsRegistryProtectionArgs struct {
-	ExcludedPaths      pulumi.StringArrayInput `pulumi:"excludedPaths"`
-	ExcludedProcesses  pulumi.StringArrayInput `pulumi:"excludedProcesses"`
-	ExcludedUsers      pulumi.StringArrayInput `pulumi:"excludedUsers"`
-	ProtectedPaths     pulumi.StringArrayInput `pulumi:"protectedPaths"`
+	// List of registry paths to be excluded from being protected.
+	ExcludedPaths pulumi.StringArrayInput `pulumi:"excludedPaths"`
+	// List of registry processes to be excluded from being protected.
+	ExcludedProcesses pulumi.StringArrayInput `pulumi:"excludedProcesses"`
+	// List of registry paths to be users from being protected.
+	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
+	// List of registry paths to be protected.
+	ProtectedPaths pulumi.StringArrayInput `pulumi:"protectedPaths"`
+	// List of registry processes to be protected.
 	ProtectedProcesses pulumi.StringArrayInput `pulumi:"protectedProcesses"`
-	ProtectedUsers     pulumi.StringArrayInput `pulumi:"protectedUsers"`
+	// List of registry users to be protected.
+	ProtectedUsers pulumi.StringArrayInput `pulumi:"protectedUsers"`
 }
 
 func (GetHostRuntimePolicyWindowsRegistryProtectionArgs) ElementType() reflect.Type {
@@ -34578,26 +34950,32 @@ func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ToGetHostRuntimePol
 	return o
 }
 
+// List of registry paths to be excluded from being protected.
 func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ExcludedPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryProtection) []string { return v.ExcludedPaths }).(pulumi.StringArrayOutput)
 }
 
+// List of registry processes to be excluded from being protected.
 func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ExcludedProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryProtection) []string { return v.ExcludedProcesses }).(pulumi.StringArrayOutput)
 }
 
+// List of registry paths to be users from being protected.
 func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ExcludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryProtection) []string { return v.ExcludedUsers }).(pulumi.StringArrayOutput)
 }
 
+// List of registry paths to be protected.
 func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ProtectedPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryProtection) []string { return v.ProtectedPaths }).(pulumi.StringArrayOutput)
 }
 
+// List of registry processes to be protected.
 func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ProtectedProcesses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryProtection) []string { return v.ProtectedProcesses }).(pulumi.StringArrayOutput)
 }
 
+// List of registry users to be protected.
 func (o GetHostRuntimePolicyWindowsRegistryProtectionOutput) ProtectedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetHostRuntimePolicyWindowsRegistryProtection) []string { return v.ProtectedUsers }).(pulumi.StringArrayOutput)
 }
@@ -34623,13 +35001,20 @@ func (o GetHostRuntimePolicyWindowsRegistryProtectionArrayOutput) Index(i pulumi
 }
 
 type GetImageAssuranceChecksPerformed struct {
-	AssuranceType    string `pulumi:"assuranceType"`
-	Blocking         bool   `pulumi:"blocking"`
-	Control          string `pulumi:"control"`
-	DtaSkipped       bool   `pulumi:"dtaSkipped"`
+	// The type of the Assurance Policy the check originated from.
+	AssuranceType string `pulumi:"assuranceType"`
+	// Whether the check is blocking (i.e. a failure should trigger a disallow).
+	Blocking bool `pulumi:"blocking"`
+	// The name of the image assurance control.
+	Control string `pulumi:"control"`
+	// If DTA was skipped.
+	DtaSkipped bool `pulumi:"dtaSkipped"`
+	// The reason why DTA was skipped.
 	DtaSkippedReason string `pulumi:"dtaSkippedReason"`
-	Failed           bool   `pulumi:"failed"`
-	PolicyName       string `pulumi:"policyName"`
+	// Whether the image failed the check.
+	Failed bool `pulumi:"failed"`
+	// The name of the Image Assurance Policy the check originated from.
+	PolicyName string `pulumi:"policyName"`
 }
 
 // GetImageAssuranceChecksPerformedInput is an input type that accepts GetImageAssuranceChecksPerformedArgs and GetImageAssuranceChecksPerformedOutput values.
@@ -34644,13 +35029,20 @@ type GetImageAssuranceChecksPerformedInput interface {
 }
 
 type GetImageAssuranceChecksPerformedArgs struct {
-	AssuranceType    pulumi.StringInput `pulumi:"assuranceType"`
-	Blocking         pulumi.BoolInput   `pulumi:"blocking"`
-	Control          pulumi.StringInput `pulumi:"control"`
-	DtaSkipped       pulumi.BoolInput   `pulumi:"dtaSkipped"`
+	// The type of the Assurance Policy the check originated from.
+	AssuranceType pulumi.StringInput `pulumi:"assuranceType"`
+	// Whether the check is blocking (i.e. a failure should trigger a disallow).
+	Blocking pulumi.BoolInput `pulumi:"blocking"`
+	// The name of the image assurance control.
+	Control pulumi.StringInput `pulumi:"control"`
+	// If DTA was skipped.
+	DtaSkipped pulumi.BoolInput `pulumi:"dtaSkipped"`
+	// The reason why DTA was skipped.
 	DtaSkippedReason pulumi.StringInput `pulumi:"dtaSkippedReason"`
-	Failed           pulumi.BoolInput   `pulumi:"failed"`
-	PolicyName       pulumi.StringInput `pulumi:"policyName"`
+	// Whether the image failed the check.
+	Failed pulumi.BoolInput `pulumi:"failed"`
+	// The name of the Image Assurance Policy the check originated from.
+	PolicyName pulumi.StringInput `pulumi:"policyName"`
 }
 
 func (GetImageAssuranceChecksPerformedArgs) ElementType() reflect.Type {
@@ -34704,30 +35096,37 @@ func (o GetImageAssuranceChecksPerformedOutput) ToGetImageAssuranceChecksPerform
 	return o
 }
 
+// The type of the Assurance Policy the check originated from.
 func (o GetImageAssuranceChecksPerformedOutput) AssuranceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) string { return v.AssuranceType }).(pulumi.StringOutput)
 }
 
+// Whether the check is blocking (i.e. a failure should trigger a disallow).
 func (o GetImageAssuranceChecksPerformedOutput) Blocking() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) bool { return v.Blocking }).(pulumi.BoolOutput)
 }
 
+// The name of the image assurance control.
 func (o GetImageAssuranceChecksPerformedOutput) Control() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) string { return v.Control }).(pulumi.StringOutput)
 }
 
+// If DTA was skipped.
 func (o GetImageAssuranceChecksPerformedOutput) DtaSkipped() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) bool { return v.DtaSkipped }).(pulumi.BoolOutput)
 }
 
+// The reason why DTA was skipped.
 func (o GetImageAssuranceChecksPerformedOutput) DtaSkippedReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) string { return v.DtaSkippedReason }).(pulumi.StringOutput)
 }
 
+// Whether the image failed the check.
 func (o GetImageAssuranceChecksPerformedOutput) Failed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) bool { return v.Failed }).(pulumi.BoolOutput)
 }
 
+// The name of the Image Assurance Policy the check originated from.
 func (o GetImageAssuranceChecksPerformedOutput) PolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageAssuranceChecksPerformed) string { return v.PolicyName }).(pulumi.StringOutput)
 }
@@ -34865,6 +35264,7 @@ func (o GetImageAssurancePolicyAutoScanTimeArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetImageAssurancePolicyCustomCheck struct {
+	// Name of user account that created the policy.
 	Author       string `pulumi:"author"`
 	Description  string `pulumi:"description"`
 	Engine       string `pulumi:"engine"`
@@ -34889,6 +35289,7 @@ type GetImageAssurancePolicyCustomCheckInput interface {
 }
 
 type GetImageAssurancePolicyCustomCheckArgs struct {
+	// Name of user account that created the policy.
 	Author       pulumi.StringInput `pulumi:"author"`
 	Description  pulumi.StringInput `pulumi:"description"`
 	Engine       pulumi.StringInput `pulumi:"engine"`
@@ -34952,6 +35353,7 @@ func (o GetImageAssurancePolicyCustomCheckOutput) ToGetImageAssurancePolicyCusto
 	return o
 }
 
+// Name of user account that created the policy.
 func (o GetImageAssurancePolicyCustomCheckOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageAssurancePolicyCustomCheck) string { return v.Author }).(pulumi.StringOutput)
 }
@@ -35803,11 +36205,16 @@ func (o GetImageAssurancePolicyTrustedBaseImageArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetImageHistory struct {
-	Comment   string `pulumi:"comment"`
-	Created   string `pulumi:"created"`
+	// The commit comment for the image, if any.
+	Comment string `pulumi:"comment"`
+	// The date of creation of the layer.
+	Created string `pulumi:"created"`
+	// The command that generated the layer.
 	CreatedBy string `pulumi:"createdBy"`
-	Id        string `pulumi:"id"`
-	Size      int    `pulumi:"size"`
+	// The image ID of the layer (if any).
+	Id string `pulumi:"id"`
+	// The size of the image.
+	Size int `pulumi:"size"`
 }
 
 // GetImageHistoryInput is an input type that accepts GetImageHistoryArgs and GetImageHistoryOutput values.
@@ -35822,11 +36229,16 @@ type GetImageHistoryInput interface {
 }
 
 type GetImageHistoryArgs struct {
-	Comment   pulumi.StringInput `pulumi:"comment"`
-	Created   pulumi.StringInput `pulumi:"created"`
+	// The commit comment for the image, if any.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The date of creation of the layer.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The command that generated the layer.
 	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	Id        pulumi.StringInput `pulumi:"id"`
-	Size      pulumi.IntInput    `pulumi:"size"`
+	// The image ID of the layer (if any).
+	Id pulumi.StringInput `pulumi:"id"`
+	// The size of the image.
+	Size pulumi.IntInput `pulumi:"size"`
 }
 
 func (GetImageHistoryArgs) ElementType() reflect.Type {
@@ -35880,22 +36292,27 @@ func (o GetImageHistoryOutput) ToGetImageHistoryOutputWithContext(ctx context.Co
 	return o
 }
 
+// The commit comment for the image, if any.
 func (o GetImageHistoryOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageHistory) string { return v.Comment }).(pulumi.StringOutput)
 }
 
+// The date of creation of the layer.
 func (o GetImageHistoryOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageHistory) string { return v.Created }).(pulumi.StringOutput)
 }
 
+// The command that generated the layer.
 func (o GetImageHistoryOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageHistory) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
+// The image ID of the layer (if any).
 func (o GetImageHistoryOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageHistory) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The size of the image.
 func (o GetImageHistoryOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImageHistory) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -35921,72 +36338,116 @@ func (o GetImageHistoryArrayOutput) Index(i pulumi.IntInput) GetImageHistoryOutp
 }
 
 type GetImageVulnerability struct {
-	AckAuthor                  string   `pulumi:"ackAuthor"`
-	AckComment                 string   `pulumi:"ackComment"`
-	AckExpirationConfiguredAt  string   `pulumi:"ackExpirationConfiguredAt"`
-	AckExpirationConfiguredBy  string   `pulumi:"ackExpirationConfiguredBy"`
-	AckExpirationDays          int      `pulumi:"ackExpirationDays"`
-	AckScope                   string   `pulumi:"ackScope"`
-	AcknowledgeDate            string   `pulumi:"acknowledgeDate"`
-	AncestorPkg                string   `pulumi:"ancestorPkg"`
-	AquaScore                  float64  `pulumi:"aquaScore"`
-	AquaScoreClassification    string   `pulumi:"aquaScoreClassification"`
-	AquaScoringSystem          string   `pulumi:"aquaScoringSystem"`
-	AquaSeverity               string   `pulumi:"aquaSeverity"`
-	AquaSeverityClassification string   `pulumi:"aquaSeverityClassification"`
-	AquaVectors                string   `pulumi:"aquaVectors"`
-	AuditEventsCount           int      `pulumi:"auditEventsCount"`
-	BlockEventsCount           int      `pulumi:"blockEventsCount"`
-	Classification             string   `pulumi:"classification"`
-	Description                string   `pulumi:"description"`
-	Digest                     string   `pulumi:"digest"`
-	ExploitReference           string   `pulumi:"exploitReference"`
-	ExploitType                string   `pulumi:"exploitType"`
-	FirstFoundDate             string   `pulumi:"firstFoundDate"`
-	FixVersion                 string   `pulumi:"fixVersion"`
-	ImageName                  string   `pulumi:"imageName"`
-	LastFoundDate              string   `pulumi:"lastFoundDate"`
-	ModificationDate           string   `pulumi:"modificationDate"`
-	Name                       string   `pulumi:"name"`
-	NvdCvss2Score              float64  `pulumi:"nvdCvss2Score"`
-	NvdCvss2Vectors            string   `pulumi:"nvdCvss2Vectors"`
-	NvdCvss3Score              float64  `pulumi:"nvdCvss3Score"`
-	NvdCvss3Severity           string   `pulumi:"nvdCvss3Severity"`
-	NvdCvss3Vectors            string   `pulumi:"nvdCvss3Vectors"`
-	NvdSeverity                string   `pulumi:"nvdSeverity"`
-	NvdUrl                     string   `pulumi:"nvdUrl"`
-	Os                         string   `pulumi:"os"`
-	OsVersion                  string   `pulumi:"osVersion"`
-	Permission                 string   `pulumi:"permission"`
-	PublishDate                string   `pulumi:"publishDate"`
-	Registry                   string   `pulumi:"registry"`
-	Repository                 string   `pulumi:"repository"`
-	ResourceArchitecture       string   `pulumi:"resourceArchitecture"`
-	ResourceCpe                string   `pulumi:"resourceCpe"`
-	ResourceFormat             string   `pulumi:"resourceFormat"`
-	ResourceHash               string   `pulumi:"resourceHash"`
-	ResourceLicenses           []string `pulumi:"resourceLicenses"`
-	ResourceName               string   `pulumi:"resourceName"`
-	ResourcePath               string   `pulumi:"resourcePath"`
-	ResourceType               string   `pulumi:"resourceType"`
-	ResourceVersion            string   `pulumi:"resourceVersion"`
-	SeverityClassification     string   `pulumi:"severityClassification"`
-	Solution                   string   `pulumi:"solution"`
-	TemporalVector             string   `pulumi:"temporalVector"`
-	VPatchAppliedBy            string   `pulumi:"vPatchAppliedBy"`
-	VPatchAppliedOn            string   `pulumi:"vPatchAppliedOn"`
-	VPatchEnforcedBy           string   `pulumi:"vPatchEnforcedBy"`
-	VPatchEnforcedOn           string   `pulumi:"vPatchEnforcedOn"`
-	VPatchPolicyEnforce        bool     `pulumi:"vPatchPolicyEnforce"`
-	VPatchPolicyName           string   `pulumi:"vPatchPolicyName"`
-	VPatchRevertedBy           string   `pulumi:"vPatchRevertedBy"`
-	VPatchRevertedOn           string   `pulumi:"vPatchRevertedOn"`
-	VPatchStatus               string   `pulumi:"vPatchStatus"`
-	VendorCvss2Score           float64  `pulumi:"vendorCvss2Score"`
-	VendorCvss2Vectors         string   `pulumi:"vendorCvss2Vectors"`
-	VendorSeverity             string   `pulumi:"vendorSeverity"`
-	VendorStatement            string   `pulumi:"vendorStatement"`
-	VendorUrl                  string   `pulumi:"vendorUrl"`
+	AckAuthor                 string `pulumi:"ackAuthor"`
+	AckComment                string `pulumi:"ackComment"`
+	AckExpirationConfiguredAt string `pulumi:"ackExpirationConfiguredAt"`
+	AckExpirationConfiguredBy string `pulumi:"ackExpirationConfiguredBy"`
+	AckExpirationDays         int    `pulumi:"ackExpirationDays"`
+	AckScope                  string `pulumi:"ackScope"`
+	AcknowledgeDate           string `pulumi:"acknowledgeDate"`
+	// The ancestor of this package.
+	AncestorPkg string `pulumi:"ancestorPkg"`
+	// The score generated for the vulnerability by Aqua.
+	AquaScore float64 `pulumi:"aquaScore"`
+	// Score classification by Aqua.
+	AquaScoreClassification string `pulumi:"aquaScoreClassification"`
+	// The score system for the vulnerability by Aqua
+	AquaScoringSystem string `pulumi:"aquaScoringSystem"`
+	// The severity generated for the vulnerability by Aqua.
+	AquaSeverity string `pulumi:"aquaSeverity"`
+	// Classification of the severity defined by Aqua.
+	AquaSeverityClassification string `pulumi:"aquaSeverityClassification"`
+	// The vectors generated for the vulnerability by Aqua
+	AquaVectors string `pulumi:"aquaVectors"`
+	// Number of audit events.
+	AuditEventsCount int `pulumi:"auditEventsCount"`
+	// Number of blocked events.
+	BlockEventsCount int `pulumi:"blockEventsCount"`
+	// Classification of the vulnerability.
+	Classification string `pulumi:"classification"`
+	// The description of the vulnerability.
+	Description string `pulumi:"description"`
+	// The content digest of the image.
+	Digest string `pulumi:"digest"`
+	// Reference of the exploit.
+	ExploitReference string `pulumi:"exploitReference"`
+	// Type of the exploit.
+	ExploitType string `pulumi:"exploitType"`
+	// The date when this vulnerability was first found.
+	FirstFoundDate string `pulumi:"firstFoundDate"`
+	// Fixed version of the resource.
+	FixVersion string `pulumi:"fixVersion"`
+	// Name of the image.
+	ImageName string `pulumi:"imageName"`
+	// The date when this vulnerability was last found.
+	LastFoundDate string `pulumi:"lastFoundDate"`
+	// Thhe date when this vulnerability was modified.
+	ModificationDate string `pulumi:"modificationDate"`
+	// The name of the vulnerability.
+	Name string `pulumi:"name"`
+	// CVSS2 score by NVD
+	NvdCvss2Score float64 `pulumi:"nvdCvss2Score"`
+	// CVSS2 vectors by NVD
+	NvdCvss2Vectors string `pulumi:"nvdCvss2Vectors"`
+	// CVSS3 score by NVD
+	NvdCvss3Score float64 `pulumi:"nvdCvss3Score"`
+	// CVSS3 severity by NVD
+	NvdCvss3Severity string `pulumi:"nvdCvss3Severity"`
+	// CVSS3 vectors by NVD
+	NvdCvss3Vectors string `pulumi:"nvdCvss3Vectors"`
+	// Type of the severity identified by NVD.
+	NvdSeverity string `pulumi:"nvdSeverity"`
+	// URL of the details of this vulnerability by NVD.
+	NvdUrl string `pulumi:"nvdUrl"`
+	// Name of the Operating System.
+	Os string `pulumi:"os"`
+	// The version of the OS.
+	OsVersion string `pulumi:"osVersion"`
+	// permission on the image
+	Permission string `pulumi:"permission"`
+	// The date this vulnerability was published.
+	PublishDate string `pulumi:"publishDate"`
+	// Registry of the image.
+	Registry string `pulumi:"registry"`
+	// Repository of the image.
+	Repository string `pulumi:"repository"`
+	// Architecture of the resource.
+	ResourceArchitecture string `pulumi:"resourceArchitecture"`
+	// Common Platform Enumeration (CPE) of the resource.
+	ResourceCpe string `pulumi:"resourceCpe"`
+	// Code format of the resource (java, apk etc.).
+	ResourceFormat string `pulumi:"resourceFormat"`
+	// Hash of the resource.
+	ResourceHash string `pulumi:"resourceHash"`
+	// List of license supported by the resource.
+	ResourceLicenses []string `pulumi:"resourceLicenses"`
+	// Name of the resource.
+	ResourceName string `pulumi:"resourceName"`
+	// Path of the resource.
+	ResourcePath string `pulumi:"resourcePath"`
+	// Type of the resource
+	ResourceType string `pulumi:"resourceType"`
+	// Version of the resource.
+	ResourceVersion string `pulumi:"resourceVersion"`
+	// Classification of the severity.
+	SeverityClassification string `pulumi:"severityClassification"`
+	// Solution for the vulnerability.
+	Solution            string  `pulumi:"solution"`
+	TemporalVector      string  `pulumi:"temporalVector"`
+	VPatchAppliedBy     string  `pulumi:"vPatchAppliedBy"`
+	VPatchAppliedOn     string  `pulumi:"vPatchAppliedOn"`
+	VPatchEnforcedBy    string  `pulumi:"vPatchEnforcedBy"`
+	VPatchEnforcedOn    string  `pulumi:"vPatchEnforcedOn"`
+	VPatchPolicyEnforce bool    `pulumi:"vPatchPolicyEnforce"`
+	VPatchPolicyName    string  `pulumi:"vPatchPolicyName"`
+	VPatchRevertedBy    string  `pulumi:"vPatchRevertedBy"`
+	VPatchRevertedOn    string  `pulumi:"vPatchRevertedOn"`
+	VPatchStatus        string  `pulumi:"vPatchStatus"`
+	VendorCvss2Score    float64 `pulumi:"vendorCvss2Score"`
+	VendorCvss2Vectors  string  `pulumi:"vendorCvss2Vectors"`
+	VendorSeverity      string  `pulumi:"vendorSeverity"`
+	VendorStatement     string  `pulumi:"vendorStatement"`
+	VendorUrl           string  `pulumi:"vendorUrl"`
 }
 
 // GetImageVulnerabilityInput is an input type that accepts GetImageVulnerabilityArgs and GetImageVulnerabilityOutput values.
@@ -36001,72 +36462,116 @@ type GetImageVulnerabilityInput interface {
 }
 
 type GetImageVulnerabilityArgs struct {
-	AckAuthor                  pulumi.StringInput      `pulumi:"ackAuthor"`
-	AckComment                 pulumi.StringInput      `pulumi:"ackComment"`
-	AckExpirationConfiguredAt  pulumi.StringInput      `pulumi:"ackExpirationConfiguredAt"`
-	AckExpirationConfiguredBy  pulumi.StringInput      `pulumi:"ackExpirationConfiguredBy"`
-	AckExpirationDays          pulumi.IntInput         `pulumi:"ackExpirationDays"`
-	AckScope                   pulumi.StringInput      `pulumi:"ackScope"`
-	AcknowledgeDate            pulumi.StringInput      `pulumi:"acknowledgeDate"`
-	AncestorPkg                pulumi.StringInput      `pulumi:"ancestorPkg"`
-	AquaScore                  pulumi.Float64Input     `pulumi:"aquaScore"`
-	AquaScoreClassification    pulumi.StringInput      `pulumi:"aquaScoreClassification"`
-	AquaScoringSystem          pulumi.StringInput      `pulumi:"aquaScoringSystem"`
-	AquaSeverity               pulumi.StringInput      `pulumi:"aquaSeverity"`
-	AquaSeverityClassification pulumi.StringInput      `pulumi:"aquaSeverityClassification"`
-	AquaVectors                pulumi.StringInput      `pulumi:"aquaVectors"`
-	AuditEventsCount           pulumi.IntInput         `pulumi:"auditEventsCount"`
-	BlockEventsCount           pulumi.IntInput         `pulumi:"blockEventsCount"`
-	Classification             pulumi.StringInput      `pulumi:"classification"`
-	Description                pulumi.StringInput      `pulumi:"description"`
-	Digest                     pulumi.StringInput      `pulumi:"digest"`
-	ExploitReference           pulumi.StringInput      `pulumi:"exploitReference"`
-	ExploitType                pulumi.StringInput      `pulumi:"exploitType"`
-	FirstFoundDate             pulumi.StringInput      `pulumi:"firstFoundDate"`
-	FixVersion                 pulumi.StringInput      `pulumi:"fixVersion"`
-	ImageName                  pulumi.StringInput      `pulumi:"imageName"`
-	LastFoundDate              pulumi.StringInput      `pulumi:"lastFoundDate"`
-	ModificationDate           pulumi.StringInput      `pulumi:"modificationDate"`
-	Name                       pulumi.StringInput      `pulumi:"name"`
-	NvdCvss2Score              pulumi.Float64Input     `pulumi:"nvdCvss2Score"`
-	NvdCvss2Vectors            pulumi.StringInput      `pulumi:"nvdCvss2Vectors"`
-	NvdCvss3Score              pulumi.Float64Input     `pulumi:"nvdCvss3Score"`
-	NvdCvss3Severity           pulumi.StringInput      `pulumi:"nvdCvss3Severity"`
-	NvdCvss3Vectors            pulumi.StringInput      `pulumi:"nvdCvss3Vectors"`
-	NvdSeverity                pulumi.StringInput      `pulumi:"nvdSeverity"`
-	NvdUrl                     pulumi.StringInput      `pulumi:"nvdUrl"`
-	Os                         pulumi.StringInput      `pulumi:"os"`
-	OsVersion                  pulumi.StringInput      `pulumi:"osVersion"`
-	Permission                 pulumi.StringInput      `pulumi:"permission"`
-	PublishDate                pulumi.StringInput      `pulumi:"publishDate"`
-	Registry                   pulumi.StringInput      `pulumi:"registry"`
-	Repository                 pulumi.StringInput      `pulumi:"repository"`
-	ResourceArchitecture       pulumi.StringInput      `pulumi:"resourceArchitecture"`
-	ResourceCpe                pulumi.StringInput      `pulumi:"resourceCpe"`
-	ResourceFormat             pulumi.StringInput      `pulumi:"resourceFormat"`
-	ResourceHash               pulumi.StringInput      `pulumi:"resourceHash"`
-	ResourceLicenses           pulumi.StringArrayInput `pulumi:"resourceLicenses"`
-	ResourceName               pulumi.StringInput      `pulumi:"resourceName"`
-	ResourcePath               pulumi.StringInput      `pulumi:"resourcePath"`
-	ResourceType               pulumi.StringInput      `pulumi:"resourceType"`
-	ResourceVersion            pulumi.StringInput      `pulumi:"resourceVersion"`
-	SeverityClassification     pulumi.StringInput      `pulumi:"severityClassification"`
-	Solution                   pulumi.StringInput      `pulumi:"solution"`
-	TemporalVector             pulumi.StringInput      `pulumi:"temporalVector"`
-	VPatchAppliedBy            pulumi.StringInput      `pulumi:"vPatchAppliedBy"`
-	VPatchAppliedOn            pulumi.StringInput      `pulumi:"vPatchAppliedOn"`
-	VPatchEnforcedBy           pulumi.StringInput      `pulumi:"vPatchEnforcedBy"`
-	VPatchEnforcedOn           pulumi.StringInput      `pulumi:"vPatchEnforcedOn"`
-	VPatchPolicyEnforce        pulumi.BoolInput        `pulumi:"vPatchPolicyEnforce"`
-	VPatchPolicyName           pulumi.StringInput      `pulumi:"vPatchPolicyName"`
-	VPatchRevertedBy           pulumi.StringInput      `pulumi:"vPatchRevertedBy"`
-	VPatchRevertedOn           pulumi.StringInput      `pulumi:"vPatchRevertedOn"`
-	VPatchStatus               pulumi.StringInput      `pulumi:"vPatchStatus"`
-	VendorCvss2Score           pulumi.Float64Input     `pulumi:"vendorCvss2Score"`
-	VendorCvss2Vectors         pulumi.StringInput      `pulumi:"vendorCvss2Vectors"`
-	VendorSeverity             pulumi.StringInput      `pulumi:"vendorSeverity"`
-	VendorStatement            pulumi.StringInput      `pulumi:"vendorStatement"`
-	VendorUrl                  pulumi.StringInput      `pulumi:"vendorUrl"`
+	AckAuthor                 pulumi.StringInput `pulumi:"ackAuthor"`
+	AckComment                pulumi.StringInput `pulumi:"ackComment"`
+	AckExpirationConfiguredAt pulumi.StringInput `pulumi:"ackExpirationConfiguredAt"`
+	AckExpirationConfiguredBy pulumi.StringInput `pulumi:"ackExpirationConfiguredBy"`
+	AckExpirationDays         pulumi.IntInput    `pulumi:"ackExpirationDays"`
+	AckScope                  pulumi.StringInput `pulumi:"ackScope"`
+	AcknowledgeDate           pulumi.StringInput `pulumi:"acknowledgeDate"`
+	// The ancestor of this package.
+	AncestorPkg pulumi.StringInput `pulumi:"ancestorPkg"`
+	// The score generated for the vulnerability by Aqua.
+	AquaScore pulumi.Float64Input `pulumi:"aquaScore"`
+	// Score classification by Aqua.
+	AquaScoreClassification pulumi.StringInput `pulumi:"aquaScoreClassification"`
+	// The score system for the vulnerability by Aqua
+	AquaScoringSystem pulumi.StringInput `pulumi:"aquaScoringSystem"`
+	// The severity generated for the vulnerability by Aqua.
+	AquaSeverity pulumi.StringInput `pulumi:"aquaSeverity"`
+	// Classification of the severity defined by Aqua.
+	AquaSeverityClassification pulumi.StringInput `pulumi:"aquaSeverityClassification"`
+	// The vectors generated for the vulnerability by Aqua
+	AquaVectors pulumi.StringInput `pulumi:"aquaVectors"`
+	// Number of audit events.
+	AuditEventsCount pulumi.IntInput `pulumi:"auditEventsCount"`
+	// Number of blocked events.
+	BlockEventsCount pulumi.IntInput `pulumi:"blockEventsCount"`
+	// Classification of the vulnerability.
+	Classification pulumi.StringInput `pulumi:"classification"`
+	// The description of the vulnerability.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The content digest of the image.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// Reference of the exploit.
+	ExploitReference pulumi.StringInput `pulumi:"exploitReference"`
+	// Type of the exploit.
+	ExploitType pulumi.StringInput `pulumi:"exploitType"`
+	// The date when this vulnerability was first found.
+	FirstFoundDate pulumi.StringInput `pulumi:"firstFoundDate"`
+	// Fixed version of the resource.
+	FixVersion pulumi.StringInput `pulumi:"fixVersion"`
+	// Name of the image.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
+	// The date when this vulnerability was last found.
+	LastFoundDate pulumi.StringInput `pulumi:"lastFoundDate"`
+	// Thhe date when this vulnerability was modified.
+	ModificationDate pulumi.StringInput `pulumi:"modificationDate"`
+	// The name of the vulnerability.
+	Name pulumi.StringInput `pulumi:"name"`
+	// CVSS2 score by NVD
+	NvdCvss2Score pulumi.Float64Input `pulumi:"nvdCvss2Score"`
+	// CVSS2 vectors by NVD
+	NvdCvss2Vectors pulumi.StringInput `pulumi:"nvdCvss2Vectors"`
+	// CVSS3 score by NVD
+	NvdCvss3Score pulumi.Float64Input `pulumi:"nvdCvss3Score"`
+	// CVSS3 severity by NVD
+	NvdCvss3Severity pulumi.StringInput `pulumi:"nvdCvss3Severity"`
+	// CVSS3 vectors by NVD
+	NvdCvss3Vectors pulumi.StringInput `pulumi:"nvdCvss3Vectors"`
+	// Type of the severity identified by NVD.
+	NvdSeverity pulumi.StringInput `pulumi:"nvdSeverity"`
+	// URL of the details of this vulnerability by NVD.
+	NvdUrl pulumi.StringInput `pulumi:"nvdUrl"`
+	// Name of the Operating System.
+	Os pulumi.StringInput `pulumi:"os"`
+	// The version of the OS.
+	OsVersion pulumi.StringInput `pulumi:"osVersion"`
+	// permission on the image
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// The date this vulnerability was published.
+	PublishDate pulumi.StringInput `pulumi:"publishDate"`
+	// Registry of the image.
+	Registry pulumi.StringInput `pulumi:"registry"`
+	// Repository of the image.
+	Repository pulumi.StringInput `pulumi:"repository"`
+	// Architecture of the resource.
+	ResourceArchitecture pulumi.StringInput `pulumi:"resourceArchitecture"`
+	// Common Platform Enumeration (CPE) of the resource.
+	ResourceCpe pulumi.StringInput `pulumi:"resourceCpe"`
+	// Code format of the resource (java, apk etc.).
+	ResourceFormat pulumi.StringInput `pulumi:"resourceFormat"`
+	// Hash of the resource.
+	ResourceHash pulumi.StringInput `pulumi:"resourceHash"`
+	// List of license supported by the resource.
+	ResourceLicenses pulumi.StringArrayInput `pulumi:"resourceLicenses"`
+	// Name of the resource.
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+	// Path of the resource.
+	ResourcePath pulumi.StringInput `pulumi:"resourcePath"`
+	// Type of the resource
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+	// Version of the resource.
+	ResourceVersion pulumi.StringInput `pulumi:"resourceVersion"`
+	// Classification of the severity.
+	SeverityClassification pulumi.StringInput `pulumi:"severityClassification"`
+	// Solution for the vulnerability.
+	Solution            pulumi.StringInput  `pulumi:"solution"`
+	TemporalVector      pulumi.StringInput  `pulumi:"temporalVector"`
+	VPatchAppliedBy     pulumi.StringInput  `pulumi:"vPatchAppliedBy"`
+	VPatchAppliedOn     pulumi.StringInput  `pulumi:"vPatchAppliedOn"`
+	VPatchEnforcedBy    pulumi.StringInput  `pulumi:"vPatchEnforcedBy"`
+	VPatchEnforcedOn    pulumi.StringInput  `pulumi:"vPatchEnforcedOn"`
+	VPatchPolicyEnforce pulumi.BoolInput    `pulumi:"vPatchPolicyEnforce"`
+	VPatchPolicyName    pulumi.StringInput  `pulumi:"vPatchPolicyName"`
+	VPatchRevertedBy    pulumi.StringInput  `pulumi:"vPatchRevertedBy"`
+	VPatchRevertedOn    pulumi.StringInput  `pulumi:"vPatchRevertedOn"`
+	VPatchStatus        pulumi.StringInput  `pulumi:"vPatchStatus"`
+	VendorCvss2Score    pulumi.Float64Input `pulumi:"vendorCvss2Score"`
+	VendorCvss2Vectors  pulumi.StringInput  `pulumi:"vendorCvss2Vectors"`
+	VendorSeverity      pulumi.StringInput  `pulumi:"vendorSeverity"`
+	VendorStatement     pulumi.StringInput  `pulumi:"vendorStatement"`
+	VendorUrl           pulumi.StringInput  `pulumi:"vendorUrl"`
 }
 
 func (GetImageVulnerabilityArgs) ElementType() reflect.Type {
@@ -36148,178 +36653,222 @@ func (o GetImageVulnerabilityOutput) AcknowledgeDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AcknowledgeDate }).(pulumi.StringOutput)
 }
 
+// The ancestor of this package.
 func (o GetImageVulnerabilityOutput) AncestorPkg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AncestorPkg }).(pulumi.StringOutput)
 }
 
+// The score generated for the vulnerability by Aqua.
 func (o GetImageVulnerabilityOutput) AquaScore() pulumi.Float64Output {
 	return o.ApplyT(func(v GetImageVulnerability) float64 { return v.AquaScore }).(pulumi.Float64Output)
 }
 
+// Score classification by Aqua.
 func (o GetImageVulnerabilityOutput) AquaScoreClassification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AquaScoreClassification }).(pulumi.StringOutput)
 }
 
+// The score system for the vulnerability by Aqua
 func (o GetImageVulnerabilityOutput) AquaScoringSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AquaScoringSystem }).(pulumi.StringOutput)
 }
 
+// The severity generated for the vulnerability by Aqua.
 func (o GetImageVulnerabilityOutput) AquaSeverity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AquaSeverity }).(pulumi.StringOutput)
 }
 
+// Classification of the severity defined by Aqua.
 func (o GetImageVulnerabilityOutput) AquaSeverityClassification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AquaSeverityClassification }).(pulumi.StringOutput)
 }
 
+// The vectors generated for the vulnerability by Aqua
 func (o GetImageVulnerabilityOutput) AquaVectors() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.AquaVectors }).(pulumi.StringOutput)
 }
 
+// Number of audit events.
 func (o GetImageVulnerabilityOutput) AuditEventsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImageVulnerability) int { return v.AuditEventsCount }).(pulumi.IntOutput)
 }
 
+// Number of blocked events.
 func (o GetImageVulnerabilityOutput) BlockEventsCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetImageVulnerability) int { return v.BlockEventsCount }).(pulumi.IntOutput)
 }
 
+// Classification of the vulnerability.
 func (o GetImageVulnerabilityOutput) Classification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Classification }).(pulumi.StringOutput)
 }
 
+// The description of the vulnerability.
 func (o GetImageVulnerabilityOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The content digest of the image.
 func (o GetImageVulnerabilityOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Digest }).(pulumi.StringOutput)
 }
 
+// Reference of the exploit.
 func (o GetImageVulnerabilityOutput) ExploitReference() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ExploitReference }).(pulumi.StringOutput)
 }
 
+// Type of the exploit.
 func (o GetImageVulnerabilityOutput) ExploitType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ExploitType }).(pulumi.StringOutput)
 }
 
+// The date when this vulnerability was first found.
 func (o GetImageVulnerabilityOutput) FirstFoundDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.FirstFoundDate }).(pulumi.StringOutput)
 }
 
+// Fixed version of the resource.
 func (o GetImageVulnerabilityOutput) FixVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.FixVersion }).(pulumi.StringOutput)
 }
 
+// Name of the image.
 func (o GetImageVulnerabilityOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
+// The date when this vulnerability was last found.
 func (o GetImageVulnerabilityOutput) LastFoundDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.LastFoundDate }).(pulumi.StringOutput)
 }
 
+// Thhe date when this vulnerability was modified.
 func (o GetImageVulnerabilityOutput) ModificationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ModificationDate }).(pulumi.StringOutput)
 }
 
+// The name of the vulnerability.
 func (o GetImageVulnerabilityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// CVSS2 score by NVD
 func (o GetImageVulnerabilityOutput) NvdCvss2Score() pulumi.Float64Output {
 	return o.ApplyT(func(v GetImageVulnerability) float64 { return v.NvdCvss2Score }).(pulumi.Float64Output)
 }
 
+// CVSS2 vectors by NVD
 func (o GetImageVulnerabilityOutput) NvdCvss2Vectors() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.NvdCvss2Vectors }).(pulumi.StringOutput)
 }
 
+// CVSS3 score by NVD
 func (o GetImageVulnerabilityOutput) NvdCvss3Score() pulumi.Float64Output {
 	return o.ApplyT(func(v GetImageVulnerability) float64 { return v.NvdCvss3Score }).(pulumi.Float64Output)
 }
 
+// CVSS3 severity by NVD
 func (o GetImageVulnerabilityOutput) NvdCvss3Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.NvdCvss3Severity }).(pulumi.StringOutput)
 }
 
+// CVSS3 vectors by NVD
 func (o GetImageVulnerabilityOutput) NvdCvss3Vectors() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.NvdCvss3Vectors }).(pulumi.StringOutput)
 }
 
+// Type of the severity identified by NVD.
 func (o GetImageVulnerabilityOutput) NvdSeverity() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.NvdSeverity }).(pulumi.StringOutput)
 }
 
+// URL of the details of this vulnerability by NVD.
 func (o GetImageVulnerabilityOutput) NvdUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.NvdUrl }).(pulumi.StringOutput)
 }
 
+// Name of the Operating System.
 func (o GetImageVulnerabilityOutput) Os() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Os }).(pulumi.StringOutput)
 }
 
+// The version of the OS.
 func (o GetImageVulnerabilityOutput) OsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.OsVersion }).(pulumi.StringOutput)
 }
 
+// permission on the image
 func (o GetImageVulnerabilityOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// The date this vulnerability was published.
 func (o GetImageVulnerabilityOutput) PublishDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.PublishDate }).(pulumi.StringOutput)
 }
 
+// Registry of the image.
 func (o GetImageVulnerabilityOutput) Registry() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Registry }).(pulumi.StringOutput)
 }
 
+// Repository of the image.
 func (o GetImageVulnerabilityOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Repository }).(pulumi.StringOutput)
 }
 
+// Architecture of the resource.
 func (o GetImageVulnerabilityOutput) ResourceArchitecture() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceArchitecture }).(pulumi.StringOutput)
 }
 
+// Common Platform Enumeration (CPE) of the resource.
 func (o GetImageVulnerabilityOutput) ResourceCpe() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceCpe }).(pulumi.StringOutput)
 }
 
+// Code format of the resource (java, apk etc.).
 func (o GetImageVulnerabilityOutput) ResourceFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceFormat }).(pulumi.StringOutput)
 }
 
+// Hash of the resource.
 func (o GetImageVulnerabilityOutput) ResourceHash() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceHash }).(pulumi.StringOutput)
 }
 
+// List of license supported by the resource.
 func (o GetImageVulnerabilityOutput) ResourceLicenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetImageVulnerability) []string { return v.ResourceLicenses }).(pulumi.StringArrayOutput)
 }
 
+// Name of the resource.
 func (o GetImageVulnerabilityOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceName }).(pulumi.StringOutput)
 }
 
+// Path of the resource.
 func (o GetImageVulnerabilityOutput) ResourcePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourcePath }).(pulumi.StringOutput)
 }
 
+// Type of the resource
 func (o GetImageVulnerabilityOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
+// Version of the resource.
 func (o GetImageVulnerabilityOutput) ResourceVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.ResourceVersion }).(pulumi.StringOutput)
 }
 
+// Classification of the severity.
 func (o GetImageVulnerabilityOutput) SeverityClassification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.SeverityClassification }).(pulumi.StringOutput)
 }
 
+// Solution for the vulnerability.
 func (o GetImageVulnerabilityOutput) Solution() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageVulnerability) string { return v.Solution }).(pulumi.StringOutput)
 }
@@ -36941,6 +37490,7 @@ func (o GetKubernetesAssurancePolicyAutoScanTimeArrayOutput) Index(i pulumi.IntI
 }
 
 type GetKubernetesAssurancePolicyCustomCheck struct {
+	// Name of user account that created the policy.
 	Author       string `pulumi:"author"`
 	Description  string `pulumi:"description"`
 	Engine       string `pulumi:"engine"`
@@ -36965,6 +37515,7 @@ type GetKubernetesAssurancePolicyCustomCheckInput interface {
 }
 
 type GetKubernetesAssurancePolicyCustomCheckArgs struct {
+	// Name of user account that created the policy.
 	Author       pulumi.StringInput `pulumi:"author"`
 	Description  pulumi.StringInput `pulumi:"description"`
 	Engine       pulumi.StringInput `pulumi:"engine"`
@@ -37028,6 +37579,7 @@ func (o GetKubernetesAssurancePolicyCustomCheckOutput) ToGetKubernetesAssuranceP
 	return o
 }
 
+// Name of user account that created the policy.
 func (o GetKubernetesAssurancePolicyCustomCheckOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKubernetesAssurancePolicyCustomCheck) string { return v.Author }).(pulumi.StringOutput)
 }
@@ -38791,13 +39343,20 @@ func (o GetNotificationsWebhookArrayOutput) Index(i pulumi.IntInput) GetNotifica
 }
 
 type GetPermissionsSetsPermissionsSet struct {
-	Actions     []string `pulumi:"actions"`
-	Author      string   `pulumi:"author"`
-	Description string   `pulumi:"description"`
-	IsSuper     bool     `pulumi:"isSuper"`
-	Name        string   `pulumi:"name"`
-	UiAccess    bool     `pulumi:"uiAccess"`
-	UpdatedAt   string   `pulumi:"updatedAt"`
+	// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
+	Actions []string `pulumi:"actions"`
+	// The name of the user who created the Permission Set.
+	Author string `pulumi:"author"`
+	// Free text description for the Permission Set.
+	Description string `pulumi:"description"`
+	// Give the Permission Set full access, meaning all actions are allowed without restriction.
+	IsSuper bool `pulumi:"isSuper"`
+	// The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+	Name string `pulumi:"name"`
+	// Whether to allow UI access for users with this Permission Set.
+	UiAccess bool `pulumi:"uiAccess"`
+	// The date of the last modification of the Role.
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 // GetPermissionsSetsPermissionsSetInput is an input type that accepts GetPermissionsSetsPermissionsSetArgs and GetPermissionsSetsPermissionsSetOutput values.
@@ -38812,13 +39371,20 @@ type GetPermissionsSetsPermissionsSetInput interface {
 }
 
 type GetPermissionsSetsPermissionsSetArgs struct {
-	Actions     pulumi.StringArrayInput `pulumi:"actions"`
-	Author      pulumi.StringInput      `pulumi:"author"`
-	Description pulumi.StringInput      `pulumi:"description"`
-	IsSuper     pulumi.BoolInput        `pulumi:"isSuper"`
-	Name        pulumi.StringInput      `pulumi:"name"`
-	UiAccess    pulumi.BoolInput        `pulumi:"uiAccess"`
-	UpdatedAt   pulumi.StringInput      `pulumi:"updatedAt"`
+	// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// The name of the user who created the Permission Set.
+	Author pulumi.StringInput `pulumi:"author"`
+	// Free text description for the Permission Set.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Give the Permission Set full access, meaning all actions are allowed without restriction.
+	IsSuper pulumi.BoolInput `pulumi:"isSuper"`
+	// The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether to allow UI access for users with this Permission Set.
+	UiAccess pulumi.BoolInput `pulumi:"uiAccess"`
+	// The date of the last modification of the Role.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetPermissionsSetsPermissionsSetArgs) ElementType() reflect.Type {
@@ -38872,30 +39438,37 @@ func (o GetPermissionsSetsPermissionsSetOutput) ToGetPermissionsSetsPermissionsS
 	return o
 }
 
+// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
 func (o GetPermissionsSetsPermissionsSetOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) []string { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
+// The name of the user who created the Permission Set.
 func (o GetPermissionsSetsPermissionsSetOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) string { return v.Author }).(pulumi.StringOutput)
 }
 
+// Free text description for the Permission Set.
 func (o GetPermissionsSetsPermissionsSetOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Give the Permission Set full access, meaning all actions are allowed without restriction.
 func (o GetPermissionsSetsPermissionsSetOutput) IsSuper() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) bool { return v.IsSuper }).(pulumi.BoolOutput)
 }
 
+// The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
 func (o GetPermissionsSetsPermissionsSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Whether to allow UI access for users with this Permission Set.
 func (o GetPermissionsSetsPermissionsSetOutput) UiAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) bool { return v.UiAccess }).(pulumi.BoolOutput)
 }
 
+// The date of the last modification of the Role.
 func (o GetPermissionsSetsPermissionsSetOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPermissionsSetsPermissionsSet) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -38921,6 +39494,7 @@ func (o GetPermissionsSetsPermissionsSetArrayOutput) Index(i pulumi.IntInput) Ge
 }
 
 type GetRolesMappingLdap struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping map[string]string `pulumi:"roleMapping"`
 }
 
@@ -38936,6 +39510,7 @@ type GetRolesMappingLdapInput interface {
 }
 
 type GetRolesMappingLdapArgs struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping pulumi.StringMapInput `pulumi:"roleMapping"`
 }
 
@@ -38990,6 +39565,7 @@ func (o GetRolesMappingLdapOutput) ToGetRolesMappingLdapOutputWithContext(ctx co
 	return o
 }
 
+// Role Mapping is used to define the IdP role that the user will assume in Aqua
 func (o GetRolesMappingLdapOutput) RoleMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRolesMappingLdap) map[string]string { return v.RoleMapping }).(pulumi.StringMapOutput)
 }
@@ -39015,6 +39591,7 @@ func (o GetRolesMappingLdapArrayOutput) Index(i pulumi.IntInput) GetRolesMapping
 }
 
 type GetRolesMappingOauth2 struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping map[string]string `pulumi:"roleMapping"`
 }
 
@@ -39030,6 +39607,7 @@ type GetRolesMappingOauth2Input interface {
 }
 
 type GetRolesMappingOauth2Args struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping pulumi.StringMapInput `pulumi:"roleMapping"`
 }
 
@@ -39084,6 +39662,7 @@ func (o GetRolesMappingOauth2Output) ToGetRolesMappingOauth2OutputWithContext(ct
 	return o
 }
 
+// Role Mapping is used to define the IdP role that the user will assume in Aqua
 func (o GetRolesMappingOauth2Output) RoleMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRolesMappingOauth2) map[string]string { return v.RoleMapping }).(pulumi.StringMapOutput)
 }
@@ -39109,6 +39688,7 @@ func (o GetRolesMappingOauth2ArrayOutput) Index(i pulumi.IntInput) GetRolesMappi
 }
 
 type GetRolesMappingOpenid struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping map[string]string `pulumi:"roleMapping"`
 }
 
@@ -39124,6 +39704,7 @@ type GetRolesMappingOpenidInput interface {
 }
 
 type GetRolesMappingOpenidArgs struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping pulumi.StringMapInput `pulumi:"roleMapping"`
 }
 
@@ -39178,6 +39759,7 @@ func (o GetRolesMappingOpenidOutput) ToGetRolesMappingOpenidOutputWithContext(ct
 	return o
 }
 
+// Role Mapping is used to define the IdP role that the user will assume in Aqua
 func (o GetRolesMappingOpenidOutput) RoleMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRolesMappingOpenid) map[string]string { return v.RoleMapping }).(pulumi.StringMapOutput)
 }
@@ -39321,6 +39903,7 @@ func (o GetRolesMappingSaasRolesMappingArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetRolesMappingSaml struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping map[string]string `pulumi:"roleMapping"`
 }
 
@@ -39336,6 +39919,7 @@ type GetRolesMappingSamlInput interface {
 }
 
 type GetRolesMappingSamlArgs struct {
+	// Role Mapping is used to define the IdP role that the user will assume in Aqua
 	RoleMapping pulumi.StringMapInput `pulumi:"roleMapping"`
 }
 
@@ -39390,6 +39974,7 @@ func (o GetRolesMappingSamlOutput) ToGetRolesMappingSamlOutputWithContext(ctx co
 	return o
 }
 
+// Role Mapping is used to define the IdP role that the user will assume in Aqua
 func (o GetRolesMappingSamlOutput) RoleMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetRolesMappingSaml) map[string]string { return v.RoleMapping }).(pulumi.StringMapOutput)
 }
@@ -39415,11 +40000,16 @@ func (o GetRolesMappingSamlArrayOutput) Index(i pulumi.IntInput) GetRolesMapping
 }
 
 type GetRolesRole struct {
-	Description string   `pulumi:"description"`
-	Name        string   `pulumi:"name"`
-	Permission  string   `pulumi:"permission"`
-	Scopes      []string `pulumi:"scopes"`
-	UpdatedAt   string   `pulumi:"updatedAt"`
+	// Free text description for the role.
+	Description string `pulumi:"description"`
+	// The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+	Name string `pulumi:"name"`
+	// The name of the Permission Set that will affect the users assigned to this specific Role.
+	Permission string `pulumi:"permission"`
+	// List of Application Scopes that will affect the users assigned to this specific Role.
+	Scopes []string `pulumi:"scopes"`
+	// The date of the last modification of the role.
+	UpdatedAt string `pulumi:"updatedAt"`
 }
 
 // GetRolesRoleInput is an input type that accepts GetRolesRoleArgs and GetRolesRoleOutput values.
@@ -39434,11 +40024,16 @@ type GetRolesRoleInput interface {
 }
 
 type GetRolesRoleArgs struct {
-	Description pulumi.StringInput      `pulumi:"description"`
-	Name        pulumi.StringInput      `pulumi:"name"`
-	Permission  pulumi.StringInput      `pulumi:"permission"`
-	Scopes      pulumi.StringArrayInput `pulumi:"scopes"`
-	UpdatedAt   pulumi.StringInput      `pulumi:"updatedAt"`
+	// Free text description for the role.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name of the Permission Set that will affect the users assigned to this specific Role.
+	Permission pulumi.StringInput `pulumi:"permission"`
+	// List of Application Scopes that will affect the users assigned to this specific Role.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The date of the last modification of the role.
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 }
 
 func (GetRolesRoleArgs) ElementType() reflect.Type {
@@ -39492,22 +40087,27 @@ func (o GetRolesRoleOutput) ToGetRolesRoleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Free text description for the role.
 func (o GetRolesRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
 func (o GetRolesRoleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The name of the Permission Set that will affect the users assigned to this specific Role.
 func (o GetRolesRoleOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.Permission }).(pulumi.StringOutput)
 }
 
+// List of Application Scopes that will affect the users assigned to this specific Role.
 func (o GetRolesRoleOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRolesRole) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
+// The date of the last modification of the role.
 func (o GetRolesRoleOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRolesRole) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -39533,9 +40133,12 @@ func (o GetRolesRoleArrayOutput) Index(i pulumi.IntInput) GetRolesRoleOutput {
 }
 
 type GetServiceScopeVariable struct {
+	// Class of supported scope.
 	Attribute string `pulumi:"attribute"`
-	Name      string `pulumi:"name"`
-	Value     string `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name string `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value string `pulumi:"value"`
 }
 
 // GetServiceScopeVariableInput is an input type that accepts GetServiceScopeVariableArgs and GetServiceScopeVariableOutput values.
@@ -39550,9 +40153,12 @@ type GetServiceScopeVariableInput interface {
 }
 
 type GetServiceScopeVariableArgs struct {
+	// Class of supported scope.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	Name      pulumi.StringInput `pulumi:"name"`
-	Value     pulumi.StringInput `pulumi:"value"`
+	// Name assigned to the attribute.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Value assigned to the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetServiceScopeVariableArgs) ElementType() reflect.Type {
@@ -39606,14 +40212,17 @@ func (o GetServiceScopeVariableOutput) ToGetServiceScopeVariableOutputWithContex
 	return o
 }
 
+// Class of supported scope.
 func (o GetServiceScopeVariableOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceScopeVariable) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
+// Name assigned to the attribute.
 func (o GetServiceScopeVariableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceScopeVariable) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Value assigned to the attribute.
 func (o GetServiceScopeVariableOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceScopeVariable) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -40041,16 +40650,26 @@ func (o GetUsersSaasUserLoginArrayOutput) Index(i pulumi.IntInput) GetUsersSaasU
 }
 
 type GetUsersUser struct {
-	Email     string   `pulumi:"email"`
-	FirstTime bool     `pulumi:"firstTime"`
-	IsSuper   bool     `pulumi:"isSuper"`
-	Name      string   `pulumi:"name"`
-	Plan      string   `pulumi:"plan"`
-	Role      string   `pulumi:"role"`
-	Roles     []string `pulumi:"roles"`
-	Type      string   `pulumi:"type"`
-	UiAccess  bool     `pulumi:"uiAccess"`
-	UserId    string   `pulumi:"userId"`
+	// The user Email.
+	Email string `pulumi:"email"`
+	// If the user must change password at next login.
+	FirstTime bool `pulumi:"firstTime"`
+	// Give the Permission Set full access, meaning all actions are allowed without restriction.
+	IsSuper bool `pulumi:"isSuper"`
+	// The user name.
+	Name string `pulumi:"name"`
+	// User's Aqua plan (Developer / Team / Advanced).
+	Plan string `pulumi:"plan"`
+	// The first role that assigned to the user for backward compatibility.
+	Role string `pulumi:"role"`
+	// The roles that will be assigned to the user.
+	Roles []string `pulumi:"roles"`
+	// The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
+	Type string `pulumi:"type"`
+	// Whether to allow UI access for users with this Permission Set.
+	UiAccess bool `pulumi:"uiAccess"`
+	// The user ID.
+	UserId string `pulumi:"userId"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -40065,16 +40684,26 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	Email     pulumi.StringInput      `pulumi:"email"`
-	FirstTime pulumi.BoolInput        `pulumi:"firstTime"`
-	IsSuper   pulumi.BoolInput        `pulumi:"isSuper"`
-	Name      pulumi.StringInput      `pulumi:"name"`
-	Plan      pulumi.StringInput      `pulumi:"plan"`
-	Role      pulumi.StringInput      `pulumi:"role"`
-	Roles     pulumi.StringArrayInput `pulumi:"roles"`
-	Type      pulumi.StringInput      `pulumi:"type"`
-	UiAccess  pulumi.BoolInput        `pulumi:"uiAccess"`
-	UserId    pulumi.StringInput      `pulumi:"userId"`
+	// The user Email.
+	Email pulumi.StringInput `pulumi:"email"`
+	// If the user must change password at next login.
+	FirstTime pulumi.BoolInput `pulumi:"firstTime"`
+	// Give the Permission Set full access, meaning all actions are allowed without restriction.
+	IsSuper pulumi.BoolInput `pulumi:"isSuper"`
+	// The user name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// User's Aqua plan (Developer / Team / Advanced).
+	Plan pulumi.StringInput `pulumi:"plan"`
+	// The first role that assigned to the user for backward compatibility.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The roles that will be assigned to the user.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+	// The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Whether to allow UI access for users with this Permission Set.
+	UiAccess pulumi.BoolInput `pulumi:"uiAccess"`
+	// The user ID.
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -40128,42 +40757,52 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The user Email.
 func (o GetUsersUserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// If the user must change password at next login.
 func (o GetUsersUserOutput) FirstTime() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.FirstTime }).(pulumi.BoolOutput)
 }
 
+// Give the Permission Set full access, meaning all actions are allowed without restriction.
 func (o GetUsersUserOutput) IsSuper() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.IsSuper }).(pulumi.BoolOutput)
 }
 
+// The user name.
 func (o GetUsersUserOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// User's Aqua plan (Developer / Team / Advanced).
 func (o GetUsersUserOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Plan }).(pulumi.StringOutput)
 }
 
+// The first role that assigned to the user for backward compatibility.
 func (o GetUsersUserOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// The roles that will be assigned to the user.
 func (o GetUsersUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetUsersUser) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
+// The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
 func (o GetUsersUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Whether to allow UI access for users with this Permission Set.
 func (o GetUsersUserOutput) UiAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.UiAccess }).(pulumi.BoolOutput)
 }
 
+// The user ID.
 func (o GetUsersUserOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UserId }).(pulumi.StringOutput)
 }

@@ -8293,6 +8293,15 @@ class ImageAssuranceChecksPerformed(dict):
                  dta_skipped_reason: Optional[str] = None,
                  failed: Optional[bool] = None,
                  policy_name: Optional[str] = None):
+        """
+        :param str assurance_type: The type of the Assurance Policy the check originated from.
+        :param bool blocking: Whether the check is blocking (i.e. a failure should trigger a disallow).
+        :param str control: The name of the image assurance control.
+        :param bool dta_skipped: If DTA was skipped.
+        :param str dta_skipped_reason: The reason why DTA was skipped.
+        :param bool failed: Whether the image failed the check.
+        :param str policy_name: The name of the Image Assurance Policy the check originated from.
+        """
         if assurance_type is not None:
             pulumi.set(__self__, "assurance_type", assurance_type)
         if blocking is not None:
@@ -8311,36 +8320,57 @@ class ImageAssuranceChecksPerformed(dict):
     @property
     @pulumi.getter(name="assuranceType")
     def assurance_type(self) -> Optional[str]:
+        """
+        The type of the Assurance Policy the check originated from.
+        """
         return pulumi.get(self, "assurance_type")
 
     @property
     @pulumi.getter
     def blocking(self) -> Optional[bool]:
+        """
+        Whether the check is blocking (i.e. a failure should trigger a disallow).
+        """
         return pulumi.get(self, "blocking")
 
     @property
     @pulumi.getter
     def control(self) -> Optional[str]:
+        """
+        The name of the image assurance control.
+        """
         return pulumi.get(self, "control")
 
     @property
     @pulumi.getter(name="dtaSkipped")
     def dta_skipped(self) -> Optional[bool]:
+        """
+        If DTA was skipped.
+        """
         return pulumi.get(self, "dta_skipped")
 
     @property
     @pulumi.getter(name="dtaSkippedReason")
     def dta_skipped_reason(self) -> Optional[str]:
+        """
+        The reason why DTA was skipped.
+        """
         return pulumi.get(self, "dta_skipped_reason")
 
     @property
     @pulumi.getter
     def failed(self) -> Optional[bool]:
+        """
+        Whether the image failed the check.
+        """
         return pulumi.get(self, "failed")
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[str]:
+        """
+        The name of the Image Assurance Policy the check originated from.
+        """
         return pulumi.get(self, "policy_name")
 
 
@@ -8982,6 +9012,13 @@ class ImageHistory(dict):
                  created_by: Optional[str] = None,
                  id: Optional[str] = None,
                  size: Optional[int] = None):
+        """
+        :param str comment: The commit comment for the image, if any.
+        :param str created: The date of creation of the layer.
+        :param str created_by: The command that generated the layer.
+        :param str id: The image ID of the layer (if any).
+        :param int size: The size of the image.
+        """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if created is not None:
@@ -8996,26 +9033,41 @@ class ImageHistory(dict):
     @property
     @pulumi.getter
     def comment(self) -> Optional[str]:
+        """
+        The commit comment for the image, if any.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def created(self) -> Optional[str]:
+        """
+        The date of creation of the layer.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[str]:
+        """
+        The command that generated the layer.
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        The image ID of the layer (if any).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def size(self) -> Optional[int]:
+        """
+        The size of the image.
+        """
         return pulumi.get(self, "size")
 
 
@@ -9217,6 +9269,52 @@ class ImageVulnerability(dict):
                  vendor_severity: Optional[str] = None,
                  vendor_statement: Optional[str] = None,
                  vendor_url: Optional[str] = None):
+        """
+        :param str ancestor_pkg: The ancestor of this package.
+        :param float aqua_score: The score generated for the vulnerability by Aqua.
+        :param str aqua_score_classification: Score classification by Aqua.
+        :param str aqua_scoring_system: The score system for the vulnerability by Aqua
+        :param str aqua_severity: The severity generated for the vulnerability by Aqua.
+        :param str aqua_severity_classification: Classification of the severity defined by Aqua.
+        :param str aqua_vectors: The vectors generated for the vulnerability by Aqua
+        :param int audit_events_count: Number of audit events.
+        :param int block_events_count: Number of blocked events.
+        :param str classification: Classification of the vulnerability.
+        :param str description: The description of the vulnerability.
+        :param str digest: The content digest of the image.
+        :param str exploit_reference: Reference of the exploit.
+        :param str exploit_type: Type of the exploit.
+        :param str first_found_date: The date when this vulnerability was first found.
+        :param str fix_version: Fixed version of the resource.
+        :param str image_name: Name of the image.
+        :param str last_found_date: The date when this vulnerability was last found.
+        :param str modification_date: Thhe date when this vulnerability was modified.
+        :param str name: The name of the vulnerability.
+        :param float nvd_cvss2_score: CVSS2 score by NVD
+        :param str nvd_cvss2_vectors: CVSS2 vectors by NVD
+        :param float nvd_cvss3_score: CVSS3 score by NVD
+        :param str nvd_cvss3_severity: CVSS3 severity by NVD
+        :param str nvd_cvss3_vectors: CVSS3 vectors by NVD
+        :param str nvd_severity: Type of the severity identified by NVD.
+        :param str nvd_url: URL of the details of this vulnerability by NVD.
+        :param str os: Name of the Operating System.
+        :param str os_version: The version of the OS.
+        :param str permission: permission on the image
+        :param str publish_date: The date this vulnerability was published.
+        :param str registry: Registry of the image.
+        :param str repository: Repository of the image.
+        :param str resource_architecture: Architecture of the resource.
+        :param str resource_cpe: Common Platform Enumeration (CPE) of the resource.
+        :param str resource_format: Code format of the resource (java, apk etc.).
+        :param str resource_hash: Hash of the resource.
+        :param Sequence[str] resource_licenses: List of license supported by the resource.
+        :param str resource_name: Name of the resource.
+        :param str resource_path: Path of the resource.
+        :param str resource_type: Type of the resource
+        :param str resource_version: Version of the resource.
+        :param str severity_classification: Classification of the severity.
+        :param str solution: Solution for the vulnerability.
+        """
         if ack_author is not None:
             pulumi.set(__self__, "ack_author", ack_author)
         if ack_comment is not None:
@@ -9388,221 +9486,353 @@ class ImageVulnerability(dict):
     @property
     @pulumi.getter(name="ancestorPkg")
     def ancestor_pkg(self) -> Optional[str]:
+        """
+        The ancestor of this package.
+        """
         return pulumi.get(self, "ancestor_pkg")
 
     @property
     @pulumi.getter(name="aquaScore")
     def aqua_score(self) -> Optional[float]:
+        """
+        The score generated for the vulnerability by Aqua.
+        """
         return pulumi.get(self, "aqua_score")
 
     @property
     @pulumi.getter(name="aquaScoreClassification")
     def aqua_score_classification(self) -> Optional[str]:
+        """
+        Score classification by Aqua.
+        """
         return pulumi.get(self, "aqua_score_classification")
 
     @property
     @pulumi.getter(name="aquaScoringSystem")
     def aqua_scoring_system(self) -> Optional[str]:
+        """
+        The score system for the vulnerability by Aqua
+        """
         return pulumi.get(self, "aqua_scoring_system")
 
     @property
     @pulumi.getter(name="aquaSeverity")
     def aqua_severity(self) -> Optional[str]:
+        """
+        The severity generated for the vulnerability by Aqua.
+        """
         return pulumi.get(self, "aqua_severity")
 
     @property
     @pulumi.getter(name="aquaSeverityClassification")
     def aqua_severity_classification(self) -> Optional[str]:
+        """
+        Classification of the severity defined by Aqua.
+        """
         return pulumi.get(self, "aqua_severity_classification")
 
     @property
     @pulumi.getter(name="aquaVectors")
     def aqua_vectors(self) -> Optional[str]:
+        """
+        The vectors generated for the vulnerability by Aqua
+        """
         return pulumi.get(self, "aqua_vectors")
 
     @property
     @pulumi.getter(name="auditEventsCount")
     def audit_events_count(self) -> Optional[int]:
+        """
+        Number of audit events.
+        """
         return pulumi.get(self, "audit_events_count")
 
     @property
     @pulumi.getter(name="blockEventsCount")
     def block_events_count(self) -> Optional[int]:
+        """
+        Number of blocked events.
+        """
         return pulumi.get(self, "block_events_count")
 
     @property
     @pulumi.getter
     def classification(self) -> Optional[str]:
+        """
+        Classification of the vulnerability.
+        """
         return pulumi.get(self, "classification")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        The description of the vulnerability.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def digest(self) -> Optional[str]:
+        """
+        The content digest of the image.
+        """
         return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter(name="exploitReference")
     def exploit_reference(self) -> Optional[str]:
+        """
+        Reference of the exploit.
+        """
         return pulumi.get(self, "exploit_reference")
 
     @property
     @pulumi.getter(name="exploitType")
     def exploit_type(self) -> Optional[str]:
+        """
+        Type of the exploit.
+        """
         return pulumi.get(self, "exploit_type")
 
     @property
     @pulumi.getter(name="firstFoundDate")
     def first_found_date(self) -> Optional[str]:
+        """
+        The date when this vulnerability was first found.
+        """
         return pulumi.get(self, "first_found_date")
 
     @property
     @pulumi.getter(name="fixVersion")
     def fix_version(self) -> Optional[str]:
+        """
+        Fixed version of the resource.
+        """
         return pulumi.get(self, "fix_version")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[str]:
+        """
+        Name of the image.
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="lastFoundDate")
     def last_found_date(self) -> Optional[str]:
+        """
+        The date when this vulnerability was last found.
+        """
         return pulumi.get(self, "last_found_date")
 
     @property
     @pulumi.getter(name="modificationDate")
     def modification_date(self) -> Optional[str]:
+        """
+        Thhe date when this vulnerability was modified.
+        """
         return pulumi.get(self, "modification_date")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of the vulnerability.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nvdCvss2Score")
     def nvd_cvss2_score(self) -> Optional[float]:
+        """
+        CVSS2 score by NVD
+        """
         return pulumi.get(self, "nvd_cvss2_score")
 
     @property
     @pulumi.getter(name="nvdCvss2Vectors")
     def nvd_cvss2_vectors(self) -> Optional[str]:
+        """
+        CVSS2 vectors by NVD
+        """
         return pulumi.get(self, "nvd_cvss2_vectors")
 
     @property
     @pulumi.getter(name="nvdCvss3Score")
     def nvd_cvss3_score(self) -> Optional[float]:
+        """
+        CVSS3 score by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_score")
 
     @property
     @pulumi.getter(name="nvdCvss3Severity")
     def nvd_cvss3_severity(self) -> Optional[str]:
+        """
+        CVSS3 severity by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_severity")
 
     @property
     @pulumi.getter(name="nvdCvss3Vectors")
     def nvd_cvss3_vectors(self) -> Optional[str]:
+        """
+        CVSS3 vectors by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_vectors")
 
     @property
     @pulumi.getter(name="nvdSeverity")
     def nvd_severity(self) -> Optional[str]:
+        """
+        Type of the severity identified by NVD.
+        """
         return pulumi.get(self, "nvd_severity")
 
     @property
     @pulumi.getter(name="nvdUrl")
     def nvd_url(self) -> Optional[str]:
+        """
+        URL of the details of this vulnerability by NVD.
+        """
         return pulumi.get(self, "nvd_url")
 
     @property
     @pulumi.getter
     def os(self) -> Optional[str]:
+        """
+        Name of the Operating System.
+        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter(name="osVersion")
     def os_version(self) -> Optional[str]:
+        """
+        The version of the OS.
+        """
         return pulumi.get(self, "os_version")
 
     @property
     @pulumi.getter
     def permission(self) -> Optional[str]:
+        """
+        permission on the image
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="publishDate")
     def publish_date(self) -> Optional[str]:
+        """
+        The date this vulnerability was published.
+        """
         return pulumi.get(self, "publish_date")
 
     @property
     @pulumi.getter
     def registry(self) -> Optional[str]:
+        """
+        Registry of the image.
+        """
         return pulumi.get(self, "registry")
 
     @property
     @pulumi.getter
     def repository(self) -> Optional[str]:
+        """
+        Repository of the image.
+        """
         return pulumi.get(self, "repository")
 
     @property
     @pulumi.getter(name="resourceArchitecture")
     def resource_architecture(self) -> Optional[str]:
+        """
+        Architecture of the resource.
+        """
         return pulumi.get(self, "resource_architecture")
 
     @property
     @pulumi.getter(name="resourceCpe")
     def resource_cpe(self) -> Optional[str]:
+        """
+        Common Platform Enumeration (CPE) of the resource.
+        """
         return pulumi.get(self, "resource_cpe")
 
     @property
     @pulumi.getter(name="resourceFormat")
     def resource_format(self) -> Optional[str]:
+        """
+        Code format of the resource (java, apk etc.).
+        """
         return pulumi.get(self, "resource_format")
 
     @property
     @pulumi.getter(name="resourceHash")
     def resource_hash(self) -> Optional[str]:
+        """
+        Hash of the resource.
+        """
         return pulumi.get(self, "resource_hash")
 
     @property
     @pulumi.getter(name="resourceLicenses")
     def resource_licenses(self) -> Optional[Sequence[str]]:
+        """
+        List of license supported by the resource.
+        """
         return pulumi.get(self, "resource_licenses")
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[str]:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="resourcePath")
     def resource_path(self) -> Optional[str]:
+        """
+        Path of the resource.
+        """
         return pulumi.get(self, "resource_path")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[str]:
+        """
+        Type of the resource
+        """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> Optional[str]:
+        """
+        Version of the resource.
+        """
         return pulumi.get(self, "resource_version")
 
     @property
     @pulumi.getter(name="severityClassification")
     def severity_classification(self) -> Optional[str]:
+        """
+        Classification of the severity.
+        """
         return pulumi.get(self, "severity_classification")
 
     @property
     @pulumi.getter
     def solution(self) -> Optional[str]:
+        """
+        Solution for the vulnerability.
+        """
         return pulumi.get(self, "solution")
 
     @property
@@ -11320,6 +11550,29 @@ class GetAcknowledgesAcknowledgeResult(dict):
                  resource_path: str,
                  resource_type: str,
                  resource_version: str):
+        """
+        :param str author: The user who acknowledged the issue.
+        :param str comment: A comment describing the reason for the acknowledgment
+        :param str date: The date and time of the acknowledgment.
+        :param str expiration_configured_at: The current dat and time when the expiration was set
+        :param str expiration_configured_by: The user who set the expiration of the issue.
+        :param int expiration_days: Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        :param str fix_version: The version of the package that having a fix for the issue.
+        :param str image_name: Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        :param str issue_name: The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        :param str issue_type: The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        :param str os: When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        :param str os_version: When the resource_type is 'package', the operating system version is required.
+        :param str permission: The permissions of the user who acknowledged the issue.
+        :param str registry_name: Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        :param str resource_cpe: The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        :param str resource_format: The format of the resource.
+        :param str resource_hash: When the resource_type is 'file', the hash of the file is required
+        :param str resource_name: When the resource_type is 'package', the name of the package is required.
+        :param str resource_path: The path of the resource. This is required for resources of type 'file' and 'executable'.
+        :param str resource_type: The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        :param str resource_version: When the resource_type is 'package', the version of the package is required
+        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "date", date)
@@ -11346,16 +11599,25 @@ class GetAcknowledgesAcknowledgeResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        The user who acknowledged the issue.
+        """
         return pulumi.get(self, "author")
 
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        A comment describing the reason for the acknowledgment
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def date(self) -> str:
+        """
+        The date and time of the acknowledgment.
+        """
         return pulumi.get(self, "date")
 
     @property
@@ -11366,91 +11628,145 @@ class GetAcknowledgesAcknowledgeResult(dict):
     @property
     @pulumi.getter(name="expirationConfiguredAt")
     def expiration_configured_at(self) -> str:
+        """
+        The current dat and time when the expiration was set
+        """
         return pulumi.get(self, "expiration_configured_at")
 
     @property
     @pulumi.getter(name="expirationConfiguredBy")
     def expiration_configured_by(self) -> str:
+        """
+        The user who set the expiration of the issue.
+        """
         return pulumi.get(self, "expiration_configured_by")
 
     @property
     @pulumi.getter(name="expirationDays")
     def expiration_days(self) -> int:
+        """
+        Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+        """
         return pulumi.get(self, "expiration_days")
 
     @property
     @pulumi.getter(name="fixVersion")
     def fix_version(self) -> str:
+        """
+        The version of the package that having a fix for the issue.
+        """
         return pulumi.get(self, "fix_version")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> str:
+        """
+        Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="issueName")
     def issue_name(self) -> str:
+        """
+        The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+        """
         return pulumi.get(self, "issue_name")
 
     @property
     @pulumi.getter(name="issueType")
     def issue_type(self) -> str:
+        """
+        The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+        """
         return pulumi.get(self, "issue_type")
 
     @property
     @pulumi.getter
     def os(self) -> str:
+        """
+        When the resource_type is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter(name="osVersion")
     def os_version(self) -> str:
+        """
+        When the resource_type is 'package', the operating system version is required.
+        """
         return pulumi.get(self, "os_version")
 
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        The permissions of the user who acknowledged the issue.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="registryName")
     def registry_name(self) -> str:
+        """
+        Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+        """
         return pulumi.get(self, "registry_name")
 
     @property
     @pulumi.getter(name="resourceCpe")
     def resource_cpe(self) -> str:
+        """
+        The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+        """
         return pulumi.get(self, "resource_cpe")
 
     @property
     @pulumi.getter(name="resourceFormat")
     def resource_format(self) -> str:
+        """
+        The format of the resource.
+        """
         return pulumi.get(self, "resource_format")
 
     @property
     @pulumi.getter(name="resourceHash")
     def resource_hash(self) -> str:
+        """
+        When the resource_type is 'file', the hash of the file is required
+        """
         return pulumi.get(self, "resource_hash")
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        When the resource_type is 'package', the name of the package is required.
+        """
         return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="resourcePath")
     def resource_path(self) -> str:
+        """
+        The path of the resource. This is required for resources of type 'file' and 'executable'.
+        """
         return pulumi.get(self, "resource_path")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+        """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
+        """
+        When the resource_type is 'package', the version of the package is required
+        """
         return pulumi.get(self, "resource_version")
 
 
@@ -11937,6 +12253,12 @@ class GetAquaLabelsAquaLabelResult(dict):
                  created: str,
                  description: str,
                  name: str):
+        """
+        :param str author: The name of the user who created the Aqua label.
+        :param str created: The creation date of the Aqua label.
+        :param str description: Aqua label description.
+        :param str name: Aqua label name.
+        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "description", description)
@@ -11945,21 +12267,33 @@ class GetAquaLabelsAquaLabelResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        The name of the user who created the Aqua label.
+        """
         return pulumi.get(self, "author")
 
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        The creation date of the Aqua label.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Aqua label description.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Aqua label name.
+        """
         return pulumi.get(self, "name")
 
 
@@ -12700,6 +13034,11 @@ class GetContainerRuntimePolicyScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
+        """
+        :param str attribute: Class of supported scope.
+        :param str name: Name assigned to the attribute.
+        :param str value: Value assigned to the attribute.
+        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -12707,16 +13046,25 @@ class GetContainerRuntimePolicyScopeVariableResult(dict):
     @property
     @pulumi.getter
     def attribute(self) -> str:
+        """
+        Class of supported scope.
+        """
         return pulumi.get(self, "attribute")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name assigned to the attribute.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Value assigned to the attribute.
+        """
         return pulumi.get(self, "value")
 
 
@@ -12760,6 +13108,10 @@ class GetEnforcerGroupsOrchestratorResult(dict):
                  namespace: str,
                  service_account: str,
                  type: str):
+        """
+        :param str namespace: May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+        :param str service_account: May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+        """
         pulumi.set(__self__, "master", master)
         pulumi.set(__self__, "namespace", namespace)
         pulumi.set(__self__, "service_account", service_account)
@@ -12773,11 +13125,17 @@ class GetEnforcerGroupsOrchestratorResult(dict):
     @property
     @pulumi.getter
     def namespace(self) -> str:
+        """
+        May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+        """
         return pulumi.get(self, "namespace")
 
     @property
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
+        """
+        May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+        """
         return pulumi.get(self, "service_account")
 
     @property
@@ -12793,6 +13151,12 @@ class GetFirewallPolicyInboundNetworkResult(dict):
                  port_range: str,
                  resource: str,
                  resource_type: str):
+        """
+        :param bool allow: Indicates whether the specified resources are allowed to pass in data or requests.
+        :param str port_range: Range of ports affected by firewall.
+        :param str resource: Information of the resource.
+        :param str resource_type: Type of the resource
+        """
         pulumi.set(__self__, "allow", allow)
         pulumi.set(__self__, "port_range", port_range)
         pulumi.set(__self__, "resource", resource)
@@ -12801,21 +13165,33 @@ class GetFirewallPolicyInboundNetworkResult(dict):
     @property
     @pulumi.getter
     def allow(self) -> bool:
+        """
+        Indicates whether the specified resources are allowed to pass in data or requests.
+        """
         return pulumi.get(self, "allow")
 
     @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> str:
+        """
+        Range of ports affected by firewall.
+        """
         return pulumi.get(self, "port_range")
 
     @property
     @pulumi.getter
     def resource(self) -> str:
+        """
+        Information of the resource.
+        """
         return pulumi.get(self, "resource")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        Type of the resource
+        """
         return pulumi.get(self, "resource_type")
 
 
@@ -12916,6 +13292,9 @@ class GetFunctionAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
+        """
+        :param str author: Name of user account that created the policy.
+        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -12930,6 +13309,9 @@ class GetFunctionAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        Name of user account that created the policy.
+        """
         return pulumi.get(self, "author")
 
     @property
@@ -13309,6 +13691,11 @@ class GetFunctionRuntimePolicyScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
+        """
+        :param str attribute: Class of supported scope.
+        :param str name: Name assigned to the attribute.
+        :param str value: Value assigned to the attribute.
+        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -13316,16 +13703,25 @@ class GetFunctionRuntimePolicyScopeVariableResult(dict):
     @property
     @pulumi.getter
     def attribute(self) -> str:
+        """
+        Class of supported scope.
+        """
         return pulumi.get(self, "attribute")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name assigned to the attribute.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Value assigned to the attribute.
+        """
         return pulumi.get(self, "value")
 
 
@@ -13340,6 +13736,16 @@ class GetGatewaysGatewayResult(dict):
                  public_address: str,
                  status: str,
                  version: str):
+        """
+        :param str description: The description of the gateway.
+        :param str grpc_address: The GRPC address of the gateway.
+        :param str hostname: The name of the gateway's host.
+        :param str id: The ID of the gateway (for example: 8522744b25e2_gateway)
+        :param str logicalname: The logical name of the gateway (for example: 8522744b25e2)
+        :param str public_address: The public IP address of the gateway.
+        :param str status: The status of the gateway.
+        :param str version: The version of the gateway.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "grpc_address", grpc_address)
         pulumi.set(__self__, "hostname", hostname)
@@ -13352,41 +13758,65 @@ class GetGatewaysGatewayResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the gateway.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="grpcAddress")
     def grpc_address(self) -> str:
+        """
+        The GRPC address of the gateway.
+        """
         return pulumi.get(self, "grpc_address")
 
     @property
     @pulumi.getter
     def hostname(self) -> str:
+        """
+        The name of the gateway's host.
+        """
         return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The ID of the gateway (for example: 8522744b25e2_gateway)
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def logicalname(self) -> str:
+        """
+        The logical name of the gateway (for example: 8522744b25e2)
+        """
         return pulumi.get(self, "logicalname")
 
     @property
     @pulumi.getter(name="publicAddress")
     def public_address(self) -> str:
+        """
+        The public IP address of the gateway.
+        """
         return pulumi.get(self, "public_address")
 
     @property
     @pulumi.getter
     def status(self) -> str:
+        """
+        The status of the gateway.
+        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
     def version(self) -> str:
+        """
+        The version of the gateway.
+        """
         return pulumi.get(self, "version")
 
 
@@ -13396,6 +13826,11 @@ class GetGroupsGroupResult(dict):
                  created: str,
                  group_id: str,
                  name: str):
+        """
+        :param str created: The creation date of the group.
+        :param str group_id: The ID of the created group.
+        :param str name: The desired name of the group.
+        """
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "name", name)
@@ -13403,16 +13838,25 @@ class GetGroupsGroupResult(dict):
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        The creation date of the group.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
+        """
+        The ID of the created group.
+        """
         return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The desired name of the group.
+        """
         return pulumi.get(self, "name")
 
 
@@ -13462,6 +13906,9 @@ class GetHostAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
+        """
+        :param str author: Name of user account that created the policy.
+        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -13476,6 +13923,9 @@ class GetHostAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        Name of user account that created the policy.
+        """
         return pulumi.get(self, "author")
 
     @property
@@ -14117,6 +14567,11 @@ class GetHostRuntimePolicyScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
+        """
+        :param str attribute: Class of supported scope.
+        :param str name: Name assigned to the attribute.
+        :param str value: Value assigned to the attribute.
+        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -14124,16 +14579,25 @@ class GetHostRuntimePolicyScopeVariableResult(dict):
     @property
     @pulumi.getter
     def attribute(self) -> str:
+        """
+        Class of supported scope.
+        """
         return pulumi.get(self, "attribute")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name assigned to the attribute.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Value assigned to the attribute.
+        """
         return pulumi.get(self, "value")
 
 
@@ -14151,6 +14615,19 @@ class GetHostRuntimePolicyWindowsRegistryMonitoringResult(dict):
                  monitored_paths: Sequence[str],
                  monitored_processes: Sequence[str],
                  monitored_users: Sequence[str]):
+        """
+        :param Sequence[str] excluded_paths: List of paths to be excluded from being monitored.
+        :param Sequence[str] excluded_processes: List of registry processes to be excluded from being monitored.
+        :param Sequence[str] excluded_users: List of registry users to be excluded from being monitored.
+        :param bool monitor_attributes: If true, add attributes operations will be monitored.
+        :param bool monitor_create: If true, create operations will be monitored.
+        :param bool monitor_delete: If true, deletion operations will be monitored.
+        :param bool monitor_modify: If true, modification operations will be monitored.
+        :param bool monitor_read: If true, read operations will be monitored.
+        :param Sequence[str] monitored_paths: List of paths to be monitored.
+        :param Sequence[str] monitored_processes: List of registry processes to be monitored.
+        :param Sequence[str] monitored_users: List of registry users to be monitored.
+        """
         pulumi.set(__self__, "excluded_paths", excluded_paths)
         pulumi.set(__self__, "excluded_processes", excluded_processes)
         pulumi.set(__self__, "excluded_users", excluded_users)
@@ -14166,56 +14643,89 @@ class GetHostRuntimePolicyWindowsRegistryMonitoringResult(dict):
     @property
     @pulumi.getter(name="excludedPaths")
     def excluded_paths(self) -> Sequence[str]:
+        """
+        List of paths to be excluded from being monitored.
+        """
         return pulumi.get(self, "excluded_paths")
 
     @property
     @pulumi.getter(name="excludedProcesses")
     def excluded_processes(self) -> Sequence[str]:
+        """
+        List of registry processes to be excluded from being monitored.
+        """
         return pulumi.get(self, "excluded_processes")
 
     @property
     @pulumi.getter(name="excludedUsers")
     def excluded_users(self) -> Sequence[str]:
+        """
+        List of registry users to be excluded from being monitored.
+        """
         return pulumi.get(self, "excluded_users")
 
     @property
     @pulumi.getter(name="monitorAttributes")
     def monitor_attributes(self) -> bool:
+        """
+        If true, add attributes operations will be monitored.
+        """
         return pulumi.get(self, "monitor_attributes")
 
     @property
     @pulumi.getter(name="monitorCreate")
     def monitor_create(self) -> bool:
+        """
+        If true, create operations will be monitored.
+        """
         return pulumi.get(self, "monitor_create")
 
     @property
     @pulumi.getter(name="monitorDelete")
     def monitor_delete(self) -> bool:
+        """
+        If true, deletion operations will be monitored.
+        """
         return pulumi.get(self, "monitor_delete")
 
     @property
     @pulumi.getter(name="monitorModify")
     def monitor_modify(self) -> bool:
+        """
+        If true, modification operations will be monitored.
+        """
         return pulumi.get(self, "monitor_modify")
 
     @property
     @pulumi.getter(name="monitorRead")
     def monitor_read(self) -> bool:
+        """
+        If true, read operations will be monitored.
+        """
         return pulumi.get(self, "monitor_read")
 
     @property
     @pulumi.getter(name="monitoredPaths")
     def monitored_paths(self) -> Sequence[str]:
+        """
+        List of paths to be monitored.
+        """
         return pulumi.get(self, "monitored_paths")
 
     @property
     @pulumi.getter(name="monitoredProcesses")
     def monitored_processes(self) -> Sequence[str]:
+        """
+        List of registry processes to be monitored.
+        """
         return pulumi.get(self, "monitored_processes")
 
     @property
     @pulumi.getter(name="monitoredUsers")
     def monitored_users(self) -> Sequence[str]:
+        """
+        List of registry users to be monitored.
+        """
         return pulumi.get(self, "monitored_users")
 
 
@@ -14228,6 +14738,14 @@ class GetHostRuntimePolicyWindowsRegistryProtectionResult(dict):
                  protected_paths: Sequence[str],
                  protected_processes: Sequence[str],
                  protected_users: Sequence[str]):
+        """
+        :param Sequence[str] excluded_paths: List of registry paths to be excluded from being protected.
+        :param Sequence[str] excluded_processes: List of registry processes to be excluded from being protected.
+        :param Sequence[str] excluded_users: List of registry paths to be users from being protected.
+        :param Sequence[str] protected_paths: List of registry paths to be protected.
+        :param Sequence[str] protected_processes: List of registry processes to be protected.
+        :param Sequence[str] protected_users: List of registry users to be protected.
+        """
         pulumi.set(__self__, "excluded_paths", excluded_paths)
         pulumi.set(__self__, "excluded_processes", excluded_processes)
         pulumi.set(__self__, "excluded_users", excluded_users)
@@ -14238,31 +14756,49 @@ class GetHostRuntimePolicyWindowsRegistryProtectionResult(dict):
     @property
     @pulumi.getter(name="excludedPaths")
     def excluded_paths(self) -> Sequence[str]:
+        """
+        List of registry paths to be excluded from being protected.
+        """
         return pulumi.get(self, "excluded_paths")
 
     @property
     @pulumi.getter(name="excludedProcesses")
     def excluded_processes(self) -> Sequence[str]:
+        """
+        List of registry processes to be excluded from being protected.
+        """
         return pulumi.get(self, "excluded_processes")
 
     @property
     @pulumi.getter(name="excludedUsers")
     def excluded_users(self) -> Sequence[str]:
+        """
+        List of registry paths to be users from being protected.
+        """
         return pulumi.get(self, "excluded_users")
 
     @property
     @pulumi.getter(name="protectedPaths")
     def protected_paths(self) -> Sequence[str]:
+        """
+        List of registry paths to be protected.
+        """
         return pulumi.get(self, "protected_paths")
 
     @property
     @pulumi.getter(name="protectedProcesses")
     def protected_processes(self) -> Sequence[str]:
+        """
+        List of registry processes to be protected.
+        """
         return pulumi.get(self, "protected_processes")
 
     @property
     @pulumi.getter(name="protectedUsers")
     def protected_users(self) -> Sequence[str]:
+        """
+        List of registry users to be protected.
+        """
         return pulumi.get(self, "protected_users")
 
 
@@ -14276,6 +14812,15 @@ class GetImageAssuranceChecksPerformedResult(dict):
                  dta_skipped_reason: str,
                  failed: bool,
                  policy_name: str):
+        """
+        :param str assurance_type: The type of the Assurance Policy the check originated from.
+        :param bool blocking: Whether the check is blocking (i.e. a failure should trigger a disallow).
+        :param str control: The name of the image assurance control.
+        :param bool dta_skipped: If DTA was skipped.
+        :param str dta_skipped_reason: The reason why DTA was skipped.
+        :param bool failed: Whether the image failed the check.
+        :param str policy_name: The name of the Image Assurance Policy the check originated from.
+        """
         pulumi.set(__self__, "assurance_type", assurance_type)
         pulumi.set(__self__, "blocking", blocking)
         pulumi.set(__self__, "control", control)
@@ -14287,36 +14832,57 @@ class GetImageAssuranceChecksPerformedResult(dict):
     @property
     @pulumi.getter(name="assuranceType")
     def assurance_type(self) -> str:
+        """
+        The type of the Assurance Policy the check originated from.
+        """
         return pulumi.get(self, "assurance_type")
 
     @property
     @pulumi.getter
     def blocking(self) -> bool:
+        """
+        Whether the check is blocking (i.e. a failure should trigger a disallow).
+        """
         return pulumi.get(self, "blocking")
 
     @property
     @pulumi.getter
     def control(self) -> str:
+        """
+        The name of the image assurance control.
+        """
         return pulumi.get(self, "control")
 
     @property
     @pulumi.getter(name="dtaSkipped")
     def dta_skipped(self) -> bool:
+        """
+        If DTA was skipped.
+        """
         return pulumi.get(self, "dta_skipped")
 
     @property
     @pulumi.getter(name="dtaSkippedReason")
     def dta_skipped_reason(self) -> str:
+        """
+        The reason why DTA was skipped.
+        """
         return pulumi.get(self, "dta_skipped_reason")
 
     @property
     @pulumi.getter
     def failed(self) -> bool:
+        """
+        Whether the image failed the check.
+        """
         return pulumi.get(self, "failed")
 
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> str:
+        """
+        The name of the Image Assurance Policy the check originated from.
+        """
         return pulumi.get(self, "policy_name")
 
 
@@ -14366,6 +14932,9 @@ class GetImageAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
+        """
+        :param str author: Name of user account that created the policy.
+        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -14380,6 +14949,9 @@ class GetImageAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        Name of user account that created the policy.
+        """
         return pulumi.get(self, "author")
 
     @property
@@ -14675,6 +15247,13 @@ class GetImageHistoryResult(dict):
                  created_by: str,
                  id: str,
                  size: int):
+        """
+        :param str comment: The commit comment for the image, if any.
+        :param str created: The date of creation of the layer.
+        :param str created_by: The command that generated the layer.
+        :param str id: The image ID of the layer (if any).
+        :param int size: The size of the image.
+        """
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "created", created)
         pulumi.set(__self__, "created_by", created_by)
@@ -14684,26 +15263,41 @@ class GetImageHistoryResult(dict):
     @property
     @pulumi.getter
     def comment(self) -> str:
+        """
+        The commit comment for the image, if any.
+        """
         return pulumi.get(self, "comment")
 
     @property
     @pulumi.getter
     def created(self) -> str:
+        """
+        The date of creation of the layer.
+        """
         return pulumi.get(self, "created")
 
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> str:
+        """
+        The command that generated the layer.
+        """
         return pulumi.get(self, "created_by")
 
     @property
     @pulumi.getter
     def id(self) -> str:
+        """
+        The image ID of the layer (if any).
+        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def size(self) -> int:
+        """
+        The size of the image.
+        """
         return pulumi.get(self, "size")
 
 
@@ -14776,6 +15370,52 @@ class GetImageVulnerabilityResult(dict):
                  vendor_severity: str,
                  vendor_statement: str,
                  vendor_url: str):
+        """
+        :param str ancestor_pkg: The ancestor of this package.
+        :param float aqua_score: The score generated for the vulnerability by Aqua.
+        :param str aqua_score_classification: Score classification by Aqua.
+        :param str aqua_scoring_system: The score system for the vulnerability by Aqua
+        :param str aqua_severity: The severity generated for the vulnerability by Aqua.
+        :param str aqua_severity_classification: Classification of the severity defined by Aqua.
+        :param str aqua_vectors: The vectors generated for the vulnerability by Aqua
+        :param int audit_events_count: Number of audit events.
+        :param int block_events_count: Number of blocked events.
+        :param str classification: Classification of the vulnerability.
+        :param str description: The description of the vulnerability.
+        :param str digest: The content digest of the image.
+        :param str exploit_reference: Reference of the exploit.
+        :param str exploit_type: Type of the exploit.
+        :param str first_found_date: The date when this vulnerability was first found.
+        :param str fix_version: Fixed version of the resource.
+        :param str image_name: Name of the image.
+        :param str last_found_date: The date when this vulnerability was last found.
+        :param str modification_date: Thhe date when this vulnerability was modified.
+        :param str name: The name of the vulnerability.
+        :param float nvd_cvss2_score: CVSS2 score by NVD
+        :param str nvd_cvss2_vectors: CVSS2 vectors by NVD
+        :param float nvd_cvss3_score: CVSS3 score by NVD
+        :param str nvd_cvss3_severity: CVSS3 severity by NVD
+        :param str nvd_cvss3_vectors: CVSS3 vectors by NVD
+        :param str nvd_severity: Type of the severity identified by NVD.
+        :param str nvd_url: URL of the details of this vulnerability by NVD.
+        :param str os: Name of the Operating System.
+        :param str os_version: The version of the OS.
+        :param str permission: permission on the image
+        :param str publish_date: The date this vulnerability was published.
+        :param str registry: Registry of the image.
+        :param str repository: Repository of the image.
+        :param str resource_architecture: Architecture of the resource.
+        :param str resource_cpe: Common Platform Enumeration (CPE) of the resource.
+        :param str resource_format: Code format of the resource (java, apk etc.).
+        :param str resource_hash: Hash of the resource.
+        :param Sequence[str] resource_licenses: List of license supported by the resource.
+        :param str resource_name: Name of the resource.
+        :param str resource_path: Path of the resource.
+        :param str resource_type: Type of the resource
+        :param str resource_version: Version of the resource.
+        :param str severity_classification: Classification of the severity.
+        :param str solution: Solution for the vulnerability.
+        """
         pulumi.set(__self__, "ack_author", ack_author)
         pulumi.set(__self__, "ack_comment", ack_comment)
         pulumi.set(__self__, "ack_expiration_configured_at", ack_expiration_configured_at)
@@ -14881,221 +15521,353 @@ class GetImageVulnerabilityResult(dict):
     @property
     @pulumi.getter(name="ancestorPkg")
     def ancestor_pkg(self) -> str:
+        """
+        The ancestor of this package.
+        """
         return pulumi.get(self, "ancestor_pkg")
 
     @property
     @pulumi.getter(name="aquaScore")
     def aqua_score(self) -> float:
+        """
+        The score generated for the vulnerability by Aqua.
+        """
         return pulumi.get(self, "aqua_score")
 
     @property
     @pulumi.getter(name="aquaScoreClassification")
     def aqua_score_classification(self) -> str:
+        """
+        Score classification by Aqua.
+        """
         return pulumi.get(self, "aqua_score_classification")
 
     @property
     @pulumi.getter(name="aquaScoringSystem")
     def aqua_scoring_system(self) -> str:
+        """
+        The score system for the vulnerability by Aqua
+        """
         return pulumi.get(self, "aqua_scoring_system")
 
     @property
     @pulumi.getter(name="aquaSeverity")
     def aqua_severity(self) -> str:
+        """
+        The severity generated for the vulnerability by Aqua.
+        """
         return pulumi.get(self, "aqua_severity")
 
     @property
     @pulumi.getter(name="aquaSeverityClassification")
     def aqua_severity_classification(self) -> str:
+        """
+        Classification of the severity defined by Aqua.
+        """
         return pulumi.get(self, "aqua_severity_classification")
 
     @property
     @pulumi.getter(name="aquaVectors")
     def aqua_vectors(self) -> str:
+        """
+        The vectors generated for the vulnerability by Aqua
+        """
         return pulumi.get(self, "aqua_vectors")
 
     @property
     @pulumi.getter(name="auditEventsCount")
     def audit_events_count(self) -> int:
+        """
+        Number of audit events.
+        """
         return pulumi.get(self, "audit_events_count")
 
     @property
     @pulumi.getter(name="blockEventsCount")
     def block_events_count(self) -> int:
+        """
+        Number of blocked events.
+        """
         return pulumi.get(self, "block_events_count")
 
     @property
     @pulumi.getter
     def classification(self) -> str:
+        """
+        Classification of the vulnerability.
+        """
         return pulumi.get(self, "classification")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the vulnerability.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def digest(self) -> str:
+        """
+        The content digest of the image.
+        """
         return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter(name="exploitReference")
     def exploit_reference(self) -> str:
+        """
+        Reference of the exploit.
+        """
         return pulumi.get(self, "exploit_reference")
 
     @property
     @pulumi.getter(name="exploitType")
     def exploit_type(self) -> str:
+        """
+        Type of the exploit.
+        """
         return pulumi.get(self, "exploit_type")
 
     @property
     @pulumi.getter(name="firstFoundDate")
     def first_found_date(self) -> str:
+        """
+        The date when this vulnerability was first found.
+        """
         return pulumi.get(self, "first_found_date")
 
     @property
     @pulumi.getter(name="fixVersion")
     def fix_version(self) -> str:
+        """
+        Fixed version of the resource.
+        """
         return pulumi.get(self, "fix_version")
 
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> str:
+        """
+        Name of the image.
+        """
         return pulumi.get(self, "image_name")
 
     @property
     @pulumi.getter(name="lastFoundDate")
     def last_found_date(self) -> str:
+        """
+        The date when this vulnerability was last found.
+        """
         return pulumi.get(self, "last_found_date")
 
     @property
     @pulumi.getter(name="modificationDate")
     def modification_date(self) -> str:
+        """
+        Thhe date when this vulnerability was modified.
+        """
         return pulumi.get(self, "modification_date")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the vulnerability.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="nvdCvss2Score")
     def nvd_cvss2_score(self) -> float:
+        """
+        CVSS2 score by NVD
+        """
         return pulumi.get(self, "nvd_cvss2_score")
 
     @property
     @pulumi.getter(name="nvdCvss2Vectors")
     def nvd_cvss2_vectors(self) -> str:
+        """
+        CVSS2 vectors by NVD
+        """
         return pulumi.get(self, "nvd_cvss2_vectors")
 
     @property
     @pulumi.getter(name="nvdCvss3Score")
     def nvd_cvss3_score(self) -> float:
+        """
+        CVSS3 score by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_score")
 
     @property
     @pulumi.getter(name="nvdCvss3Severity")
     def nvd_cvss3_severity(self) -> str:
+        """
+        CVSS3 severity by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_severity")
 
     @property
     @pulumi.getter(name="nvdCvss3Vectors")
     def nvd_cvss3_vectors(self) -> str:
+        """
+        CVSS3 vectors by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_vectors")
 
     @property
     @pulumi.getter(name="nvdSeverity")
     def nvd_severity(self) -> str:
+        """
+        Type of the severity identified by NVD.
+        """
         return pulumi.get(self, "nvd_severity")
 
     @property
     @pulumi.getter(name="nvdUrl")
     def nvd_url(self) -> str:
+        """
+        URL of the details of this vulnerability by NVD.
+        """
         return pulumi.get(self, "nvd_url")
 
     @property
     @pulumi.getter
     def os(self) -> str:
+        """
+        Name of the Operating System.
+        """
         return pulumi.get(self, "os")
 
     @property
     @pulumi.getter(name="osVersion")
     def os_version(self) -> str:
+        """
+        The version of the OS.
+        """
         return pulumi.get(self, "os_version")
 
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        permission on the image
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter(name="publishDate")
     def publish_date(self) -> str:
+        """
+        The date this vulnerability was published.
+        """
         return pulumi.get(self, "publish_date")
 
     @property
     @pulumi.getter
     def registry(self) -> str:
+        """
+        Registry of the image.
+        """
         return pulumi.get(self, "registry")
 
     @property
     @pulumi.getter
     def repository(self) -> str:
+        """
+        Repository of the image.
+        """
         return pulumi.get(self, "repository")
 
     @property
     @pulumi.getter(name="resourceArchitecture")
     def resource_architecture(self) -> str:
+        """
+        Architecture of the resource.
+        """
         return pulumi.get(self, "resource_architecture")
 
     @property
     @pulumi.getter(name="resourceCpe")
     def resource_cpe(self) -> str:
+        """
+        Common Platform Enumeration (CPE) of the resource.
+        """
         return pulumi.get(self, "resource_cpe")
 
     @property
     @pulumi.getter(name="resourceFormat")
     def resource_format(self) -> str:
+        """
+        Code format of the resource (java, apk etc.).
+        """
         return pulumi.get(self, "resource_format")
 
     @property
     @pulumi.getter(name="resourceHash")
     def resource_hash(self) -> str:
+        """
+        Hash of the resource.
+        """
         return pulumi.get(self, "resource_hash")
 
     @property
     @pulumi.getter(name="resourceLicenses")
     def resource_licenses(self) -> Sequence[str]:
+        """
+        List of license supported by the resource.
+        """
         return pulumi.get(self, "resource_licenses")
 
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "resource_name")
 
     @property
     @pulumi.getter(name="resourcePath")
     def resource_path(self) -> str:
+        """
+        Path of the resource.
+        """
         return pulumi.get(self, "resource_path")
 
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> str:
+        """
+        Type of the resource
+        """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
+        """
+        Version of the resource.
+        """
         return pulumi.get(self, "resource_version")
 
     @property
     @pulumi.getter(name="severityClassification")
     def severity_classification(self) -> str:
+        """
+        Classification of the severity.
+        """
         return pulumi.get(self, "severity_classification")
 
     @property
     @pulumi.getter
     def solution(self) -> str:
+        """
+        Solution for the vulnerability.
+        """
         return pulumi.get(self, "solution")
 
     @property
@@ -15336,6 +16108,9 @@ class GetKubernetesAssurancePolicyCustomCheckResult(dict):
                  script_id: str,
                  severity: str,
                  snippet: str):
+        """
+        :param str author: Name of user account that created the policy.
+        """
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "engine", engine)
@@ -15350,6 +16125,9 @@ class GetKubernetesAssurancePolicyCustomCheckResult(dict):
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        Name of user account that created the policy.
+        """
         return pulumi.get(self, "author")
 
     @property
@@ -16025,6 +16803,15 @@ class GetPermissionsSetsPermissionsSetResult(dict):
                  name: str,
                  ui_access: bool,
                  updated_at: str):
+        """
+        :param Sequence[str] actions: List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
+        :param str author: The name of the user who created the Permission Set.
+        :param str description: Free text description for the Permission Set.
+        :param bool is_super: Give the Permission Set full access, meaning all actions are allowed without restriction.
+        :param str name: The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+        :param bool ui_access: Whether to allow UI access for users with this Permission Set.
+        :param str updated_at: The date of the last modification of the Role.
+        """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "author", author)
         pulumi.set(__self__, "description", description)
@@ -16036,36 +16823,57 @@ class GetPermissionsSetsPermissionsSetResult(dict):
     @property
     @pulumi.getter
     def actions(self) -> Sequence[str]:
+        """
+        List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
+        """
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
     def author(self) -> str:
+        """
+        The name of the user who created the Permission Set.
+        """
         return pulumi.get(self, "author")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Free text description for the Permission Set.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="isSuper")
     def is_super(self) -> bool:
+        """
+        Give the Permission Set full access, meaning all actions are allowed without restriction.
+        """
         return pulumi.get(self, "is_super")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="uiAccess")
     def ui_access(self) -> bool:
+        """
+        Whether to allow UI access for users with this Permission Set.
+        """
         return pulumi.get(self, "ui_access")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The date of the last modification of the Role.
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -16073,11 +16881,17 @@ class GetPermissionsSetsPermissionsSetResult(dict):
 class GetRolesMappingLdapResult(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
+        """
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
     @property
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         return pulumi.get(self, "role_mapping")
 
 
@@ -16085,11 +16899,17 @@ class GetRolesMappingLdapResult(dict):
 class GetRolesMappingOauth2Result(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
+        """
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
     @property
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         return pulumi.get(self, "role_mapping")
 
 
@@ -16097,11 +16917,17 @@ class GetRolesMappingOauth2Result(dict):
 class GetRolesMappingOpenidResult(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
+        """
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
     @property
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         return pulumi.get(self, "role_mapping")
 
 
@@ -16149,11 +16975,17 @@ class GetRolesMappingSaasRolesMappingResult(dict):
 class GetRolesMappingSamlResult(dict):
     def __init__(__self__, *,
                  role_mapping: Mapping[str, str]):
+        """
+        :param Mapping[str, str] role_mapping: Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         pulumi.set(__self__, "role_mapping", role_mapping)
 
     @property
     @pulumi.getter(name="roleMapping")
     def role_mapping(self) -> Mapping[str, str]:
+        """
+        Role Mapping is used to define the IdP role that the user will assume in Aqua
+        """
         return pulumi.get(self, "role_mapping")
 
 
@@ -16165,6 +16997,13 @@ class GetRolesRoleResult(dict):
                  permission: str,
                  scopes: Sequence[str],
                  updated_at: str):
+        """
+        :param str description: Free text description for the role.
+        :param str name: The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+        :param str permission: The name of the Permission Set that will affect the users assigned to this specific Role.
+        :param Sequence[str] scopes: List of Application Scopes that will affect the users assigned to this specific Role.
+        :param str updated_at: The date of the last modification of the role.
+        """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "permission", permission)
@@ -16174,26 +17013,41 @@ class GetRolesRoleResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Free text description for the role.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def permission(self) -> str:
+        """
+        The name of the Permission Set that will affect the users assigned to this specific Role.
+        """
         return pulumi.get(self, "permission")
 
     @property
     @pulumi.getter
     def scopes(self) -> Sequence[str]:
+        """
+        List of Application Scopes that will affect the users assigned to this specific Role.
+        """
         return pulumi.get(self, "scopes")
 
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> str:
+        """
+        The date of the last modification of the role.
+        """
         return pulumi.get(self, "updated_at")
 
 
@@ -16203,6 +17057,11 @@ class GetServiceScopeVariableResult(dict):
                  attribute: str,
                  name: str,
                  value: str):
+        """
+        :param str attribute: Class of supported scope.
+        :param str name: Name assigned to the attribute.
+        :param str value: Value assigned to the attribute.
+        """
         pulumi.set(__self__, "attribute", attribute)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -16210,16 +17069,25 @@ class GetServiceScopeVariableResult(dict):
     @property
     @pulumi.getter
     def attribute(self) -> str:
+        """
+        Class of supported scope.
+        """
         return pulumi.get(self, "attribute")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        Name assigned to the attribute.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> str:
+        """
+        Value assigned to the attribute.
+        """
         return pulumi.get(self, "value")
 
 
@@ -16412,6 +17280,18 @@ class GetUsersUserResult(dict):
                  type: str,
                  ui_access: bool,
                  user_id: str):
+        """
+        :param str email: The user Email.
+        :param bool first_time: If the user must change password at next login.
+        :param bool is_super: Give the Permission Set full access, meaning all actions are allowed without restriction.
+        :param str name: The user name.
+        :param str plan: User's Aqua plan (Developer / Team / Advanced).
+        :param str role: The first role that assigned to the user for backward compatibility.
+        :param Sequence[str] roles: The roles that will be assigned to the user.
+        :param str type: The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
+        :param bool ui_access: Whether to allow UI access for users with this Permission Set.
+        :param str user_id: The user ID.
+        """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "first_time", first_time)
         pulumi.set(__self__, "is_super", is_super)
@@ -16426,51 +17306,81 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter
     def email(self) -> str:
+        """
+        The user Email.
+        """
         return pulumi.get(self, "email")
 
     @property
     @pulumi.getter(name="firstTime")
     def first_time(self) -> bool:
+        """
+        If the user must change password at next login.
+        """
         return pulumi.get(self, "first_time")
 
     @property
     @pulumi.getter(name="isSuper")
     def is_super(self) -> bool:
+        """
+        Give the Permission Set full access, meaning all actions are allowed without restriction.
+        """
         return pulumi.get(self, "is_super")
 
     @property
     @pulumi.getter
     def name(self) -> str:
+        """
+        The user name.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def plan(self) -> str:
+        """
+        User's Aqua plan (Developer / Team / Advanced).
+        """
         return pulumi.get(self, "plan")
 
     @property
     @pulumi.getter
     def role(self) -> str:
+        """
+        The first role that assigned to the user for backward compatibility.
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter
     def roles(self) -> Sequence[str]:
+        """
+        The roles that will be assigned to the user.
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter
     def type(self) -> str:
+        """
+        The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="uiAccess")
     def ui_access(self) -> bool:
+        """
+        Whether to allow UI access for users with this Permission Set.
+        """
         return pulumi.get(self, "ui_access")
 
     @property
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
+        """
+        The user ID.
+        """
         return pulumi.get(self, "user_id")
 
 

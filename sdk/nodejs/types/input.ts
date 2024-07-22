@@ -2546,12 +2546,33 @@ export interface HostRuntimePolicyWhitelistedOsUsers {
 }
 
 export interface ImageAssuranceChecksPerformed {
+    /**
+     * The type of the Assurance Policy the check originated from.
+     */
     assuranceType?: pulumi.Input<string>;
+    /**
+     * Whether the check is blocking (i.e. a failure should trigger a disallow).
+     */
     blocking?: pulumi.Input<boolean>;
+    /**
+     * The name of the image assurance control.
+     */
     control?: pulumi.Input<string>;
+    /**
+     * If DTA was skipped.
+     */
     dtaSkipped?: pulumi.Input<boolean>;
+    /**
+     * The reason why DTA was skipped.
+     */
     dtaSkippedReason?: pulumi.Input<string>;
+    /**
+     * Whether the image failed the check.
+     */
     failed?: pulumi.Input<boolean>;
+    /**
+     * The name of the Image Assurance Policy the check originated from.
+     */
     policyName?: pulumi.Input<string>;
 }
 
@@ -2647,10 +2668,25 @@ export interface ImageAssurancePolicyTrustedBaseImage {
 }
 
 export interface ImageHistory {
+    /**
+     * The commit comment for the image, if any.
+     */
     comment?: pulumi.Input<string>;
+    /**
+     * The date of creation of the layer.
+     */
     created?: pulumi.Input<string>;
+    /**
+     * The command that generated the layer.
+     */
     createdBy?: pulumi.Input<string>;
+    /**
+     * The image ID of the layer (if any).
+     */
     id?: pulumi.Input<string>;
+    /**
+     * The size of the image.
+     */
     size?: pulumi.Input<number>;
 }
 
@@ -2662,49 +2698,181 @@ export interface ImageVulnerability {
     ackExpirationDays?: pulumi.Input<number>;
     ackScope?: pulumi.Input<string>;
     acknowledgeDate?: pulumi.Input<string>;
+    /**
+     * The ancestor of this package.
+     */
     ancestorPkg?: pulumi.Input<string>;
+    /**
+     * The score generated for the vulnerability by Aqua.
+     */
     aquaScore?: pulumi.Input<number>;
+    /**
+     * Score classification by Aqua.
+     */
     aquaScoreClassification?: pulumi.Input<string>;
+    /**
+     * The score system for the vulnerability by Aqua
+     */
     aquaScoringSystem?: pulumi.Input<string>;
+    /**
+     * The severity generated for the vulnerability by Aqua.
+     */
     aquaSeverity?: pulumi.Input<string>;
+    /**
+     * Classification of the severity defined by Aqua.
+     */
     aquaSeverityClassification?: pulumi.Input<string>;
+    /**
+     * The vectors generated for the vulnerability by Aqua
+     */
     aquaVectors?: pulumi.Input<string>;
+    /**
+     * Number of audit events.
+     */
     auditEventsCount?: pulumi.Input<number>;
+    /**
+     * Number of blocked events.
+     */
     blockEventsCount?: pulumi.Input<number>;
+    /**
+     * Classification of the vulnerability.
+     */
     classification?: pulumi.Input<string>;
+    /**
+     * The description of the vulnerability.
+     */
     description?: pulumi.Input<string>;
+    /**
+     * The content digest of the image.
+     */
     digest?: pulumi.Input<string>;
+    /**
+     * Reference of the exploit.
+     */
     exploitReference?: pulumi.Input<string>;
+    /**
+     * Type of the exploit.
+     */
     exploitType?: pulumi.Input<string>;
+    /**
+     * The date when this vulnerability was first found.
+     */
     firstFoundDate?: pulumi.Input<string>;
+    /**
+     * Fixed version of the resource.
+     */
     fixVersion?: pulumi.Input<string>;
+    /**
+     * Name of the image.
+     */
     imageName?: pulumi.Input<string>;
+    /**
+     * The date when this vulnerability was last found.
+     */
     lastFoundDate?: pulumi.Input<string>;
+    /**
+     * Thhe date when this vulnerability was modified.
+     */
     modificationDate?: pulumi.Input<string>;
+    /**
+     * The name of the vulnerability.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * CVSS2 score by NVD
+     */
     nvdCvss2Score?: pulumi.Input<number>;
+    /**
+     * CVSS2 vectors by NVD
+     */
     nvdCvss2Vectors?: pulumi.Input<string>;
+    /**
+     * CVSS3 score by NVD
+     */
     nvdCvss3Score?: pulumi.Input<number>;
+    /**
+     * CVSS3 severity by NVD
+     */
     nvdCvss3Severity?: pulumi.Input<string>;
+    /**
+     * CVSS3 vectors by NVD
+     */
     nvdCvss3Vectors?: pulumi.Input<string>;
+    /**
+     * Type of the severity identified by NVD.
+     */
     nvdSeverity?: pulumi.Input<string>;
+    /**
+     * URL of the details of this vulnerability by NVD.
+     */
     nvdUrl?: pulumi.Input<string>;
+    /**
+     * Name of the Operating System.
+     */
     os?: pulumi.Input<string>;
+    /**
+     * The version of the OS.
+     */
     osVersion?: pulumi.Input<string>;
+    /**
+     * permission on the image
+     */
     permission?: pulumi.Input<string>;
+    /**
+     * The date this vulnerability was published.
+     */
     publishDate?: pulumi.Input<string>;
+    /**
+     * Registry of the image.
+     */
     registry?: pulumi.Input<string>;
+    /**
+     * Repository of the image.
+     */
     repository?: pulumi.Input<string>;
+    /**
+     * Architecture of the resource.
+     */
     resourceArchitecture?: pulumi.Input<string>;
+    /**
+     * Common Platform Enumeration (CPE) of the resource.
+     */
     resourceCpe?: pulumi.Input<string>;
+    /**
+     * Code format of the resource (java, apk etc.).
+     */
     resourceFormat?: pulumi.Input<string>;
+    /**
+     * Hash of the resource.
+     */
     resourceHash?: pulumi.Input<string>;
+    /**
+     * List of license supported by the resource.
+     */
     resourceLicenses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Name of the resource.
+     */
     resourceName?: pulumi.Input<string>;
+    /**
+     * Path of the resource.
+     */
     resourcePath?: pulumi.Input<string>;
+    /**
+     * Type of the resource
+     */
     resourceType?: pulumi.Input<string>;
+    /**
+     * Version of the resource.
+     */
     resourceVersion?: pulumi.Input<string>;
+    /**
+     * Classification of the severity.
+     */
     severityClassification?: pulumi.Input<string>;
+    /**
+     * Solution for the vulnerability.
+     */
     solution?: pulumi.Input<string>;
     temporalVector?: pulumi.Input<string>;
     vPatchAppliedBy?: pulumi.Input<string>;

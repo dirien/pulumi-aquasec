@@ -11,12 +11,13 @@ import (
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
+// ## Example Usage
 type HostRuntimePolicy struct {
 	pulumi.CustomResourceState
 
 	// Allowed executables configuration.
 	AllowedExecutables HostRuntimePolicyAllowedExecutableArrayOutput `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries HostRuntimePolicyAllowedRegistryArrayOutput `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayOutput `pulumi:"applicationScopes"`
@@ -58,7 +59,7 @@ type HostRuntimePolicy struct {
 	EnableForkGuard          pulumi.BoolPtrOutput                        `pulumi:"enableForkGuard"`
 	EnableIpReputation       pulumi.BoolPtrOutput                        `pulumi:"enableIpReputation"`
 	EnablePortScanProtection pulumi.BoolPtrOutput                        `pulumi:"enablePortScanProtection"`
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrOutput `pulumi:"enforce"`
@@ -90,7 +91,7 @@ type HostRuntimePolicy struct {
 	MonitorSystemTimeChanges pulumi.BoolPtrOutput `pulumi:"monitorSystemTimeChanges"`
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices pulumi.BoolPtrOutput `pulumi:"monitorWindowsServices"`
-	// Name assigned to the attribute.
+	// Name of the host runtime policy
 	Name                 pulumi.StringOutput  `pulumi:"name"`
 	NoNewPrivileges      pulumi.BoolPtrOutput `pulumi:"noNewPrivileges"`
 	OnlyRegisteredImages pulumi.BoolPtrOutput `pulumi:"onlyRegisteredImages"`
@@ -164,7 +165,7 @@ func GetHostRuntimePolicy(ctx *pulumi.Context,
 type hostRuntimePolicyState struct {
 	// Allowed executables configuration.
 	AllowedExecutables []HostRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries []HostRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
@@ -206,7 +207,7 @@ type hostRuntimePolicyState struct {
 	EnableForkGuard          *bool                              `pulumi:"enableForkGuard"`
 	EnableIpReputation       *bool                              `pulumi:"enableIpReputation"`
 	EnablePortScanProtection *bool                              `pulumi:"enablePortScanProtection"`
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
@@ -238,7 +239,7 @@ type hostRuntimePolicyState struct {
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices *bool `pulumi:"monitorWindowsServices"`
-	// Name assigned to the attribute.
+	// Name of the host runtime policy
 	Name                 *string `pulumi:"name"`
 	NoNewPrivileges      *bool   `pulumi:"noNewPrivileges"`
 	OnlyRegisteredImages *bool   `pulumi:"onlyRegisteredImages"`
@@ -283,7 +284,7 @@ type hostRuntimePolicyState struct {
 type HostRuntimePolicyState struct {
 	// Allowed executables configuration.
 	AllowedExecutables HostRuntimePolicyAllowedExecutableArrayInput
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries HostRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
@@ -325,7 +326,7 @@ type HostRuntimePolicyState struct {
 	EnableForkGuard          pulumi.BoolPtrInput
 	EnableIpReputation       pulumi.BoolPtrInput
 	EnablePortScanProtection pulumi.BoolPtrInput
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
@@ -357,7 +358,7 @@ type HostRuntimePolicyState struct {
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices pulumi.BoolPtrInput
-	// Name assigned to the attribute.
+	// Name of the host runtime policy
 	Name                 pulumi.StringPtrInput
 	NoNewPrivileges      pulumi.BoolPtrInput
 	OnlyRegisteredImages pulumi.BoolPtrInput
@@ -406,7 +407,7 @@ func (HostRuntimePolicyState) ElementType() reflect.Type {
 type hostRuntimePolicyArgs struct {
 	// Allowed executables configuration.
 	AllowedExecutables []HostRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries []HostRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
@@ -448,7 +449,7 @@ type hostRuntimePolicyArgs struct {
 	EnableForkGuard          *bool                              `pulumi:"enableForkGuard"`
 	EnableIpReputation       *bool                              `pulumi:"enableIpReputation"`
 	EnablePortScanProtection *bool                              `pulumi:"enablePortScanProtection"`
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
@@ -480,7 +481,7 @@ type hostRuntimePolicyArgs struct {
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices *bool `pulumi:"monitorWindowsServices"`
-	// Name assigned to the attribute.
+	// Name of the host runtime policy
 	Name                 *string `pulumi:"name"`
 	NoNewPrivileges      *bool   `pulumi:"noNewPrivileges"`
 	OnlyRegisteredImages *bool   `pulumi:"onlyRegisteredImages"`
@@ -526,7 +527,7 @@ type hostRuntimePolicyArgs struct {
 type HostRuntimePolicyArgs struct {
 	// Allowed executables configuration.
 	AllowedExecutables HostRuntimePolicyAllowedExecutableArrayInput
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries HostRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
@@ -568,7 +569,7 @@ type HostRuntimePolicyArgs struct {
 	EnableForkGuard          pulumi.BoolPtrInput
 	EnableIpReputation       pulumi.BoolPtrInput
 	EnablePortScanProtection pulumi.BoolPtrInput
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
@@ -600,7 +601,7 @@ type HostRuntimePolicyArgs struct {
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
 	// If true, windows service operations will be monitored.
 	MonitorWindowsServices pulumi.BoolPtrInput
-	// Name assigned to the attribute.
+	// Name of the host runtime policy
 	Name                 pulumi.StringPtrInput
 	NoNewPrivileges      pulumi.BoolPtrInput
 	OnlyRegisteredImages pulumi.BoolPtrInput
@@ -734,7 +735,7 @@ func (o HostRuntimePolicyOutput) AllowedExecutables() HostRuntimePolicyAllowedEx
 	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyAllowedExecutableArrayOutput { return v.AllowedExecutables }).(HostRuntimePolicyAllowedExecutableArrayOutput)
 }
 
-// List of allowed registries.
+// Allowed registries configuration.
 func (o HostRuntimePolicyOutput) AllowedRegistries() HostRuntimePolicyAllowedRegistryArrayOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) HostRuntimePolicyAllowedRegistryArrayOutput { return v.AllowedRegistries }).(HostRuntimePolicyAllowedRegistryArrayOutput)
 }
@@ -863,7 +864,7 @@ func (o HostRuntimePolicyOutput) EnablePortScanProtection() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.EnablePortScanProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Whether allowed executables configuration is enabled.
+// Indicates if the runtime policy is enabled or not.
 func (o HostRuntimePolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -966,7 +967,7 @@ func (o HostRuntimePolicyOutput) MonitorWindowsServices() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.BoolPtrOutput { return v.MonitorWindowsServices }).(pulumi.BoolPtrOutput)
 }
 
-// Name assigned to the attribute.
+// Name of the host runtime policy
 func (o HostRuntimePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostRuntimePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -53,7 +53,8 @@ type LookupFunctionRuntimePolicyArgs struct {
 	DriftPreventions []GetFunctionRuntimePolicyDriftPrevention `pulumi:"driftPreventions"`
 	// Executable blacklist configuration.
 	ExecutableBlacklists []GetFunctionRuntimePolicyExecutableBlacklist `pulumi:"executableBlacklists"`
-	Name                 string                                        `pulumi:"name"`
+	// Name of the function runtime policy
+	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getFunctionRuntimePolicy.
@@ -117,7 +118,8 @@ type LookupFunctionRuntimePolicyOutputArgs struct {
 	DriftPreventions GetFunctionRuntimePolicyDriftPreventionArrayInput `pulumi:"driftPreventions"`
 	// Executable blacklist configuration.
 	ExecutableBlacklists GetFunctionRuntimePolicyExecutableBlacklistArrayInput `pulumi:"executableBlacklists"`
-	Name                 pulumi.StringInput                                    `pulumi:"name"`
+	// Name of the function runtime policy
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LookupFunctionRuntimePolicyOutputArgs) ElementType() reflect.Type {

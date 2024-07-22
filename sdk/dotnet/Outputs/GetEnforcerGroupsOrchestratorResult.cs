@@ -15,7 +15,13 @@ namespace Pulumiverse.Aquasec.Outputs
     public sealed class GetEnforcerGroupsOrchestratorResult
     {
         public readonly bool Master;
+        /// <summary>
+        /// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+        /// </summary>
         public readonly string Namespace;
+        /// <summary>
+        /// May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+        /// </summary>
         public readonly string ServiceAccount;
         public readonly string Type;
 

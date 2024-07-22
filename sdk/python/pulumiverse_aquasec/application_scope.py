@@ -184,7 +184,8 @@ class ApplicationScope(pulumi.CustomResource):
                  owner_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ApplicationScope resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationScopeCategoryArgs']]]] categories: Artifacts (of applications) / Workloads (containers) / Infrastructure (elements).
@@ -199,7 +200,8 @@ class ApplicationScope(pulumi.CustomResource):
                  args: Optional[ApplicationScopeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ApplicationScope resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param ApplicationScopeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

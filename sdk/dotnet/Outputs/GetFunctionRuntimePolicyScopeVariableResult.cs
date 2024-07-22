@@ -14,8 +14,17 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetFunctionRuntimePolicyScopeVariableResult
     {
+        /// <summary>
+        /// Class of supported scope.
+        /// </summary>
         public readonly string Attribute;
+        /// <summary>
+        /// Name assigned to the attribute.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Value assigned to the attribute.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

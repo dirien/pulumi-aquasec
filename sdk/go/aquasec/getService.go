@@ -23,6 +23,7 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name string `pulumi:"name"`
 }
 
@@ -97,6 +98,7 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 

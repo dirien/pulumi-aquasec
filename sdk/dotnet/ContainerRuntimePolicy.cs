@@ -10,6 +10,9 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [AquasecResourceType("aquasec:index/containerRuntimePolicy:ContainerRuntimePolicy")]
     public partial class ContainerRuntimePolicy : global::Pulumi.CustomResource
     {
@@ -20,7 +23,7 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<Outputs.ContainerRuntimePolicyAllowedExecutable>> AllowedExecutables { get; private set; } = null!;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         [Output("allowedRegistries")]
         public Output<ImmutableArray<Outputs.ContainerRuntimePolicyAllowedRegistry>> AllowedRegistries { get; private set; } = null!;
@@ -251,7 +254,7 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> EnablePortScanProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether allowed executables configuration is enabled.
+        /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -344,7 +347,7 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> MonitorSystemTimeChanges { get; private set; } = null!;
 
         /// <summary>
-        /// Name assigned to the attribute.
+        /// Name of the container runtime policy
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -502,7 +505,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.ContainerRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         public InputList<Inputs.ContainerRuntimePolicyAllowedRegistryArgs> AllowedRegistries
         {
@@ -802,7 +805,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? EnablePortScanProtection { get; set; }
 
         /// <summary>
-        /// Whether allowed executables configuration is enabled.
+        /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -913,7 +916,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorSystemTimeChanges { get; set; }
 
         /// <summary>
-        /// Name assigned to the attribute.
+        /// Name of the container runtime policy
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1050,7 +1053,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.ContainerRuntimePolicyAllowedRegistryGetArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         public InputList<Inputs.ContainerRuntimePolicyAllowedRegistryGetArgs> AllowedRegistries
         {
@@ -1350,7 +1353,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? EnablePortScanProtection { get; set; }
 
         /// <summary>
-        /// Whether allowed executables configuration is enabled.
+        /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -1461,7 +1464,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorSystemTimeChanges { get; set; }
 
         /// <summary>
-        /// Name assigned to the attribute.
+        /// Name of the container runtime policy
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ */
 export class FunctionRuntimePolicy extends pulumi.CustomResource {
     /**
      * Get an existing FunctionRuntimePolicy resource's state with the given name, ID, and optional extra
@@ -39,7 +42,7 @@ export class FunctionRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly allowedExecutables!: pulumi.Output<outputs.FunctionRuntimePolicyAllowedExecutable[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     public readonly allowedRegistries!: pulumi.Output<outputs.FunctionRuntimePolicyAllowedRegistry[]>;
     /**
@@ -83,7 +86,7 @@ export class FunctionRuntimePolicy extends pulumi.CustomResource {
     public readonly enableIpReputation!: pulumi.Output<boolean | undefined>;
     public readonly enablePortScanProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether allowed executables configuration is enabled.
+     * Indicates if the runtime policy is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -141,7 +144,7 @@ export class FunctionRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly malwareScanOptions!: pulumi.Output<outputs.FunctionRuntimePolicyMalwareScanOptions | undefined>;
     /**
-     * Name assigned to the attribute.
+     * Name of the function runtime policy
      */
     public readonly name!: pulumi.Output<string>;
     public readonly noNewPrivileges!: pulumi.Output<boolean | undefined>;
@@ -361,7 +364,7 @@ export interface FunctionRuntimePolicyState {
      */
     allowedExecutables?: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyAllowedExecutable>[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     allowedRegistries?: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyAllowedRegistry>[]>;
     /**
@@ -405,7 +408,7 @@ export interface FunctionRuntimePolicyState {
     enableIpReputation?: pulumi.Input<boolean>;
     enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * Whether allowed executables configuration is enabled.
+     * Indicates if the runtime policy is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -463,7 +466,7 @@ export interface FunctionRuntimePolicyState {
      */
     malwareScanOptions?: pulumi.Input<inputs.FunctionRuntimePolicyMalwareScanOptions>;
     /**
-     * Name assigned to the attribute.
+     * Name of the function runtime policy
      */
     name?: pulumi.Input<string>;
     noNewPrivileges?: pulumi.Input<boolean>;
@@ -515,7 +518,7 @@ export interface FunctionRuntimePolicyArgs {
      */
     allowedExecutables?: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyAllowedExecutable>[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     allowedRegistries?: pulumi.Input<pulumi.Input<inputs.FunctionRuntimePolicyAllowedRegistry>[]>;
     /**
@@ -559,7 +562,7 @@ export interface FunctionRuntimePolicyArgs {
     enableIpReputation?: pulumi.Input<boolean>;
     enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * Whether allowed executables configuration is enabled.
+     * Indicates if the runtime policy is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -617,7 +620,7 @@ export interface FunctionRuntimePolicyArgs {
      */
     malwareScanOptions?: pulumi.Input<inputs.FunctionRuntimePolicyMalwareScanOptions>;
     /**
-     * Name assigned to the attribute.
+     * Name of the function runtime policy
      */
     name?: pulumi.Input<string>;
     noNewPrivileges?: pulumi.Input<boolean>;

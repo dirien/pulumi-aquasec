@@ -10,6 +10,9 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [AquasecResourceType("aquasec:index/hostRuntimePolicy:HostRuntimePolicy")]
     public partial class HostRuntimePolicy : global::Pulumi.CustomResource
     {
@@ -20,7 +23,7 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<Outputs.HostRuntimePolicyAllowedExecutable>> AllowedExecutables { get; private set; } = null!;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         [Output("allowedRegistries")]
         public Output<ImmutableArray<Outputs.HostRuntimePolicyAllowedRegistry>> AllowedRegistries { get; private set; } = null!;
@@ -146,7 +149,7 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> EnablePortScanProtection { get; private set; } = null!;
 
         /// <summary>
-        /// Whether allowed executables configuration is enabled.
+        /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -242,7 +245,7 @@ namespace Pulumiverse.Aquasec
         public Output<bool?> MonitorWindowsServices { get; private set; } = null!;
 
         /// <summary>
-        /// Name assigned to the attribute.
+        /// Name of the host runtime policy
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -424,7 +427,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.HostRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         public InputList<Inputs.HostRuntimePolicyAllowedRegistryArgs> AllowedRegistries
         {
@@ -577,7 +580,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? EnablePortScanProtection { get; set; }
 
         /// <summary>
-        /// Whether allowed executables configuration is enabled.
+        /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -691,7 +694,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorWindowsServices { get; set; }
 
         /// <summary>
-        /// Name assigned to the attribute.
+        /// Name of the host runtime policy
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -881,7 +884,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.HostRuntimePolicyAllowedRegistryGetArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         public InputList<Inputs.HostRuntimePolicyAllowedRegistryGetArgs> AllowedRegistries
         {
@@ -1034,7 +1037,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? EnablePortScanProtection { get; set; }
 
         /// <summary>
-        /// Whether allowed executables configuration is enabled.
+        /// Indicates if the runtime policy is enabled or not.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -1148,7 +1151,7 @@ namespace Pulumiverse.Aquasec
         public Input<bool>? MonitorWindowsServices { get; set; }
 
         /// <summary>
-        /// Name assigned to the attribute.
+        /// Name of the host runtime policy
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

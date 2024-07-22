@@ -137,9 +137,6 @@ export class KubernetesAssurancePolicy extends pulumi.CustomResource {
     public readonly domainName!: pulumi.Output<string | undefined>;
     public readonly dtaEnabled!: pulumi.Output<boolean | undefined>;
     public readonly dtaSeverity!: pulumi.Output<string | undefined>;
-    /**
-     * Is the control enabled?
-     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly enforce!: pulumi.Output<boolean | undefined>;
     public readonly enforceAfterDays!: pulumi.Output<number | undefined>;
@@ -586,9 +583,6 @@ export interface KubernetesAssurancePolicyState {
     domainName?: pulumi.Input<string>;
     dtaEnabled?: pulumi.Input<boolean>;
     dtaSeverity?: pulumi.Input<string>;
-    /**
-     * Is the control enabled?
-     */
     enabled?: pulumi.Input<boolean>;
     enforce?: pulumi.Input<boolean>;
     enforceAfterDays?: pulumi.Input<number>;
@@ -826,9 +820,6 @@ export interface KubernetesAssurancePolicyArgs {
     domainName?: pulumi.Input<string>;
     dtaEnabled?: pulumi.Input<boolean>;
     dtaSeverity?: pulumi.Input<string>;
-    /**
-     * Is the control enabled?
-     */
     enabled?: pulumi.Input<boolean>;
     enforce?: pulumi.Input<boolean>;
     enforceAfterDays?: pulumi.Input<number>;

@@ -68,11 +68,10 @@ type KubernetesAssurancePolicy struct {
 	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled pulumi.BoolPtrOutput `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
-	Domain      pulumi.StringPtrOutput `pulumi:"domain"`
-	DomainName  pulumi.StringPtrOutput `pulumi:"domainName"`
-	DtaEnabled  pulumi.BoolPtrOutput   `pulumi:"dtaEnabled"`
-	DtaSeverity pulumi.StringPtrOutput `pulumi:"dtaSeverity"`
-	// Is the control enabled?
+	Domain                           pulumi.StringPtrOutput   `pulumi:"domain"`
+	DomainName                       pulumi.StringPtrOutput   `pulumi:"domainName"`
+	DtaEnabled                       pulumi.BoolPtrOutput     `pulumi:"dtaEnabled"`
+	DtaSeverity                      pulumi.StringPtrOutput   `pulumi:"dtaSeverity"`
 	Enabled                          pulumi.BoolPtrOutput     `pulumi:"enabled"`
 	Enforce                          pulumi.BoolPtrOutput     `pulumi:"enforce"`
 	EnforceAfterDays                 pulumi.IntPtrOutput      `pulumi:"enforceAfterDays"`
@@ -243,11 +242,10 @@ type kubernetesAssurancePolicyState struct {
 	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled *bool `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
-	Domain      *string `pulumi:"domain"`
-	DomainName  *string `pulumi:"domainName"`
-	DtaEnabled  *bool   `pulumi:"dtaEnabled"`
-	DtaSeverity *string `pulumi:"dtaSeverity"`
-	// Is the control enabled?
+	Domain                           *string  `pulumi:"domain"`
+	DomainName                       *string  `pulumi:"domainName"`
+	DtaEnabled                       *bool    `pulumi:"dtaEnabled"`
+	DtaSeverity                      *string  `pulumi:"dtaSeverity"`
 	Enabled                          *bool    `pulumi:"enabled"`
 	Enforce                          *bool    `pulumi:"enforce"`
 	EnforceAfterDays                 *int     `pulumi:"enforceAfterDays"`
@@ -386,11 +384,10 @@ type KubernetesAssurancePolicyState struct {
 	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled pulumi.BoolPtrInput
 	// Name of the container image.
-	Domain      pulumi.StringPtrInput
-	DomainName  pulumi.StringPtrInput
-	DtaEnabled  pulumi.BoolPtrInput
-	DtaSeverity pulumi.StringPtrInput
-	// Is the control enabled?
+	Domain                           pulumi.StringPtrInput
+	DomainName                       pulumi.StringPtrInput
+	DtaEnabled                       pulumi.BoolPtrInput
+	DtaSeverity                      pulumi.StringPtrInput
 	Enabled                          pulumi.BoolPtrInput
 	Enforce                          pulumi.BoolPtrInput
 	EnforceAfterDays                 pulumi.IntPtrInput
@@ -533,11 +530,10 @@ type kubernetesAssurancePolicyArgs struct {
 	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled *bool `pulumi:"dockerCisEnabled"`
 	// Name of the container image.
-	Domain      *string `pulumi:"domain"`
-	DomainName  *string `pulumi:"domainName"`
-	DtaEnabled  *bool   `pulumi:"dtaEnabled"`
-	DtaSeverity *string `pulumi:"dtaSeverity"`
-	// Is the control enabled?
+	Domain                           *string  `pulumi:"domain"`
+	DomainName                       *string  `pulumi:"domainName"`
+	DtaEnabled                       *bool    `pulumi:"dtaEnabled"`
+	DtaSeverity                      *string  `pulumi:"dtaSeverity"`
 	Enabled                          *bool    `pulumi:"enabled"`
 	Enforce                          *bool    `pulumi:"enforce"`
 	EnforceAfterDays                 *int     `pulumi:"enforceAfterDays"`
@@ -677,11 +673,10 @@ type KubernetesAssurancePolicyArgs struct {
 	// Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
 	DockerCisEnabled pulumi.BoolPtrInput
 	// Name of the container image.
-	Domain      pulumi.StringPtrInput
-	DomainName  pulumi.StringPtrInput
-	DtaEnabled  pulumi.BoolPtrInput
-	DtaSeverity pulumi.StringPtrInput
-	// Is the control enabled?
+	Domain                           pulumi.StringPtrInput
+	DomainName                       pulumi.StringPtrInput
+	DtaEnabled                       pulumi.BoolPtrInput
+	DtaSeverity                      pulumi.StringPtrInput
 	Enabled                          pulumi.BoolPtrInput
 	Enforce                          pulumi.BoolPtrInput
 	EnforceAfterDays                 pulumi.IntPtrInput
@@ -1016,7 +1011,6 @@ func (o KubernetesAssurancePolicyOutput) DtaSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesAssurancePolicy) pulumi.StringPtrOutput { return v.DtaSeverity }).(pulumi.StringPtrOutput)
 }
 
-// Is the control enabled?
 func (o KubernetesAssurancePolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesAssurancePolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

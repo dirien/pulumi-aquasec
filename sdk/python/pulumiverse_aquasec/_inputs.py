@@ -8720,6 +8720,15 @@ class ImageAssuranceChecksPerformedArgs:
                  dta_skipped_reason: Optional[pulumi.Input[str]] = None,
                  failed: Optional[pulumi.Input[bool]] = None,
                  policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] assurance_type: The type of the Assurance Policy the check originated from.
+        :param pulumi.Input[bool] blocking: Whether the check is blocking (i.e. a failure should trigger a disallow).
+        :param pulumi.Input[str] control: The name of the image assurance control.
+        :param pulumi.Input[bool] dta_skipped: If DTA was skipped.
+        :param pulumi.Input[str] dta_skipped_reason: The reason why DTA was skipped.
+        :param pulumi.Input[bool] failed: Whether the image failed the check.
+        :param pulumi.Input[str] policy_name: The name of the Image Assurance Policy the check originated from.
+        """
         if assurance_type is not None:
             pulumi.set(__self__, "assurance_type", assurance_type)
         if blocking is not None:
@@ -8738,6 +8747,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter(name="assuranceType")
     def assurance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the Assurance Policy the check originated from.
+        """
         return pulumi.get(self, "assurance_type")
 
     @assurance_type.setter
@@ -8747,6 +8759,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter
     def blocking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the check is blocking (i.e. a failure should trigger a disallow).
+        """
         return pulumi.get(self, "blocking")
 
     @blocking.setter
@@ -8756,6 +8771,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter
     def control(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the image assurance control.
+        """
         return pulumi.get(self, "control")
 
     @control.setter
@@ -8765,6 +8783,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter(name="dtaSkipped")
     def dta_skipped(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If DTA was skipped.
+        """
         return pulumi.get(self, "dta_skipped")
 
     @dta_skipped.setter
@@ -8774,6 +8795,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter(name="dtaSkippedReason")
     def dta_skipped_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why DTA was skipped.
+        """
         return pulumi.get(self, "dta_skipped_reason")
 
     @dta_skipped_reason.setter
@@ -8783,6 +8807,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter
     def failed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the image failed the check.
+        """
         return pulumi.get(self, "failed")
 
     @failed.setter
@@ -8792,6 +8819,9 @@ class ImageAssuranceChecksPerformedArgs:
     @property
     @pulumi.getter(name="policyName")
     def policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Image Assurance Policy the check originated from.
+        """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
@@ -9528,6 +9558,13 @@ class ImageHistoryArgs:
                  created_by: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] comment: The commit comment for the image, if any.
+        :param pulumi.Input[str] created: The date of creation of the layer.
+        :param pulumi.Input[str] created_by: The command that generated the layer.
+        :param pulumi.Input[str] id: The image ID of the layer (if any).
+        :param pulumi.Input[int] size: The size of the image.
+        """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if created is not None:
@@ -9542,6 +9579,9 @@ class ImageHistoryArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The commit comment for the image, if any.
+        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -9551,6 +9591,9 @@ class ImageHistoryArgs:
     @property
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date of creation of the layer.
+        """
         return pulumi.get(self, "created")
 
     @created.setter
@@ -9560,6 +9603,9 @@ class ImageHistoryArgs:
     @property
     @pulumi.getter(name="createdBy")
     def created_by(self) -> Optional[pulumi.Input[str]]:
+        """
+        The command that generated the layer.
+        """
         return pulumi.get(self, "created_by")
 
     @created_by.setter
@@ -9569,6 +9615,9 @@ class ImageHistoryArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The image ID of the layer (if any).
+        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -9578,6 +9627,9 @@ class ImageHistoryArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the image.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -9654,6 +9706,52 @@ class ImageVulnerabilityArgs:
                  vendor_severity: Optional[pulumi.Input[str]] = None,
                  vendor_statement: Optional[pulumi.Input[str]] = None,
                  vendor_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ancestor_pkg: The ancestor of this package.
+        :param pulumi.Input[float] aqua_score: The score generated for the vulnerability by Aqua.
+        :param pulumi.Input[str] aqua_score_classification: Score classification by Aqua.
+        :param pulumi.Input[str] aqua_scoring_system: The score system for the vulnerability by Aqua
+        :param pulumi.Input[str] aqua_severity: The severity generated for the vulnerability by Aqua.
+        :param pulumi.Input[str] aqua_severity_classification: Classification of the severity defined by Aqua.
+        :param pulumi.Input[str] aqua_vectors: The vectors generated for the vulnerability by Aqua
+        :param pulumi.Input[int] audit_events_count: Number of audit events.
+        :param pulumi.Input[int] block_events_count: Number of blocked events.
+        :param pulumi.Input[str] classification: Classification of the vulnerability.
+        :param pulumi.Input[str] description: The description of the vulnerability.
+        :param pulumi.Input[str] digest: The content digest of the image.
+        :param pulumi.Input[str] exploit_reference: Reference of the exploit.
+        :param pulumi.Input[str] exploit_type: Type of the exploit.
+        :param pulumi.Input[str] first_found_date: The date when this vulnerability was first found.
+        :param pulumi.Input[str] fix_version: Fixed version of the resource.
+        :param pulumi.Input[str] image_name: Name of the image.
+        :param pulumi.Input[str] last_found_date: The date when this vulnerability was last found.
+        :param pulumi.Input[str] modification_date: Thhe date when this vulnerability was modified.
+        :param pulumi.Input[str] name: The name of the vulnerability.
+        :param pulumi.Input[float] nvd_cvss2_score: CVSS2 score by NVD
+        :param pulumi.Input[str] nvd_cvss2_vectors: CVSS2 vectors by NVD
+        :param pulumi.Input[float] nvd_cvss3_score: CVSS3 score by NVD
+        :param pulumi.Input[str] nvd_cvss3_severity: CVSS3 severity by NVD
+        :param pulumi.Input[str] nvd_cvss3_vectors: CVSS3 vectors by NVD
+        :param pulumi.Input[str] nvd_severity: Type of the severity identified by NVD.
+        :param pulumi.Input[str] nvd_url: URL of the details of this vulnerability by NVD.
+        :param pulumi.Input[str] os: Name of the Operating System.
+        :param pulumi.Input[str] os_version: The version of the OS.
+        :param pulumi.Input[str] permission: permission on the image
+        :param pulumi.Input[str] publish_date: The date this vulnerability was published.
+        :param pulumi.Input[str] registry: Registry of the image.
+        :param pulumi.Input[str] repository: Repository of the image.
+        :param pulumi.Input[str] resource_architecture: Architecture of the resource.
+        :param pulumi.Input[str] resource_cpe: Common Platform Enumeration (CPE) of the resource.
+        :param pulumi.Input[str] resource_format: Code format of the resource (java, apk etc.).
+        :param pulumi.Input[str] resource_hash: Hash of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_licenses: List of license supported by the resource.
+        :param pulumi.Input[str] resource_name: Name of the resource.
+        :param pulumi.Input[str] resource_path: Path of the resource.
+        :param pulumi.Input[str] resource_type: Type of the resource
+        :param pulumi.Input[str] resource_version: Version of the resource.
+        :param pulumi.Input[str] severity_classification: Classification of the severity.
+        :param pulumi.Input[str] solution: Solution for the vulnerability.
+        """
         if ack_author is not None:
             pulumi.set(__self__, "ack_author", ack_author)
         if ack_comment is not None:
@@ -9853,6 +9951,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="ancestorPkg")
     def ancestor_pkg(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ancestor of this package.
+        """
         return pulumi.get(self, "ancestor_pkg")
 
     @ancestor_pkg.setter
@@ -9862,6 +9963,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="aquaScore")
     def aqua_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        The score generated for the vulnerability by Aqua.
+        """
         return pulumi.get(self, "aqua_score")
 
     @aqua_score.setter
@@ -9871,6 +9975,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="aquaScoreClassification")
     def aqua_score_classification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Score classification by Aqua.
+        """
         return pulumi.get(self, "aqua_score_classification")
 
     @aqua_score_classification.setter
@@ -9880,6 +9987,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="aquaScoringSystem")
     def aqua_scoring_system(self) -> Optional[pulumi.Input[str]]:
+        """
+        The score system for the vulnerability by Aqua
+        """
         return pulumi.get(self, "aqua_scoring_system")
 
     @aqua_scoring_system.setter
@@ -9889,6 +9999,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="aquaSeverity")
     def aqua_severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The severity generated for the vulnerability by Aqua.
+        """
         return pulumi.get(self, "aqua_severity")
 
     @aqua_severity.setter
@@ -9898,6 +10011,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="aquaSeverityClassification")
     def aqua_severity_classification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Classification of the severity defined by Aqua.
+        """
         return pulumi.get(self, "aqua_severity_classification")
 
     @aqua_severity_classification.setter
@@ -9907,6 +10023,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="aquaVectors")
     def aqua_vectors(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vectors generated for the vulnerability by Aqua
+        """
         return pulumi.get(self, "aqua_vectors")
 
     @aqua_vectors.setter
@@ -9916,6 +10035,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="auditEventsCount")
     def audit_events_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of audit events.
+        """
         return pulumi.get(self, "audit_events_count")
 
     @audit_events_count.setter
@@ -9925,6 +10047,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="blockEventsCount")
     def block_events_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of blocked events.
+        """
         return pulumi.get(self, "block_events_count")
 
     @block_events_count.setter
@@ -9934,6 +10059,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def classification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Classification of the vulnerability.
+        """
         return pulumi.get(self, "classification")
 
     @classification.setter
@@ -9943,6 +10071,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the vulnerability.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -9952,6 +10083,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        The content digest of the image.
+        """
         return pulumi.get(self, "digest")
 
     @digest.setter
@@ -9961,6 +10095,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="exploitReference")
     def exploit_reference(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference of the exploit.
+        """
         return pulumi.get(self, "exploit_reference")
 
     @exploit_reference.setter
@@ -9970,6 +10107,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="exploitType")
     def exploit_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the exploit.
+        """
         return pulumi.get(self, "exploit_type")
 
     @exploit_type.setter
@@ -9979,6 +10119,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="firstFoundDate")
     def first_found_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when this vulnerability was first found.
+        """
         return pulumi.get(self, "first_found_date")
 
     @first_found_date.setter
@@ -9988,6 +10131,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="fixVersion")
     def fix_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fixed version of the resource.
+        """
         return pulumi.get(self, "fix_version")
 
     @fix_version.setter
@@ -9997,6 +10143,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="imageName")
     def image_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the image.
+        """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
@@ -10006,6 +10155,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="lastFoundDate")
     def last_found_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date when this vulnerability was last found.
+        """
         return pulumi.get(self, "last_found_date")
 
     @last_found_date.setter
@@ -10015,6 +10167,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="modificationDate")
     def modification_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Thhe date when this vulnerability was modified.
+        """
         return pulumi.get(self, "modification_date")
 
     @modification_date.setter
@@ -10024,6 +10179,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vulnerability.
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -10033,6 +10191,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdCvss2Score")
     def nvd_cvss2_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        CVSS2 score by NVD
+        """
         return pulumi.get(self, "nvd_cvss2_score")
 
     @nvd_cvss2_score.setter
@@ -10042,6 +10203,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdCvss2Vectors")
     def nvd_cvss2_vectors(self) -> Optional[pulumi.Input[str]]:
+        """
+        CVSS2 vectors by NVD
+        """
         return pulumi.get(self, "nvd_cvss2_vectors")
 
     @nvd_cvss2_vectors.setter
@@ -10051,6 +10215,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdCvss3Score")
     def nvd_cvss3_score(self) -> Optional[pulumi.Input[float]]:
+        """
+        CVSS3 score by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_score")
 
     @nvd_cvss3_score.setter
@@ -10060,6 +10227,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdCvss3Severity")
     def nvd_cvss3_severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        CVSS3 severity by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_severity")
 
     @nvd_cvss3_severity.setter
@@ -10069,6 +10239,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdCvss3Vectors")
     def nvd_cvss3_vectors(self) -> Optional[pulumi.Input[str]]:
+        """
+        CVSS3 vectors by NVD
+        """
         return pulumi.get(self, "nvd_cvss3_vectors")
 
     @nvd_cvss3_vectors.setter
@@ -10078,6 +10251,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdSeverity")
     def nvd_severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the severity identified by NVD.
+        """
         return pulumi.get(self, "nvd_severity")
 
     @nvd_severity.setter
@@ -10087,6 +10263,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="nvdUrl")
     def nvd_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the details of this vulnerability by NVD.
+        """
         return pulumi.get(self, "nvd_url")
 
     @nvd_url.setter
@@ -10096,6 +10275,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def os(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Operating System.
+        """
         return pulumi.get(self, "os")
 
     @os.setter
@@ -10105,6 +10287,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="osVersion")
     def os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the OS.
+        """
         return pulumi.get(self, "os_version")
 
     @os_version.setter
@@ -10114,6 +10299,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        permission on the image
+        """
         return pulumi.get(self, "permission")
 
     @permission.setter
@@ -10123,6 +10311,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="publishDate")
     def publish_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The date this vulnerability was published.
+        """
         return pulumi.get(self, "publish_date")
 
     @publish_date.setter
@@ -10132,6 +10323,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def registry(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registry of the image.
+        """
         return pulumi.get(self, "registry")
 
     @registry.setter
@@ -10141,6 +10335,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def repository(self) -> Optional[pulumi.Input[str]]:
+        """
+        Repository of the image.
+        """
         return pulumi.get(self, "repository")
 
     @repository.setter
@@ -10150,6 +10347,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceArchitecture")
     def resource_architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        Architecture of the resource.
+        """
         return pulumi.get(self, "resource_architecture")
 
     @resource_architecture.setter
@@ -10159,6 +10359,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceCpe")
     def resource_cpe(self) -> Optional[pulumi.Input[str]]:
+        """
+        Common Platform Enumeration (CPE) of the resource.
+        """
         return pulumi.get(self, "resource_cpe")
 
     @resource_cpe.setter
@@ -10168,6 +10371,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceFormat")
     def resource_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Code format of the resource (java, apk etc.).
+        """
         return pulumi.get(self, "resource_format")
 
     @resource_format.setter
@@ -10177,6 +10383,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceHash")
     def resource_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hash of the resource.
+        """
         return pulumi.get(self, "resource_hash")
 
     @resource_hash.setter
@@ -10186,6 +10395,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceLicenses")
     def resource_licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of license supported by the resource.
+        """
         return pulumi.get(self, "resource_licenses")
 
     @resource_licenses.setter
@@ -10195,6 +10407,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource.
+        """
         return pulumi.get(self, "resource_name")
 
     @resource_name.setter
@@ -10204,6 +10419,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourcePath")
     def resource_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the resource.
+        """
         return pulumi.get(self, "resource_path")
 
     @resource_path.setter
@@ -10213,6 +10431,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the resource
+        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -10222,6 +10443,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the resource.
+        """
         return pulumi.get(self, "resource_version")
 
     @resource_version.setter
@@ -10231,6 +10455,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter(name="severityClassification")
     def severity_classification(self) -> Optional[pulumi.Input[str]]:
+        """
+        Classification of the severity.
+        """
         return pulumi.get(self, "severity_classification")
 
     @severity_classification.setter
@@ -10240,6 +10467,9 @@ class ImageVulnerabilityArgs:
     @property
     @pulumi.getter
     def solution(self) -> Optional[pulumi.Input[str]]:
+        """
+        Solution for the vulnerability.
+        """
         return pulumi.get(self, "solution")
 
     @solution.setter

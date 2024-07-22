@@ -13,18 +13,33 @@ namespace Pulumiverse.Aquasec.Inputs
 
     public sealed class ImageHistoryGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The commit comment for the image, if any.
+        /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
+        /// <summary>
+        /// The date of creation of the layer.
+        /// </summary>
         [Input("created")]
         public Input<string>? Created { get; set; }
 
+        /// <summary>
+        /// The command that generated the layer.
+        /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
+        /// <summary>
+        /// The image ID of the layer (if any).
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The size of the image.
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 

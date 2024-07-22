@@ -13,24 +13,45 @@ namespace Pulumiverse.Aquasec.Inputs
 
     public sealed class ImageAssuranceChecksPerformedGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The type of the Assurance Policy the check originated from.
+        /// </summary>
         [Input("assuranceType")]
         public Input<string>? AssuranceType { get; set; }
 
+        /// <summary>
+        /// Whether the check is blocking (i.e. a failure should trigger a disallow).
+        /// </summary>
         [Input("blocking")]
         public Input<bool>? Blocking { get; set; }
 
+        /// <summary>
+        /// The name of the image assurance control.
+        /// </summary>
         [Input("control")]
         public Input<string>? Control { get; set; }
 
+        /// <summary>
+        /// If DTA was skipped.
+        /// </summary>
         [Input("dtaSkipped")]
         public Input<bool>? DtaSkipped { get; set; }
 
+        /// <summary>
+        /// The reason why DTA was skipped.
+        /// </summary>
         [Input("dtaSkippedReason")]
         public Input<string>? DtaSkippedReason { get; set; }
 
+        /// <summary>
+        /// Whether the image failed the check.
+        /// </summary>
         [Input("failed")]
         public Input<bool>? Failed { get; set; }
 
+        /// <summary>
+        /// The name of the Image Assurance Policy the check originated from.
+        /// </summary>
         [Input("policyName")]
         public Input<string>? PolicyName { get; set; }
 

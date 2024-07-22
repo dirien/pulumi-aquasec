@@ -14,9 +14,21 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetFirewallPolicyInboundNetworkResult
     {
+        /// <summary>
+        /// Indicates whether the specified resources are allowed to pass in data or requests.
+        /// </summary>
         public readonly bool Allow;
+        /// <summary>
+        /// Range of ports affected by firewall.
+        /// </summary>
         public readonly string PortRange;
+        /// <summary>
+        /// Information of the resource.
+        /// </summary>
         public readonly string Resource;
+        /// <summary>
+        /// Type of the resource
+        /// </summary>
         public readonly string ResourceType;
 
         [OutputConstructor]

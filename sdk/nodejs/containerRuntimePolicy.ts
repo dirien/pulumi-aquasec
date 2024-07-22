@@ -6,6 +6,9 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ */
 export class ContainerRuntimePolicy extends pulumi.CustomResource {
     /**
      * Get an existing ContainerRuntimePolicy resource's state with the given name, ID, and optional extra
@@ -39,7 +42,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly allowedExecutables!: pulumi.Output<outputs.ContainerRuntimePolicyAllowedExecutable[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     public readonly allowedRegistries!: pulumi.Output<outputs.ContainerRuntimePolicyAllowedRegistry[]>;
     /**
@@ -182,7 +185,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
     public readonly enableIpReputation!: pulumi.Output<boolean | undefined>;
     public readonly enablePortScanProtection!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether allowed executables configuration is enabled.
+     * Indicates if the runtime policy is enabled or not.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -235,7 +238,7 @@ export class ContainerRuntimePolicy extends pulumi.CustomResource {
      */
     public readonly monitorSystemTimeChanges!: pulumi.Output<boolean | undefined>;
     /**
-     * Name assigned to the attribute.
+     * Name of the container runtime policy
      */
     public readonly name!: pulumi.Output<string>;
     public readonly noNewPrivileges!: pulumi.Output<boolean | undefined>;
@@ -491,7 +494,7 @@ export interface ContainerRuntimePolicyState {
      */
     allowedExecutables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedExecutable>[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     allowedRegistries?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedRegistry>[]>;
     /**
@@ -634,7 +637,7 @@ export interface ContainerRuntimePolicyState {
     enableIpReputation?: pulumi.Input<boolean>;
     enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * Whether allowed executables configuration is enabled.
+     * Indicates if the runtime policy is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -687,7 +690,7 @@ export interface ContainerRuntimePolicyState {
      */
     monitorSystemTimeChanges?: pulumi.Input<boolean>;
     /**
-     * Name assigned to the attribute.
+     * Name of the container runtime policy
      */
     name?: pulumi.Input<string>;
     noNewPrivileges?: pulumi.Input<boolean>;
@@ -739,7 +742,7 @@ export interface ContainerRuntimePolicyArgs {
      */
     allowedExecutables?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedExecutable>[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     allowedRegistries?: pulumi.Input<pulumi.Input<inputs.ContainerRuntimePolicyAllowedRegistry>[]>;
     /**
@@ -882,7 +885,7 @@ export interface ContainerRuntimePolicyArgs {
     enableIpReputation?: pulumi.Input<boolean>;
     enablePortScanProtection?: pulumi.Input<boolean>;
     /**
-     * Whether allowed executables configuration is enabled.
+     * Indicates if the runtime policy is enabled or not.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -935,7 +938,7 @@ export interface ContainerRuntimePolicyArgs {
      */
     monitorSystemTimeChanges?: pulumi.Input<boolean>;
     /**
-     * Name assigned to the attribute.
+     * Name of the container runtime policy
      */
     name?: pulumi.Input<string>;
     noNewPrivileges?: pulumi.Input<boolean>;

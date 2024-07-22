@@ -15,9 +15,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The data source `aquasec.getAcknowledges` provides a method to query all acknowledges within the Aqua
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -35,8 +33,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAcknowledgesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAcknowledgesResult>("aquasec:index/getAcknowledges:getAcknowledges", InvokeArgs.Empty, options.WithDefaults());
@@ -44,9 +40,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The data source `aquasec.getAcknowledges` provides a method to query all acknowledges within the Aqua
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -64,8 +58,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAcknowledgesResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAcknowledgesResult>("aquasec:index/getAcknowledges:getAcknowledges", InvokeArgs.Empty, options.WithDefaults());

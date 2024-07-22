@@ -10,6 +10,9 @@ using Pulumi;
 
 namespace Pulumiverse.Aquasec
 {
+    /// <summary>
+    /// ## Example Usage
+    /// </summary>
     [AquasecResourceType("aquasec:index/applicationScope:ApplicationScope")]
     public partial class ApplicationScope : global::Pulumi.CustomResource
     {

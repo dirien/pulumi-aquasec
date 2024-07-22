@@ -777,10 +777,11 @@ def get_container_runtime_policy(allowed_executables: Optional[Sequence[pulumi.I
 
 
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedExecutableArgs']] allowed_executables: Allowed executables configuration.
-    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']] allowed_registries: List of allowed registries.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']] allowed_registries: Allowed registries configuration.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitorings: Configuration for file integrity monitoring.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyLimitContainerPrivilegeArgs']] limit_container_privileges: Container privileges configuration.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
+    :param str name: Name of the container runtime policy
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyRestrictedVolumeArgs']] restricted_volumes: Restricted volumes configuration.
     """
     __args__ = dict()
@@ -890,10 +891,11 @@ def get_container_runtime_policy_output(allowed_executables: Optional[pulumi.Inp
 
 
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedExecutableArgs']] allowed_executables: Allowed executables configuration.
-    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']] allowed_registries: List of allowed registries.
+    :param Sequence[pulumi.InputType['GetContainerRuntimePolicyAllowedRegistryArgs']] allowed_registries: Allowed registries configuration.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitorings: Configuration for file integrity monitoring.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyLimitContainerPrivilegeArgs']] limit_container_privileges: Container privileges configuration.
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
+    :param str name: Name of the container runtime policy
     :param Sequence[pulumi.InputType['GetContainerRuntimePolicyRestrictedVolumeArgs']] restricted_volumes: Restricted volumes configuration.
     """
     ...

@@ -127,7 +127,7 @@ class ImageAssurancePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_black_lists: List of cves blacklisted items.
         :param pulumi.Input[bool] cves_white_list_enabled: Indicates if cves whitelist is relevant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_white_lists: List of cves whitelisted licenses
-        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity.
+        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         :param pulumi.Input[bool] cvss_severity_enabled: Indicates if the cvss severity is scanned.
         :param pulumi.Input[bool] cvss_severity_exclude_no_fix: Indicates that policy should ignore cvss cases that do not have a known fix.
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
@@ -601,7 +601,7 @@ class ImageAssurancePolicyArgs:
     @pulumi.getter(name="cvssSeverity")
     def cvss_severity(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the cvss severity.
+        Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         """
         return pulumi.get(self, "cvss_severity")
 
@@ -1426,7 +1426,7 @@ class _ImageAssurancePolicyState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_black_lists: List of cves blacklisted items.
         :param pulumi.Input[bool] cves_white_list_enabled: Indicates if cves whitelist is relevant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_white_lists: List of cves whitelisted licenses
-        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity.
+        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         :param pulumi.Input[bool] cvss_severity_enabled: Indicates if the cvss severity is scanned.
         :param pulumi.Input[bool] cvss_severity_exclude_no_fix: Indicates that policy should ignore cvss cases that do not have a known fix.
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
@@ -1901,7 +1901,7 @@ class _ImageAssurancePolicyState:
     @pulumi.getter(name="cvssSeverity")
     def cvss_severity(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifier of the cvss severity.
+        Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         """
         return pulumi.get(self, "cvss_severity")
 
@@ -2732,7 +2732,7 @@ class ImageAssurancePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_black_lists: List of cves blacklisted items.
         :param pulumi.Input[bool] cves_white_list_enabled: Indicates if cves whitelist is relevant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_white_lists: List of cves whitelisted licenses
-        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity.
+        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         :param pulumi.Input[bool] cvss_severity_enabled: Indicates if the cvss severity is scanned.
         :param pulumi.Input[bool] cvss_severity_exclude_no_fix: Indicates that policy should ignore cvss cases that do not have a known fix.
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
@@ -3108,7 +3108,7 @@ class ImageAssurancePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_black_lists: List of cves blacklisted items.
         :param pulumi.Input[bool] cves_white_list_enabled: Indicates if cves whitelist is relevant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cves_white_lists: List of cves whitelisted licenses
-        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity.
+        :param pulumi.Input[str] cvss_severity: Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         :param pulumi.Input[bool] cvss_severity_enabled: Indicates if the cvss severity is scanned.
         :param pulumi.Input[bool] cvss_severity_exclude_no_fix: Indicates that policy should ignore cvss cases that do not have a known fix.
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
@@ -3403,7 +3403,7 @@ class ImageAssurancePolicy(pulumi.CustomResource):
     @pulumi.getter(name="cvssSeverity")
     def cvss_severity(self) -> pulumi.Output[Optional[str]]:
         """
-        Identifier of the cvss severity.
+        Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         """
         return pulumi.get(self, "cvss_severity")
 

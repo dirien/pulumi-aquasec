@@ -14,13 +14,37 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetGatewaysGatewayResult
     {
+        /// <summary>
+        /// The description of the gateway.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The GRPC address of the gateway.
+        /// </summary>
         public readonly string GrpcAddress;
+        /// <summary>
+        /// The name of the gateway's host.
+        /// </summary>
         public readonly string Hostname;
+        /// <summary>
+        /// The ID of the gateway (for example: 8522744b25e2_gateway)
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The logical name of the gateway (for example: 8522744b25e2)
+        /// </summary>
         public readonly string Logicalname;
+        /// <summary>
+        /// The public IP address of the gateway.
+        /// </summary>
         public readonly string PublicAddress;
+        /// <summary>
+        /// The status of the gateway.
+        /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The version of the gateway.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

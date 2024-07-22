@@ -51,7 +51,7 @@ func LookupContainerRuntimePolicy(ctx *pulumi.Context, args *LookupContainerRunt
 type LookupContainerRuntimePolicyArgs struct {
 	// Allowed executables configuration.
 	AllowedExecutables []GetContainerRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries []GetContainerRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	Auditing          *GetContainerRuntimePolicyAuditing         `pulumi:"auditing"`
 	ContainerExec     *GetContainerRuntimePolicyContainerExec    `pulumi:"containerExec"`
@@ -62,9 +62,10 @@ type LookupContainerRuntimePolicyArgs struct {
 	LimitContainerPrivileges []GetContainerRuntimePolicyLimitContainerPrivilege `pulumi:"limitContainerPrivileges"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions []GetContainerRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
-	Name               string                                       `pulumi:"name"`
-	PortBlock          *GetContainerRuntimePolicyPortBlock          `pulumi:"portBlock"`
-	ReadonlyFiles      *GetContainerRuntimePolicyReadonlyFiles      `pulumi:"readonlyFiles"`
+	// Name of the container runtime policy
+	Name          string                                  `pulumi:"name"`
+	PortBlock     *GetContainerRuntimePolicyPortBlock     `pulumi:"portBlock"`
+	ReadonlyFiles *GetContainerRuntimePolicyReadonlyFiles `pulumi:"readonlyFiles"`
 	// Restricted volumes configuration.
 	RestrictedVolumes []GetContainerRuntimePolicyRestrictedVolume `pulumi:"restrictedVolumes"`
 }
@@ -207,7 +208,7 @@ func LookupContainerRuntimePolicyOutput(ctx *pulumi.Context, args LookupContaine
 type LookupContainerRuntimePolicyOutputArgs struct {
 	// Allowed executables configuration.
 	AllowedExecutables GetContainerRuntimePolicyAllowedExecutableArrayInput `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries GetContainerRuntimePolicyAllowedRegistryArrayInput `pulumi:"allowedRegistries"`
 	Auditing          GetContainerRuntimePolicyAuditingPtrInput          `pulumi:"auditing"`
 	ContainerExec     GetContainerRuntimePolicyContainerExecPtrInput     `pulumi:"containerExec"`
@@ -218,9 +219,10 @@ type LookupContainerRuntimePolicyOutputArgs struct {
 	LimitContainerPrivileges GetContainerRuntimePolicyLimitContainerPrivilegeArrayInput `pulumi:"limitContainerPrivileges"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions GetContainerRuntimePolicyMalwareScanOptionArrayInput `pulumi:"malwareScanOptions"`
-	Name               pulumi.StringInput                                   `pulumi:"name"`
-	PortBlock          GetContainerRuntimePolicyPortBlockPtrInput           `pulumi:"portBlock"`
-	ReadonlyFiles      GetContainerRuntimePolicyReadonlyFilesPtrInput       `pulumi:"readonlyFiles"`
+	// Name of the container runtime policy
+	Name          pulumi.StringInput                             `pulumi:"name"`
+	PortBlock     GetContainerRuntimePolicyPortBlockPtrInput     `pulumi:"portBlock"`
+	ReadonlyFiles GetContainerRuntimePolicyReadonlyFilesPtrInput `pulumi:"readonlyFiles"`
 	// Restricted volumes configuration.
 	RestrictedVolumes GetContainerRuntimePolicyRestrictedVolumeArrayInput `pulumi:"restrictedVolumes"`
 }

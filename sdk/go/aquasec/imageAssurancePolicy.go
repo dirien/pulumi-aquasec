@@ -55,7 +55,7 @@ type ImageAssurancePolicy struct {
 	CvesWhiteListEnabled pulumi.BoolPtrOutput `pulumi:"cvesWhiteListEnabled"`
 	// List of cves whitelisted licenses
 	CvesWhiteLists pulumi.StringArrayOutput `pulumi:"cvesWhiteLists"`
-	// Identifier of the cvss severity.
+	// Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
 	CvssSeverity pulumi.StringPtrOutput `pulumi:"cvssSeverity"`
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled pulumi.BoolPtrOutput `pulumi:"cvssSeverityEnabled"`
@@ -227,7 +227,7 @@ type imageAssurancePolicyState struct {
 	CvesWhiteListEnabled *bool `pulumi:"cvesWhiteListEnabled"`
 	// List of cves whitelisted licenses
 	CvesWhiteLists []string `pulumi:"cvesWhiteLists"`
-	// Identifier of the cvss severity.
+	// Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
 	CvssSeverity *string `pulumi:"cvssSeverity"`
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled *bool `pulumi:"cvssSeverityEnabled"`
@@ -367,7 +367,7 @@ type ImageAssurancePolicyState struct {
 	CvesWhiteListEnabled pulumi.BoolPtrInput
 	// List of cves whitelisted licenses
 	CvesWhiteLists pulumi.StringArrayInput
-	// Identifier of the cvss severity.
+	// Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
 	CvssSeverity pulumi.StringPtrInput
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled pulumi.BoolPtrInput
@@ -511,7 +511,7 @@ type imageAssurancePolicyArgs struct {
 	CvesWhiteListEnabled *bool `pulumi:"cvesWhiteListEnabled"`
 	// List of cves whitelisted licenses
 	CvesWhiteLists []string `pulumi:"cvesWhiteLists"`
-	// Identifier of the cvss severity.
+	// Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
 	CvssSeverity *string `pulumi:"cvssSeverity"`
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled *bool `pulumi:"cvssSeverityEnabled"`
@@ -652,7 +652,7 @@ type ImageAssurancePolicyArgs struct {
 	CvesWhiteListEnabled pulumi.BoolPtrInput
 	// List of cves whitelisted licenses
 	CvesWhiteLists pulumi.StringArrayInput
-	// Identifier of the cvss severity.
+	// Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
 	CvssSeverity pulumi.StringPtrInput
 	// Indicates if the cvss severity is scanned.
 	CvssSeverityEnabled pulumi.BoolPtrInput
@@ -947,7 +947,7 @@ func (o ImageAssurancePolicyOutput) CvesWhiteLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringArrayOutput { return v.CvesWhiteLists }).(pulumi.StringArrayOutput)
 }
 
-// Identifier of the cvss severity.
+// Identifier of the cvss severity. Only applied if `cvssSeverityEnabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
 func (o ImageAssurancePolicyOutput) CvssSeverity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageAssurancePolicy) pulumi.StringPtrOutput { return v.CvssSeverity }).(pulumi.StringPtrOutput)
 }

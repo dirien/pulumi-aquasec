@@ -13,9 +13,7 @@ namespace Pulumiverse.Aquasec
     public static class GetContainerRuntimePolicy
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -36,16 +34,12 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetContainerRuntimePolicyResult> InvokeAsync(GetContainerRuntimePolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRuntimePolicyResult>("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args ?? new GetContainerRuntimePolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -66,8 +60,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetContainerRuntimePolicyResult> Invoke(GetContainerRuntimePolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRuntimePolicyResult>("aquasec:index/getContainerRuntimePolicy:getContainerRuntimePolicy", args ?? new GetContainerRuntimePolicyInvokeArgs(), options.WithDefaults());
@@ -92,7 +84,7 @@ namespace Pulumiverse.Aquasec
         private List<Inputs.GetContainerRuntimePolicyAllowedRegistryArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         public List<Inputs.GetContainerRuntimePolicyAllowedRegistryArgs> AllowedRegistries
         {
@@ -145,6 +137,9 @@ namespace Pulumiverse.Aquasec
             set => _malwareScanOptions = value;
         }
 
+        /// <summary>
+        /// Name of the container runtime policy
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -190,7 +185,7 @@ namespace Pulumiverse.Aquasec
         private InputList<Inputs.GetContainerRuntimePolicyAllowedRegistryInputArgs>? _allowedRegistries;
 
         /// <summary>
-        /// List of allowed registries.
+        /// Allowed registries configuration.
         /// </summary>
         public InputList<Inputs.GetContainerRuntimePolicyAllowedRegistryInputArgs> AllowedRegistries
         {
@@ -243,6 +238,9 @@ namespace Pulumiverse.Aquasec
             set => _malwareScanOptions = value;
         }
 
+        /// <summary>
+        /// Name of the container runtime policy
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

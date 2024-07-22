@@ -11,6 +11,7 @@ import (
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
+// ## Example Usage
 type ApplicationScope struct {
 	pulumi.CustomResourceState
 

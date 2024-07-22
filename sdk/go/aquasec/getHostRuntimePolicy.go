@@ -54,8 +54,9 @@ type LookupHostRuntimePolicyArgs struct {
 	FileIntegrityMonitorings []GetHostRuntimePolicyFileIntegrityMonitoring `pulumi:"fileIntegrityMonitorings"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions []GetHostRuntimePolicyMalwareScanOption `pulumi:"malwareScanOptions"`
-	Name               string                                  `pulumi:"name"`
-	PackageBlocks      []GetHostRuntimePolicyPackageBlock      `pulumi:"packageBlocks"`
+	// Name of the host runtime policy
+	Name          string                             `pulumi:"name"`
+	PackageBlocks []GetHostRuntimePolicyPackageBlock `pulumi:"packageBlocks"`
 }
 
 // A collection of values returned by getHostRuntimePolicy.
@@ -146,8 +147,9 @@ type LookupHostRuntimePolicyOutputArgs struct {
 	FileIntegrityMonitorings GetHostRuntimePolicyFileIntegrityMonitoringArrayInput `pulumi:"fileIntegrityMonitorings"`
 	// Configuration for Real-Time Malware Protection.
 	MalwareScanOptions GetHostRuntimePolicyMalwareScanOptionArrayInput `pulumi:"malwareScanOptions"`
-	Name               pulumi.StringInput                              `pulumi:"name"`
-	PackageBlocks      GetHostRuntimePolicyPackageBlockArrayInput      `pulumi:"packageBlocks"`
+	// Name of the host runtime policy
+	Name          pulumi.StringInput                         `pulumi:"name"`
+	PackageBlocks GetHostRuntimePolicyPackageBlockArrayInput `pulumi:"packageBlocks"`
 }
 
 func (LookupHostRuntimePolicyOutputArgs) ElementType() reflect.Type {

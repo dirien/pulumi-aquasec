@@ -11,12 +11,13 @@ import (
 	"github.com/pulumiverse/pulumi-aquasec/sdk/go/aquasec/internal"
 )
 
+// ## Example Usage
 type ContainerRuntimePolicy struct {
 	pulumi.CustomResourceState
 
 	// Allowed executables configuration.
 	AllowedExecutables ContainerRuntimePolicyAllowedExecutableArrayOutput `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries ContainerRuntimePolicyAllowedRegistryArrayOutput `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayOutput `pulumi:"applicationScopes"`
@@ -93,7 +94,7 @@ type ContainerRuntimePolicy struct {
 	EnableForkGuard          pulumi.BoolPtrOutput `pulumi:"enableForkGuard"`
 	EnableIpReputation       pulumi.BoolPtrOutput `pulumi:"enableIpReputation"`
 	EnablePortScanProtection pulumi.BoolPtrOutput `pulumi:"enablePortScanProtection"`
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrOutput `pulumi:"enforce"`
@@ -124,7 +125,7 @@ type ContainerRuntimePolicy struct {
 	MalwareScanOptions ContainerRuntimePolicyMalwareScanOptionsOutput `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrOutput `pulumi:"monitorSystemTimeChanges"`
-	// Name assigned to the attribute.
+	// Name of the container runtime policy
 	Name                     pulumi.StringOutput                                  `pulumi:"name"`
 	NoNewPrivileges          pulumi.BoolPtrOutput                                 `pulumi:"noNewPrivileges"`
 	OnlyRegisteredImages     pulumi.BoolPtrOutput                                 `pulumi:"onlyRegisteredImages"`
@@ -190,7 +191,7 @@ func GetContainerRuntimePolicy(ctx *pulumi.Context,
 type containerRuntimePolicyState struct {
 	// Allowed executables configuration.
 	AllowedExecutables []ContainerRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries []ContainerRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
@@ -267,7 +268,7 @@ type containerRuntimePolicyState struct {
 	EnableForkGuard          *bool `pulumi:"enableForkGuard"`
 	EnableIpReputation       *bool `pulumi:"enableIpReputation"`
 	EnablePortScanProtection *bool `pulumi:"enablePortScanProtection"`
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
@@ -298,7 +299,7 @@ type containerRuntimePolicyState struct {
 	MalwareScanOptions *ContainerRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
-	// Name assigned to the attribute.
+	// Name of the container runtime policy
 	Name                     *string                                         `pulumi:"name"`
 	NoNewPrivileges          *bool                                           `pulumi:"noNewPrivileges"`
 	OnlyRegisteredImages     *bool                                           `pulumi:"onlyRegisteredImages"`
@@ -335,7 +336,7 @@ type containerRuntimePolicyState struct {
 type ContainerRuntimePolicyState struct {
 	// Allowed executables configuration.
 	AllowedExecutables ContainerRuntimePolicyAllowedExecutableArrayInput
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries ContainerRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
@@ -412,7 +413,7 @@ type ContainerRuntimePolicyState struct {
 	EnableForkGuard          pulumi.BoolPtrInput
 	EnableIpReputation       pulumi.BoolPtrInput
 	EnablePortScanProtection pulumi.BoolPtrInput
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
@@ -443,7 +444,7 @@ type ContainerRuntimePolicyState struct {
 	MalwareScanOptions ContainerRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
-	// Name assigned to the attribute.
+	// Name of the container runtime policy
 	Name                     pulumi.StringPtrInput
 	NoNewPrivileges          pulumi.BoolPtrInput
 	OnlyRegisteredImages     pulumi.BoolPtrInput
@@ -484,7 +485,7 @@ func (ContainerRuntimePolicyState) ElementType() reflect.Type {
 type containerRuntimePolicyArgs struct {
 	// Allowed executables configuration.
 	AllowedExecutables []ContainerRuntimePolicyAllowedExecutable `pulumi:"allowedExecutables"`
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries []ContainerRuntimePolicyAllowedRegistry `pulumi:"allowedRegistries"`
 	// Indicates the application scope of the service.
 	ApplicationScopes []string `pulumi:"applicationScopes"`
@@ -561,7 +562,7 @@ type containerRuntimePolicyArgs struct {
 	EnableForkGuard          *bool `pulumi:"enableForkGuard"`
 	EnableIpReputation       *bool `pulumi:"enableIpReputation"`
 	EnablePortScanProtection *bool `pulumi:"enablePortScanProtection"`
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled *bool `pulumi:"enabled"`
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce *bool `pulumi:"enforce"`
@@ -592,7 +593,7 @@ type containerRuntimePolicyArgs struct {
 	MalwareScanOptions *ContainerRuntimePolicyMalwareScanOptions `pulumi:"malwareScanOptions"`
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges *bool `pulumi:"monitorSystemTimeChanges"`
-	// Name assigned to the attribute.
+	// Name of the container runtime policy
 	Name                     *string                                         `pulumi:"name"`
 	NoNewPrivileges          *bool                                           `pulumi:"noNewPrivileges"`
 	OnlyRegisteredImages     *bool                                           `pulumi:"onlyRegisteredImages"`
@@ -630,7 +631,7 @@ type containerRuntimePolicyArgs struct {
 type ContainerRuntimePolicyArgs struct {
 	// Allowed executables configuration.
 	AllowedExecutables ContainerRuntimePolicyAllowedExecutableArrayInput
-	// List of allowed registries.
+	// Allowed registries configuration.
 	AllowedRegistries ContainerRuntimePolicyAllowedRegistryArrayInput
 	// Indicates the application scope of the service.
 	ApplicationScopes pulumi.StringArrayInput
@@ -707,7 +708,7 @@ type ContainerRuntimePolicyArgs struct {
 	EnableForkGuard          pulumi.BoolPtrInput
 	EnableIpReputation       pulumi.BoolPtrInput
 	EnablePortScanProtection pulumi.BoolPtrInput
-	// Whether allowed executables configuration is enabled.
+	// Indicates if the runtime policy is enabled or not.
 	Enabled pulumi.BoolPtrInput
 	// Indicates that policy should effect container execution (not just for audit).
 	Enforce pulumi.BoolPtrInput
@@ -738,7 +739,7 @@ type ContainerRuntimePolicyArgs struct {
 	MalwareScanOptions ContainerRuntimePolicyMalwareScanOptionsPtrInput
 	// If true, system time changes will be monitored.
 	MonitorSystemTimeChanges pulumi.BoolPtrInput
-	// Name assigned to the attribute.
+	// Name of the container runtime policy
 	Name                     pulumi.StringPtrInput
 	NoNewPrivileges          pulumi.BoolPtrInput
 	OnlyRegisteredImages     pulumi.BoolPtrInput
@@ -866,7 +867,7 @@ func (o ContainerRuntimePolicyOutput) AllowedExecutables() ContainerRuntimePolic
 	}).(ContainerRuntimePolicyAllowedExecutableArrayOutput)
 }
 
-// List of allowed registries.
+// Allowed registries configuration.
 func (o ContainerRuntimePolicyOutput) AllowedRegistries() ContainerRuntimePolicyAllowedRegistryArrayOutput {
 	return o.ApplyT(func(v *ContainerRuntimePolicy) ContainerRuntimePolicyAllowedRegistryArrayOutput {
 		return v.AllowedRegistries
@@ -1081,7 +1082,7 @@ func (o ContainerRuntimePolicyOutput) EnablePortScanProtection() pulumi.BoolPtrO
 	return o.ApplyT(func(v *ContainerRuntimePolicy) pulumi.BoolPtrOutput { return v.EnablePortScanProtection }).(pulumi.BoolPtrOutput)
 }
 
-// Whether allowed executables configuration is enabled.
+// Indicates if the runtime policy is enabled or not.
 func (o ContainerRuntimePolicyOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ContainerRuntimePolicy) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1184,7 +1185,7 @@ func (o ContainerRuntimePolicyOutput) MonitorSystemTimeChanges() pulumi.BoolPtrO
 	return o.ApplyT(func(v *ContainerRuntimePolicy) pulumi.BoolPtrOutput { return v.MonitorSystemTimeChanges }).(pulumi.BoolPtrOutput)
 }
 
-// Name assigned to the attribute.
+// Name of the container runtime policy
 func (o ContainerRuntimePolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerRuntimePolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

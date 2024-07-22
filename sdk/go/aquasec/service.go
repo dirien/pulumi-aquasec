@@ -33,7 +33,7 @@ type Service struct {
 	Lastupdate pulumi.IntOutput `pulumi:"lastupdate"`
 	// Indicates if monitoring is enabled or not
 	Monitoring pulumi.BoolPtrOutput `pulumi:"monitoring"`
-	// Name assigned to the attribute.
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of container that are not evaluated.
 	NotEvaluatedCount pulumi.IntOutput `pulumi:"notEvaluatedCount"`
@@ -124,7 +124,7 @@ type serviceState struct {
 	Lastupdate *int `pulumi:"lastupdate"`
 	// Indicates if monitoring is enabled or not
 	Monitoring *bool `pulumi:"monitoring"`
-	// Name assigned to the attribute.
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name *string `pulumi:"name"`
 	// The number of container that are not evaluated.
 	NotEvaluatedCount *int `pulumi:"notEvaluatedCount"`
@@ -177,7 +177,7 @@ type ServiceState struct {
 	Lastupdate pulumi.IntPtrInput
 	// Indicates if monitoring is enabled or not
 	Monitoring pulumi.BoolPtrInput
-	// Name assigned to the attribute.
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name pulumi.StringPtrInput
 	// The number of container that are not evaluated.
 	NotEvaluatedCount pulumi.IntPtrInput
@@ -224,7 +224,7 @@ type serviceArgs struct {
 	Enforce *bool `pulumi:"enforce"`
 	// Indicates if monitoring is enabled or not
 	Monitoring *bool `pulumi:"monitoring"`
-	// Name assigned to the attribute.
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name *string `pulumi:"name"`
 	// The service's policies; an array of container firewall policy names.
 	Policies []string `pulumi:"policies"`
@@ -248,7 +248,7 @@ type ServiceArgs struct {
 	Enforce pulumi.BoolPtrInput
 	// Indicates if monitoring is enabled or not
 	Monitoring pulumi.BoolPtrInput
-	// Name assigned to the attribute.
+	// The name of the service. It is recommended not to use whitespace characters in the name.
 	Name pulumi.StringPtrInput
 	// The service's policies; an array of container firewall policy names.
 	Policies pulumi.StringArrayInput
@@ -394,7 +394,7 @@ func (o ServiceOutput) Monitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.Monitoring }).(pulumi.BoolPtrOutput)
 }
 
-// Name assigned to the attribute.
+// The name of the service. It is recommended not to use whitespace characters in the name.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

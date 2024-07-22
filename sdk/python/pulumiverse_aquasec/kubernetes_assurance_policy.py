@@ -133,7 +133,6 @@ class KubernetesAssurancePolicyArgs:
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
         :param pulumi.Input[bool] docker_cis_enabled: Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
         :param pulumi.Input[str] domain: Name of the container image.
-        :param pulumi.Input[bool] enabled: Is the control enabled?
         :param pulumi.Input[bool] fail_cicd: Indicates if cicd failures will fail the image.
         :param pulumi.Input[bool] ignore_risk_resources_enabled: Indicates if risk resources are ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_risk_resources: List of ignored risk resources.
@@ -720,9 +719,6 @@ class KubernetesAssurancePolicyArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Is the control enabled?
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -1444,7 +1440,6 @@ class _KubernetesAssurancePolicyState:
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
         :param pulumi.Input[bool] docker_cis_enabled: Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
         :param pulumi.Input[str] domain: Name of the container image.
-        :param pulumi.Input[bool] enabled: Is the control enabled?
         :param pulumi.Input[bool] fail_cicd: Indicates if cicd failures will fail the image.
         :param pulumi.Input[bool] ignore_risk_resources_enabled: Indicates if risk resources are ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_risk_resources: List of ignored risk resources.
@@ -2032,9 +2027,6 @@ class _KubernetesAssurancePolicyState:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Is the control enabled?
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -2762,7 +2754,6 @@ class KubernetesAssurancePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
         :param pulumi.Input[bool] docker_cis_enabled: Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
         :param pulumi.Input[str] domain: Name of the container image.
-        :param pulumi.Input[bool] enabled: Is the control enabled?
         :param pulumi.Input[bool] fail_cicd: Indicates if cicd failures will fail the image.
         :param pulumi.Input[bool] ignore_risk_resources_enabled: Indicates if risk resources are ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_risk_resources: List of ignored risk resources.
@@ -3141,7 +3132,6 @@ class KubernetesAssurancePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] disallow_malware: Indicates if malware should block the image.
         :param pulumi.Input[bool] docker_cis_enabled: Checks the host according to the Docker CIS benchmark, if Docker is found on the host.
         :param pulumi.Input[str] domain: Name of the container image.
-        :param pulumi.Input[bool] enabled: Is the control enabled?
         :param pulumi.Input[bool] fail_cicd: Indicates if cicd failures will fail the image.
         :param pulumi.Input[bool] ignore_risk_resources_enabled: Indicates if risk resources are ignored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_risk_resources: List of ignored risk resources.
@@ -3505,9 +3495,6 @@ class KubernetesAssurancePolicy(pulumi.CustomResource):
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Is the control enabled?
-        """
         return pulumi.get(self, "enabled")
 
     @property

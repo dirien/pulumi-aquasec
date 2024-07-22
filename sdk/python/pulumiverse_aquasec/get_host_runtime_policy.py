@@ -444,6 +444,7 @@ def get_host_runtime_policy(auditing: Optional[pulumi.InputType['GetHostRuntimeP
 
     :param Sequence[pulumi.InputType['GetHostRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitorings: Configuration for file integrity monitoring.
     :param Sequence[pulumi.InputType['GetHostRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
+    :param str name: Name of the host runtime policy
     """
     __args__ = dict()
     __args__['auditing'] = auditing
@@ -511,5 +512,6 @@ def get_host_runtime_policy_output(auditing: Optional[pulumi.Input[Optional[pulu
 
     :param Sequence[pulumi.InputType['GetHostRuntimePolicyFileIntegrityMonitoringArgs']] file_integrity_monitorings: Configuration for file integrity monitoring.
     :param Sequence[pulumi.InputType['GetHostRuntimePolicyMalwareScanOptionArgs']] malware_scan_options: Configuration for Real-Time Malware Protection.
+    :param str name: Name of the host runtime policy
     """
     ...

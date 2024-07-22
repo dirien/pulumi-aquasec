@@ -184,9 +184,6 @@ namespace Pulumiverse.Aquasec
         [Output("dtaSeverity")]
         public Output<string?> DtaSeverity { get; private set; } = null!;
 
-        /// <summary>
-        /// Is the control enabled?
-        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
@@ -708,9 +705,6 @@ namespace Pulumiverse.Aquasec
         [Input("dtaSeverity")]
         public Input<string>? DtaSeverity { get; set; }
 
-        /// <summary>
-        /// Is the control enabled?
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -1304,9 +1298,6 @@ namespace Pulumiverse.Aquasec
         [Input("dtaSeverity")]
         public Input<string>? DtaSeverity { get; set; }
 
-        /// <summary>
-        /// Is the control enabled?
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

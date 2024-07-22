@@ -14,8 +14,17 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetGroupsGroupResult
     {
+        /// <summary>
+        /// The creation date of the group.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// The ID of the created group.
+        /// </summary>
         public readonly string GroupId;
+        /// <summary>
+        /// The desired name of the group.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

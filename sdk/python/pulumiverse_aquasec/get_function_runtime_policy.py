@@ -280,6 +280,7 @@ def get_function_runtime_policy(drift_preventions: Optional[Sequence[pulumi.Inpu
 
     :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyDriftPreventionArgs']] drift_preventions: Drift prevention configuration.
     :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyExecutableBlacklistArgs']] executable_blacklists: Executable blacklist configuration.
+    :param str name: Name of the function runtime policy
     """
     __args__ = dict()
     __args__['driftPreventions'] = drift_preventions
@@ -329,5 +330,6 @@ def get_function_runtime_policy_output(drift_preventions: Optional[pulumi.Input[
 
     :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyDriftPreventionArgs']] drift_preventions: Drift prevention configuration.
     :param Sequence[pulumi.InputType['GetFunctionRuntimePolicyExecutableBlacklistArgs']] executable_blacklists: Executable blacklist configuration.
+    :param str name: Name of the function runtime policy
     """
     ...

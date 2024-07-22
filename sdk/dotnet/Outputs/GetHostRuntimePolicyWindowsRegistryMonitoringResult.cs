@@ -14,16 +14,49 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetHostRuntimePolicyWindowsRegistryMonitoringResult
     {
+        /// <summary>
+        /// List of paths to be excluded from being monitored.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedPaths;
+        /// <summary>
+        /// List of registry processes to be excluded from being monitored.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedProcesses;
+        /// <summary>
+        /// List of registry users to be excluded from being monitored.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedUsers;
+        /// <summary>
+        /// If true, add attributes operations will be monitored.
+        /// </summary>
         public readonly bool MonitorAttributes;
+        /// <summary>
+        /// If true, create operations will be monitored.
+        /// </summary>
         public readonly bool MonitorCreate;
+        /// <summary>
+        /// If true, deletion operations will be monitored.
+        /// </summary>
         public readonly bool MonitorDelete;
+        /// <summary>
+        /// If true, modification operations will be monitored.
+        /// </summary>
         public readonly bool MonitorModify;
+        /// <summary>
+        /// If true, read operations will be monitored.
+        /// </summary>
         public readonly bool MonitorRead;
+        /// <summary>
+        /// List of paths to be monitored.
+        /// </summary>
         public readonly ImmutableArray<string> MonitoredPaths;
+        /// <summary>
+        /// List of registry processes to be monitored.
+        /// </summary>
         public readonly ImmutableArray<string> MonitoredProcesses;
+        /// <summary>
+        /// List of registry users to be monitored.
+        /// </summary>
         public readonly ImmutableArray<string> MonitoredUsers;
 
         [OutputConstructor]

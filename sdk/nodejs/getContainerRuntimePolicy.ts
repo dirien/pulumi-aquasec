@@ -47,7 +47,7 @@ export interface GetContainerRuntimePolicyArgs {
      */
     allowedExecutables?: inputs.GetContainerRuntimePolicyAllowedExecutable[];
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     allowedRegistries?: inputs.GetContainerRuntimePolicyAllowedRegistry[];
     auditing?: inputs.GetContainerRuntimePolicyAuditing;
@@ -65,6 +65,9 @@ export interface GetContainerRuntimePolicyArgs {
      * Configuration for Real-Time Malware Protection.
      */
     malwareScanOptions?: inputs.GetContainerRuntimePolicyMalwareScanOption[];
+    /**
+     * Name of the container runtime policy
+     */
     name: string;
     portBlock?: inputs.GetContainerRuntimePolicyPortBlock;
     readonlyFiles?: inputs.GetContainerRuntimePolicyReadonlyFiles;
@@ -334,7 +337,7 @@ export interface GetContainerRuntimePolicyOutputArgs {
      */
     allowedExecutables?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyAllowedExecutableArgs>[]>;
     /**
-     * List of allowed registries.
+     * Allowed registries configuration.
      */
     allowedRegistries?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyAllowedRegistryArgs>[]>;
     auditing?: pulumi.Input<inputs.GetContainerRuntimePolicyAuditingArgs>;
@@ -352,6 +355,9 @@ export interface GetContainerRuntimePolicyOutputArgs {
      * Configuration for Real-Time Malware Protection.
      */
     malwareScanOptions?: pulumi.Input<pulumi.Input<inputs.GetContainerRuntimePolicyMalwareScanOptionArgs>[]>;
+    /**
+     * Name of the container runtime policy
+     */
     name: pulumi.Input<string>;
     portBlock?: pulumi.Input<inputs.GetContainerRuntimePolicyPortBlockArgs>;
     readonlyFiles?: pulumi.Input<inputs.GetContainerRuntimePolicyReadonlyFilesArgs>;

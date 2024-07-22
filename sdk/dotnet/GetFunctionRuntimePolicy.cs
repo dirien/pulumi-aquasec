@@ -13,9 +13,7 @@ namespace Pulumiverse.Aquasec
     public static class GetFunctionRuntimePolicy
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -36,16 +34,12 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetFunctionRuntimePolicyResult> InvokeAsync(GetFunctionRuntimePolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFunctionRuntimePolicyResult>("aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy", args ?? new GetFunctionRuntimePolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -66,8 +60,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetFunctionRuntimePolicyResult> Invoke(GetFunctionRuntimePolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFunctionRuntimePolicyResult>("aquasec:index/getFunctionRuntimePolicy:getFunctionRuntimePolicy", args ?? new GetFunctionRuntimePolicyInvokeArgs(), options.WithDefaults());
@@ -100,6 +92,9 @@ namespace Pulumiverse.Aquasec
             set => _executableBlacklists = value;
         }
 
+        /// <summary>
+        /// Name of the function runtime policy
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -135,6 +130,9 @@ namespace Pulumiverse.Aquasec
             set => _executableBlacklists = value;
         }
 
+        /// <summary>
+        /// Name of the function runtime policy
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

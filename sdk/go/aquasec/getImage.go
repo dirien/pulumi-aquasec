@@ -23,7 +23,9 @@ func LookupImage(ctx *pulumi.Context, args *LookupImageArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getImage.
 type LookupImageArgs struct {
-	Registry   string `pulumi:"registry"`
+	// The name of the registry where the image is stored.
+	Registry string `pulumi:"registry"`
+	// The name of the image's repository.
 	Repository string `pulumi:"repository"`
 	// The tag of the image.
 	Tag string `pulumi:"tag"`
@@ -150,7 +152,9 @@ func LookupImageOutput(ctx *pulumi.Context, args LookupImageOutputArgs, opts ...
 
 // A collection of arguments for invoking getImage.
 type LookupImageOutputArgs struct {
-	Registry   pulumi.StringInput `pulumi:"registry"`
+	// The name of the registry where the image is stored.
+	Registry pulumi.StringInput `pulumi:"registry"`
+	// The name of the image's repository.
 	Repository pulumi.StringInput `pulumi:"repository"`
 	// The tag of the image.
 	Tag pulumi.StringInput `pulumi:"tag"`

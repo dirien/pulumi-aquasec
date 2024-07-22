@@ -14,10 +14,25 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetImageHistoryResult
     {
+        /// <summary>
+        /// The commit comment for the image, if any.
+        /// </summary>
         public readonly string Comment;
+        /// <summary>
+        /// The date of creation of the layer.
+        /// </summary>
         public readonly string Created;
+        /// <summary>
+        /// The command that generated the layer.
+        /// </summary>
         public readonly string CreatedBy;
+        /// <summary>
+        /// The image ID of the layer (if any).
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The size of the image.
+        /// </summary>
         public readonly int Size;
 
         [OutputConstructor]

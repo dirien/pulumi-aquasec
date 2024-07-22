@@ -14,15 +14,45 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetUsersUserResult
     {
+        /// <summary>
+        /// The user Email.
+        /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// If the user must change password at next login.
+        /// </summary>
         public readonly bool FirstTime;
+        /// <summary>
+        /// Give the Permission Set full access, meaning all actions are allowed without restriction.
+        /// </summary>
         public readonly bool IsSuper;
+        /// <summary>
+        /// The user name.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// User's Aqua plan (Developer / Team / Advanced).
+        /// </summary>
         public readonly string Plan;
+        /// <summary>
+        /// The first role that assigned to the user for backward compatibility.
+        /// </summary>
         public readonly string Role;
+        /// <summary>
+        /// The roles that will be assigned to the user.
+        /// </summary>
         public readonly ImmutableArray<string> Roles;
+        /// <summary>
+        /// The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
+        /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// Whether to allow UI access for users with this Permission Set.
+        /// </summary>
         public readonly bool UiAccess;
+        /// <summary>
+        /// The user ID.
+        /// </summary>
         public readonly string UserId;
 
         [OutputConstructor]

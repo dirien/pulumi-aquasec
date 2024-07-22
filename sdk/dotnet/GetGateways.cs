@@ -15,9 +15,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -41,8 +39,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("aquasec:index/getGateways:getGateways", InvokeArgs.Empty, options.WithDefaults());
@@ -50,9 +46,7 @@ namespace Pulumiverse.Aquasec
         /// <summary>
         /// The data source `aquasec.getGateways` provides a method to query all gateways within the Aqua
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -76,8 +70,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("aquasec:index/getGateways:getGateways", InvokeArgs.Empty, options.WithDefaults());

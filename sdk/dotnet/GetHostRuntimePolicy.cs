@@ -13,9 +13,7 @@ namespace Pulumiverse.Aquasec
     public static class GetHostRuntimePolicy
     {
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -36,16 +34,12 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetHostRuntimePolicyResult> InvokeAsync(GetHostRuntimePolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHostRuntimePolicyResult>("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args ?? new GetHostRuntimePolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -66,8 +60,6 @@ namespace Pulumiverse.Aquasec
         ///     };
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetHostRuntimePolicyResult> Invoke(GetHostRuntimePolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostRuntimePolicyResult>("aquasec:index/getHostRuntimePolicy:getHostRuntimePolicy", args ?? new GetHostRuntimePolicyInvokeArgs(), options.WithDefaults());
@@ -103,6 +95,9 @@ namespace Pulumiverse.Aquasec
             set => _malwareScanOptions = value;
         }
 
+        /// <summary>
+        /// Name of the host runtime policy
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -149,6 +144,9 @@ namespace Pulumiverse.Aquasec
             set => _malwareScanOptions = value;
         }
 
+        /// <summary>
+        /// Name of the host runtime policy
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

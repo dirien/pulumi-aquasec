@@ -22,6 +22,9 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the service. It is recommended not to use whitespace characters in the name.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -33,6 +36,9 @@ namespace Pulumiverse.Aquasec
 
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the service. It is recommended not to use whitespace characters in the name.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

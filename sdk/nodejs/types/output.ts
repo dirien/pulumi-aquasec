@@ -1116,27 +1116,90 @@ export interface FunctionRuntimePolicyWhitelistedOsUsers {
 }
 
 export interface GetAcknowledgesAcknowledge {
+    /**
+     * The user who acknowledged the issue.
+     */
     author: string;
+    /**
+     * A comment describing the reason for the acknowledgment
+     */
     comment: string;
+    /**
+     * The date and time of the acknowledgment.
+     */
     date: string;
     dockerId: string;
+    /**
+     * The current dat and time when the expiration was set
+     */
     expirationConfiguredAt: string;
+    /**
+     * The user who set the expiration of the issue.
+     */
     expirationConfiguredBy: string;
+    /**
+     * Number of days until expiration of the acknowledgement. The value must be integer from 1 to 999, inclusive.
+     */
     expirationDays: number;
+    /**
+     * The version of the package that having a fix for the issue.
+     */
     fixVersion: string;
+    /**
+     * Only acknowledge the issue in the context of the specified image (also requires 'registry_name')
+     */
     imageName: string;
+    /**
+     * The name of the security issue (the CVE or security advisory for vulnerabilities, name of malware or type of sensitive data)
+     */
     issueName: string;
+    /**
+     * The type of the security issue (either 'vulnerability', 'sensitive_data' or 'malware')
+     */
     issueType: string;
+    /**
+     * When the resourceType is 'package', the operating system is required (e.g., 'ubuntu', 'alpine').
+     */
     os: string;
+    /**
+     * When the resourceType is 'package', the operating system version is required.
+     */
     osVersion: string;
+    /**
+     * The permissions of the user who acknowledged the issue.
+     */
     permission: string;
+    /**
+     * Only acknowledge the issue in the context of the specified repository (also requires 'registry_name').
+     */
     registryName: string;
+    /**
+     * The CPE of the resource as listed in the issue by the Aqua API. This is required for resources of type 'executable'. For packages and files, the next parameters can be specified instead.
+     */
     resourceCpe: string;
+    /**
+     * The format of the resource.
+     */
     resourceFormat: string;
+    /**
+     * When the resourceType is 'file', the hash of the file is required
+     */
     resourceHash: string;
+    /**
+     * When the resourceType is 'package', the name of the package is required.
+     */
     resourceName: string;
+    /**
+     * The path of the resource. This is required for resources of type 'file' and 'executable'.
+     */
     resourcePath: string;
+    /**
+     * The type of the resource where the issue was detected (either 'package', 'file' or 'executable')
+     */
     resourceType: string;
+    /**
+     * When the resourceType is 'package', the version of the package is required
+     */
     resourceVersion: string;
 }
 
@@ -1255,9 +1318,21 @@ export interface GetApplicationScopeCategoryWorkloadOVariable {
 }
 
 export interface GetAquaLabelsAquaLabel {
+    /**
+     * The name of the user who created the Aqua label.
+     */
     author: string;
+    /**
+     * The creation date of the Aqua label.
+     */
     created: string;
+    /**
+     * Aqua label description.
+     */
     description: string;
+    /**
+     * Aqua label name.
+     */
     name: string;
 }
 
@@ -1468,8 +1543,17 @@ export interface GetContainerRuntimePolicyRestrictedVolume {
 }
 
 export interface GetContainerRuntimePolicyScopeVariable {
+    /**
+     * Class of supported scope.
+     */
     attribute: string;
+    /**
+     * Name assigned to the attribute.
+     */
     name: string;
+    /**
+     * Value assigned to the attribute.
+     */
     value: string;
 }
 
@@ -1482,15 +1566,33 @@ export interface GetEnforcerGroupsCommand {
 
 export interface GetEnforcerGroupsOrchestrator {
     master: boolean;
+    /**
+     * May be specified for these orchestrators: Kubernetes, Kubernetes GKE, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+     */
     namespace: string;
+    /**
+     * May be specified for these orchestrators: Kubernetes, Kubernetes GKE, OpenShift, VMware Tanzu Kubernetes Grid Integrated Edition (PKS).
+     */
     serviceAccount: string;
     type: string;
 }
 
 export interface GetFirewallPolicyInboundNetwork {
+    /**
+     * Indicates whether the specified resources are allowed to pass in data or requests.
+     */
     allow: boolean;
+    /**
+     * Range of ports affected by firewall.
+     */
     portRange: string;
+    /**
+     * Information of the resource.
+     */
     resource: string;
+    /**
+     * Type of the resource
+     */
     resourceType: string;
 }
 
@@ -1521,6 +1623,9 @@ export interface GetFunctionAssurancePolicyAutoScanTime {
 }
 
 export interface GetFunctionAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
     author: string;
     description: string;
     engine: string;
@@ -1614,25 +1719,67 @@ export interface GetFunctionRuntimePolicyExecutableBlacklist {
 }
 
 export interface GetFunctionRuntimePolicyScopeVariable {
+    /**
+     * Class of supported scope.
+     */
     attribute: string;
+    /**
+     * Name assigned to the attribute.
+     */
     name: string;
+    /**
+     * Value assigned to the attribute.
+     */
     value: string;
 }
 
 export interface GetGatewaysGateway {
+    /**
+     * The description of the gateway.
+     */
     description: string;
+    /**
+     * The GRPC address of the gateway.
+     */
     grpcAddress: string;
+    /**
+     * The name of the gateway's host.
+     */
     hostname: string;
+    /**
+     * The ID of the gateway (for example: 8522744b25e2_gateway)
+     */
     id: string;
+    /**
+     * The logical name of the gateway (for example: 8522744b25e2)
+     */
     logicalname: string;
+    /**
+     * The public IP address of the gateway.
+     */
     publicAddress: string;
+    /**
+     * The status of the gateway.
+     */
     status: string;
+    /**
+     * The version of the gateway.
+     */
     version: string;
 }
 
 export interface GetGroupsGroup {
+    /**
+     * The creation date of the group.
+     */
     created: string;
+    /**
+     * The ID of the created group.
+     */
     groupId: string;
+    /**
+     * The desired name of the group.
+     */
     name: string;
 }
 
@@ -1644,6 +1791,9 @@ export interface GetHostAssurancePolicyAutoScanTime {
 }
 
 export interface GetHostAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
     author: string;
     description: string;
     engine: string;
@@ -1802,41 +1952,122 @@ export interface GetHostRuntimePolicyPackageBlock {
 }
 
 export interface GetHostRuntimePolicyScopeVariable {
+    /**
+     * Class of supported scope.
+     */
     attribute: string;
+    /**
+     * Name assigned to the attribute.
+     */
     name: string;
+    /**
+     * Value assigned to the attribute.
+     */
     value: string;
 }
 
 export interface GetHostRuntimePolicyWindowsRegistryMonitoring {
+    /**
+     * List of paths to be excluded from being monitored.
+     */
     excludedPaths: string[];
+    /**
+     * List of registry processes to be excluded from being monitored.
+     */
     excludedProcesses: string[];
+    /**
+     * List of registry users to be excluded from being monitored.
+     */
     excludedUsers: string[];
+    /**
+     * If true, add attributes operations will be monitored.
+     */
     monitorAttributes: boolean;
+    /**
+     * If true, create operations will be monitored.
+     */
     monitorCreate: boolean;
+    /**
+     * If true, deletion operations will be monitored.
+     */
     monitorDelete: boolean;
+    /**
+     * If true, modification operations will be monitored.
+     */
     monitorModify: boolean;
+    /**
+     * If true, read operations will be monitored.
+     */
     monitorRead: boolean;
+    /**
+     * List of paths to be monitored.
+     */
     monitoredPaths: string[];
+    /**
+     * List of registry processes to be monitored.
+     */
     monitoredProcesses: string[];
+    /**
+     * List of registry users to be monitored.
+     */
     monitoredUsers: string[];
 }
 
 export interface GetHostRuntimePolicyWindowsRegistryProtection {
+    /**
+     * List of registry paths to be excluded from being protected.
+     */
     excludedPaths: string[];
+    /**
+     * List of registry processes to be excluded from being protected.
+     */
     excludedProcesses: string[];
+    /**
+     * List of registry paths to be users from being protected.
+     */
     excludedUsers: string[];
+    /**
+     * List of registry paths to be protected.
+     */
     protectedPaths: string[];
+    /**
+     * List of registry processes to be protected.
+     */
     protectedProcesses: string[];
+    /**
+     * List of registry users to be protected.
+     */
     protectedUsers: string[];
 }
 
 export interface GetImageAssuranceChecksPerformed {
+    /**
+     * The type of the Assurance Policy the check originated from.
+     */
     assuranceType: string;
+    /**
+     * Whether the check is blocking (i.e. a failure should trigger a disallow).
+     */
     blocking: boolean;
+    /**
+     * The name of the image assurance control.
+     */
     control: string;
+    /**
+     * If DTA was skipped.
+     */
     dtaSkipped: boolean;
+    /**
+     * The reason why DTA was skipped.
+     */
     dtaSkippedReason: string;
+    /**
+     * Whether the image failed the check.
+     */
     failed: boolean;
+    /**
+     * The name of the Image Assurance Policy the check originated from.
+     */
     policyName: string;
 }
 
@@ -1848,6 +2079,9 @@ export interface GetImageAssurancePolicyAutoScanTime {
 }
 
 export interface GetImageAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
     author: string;
     description: string;
     engine: string;
@@ -1911,10 +2145,25 @@ export interface GetImageAssurancePolicyTrustedBaseImage {
 }
 
 export interface GetImageHistory {
+    /**
+     * The commit comment for the image, if any.
+     */
     comment: string;
+    /**
+     * The date of creation of the layer.
+     */
     created: string;
+    /**
+     * The command that generated the layer.
+     */
     createdBy: string;
+    /**
+     * The image ID of the layer (if any).
+     */
     id: string;
+    /**
+     * The size of the image.
+     */
     size: number;
 }
 
@@ -1926,49 +2175,181 @@ export interface GetImageVulnerability {
     ackExpirationDays: number;
     ackScope: string;
     acknowledgeDate: string;
+    /**
+     * The ancestor of this package.
+     */
     ancestorPkg: string;
+    /**
+     * The score generated for the vulnerability by Aqua.
+     */
     aquaScore: number;
+    /**
+     * Score classification by Aqua.
+     */
     aquaScoreClassification: string;
+    /**
+     * The score system for the vulnerability by Aqua
+     */
     aquaScoringSystem: string;
+    /**
+     * The severity generated for the vulnerability by Aqua.
+     */
     aquaSeverity: string;
+    /**
+     * Classification of the severity defined by Aqua.
+     */
     aquaSeverityClassification: string;
+    /**
+     * The vectors generated for the vulnerability by Aqua
+     */
     aquaVectors: string;
+    /**
+     * Number of audit events.
+     */
     auditEventsCount: number;
+    /**
+     * Number of blocked events.
+     */
     blockEventsCount: number;
+    /**
+     * Classification of the vulnerability.
+     */
     classification: string;
+    /**
+     * The description of the vulnerability.
+     */
     description: string;
+    /**
+     * The content digest of the image.
+     */
     digest: string;
+    /**
+     * Reference of the exploit.
+     */
     exploitReference: string;
+    /**
+     * Type of the exploit.
+     */
     exploitType: string;
+    /**
+     * The date when this vulnerability was first found.
+     */
     firstFoundDate: string;
+    /**
+     * Fixed version of the resource.
+     */
     fixVersion: string;
+    /**
+     * Name of the image.
+     */
     imageName: string;
+    /**
+     * The date when this vulnerability was last found.
+     */
     lastFoundDate: string;
+    /**
+     * Thhe date when this vulnerability was modified.
+     */
     modificationDate: string;
+    /**
+     * The name of the vulnerability.
+     */
     name: string;
+    /**
+     * CVSS2 score by NVD
+     */
     nvdCvss2Score: number;
+    /**
+     * CVSS2 vectors by NVD
+     */
     nvdCvss2Vectors: string;
+    /**
+     * CVSS3 score by NVD
+     */
     nvdCvss3Score: number;
+    /**
+     * CVSS3 severity by NVD
+     */
     nvdCvss3Severity: string;
+    /**
+     * CVSS3 vectors by NVD
+     */
     nvdCvss3Vectors: string;
+    /**
+     * Type of the severity identified by NVD.
+     */
     nvdSeverity: string;
+    /**
+     * URL of the details of this vulnerability by NVD.
+     */
     nvdUrl: string;
+    /**
+     * Name of the Operating System.
+     */
     os: string;
+    /**
+     * The version of the OS.
+     */
     osVersion: string;
+    /**
+     * permission on the image
+     */
     permission: string;
+    /**
+     * The date this vulnerability was published.
+     */
     publishDate: string;
+    /**
+     * Registry of the image.
+     */
     registry: string;
+    /**
+     * Repository of the image.
+     */
     repository: string;
+    /**
+     * Architecture of the resource.
+     */
     resourceArchitecture: string;
+    /**
+     * Common Platform Enumeration (CPE) of the resource.
+     */
     resourceCpe: string;
+    /**
+     * Code format of the resource (java, apk etc.).
+     */
     resourceFormat: string;
+    /**
+     * Hash of the resource.
+     */
     resourceHash: string;
+    /**
+     * List of license supported by the resource.
+     */
     resourceLicenses: string[];
+    /**
+     * Name of the resource.
+     */
     resourceName: string;
+    /**
+     * Path of the resource.
+     */
     resourcePath: string;
+    /**
+     * Type of the resource
+     */
     resourceType: string;
+    /**
+     * Version of the resource.
+     */
     resourceVersion: string;
+    /**
+     * Classification of the severity.
+     */
     severityClassification: string;
+    /**
+     * Solution for the vulnerability.
+     */
     solution: string;
     temporalVector: string;
     vPatchAppliedBy: string;
@@ -2019,6 +2400,9 @@ export interface GetKubernetesAssurancePolicyAutoScanTime {
 }
 
 export interface GetKubernetesAssurancePolicyCustomCheck {
+    /**
+     * Name of user account that created the policy.
+     */
     author: string;
     description: string;
     engine: string;
@@ -2152,24 +2536,54 @@ export interface GetNotificationsWebhook {
 }
 
 export interface GetPermissionsSetsPermissionsSet {
+    /**
+     * List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
+     */
     actions: string[];
+    /**
+     * The name of the user who created the Permission Set.
+     */
     author: string;
+    /**
+     * Free text description for the Permission Set.
+     */
     description: string;
+    /**
+     * Give the Permission Set full access, meaning all actions are allowed without restriction.
+     */
     isSuper: boolean;
+    /**
+     * The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+     */
     name: string;
+    /**
+     * Whether to allow UI access for users with this Permission Set.
+     */
     uiAccess: boolean;
+    /**
+     * The date of the last modification of the Role.
+     */
     updatedAt: string;
 }
 
 export interface GetRolesMappingLdap {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
     roleMapping: {[key: string]: string};
 }
 
 export interface GetRolesMappingOauth2 {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
     roleMapping: {[key: string]: string};
 }
 
 export interface GetRolesMappingOpenid {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
     roleMapping: {[key: string]: string};
 }
 
@@ -2182,20 +2596,47 @@ export interface GetRolesMappingSaasRolesMapping {
 }
 
 export interface GetRolesMappingSaml {
+    /**
+     * Role Mapping is used to define the IdP role that the user will assume in Aqua
+     */
     roleMapping: {[key: string]: string};
 }
 
 export interface GetRolesRole {
+    /**
+     * Free text description for the role.
+     */
     description: string;
+    /**
+     * The name of the role, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+     */
     name: string;
+    /**
+     * The name of the Permission Set that will affect the users assigned to this specific Role.
+     */
     permission: string;
+    /**
+     * List of Application Scopes that will affect the users assigned to this specific Role.
+     */
     scopes: string[];
+    /**
+     * The date of the last modification of the role.
+     */
     updatedAt: string;
 }
 
 export interface GetServiceScopeVariable {
+    /**
+     * Class of supported scope.
+     */
     attribute: string;
+    /**
+     * Name assigned to the attribute.
+     */
     name: string;
+    /**
+     * Value assigned to the attribute.
+     */
     value: string;
 }
 
@@ -2232,15 +2673,45 @@ export interface GetUsersSaasUserLogin {
 }
 
 export interface GetUsersUser {
+    /**
+     * The user Email.
+     */
     email: string;
+    /**
+     * If the user must change password at next login.
+     */
     firstTime: boolean;
+    /**
+     * Give the Permission Set full access, meaning all actions are allowed without restriction.
+     */
     isSuper: boolean;
+    /**
+     * The user name.
+     */
     name: string;
+    /**
+     * User's Aqua plan (Developer / Team / Advanced).
+     */
     plan: string;
+    /**
+     * The first role that assigned to the user for backward compatibility.
+     */
     role: string;
+    /**
+     * The roles that will be assigned to the user.
+     */
     roles: string[];
+    /**
+     * The user type (Aqua, LDAP, SAML, OAuth2, OpenID, Tenant Manager).
+     */
     type: string;
+    /**
+     * Whether to allow UI access for users with this Permission Set.
+     */
     uiAccess: boolean;
+    /**
+     * The user ID.
+     */
     userId: string;
 }
 
@@ -2699,12 +3170,33 @@ export interface HostRuntimePolicyWhitelistedOsUsers {
 }
 
 export interface ImageAssuranceChecksPerformed {
+    /**
+     * The type of the Assurance Policy the check originated from.
+     */
     assuranceType: string;
+    /**
+     * Whether the check is blocking (i.e. a failure should trigger a disallow).
+     */
     blocking: boolean;
+    /**
+     * The name of the image assurance control.
+     */
     control: string;
+    /**
+     * If DTA was skipped.
+     */
     dtaSkipped: boolean;
+    /**
+     * The reason why DTA was skipped.
+     */
     dtaSkippedReason: string;
+    /**
+     * Whether the image failed the check.
+     */
     failed: boolean;
+    /**
+     * The name of the Image Assurance Policy the check originated from.
+     */
     policyName: string;
 }
 
@@ -2800,10 +3292,25 @@ export interface ImageAssurancePolicyTrustedBaseImage {
 }
 
 export interface ImageHistory {
+    /**
+     * The commit comment for the image, if any.
+     */
     comment: string;
+    /**
+     * The date of creation of the layer.
+     */
     created: string;
+    /**
+     * The command that generated the layer.
+     */
     createdBy: string;
+    /**
+     * The image ID of the layer (if any).
+     */
     id: string;
+    /**
+     * The size of the image.
+     */
     size: number;
 }
 
@@ -2815,49 +3322,181 @@ export interface ImageVulnerability {
     ackExpirationDays: number;
     ackScope: string;
     acknowledgeDate: string;
+    /**
+     * The ancestor of this package.
+     */
     ancestorPkg: string;
+    /**
+     * The score generated for the vulnerability by Aqua.
+     */
     aquaScore: number;
+    /**
+     * Score classification by Aqua.
+     */
     aquaScoreClassification: string;
+    /**
+     * The score system for the vulnerability by Aqua
+     */
     aquaScoringSystem: string;
+    /**
+     * The severity generated for the vulnerability by Aqua.
+     */
     aquaSeverity: string;
+    /**
+     * Classification of the severity defined by Aqua.
+     */
     aquaSeverityClassification: string;
+    /**
+     * The vectors generated for the vulnerability by Aqua
+     */
     aquaVectors: string;
+    /**
+     * Number of audit events.
+     */
     auditEventsCount: number;
+    /**
+     * Number of blocked events.
+     */
     blockEventsCount: number;
+    /**
+     * Classification of the vulnerability.
+     */
     classification: string;
+    /**
+     * The description of the vulnerability.
+     */
     description: string;
+    /**
+     * The content digest of the image.
+     */
     digest: string;
+    /**
+     * Reference of the exploit.
+     */
     exploitReference: string;
+    /**
+     * Type of the exploit.
+     */
     exploitType: string;
+    /**
+     * The date when this vulnerability was first found.
+     */
     firstFoundDate: string;
+    /**
+     * Fixed version of the resource.
+     */
     fixVersion: string;
+    /**
+     * Name of the image.
+     */
     imageName: string;
+    /**
+     * The date when this vulnerability was last found.
+     */
     lastFoundDate: string;
+    /**
+     * Thhe date when this vulnerability was modified.
+     */
     modificationDate: string;
+    /**
+     * The name of the vulnerability.
+     */
     name: string;
+    /**
+     * CVSS2 score by NVD
+     */
     nvdCvss2Score: number;
+    /**
+     * CVSS2 vectors by NVD
+     */
     nvdCvss2Vectors: string;
+    /**
+     * CVSS3 score by NVD
+     */
     nvdCvss3Score: number;
+    /**
+     * CVSS3 severity by NVD
+     */
     nvdCvss3Severity: string;
+    /**
+     * CVSS3 vectors by NVD
+     */
     nvdCvss3Vectors: string;
+    /**
+     * Type of the severity identified by NVD.
+     */
     nvdSeverity: string;
+    /**
+     * URL of the details of this vulnerability by NVD.
+     */
     nvdUrl: string;
+    /**
+     * Name of the Operating System.
+     */
     os: string;
+    /**
+     * The version of the OS.
+     */
     osVersion: string;
+    /**
+     * permission on the image
+     */
     permission: string;
+    /**
+     * The date this vulnerability was published.
+     */
     publishDate: string;
+    /**
+     * Registry of the image.
+     */
     registry: string;
+    /**
+     * Repository of the image.
+     */
     repository: string;
+    /**
+     * Architecture of the resource.
+     */
     resourceArchitecture: string;
+    /**
+     * Common Platform Enumeration (CPE) of the resource.
+     */
     resourceCpe: string;
+    /**
+     * Code format of the resource (java, apk etc.).
+     */
     resourceFormat: string;
+    /**
+     * Hash of the resource.
+     */
     resourceHash: string;
+    /**
+     * List of license supported by the resource.
+     */
     resourceLicenses: string[];
+    /**
+     * Name of the resource.
+     */
     resourceName: string;
+    /**
+     * Path of the resource.
+     */
     resourcePath: string;
+    /**
+     * Type of the resource
+     */
     resourceType: string;
+    /**
+     * Version of the resource.
+     */
     resourceVersion: string;
+    /**
+     * Classification of the severity.
+     */
     severityClassification: string;
+    /**
+     * Solution for the vulnerability.
+     */
     solution: string;
     temporalVector: string;
     vPatchAppliedBy: string;

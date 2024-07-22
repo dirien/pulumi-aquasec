@@ -101,7 +101,7 @@ class HostRuntimePolicyArgs:
         """
         The set of arguments for constructing a HostRuntimePolicy resource.
         :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedExecutableArgs']]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedRegistryArgs']]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedRegistryArgs']]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
@@ -114,7 +114,7 @@ class HostRuntimePolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyBypassScopeArgs']]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyDriftPreventionArgs']]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -125,7 +125,7 @@ class HostRuntimePolicyArgs:
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_alloweds: List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_blockeds: List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_users_alloweds: List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
@@ -316,7 +316,7 @@ class HostRuntimePolicyArgs:
     @pulumi.getter(name="allowedRegistries")
     def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedRegistryArgs']]]]:
         """
-        List of allowed registries.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -616,7 +616,7 @@ class HostRuntimePolicyArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether allowed executables configuration is enabled.
+        Indicates if the runtime policy is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -838,7 +838,7 @@ class HostRuntimePolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name assigned to the attribute.
+        Name of the host runtime policy
         """
         return pulumi.get(self, "name")
 
@@ -1229,7 +1229,7 @@ class _HostRuntimePolicyState:
         """
         Input properties used for looking up and filtering HostRuntimePolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedExecutableArgs']]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedRegistryArgs']]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedRegistryArgs']]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
@@ -1242,7 +1242,7 @@ class _HostRuntimePolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyBypassScopeArgs']]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyDriftPreventionArgs']]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -1253,7 +1253,7 @@ class _HostRuntimePolicyState:
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_alloweds: List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_blockeds: List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_users_alloweds: List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
@@ -1444,7 +1444,7 @@ class _HostRuntimePolicyState:
     @pulumi.getter(name="allowedRegistries")
     def allowed_registries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostRuntimePolicyAllowedRegistryArgs']]]]:
         """
-        List of allowed registries.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -1744,7 +1744,7 @@ class _HostRuntimePolicyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether allowed executables configuration is enabled.
+        Indicates if the runtime policy is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -1966,7 +1966,7 @@ class _HostRuntimePolicyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name assigned to the attribute.
+        Name of the host runtime policy
         """
         return pulumi.get(self, "name")
 
@@ -2358,11 +2358,12 @@ class HostRuntimePolicy(pulumi.CustomResource):
                  whitelisted_os_users: Optional[pulumi.Input[pulumi.InputType['HostRuntimePolicyWhitelistedOsUsersArgs']]] = None,
                  __props__=None):
         """
-        Create a HostRuntimePolicy resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyAllowedExecutableArgs']]]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
@@ -2375,7 +2376,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyBypassScopeArgs']]]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyDriftPreventionArgs']]]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -2386,7 +2387,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_alloweds: List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_blockeds: List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_users_alloweds: List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
@@ -2403,7 +2404,8 @@ class HostRuntimePolicy(pulumi.CustomResource):
                  args: Optional[HostRuntimePolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a HostRuntimePolicy resource with the given unique name, props, and options.
+        ## Example Usage
+
         :param str resource_name: The name of the resource.
         :param HostRuntimePolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -2692,7 +2694,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyAllowedExecutableArgs']]]] allowed_executables: Allowed executables configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: List of allowed registries.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyAllowedRegistryArgs']]]] allowed_registries: Allowed registries configuration.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] application_scopes: Indicates the application scope of the service.
         :param pulumi.Input[bool] audit_brute_force_login: Detects brute force login attempts
         :param pulumi.Input[bool] audit_full_command_arguments: If true, full command arguments will be audited.
@@ -2705,7 +2707,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyBypassScopeArgs']]]] bypass_scopes: Bypass scope configuration.
         :param pulumi.Input[str] description: The description of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HostRuntimePolicyDriftPreventionArgs']]]] drift_preventions: Drift prevention configuration.
-        :param pulumi.Input[bool] enabled: Whether allowed executables configuration is enabled.
+        :param pulumi.Input[bool] enabled: Indicates if the runtime policy is enabled or not.
         :param pulumi.Input[bool] enforce: Indicates that policy should effect container execution (not just for audit).
         :param pulumi.Input[int] enforce_after_days: Indicates the number of days after which the runtime policy will be changed to enforce mode.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_application_scopes: List of excluded application scopes.
@@ -2716,7 +2718,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] monitor_system_log_integrity: If true, system log will be monitored.
         :param pulumi.Input[bool] monitor_system_time_changes: If true, system time changes will be monitored.
         :param pulumi.Input[bool] monitor_windows_services: If true, windows service operations will be monitored.
-        :param pulumi.Input[str] name: Name assigned to the attribute.
+        :param pulumi.Input[str] name: Name of the host runtime policy
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_alloweds: List of OS (Linux or Windows) groups that are allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_groups_blockeds: List of OS (Linux or Windows) groups that are not allowed to authenticate to the host, and block authentication requests from all others. Groups can be either Linux groups or Windows AD groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] os_users_alloweds: List of OS (Linux or Windows) users that are allowed to authenticate to the host, and block authentication requests from all others.
@@ -2826,7 +2828,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter(name="allowedRegistries")
     def allowed_registries(self) -> pulumi.Output[Sequence['outputs.HostRuntimePolicyAllowedRegistry']]:
         """
-        List of allowed registries.
+        Allowed registries configuration.
         """
         return pulumi.get(self, "allowed_registries")
 
@@ -3010,7 +3012,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether allowed executables configuration is enabled.
+        Indicates if the runtime policy is enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -3148,7 +3150,7 @@ class HostRuntimePolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name assigned to the attribute.
+        Name of the host runtime policy
         """
         return pulumi.get(self, "name")
 

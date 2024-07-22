@@ -71,7 +71,7 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly monitoring!: pulumi.Output<boolean | undefined>;
     /**
-     * Name assigned to the attribute.
+     * The name of the service. It is recommended not to use whitespace characters in the name.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -256,7 +256,7 @@ export interface ServiceState {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Name assigned to the attribute.
+     * The name of the service. It is recommended not to use whitespace characters in the name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -342,7 +342,7 @@ export interface ServiceArgs {
      */
     monitoring?: pulumi.Input<boolean>;
     /**
-     * Name assigned to the attribute.
+     * The name of the service. It is recommended not to use whitespace characters in the name.
      */
     name?: pulumi.Input<string>;
     /**

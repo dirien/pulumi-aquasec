@@ -134,7 +134,7 @@ namespace Pulumiverse.Aquasec
         public Output<ImmutableArray<string>> CvesWhiteLists { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of the cvss severity.
+        /// Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         /// </summary>
         [Output("cvssSeverity")]
         public Output<string?> CvssSeverity { get; private set; } = null!;
@@ -644,7 +644,7 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// Identifier of the cvss severity.
+        /// Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         /// </summary>
         [Input("cvssSeverity")]
         public Input<string>? CvssSeverity { get; set; }
@@ -1224,7 +1224,7 @@ namespace Pulumiverse.Aquasec
         }
 
         /// <summary>
-        /// Identifier of the cvss severity.
+        /// Identifier of the cvss severity. Only applied if `cvss_severity_enabled` is set to `true`. Valid options: `critical`, `high`, `medium`, `low`.
         /// </summary>
         [Input("cvssSeverity")]
         public Input<string>? CvssSeverity { get; set; }

@@ -14,11 +14,29 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetHostRuntimePolicyWindowsRegistryProtectionResult
     {
+        /// <summary>
+        /// List of registry paths to be excluded from being protected.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedPaths;
+        /// <summary>
+        /// List of registry processes to be excluded from being protected.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedProcesses;
+        /// <summary>
+        /// List of registry paths to be users from being protected.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedUsers;
+        /// <summary>
+        /// List of registry paths to be protected.
+        /// </summary>
         public readonly ImmutableArray<string> ProtectedPaths;
+        /// <summary>
+        /// List of registry processes to be protected.
+        /// </summary>
         public readonly ImmutableArray<string> ProtectedProcesses;
+        /// <summary>
+        /// List of registry users to be protected.
+        /// </summary>
         public readonly ImmutableArray<string> ProtectedUsers;
 
         [OutputConstructor]

@@ -14,12 +14,33 @@ namespace Pulumiverse.Aquasec.Outputs
     [OutputType]
     public sealed class GetPermissionsSetsPermissionsSetResult
     {
+        /// <summary>
+        /// List of allowed actions for the Permission Set (not relevant if 'is_super' is true).
+        /// </summary>
         public readonly ImmutableArray<string> Actions;
+        /// <summary>
+        /// The name of the user who created the Permission Set.
+        /// </summary>
         public readonly string Author;
+        /// <summary>
+        /// Free text description for the Permission Set.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Give the Permission Set full access, meaning all actions are allowed without restriction.
+        /// </summary>
         public readonly bool IsSuper;
+        /// <summary>
+        /// The name of the Permission Set, comprised of alphanumeric characters and '-', '_', ' ', ':', '.', '@', '!', '^'.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Whether to allow UI access for users with this Permission Set.
+        /// </summary>
         public readonly bool UiAccess;
+        /// <summary>
+        /// The date of the last modification of the Role.
+        /// </summary>
         public readonly string UpdatedAt;
 
         [OutputConstructor]
