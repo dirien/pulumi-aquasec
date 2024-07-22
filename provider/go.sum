@@ -1218,8 +1218,8 @@ github.com/apparentlymart/go-textseg/v12 v12.0.0/go.mod h1:S/4uRK2UtaQttw1GenVJE
 github.com/apparentlymart/go-textseg/v13 v13.0.0/go.mod h1:ZK2fH7c4NqDTLtiYLvIkEghdlcqw7yxLeM89kiTRPUo=
 github.com/apparentlymart/go-textseg/v15 v15.0.0 h1:uYvfpb3DyLSCGWnctWKGj857c6ew1u1fNQOlOtuGxQY=
 github.com/apparentlymart/go-textseg/v15 v15.0.0/go.mod h1:K8XmNZdhEBkdlyDdvbmmsvpAG721bKi0joRfFdHIWJ4=
-github.com/aquasecurity/terraform-provider-aquasec v0.8.28 h1:BPSAh5XJStM5Pa3zvb66XZxK1RqjeafxVlJ/5giFTbU=
-github.com/aquasecurity/terraform-provider-aquasec v0.8.28/go.mod h1:jHbUosrSViH5/kHemSlieAH8H1aZYTJ+Y+oMEDhht6g=
+github.com/aquasecurity/terraform-provider-aquasec v0.8.29 h1:an2ZsONCBC+sxdPRrOtLZfzoox9f6iC5LKERTpB3B9M=
+github.com/aquasecurity/terraform-provider-aquasec v0.8.29/go.mod h1:jHbUosrSViH5/kHemSlieAH8H1aZYTJ+Y+oMEDhht6g=
 github.com/armon/go-radix v0.0.0-20180808171621-7fddfc383310/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
 github.com/armon/go-radix v1.0.0 h1:F4z6KzEeeQIMeLFa97iZU6vupzoecKdU5TX24SNppXI=
 github.com/armon/go-radix v1.0.0/go.mod h1:ufUuZ+zHj4x4TnLV4JWEpy2hxWSpsRywHrMgIH9cCH8=
